@@ -1,9 +1,27 @@
+:root {
+  --Dark-blue: hsl(223, 30%, 9%);
+  --Red: hsl(0, 97%, 63%);
+  --Greyish-Blue: hsl(223, 23%, 46%);
+  --Semi-dark-blue: hsl(223, 36%, 14%);
+  --Pure-white: hsl(0, 0%, 100%);
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Outfit", sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+  background: var(--Dark-blue);
+  color: var(--Pure-white);
+  font-size: 0.9375rem;
+  font-weight: 300;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
 }
 
 a {
@@ -15,12 +33,31 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
+h1 {
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+@media (min-width: 64em) {
+  main {
+    margin-left: 8.25rem;
+    width: unset;
+    margin-right: 2.25rem;
   }
 }

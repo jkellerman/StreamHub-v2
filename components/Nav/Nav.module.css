@@ -1,0 +1,91 @@
+.nav {
+  background: var(--Semi-dark-blue);
+  padding: 0 1.25rem;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.navLinksContainer {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.inactive {
+  fill: var(--Greyish-Blue);
+}
+
+.inactive:hover {
+  fill: var(--Red);
+}
+
+.active {
+  fill: var(--Pure-white);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--Pure-white);
+  border-radius: 50%;
+}
+
+@media (min-width: 48em) {
+  .nav {
+    height: 72px;
+    padding: 0 1.5rem;
+    width: 93.75%;
+    margin: 1.5rem auto 0;
+    border-radius: 10px;
+  }
+  .logo {
+    width: 32px;
+    height: 25.6px;
+  }
+
+  .navLinksContainer {
+    gap: 2rem;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (min-width: 64em) {
+  .nav {
+    padding: 2rem 0;
+    width: 75px;
+    height: 90vh;
+    flex-direction: column;
+    position: fixed;
+    z-index: 3;
+    left: 2rem;
+    border-radius: 20px;
+  }
+
+  .navLinksContainer {
+    height: 200px;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 4rem;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+}
