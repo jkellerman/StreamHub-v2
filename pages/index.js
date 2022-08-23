@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import Search from "../components/Search/Search";
 
 export default function Home() {
   return (
@@ -9,8 +10,9 @@ export default function Home() {
         <title>Entertainment | New Movies and TV series</title>
         <meta name="description" content="New movies and series" />
       </Head>
-
       <main className={styles.main}>
+        <Search both />
+
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>

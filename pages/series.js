@@ -1,16 +1,19 @@
 import Head from "next/head";
+import Search from "../components/Search/Search";
 
 const series = () => {
   return (
     <>
       <Head>
-        <title>Entertainment | Series</title>
+        <title>Series | Entertainment</title>
         <meta
           name="description"
           content="Stream now for access to the best series"
         />
       </Head>
-      <h1>series</h1>
+      <main>
+        <Search series />
+      </main>
     </>
   );
 };

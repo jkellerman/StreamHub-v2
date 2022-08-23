@@ -21,7 +21,7 @@
 }
 
 .inactive {
-  fill: var(--Greyish-Blue);
+  fill: var(--Greyish-blue);
 }
 
 .inactive:hover {
@@ -69,6 +69,7 @@
     height: 90vh;
     flex-direction: column;
     position: fixed;
+    top: 1rem;
     z-index: 3;
     left: 2rem;
     border-radius: 20px;
@@ -77,15 +78,21 @@
   .navLinksContainer {
     height: 200px;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2.5rem;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 4rem;
+    top: 5rem;
   }
 
   .icon {
     width: 40px;
     height: 40px;
+  }
+}
+
+@media (min-width: 75em) {
+  .nav {
+    width: 96px;
   }
 }

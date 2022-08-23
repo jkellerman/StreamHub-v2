@@ -1,7 +1,7 @@
 :root {
   --Dark-blue: hsl(223, 30%, 9%);
   --Red: hsl(0, 97%, 63%);
-  --Greyish-Blue: hsl(223, 23%, 46%);
+  --Greyish-blue: hsl(223, 23%, 46%);
   --Semi-dark-blue: hsl(223, 36%, 14%);
   --Pure-white: hsl(0, 0%, 100%);
 }
@@ -54,10 +54,23 @@ h4 {
   font-weight: 500;
 }
 
+@media (min-width: 48em) {
+  main {
+    width: 93.75%;
+  }
+}
+
 @media (min-width: 64em) {
   main {
+    margin-top: 4.25rem;
     margin-left: 8.25rem;
     width: unset;
     margin-right: 2.25rem;
+  }
+}
+
+@media (min-width: 75em) {
+  main {
+    margin-left: 11rem;
   }
 }
