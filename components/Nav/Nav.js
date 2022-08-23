@@ -1,5 +1,8 @@
 import styles from "../Nav/Nav.module.css";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../../public/assets/logo.svg";
+import icon from "../../public/assets/image-avatar.png";
 import { useRouter } from "next/router";
 
 const Nav = () => {
@@ -8,8 +11,14 @@ const Nav = () => {
   return (
     <nav className={styles.nav}>
       <Link href="/">
-        <a aria-label="home">
-          <img src="./assets/logo.svg" alt="logo" className={styles.logo} />
+        <a aria-label="home" className={styles.imageContainer}>
+          <Image
+            src={logo}
+            alt="logo"
+            layout="fill"
+            objectFit="contain"
+            priority="true"
+          />
         </a>
       </Link>
       <div className={styles.navLinksContainer}>
@@ -56,7 +65,15 @@ const Nav = () => {
           </a>
         </Link>
       </div>
-      <img src="./assets/image-avatar.png" alt="icon" className={styles.icon} />
+      <div className={styles.iconContainer}>
+        <Image
+          src={icon}
+          alt="icon"
+          layout="fill"
+          objectFit="contain"
+          priority="true"
+        />
+      </div>
     </nav>
   );
 };

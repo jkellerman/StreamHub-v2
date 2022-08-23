@@ -1,4 +1,6 @@
 import styles from "../Search/Search.module.css";
+import Image from "next/image";
+import img from "../../public/assets/icon-search.svg";
 
 const Search = ({ both, movies, series }) => {
   return (
@@ -7,11 +9,15 @@ const Search = ({ both, movies, series }) => {
       onSubmit={(e) => e.preventDefault()}
       autoComplete="off"
     >
-      <img
-        src="./assets/icon-search.svg"
-        alt="icon-search"
-        className={styles.iconSearch}
-      />
+      <div className={styles.imageContainer}>
+        <Image
+          src={img}
+          alt="icon-search"
+          layout="fill"
+          objectFit="contain"
+          priority="true"
+        />
+      </div>
       {both && (
         <input
           type="text"
