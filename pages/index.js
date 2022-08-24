@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Search from "../components/Search/Search";
-import TrendingMovies from "../components/Movies/Trending/TrendingMovies";
+import TrendingMovies from "../components/categories/Trending/TrendingCards";
 
 export default function Home() {
   return (
