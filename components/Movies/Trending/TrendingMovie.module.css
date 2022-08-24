@@ -1,0 +1,60 @@
+.container {
+  width: 240px;
+  height: 140px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.link {
+  display: inline-block;
+  position: relative;
+}
+
+.info {
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  bottom: 0rem;
+  left: 1rem;
+}
+
+.details {
+  font-size: 0.75rem;
+  font-weight: 300;
+  opacity: 0.8;
+  text-transform: capitalize;
+  position: absolute;
+  bottom: 2.25rem;
+  left: 1rem;
+}
+
+.icon {
+  transform: translate(0.25rem, 0.8rem);
+  opacity: 0.8;
+}
+
+@media (max-width: 20em) {
+  .container {
+    width: 220px;
+    height: 120px;
+  }
+}
+
+@media (min-width: 48em) {
+  .container {
+    width: 470px;
+    height: 230px;
+  }
+
+  .details {
+    left: 2rem;
+    bottom: 3.5rem;
+  }
+
+  .title {
+    left: 2rem;
+  }
+}

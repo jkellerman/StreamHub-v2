@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Search from "../components/Search/Search";
+import Search from "@/components/Search/Search";
 
 const movies = () => {
   return (

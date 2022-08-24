@@ -1,0 +1,35 @@
+.banner {
+  display: flex;
+  overflow-x: scroll;
+  gap: 1rem;
+}
+
+.banner::-webkit-scrollbar {
+  height: 5px;
+  background-color: transparent;
+}
+
+.banner::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--Greyish-blue);
+}
+
+@media (max-width: 20em) {
+  .banner {
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 48em) {
+  .banner {
+    gap: 2.5rem;
+  }
+
+  .banner::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .banner::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+  }
+}

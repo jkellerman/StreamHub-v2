@@ -1,5 +1,5 @@
 .form {
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -38,7 +38,7 @@
 
 @media (min-width: 48em) {
   .form {
-    margin-top: 2rem;
+    margin: 2rem 0;
   }
 
   .imageContainer {
@@ -48,5 +48,11 @@
   .input {
     font-size: 1.5rem;
     height: unset;
+  }
+}
+
+@media (min-width: 64em) {
+  .form {
+    margin: 2.125rem 0;
   }
 }

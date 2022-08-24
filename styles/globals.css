@@ -34,14 +34,14 @@ a {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 300;
   text-transform: capitalize;
 }
 
 h2 {
-  font-size: 1.5rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 h3 {
@@ -54,9 +54,23 @@ h4 {
   font-weight: 500;
 }
 
+@media (max-width: 20em) {
+  h2 {
+    font-size: 0.9375rem;
+  }
+}
+
 @media (min-width: 48em) {
   main {
     width: 93.75%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
   }
 }
 

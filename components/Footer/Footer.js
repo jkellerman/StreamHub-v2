@@ -9,7 +9,7 @@ const Footer = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span>Powered by</span>
+        <span className={styles.span}>Powered by</span>
         <div className={styles.logo}>
           <div className={styles.imageContainer}>
             <Image
@@ -17,7 +17,7 @@ const Footer = () => {
               alt="MovieDB Logo"
               layout="fill"
               objectFit="contain"
-              priority="true"
+              priority
             />
           </div>
         </div>
