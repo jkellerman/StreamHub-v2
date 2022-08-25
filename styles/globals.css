@@ -39,27 +39,6 @@ h1 {
   text-transform: capitalize;
 }
 
-h2 {
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-h3 {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-h4 {
-  font-size: 1.125rem;
-  font-weight: 500;
-}
-
-@media (max-width: 20em) {
-  h2 {
-    font-size: 0.9375rem;
-  }
-}
-
 @media (min-width: 48em) {
   main {
     width: 93.75%;
@@ -68,18 +47,12 @@ h4 {
   h1 {
     font-size: 2rem;
   }
-
-  h2 {
-    font-size: 1.5rem;
-  }
 }
 
 @media (min-width: 64em) {
   main {
-    margin-top: 4.25rem;
-    margin-left: 8.25rem;
+    margin: 4.25rem 2.25rem 0 8.25rem;
     width: unset;
-    margin-right: 2.25rem;
   }
 }
 

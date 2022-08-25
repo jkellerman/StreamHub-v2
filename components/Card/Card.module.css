@@ -1,0 +1,23 @@
+.container {
+  display: inline-block;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 100%;
+  width: 164px;
+  height: 110px;
+}
+
+@media (min-width: 48em) {
+  .container {
+    width: 220px;
+    height: 140px;
+  }
+}
+
+@media (min-width: 64em) {
+  .container {
+    width: 280px;
+    height: 226px;
+  }
+}

@@ -1,11 +1,11 @@
 import useSWR from "swr";
-import TrendingCard from "./TrendingCard";
-import styles from "../Trending/TrendingCards.module.css";
 import { sliceArray } from "@/utils/utils";
+import TrendingCard from "./TrendingCard";
+import styles from "../Trending/Trending.module.css";
 
-const TrendingMovies = () => {
+const TrendingCards = () => {
   const fetcher = async () => {
-    const response = await fetch("api/movies/trending");
+    const response = await fetch("api/trending");
     const data = await response.json();
     return data;
   };
@@ -41,4 +41,4 @@ const TrendingMovies = () => {
   );
 };
 
-export default TrendingMovies;
+export default TrendingCards;
