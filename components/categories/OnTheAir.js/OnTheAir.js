@@ -4,21 +4,26 @@ import Card from "@/components/Card/Card";
 import CardDetails from "@/components/Card/CardDetails";
 import styles from "../../Categories/Container.module.css";
 
-const PopularShows = () => {
+const OnTheAir = () => {
   const fetcher = async () => {
-    const response = await fetch("api/popular-shows");
+    const response = await fetch("api/on-the-air");
     const data = response.json();
     return data;
   };
 
-  const { data, error } = useSWR("popular shows", fetcher);
+  const { data, error } = useSWR("on the air", fetcher);
   if (error) return "An error occured";
   if (!data) return "Loading";
-  const arr = sliceArray(data.data.results, 12);
+
+  const filteredArr = data.data.results.filter(
+    (item) => item.backdrop_path !== null
+  );
+
+  const arr = sliceArray(filteredArr, 12);
 
   return (
     <section>
-      <h1>Popular Shows</h1>
+      <h1>On The Air</h1>
       <div className={styles.container}>
         {arr.map((show) => {
           return (
@@ -41,4 +46,4 @@ const PopularShows = () => {
   );
 };
 
-export default PopularShows;
+export default OnTheAir;

@@ -2,13 +2,13 @@ import Image from "next/image";
 import { BASE_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 import styles from "../Card/Card.module.css";
 
-const Card = ({ image, seriesName }) => {
+const Card = ({ image, seriesName, title }) => {
   return (
     <>
       <a className={styles.container}>
         <Image
           src={`${BASE_URL_IMAGE}${image}`}
-          alt={`Backdrop of the popular series "${seriesName}"`}
+          alt={`Backdrop of the popular series "${seriesName || title}"`}
           layout="fill"
           objectFit="cover"
           placeholder="blur"
