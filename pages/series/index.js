@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Search from "@/components/Search/Search";
+import Series from "@/components/Series/Series";
 
 const series = () => {
   return (
@@ -13,6 +14,7 @@ const series = () => {
       </Head>
       <main>
         <Search series />
+        <Series />
       </main>
     </>
   );

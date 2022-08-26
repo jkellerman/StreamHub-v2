@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Search from "@/components/Search/Search";
+import Movies from "@/components/Movies/Movies";
 
 const movies = () => {
   return (
@@ -13,6 +14,7 @@ const movies = () => {
       </Head>
       <main>
         <Search movies />
+        <Movies />
       </main>
     </>
   );

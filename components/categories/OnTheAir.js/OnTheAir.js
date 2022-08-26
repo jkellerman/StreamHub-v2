@@ -6,7 +6,7 @@ import styles from "../../Categories/Container.module.css";
 
 const OnTheAir = () => {
   const fetcher = async () => {
-    const response = await fetch("api/on-the-air");
+    const response = await fetch("api/series/on-the-air");
     const data = response.json();
     return data;
   };

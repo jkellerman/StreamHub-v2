@@ -6,7 +6,7 @@ import styles from "../../Categories/Container.module.css";
 
 const TopRatedMovies = () => {
   const fetcher = async () => {
-    const response = await fetch("api/top-rated-movies");
+    const response = await fetch("api/movies/top-rated-movies");
     const data = response.json();
     return data;
   };
