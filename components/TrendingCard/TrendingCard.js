@@ -1,8 +1,8 @@
 // import Link from "next/link";
 import Image from "next/image";
 import { BASE_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
-import TrendingCardDetails from "./TrendingCardDetails";
-import styles from "../Trending/TrendingCard.module.css";
+import TrendingCardDetails from "@/components/TrendingCardDetails/TrendingCardDetails";
+import styles from "@/components/TrendingCard/TrendingCard.module.css";
 
 const TrendingCard = ({
   image,

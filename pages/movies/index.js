@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Search from "@/components/Search/Search";
-import Movies from "@/components/Movies/Movies";
+import Type from "@/components/Type/Type";
 
 const movies = () => {
   return (
@@ -14,7 +14,7 @@ const movies = () => {
       </Head>
       <main>
         <Search movies />
-        <Movies />
+        <Type type="movies" endpoint="api/movies" />
       </main>
     </>
   );

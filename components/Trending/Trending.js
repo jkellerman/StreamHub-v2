@@ -1,9 +1,9 @@
 import useSWR from "swr";
 import { sliceArray } from "@/utils/utils";
-import TrendingCard from "./TrendingCard";
-import styles from "../Trending/Trending.module.css";
+import TrendingCard from "@/components/TrendingCard/TrendingCard";
+import styles from "@/components/Trending/Trending.module.css";
 
-const TrendingCards = () => {
+const Trending = () => {
   const fetcher = async () => {
     const response = await fetch("api/trending");
     const data = await response.json();
@@ -41,4 +41,4 @@ const TrendingCards = () => {
   );
 };
 
-export default TrendingCards;
+export default Trending;

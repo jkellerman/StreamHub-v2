@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Search from "@/components/Search/Search";
-import Series from "@/components/Series/Series";
+import Type from "@/components/Type/Type";
 
 const series = () => {
   return (
@@ -14,7 +14,7 @@ const series = () => {
       </Head>
       <main>
         <Search series />
-        <Series />
+        <Type type="series" endpoint="api/series" />
       </main>
     </>
   );

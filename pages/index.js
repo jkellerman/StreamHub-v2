@@ -1,10 +1,7 @@
 import Head from "next/head";
 import Search from "@/components/Search/Search";
-import Trending from "@/components/Categories/Trending/Trending";
-import PopularShows from "@/components/Categories/PopularShows/PopularShows";
-import UpcomingMovies from "@/components/Categories/UpcomingMovies/UpcomingMovies";
-import TopRatedMovies from "@/components/Categories/TopRatedMovies/TopRatedMovies";
-import OnTheAir from "@/components/Categories/OnTheAir.js/OnTheAir";
+import Trending from "@/components/Trending/Trending";
+import Category from "@/components/Category/Category";
 
 export default function Home() {
   return (
@@ -16,10 +13,19 @@ export default function Home() {
       <main>
         <Search all />
         <Trending />
-        <PopularShows />
-        <UpcomingMovies />
-        <TopRatedMovies />
-        <OnTheAir />
+        <Category
+          endpoint="api/series/popular-shows"
+          category="popular shows"
+        />
+        <Category
+          endpoint="api/movies/upcoming-movies"
+          category="upcoming movies"
+        />
+        <Category
+          endpoint="api/movies/top-rated-movies"
+          category=" top rated movies"
+        />
+        <Category endpoint="api/series/on-the-air" category="on the air" />
       </main>
     </>
   );

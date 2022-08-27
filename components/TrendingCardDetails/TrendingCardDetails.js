@@ -1,12 +1,27 @@
-import styles from "../Card/CardDetails.module.css";
+import styles from "@/components/TrendingCardDetails/TrendingCardDetails.module.css";
 
-const CardDetails = ({ airDate, seriesName, releaseDate, title }) => {
+const TrendingCardDetails = ({
+  movieTitle,
+  year,
+  type,
+  seriesName,
+  airDate,
+}) => {
   return (
-    <div>
+    <>
+      <h2 className={styles.title}>
+        {seriesName && seriesName.length > 27
+          ? `${seriesName.slice(0, 27)}...`
+          : seriesName}
+
+        {movieTitle && movieTitle.length > 27
+          ? `${movieTitle.slice(0, 27)}...`
+          : movieTitle}
+      </h2>
       <div className={styles.details}>
+        {year && <span>{year.slice(0, 4)} &nbsp;•&nbsp;</span>}
         {airDate && <span>{airDate.slice(0, 4)} &nbsp;•&nbsp;</span>}
-        {releaseDate && <span>{releaseDate.slice(0, 4)} &nbsp;•&nbsp;</span>}
-        {title ? (
+        {type === "movie" ? (
           <svg
             width="24"
             height="24"
@@ -33,13 +48,10 @@ const CardDetails = ({ airDate, seriesName, releaseDate, title }) => {
             />
           </svg>
         )}
-        <span className={styles.type}>
-          &nbsp; {seriesName ? "series" : "movie"}
-        </span>
+        <span>&nbsp;{type === "tv" ? "series" : type}</span>
       </div>
-      <h2 className={styles.title}>{seriesName || title}</h2>
-    </div>
+    </>
   );
 };
 
-export default CardDetails;
+export default TrendingCardDetails;
