@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Search from "@/components/Search/Search";
-import Type from "@/components/Type/Type";
+import MediaType from "@/components/MediaType/MediaType";
+import Dropdown from "@/components/Dropdown/Dropdown";
 
 const series = () => {
   return (
@@ -14,7 +15,8 @@ const series = () => {
       </Head>
       <main>
         <Search series />
-        <Type type="series" endpoint="api/series" />
+        <Dropdown />
+        <MediaType type="series" endpoint="api/series" />
       </main>
     </>
   );

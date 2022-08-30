@@ -1,0 +1,14 @@
+.dropdown {
+  position: absolute;
+  top: 4.25rem;
+  left: 4.5rem;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 48em) {
+  .dropdown {
+    top: 7rem;
+    left: 7.5rem;
+    font-size: 1rem;
+  }
+}

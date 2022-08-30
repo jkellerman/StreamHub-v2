@@ -22,6 +22,7 @@ body {
 main {
   width: 90%;
   margin: 0 auto;
+  position: relative;
 }
 
 a {
@@ -37,6 +38,7 @@ h1 {
   font-size: 1.25rem;
   font-weight: 300;
   text-transform: capitalize;
+  display: inline-block;
 }
 
 @media (min-width: 48em) {

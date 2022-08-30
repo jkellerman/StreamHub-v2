@@ -27,6 +27,7 @@
 
 .inactive:hover {
   fill: var(--Red);
+  transition: all 0.2s;
 }
 
 .active {
