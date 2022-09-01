@@ -1,12 +1,12 @@
 import styles from "../Dropdown/Dropdown.module.css";
 import Link from "next/link";
 
-const Dropdown = ({ movies, series }) => {
+const Dropdown = ({ movies, series, genres }) => {
   return (
     <div className={styles.dropdown}>
       <div className={styles.buttonContainer}>
         <button className={styles.button}>
-          popular{" "}
+          {genres ? `${genres}` : "popular"}
           <svg
             width="10"
             height="7"
@@ -26,32 +26,41 @@ const Dropdown = ({ movies, series }) => {
 
       {movies && (
         <ul className={styles.list}>
-          <li className={styles.listItem}>
+          <li className={movies ? styles.listItemCurrent : styles.listItem}>
             <Link href="/movies">
-              <a>Popular</a>
+              <a className={styles.link}>Popular</a>
             </Link>
           </li>
           {movies.map((genre) => {
             return (
-              <li key={genre.id} className={styles.listItem}>
-                {genre.name}
+              <li
+                key={genre.id}
+                className={genres ? styles.listItemCurrent : styles.listItem}
+              >
+                <Link href={`movies/genre/${genre.id}`}>
+                  <a className={styles.link}>{genre.name}</a>
+                </Link>
               </li>
             );
           })}
         </ul>
       )}
-
       {series && (
         <ul className={styles.list}>
-          <li className={styles.listItem}>
-            <Link href="/series">
-              <a>Popular</a>
+          <li className={series ? styles.listItemCurrent : styles.listItem}>
+            <Link href="/movies">
+              <a className={styles.link}>Popular</a>
             </Link>
           </li>
           {series.map((genre) => {
             return (
-              <li key={genre.id} className={styles.listItem}>
-                {genre.name}
+              <li
+                key={genre.id}
+                className={genres ? styles.listItemCurrent : styles.listItem}
+              >
+                <Link href={`movies/genre/${genre.id}`}>
+                  <a className={styles.link}>{genre.name}</a>
+                </Link>
               </li>
             );
           })}

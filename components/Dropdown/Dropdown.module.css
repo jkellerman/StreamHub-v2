@@ -38,7 +38,7 @@
   border: 1px solid var(--Greyish-blue);
   position: absolute;
   z-index: 5;
-  padding: 1rem 1rem;
+  padding: 1rem 0;
   min-width: 175px;
   max-height: 325px;
   overflow-y: scroll;
@@ -48,6 +48,35 @@
 .listItem {
   list-style: none;
   padding: 0.5rem 0;
+}
+
+.listItem:hover,
+.listItemCurrent:hover {
+  background: var(--Greyish-blue);
+  transition: all 0.2s;
+}
+
+.listItemCurrent {
+  list-style: none;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.listItemCurrent::before {
+  content: "";
+  background: var(--Pure-white);
+  width: 0.5px;
+  height: 10px;
+  border: 1px solid var(--Pure-white);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+}
+
+.link {
+  padding-left: 1.5rem;
 }
 
 @media (min-width: 48em) {
