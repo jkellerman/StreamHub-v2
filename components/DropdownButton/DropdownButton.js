@@ -1,11 +1,9 @@
 import styles from "../DropdownButton/DropdownButton.module.css";
-import Image from "next/image";
-import img from "../../public/assets/icon-arrow-down.svg";
 
-const DropdownButton = () => {
+const DropdownButton = ({ handleClick }) => {
   return (
     <div className={styles.buttonContainer}>
-      <button className={styles.button}>
+      <button className={styles.button} onClick={handleClick}>
         popular{" "}
         <svg
           width="10"
@@ -16,9 +14,9 @@ const DropdownButton = () => {
           <path
             d="M1 .799l4 4 4-4"
             stroke="#FFFFFF"
-            stroke-width="2"
+            strokeWidth="2"
             fill="none"
-            fill-rule="evenodd"
+            fillRule="evenodd"
           />
         </svg>
       </button>

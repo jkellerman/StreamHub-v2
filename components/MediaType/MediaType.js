@@ -3,7 +3,7 @@ import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import styles from "@/components/Category/Category.module.css";
 
-const Type = ({ endpoint, type }) => {
+const MediaType = ({ endpoint, type }) => {
   const fetcher = async () => {
     const response = await fetch(`${endpoint}`);
     const data = response.json();
@@ -23,22 +23,22 @@ const Type = ({ endpoint, type }) => {
     <section>
       <h1>{type}</h1>
       <div className={styles.container}>
-        {arr.map((show) => {
+        {arr.map((item) => {
           return (
-            <article key={show.id} className={styles.linkContainer}>
+            <article key={item.id} className={styles.linkContainer}>
               <Card
-                id={show.id}
-                image={show.backdrop_path}
-                releaseDate={show.release_date}
-                title={show.title}
-                airDate={show.first_air_date}
-                seriesName={show.name}
+                id={item.id}
+                image={item.backdrop_path}
+                releaseDate={item.release_date}
+                title={item.title}
+                airDate={item.first_air_date}
+                seriesName={item.name}
               />
               <CardDetails
-                releaseDate={show.release_date}
-                title={show.title}
-                airDate={show.first_air_date}
-                seriesName={show.name}
+                releaseDate={item.release_date}
+                title={item.title}
+                airDate={item.first_air_date}
+                seriesName={item.name}
               />
             </article>
           );
@@ -48,4 +48,4 @@ const Type = ({ endpoint, type }) => {
   );
 };
 
-export default Type;
+export default MediaType;

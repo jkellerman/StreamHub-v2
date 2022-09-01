@@ -5,9 +5,9 @@
 .button {
   background: var(--Greyish-blue);
   color: var(--Pure-white);
-  padding: 0.5em 2.5em 0.5em 0.75em;
+  padding: 0.5em 2.5em 0.5em 1.25em;
   border-radius: 20px;
-  border: none;
+  border: 1px solid var(--Greyish-blue);
   text-transform: capitalize;
   font-size: inherit;
   cursor: pointer;
