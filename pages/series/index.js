@@ -3,7 +3,7 @@ import Search from "@/components/Search/Search";
 import MediaType from "@/components/MediaType/MediaType";
 import Dropdown from "@/components/Dropdown/Dropdown";
 
-const series = ({ arr }) => {
+const Series = ({ arr }) => {
   return (
     <>
       <Head>
@@ -22,7 +22,7 @@ const series = ({ arr }) => {
   );
 };
 
-export default series;
+export default Series;
 
 export async function getStaticProps() {
   const url = `https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.API_KEY}&language=en-GB`;

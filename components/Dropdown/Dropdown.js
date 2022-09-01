@@ -11,17 +11,16 @@ const Dropdown = ({ movies, series, genres }) => {
     setIsDropDownOpen(!isDropdownOpen);
   };
 
-  const checkIfClickedOutside = (e) => {
-    if (
-      isDropdownOpen &&
-      dropDownRef.current &&
-      !dropDownRef.current.contains(e.target)
-    ) {
-      setIsDropDownOpen(false);
-    }
-  };
-
   useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (
+        isDropdownOpen &&
+        dropDownRef.current &&
+        !dropDownRef.current.contains(e.target)
+      ) {
+        setIsDropDownOpen(false);
+      }
+    };
     document.addEventListener("mousedown", checkIfClickedOutside);
 
     return () => {
