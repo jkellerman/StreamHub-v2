@@ -1,8 +1,8 @@
 .dropdown {
   position: absolute;
-  top: 4.25rem;
+  top: 2.5rem;
   left: 4.5rem;
-  font-size: 0.75rem;
+  font-size: 0.9375rem;
 }
 
 .buttonContainer {
@@ -29,7 +29,7 @@
 .chevron {
   position: absolute;
   right: 0.75rem;
-  top: 0.6rem;
+  top: 0.9rem;
 }
 
 .list {
@@ -38,23 +38,31 @@
   border: 1px solid var(--Greyish-blue);
   position: absolute;
   z-index: 5;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1rem;
   min-width: 175px;
+  max-height: 325px;
+  overflow-y: scroll;
   /* display: none; */
 }
 
 .listItem {
   list-style: none;
-  padding: 0.25rem 0;
+  padding: 0.5rem 0;
 }
 
 @media (min-width: 48em) {
   .dropdown {
-    top: 7rem;
+    top: 5rem;
     left: 7.5rem;
     font-size: 1rem;
   }
   .chevron {
-    top: 0.9rem;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .list {
+    min-width: 175px;
+    max-height: 375px;
   }
 }
