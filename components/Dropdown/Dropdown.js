@@ -1,11 +1,37 @@
 import styles from "../Dropdown/Dropdown.module.css";
 import Link from "next/link";
+import { useState, useRef, useEffect } from "react";
 
 const Dropdown = ({ movies, series, genres }) => {
+  const [isDropdownOpen, setIsDropDownOpen] = useState(false);
+  const dropDownRef = useRef();
+
+  const toggleDropDown = () => {
+    setIsDropDownOpen(!isDropdownOpen);
+  };
+
+  const checkIfClickedOutside = (e) => {
+    if (
+      isDropdownOpen &&
+      dropDownRef.current &&
+      !dropDownRef.current.contains(e.target)
+    ) {
+      setIsDropDownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [isDropdownOpen]);
+
   return (
     <div className={styles.dropdown}>
       <div className={styles.buttonContainer}>
-        <button className={styles.button}>
+        <button className={styles.button} onClick={toggleDropDown}>
           {genres ? `${genres}` : "popular"}
           <svg
             width="10"
@@ -24,11 +50,13 @@ const Dropdown = ({ movies, series, genres }) => {
         </button>
       </div>
 
-      {movies && (
-        <ul className={styles.list}>
+      {movies && isDropdownOpen && (
+        <ul className={styles.list} ref={dropDownRef}>
           <li className={movies ? styles.listItemCurrent : styles.listItem}>
             <Link href="/movies">
-              <a className={styles.link}>Popular</a>
+              <a className={styles.link} onClick={toggleDropDown}>
+                Popular
+              </a>
             </Link>
           </li>
           {movies.map((genre) => {
@@ -38,18 +66,23 @@ const Dropdown = ({ movies, series, genres }) => {
                 className={genres ? styles.listItemCurrent : styles.listItem}
               >
                 <Link href={`movies/genre/${genre.id}`}>
-                  <a className={styles.link}>{genre.name}</a>
+                  <a className={styles.link} onClick={toggleDropDown}>
+                    {genre.name}
+                  </a>
                 </Link>
               </li>
             );
           })}
         </ul>
       )}
-      {series && (
-        <ul className={styles.list}>
+
+      {series && isDropdownOpen && (
+        <ul className={styles.list} ref={dropDownRef}>
           <li className={series ? styles.listItemCurrent : styles.listItem}>
-            <Link href="/movies">
-              <a className={styles.link}>Popular</a>
+            <Link href="/series">
+              <a className={styles.link} onClick={toggleDropDown}>
+                Popular
+              </a>
             </Link>
           </li>
           {series.map((genre) => {
@@ -58,8 +91,10 @@ const Dropdown = ({ movies, series, genres }) => {
                 key={genre.id}
                 className={genres ? styles.listItemCurrent : styles.listItem}
               >
-                <Link href={`movies/genre/${genre.id}`}>
-                  <a className={styles.link}>{genre.name}</a>
+                <Link href={`series/genre/${genre.id}`}>
+                  <a className={styles.link} onClick={toggleDropDown}>
+                    {genre.name}
+                  </a>
                 </Link>
               </li>
             );
