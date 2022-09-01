@@ -2,8 +2,10 @@ import { useState, useRef, useEffect } from "react";
 import styles from "../Dropdown/Dropdown.module.css";
 import Link from "next/link";
 import DropdownButton from "../DropdownButton/DropdownButton";
+import MovieGenres from "../../data/movies.json";
+import SeriesGenres from "../../data/series.json";
 
-const Dropdown = ({ movies, series, genres }) => {
+const Dropdown = ({ type, genres }) => {
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
   const dropDownRef = useRef();
 
@@ -31,16 +33,22 @@ const Dropdown = ({ movies, series, genres }) => {
   return (
     <div className={styles.dropdown}>
       <DropdownButton toggleDropDown={toggleDropDown} genres={genres} />
-      {movies && isDropdownOpen && (
+
+      {type === "movies" && isDropdownOpen && (
         <ul className={styles.list} ref={dropDownRef}>
-          <li className={movies ? styles.listItemCurrent : styles.listItem}>
+          <li
+            className={
+              type === "movies" ? styles.listItemCurrent : styles.listItem
+            }
+          >
             <Link href="/movies">
               <a className={styles.link} onClick={toggleDropDown}>
                 Popular
               </a>
             </Link>
           </li>
-          {movies.map((genre) => {
+
+          {MovieGenres.genres.map((genre) => {
             return (
               <li
                 key={genre.id}
@@ -57,16 +65,20 @@ const Dropdown = ({ movies, series, genres }) => {
         </ul>
       )}
 
-      {series && isDropdownOpen && (
+      {type === "series" && isDropdownOpen && (
         <ul className={styles.list} ref={dropDownRef}>
-          <li className={series ? styles.listItemCurrent : styles.listItem}>
+          <li
+            className={
+              type === "series" ? styles.listItemCurrent : styles.listItem
+            }
+          >
             <Link href="/series">
               <a className={styles.link} onClick={toggleDropDown}>
                 Popular
               </a>
             </Link>
           </li>
-          {series.map((genre) => {
+          {SeriesGenres.genres.map((genre) => {
             return (
               <li
                 key={genre.id}

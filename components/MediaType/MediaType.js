@@ -2,6 +2,7 @@ import useSWR from "swr";
 import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import styles from "@/components/Category/Category.module.css";
+import Dropdown from "@/components/Dropdown/Dropdown";
 
 const MediaType = ({ endpoint, type }) => {
   const fetcher = async () => {
@@ -21,6 +22,7 @@ const MediaType = ({ endpoint, type }) => {
 
   return (
     <section>
+      <Dropdown type={type} />
       <h1>{type}</h1>
       <div className={styles.container}>
         {arr.map((item) => {
