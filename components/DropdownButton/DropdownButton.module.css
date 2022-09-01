@@ -22,11 +22,12 @@
 .chevron {
   position: absolute;
   right: 0.75rem;
-  top: 0.6rem;
+  top: 0.9rem;
 }
 
 @media (min-width: 48em) {
   .chevron {
-    top: 0.9rem;
+    top: 1rem;
+    right: 1rem;
   }
 }

@@ -1,6 +1,7 @@
+import { useState, useRef, useEffect } from "react";
 import styles from "../Dropdown/Dropdown.module.css";
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
+import DropdownButton from "../DropdownButton/DropdownButton";
 
 const Dropdown = ({ movies, series, genres }) => {
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
@@ -30,26 +31,7 @@ const Dropdown = ({ movies, series, genres }) => {
 
   return (
     <div className={styles.dropdown}>
-      <div className={styles.buttonContainer}>
-        <button className={styles.button} onClick={toggleDropDown}>
-          {genres ? `${genres}` : "popular"}
-          <svg
-            width="10"
-            height="7"
-            xmlns="http://www.w3.org/2000/svg"
-            className={styles.chevron}
-          >
-            <path
-              d="M1 .799l4 4 4-4"
-              stroke="#FFFFFF"
-              strokeWidth="2"
-              fill="none"
-              fillRule="evenodd"
-            />
-          </svg>
-        </button>
-      </div>
-
+      <DropdownButton toggleDropDown={toggleDropDown} genres={genres} />
       {movies && isDropdownOpen && (
         <ul className={styles.list} ref={dropDownRef}>
           <li className={movies ? styles.listItemCurrent : styles.listItem}>

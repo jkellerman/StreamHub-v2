@@ -1,10 +1,10 @@
 import styles from "../DropdownButton/DropdownButton.module.css";
 
-const DropdownButton = ({ handleClick }) => {
+const DropdownButton = ({ toggleDropDown, genres }) => {
   return (
     <div className={styles.buttonContainer}>
-      <button className={styles.button} onClick={handleClick}>
-        popular{" "}
+      <button className={styles.button} onClick={toggleDropDown}>
+        {genres ? `${genres}` : "popular"}
         <svg
           width="10"
           height="7"

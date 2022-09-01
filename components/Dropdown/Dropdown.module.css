@@ -5,33 +5,6 @@
   font-size: 0.9375rem;
 }
 
-.buttonContainer {
-  position: relative;
-}
-
-.button {
-  background: var(--Greyish-blue);
-  color: var(--Pure-white);
-  padding: 0.5em 2.5em 0.5em 1.25em;
-  border-radius: 20px;
-  border: 1px solid var(--Greyish-blue);
-  text-transform: capitalize;
-  font-size: inherit;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.button:focus,
-.button:hover {
-  background: var(--Semi-dark-blue);
-}
-
-.chevron {
-  position: absolute;
-  right: 0.75rem;
-  top: 0.9rem;
-}
-
 .list {
   background: var(--Semi-dark-blue);
   border-radius: 5px;
@@ -42,7 +15,6 @@
   min-width: 175px;
   max-height: 325px;
   overflow-y: scroll;
-  /* display: none; */
 }
 
 .listItem {
@@ -84,10 +56,6 @@
     top: 5rem;
     left: 7.5rem;
     font-size: 1rem;
-  }
-  .chevron {
-    top: 1rem;
-    right: 1rem;
   }
 
   .list {
