@@ -54,7 +54,7 @@ const Dropdown = ({ type, name, popular, movieGenreList, seriesGenreList }) => {
                   name === genre.name ? styles.listItemCurrent : styles.listItem
                 }
               >
-                <Link href={`/movies/genre/${genre.id}`}>
+                <Link href={`/movies/genre/${genre.id}?name=${genre.name}`}>
                   <a className={styles.link} onClick={toggleDropdown}>
                     {genre.name}
                   </a>
@@ -82,7 +82,7 @@ const Dropdown = ({ type, name, popular, movieGenreList, seriesGenreList }) => {
                   name === genre.name ? styles.listItemCurrent : styles.listItem
                 }
               >
-                <Link href={`/series/genre/${genre.id}`}>
+                <Link href={`/series/genre/${genre.id}?name=${genre.name}`}>
                   <a className={styles.link} onClick={toggleDropdown}>
                     {genre.name}
                   </a>
