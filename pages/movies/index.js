@@ -14,7 +14,7 @@ const Movies = () => {
       </Head>
       <main>
         <Search movies />
-        <MediaType type="movies" endpoint="api/movies" />
+        <MediaType type="movies" endpoint="api/movies" popular />
       </main>
     </>
   );

@@ -14,7 +14,7 @@ const Series = () => {
       </Head>
       <main>
         <Search series />
-        <MediaType type="series" endpoint="api/series" />
+        <MediaType type="series" endpoint="api/series" popular />
       </main>
     </>
   );

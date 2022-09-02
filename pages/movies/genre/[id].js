@@ -1,21 +1,26 @@
 import { useRouter } from "next/router";
+import Head from "next/head";
+import Search from "@/components/Search/Search";
+import Genre from "@/components/Genre/Genre";
 
-const MovieGenre = ({ arr }) => {
+const MovieGenre = ({ genreList }) => {
   const router = useRouter();
-  const genreId = router.query.id;
+  const { id } = router.query;
+  const genre = genreList.genres.find((genre) => genre.id.toString() === id);
+  const { name } = genre;
+
   return (
     <>
       <Head>
-        <title>{genreId} | Entertainment</title>
+        <title>{`${name} | Entertainment`}</title>
         <meta
           name="description"
-          content={`Search for the best ${genreId} movies`}
+          content={`Search for the best ${name} movies`}
         />
       </Head>
       <main>
         <Search movies />
-        <Dropdown movies={arr} />
-        <MediaType type="movies" endpoint={`api/movies/genre/${genreId}`} />
+        <Genre type="movies" endpoint={`/api/movies/genre/${id}`} name={name} />
       </main>
     </>
   );
@@ -24,29 +29,40 @@ const MovieGenre = ({ arr }) => {
 export default MovieGenre;
 
 export async function getStaticPaths() {
-  return {
-    paths: [
-      {
-        params: { id: "1" },
+  const response = await fetch(
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.API_KEY}&language=en-GB`
+  );
+  const data = await response.json();
+  const paths = data.genres.map((genre) => {
+    return {
+      params: {
+        id: `${genre.id}`,
       },
-    ],
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
   };
 }
 
-export async function getStaticProps() {
-  const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.API_KEY}&language=en-GB`;
-  const response = await fetch(url);
-  const data = await response.json();
-  const arr = data.genres.filter(
-    (genre) =>
-      genre.name !== "Mystery" &&
-      genre.name !== "TV Movie" &&
-      genre.name !== "History"
+export async function getStaticProps(context) {
+  const { params } = context;
+  const response = await fetch(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&language=en-GB&sort_by=popularity.desc&page=1&with_genres=${params.id}`
   );
+  const genrePage = await response.json();
+
+  const response2 = await fetch(
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.API_KEY}&language=en-GB`
+  );
+  const genreList = await response2.json();
 
   return {
     props: {
-      arr,
+      genrePage,
+      genreList,
     },
   };
 }

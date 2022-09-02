@@ -2,14 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import styles from "../Dropdown/Dropdown.module.css";
 import Link from "next/link";
 import DropdownButton from "../DropdownButton/DropdownButton";
-import MovieGenres from "../../data/movies.json";
-import SeriesGenres from "../../data/series.json";
+import MovieGenres from "@/data/movies.json";
+import SeriesGenres from "@/data/series.json";
 
-const Dropdown = ({ type, genres }) => {
+const Dropdown = ({ type, name, popular }) => {
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
   const dropDownRef = useRef();
 
-  const toggleDropDown = () => {
+  const toggleDropdown = () => {
     setIsDropDownOpen(!isDropdownOpen);
   };
 
@@ -32,17 +32,17 @@ const Dropdown = ({ type, genres }) => {
 
   return (
     <div className={styles.dropdown}>
-      <DropdownButton toggleDropDown={toggleDropDown} genres={genres} />
+      <DropdownButton
+        toggleDropdown={toggleDropdown}
+        popular={popular}
+        name={name}
+      />
 
       {type === "movies" && isDropdownOpen && (
         <ul className={styles.list} ref={dropDownRef}>
-          <li
-            className={
-              type === "movies" ? styles.listItemCurrent : styles.listItem
-            }
-          >
+          <li className={popular ? styles.listItemCurrent : styles.listItem}>
             <Link href="/movies">
-              <a className={styles.link} onClick={toggleDropDown}>
+              <a className={styles.link} onClick={toggleDropdown}>
                 Popular
               </a>
             </Link>
@@ -52,10 +52,12 @@ const Dropdown = ({ type, genres }) => {
             return (
               <li
                 key={genre.id}
-                className={genres ? styles.listItemCurrent : styles.listItem}
+                className={
+                  name === genre.name ? styles.listItemCurrent : styles.listItem
+                }
               >
-                <Link href={`movies/genre/${genre.id}`}>
-                  <a className={styles.link} onClick={toggleDropDown}>
+                <Link href={`/movies/genre/${genre.id}`}>
+                  <a className={styles.link} onClick={toggleDropdown}>
                     {genre.name}
                   </a>
                 </Link>
@@ -67,13 +69,9 @@ const Dropdown = ({ type, genres }) => {
 
       {type === "series" && isDropdownOpen && (
         <ul className={styles.list} ref={dropDownRef}>
-          <li
-            className={
-              type === "series" ? styles.listItemCurrent : styles.listItem
-            }
-          >
+          <li className={popular ? styles.listItemCurrent : styles.listItem}>
             <Link href="/series">
-              <a className={styles.link} onClick={toggleDropDown}>
+              <a className={styles.link} onClick={toggleDropdown}>
                 Popular
               </a>
             </Link>
@@ -82,10 +80,12 @@ const Dropdown = ({ type, genres }) => {
             return (
               <li
                 key={genre.id}
-                className={genres ? styles.listItemCurrent : styles.listItem}
+                className={
+                  name === genre.name ? styles.listItemCurrent : styles.listItem
+                }
               >
-                <Link href={`series/genre/${genre.id}`}>
-                  <a className={styles.link} onClick={toggleDropDown}>
+                <Link href={`/series/genre/${genre.id}`}>
+                  <a className={styles.link} onClick={toggleDropdown}>
                     {genre.name}
                   </a>
                 </Link>

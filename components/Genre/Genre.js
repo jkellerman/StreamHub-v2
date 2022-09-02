@@ -1,31 +1,28 @@
-import useSWR from "swr";
+import { useEffect, useState } from "react";
 import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import styles from "@/components/Category/Category.module.css";
 import Dropdown from "@/components/Dropdown/Dropdown";
 
-const MediaType = ({ endpoint, type, popular }) => {
-  const fetcher = async () => {
-    const response = await fetch(`${endpoint}`);
-    const data = response.json();
-    return data;
-  };
+const Genre = ({ endpoint, type, name }) => {
+  const [mediaType, setMediaType] = useState([]);
 
-  const { data, error } = useSWR(`${type}`, fetcher);
-  if (error) return "An error occured";
-  if (!data) return "Loading";
-
-  const filteredArr = data.data.results.filter(
-    (item) => item.backdrop_path !== null
-  );
-  const arr = filteredArr;
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const response = await fetch(`${endpoint}`);
+      const data = await response.json();
+      const arr = data.data.results;
+      setMediaType(arr);
+    };
+    fetchMovies();
+  }, [endpoint]);
 
   return (
     <section>
-      <Dropdown type={type} popular={popular} />
+      <Dropdown type={type} name={name} />
       <h1>{type}</h1>
       <div className={styles.container}>
-        {arr.map((item) => {
+        {mediaType.map((item) => {
           return (
             <article key={item.id} className={styles.linkContainer}>
               <Card
@@ -50,4 +47,4 @@ const MediaType = ({ endpoint, type, popular }) => {
   );
 };
 
-export default MediaType;
+export default Genre;
