@@ -20,7 +20,12 @@ const SeriesGenre = ({ genreList }) => {
       </Head>
       <main>
         <Search series />
-        <Genre type="series" endpoint={`/api/series/genre/${id}`} name={name} />
+        <Genre
+          type="series"
+          endpoint={`/api/series/genre/${id}`}
+          name={name}
+          seriesGenreList={genreList}
+        />
       </main>
     </>
   );

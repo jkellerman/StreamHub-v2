@@ -2,10 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import styles from "../Dropdown/Dropdown.module.css";
 import Link from "next/link";
 import DropdownButton from "../DropdownButton/DropdownButton";
-import MovieGenres from "@/data/movies.json";
-import SeriesGenres from "@/data/series.json";
 
-const Dropdown = ({ type, name, popular }) => {
+const Dropdown = ({ type, name, popular, movieGenreList, seriesGenreList }) => {
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
   const dropDownRef = useRef();
 
@@ -48,7 +46,7 @@ const Dropdown = ({ type, name, popular }) => {
             </Link>
           </li>
 
-          {MovieGenres.genres.map((genre) => {
+          {movieGenreList.genres.map((genre) => {
             return (
               <li
                 key={genre.id}
@@ -76,7 +74,7 @@ const Dropdown = ({ type, name, popular }) => {
               </a>
             </Link>
           </li>
-          {SeriesGenres.genres.map((genre) => {
+          {seriesGenreList.genres.map((genre) => {
             return (
               <li
                 key={genre.id}

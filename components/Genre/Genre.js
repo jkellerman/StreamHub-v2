@@ -4,7 +4,7 @@ import CardDetails from "@/components/CardDetails/CardDetails";
 import styles from "@/components/Category/Category.module.css";
 import Dropdown from "@/components/Dropdown/Dropdown";
 
-const Genre = ({ endpoint, type, name }) => {
+const Genre = ({ endpoint, type, name, movieGenreList, seriesGenreList }) => {
   const [mediaType, setMediaType] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,12 @@ const Genre = ({ endpoint, type, name }) => {
 
   return (
     <section>
-      <Dropdown type={type} name={name} />
+      <Dropdown
+        type={type}
+        name={name}
+        movieGenreList={movieGenreList}
+        seriesGenreList={seriesGenreList}
+      />
       <h1>{type}</h1>
       <div className={styles.container}>
         {mediaType.map((item) => {

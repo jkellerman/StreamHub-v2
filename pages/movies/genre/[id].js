@@ -20,7 +20,12 @@ const MovieGenre = ({ genreList }) => {
       </Head>
       <main>
         <Search movies />
-        <Genre type="movies" endpoint={`/api/movies/genre/${id}`} name={name} />
+        <Genre
+          type="movies"
+          endpoint={`/api/movies/genre/${id}`}
+          name={name}
+          movieGenreList={genreList}
+        />
       </main>
     </>
   );

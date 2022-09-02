@@ -4,7 +4,13 @@ import CardDetails from "@/components/CardDetails/CardDetails";
 import styles from "@/components/Category/Category.module.css";
 import Dropdown from "@/components/Dropdown/Dropdown";
 
-const MediaType = ({ endpoint, type, popular }) => {
+const MediaType = ({
+  endpoint,
+  type,
+  popular,
+  movieGenreList,
+  seriesGenreList,
+}) => {
   const fetcher = async () => {
     const response = await fetch(`${endpoint}`);
     const data = response.json();
@@ -22,7 +28,12 @@ const MediaType = ({ endpoint, type, popular }) => {
 
   return (
     <section>
-      <Dropdown type={type} popular={popular} />
+      <Dropdown
+        type={type}
+        popular={popular}
+        movieGenreList={movieGenreList}
+        seriesGenreList={seriesGenreList}
+      />
       <h1>{type}</h1>
       <div className={styles.container}>
         {arr.map((item) => {
