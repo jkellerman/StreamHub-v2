@@ -54,8 +54,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { params } = context;
+  const { id } = params;
   const response = await fetch(
-    `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.API_KEY}&language=en-GB&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&with_genres=${params.id}`
+    `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.API_KEY}&language=en-GB&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&with_genres=${id}`
   );
   const genrePage = await response.json();
 

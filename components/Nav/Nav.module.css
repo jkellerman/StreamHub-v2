@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 10;
 }
 
 .imageContainer {
@@ -73,7 +74,6 @@
     flex-direction: column;
     position: fixed;
     top: 1rem;
-    z-index: 3;
     left: 2rem;
     border-radius: 20px;
   }

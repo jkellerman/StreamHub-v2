@@ -1,0 +1,91 @@
+.hero {
+  position: relative;
+  top: -3rem;
+  left: 0;
+  width: 100%;
+  height: 300px;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 320px;
+  z-index: 3;
+  top: -0.75rem;
+  left: 0;
+  background-color: var(--Dark-Blue);
+  background-image: linear-gradient(
+    rgba(16, 20, 30, 1) 10%,
+    rgba(16, 20, 30, 0.75) 30%,
+    rgba(16, 20, 30, 0.5) 50%,
+    rgba(16, 20, 30, 0),
+    rgba(16, 20, 30, 0.5) 50%,
+    rgba(16, 20, 30, 0.75) 70%,
+    rgba(16, 20, 30, 1) 90%
+  );
+}
+
+@media (min-width: 30em) {
+  .hero {
+    height: 450px;
+  }
+
+  .overlay {
+    height: 470px;
+  }
+}
+@media (min-width: 48em) {
+  .hero {
+    height: 500px;
+  }
+
+  .overlay {
+    height: 520px;
+  }
+}
+
+@media (min-width: 64em) {
+  .hero {
+    height: 650px;
+    top: -5rem;
+  }
+
+  .overlay {
+    height: 670px;
+    background-image: linear-gradient(
+      rgba(16, 20, 30, 1) 2%,
+      rgba(16, 20, 30, 0.75) 15%,
+      rgba(16, 20, 30, 0.5) 30%,
+      rgba(16, 20, 30, 0),
+      rgba(16, 20, 30, 0.5) 30%,
+      rgba(16, 20, 30, 0.75) 50%,
+      rgba(16, 20, 30, 1) 80%
+    );
+  }
+}
+
+@media (min-width: 75em) {
+  .hero {
+    height: 720px;
+  }
+
+  .overlay {
+    height: 740px;
+  }
+}
+
+@media (min-width: 90em) {
+  .hero {
+    height: 770px;
+  }
+
+  .overlay {
+    height: 790px;
+  }
+}

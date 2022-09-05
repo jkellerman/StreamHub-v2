@@ -5,7 +5,11 @@ import styles from "../Card/Card.module.css";
 
 const Card = ({ id, image, seriesName, title }) => {
   return (
-    <Link href={title ? `/movies/${id}` : `/series/${id}`}>
+    <Link
+      href={
+        title ? `/movies/${id}?name=${title}` : `/series/${id}?name=${title}`
+      }
+    >
       <a className={styles.container}>
         <Image
           src={`${BASE_URL_IMAGE}${image}`}
