@@ -8,6 +8,23 @@ export const sliceArray = (arr, limit) => {
   return arr.slice(0, limit);
 };
 
+// Convert runtime minutes to hour and minutes format
+
+export const toHoursAndMinutes = (totalMinutes) => {
+  const minutes = totalMinutes % 60;
+  const hours = Math.floor(totalMinutes / 60);
+
+  return `${hours} hr ${minutes} min`;
+};
+
+// Get film rating between 1-5 to 1 decimal
+
+export const filmRating = (number) => {
+  const rating = number / 2;
+  const rounded = rating.toFixed(1);
+  return rounded;
+};
+
 // Next js shimmer effect for image placeholders.
 // Go to : https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.js
 

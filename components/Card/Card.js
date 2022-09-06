@@ -13,7 +13,7 @@ const Card = ({ id, image, seriesName, title }) => {
       <a className={styles.container}>
         <Image
           src={`${BASE_URL_IMAGE}${image}`}
-          alt={`Backdrop of "${seriesName || title}"`}
+          alt={` ${seriesName || title} backdrop`}
           layout="fill"
           objectFit="cover"
           placeholder="blur"

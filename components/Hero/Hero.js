@@ -4,18 +4,18 @@ import { BASE_URL_IMAGE } from "@/utils/utils";
 
 const Hero = ({ image, name }) => {
   return (
-    <section className={styles.hero}>
+    <div className={styles.hero}>
       <div className={styles.overlay}></div>
       <div className={styles.imageContainer}>
         <Image
           src={`${BASE_URL_IMAGE}${image}`}
-          alt={name}
+          alt={`${name} backdrop`}
           layout="fill"
           objectFit="cover"
           priority
         />
       </div>
-    </section>
+    </div>
   );
 };
 
