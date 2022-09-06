@@ -1,5 +1,10 @@
 import styles from "../Content/Content.module.css";
-import { toHoursAndMinutes, BASE_URL_IMAGE } from "@/utils/utils";
+import {
+  toHoursAndMinutes,
+  BASE_URL_IMAGE,
+  shimmer,
+  toBase64,
+} from "@/utils/utils";
 import StarRating from "../StarRating/StarRating";
 import Image from "next/image";
 
@@ -21,7 +26,10 @@ const Content = ({
           alt={`${title} poster`}
           layout="fill"
           objectFit="cover"
-          priority
+          placeholder="blur"
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(
+            shimmer(240, 140)
+          )}`}
           className={styles.poster}
         />
       </div>
