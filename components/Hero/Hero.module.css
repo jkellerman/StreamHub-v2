@@ -1,9 +1,13 @@
-.hero {
+.main {
+  width: 100%;
+  margin: 0;
+}
+
+.Hero {
   position: relative;
-  top: -3rem;
-  left: 0;
   width: 100%;
   height: 300px;
+  margin-bottom: 4rem;
 }
 
 .imageContainer {
@@ -32,7 +36,7 @@
 }
 
 @media (min-width: 30em) {
-  .hero {
+  .Hero {
     height: 450px;
   }
 
@@ -41,7 +45,7 @@
   }
 }
 @media (min-width: 48em) {
-  .hero {
+  .Hero {
     height: 500px;
   }
 
@@ -51,7 +55,7 @@
 }
 
 @media (min-width: 64em) {
-  .hero {
+  .Hero {
     height: 650px;
     top: -5rem;
   }
@@ -71,7 +75,7 @@
 }
 
 @media (min-width: 75em) {
-  .hero {
+  .Hero {
     height: 720px;
   }
 
@@ -81,7 +85,7 @@
 }
 
 @media (min-width: 90em) {
-  .hero {
+  .Hero {
     height: 770px;
   }
 

@@ -19,6 +19,11 @@
   font-weight: 500;
 }
 
+.content {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .title {
   margin: 0;
   font-weight: 500;
@@ -46,6 +51,8 @@
 
 .overview {
   line-height: 25px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--Semi-dark-blue);
 }
 
 .posterContainer {
@@ -88,9 +95,23 @@
   }
 }
 
+@media (min-width: 64em) {
+  .container {
+    margin: 4.15rem 2.25rem 0 11rem;
+    width: unset;
+  }
+
+  .content {
+    margin: 0;
+  }
+}
+
 @media (min-width: 75em) {
   .overview {
     width: 90%;
+    padding-bottom: unset;
+    border-bottom: unset;
+    font-size: 1rem;
   }
 
   .posterContainer {
@@ -100,11 +121,15 @@
 
 @media (min-width: 90em) {
   .container {
-    top: 30rem;
+    top: 25rem;
   }
 
   .posterContainer {
     min-width: 220px;
     min-height: 270px;
+  }
+
+  .overview {
+    font-size: 1.25rem;
   }
 }

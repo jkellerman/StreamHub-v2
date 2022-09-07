@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Search from "@/components/Search/Search";
 import Hero from "@/components/Hero/Hero";
-import Content from "@/components/Content/Content";
+import Details from "@/components/Details/Details";
+import styles from "@/components/Hero/Hero.module.css";
 
 const Movie = ({
   name,
@@ -13,6 +14,10 @@ const Movie = ({
   vote_average,
   overview,
   poster,
+  director,
+  cast,
+  genres,
+  data,
 }) => {
   return (
     <>
@@ -20,10 +25,11 @@ const Movie = ({
         <title>{`${name} | Entertainment`}</title>
         <meta name="description" content={`Watch ${name} now`} />
       </Head>
-      <main>
-        <Search movies />
-        <Content
-          title={name}
+      <main className={styles.main}>
+        <Search movies hero />
+        <Hero
+          image={backdrop}
+          name={name}
           tagline={tagline}
           age_rating={age_rating.certification}
           release_date={release_date}
@@ -32,8 +38,8 @@ const Movie = ({
           overview={overview}
           poster={poster}
         />
+        <Details director={director} cast={cast} genres={genres} />
       </main>
-      <Hero image={backdrop} name={name} />
     </>
   );
 };
@@ -57,6 +63,8 @@ export async function getServerSideProps(context) {
     vote_average,
     overview,
     poster_path,
+    credits,
+    genres,
   } = data;
 
   const productionCountry = production_countries.map((item) => {
@@ -75,8 +83,17 @@ export async function getServerSideProps(context) {
     (item) => item.certification !== "" || item.certification === ""
   );
 
+  const getDirector = credits.crew.find(
+    (crew) => crew.known_for_department === "Directing"
+  );
+  const director = getDirector.name;
+
+  const getCast = credits.cast;
+  const cast = getCast.slice(0, 4) || getCast.slice(0, 1);
+
   return {
     props: {
+      data,
       name,
       backdrop: backdrop_path,
       tagline,
@@ -86,6 +103,9 @@ export async function getServerSideProps(context) {
       vote_average,
       overview,
       poster: poster_path,
+      director,
+      cast,
+      genres,
     },
   };
 }

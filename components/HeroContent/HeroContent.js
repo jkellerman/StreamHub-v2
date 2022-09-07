@@ -1,4 +1,4 @@
-import styles from "../Content/Content.module.css";
+import styles from "../HeroContent/HeroContent.module.css";
 import {
   toHoursAndMinutes,
   BASE_URL_IMAGE,

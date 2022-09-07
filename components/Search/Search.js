@@ -2,10 +2,10 @@ import styles from "../Search/Search.module.css";
 import Image from "next/image";
 import img from "@/public/assets/icon-search.svg";
 
-const Search = ({ all, movies, series }) => {
+const Search = ({ all, movies, series, hero }) => {
   return (
     <form
-      className={styles.form}
+      className={hero ? styles.hero : styles.form}
       onSubmit={(e) => e.preventDefault()}
       autoComplete="off"
     >

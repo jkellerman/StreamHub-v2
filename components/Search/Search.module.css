@@ -7,6 +7,16 @@
   z-index: 5;
 }
 
+.hero {
+  width: 90%;
+  margin: 1.5rem auto 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 5;
+}
+
 .imageContainer {
   position: relative;
   top: -0.3rem;
@@ -57,5 +67,10 @@
 @media (min-width: 64em) {
   .form {
     margin: 2.125rem 0 0;
+  }
+
+  .hero {
+    margin: 4.15rem 2.25rem 0 11rem;
+    width: unset;
   }
 }
