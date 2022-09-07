@@ -5,7 +5,7 @@ import img from "@/public/assets/icon-search.svg";
 const Search = ({ all, movies, series, hero }) => {
   return (
     <form
-      className={hero ? styles.hero : styles.form}
+      className={hero ? styles.heroSearch : styles.form}
       onSubmit={(e) => e.preventDefault()}
       autoComplete="off"
     >

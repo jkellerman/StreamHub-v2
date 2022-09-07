@@ -89,7 +89,7 @@ export async function getServerSideProps(context) {
   const director = getDirector.name;
 
   const getCast = credits.cast;
-  const cast = getCast.slice(0, 4) || getCast.slice(0, 1);
+  const cast = getCast.slice(0, 4);
 
   return {
     props: {

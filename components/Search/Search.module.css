@@ -7,8 +7,8 @@
   z-index: 5;
 }
 
-.hero {
-  width: 90%;
+.heroSearch {
+  padding: 0 1.25rem;
   margin: 1.5rem auto 0;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@
 }
 
 .input {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-family: inherit;
   color: var(--Pure-white);
   font-weight: 300;
@@ -54,6 +54,11 @@
     z-index: 5;
   }
 
+  .heroSearch {
+    width: 93.75%;
+    padding: 0;
+  }
+
   .imageContainer {
     width: 32px;
     height: 32px;
@@ -69,8 +74,14 @@
     margin: 2.125rem 0 0;
   }
 
-  .hero {
-    margin: 4.15rem 2.25rem 0 11rem;
+  .heroSearch {
+    margin: 4.15rem 2.25rem 0 9.75rem;
     width: unset;
+  }
+}
+
+@media (min-width: 75em) {
+  .heroSearch {
+    margin: 4.15rem 2.25rem 0 11rem;
   }
 }

@@ -1,10 +1,8 @@
 .container {
   z-index: 5;
   position: absolute;
-  top: 12rem;
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
+  left: 1.25rem;
+  bottom: 2.5rem;
 }
 
 .list {
@@ -19,11 +17,6 @@
   font-weight: 500;
 }
 
-.content {
-  width: 90%;
-  margin: 0 auto;
-}
-
 .title {
   margin: 0;
   font-weight: 500;
@@ -33,7 +26,6 @@
   opacity: 0.7;
   font-style: italic;
   margin-top: 0.5rem;
-  display: none;
 }
 
 .ageRating {
@@ -53,11 +45,10 @@
   line-height: 25px;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--Semi-dark-blue);
+  display: none;
 }
 
 .posterContainer {
-  min-width: 190px;
-  min-height: 250px;
   position: relative;
   display: none;
 }
@@ -67,10 +58,6 @@
 }
 
 @media (min-width: 30em) {
-  .container {
-    top: 15rem;
-  }
-
   .tagline {
     display: block;
   }
@@ -81,6 +68,11 @@
 }
 
 @media (min-width: 48em) {
+  .container {
+    width: 93.75%;
+    margin: 0 auto 0 2rem;
+    left: 0;
+  }
   .tagline {
     font-size: 1.25rem;
   }
@@ -97,8 +89,9 @@
 
 @media (min-width: 64em) {
   .container {
-    margin: 4.15rem 2.25rem 0 11rem;
+    margin: 0rem 2.25rem 0 9.75rem;
     width: unset;
+    bottom: 8rem;
   }
 
   .content {
@@ -107,26 +100,36 @@
 }
 
 @media (min-width: 75em) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    bottom: 6rem;
+    margin: 0rem 2.25rem 0 11rem;
+  }
   .overview {
     width: 90%;
     padding-bottom: unset;
     border-bottom: unset;
     font-size: 1rem;
+    display: block;
   }
 
   .posterContainer {
     display: block;
+    min-width: 170px;
+    min-height: 230px;
   }
 }
 
 @media (min-width: 90em) {
   .container {
-    top: 25rem;
+    bottom: 2rem;
   }
 
   .posterContainer {
-    min-width: 220px;
-    min-height: 270px;
+    min-width: 200px;
+    min-height: 300px;
   }
 
   .overview {

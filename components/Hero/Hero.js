@@ -15,7 +15,7 @@ const Hero = ({
   poster,
 }) => {
   return (
-    <div className={styles.Hero}>
+    <div className={styles.hero}>
       <div className={styles.overlay}></div>
       <div className={styles.imageContainer}>
         <Image
@@ -23,6 +23,7 @@ const Hero = ({
           alt={`${name} backdrop`}
           layout="fill"
           objectFit="cover"
+          objectPosition={"top"}
           priority
         />
       </div>

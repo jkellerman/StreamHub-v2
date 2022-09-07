@@ -50,7 +50,7 @@ const Content = ({
             <li>{rating > 0 && <StarRating rating={rating} />}</li>
           </ul>
         </div>
-        <p className={styles.overview}>{overview}</p>
+        <p className={styles.overview}>{`${overview.slice(0, 320)}...`}</p>
       </div>
     </div>
   );
