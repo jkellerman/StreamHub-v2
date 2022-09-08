@@ -1,0 +1,26 @@
+.container {
+  margin: 0 auto 2rem;
+  padding: 0 1.25rem 2rem;
+  border-bottom: 1px solid var(--Semi-dark-blue);
+}
+
+.ageRating {
+  margin-right: 1rem;
+  font-weight: 500;
+  border: 1px solid var(--Pure-white);
+  padding: 0.15rem 0.5rem;
+}
+
+.date {
+  font-weight: 500;
+}
+
+.overview {
+  line-height: 25px;
+}
+
+@media (min-width: 48em) {
+  .container {
+    display: none;
+  }
+}

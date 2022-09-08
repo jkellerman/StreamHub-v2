@@ -1,8 +1,10 @@
 import Head from "next/head";
+import styles from "@/components/Hero/Hero.module.css";
 import Search from "@/components/Search/Search";
 import Hero from "@/components/Hero/Hero";
 import Details from "@/components/Details/Details";
-import styles from "@/components/Hero/Hero.module.css";
+import Overview from "@/components/Overview/Overview";
+import WatchProviders from "@/components/WatchProviders/WatchProviders";
 
 const Movie = ({
   name,
@@ -17,7 +19,8 @@ const Movie = ({
   director,
   cast,
   genres,
-  data,
+  genreList,
+  watchProviders,
 }) => {
   return (
     <>
@@ -38,7 +41,19 @@ const Movie = ({
           overview={overview}
           poster={poster}
         />
-        <Details director={director} cast={cast} genres={genres} />
+        <WatchProviders watchProviders={watchProviders} />
+        <Overview
+          overview={overview}
+          age_rating={age_rating.certification}
+          release_date={release_date}
+        />
+        <Details
+          director={director}
+          cast={cast}
+          genres={genres}
+          genreList={genreList}
+          runtime={runtime}
+        />
       </main>
     </>
   );
@@ -52,6 +67,12 @@ export async function getServerSideProps(context) {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=en-GB&append_to_response=credits,recommendations,watch%2Fproviders,release_dates`
   );
+
+  const response2 = await fetch(
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.API_KEY}&language=en-GB`
+  );
+  const genreList = await response2.json();
+
   const data = await response.json();
   const {
     backdrop_path,
@@ -84,16 +105,20 @@ export async function getServerSideProps(context) {
   );
 
   const getDirector = credits.crew.find(
-    (crew) => crew.known_for_department === "Directing"
+    (crew) => crew.department === "Directing"
   );
   const director = getDirector.name;
 
   const getCast = credits.cast;
   const cast = getCast.slice(0, 4);
 
+  const getWatchProviders = data["watch/providers"].results;
+
+  const watchProviders = getWatchProviders.GB || [];
+
   return {
     props: {
-      data,
+      genreList,
       name,
       backdrop: backdrop_path,
       tagline,
@@ -106,6 +131,7 @@ export async function getServerSideProps(context) {
       director,
       cast,
       genres,
+      watchProviders,
     },
   };
 }

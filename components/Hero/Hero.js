@@ -15,7 +15,7 @@ const Hero = ({
   poster,
 }) => {
   return (
-    <div className={styles.hero}>
+    <section className={styles.hero}>
       <div className={styles.overlay}></div>
       <div className={styles.imageContainer}>
         <Image
@@ -37,7 +37,7 @@ const Hero = ({
         overview={overview}
         poster={poster}
       />
-    </div>
+    </section>
   );
 };
 

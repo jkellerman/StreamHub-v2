@@ -25,7 +25,7 @@ const Content = ({
           src={`${BASE_URL_IMAGE}${poster}`}
           alt={`${title} poster`}
           layout="fill"
-          objectFit="cover"
+          objectFit="contain"
           placeholder="blur"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             shimmer(240, 140)
@@ -50,7 +50,9 @@ const Content = ({
             <li>{rating > 0 && <StarRating rating={rating} />}</li>
           </ul>
         </div>
-        <p className={styles.overview}>{`${overview.slice(0, 320)}...`}</p>
+        <p className={styles.overview}>
+          {overview.length > 300 ? `${overview.slice(0, 350)}...` : overview}
+        </p>
       </div>
     </div>
   );
