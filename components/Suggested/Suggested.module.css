@@ -1,0 +1,31 @@
+.heading {
+  padding: 0 1.25rem;
+  text-transform: capitalize;
+}
+
+.suggestions {
+  display: flex;
+  overflow-x: scroll;
+  gap: 1rem;
+  margin: 0 1.25rem 2rem;
+}
+
+.suggestionContainer {
+  display: inline-block;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 150px;
+  height: 110px;
+}
+
+.message {
+  padding: 0 1.25rem;
+  font-style: italic;
+}
+
+@media (min-width: 64em) {
+  .container {
+    display: none;
+  }
+}

@@ -5,6 +5,7 @@ import Hero from "@/components/Hero/Hero";
 import Details from "@/components/Details/Details";
 import Overview from "@/components/Overview/Overview";
 import WatchProviders from "@/components/WatchProviders/WatchProviders";
+import Suggested from "@/components/Suggested/Suggested";
 
 const Movie = ({
   name,
@@ -21,6 +22,7 @@ const Movie = ({
   genres,
   genreList,
   watchProviders,
+  suggested,
 }) => {
   return (
     <>
@@ -55,6 +57,7 @@ const Movie = ({
           genreList={genreList}
           runtime={runtime}
         />
+        <Suggested suggested={suggested} />
       </main>
     </>
   );
@@ -87,6 +90,7 @@ export async function getServerSideProps(context) {
     poster_path,
     credits,
     genres,
+    recommendations,
   } = data;
 
   const productionCountry = production_countries.map((item) => {
@@ -133,6 +137,7 @@ export async function getServerSideProps(context) {
       cast,
       genres,
       watchProviders,
+      suggested: recommendations,
     },
   };
 }

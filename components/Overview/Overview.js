@@ -11,9 +11,11 @@ const Overview = ({ age_rating, overview, release_date, vote_average }) => {
         <span className={styles.date}>{release_date.slice(0, 4)}</span>
         <p className={styles.overview}>{overview}</p>
       </section>
-      <div className={styles.ratingContainer}>
-        <StarRating rating={vote_average} />
-      </div>
+      {vote_average > 0 && (
+        <div className={styles.ratingContainer}>
+          <StarRating rating={vote_average} />
+        </div>
+      )}
     </>
   );
 };

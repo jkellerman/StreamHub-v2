@@ -1,4 +1,3 @@
-// import Link from "next/link";
 import Image from "next/image";
 import { BASE_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 import TrendingCardDetails from "@/components/TrendingCardDetails/TrendingCardDetails";
