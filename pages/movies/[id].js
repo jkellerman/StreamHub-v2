@@ -46,6 +46,7 @@ const Movie = ({
           overview={overview}
           age_rating={age_rating.certification}
           release_date={release_date}
+          vote_average={vote_average}
         />
         <Details
           director={director}
@@ -94,10 +95,10 @@ export async function getServerSideProps(context) {
 
   const certification = release_dates.results.find(
     (country) =>
+      country.iso_3166_1 === productionCountry.toString() ||
       country.iso_3166_1 === "GB" ||
       country.iso_3166_1 === "US" ||
-      country.iso_3166_1 === "KR" ||
-      country.iso_3166_1 === productionCountry
+      country.iso_3166_1 === "KR"
   );
 
   const age_rating = certification.release_dates.find(

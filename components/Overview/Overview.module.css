@@ -19,6 +19,13 @@
   line-height: 25px;
 }
 
+.ratingContainer {
+  transform: translateX(-0.5rem);
+  border-bottom: 1px solid var(--Semi-dark-blue);
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
 @media (min-width: 48em) {
   .container {
     display: none;
