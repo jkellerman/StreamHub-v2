@@ -23,9 +23,7 @@ const Series = ({
   suggested,
   seasons,
   network,
-  data,
 }) => {
-  console.log(data);
   return (
     <>
       <Head>
@@ -131,8 +129,6 @@ export async function getServerSideProps(context) {
       suggested: recommendations,
       seasons: number_of_seasons,
       network,
-      data,
-      certification,
     },
   };
 }

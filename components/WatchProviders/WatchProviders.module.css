@@ -38,6 +38,9 @@
 }
 
 @media (min-width: 48em) {
+  .container {
+    display: none;
+  }
   .justWatchLogoContainer {
     position: relative;
     width: 150px;
@@ -55,11 +58,5 @@
   .iconContainer {
     width: 75px;
     height: 75px;
-  }
-}
-
-@media (min-width: 64em) {
-  .container {
-    display: none;
   }
 }

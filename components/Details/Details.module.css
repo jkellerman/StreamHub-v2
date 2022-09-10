@@ -46,10 +46,7 @@
 
 @media (min-width: 48em) {
   .details {
-    width: 93.75%;
-    margin: 0 auto;
-    padding: 0;
-    font-size: 1.25rem;
+    display: none;
   }
 
   .heading {
@@ -57,11 +54,5 @@
     font-weight: 500;
     min-width: 75px;
     margin-right: 1rem;
-  }
-}
-
-@media (min-width: 64em) {
-  .details {
-    display: none;
   }
 }

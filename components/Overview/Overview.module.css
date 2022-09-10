@@ -20,23 +20,11 @@
 }
 
 .ratingContainer {
-  transform: translate(-0.5rem);
-  border-bottom: 1px solid var(--Semi-dark-blue);
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
+  display: none;
 }
 
 @media (min-width: 48em) {
   .container {
-    display: none;
-  }
-}
-@media (min-width: 64em) {
-  .container {
-    display: none;
-  }
-
-  .ratingContainer {
     display: none;
   }
 }

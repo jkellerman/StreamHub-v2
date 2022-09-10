@@ -80,11 +80,6 @@
     font-size: 1.25rem;
   }
 
-  .list {
-    font-size: 1.25rem;
-    display: flex;
-  }
-
   .overview {
     font-size: 1.25rem;
     line-height: 30px;
@@ -96,6 +91,11 @@
     margin: 0rem 2.25rem 0 9.75rem;
     width: unset;
     bottom: 8rem;
+  }
+
+  .list {
+    font-size: 1.25rem;
+    display: flex;
   }
 
   .content {

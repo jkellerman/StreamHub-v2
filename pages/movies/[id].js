@@ -23,9 +23,7 @@ const Movie = ({
   genre_list,
   watch_providers,
   suggested,
-  data,
 }) => {
-  // console.log(data);
   return (
     <>
       <Head>
@@ -75,7 +73,6 @@ export async function getServerSideProps(context) {
     `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=en-GB&append_to_response=credits,recommendations,watch%2Fproviders,release_dates`
   );
   const data = await response.json();
-  console.log(data.credits.crew);
 
   const response2 = await fetch(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.API_KEY}&language=en-GB`
@@ -87,7 +84,6 @@ export async function getServerSideProps(context) {
     tagline,
     release_dates,
     release_date,
-    production_countries,
     runtime,
     vote_average,
     overview,
@@ -96,10 +92,6 @@ export async function getServerSideProps(context) {
     genres,
     recommendations,
   } = data;
-
-  // const productionCountry = production_countries.map((item) => {
-  //   return item.iso_3166_1;
-  // });
 
   const getDirector = credits.crew.find(
     (crew) => crew.department === "Directing"
@@ -139,7 +131,6 @@ export async function getServerSideProps(context) {
       genres,
       watch_providers,
       suggested: recommendations,
-      data,
     },
   };
 }
