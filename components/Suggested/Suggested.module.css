@@ -22,6 +22,7 @@
 .message {
   padding: 0 1.25rem;
   font-style: italic;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 64em) {

@@ -25,7 +25,7 @@ const Series = ({
   network,
   data,
 }) => {
-  // console.log(data);
+  console.log(data);
   return (
     <>
       <Head>
@@ -58,6 +58,7 @@ const Series = ({
           genres={genres}
           genre_list={genre_list}
           seasons={seasons}
+          series
         />
         <Suggested suggested={suggested} series />
       </main>

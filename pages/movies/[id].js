@@ -25,7 +25,7 @@ const Movie = ({
   suggested,
   data,
 }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <Head>
@@ -58,6 +58,7 @@ const Movie = ({
           genres={genres}
           genre_list={genre_list}
           runtime={runtime}
+          movies
         />
         <Suggested suggested={suggested} movies />
       </main>
@@ -74,6 +75,7 @@ export async function getServerSideProps(context) {
     `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=en-GB&append_to_response=credits,recommendations,watch%2Fproviders,release_dates`
   );
   const data = await response.json();
+  console.log(data.credits.crew);
 
   const response2 = await fetch(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.API_KEY}&language=en-GB`

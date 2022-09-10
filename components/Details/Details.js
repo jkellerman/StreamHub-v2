@@ -10,6 +10,7 @@ const Details = ({
   runtime,
   network,
   seasons,
+  movies,
 }) => {
   return (
     <section className={styles.details}>
@@ -42,7 +43,11 @@ const Details = ({
             return (
               <Link
                 key={genre.id}
-                href={`/movies/genre/${genreParam.id}?name=${genreParam.name}`}
+                href={
+                  movies
+                    ? `/movies/genre/${genreParam.id}?name=${genreParam.name}`
+                    : `/series/genre/${genreParam.id}?name=${genreParam.name}`
+                }
               >
                 <a className={`${styles.description} ${styles.genre}`}>
                   {genre.name}
