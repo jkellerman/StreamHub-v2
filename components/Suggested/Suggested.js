@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { BASE_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 
-const Suggested = ({ suggested }) => {
+const Suggested = ({ suggested, movies }) => {
   return (
     <section className={styles.container}>
       <h4 className={styles.heading}>suggested</h4>
@@ -12,10 +12,13 @@ const Suggested = ({ suggested }) => {
         <div className={styles.suggestions}>
           {suggested.results.map((suggestion) => {
             return (
-              <article>
+              <article key={suggestion.id}>
                 <Link
-                  href={`/movies/${suggestion.id}?name=${suggestion.title}`}
-                  key={suggestion.id}
+                  href={
+                    movies
+                      ? `/movies/${suggestion.id}?name=${suggestion.title}`
+                      : `/series/${suggestion.id}?name=${suggestion.name}`
+                  }
                 >
                   <a className={styles.suggestionContainer}>
                     <Image
@@ -30,11 +33,19 @@ const Suggested = ({ suggested }) => {
                     />
                   </a>
                 </Link>
-                <div>
-                  {suggestion.title.length > 15
-                    ? `${suggestion.title.slice(0, 15)}...`
-                    : suggestion.title}
-                </div>
+                {movies ? (
+                  <div>
+                    {suggestion.title.length > 15
+                      ? `${suggestion.title.slice(0, 15)}...`
+                      : suggestion.title}
+                  </div>
+                ) : (
+                  <div>
+                    {suggestion.name.length > 15
+                      ? `${suggestion.name.slice(0, 15)}...`
+                      : suggestion.name}
+                  </div>
+                )}
               </article>
             );
           })}

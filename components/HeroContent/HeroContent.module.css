@@ -35,7 +35,8 @@
   padding: 0.15rem 0.5rem;
 }
 
-.runtime {
+.runtime,
+.seasons {
   display: none;
 }
 
@@ -59,7 +60,8 @@
     display: block;
   }
 
-  .runtime {
+  .runtime,
+  .seasons {
     display: inline-block;
   }
 }

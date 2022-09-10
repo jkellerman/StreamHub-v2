@@ -3,7 +3,7 @@ import { BASE_URL_IMAGE } from "@/utils/utils";
 import Image from "next/image";
 import img from "@/public/assets/justWatch.svg";
 
-const WatchProviders = ({ watchProviders }) => {
+const WatchProviders = ({ watch_providers }) => {
   return (
     <section className={styles.container}>
       <div className={styles.justWatchLogoContainer}>
@@ -16,16 +16,16 @@ const WatchProviders = ({ watchProviders }) => {
         />
       </div>
       <div className={styles.providers}>
-        {watchProviders.length === 0 && <span>No current providers</span>}
-        {watchProviders.flatrate && (
+        {watch_providers.length === 0 && <span>No current providers</span>}
+        {watch_providers.flatrate && (
           <div>
             <h3 className={styles.headingMethod}>Stream</h3>
             <div className={styles.icons}>
-              {watchProviders.flatrate.map((provider) => {
+              {watch_providers.flatrate.map((provider) => {
                 return (
                   <a
                     key={provider.provider_id}
-                    href={watchProviders.link}
+                    href={watch_providers.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.iconContainer}
@@ -43,15 +43,15 @@ const WatchProviders = ({ watchProviders }) => {
             </div>
           </div>
         )}
-        {watchProviders.buy && (
+        {watch_providers.buy && (
           <div>
             <h3 className={styles.headingMethod}>Buy</h3>
             <div className={styles.icons}>
-              {watchProviders.buy.map((provider) => {
+              {watch_providers.buy.map((provider) => {
                 return (
                   <a
                     key={provider.provider_id}
-                    href={watchProviders.link}
+                    href={watch_providers.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.iconContainer}
@@ -69,15 +69,15 @@ const WatchProviders = ({ watchProviders }) => {
             </div>
           </div>
         )}
-        {watchProviders.rent && (
+        {watch_providers.rent && (
           <div>
             <h3 className={styles.headingMethod}>Rent</h3>
             <div className={styles.icons}>
-              {watchProviders.rent.map((provider) => {
+              {watch_providers.rent.map((provider) => {
                 return (
                   <a
                     key={provider.provider_id}
-                    href={watchProviders.link}
+                    href={watch_providers.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.iconContainer}

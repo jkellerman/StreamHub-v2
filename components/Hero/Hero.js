@@ -8,11 +8,15 @@ const Hero = ({
   name,
   tagline,
   age_rating,
+  series_age_rating,
   release_date,
   runtime,
   rating,
   overview,
   poster,
+  air_date,
+  seasons,
+  series,
 }) => {
   return (
     <section className={styles.hero}>
@@ -31,11 +35,15 @@ const Hero = ({
         title={name}
         tagline={tagline}
         age_rating={age_rating}
+        series_age_rating={series_age_rating}
         release_date={release_date}
         runtime={runtime}
         rating={rating}
         overview={overview}
         poster={poster}
+        air_date={air_date}
+        seasons={seasons}
+        series
       />
     </section>
   );

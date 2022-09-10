@@ -20,10 +20,12 @@ const Movie = ({
   director,
   cast,
   genres,
-  genreList,
-  watchProviders,
+  genre_list,
+  watch_providers,
   suggested,
+  data,
 }) => {
+  console.log(data);
   return (
     <>
       <Head>
@@ -43,7 +45,7 @@ const Movie = ({
           overview={overview}
           poster={poster}
         />
-        <WatchProviders watchProviders={watchProviders} />
+        <WatchProviders watch_providers={watch_providers} />
         <Overview
           overview={overview}
           age_rating={age_rating.certification}
@@ -54,10 +56,10 @@ const Movie = ({
           director={director}
           cast={cast}
           genres={genres}
-          genreList={genreList}
+          genre_list={genre_list}
           runtime={runtime}
         />
-        <Suggested suggested={suggested} />
+        <Suggested suggested={suggested} movies />
       </main>
     </>
   );
@@ -71,13 +73,13 @@ export async function getServerSideProps(context) {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=en-GB&append_to_response=credits,recommendations,watch%2Fproviders,release_dates`
   );
+  const data = await response.json();
 
   const response2 = await fetch(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.API_KEY}&language=en-GB`
   );
-  const genreList = await response2.json();
+  const genre_list = await response2.json();
 
-  const data = await response.json();
   const {
     backdrop_path,
     tagline,
@@ -93,21 +95,9 @@ export async function getServerSideProps(context) {
     recommendations,
   } = data;
 
-  const productionCountry = production_countries.map((item) => {
-    return item.iso_3166_1;
-  });
-
-  const certification = release_dates.results.find(
-    (country) =>
-      country.iso_3166_1 === productionCountry.toString() ||
-      country.iso_3166_1 === "GB" ||
-      country.iso_3166_1 === "US" ||
-      country.iso_3166_1 === "KR"
-  );
-
-  const age_rating = certification.release_dates.find(
-    (item) => item.certification !== "" || item.certification === ""
-  );
+  // const productionCountry = production_countries.map((item) => {
+  //   return item.iso_3166_1;
+  // });
 
   const getDirector = credits.crew.find(
     (crew) => crew.department === "Directing"
@@ -119,11 +109,20 @@ export async function getServerSideProps(context) {
 
   const getWatchProviders = data["watch/providers"].results;
 
-  const watchProviders = getWatchProviders.GB || [];
+  const watch_providers = getWatchProviders.GB || [];
+
+  const certification =
+    release_dates.results.find((country) => country.iso_3166_1 === "US") || [];
+
+  if (certification.length === 0) return;
+
+  const age_rating = certification.release_dates.find(
+    (item) => item.certification !== "" || []
+  );
 
   return {
     props: {
-      genreList,
+      genre_list,
       name,
       backdrop: backdrop_path,
       tagline,
@@ -136,8 +135,9 @@ export async function getServerSideProps(context) {
       director,
       cast,
       genres,
-      watchProviders,
+      watch_providers,
       suggested: recommendations,
+      data,
     },
   };
 }
