@@ -10,6 +10,16 @@
   margin: 0 1.25rem 2rem;
 }
 
+.suggestions::-webkit-scrollbar {
+  height: 5px;
+  background-color: transparent;
+}
+
+.suggestions::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--Greyish-blue);
+}
+
 .suggestionContainer {
   display: inline-block;
   position: relative;
@@ -23,6 +33,29 @@
   padding: 0 1.25rem;
   font-style: italic;
   margin-bottom: 2rem;
+}
+
+@media (min-width: 48em) {
+  .heading {
+    padding: 0 1.65rem;
+    font-size: 1.25rem;
+  }
+  .suggestions {
+    margin: 0 1.65rem 2rem;
+  }
+
+  .suggestions::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .suggestions::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+  }
+
+  .suggestionContainer {
+    min-width: 220px;
+    height: 140px;
+  }
 }
 
 @media (min-width: 64em) {

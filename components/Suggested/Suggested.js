@@ -34,17 +34,9 @@ const Suggested = ({ suggested, movies }) => {
                   </a>
                 </Link>
                 {movies ? (
-                  <div>
-                    {suggestion.title.length > 15
-                      ? `${suggestion.title.slice(0, 15)}...`
-                      : suggestion.title}
-                  </div>
+                  <div>{suggestion.title}</div>
                 ) : (
-                  <div>
-                    {suggestion.name.length > 15
-                      ? `${suggestion.name.slice(0, 15)}...`
-                      : suggestion.name}
-                  </div>
+                  <div>{suggestion.name}</div>
                 )}
               </article>
             );

@@ -42,6 +42,9 @@ h1 {
 }
 
 @media (min-width: 48em) {
+  body {
+    font-size: 1rem;
+  }
   main {
     width: 93.75%;
   }
