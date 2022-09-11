@@ -23,11 +23,22 @@ const DetailsTab = ({
   series_age_rating,
   seasons,
   network,
+  isTabActive,
 }) => {
   return (
     <>
-      <div>
-        <p className={styles.overview}>{overview}</p>
+      <div
+        className={
+          isTabActive === 2
+            ? `${styles.details} ${styles.active}`
+            : styles.details
+        }
+      >
+        <div>
+          <div className={styles.name}>overview</div>
+          <p className={styles.overview}>{overview}</p>
+        </div>
+
         <div className={styles.attributes}>
           <ul className={styles.list}>
             <li className={styles.listItem}>
@@ -38,8 +49,9 @@ const DetailsTab = ({
                     <Link
                       key={genre.id}
                       href={
-                        `/movies/genre/${genre.id}?name=${genre.name}` ||
-                        `/series/genre/${genre.id}?name=${genre.name}`
+                        age_rating
+                          ? `/movies/genre/${genre.id}?name=${genre.name}`
+                          : `/series/genre/${genre.id}?name=${genre.name}`
                       }
                     >
                       <a className={styles.genre}>{genre.name}</a>
@@ -52,7 +64,7 @@ const DetailsTab = ({
               <div className={styles.name}>cast</div>
               <div>
                 {cast.map((member) => {
-                  return <div>{member.name}</div>;
+                  return <div key={member.id}>{member.name}</div>;
                 })}
               </div>
             </li>
@@ -94,12 +106,14 @@ const DetailsTab = ({
                 </div>
               </li>
             )}
-            <li className={styles.listItem}>
-              <div className={styles.name}>Rating</div>
-              <div>
-                <StarRating rating={vote_average} />
-              </div>
-            </li>
+            {vote_average > 0 && (
+              <li className={styles.listItem}>
+                <div className={styles.name}>Rating</div>
+                <div>
+                  <StarRating rating={vote_average} />
+                </div>
+              </li>
+            )}
           </ul>
         </div>
       </div>

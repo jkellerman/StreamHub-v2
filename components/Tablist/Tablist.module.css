@@ -20,5 +20,41 @@
     display: flex;
     padding-top: 2rem;
     gap: 2rem;
+    /* animation here */
+  }
+}
+
+@media (min-width: 64em) {
+  .container {
+    margin: 0 2.25rem 0 9.75rem;
+    width: unset;
+    position: relative;
+    top: -5rem;
+    z-index: 5;
+  }
+
+  .tabs {
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 75em) {
+  .container {
+    margin: 0 2.25rem 0 11rem;
+  }
+}
+
+@media (min-width: 90em) {
+  .container {
+    top: 0;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

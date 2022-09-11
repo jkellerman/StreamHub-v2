@@ -1,16 +1,21 @@
 import styles from "@/components/Tab/Tab.module.css";
 
-const Tab = ({ isTabSelected, handleClick, tab }) => {
+const Tab = ({ isTabActive, handleClick, tab, handleScroll }) => {
   return (
     <>
       {tab === 1 && (
         <div className={styles.tabContainer}>
           <a
-            href="#whereToWatch"
+            href="#tablist"
             className={
-              isTabSelected === 1 ? `${styles.tabHighlighted}` : `${styles.tab}`
+              isTabActive === 1
+                ? `${styles.tab} ${styles.active}`
+                : `${styles.tab} `
             }
-            onClick={() => handleClick(1)}
+            onClick={() => {
+              handleClick(1);
+              handleScroll();
+            }}
           >
             Where to watch
           </a>
@@ -19,11 +24,16 @@ const Tab = ({ isTabSelected, handleClick, tab }) => {
       {tab === 2 && (
         <div className={styles.tabContainer}>
           <a
-            href="#details"
+            href="#tablist"
             className={
-              isTabSelected === 2 ? `${styles.tabHighlighted}` : `${styles.tab}`
+              isTabActive === 2
+                ? `${styles.tab} ${styles.active}`
+                : `${styles.tab} `
             }
-            onClick={() => handleClick(2)}
+            onClick={() => {
+              handleClick(2);
+              handleScroll();
+            }}
           >
             Details
           </a>
@@ -32,7 +42,7 @@ const Tab = ({ isTabSelected, handleClick, tab }) => {
       {tab === 3 && (
         <div className={styles.tabContainer}>
           <a
-            href="#suggested"
+            href="#tablist"
             className={
               isTabSelected === 3
                 ? `${styles.tabHighlighted} ${styles.tabSuggested}`

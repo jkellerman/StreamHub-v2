@@ -70,6 +70,7 @@ const Movie = ({
           genres={genres}
           watch_providers={watch_providers}
           suggested={suggested}
+          movies={true}
         />
         <Suggested suggested={suggested} movies />
       </main>

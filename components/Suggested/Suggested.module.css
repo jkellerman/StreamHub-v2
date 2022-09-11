@@ -25,14 +25,18 @@
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  min-width: 150px;
-  height: 110px;
+  min-width: 134px;
+  height: 90px;
 }
 
 .message {
   padding: 0 1.25rem;
   font-style: italic;
   margin-bottom: 2rem;
+}
+
+.name {
+  font-size: 0.75rem;
 }
 
 @media (min-width: 48em) {
@@ -42,7 +46,7 @@
   }
   .heading {
     padding: 0 1.65rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
   .suggestions {
     margin: 0 1.65rem 2rem;
@@ -57,13 +61,55 @@
   }
 
   .suggestionContainer {
-    min-width: 220px;
-    height: 140px;
+    min-width: 200px;
+    height: 120px;
+  }
+
+  .name {
+    font-size: 0.935rem;
   }
 }
 
 @media (min-width: 64em) {
   .container {
-    display: none;
+    border-top: unset;
+    margin-top: 0;
+    position: relative;
+    top: -2rem;
+  }
+
+  .heading,
+  .message {
+    margin: 0 2.25rem 2rem 9.75rem;
+    padding: unset;
+  }
+
+  .heading {
+    text-transform: capitalize;
+  }
+
+  .suggestions {
+    margin: 0 2.25rem 0 9.75rem;
+  }
+
+  .suggestionContainer {
+    min-width: 220px;
+    height: 140px;
+  }
+}
+
+@media (min-width: 75em) {
+  .heading {
+    margin: 0 2.25rem 2rem 11rem;
+  }
+  .suggestions,
+  .message {
+    margin: 0 2.25rem 0 11rem;
+  }
+}
+
+@media (min-width: 96em) {
+  .container {
+    top: 2.5rem;
   }
 }

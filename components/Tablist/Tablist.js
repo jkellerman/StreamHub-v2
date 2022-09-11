@@ -1,5 +1,5 @@
 import styles from "@/components/Tablist/Tablist.module.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import WatchProvidersTab from "../WatchProvidersTab/WatchProvidersTab";
 import Tab from "../Tab/Tab";
 import DetailsTab from "../DetailsTab/DetailsTab";
@@ -20,28 +20,46 @@ const Tablist = ({
   seasons,
   network,
   series_age_rating,
+  movies,
 }) => {
-  const [isTabSelected, setIsTabSelected] = useState(1);
+  const [isTabActive, setIsTabActive] = useState(1);
+  const tab = useRef();
 
   const handleClick = (number) => {
-    setIsTabSelected(number);
+    setIsTabActive(number);
+  };
+
+  const handleScroll = () => {
+    tab.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className={styles.container}>
+    <section className={styles.container} ref={tab}>
       <nav className={styles.tabs}>
-        <Tab isTabSelected={isTabSelected} handleClick={handleClick} tab={1} />
-        <Tab isTabSelected={isTabSelected} handleClick={handleClick} tab={2} />
-        <Tab isTabSelected={isTabSelected} handleClick={handleClick} tab={3} />
+        <Tab
+          isTabActive={isTabActive}
+          handleClick={handleClick}
+          tab={1}
+          handleScroll={handleScroll}
+        />
+        <Tab
+          isTabActive={isTabActive}
+          handleClick={handleClick}
+          tab={2}
+          handleScroll={handleScroll}
+        />
       </nav>
       <section className={styles.contentContainer}>
-        <article id="whereToWatch">
-          {isTabSelected === 1 && (
-            <WatchProvidersTab watch_providers={watch_providers} />
+        <article>
+          {isTabActive === 1 && (
+            <WatchProvidersTab
+              watch_providers={watch_providers}
+              isTabActive={isTabActive}
+            />
           )}
         </article>
-        <article id="details" className={styles.detailsContainer}>
-          {isTabSelected === 2 && (
+        <article className={styles.detailsContainer}>
+          {isTabActive === 2 && (
             <DetailsTab
               name={name}
               age_rating={age_rating}
@@ -56,10 +74,10 @@ const Tablist = ({
               series_age_rating={series_age_rating}
               seasons={seasons}
               network={network}
+              isTabActive={isTabActive}
             />
           )}
         </article>
-        <article id="suggested"></article>
       </section>
     </section>
   );
