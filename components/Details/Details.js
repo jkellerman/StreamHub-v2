@@ -6,7 +6,6 @@ const Details = ({
   director,
   cast,
   genres,
-  genre_list,
   runtime,
   network,
   seasons,
@@ -37,16 +36,13 @@ const Details = ({
         <h4 className={styles.heading}>genres</h4>
         <div className={styles.linksContainer}>
           {genres.map((genre) => {
-            const genreParam = genre_list.genres.find(
-              (param) => param.name === genre.name
-            );
             return (
               <Link
                 key={genre.id}
                 href={
                   movies
-                    ? `/movies/genre/${genreParam.id}?name=${genreParam.name}`
-                    : `/series/genre/${genreParam.id}?name=${genreParam.name}`
+                    ? `/movies/genre/${genre.id}?name=${genre.name}`
+                    : `/series/genre/${genre.id}?name=${genre.name}`
                 }
               >
                 <a className={`${styles.description} ${styles.genre}`}>

@@ -5,6 +5,7 @@ import Hero from "@/components/Hero/Hero";
 import Details from "@/components/Details/Details";
 import Overview from "@/components/Overview/Overview";
 import WatchProviders from "@/components/WatchProviders/WatchProviders";
+import Tablist from "@/components/Tablist/Tablist";
 import Suggested from "@/components/Suggested/Suggested";
 
 const Movie = ({
@@ -20,7 +21,6 @@ const Movie = ({
   director,
   cast,
   genres,
-  genre_list,
   watch_providers,
   suggested,
 }) => {
@@ -54,9 +54,22 @@ const Movie = ({
           director={director}
           cast={cast}
           genres={genres}
-          genre_list={genre_list}
           runtime={runtime}
           movies
+        />
+        <Tablist
+          name={name}
+          age_rating={age_rating}
+          release_date={release_date}
+          runtime={runtime}
+          vote_average={vote_average}
+          overview={overview}
+          poster={poster}
+          director={director}
+          cast={cast}
+          genres={genres}
+          watch_providers={watch_providers}
+          suggested={suggested}
         />
         <Suggested suggested={suggested} movies />
       </main>
@@ -73,11 +86,6 @@ export async function getServerSideProps(context) {
     `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=en-GB&append_to_response=credits,recommendations,watch%2Fproviders,release_dates`
   );
   const data = await response.json();
-
-  const response2 = await fetch(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.API_KEY}&language=en-GB`
-  );
-  const genre_list = await response2.json();
 
   const {
     backdrop_path,
@@ -116,7 +124,6 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      genre_list,
       name,
       backdrop: backdrop_path,
       tagline,

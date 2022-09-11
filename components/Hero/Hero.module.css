@@ -43,11 +43,11 @@
 }
 @media (min-width: 48em) {
   .imageContainer {
-    height: 500px;
+    height: 370px;
   }
 
   .overlay {
-    height: 520px;
+    height: 390px;
   }
 }
 

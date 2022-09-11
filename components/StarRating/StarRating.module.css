@@ -8,3 +8,9 @@
 .stars {
   transform: translateY(0.1rem);
 }
+
+@media (min-width: 48em) {
+  .container {
+    justify-content: flex-start;
+  }
+}

@@ -34,9 +34,17 @@ const Suggested = ({ suggested, movies }) => {
                   </a>
                 </Link>
                 {movies ? (
-                  <div>{suggestion.title}</div>
+                  <div>
+                    {suggestion.title.length > 40
+                      ? `${suggestion.title.slice(0, 40)}...`
+                      : suggestion.title}
+                  </div>
                 ) : (
-                  <div>{suggestion.name}</div>
+                  <div>
+                    {suggestion.name.length > 40
+                      ? `${suggestion.name.slice(0, 40)}...`
+                      : suggestion.name}
+                  </div>
                 )}
               </article>
             );

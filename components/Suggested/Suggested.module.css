@@ -36,9 +36,13 @@
 }
 
 @media (min-width: 48em) {
+  .container {
+    margin-top: 2rem;
+    border-top: 2px solid var(--Semi-dark-blue);
+  }
   .heading {
     padding: 0 1.65rem;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
   .suggestions {
     margin: 0 1.65rem 2rem;

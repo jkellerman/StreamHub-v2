@@ -1,0 +1,30 @@
+.tabContainer {
+  display: inline-block;
+  position: relative;
+}
+
+.tab,
+.tabHighlighted {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.tabHighlighted {
+  color: var(--Red);
+}
+
+.tabHighlighted::after {
+  content: "";
+  background: var(--Red);
+  width: 100%;
+  height: 2px;
+  border: 1px solid var(--Red);
+  position: absolute;
+  left: 0;
+  bottom: -2.0625rem;
+}
+
+.tabSuggested {
+  display: none;
+}

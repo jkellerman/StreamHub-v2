@@ -33,7 +33,6 @@ const Content = ({
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             shimmer(240, 140)
           )}`}
-          className={styles.poster}
         />
       </div>
       <div className={styles.content}>

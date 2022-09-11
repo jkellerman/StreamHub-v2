@@ -4,11 +4,11 @@ import Search from "@/components/Search/Search";
 import Hero from "@/components/Hero/Hero";
 import Details from "@/components/Details/Details";
 import Overview from "@/components/Overview/Overview";
+import Tablist from "@/components/Tablist/Tablist";
 import WatchProviders from "@/components/WatchProviders/WatchProviders";
 import Suggested from "@/components/Suggested/Suggested";
 
 const Series = ({
-  genre_list,
   name,
   backdrop,
   tagline,
@@ -54,9 +54,22 @@ const Series = ({
           network={network}
           cast={cast}
           genres={genres}
-          genre_list={genre_list}
           seasons={seasons}
           series
+        />
+        <Tablist
+          name={name}
+          series_age_rating={series_age_rating}
+          release_date={air_date}
+          seasons={seasons}
+          vote_average={vote_average}
+          overview={overview}
+          poster={poster}
+          network={network}
+          cast={cast}
+          genres={genres}
+          watch_providers={watch_providers}
+          suggested={suggested}
         />
         <Suggested suggested={suggested} series />
       </main>
@@ -74,11 +87,6 @@ export async function getServerSideProps(context) {
   );
 
   const data = await response.json();
-
-  const response2 = await fetch(
-    `https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.API_KEY}&language=en-GB`
-  );
-  const genre_list = await response2.json();
 
   const {
     backdrop_path,
@@ -114,7 +122,6 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      genre_list,
       name,
       backdrop: backdrop_path,
       tagline,
