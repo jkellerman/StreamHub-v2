@@ -4,13 +4,17 @@ import Image from "next/image";
 import { BASE_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 
 const Suggested = ({ suggested, movies }) => {
+  const suggestedArr = suggested.results.filter(
+    (suggested) => suggested.backdrop_path !== null
+  );
+
   return (
     <section className={styles.container}>
       <h4 className={styles.heading}>suggested</h4>
 
       {suggested.results.length > 0 ? (
         <div className={styles.suggestions}>
-          {suggested.results.map((suggestion) => {
+          {suggestedArr.map((suggestion) => {
             return (
               <article key={suggestion.id}>
                 <Link

@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var(--Red);
+}
+
+.filmstrip {
+  position: relative;
+  width: 56px;
+  height: 70px;
+  background: var(--Pure-white);
+  z-index: -1;
+}
+
+.filmstrip::before,
+.filmstrip::after {
+  content: "";
+  position: absolute;
+  height: 120%;
+  border-left: 5px dashed var(--Pure-white);
+  animation: roll 20ms infinite;
+}
+
+.filmstrip::before {
+  left: 5px;
+}
+
+.filmstrip::after {
+  right: 5px;
+}
+
+@keyframes roll {
+  0% {
+    top: 0px;
+  }
+  100% {
+    top: -15px;
+  }
+}

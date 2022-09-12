@@ -11,7 +11,10 @@ const Genre = ({ endpoint, type, name, movieGenreList, seriesGenreList }) => {
     const fetchMovies = async () => {
       const response = await fetch(`${endpoint}`);
       const data = await response.json();
-      const arr = data.data.results;
+      const filteredArr = data.data.results.filter(
+        (item) => item.backdrop_path !== null
+      );
+      const arr = filteredArr;
       setMediaType(arr);
     };
     fetchMovies();
