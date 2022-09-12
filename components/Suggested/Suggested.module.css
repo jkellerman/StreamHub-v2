@@ -27,6 +27,12 @@
   overflow: hidden;
   min-width: 134px;
   height: 90px;
+  opacity: 0.7;
+}
+
+.suggestionContainer:hover {
+  opacity: 1;
+  transition: all 200ms ease-in;
 }
 
 .message {
