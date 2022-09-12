@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { BASE_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 import TrendingCardDetails from "@/components/TrendingCardDetails/TrendingCardDetails";
 import styles from "@/components/TrendingCard/TrendingCard.module.css";
@@ -10,30 +11,39 @@ const TrendingCard = ({
   year,
   type,
   airDate,
+  id,
 }) => {
   return (
-    <a className={styles.link}>
-      <article className={styles.container}>
-        <Image
-          src={`${BASE_URL_IMAGE}${image}`}
-          alt={`Backdrop of the movie "${movieTitle || seriesName}"`}
-          layout="fill"
-          objectFit="cover"
-          placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            shimmer(240, 140)
-          )}`}
+    <Link
+      href={
+        movieTitle
+          ? `/movies/${id}?name=${movieTitle}`
+          : `/series/${id}?name=${seriesName}`
+      }
+    >
+      <a className={styles.link}>
+        <article className={styles.container}>
+          <Image
+            src={`${BASE_URL_IMAGE}${image}`}
+            alt={`Backdrop of the movie "${movieTitle || seriesName}"`}
+            layout="fill"
+            objectFit="cover"
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(
+              shimmer(240, 140)
+            )}`}
+          />
+        </article>
+        <TrendingCardDetails
+          image={image}
+          movieTitle={movieTitle}
+          seriesName={seriesName}
+          year={year}
+          type={type}
+          airDate={airDate}
         />
-      </article>
-      <TrendingCardDetails
-        image={image}
-        movieTitle={movieTitle}
-        seriesName={seriesName}
-        year={year}
-        type={type}
-        airDate={airDate}
-      />
-    </a>
+      </a>
+    </Link>
   );
 };
 
