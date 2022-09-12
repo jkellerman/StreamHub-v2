@@ -1,12 +1,28 @@
-import styles from "../Search/Search.module.css";
+import styles from "../SearchBar/SearchBar.module.css";
 import Image from "next/image";
 import img from "@/public/assets/icon-search.svg";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Search = ({ all, movies, series, hero }) => {
+  const [query, setQuery] = useState("");
+
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (all) {
+      router.push(`/search/${query}`);
+    } else if (movies) {
+      router.push(`/search/movies/${query}`);
+    } else if (series) {
+      router.push(`/search/series/${query}`);
+    }
+  };
   return (
     <form
       className={hero ? styles.heroSearch : styles.form}
-      onSubmit={(e) => e.preventDefault()}
+      onSubmit={handleSubmit}
       autoComplete="off"
     >
       <div className={styles.imageContainer}>
@@ -19,6 +35,8 @@ const Search = ({ all, movies, series, hero }) => {
           aria-label="Search"
           placeholder="Search for movies or TV series"
           className={styles.input}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
       )}
       {movies && (
@@ -28,6 +46,8 @@ const Search = ({ all, movies, series, hero }) => {
           aria-label="Search"
           placeholder="Search for movies"
           className={styles.input}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
       )}
       {series && (
@@ -37,6 +57,8 @@ const Search = ({ all, movies, series, hero }) => {
           aria-label="Search"
           placeholder="Search for TV series"
           className={styles.input}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
         />
       )}
     </form>

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Search from "@/components/Search/Search";
+import SearchBar from "@/components/SearchBar/SearchBar";
 import MediaType from "@/components/MediaType/MediaType";
 
 const Movies = ({ genreList }) => {
@@ -13,7 +13,7 @@ const Movies = ({ genreList }) => {
         />
       </Head>
       <main>
-        <Search movies />
+        <SearchBar movies />
         <MediaType
           type="movies"
           endpoint="api/movies"

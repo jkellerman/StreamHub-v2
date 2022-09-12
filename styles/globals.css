@@ -65,9 +65,3 @@ h1 {
     margin-left: 11rem;
   }
 }
-
-@media (min-width: 90em) {
-  h1 {
-    font-size: 2.5rem;
-  }
-}

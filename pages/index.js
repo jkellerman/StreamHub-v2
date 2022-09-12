@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Search from "@/components/Search/Search";
+import SearchBar from "@/components/SearchBar/SearchBar";
 import Trending from "@/components/Trending/Trending";
 import Category from "@/components/Category/Category";
 
@@ -11,7 +11,7 @@ export default function Home() {
         <meta name="description" content="New movies and series" />
       </Head>
       <main>
-        <Search all />
+        <SearchBar all />
         <Trending />
         <Category
           endpoint="api/series/popular-shows"

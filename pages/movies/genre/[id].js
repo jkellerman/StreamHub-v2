@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Search from "@/components/Search/Search";
+import SearchBar from "@/components/SearchBar/SearchBar";
 import Genre from "@/components/Genre/Genre";
 
 const MovieGenre = ({ genreList }) => {
@@ -19,7 +19,7 @@ const MovieGenre = ({ genreList }) => {
         />
       </Head>
       <main>
-        <Search movies />
+        <SearchBar movies />
         <Genre
           type="movies"
           endpoint={`/api/movies/genre/${id}`}

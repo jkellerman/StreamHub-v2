@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "@/components/Hero/Hero.module.css";
-import Search from "@/components/Search/Search";
+import SearchBar from "@/components/SearchBar/SearchBar";
 import Hero from "@/components/Hero/Hero";
 import Details from "@/components/Details/Details";
 import Overview from "@/components/Overview/Overview";
@@ -31,7 +31,7 @@ const Movie = ({
         <meta name="description" content={`Watch ${name} now`} />
       </Head>
       <main className={styles.main}>
-        <Search movies hero />
+        <SearchBar movies hero />
         <Hero
           image={backdrop}
           name={name}
