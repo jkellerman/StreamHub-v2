@@ -18,14 +18,22 @@ export default function Home() {
           category="popular shows"
         />
         <Category
+          endpoint="api/movies/popular-movies"
+          category="popular movies"
+        />
+        <Category
+          endpoint="api/series/top-rated-shows"
+          category="top rated shows"
+        />
+        <Category
           endpoint="api/movies/upcoming-movies"
           category="upcoming movies"
         />
+        <Category endpoint="api/series/on-the-air" category="on the air" />
         <Category
           endpoint="api/movies/top-rated-movies"
           category=" top rated movies"
         />
-        <Category endpoint="api/series/on-the-air" category="on the air" />
       </main>
     </>
   );
