@@ -19,7 +19,6 @@ const Categories = () => {
   );
 
   const arr = sliceArray(filteredArr, 15);
-  console.log(arr);
   return (
     <>
       <Trending arr={arr} />
