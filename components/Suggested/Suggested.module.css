@@ -76,7 +76,7 @@
   }
 }
 
-@media (min-width: 64em) {
+@media (min-width: 75em) {
   .container {
     border-top: unset;
     margin-top: 0;
@@ -84,33 +84,24 @@
     top: -2rem;
   }
 
-  .heading,
-  .message {
-    margin: 0 2.25rem 2rem 9.75rem;
-    padding: unset;
-  }
-
   .heading {
+    margin: 0 2.25rem 2rem 11rem;
     text-transform: capitalize;
+    padding: 0;
   }
 
+  .message,
   .suggestions {
-    margin: 0 2.25rem 0 9.75rem;
+    margin: 0 2.25rem 2rem 11rem;
+  }
+
+  .message {
+    padding: unset;
   }
 
   .suggestionContainer {
     min-width: 220px;
     height: 140px;
-  }
-}
-
-@media (min-width: 75em) {
-  .heading {
-    margin: 0 2.25rem 2rem 11rem;
-  }
-  .suggestions,
-  .message {
-    margin: 0 2.25rem 0 11rem;
   }
 }
 

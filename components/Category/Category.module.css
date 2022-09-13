@@ -1,13 +1,28 @@
 .container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-flow: row wrap;
+  gap: 1rem;
   margin-bottom: 1.5rem;
   width: 100%;
 }
 
 .linkContainer {
-  flex: 1;
+  width: calc(50% - 10px);
+}
+
+@media (max-width: 23em) {
+  .linkContainer {
+    width: calc(100%);
+  }
+}
+
+@media (min-width: 38em) {
+  .container {
+    gap: 1rem;
+  }
+  .linkContainer {
+    width: calc(33.3333% - 11px);
+  }
 }
 
 @media (min-width: 48em) {
@@ -15,10 +30,17 @@
     gap: 1.875rem;
     margin-bottom: 4rem;
   }
+
+  .linkContainer {
+    width: calc(33.3333% - 20px);
+  }
 }
 
-@media (min-width: 64em) {
+@media (min-width: 90em) {
   .container {
     gap: 2.5rem;
+  }
+  .linkContainer {
+    width: calc(25% - 30px);
   }
 }

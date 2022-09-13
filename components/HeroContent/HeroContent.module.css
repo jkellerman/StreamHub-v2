@@ -69,20 +69,6 @@
 }
 
 @media (min-width: 64em) {
-  .container {
-    margin: 0rem 2.25rem 0 9.75rem;
-    width: unset;
-    bottom: 8rem;
-  }
-
-  .list {
-    font-size: 1.25rem;
-    display: flex;
-  }
-
-  .content {
-    margin: 0;
-  }
 }
 
 @media (min-width: 75em) {
@@ -107,6 +93,15 @@
     min-width: 150px;
     min-height: 230px;
     overflow: hidden;
+  }
+
+  .list {
+    font-size: 1.25rem;
+    display: flex;
+  }
+
+  .content {
+    margin: 0;
   }
 }
 

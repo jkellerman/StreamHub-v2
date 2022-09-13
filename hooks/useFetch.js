@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 
 const useFetch = (endpoint) => {
   const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchMovies = async () => {
+      setIsLoading(true);
       try {
         const response = await fetch(`${endpoint}`);
         const data = await response.json();

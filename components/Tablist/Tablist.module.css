@@ -20,13 +20,12 @@
     display: flex;
     padding-top: 2rem;
     gap: 2rem;
-    /* animation here */
   }
 }
 
-@media (min-width: 64em) {
+@media (min-width: 75em) {
   .container {
-    margin: 0 2.25rem 0 9.75rem;
+    margin: 0 2.25rem 0 11rem;
     width: unset;
     position: relative;
     top: -5rem;
@@ -35,12 +34,6 @@
 
   .tabs {
     gap: 2.5rem;
-  }
-}
-
-@media (min-width: 75em) {
-  .container {
-    margin: 0 2.25rem 0 11rem;
   }
 }
 

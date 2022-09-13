@@ -69,18 +69,10 @@
   }
 }
 
-@media (min-width: 64em) {
+@media (min-width: 75em) {
   .form {
     margin: 2.125rem 0 0;
   }
-
-  .heroSearch {
-    margin: 4.15rem 2.25rem 0 9.75rem;
-    width: unset;
-  }
-}
-
-@media (min-width: 75em) {
   .heroSearch {
     margin: 4.15rem 2.25rem 0 11rem;
   }

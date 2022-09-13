@@ -54,14 +54,14 @@ h1 {
 }
 
 @media (min-width: 64em) {
-  main {
+  /* main {
     margin: 4.25rem 2.25rem 0 8.25rem;
-    width: unset;
-  }
+  } */
 }
 
 @media (min-width: 75em) {
   main {
-    margin-left: 11rem;
+    margin: 4.25rem 2.25rem 0 11rem;
+    width: unset;
   }
 }

@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import useFetch from "hooks/useFetch";
-import styles from "@/components/SearchResults/SearchResults.module.css";
+import categoryStyles from "@/components/Category/Category.module.css";
+import searchResultsStyles from "@/components/SearchResults/SearchResults.module.css";
 import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
@@ -16,12 +17,12 @@ const SearchResults = ({ endpoint }) => {
   return (
     <>
       <div
-        className={styles.heading}
+        className={searchResultsStyles.heading}
       >{`Found ${cards.length} results for '${query}'`}</div>
-      <div className={styles.container}>
+      <div className={categoryStyles.container}>
         {cards.map((item) => {
           return (
-            <article key={item.id} className={styles.linkContainer}>
+            <article key={item.id} className={categoryStyles.linkContainer}>
               <Card
                 id={item.id}
                 image={item.backdrop_path}

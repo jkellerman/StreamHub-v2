@@ -51,7 +51,7 @@
   }
 }
 
-@media (min-width: 64em) {
+@media (min-width: 75em) {
   .overlay {
     background-image: linear-gradient(
       rgba(16, 20, 30, 1) 2%,
@@ -63,9 +63,7 @@
       rgba(16, 20, 30, 1) 80%
     );
   }
-}
 
-@media (min-width: 75em) {
   .imageContainer {
     height: 550px;
   }
