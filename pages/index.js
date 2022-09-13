@@ -2,6 +2,8 @@ import Head from "next/head";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import Trending from "@/components/Trending/Trending";
 import Category from "@/components/Category/Category";
+import { useState } from "react";
+import Categories from "@/components/Categories/Categories";
 
 export default function Home() {
   return (
@@ -12,28 +14,7 @@ export default function Home() {
       </Head>
       <main>
         <SearchBar all />
-        <Trending />
-        <Category
-          endpoint="api/series/popular-shows"
-          category="popular shows"
-        />
-        <Category
-          endpoint="api/movies/popular-movies"
-          category="popular movies"
-        />
-        <Category
-          endpoint="api/series/top-rated-shows"
-          category="top rated shows"
-        />
-        <Category
-          endpoint="api/movies/upcoming-movies"
-          category="upcoming movies"
-        />
-        <Category endpoint="api/series/on-the-air" category="on the air" />
-        <Category
-          endpoint="api/movies/top-rated-movies"
-          category=" top rated movies"
-        />
+        <Categories />
       </main>
     </>
   );

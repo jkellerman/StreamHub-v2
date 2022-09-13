@@ -1,23 +1,7 @@
-import useSWR from "swr";
-import { sliceArray } from "@/utils/utils";
 import TrendingCard from "@/components/TrendingCard/TrendingCard";
 import styles from "@/components/Trending/Trending.module.css";
 
-const Trending = () => {
-  const fetcher = async () => {
-    const response = await fetch("api/trending");
-    const data = await response.json();
-    return data;
-  };
-
-  const { data, error } = useSWR("trending movies", fetcher);
-  if (error) return "An error occured";
-  if (!data) return "Loading";
-  const filteredArr = data.data.results.filter(
-    (type) => type.media_type !== "person"
-  );
-  const arr = sliceArray(filteredArr, 15);
-
+const Trending = ({ arr }) => {
   return (
     <section>
       <h1>Trending</h1>
