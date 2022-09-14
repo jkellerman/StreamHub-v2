@@ -12,9 +12,12 @@
   left: 1rem;
   opacity: 0.7;
 }
-.icon {
+.iconMovies {
   transform: translate(0.25rem, 0.8rem);
-  opacity: 0.8;
+}
+
+.iconSeries {
+  transform: translate(0.25rem, 0.7rem);
 }
 
 .type {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const useFetch = (endpoint) => {
   const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {

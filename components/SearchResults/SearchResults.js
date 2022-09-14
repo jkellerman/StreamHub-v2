@@ -13,6 +13,8 @@ const SearchResults = ({ endpoint }) => {
 
   if (error) return "An error occured";
   if (isLoading) return <LoadingAnimation />;
+  const filteredArr = cards.filter((item) => item.backdrop_path !== null);
+  const arr = filteredArr;
 
   return (
     <>
@@ -20,7 +22,7 @@ const SearchResults = ({ endpoint }) => {
         className={searchResultsStyles.heading}
       >{`Found ${cards.length} results for '${query}'`}</div>
       <div className={categoryStyles.container}>
-        {cards.map((item) => {
+        {arr.map((item) => {
           return (
             <article key={item.id} className={categoryStyles.linkContainer}>
               <Card
