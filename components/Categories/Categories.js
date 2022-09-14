@@ -26,7 +26,7 @@ const Categories = () => {
       <Category endpoint="api/movies/popular-movies" type="popular movies" />
       <Category endpoint="api/series/top-rated-shows" type="top rated shows" />
       <Category endpoint="api/movies/upcoming-movies" type="upcoming movies" />
-      <Category endpoint="api/series/on-the-air" category="on the air" />
+      <Category endpoint="api/series/on-the-air" type="on the air" />
       <Category
         endpoint="api/movies/top-rated-movies"
         type=" top rated movies"
