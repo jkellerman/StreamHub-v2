@@ -12,7 +12,7 @@ const Search = ({ all, movies, series, hero }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (all) {
-      router.push(`/search/${query}`);
+      router.push(`/search/all/${query}`);
     } else if (movies) {
       router.push(`/search/movies/${query}`);
     } else if (series) {

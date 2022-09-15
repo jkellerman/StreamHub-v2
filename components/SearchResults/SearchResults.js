@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import useFetch from "hooks/useFetch";
+import useInfiniteScroll from "hooks/useInfiniteScroll";
 import categoryStyles from "@/components/Category/Category.module.css";
 import searchResultsStyles from "@/components/SearchResults/SearchResults.module.css";
 import Card from "@/components/Card/Card";
@@ -9,20 +9,16 @@ import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 const SearchResults = ({ endpoint }) => {
   const router = useRouter();
   const { query } = router.query;
-  const { isLoading, cards, error } = useFetch(endpoint);
-
-  if (error) return "An error occured";
+  const { cards, isLoading } = useInfiniteScroll(endpoint);
   if (isLoading) return <LoadingAnimation />;
-  const filteredArr = cards.filter((item) => item.backdrop_path !== null);
-  const arr = filteredArr;
 
   return (
     <>
       <div
         className={searchResultsStyles.heading}
-      >{`Found ${cards.length} results for '${query}'`}</div>
+      >{`Results for '${query}'`}</div>
       <div className={categoryStyles.container}>
-        {arr.map((item) => {
+        {cards.map((item) => {
           return (
             <article key={item.id} className={categoryStyles.linkContainer}>
               <Card

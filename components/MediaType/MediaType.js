@@ -1,5 +1,6 @@
 // import useSWR from "swr";
-import useSWRFetch from "hooks/useSWRFetch";
+// import useSWRFetch from "hooks/useSWRFetch";
+import useInfiniteScroll from "hooks/useInfiniteScroll";
 import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import styles from "@/components/Category/Category.module.css";
@@ -13,52 +14,55 @@ const MediaType = ({
   movieGenreList,
   seriesGenreList,
 }) => {
-  const { data, isError } = useSWRFetch(endpoint, type);
+  // const { data, isError } = useSWRFetch(endpoint, type);
 
-  if (!data) return <LoadingAnimation />;
-  if (isError) return "An error has occured";
+  // if (!data) return <LoadingAnimation />;
+  // if (isError) return "An error has occured";
 
-  if (data) {
-    const filteredArr = data.data.results.filter(
-      (item) => item.backdrop_path !== null
-    );
+  // if (data) {
+  //   const filteredArr = data.data.results.filter(
+  //     (item) => item.backdrop_path !== null
+  //   );
 
-    const arr = filteredArr;
+  //   const arr = filteredArr;
 
-    return (
-      <section>
-        <Dropdown
-          type={type}
-          popular={popular}
-          movieGenreList={movieGenreList}
-          seriesGenreList={seriesGenreList}
-        />
-        <h1>{type}</h1>
-        <div className={styles.container}>
-          {arr.map((item) => {
-            return (
-              <article key={item.id} className={styles.linkContainer}>
-                <Card
-                  id={item.id}
-                  image={item.backdrop_path}
-                  releaseDate={item.release_date}
-                  title={item.title}
-                  airDate={item.first_air_date}
-                  seriesName={item.name}
-                />
-                <CardDetails
-                  releaseDate={item.release_date}
-                  title={item.title}
-                  airDate={item.first_air_date}
-                  seriesName={item.name}
-                />
-              </article>
-            );
-          })}
-        </div>
-      </section>
-    );
-  }
+  const { cards, isLoading } = useInfiniteScroll(endpoint);
+  if (isLoading) return <LoadingAnimation />;
+
+  return (
+    <section>
+      <Dropdown
+        type={type}
+        popular={popular}
+        movieGenreList={movieGenreList}
+        seriesGenreList={seriesGenreList}
+      />
+      <h1>{type}</h1>
+      <div className={styles.container}>
+        {cards.map((item) => {
+          return (
+            <article key={item.id} className={styles.linkContainer}>
+              <Card
+                id={item.id}
+                image={item.backdrop_path}
+                releaseDate={item.release_date}
+                title={item.title}
+                airDate={item.first_air_date}
+                seriesName={item.name}
+              />
+              <CardDetails
+                releaseDate={item.release_date}
+                title={item.title}
+                airDate={item.first_air_date}
+                seriesName={item.name}
+              />
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
 };
+// };
 
 export default MediaType;

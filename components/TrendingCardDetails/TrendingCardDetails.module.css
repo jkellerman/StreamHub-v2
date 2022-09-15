@@ -15,9 +15,12 @@
   left: 1rem;
 }
 
-.icon {
+.iconMovies {
   transform: translate(0.25rem, 0.8rem);
-  opacity: 0.8;
+}
+
+.iconSeries {
+  transform: translate(0.25rem, 0.7rem);
 }
 
 @media (max-width: 20em) {
@@ -33,7 +36,7 @@
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 1.75rem;
     left: 2rem;
   }
 }

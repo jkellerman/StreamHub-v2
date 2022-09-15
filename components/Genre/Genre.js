@@ -2,76 +2,11 @@ import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import styles from "@/components/Category/Category.module.css";
 import Dropdown from "@/components/Dropdown/Dropdown";
-// import useFetch from "hooks/useFetch";
-import { useState, useEffect, useRef } from "react";
-
+import useInfiniteScroll from "hooks/useInfiniteScroll";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 const Genre = ({ endpoint, type, name, movieGenreList, seriesGenreList }) => {
-  const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(1);
-  const [newImages, setNewImages] = useState(false);
-  const mounted = useRef(false);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        if (!endpoint) return;
-        const response = await fetch(`${endpoint}/${page}`);
-        const data = await response.json();
-        const filteredArr = data.data.results.filter(
-          (item) => item.backdrop_path !== null
-        );
-        const arr = filteredArr;
-        setCards((prev) => {
-          if (page === 1) return arr;
-          else return [...prev, ...arr];
-        });
-        setNewImages(false);
-        setIsLoading(false);
-      } catch (error) {
-        setNewImages(false);
-        setIsLoading(false);
-      }
-    };
-    fetchMovies();
-  }, [page]);
-
-  useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true;
-      return;
-    }
-    if (!newImages) return;
-    setPage((OldPage) => {
-      return OldPage + 1;
-    });
-  }, [newImages]);
-
-  const event = () => {
-    if (
-      window.innerHeight + window.scrollY >=
-      document.body.scrollHeight - 100
-    ) {
-      setNewImages(true);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", event);
-    return () => window.removeEventListener("scroll", event);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true;
-      return;
-    }
-    setIsLoading(true);
-    setPage(1);
-  }, [endpoint]);
-
+  const { cards, isLoading } = useInfiniteScroll(endpoint);
   if (isLoading) return <LoadingAnimation />;
 
   return (

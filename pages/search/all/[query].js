@@ -17,7 +17,7 @@ const Search = () => {
       </Head>
       <main>
         <SearchBar all />
-        <SearchResults all endpoint={`/api/search/${query}`} />
+        <SearchResults all endpoint={`/api/search/all/${query}`} />
       </main>
     </>
   );
