@@ -16,8 +16,8 @@ const SearchResults = ({ endpoint }) => {
     <>
       <div className={searchResultsStyles.heading}>
         {cards.length !== 0
-          ? `Results for '${query}'`
-          : `No Results for '${query}'`}
+          ? `Results found for '${query.replaceAll("-", " ")}'`
+          : `No Results found for '${query.replaceAll("-", " ")}'`}
       </div>
       <div className={categoryStyles.container}>
         {cards.map((item) => {

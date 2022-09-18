@@ -12,11 +12,11 @@ const Search = ({ all, movies, series, hero }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (all) {
-      router.push(`/search/all/${query}`);
+      router.push(`/search/all/${query.replaceAll(" ", "-")}`);
     } else if (movies) {
-      router.push(`/search/movies/${query}`);
+      router.push(`/search/movies/${query.replaceAll(" ", "-")}`);
     } else if (series) {
-      router.push(`/search/series/${query}`);
+      router.push(`/search/series/${query.replaceAll(" ", "-")}`);
     }
   };
   return (

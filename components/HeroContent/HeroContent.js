@@ -71,7 +71,7 @@ const Content = ({
           </ul>
         </div>
         <p className={styles.overview}>
-          {overview.length > 338 ? `${overview.slice(0, 338)}...` : overview}
+          {overview.length > 320 ? `${overview.slice(0, 320)}...` : overview}
         </p>
       </div>
     </div>

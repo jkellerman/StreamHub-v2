@@ -23,12 +23,13 @@ const Movie = ({
   genres,
   watch_providers,
   suggested,
+  title,
 }) => {
   return (
     <>
       <Head>
-        <title>{`${name} | Entertainment`}</title>
-        <meta name="description" content={`Watch ${name} now`} />
+        <title>{`${title} | Entertainment`}</title>
+        <meta name="description" content={`Watch ${title} now`} />
       </Head>
       <main className={styles.main}>
         <SearchBar movies hero />
@@ -42,6 +43,7 @@ const Movie = ({
           rating={vote_average}
           overview={overview}
           poster={poster}
+          title={title}
         />
         <WatchProviders watch_providers={watch_providers} />
         <Overview
@@ -100,6 +102,7 @@ export async function getServerSideProps(context) {
     credits,
     genres,
     recommendations,
+    title,
   } = data;
 
   const getDirector = credits.crew.find(
@@ -139,6 +142,7 @@ export async function getServerSideProps(context) {
       genres,
       watch_providers,
       suggested: recommendations,
+      title,
     },
   };
 }

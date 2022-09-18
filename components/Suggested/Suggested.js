@@ -20,8 +20,12 @@ const Suggested = ({ suggested, movies }) => {
                 <Link
                   href={
                     movies
-                      ? `/movies/${suggestion.id}?name=${suggestion.title}`
-                      : `/series/${suggestion.id}?name=${suggestion.name}`
+                      ? `/movies/${
+                          suggestion.id
+                        }?name=${suggestion.title.replace(/\s+/g, "-")}`
+                      : `/series/${
+                          suggestion.id
+                        }?name=${suggestion.name.replace(/\s+/g, "-")}`
                   }
                 >
                   <a className={styles.suggestionContainer}>

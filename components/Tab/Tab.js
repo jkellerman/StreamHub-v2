@@ -6,7 +6,6 @@ const Tab = ({ isTabActive, handleClick, tab, handleScroll }) => {
       {tab === 1 && (
         <div className={styles.tabContainer}>
           <a
-            href="#tablist"
             className={
               isTabActive === 1
                 ? `${styles.tab} ${styles.active}`
@@ -24,7 +23,6 @@ const Tab = ({ isTabActive, handleClick, tab, handleScroll }) => {
       {tab === 2 && (
         <div className={styles.tabContainer}>
           <a
-            href="#tablist"
             className={
               isTabActive === 2
                 ? `${styles.tab} ${styles.active}`
@@ -42,7 +40,6 @@ const Tab = ({ isTabActive, handleClick, tab, handleScroll }) => {
       {tab === 3 && (
         <div className={styles.tabContainer}>
           <a
-            href="#tablist"
             className={
               isTabSelected === 3
                 ? `${styles.tabHighlighted} ${styles.tabSuggested}`

@@ -23,12 +23,14 @@ const Series = ({
   suggested,
   seasons,
   network,
+  title,
 }) => {
+  console.log(title);
   return (
     <>
       <Head>
-        <title>{`${name} | Entertainment`}</title>
-        <meta name="description" content={`Watch ${name} now`} />
+        <title>{`${title} | Entertainment`}</title>
+        <meta name="description" content={`Watch ${title} now`} />
       </Head>
       <main className={styles.main}>
         <SearchBar series hero />
@@ -42,6 +44,7 @@ const Series = ({
           overview={overview}
           poster={poster}
           seasons={seasons}
+          title={title}
         />
         <WatchProviders watch_providers={watch_providers} />
         <Overview
@@ -101,6 +104,7 @@ export async function getServerSideProps(context) {
     recommendations,
     number_of_seasons,
     networks,
+    name: title,
   } = data;
 
   const certification =
@@ -136,6 +140,7 @@ export async function getServerSideProps(context) {
       suggested: recommendations,
       seasons: number_of_seasons,
       network,
+      title,
     },
   };
 }

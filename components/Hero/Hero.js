@@ -16,7 +16,7 @@ const Hero = ({
   poster,
   air_date,
   seasons,
-  series,
+  title,
 }) => {
   return (
     <section className={styles.hero}>
@@ -24,7 +24,7 @@ const Hero = ({
       <div className={styles.imageContainer}>
         <Image
           src={`${BASE_URL_IMAGE}${image}`}
-          alt={`${name} backdrop`}
+          alt={`${title} backdrop`}
           layout="fill"
           objectFit="cover"
           objectPosition={"top"}
@@ -32,7 +32,7 @@ const Hero = ({
         />
       </div>
       <HeroContent
-        title={name}
+        // name={name}
         tagline={tagline}
         age_rating={age_rating}
         series_age_rating={series_age_rating}
@@ -43,6 +43,7 @@ const Hero = ({
         poster={poster}
         air_date={air_date}
         seasons={seasons}
+        title={title}
         series
       />
     </section>
