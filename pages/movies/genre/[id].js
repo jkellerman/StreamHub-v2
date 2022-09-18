@@ -55,6 +55,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { params } = context;
   const { id } = params;
+
   const response = await fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&language=en-GB&sort_by=popularity.desc&page=1&with_genres=${id}`
   );

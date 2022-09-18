@@ -8,8 +8,8 @@ const Card = ({ id, image, seriesName, title }) => {
     <Link
       href={
         title
-          ? `/movies/${id}?name=${title.replaceAll(" ", "-")}`
-          : `/series/${id}?name=${seriesName.replaceAll(" ", "-")}`
+          ? `/movies/${id}/${title.replaceAll(" ", "-")}`
+          : `/series/${id}/${seriesName.replaceAll(" ", "-")}`
       }
     >
       <a className={styles.container}>
