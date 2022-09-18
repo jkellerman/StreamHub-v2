@@ -1,5 +1,6 @@
 import styles from "@/components/Overview/Overview.module.css";
 import StarRating from "../StarRating/StarRating";
+import { useState } from "react";
 
 const Overview = ({
   age_rating,
@@ -9,6 +10,8 @@ const Overview = ({
   series_age_rating,
   air_date,
 }) => {
+  const [readMore, setReadMore] = useState(false);
+
   return (
     <>
       <section className={styles.container}>
@@ -26,7 +29,20 @@ const Overview = ({
         ) : (
           <span className={styles.date}>{air_date.slice(0, 4)}</span>
         )}
-        <p className={styles.overview}>{overview}</p>
+        {overview.length <= 275 && (
+          <p className={styles.overview}>{overview}</p>
+        )}
+        {overview.length > 275 && (
+          <p className={styles.overview}>
+            {readMore ? overview : `${overview.substring(0, 275)}...`}
+            <button
+              className={styles.readMoreToggle}
+              onClick={() => setReadMore(!readMore)}
+            >
+              {readMore ? "show less" : "read more"}
+            </button>
+          </p>
+        )}
       </section>
       {vote_average > 0 && (
         <div className={styles.ratingContainer}>

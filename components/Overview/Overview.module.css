@@ -23,6 +23,16 @@
   display: none;
 }
 
+.readMoreToggle {
+  background: transparent;
+  color: var(--Red);
+  border: none;
+  text-transform: capitalize;
+  font-size: inherit;
+  padding: 0;
+  margin-left: 0.5rem;
+}
+
 @media (min-width: 48em) {
   .container {
     display: none;
