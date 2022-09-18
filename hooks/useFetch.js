@@ -18,7 +18,7 @@ const useFetch = (endpoint) => {
         setCards(arr);
         setIsLoading(false);
       } catch (error) {
-        setError("An error occured");
+        setError("An error occured, reload page");
       }
     };
     fetchMovies();

@@ -78,7 +78,8 @@
     align-items: flex-start;
     gap: 2rem;
     bottom: 6rem;
-    margin: 0rem 2.25rem 0 11rem;
+    margin: 4.15rem 2.25rem 0 11rem;
+    width: unset;
   }
   .overview {
     width: 90%;

@@ -74,6 +74,7 @@
     margin: 2.125rem 0 0;
   }
   .heroSearch {
+    width: unset;
     margin: 4.15rem 2.25rem 0 11rem;
   }
 }

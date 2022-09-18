@@ -53,12 +53,6 @@ h1 {
   }
 }
 
-@media (min-width: 64em) {
-  /* main {
-    margin: 4.25rem 2.25rem 0 8.25rem;
-  } */
-}
-
 @media (min-width: 75em) {
   main {
     margin: 4.25rem 2.25rem 0 11rem;

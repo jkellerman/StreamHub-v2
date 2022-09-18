@@ -12,7 +12,7 @@ const Categories = () => {
   };
 
   const { data, error } = useSWR("trending movies", fetcher);
-  if (error) return "An error occured";
+  if (error) return "An error occured, reload page";
   if (!data) return <LoadingAnimation />;
   const filteredArr = data.data.results.filter(
     (type) => type.media_type !== "person"

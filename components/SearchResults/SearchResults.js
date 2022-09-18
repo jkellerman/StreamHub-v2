@@ -14,9 +14,11 @@ const SearchResults = ({ endpoint }) => {
 
   return (
     <>
-      <div
-        className={searchResultsStyles.heading}
-      >{`Results for '${query}'`}</div>
+      <div className={searchResultsStyles.heading}>
+        {cards.length !== 0
+          ? `Results for '${query}'`
+          : `No Results for '${query}'`}
+      </div>
       <div className={categoryStyles.container}>
         {cards.map((item) => {
           return (

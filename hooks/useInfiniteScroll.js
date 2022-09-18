@@ -7,7 +7,6 @@ const useInfiniteScroll = (endpoint) => {
   const [newImages, setNewImages] = useState(false);
   const mounted = useRef(false);
   const url = `${endpoint}/${page}`;
-  console.log(cards);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -19,6 +18,7 @@ const useInfiniteScroll = (endpoint) => {
           (item) => item.backdrop_path !== null && !item.known_for_department
         );
         const arr = filteredArr;
+
         setCards((prev) => {
           if (page === 1) return arr;
           else return [...prev, ...arr];
