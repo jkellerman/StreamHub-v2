@@ -9,7 +9,7 @@ const Movies = ({ genreList }) => {
         <title>Movies | Entertainment</title>
         <meta
           name="description"
-          content="Stream now for access to the best movies"
+          content="Find out where to watch movies from Netflix, Amazon Prime, Disney+ and many more services"
         />
       </Head>
       <main>

@@ -9,8 +9,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Entertainment | Trending Movies and Series</title>
-        <meta name="description" content="New movies and series" />
+        <title>Entertainment | Streaming Movies and TV series guide</title>
+        <meta
+          name="description"
+          content="Entertainment allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other other providers in one place."
+        />
       </Head>
       <main>
         <SearchBar all />

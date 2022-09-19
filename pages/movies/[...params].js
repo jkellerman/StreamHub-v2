@@ -28,8 +28,8 @@ const Movie = ({
   return (
     <>
       <Head>
-        <title>{`${title} | Entertainment`}</title>
-        <meta name="description" content={`Watch ${title} now`} />
+        <title>{`Watch ${title} online | Entertainment`}</title>
+        <meta name="description" content={`Where to watch ${title}`} />
       </Head>
       <main className={styles.main}>
         <SearchBar movies hero />
