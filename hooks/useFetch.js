@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-const useSWRFetch = (endpoint, type) => {
+const useFetch = (endpoint, type) => {
   const fetcher = async () => {
     const response = await fetch(`${endpoint}`);
     const data = response.json();
@@ -16,4 +16,4 @@ const useSWRFetch = (endpoint, type) => {
   };
 };
 
-export default useSWRFetch;
+export default useFetch;

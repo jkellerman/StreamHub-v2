@@ -8,7 +8,7 @@
   }
   .overview {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 2rem;
     line-height: 25px;
   }
   .posterContainer {
@@ -81,6 +81,10 @@
 
   .attributesList {
     display: flex;
+  }
+
+  .overview {
+    margin-bottom: 0;
   }
 
   .genre {

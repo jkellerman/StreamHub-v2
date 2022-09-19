@@ -23,7 +23,7 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
         {watch_providers.length === 0 && <span>No current providers</span>}
         {watch_providers.flatrate && (
           <div>
-            <h3 className={styles.headingMethod}>Stream</h3>
+            <h2 className={styles.headingMethod}>Stream</h2>
             <div className={styles.icons}>
               {watch_providers.flatrate.map((provider) => {
                 return (
@@ -75,7 +75,7 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
         )}
         {watch_providers.rent && (
           <div>
-            <h3 className={styles.headingMethod}>Rent</h3>
+            <h2 className={styles.headingMethod}>Rent</h2>
             <div className={styles.icons}>
               {watch_providers.rent.map((provider) => {
                 return (

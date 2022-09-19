@@ -10,7 +10,7 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
 
   return (
     <section className={styles.container}>
-      <h4 className={styles.heading}>suggested</h4>
+      <div className={styles.heading}>suggested</div>
 
       {suggested.results.length > 0 ? (
         <div className={styles.suggestions}>
