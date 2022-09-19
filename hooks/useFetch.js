@@ -1,30 +1,19 @@
-import { useState, useEffect } from "react";
+import useSWR from "swr";
 
-const useFetch = (endpoint) => {
-  const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
+const useSWRFetch = (endpoint, type) => {
+  const fetcher = async () => {
+    const response = await fetch(`${endpoint}`);
+    const data = response.json();
+    return data;
+  };
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      setIsLoading(true);
-      try {
-        const response = await fetch(`${endpoint}`);
-        const data = await response.json();
-        const filteredArr = data.data.results.filter(
-          (item) => item.backdrop_path !== null
-        );
-        const arr = filteredArr;
-        setCards(arr);
-        setIsLoading(false);
-      } catch (error) {
-        setError("An error occured, reload page");
-      }
-    };
-    fetchMovies();
-  }, [endpoint]);
+  const { data, error } = useSWR(`${type}`, fetcher);
 
-  return { cards, isLoading, error };
+  return {
+    data,
+    isLoading: !error && !data,
+    isError: error,
+  };
 };
 
-export default useFetch;
+export default useSWRFetch;

@@ -25,7 +25,7 @@ const TrendingCard = ({
         <article className={styles.container}>
           <Image
             src={`${BASE_URL_IMAGE}${image}`}
-            alt={`Backdrop of the movie "${movieTitle || seriesName}"`}
+            alt={`${movieTitle || seriesName}`}
             layout="fill"
             objectFit="cover"
             placeholder="blur"

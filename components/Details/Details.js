@@ -1,7 +1,6 @@
 import styles from "@/components/Details/Details.module.css";
 import Link from "next/link";
 import { toHoursAndMinutes } from "@/utils/utils";
-import { useEffect, useState } from "react";
 
 const Details = ({
   director,

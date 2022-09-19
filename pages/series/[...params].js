@@ -28,7 +28,7 @@ const Series = ({
   return (
     <>
       <Head>
-        <title>{`Watch ${title} online | Entertainment`}</title>
+        <title>{`Watch ${title} Online | Entertainment`}</title>
         <meta name="description" content={`Where to watch ${title}`} />
       </Head>
       <main className={styles.main}>
@@ -71,7 +71,6 @@ const Series = ({
           cast={cast}
           genres={genres}
           watch_providers={watch_providers}
-          suggested={suggested}
         />
         <Suggested suggested={suggested} series />
       </main>

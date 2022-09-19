@@ -21,8 +21,8 @@
 
 .chevron {
   position: absolute;
-  right: 0.75rem;
   top: 0.9rem;
+  right: 0.75rem;
 }
 
 @media (min-width: 48em) {

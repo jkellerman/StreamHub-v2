@@ -16,11 +16,9 @@ const Tablist = ({
   cast,
   genres,
   watch_providers,
-  suggested,
   seasons,
   network,
   series_age_rating,
-  movies,
 }) => {
   const [isTabActive, setIsTabActive] = useState(1);
   const tab = useRef();

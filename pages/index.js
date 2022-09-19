@@ -1,8 +1,5 @@
 import Head from "next/head";
 import SearchBar from "@/components/SearchBar/SearchBar";
-import Trending from "@/components/Trending/Trending";
-import Category from "@/components/Category/Category";
-import { useState } from "react";
 import Categories from "@/components/Categories/Categories";
 
 export default function Home() {

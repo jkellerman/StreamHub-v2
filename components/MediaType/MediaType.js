@@ -1,5 +1,3 @@
-// import useSWR from "swr";
-// import useSWRFetch from "hooks/useSWRFetch";
 import useInfiniteScroll from "hooks/useInfiniteScroll";
 import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
@@ -14,18 +12,6 @@ const MediaType = ({
   movieGenreList,
   seriesGenreList,
 }) => {
-  // const { data, isError } = useSWRFetch(endpoint, type);
-
-  // if (!data) return <LoadingAnimation />;
-  // if (isError) return "An error has occured";
-
-  // if (data) {
-  //   const filteredArr = data.data.results.filter(
-  //     (item) => item.backdrop_path !== null
-  //   );
-
-  //   const arr = filteredArr;
-
   const { cards, isLoading } = useInfiniteScroll(endpoint);
   if (isLoading) return <LoadingAnimation />;
 

@@ -1,18 +1,13 @@
-import useSWR from "swr";
+import useFetch from "hooks/useFetch";
 import { sliceArray } from "@/utils/utils";
 import Trending from "../Trending/Trending";
 import Category from "../Category/Category";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 const Categories = () => {
-  const fetcher = async () => {
-    const response = await fetch("api/trending");
-    const data = await response.json();
-    return data;
-  };
+  const { data, isError } = useFetch("api/trending");
 
-  const { data, error } = useSWR("trending movies", fetcher);
-  if (error) return "An error occured, reload page";
+  if (isError) return "An error occured, reload page";
   if (!data) return <LoadingAnimation />;
   const filteredArr = data.data.results.filter(
     (type) => type.media_type !== "person"

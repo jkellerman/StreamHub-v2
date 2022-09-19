@@ -28,7 +28,7 @@ const Movie = ({
   return (
     <>
       <Head>
-        <title>{`Watch ${title} online | Entertainment`}</title>
+        <title>{`Watch ${title} Online | Entertainment`}</title>
         <meta name="description" content={`Where to watch ${title}`} />
       </Head>
       <main className={styles.main}>
@@ -71,8 +71,6 @@ const Movie = ({
           cast={cast}
           genres={genres}
           watch_providers={watch_providers}
-          suggested={suggested}
-          movies={true}
         />
         <Suggested suggested={suggested} movies />
       </main>

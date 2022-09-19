@@ -1,33 +1,16 @@
-import useSWRFetch from "hooks/useSWRFetch";
-import { useEffect, useState } from "react";
+import useFetch from "hooks/useFetch";
 import { sliceArray } from "@/utils/utils";
 import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import styles from "@/components/Category/Category.module.css";
-import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 const Category = ({ endpoint, type }) => {
-  // const [categories, setCategories] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchResults = async () => {
-  //     const response = await fetch(`${endpoint}`);
-  //     const data = await response.json();
-  //     const filteredArr = data.data.results.filter(
-  //       (item) => item.backdrop_path !== null
-  //     );
-  //     const arr = sliceArray(filteredArr, 12);
-  //     setCategories(arr);
-  //   };
-  //   fetchResults();
-  // }, [endpoint]);
-
-  const { data, isError } = useSWRFetch(endpoint, type);
+  const { data, isError } = useFetch(endpoint, type);
 
   if (!data) {
     return [];
   }
-  if (isError) return `An error occured for ${type}`;
+  if (isError) return `An error occured, reload page`;
 
   const filteredArr = data.data.results.filter(
     (item) => item.backdrop_path !== null

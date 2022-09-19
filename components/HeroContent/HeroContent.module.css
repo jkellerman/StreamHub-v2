@@ -68,9 +68,6 @@
   }
 }
 
-@media (min-width: 64em) {
-}
-
 @media (min-width: 75em) {
   .container {
     display: flex;

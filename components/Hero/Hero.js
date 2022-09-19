@@ -5,7 +5,6 @@ import HeroContent from "../HeroContent/HeroContent";
 
 const Hero = ({
   image,
-  name,
   tagline,
   age_rating,
   series_age_rating,
@@ -32,7 +31,6 @@ const Hero = ({
         />
       </div>
       <HeroContent
-        // name={name}
         tagline={tagline}
         age_rating={age_rating}
         series_age_rating={series_age_rating}
@@ -44,7 +42,6 @@ const Hero = ({
         air_date={air_date}
         seasons={seasons}
         title={title}
-        series
       />
     </section>
   );
