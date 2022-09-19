@@ -34,7 +34,7 @@ const WatchProviders = ({ watch_providers }) => {
                       src={`${BASE_URL_IMAGE}${provider.logo_path}`}
                       alt={provider.provider_name}
                       layout="fill"
-                      objectFit="cover"
+                      objectFit="contain"
                       priority
                     />
                   </a>

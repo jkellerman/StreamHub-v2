@@ -17,8 +17,8 @@ const TrendingCard = ({
     <Link
       href={
         movieTitle
-          ? `/movies/${id}?name=${movieTitle}`
-          : `/series/${id}?name=${seriesName}`
+          ? `/movies/${id}/${movieTitle.replaceAll(" ", "-")}`
+          : `/series/${id}/${seriesName.replaceAll(" ", "-")}`
       }
     >
       <a className={styles.link}>

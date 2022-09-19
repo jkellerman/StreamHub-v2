@@ -30,7 +30,6 @@
   text-transform: capitalize;
   font-size: inherit;
   padding: 0;
-  margin-left: 0.5rem;
 }
 
 @media (min-width: 48em) {
