@@ -7,6 +7,7 @@ import Overview from "@/components/Overview/Overview";
 import Tablist from "@/components/Tablist/Tablist";
 import WatchProviders from "@/components/WatchProviders/WatchProviders";
 import Suggested from "@/components/Suggested/Suggested";
+import useReadMore from "hooks/useReadMore";
 
 const Series = ({
   name,
@@ -25,6 +26,8 @@ const Series = ({
   network,
   title,
 }) => {
+  const { readMore, handleToggle, closeReadMore } = useReadMore();
+
   return (
     <>
       <Head>
@@ -51,6 +54,8 @@ const Series = ({
           series_age_rating={series_age_rating}
           air_date={air_date}
           vote_average={vote_average}
+          readMore={readMore}
+          handleToggle={handleToggle}
         />
         <Details
           network={network}
@@ -72,7 +77,7 @@ const Series = ({
           genres={genres}
           watch_providers={watch_providers}
         />
-        <Suggested suggested={suggested} series />
+        <Suggested suggested={suggested} series closeReadMore={closeReadMore} />
       </main>
     </>
   );

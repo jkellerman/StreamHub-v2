@@ -20,7 +20,9 @@
 }
 
 .ratingContainer {
-  display: none;
+  border-bottom: 1px solid var(--Semi-dark-blue);
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .readMoreToggle {
@@ -34,6 +36,10 @@
 
 @media (min-width: 48em) {
   .container {
+    display: none;
+  }
+
+  .ratingContainer {
     display: none;
   }
 }

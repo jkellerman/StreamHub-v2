@@ -7,6 +7,7 @@ import Overview from "@/components/Overview/Overview";
 import WatchProviders from "@/components/WatchProviders/WatchProviders";
 import Tablist from "@/components/Tablist/Tablist";
 import Suggested from "@/components/Suggested/Suggested";
+import useReadMore from "hooks/useReadMore";
 
 const Movie = ({
   name,
@@ -25,6 +26,8 @@ const Movie = ({
   suggested,
   title,
 }) => {
+  const { readMore, handleToggle, closeReadMore } = useReadMore();
+
   return (
     <>
       <Head>
@@ -51,6 +54,8 @@ const Movie = ({
           age_rating={age_rating.certification}
           release_date={release_date}
           vote_average={vote_average}
+          readMore={readMore}
+          handleToggle={handleToggle}
         />
         <Details
           director={director}
@@ -72,7 +77,7 @@ const Movie = ({
           genres={genres}
           watch_providers={watch_providers}
         />
-        <Suggested suggested={suggested} movies />
+        <Suggested suggested={suggested} movies closeReadMore={closeReadMore} />
       </main>
     </>
   );

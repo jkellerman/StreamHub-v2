@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { BASE_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 
-const Suggested = ({ suggested, movies }) => {
+const Suggested = ({ suggested, movies, closeReadMore }) => {
   const suggestedArr = suggested.results.filter(
     (suggested) => suggested.backdrop_path !== null
   );
@@ -30,7 +30,10 @@ const Suggested = ({ suggested, movies }) => {
                         )}`
                   }
                 >
-                  <a className={styles.suggestionContainer}>
+                  <a
+                    className={styles.suggestionContainer}
+                    onClick={() => closeReadMore()}
+                  >
                     <Image
                       src={`${BASE_URL_IMAGE}${suggestion.backdrop_path}`}
                       alt={`${suggestion.title} backdrop`}

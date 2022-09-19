@@ -20,11 +20,11 @@ const Tablist = ({
   network,
   series_age_rating,
 }) => {
-  const [isTabActive, setIsTabActive] = useState(1);
+  const [activeTab, setActiveTab] = useState(1);
   const tab = useRef();
 
   const handleClick = (number) => {
-    setIsTabActive(number);
+    setActiveTab(number);
   };
 
   const handleScroll = () => {
@@ -35,13 +35,13 @@ const Tablist = ({
     <section className={styles.container} ref={tab}>
       <nav className={styles.tabs}>
         <Tab
-          isTabActive={isTabActive}
+          activeTab={activeTab}
           handleClick={handleClick}
           tab={1}
           handleScroll={handleScroll}
         />
         <Tab
-          isTabActive={isTabActive}
+          activeTab={activeTab}
           handleClick={handleClick}
           tab={2}
           handleScroll={handleScroll}
@@ -49,15 +49,15 @@ const Tablist = ({
       </nav>
       <section className={styles.contentContainer}>
         <article>
-          {isTabActive === 1 && (
+          {activeTab === 1 && (
             <WatchProvidersTab
               watch_providers={watch_providers}
-              isTabActive={isTabActive}
+              activeTab={activeTab}
             />
           )}
         </article>
         <article className={styles.detailsContainer}>
-          {isTabActive === 2 && (
+          {activeTab === 2 && (
             <DetailsTab
               name={name}
               age_rating={age_rating}
@@ -72,7 +72,7 @@ const Tablist = ({
               series_age_rating={series_age_rating}
               seasons={seasons}
               network={network}
-              isTabActive={isTabActive}
+              activeTab={activeTab}
             />
           )}
         </article>

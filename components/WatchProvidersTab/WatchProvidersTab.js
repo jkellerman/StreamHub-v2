@@ -3,11 +3,11 @@ import { BASE_URL_IMAGE } from "@/utils/utils";
 import Image from "next/image";
 import img from "@/public/assets/justWatch.svg";
 
-const WatchProvidersTab = ({ watch_providers, isTabActive }) => {
+const WatchProvidersTab = ({ watch_providers, activeTab }) => {
   return (
     <section
       className={
-        isTabActive === 1 ? `${styles.container} ${styles.active}` : null
+        activeTab === 1 ? `${styles.container} ${styles.active}` : null
       }
     >
       <div className={styles.justWatchLogoContainer}>

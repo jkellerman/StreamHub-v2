@@ -23,13 +23,13 @@ const DetailsTab = ({
   series_age_rating,
   seasons,
   network,
-  isTabActive,
+  activeTab,
 }) => {
   return (
     <>
       <div
         className={
-          isTabActive === 2
+          activeTab === 2
             ? `${styles.details} ${styles.active}`
             : styles.details
         }

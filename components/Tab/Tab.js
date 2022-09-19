@@ -1,13 +1,13 @@
 import styles from "@/components/Tab/Tab.module.css";
 
-const Tab = ({ isTabActive, handleClick, tab, handleScroll }) => {
+const Tab = ({ activeTab, handleClick, tab, handleScroll }) => {
   return (
     <>
       {tab === 1 && (
         <div className={styles.tabContainer}>
           <a
             className={
-              isTabActive === 1
+              activeTab === 1
                 ? `${styles.tab} ${styles.active}`
                 : `${styles.tab} `
             }
@@ -24,7 +24,7 @@ const Tab = ({ isTabActive, handleClick, tab, handleScroll }) => {
         <div className={styles.tabContainer}>
           <a
             className={
-              isTabActive === 2
+              activeTab === 2
                 ? `${styles.tab} ${styles.active}`
                 : `${styles.tab} `
             }
@@ -34,20 +34,6 @@ const Tab = ({ isTabActive, handleClick, tab, handleScroll }) => {
             }}
           >
             Details
-          </a>
-        </div>
-      )}
-      {tab === 3 && (
-        <div className={styles.tabContainer}>
-          <a
-            className={
-              isTabSelected === 3
-                ? `${styles.tabHighlighted} ${styles.tabSuggested}`
-                : `${styles.tab} ${styles.tabSuggested}`
-            }
-            onClick={() => handleClick(3)}
-          >
-            Suggested
           </a>
         </div>
       )}

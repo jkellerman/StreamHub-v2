@@ -1,6 +1,5 @@
 import styles from "@/components/Overview/Overview.module.css";
 import StarRating from "../StarRating/StarRating";
-import { useState } from "react";
 
 const Overview = ({
   age_rating,
@@ -9,9 +8,9 @@ const Overview = ({
   vote_average,
   series_age_rating,
   air_date,
+  readMore,
+  handleToggle,
 }) => {
-  const [readMore, setReadMore] = useState(false);
-
   return (
     <>
       <section className={styles.container}>
@@ -37,7 +36,7 @@ const Overview = ({
             {readMore ? overview : `${overview.substring(0, 275)}...`}
             <button
               className={styles.readMoreToggle}
-              onClick={() => setReadMore(!readMore)}
+              onClick={() => handleToggle()}
             >
               {readMore ? "show less" : "read more"}
             </button>
