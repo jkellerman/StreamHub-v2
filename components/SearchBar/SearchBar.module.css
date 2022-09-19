@@ -71,7 +71,7 @@
 
 @media (min-width: 75em) {
   .form {
-    margin: 2.125rem 0 0;
+    margin: 1rem 0 0;
   }
   .heroSearch {
     width: unset;

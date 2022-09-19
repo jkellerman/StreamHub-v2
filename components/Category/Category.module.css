@@ -28,7 +28,7 @@
 @media (min-width: 48em) {
   .container {
     gap: 1.875rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
 
   .linkContainer {

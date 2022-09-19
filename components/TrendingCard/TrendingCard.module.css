@@ -33,14 +33,14 @@
 
 @media (min-width: 64em) {
   .container {
-    width: 530px;
-    height: 280px;
+    width: 420px;
+    height: 230px;
   }
 }
 
-@media (min-width: 90em) {
+@media (min-width: 75em) {
   .container {
-    width: 575px;
-    height: 280px;
+    width: 470px;
+    height: 230px;
   }
 }

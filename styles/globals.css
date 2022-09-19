@@ -55,7 +55,7 @@ h1 {
 
 @media (min-width: 75em) {
   main {
-    margin: 4.25rem 2.25rem 0 11rem;
+    margin: 4rem 2.25rem 0 11rem;
     width: unset;
   }
 }
