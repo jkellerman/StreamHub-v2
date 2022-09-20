@@ -19,7 +19,7 @@ const WatchProviders = ({ watch_providers }) => {
         {watch_providers.length === 0 && <span>No current providers</span>}
         {watch_providers.flatrate && (
           <div>
-            <h3 className={styles.headingMethod}>Stream</h3>
+            <h2 className={styles.headingMethod}>Stream</h2>
             <div className={styles.icons}>
               {watch_providers.flatrate.map((provider) => {
                 return (

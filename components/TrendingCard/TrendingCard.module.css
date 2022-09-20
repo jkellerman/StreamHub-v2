@@ -44,3 +44,10 @@
     height: 230px;
   }
 }
+
+@media (min-width: 91em) {
+  .container {
+    width: 530px;
+    height: 290px;
+  }
+}

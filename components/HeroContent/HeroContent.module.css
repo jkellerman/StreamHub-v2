@@ -78,8 +78,12 @@
     margin: 4.15rem 2.25rem 0 11rem;
     width: unset;
   }
+
+  .content {
+    max-width: 80%;
+  }
   .overview {
-    width: 90%;
+    width: unset;
     padding-bottom: unset;
     border-bottom: unset;
     display: block;
