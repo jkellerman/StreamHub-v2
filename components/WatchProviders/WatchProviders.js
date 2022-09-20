@@ -1,7 +1,7 @@
 import styles from "@/components/WatchProviders/WatchProviders.module.css";
 import { BASE_URL_IMAGE } from "@/utils/utils";
 import Image from "next/image";
-import img from "@/public/assets/justWatch.svg";
+import img from "@/public/assets/justwatch.svg";
 
 const WatchProviders = ({ watch_providers }) => {
   return (

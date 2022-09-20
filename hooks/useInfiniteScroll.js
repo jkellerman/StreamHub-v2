@@ -34,6 +34,7 @@ const useInfiniteScroll = (endpoint) => {
   }, [url]);
 
   useEffect(() => {
+    // Using mounted ref to stop newImages being rendered on initial render. Here we want new images only to render on 2nd, 3rd, 4th, etc.
     if (!mounted.current) {
       mounted.current = true;
       return;
@@ -45,6 +46,7 @@ const useInfiniteScroll = (endpoint) => {
   }, [newImages]);
 
   const event = () => {
+    // How far down page the event should take place
     if (
       window.innerHeight + window.scrollY >=
       document.body.scrollHeight - 100
