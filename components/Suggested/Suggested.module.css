@@ -1,14 +1,15 @@
 .heading {
-  padding: 0 1.25rem;
   text-transform: capitalize;
-  margin: 1.25rem 0;
+  width: 90%;
+  margin: 1.25rem auto 0;
 }
 
 .suggestions {
   display: flex;
   overflow-x: scroll;
   gap: 1rem;
-  margin: 0 1.25rem 2rem;
+  width: 90%;
+  margin: 1.25rem auto 2rem;
 }
 
 .suggestions::-webkit-scrollbar {
@@ -46,17 +47,34 @@
   font-size: 0.75rem;
 }
 
+@media (max-width: 23em) {
+  .heading,
+  .suggestions {
+    width: 95%;
+  }
+}
+
+@media (max-width: 21.625em) {
+  .heading,
+  .suggestions {
+    width: 87.5%;
+  }
+}
+
 @media (min-width: 48em) {
   .container {
-    margin-top: 2rem;
+    margin: 2rem auto 0;
     border-top: 2px solid var(--Semi-dark-blue);
+    width: 93.75%;
   }
   .heading {
-    padding: 0 1.65rem;
+    /* padding: 0 2rem; */
     font-size: 1.25rem;
+    margin: 1.65rem 0 2rem;
   }
   .suggestions {
-    margin: 0 1.65rem 2rem;
+    margin: 0 auto 2rem;
+    width: 100%;
   }
 
   .suggestions::-webkit-scrollbar {
@@ -80,7 +98,8 @@
 @media (min-width: 75em) {
   .container {
     border-top: unset;
-    margin-top: 0;
+    margin: 0;
+    width: 100%;
     position: relative;
     top: -2rem;
   }
@@ -89,11 +108,13 @@
     margin: 0 2.25rem 2rem 11rem;
     text-transform: capitalize;
     padding: 0;
+    width: unset;
   }
 
   .message,
   .suggestions {
     margin: 0 2.25rem 2rem 11rem;
+    width: unset;
   }
 
   .message {

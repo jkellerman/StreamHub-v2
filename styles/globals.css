@@ -40,6 +40,11 @@ h1 {
   display: inline-block;
 }
 
+hr {
+  border: 0.5px solid var(--Semi-dark-blue);
+  margin: 0 0 2rem;
+}
+
 @media (min-width: 48em) {
   body {
     font-size: 1rem;
@@ -50,6 +55,22 @@ h1 {
 
   h1 {
     font-size: 2rem;
+  }
+
+  hr {
+    display: none;
+  }
+}
+
+@media (max-width: 23em) {
+  main {
+    width: 95%;
+  }
+}
+
+@media (max-width: 21.625em) {
+  main {
+    width: 87.5%;
   }
 }
 

@@ -5,7 +5,7 @@
 .button {
   background: var(--Greyish-blue);
   color: var(--Pure-white);
-  padding: 0.5em 2.5em 0.5em 1.25em;
+  padding: 0.5em 1.75em 0.5em 1.25em;
   border-radius: 20px;
   border: 1px solid var(--Greyish-blue);
   text-transform: capitalize;
@@ -20,14 +20,7 @@
 }
 
 .chevron {
-  position: absolute;
-  top: 0.9rem;
-  right: 0.75rem;
-}
-
-@media (min-width: 48em) {
-  .chevron {
-    top: 1rem;
-    right: 1rem;
-  }
+  position: relative;
+  top: -0.05rem;
+  right: -0.75rem;
 }

@@ -55,11 +55,28 @@
   display: none;
 }
 
+@media (max-width: 23em) {
+  .container {
+    left: 0.5625rem;
+  }
+}
+@media (max-width: 21.625em) {
+  .container {
+    left: 1.25rem;
+  }
+}
+
+@media (min-width: 30em) {
+  .container {
+    left: 2rem;
+  }
+}
+
 @media (min-width: 48em) {
   .container {
-    width: 93.75%;
-    margin: 0 auto 0 1.65rem;
-    left: 0;
+    width: 100%;
+    padding-left: 1.75rem;
+    left: 0rem;
   }
 
   .tagline {
@@ -77,6 +94,8 @@
     bottom: 6rem;
     margin: 4.15rem 2.25rem 0 11rem;
     width: unset;
+    left: 0;
+    padding: 0;
   }
 
   .content {

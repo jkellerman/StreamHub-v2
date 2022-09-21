@@ -1,7 +1,7 @@
 .container {
   margin: 0 auto 2rem;
-  padding: 0 1.25rem 2rem;
-  border-bottom: 1px solid var(--Semi-dark-blue);
+  /* padding-bottom: 2rem; */
+  width: 90%;
 }
 
 .ageRating {
@@ -20,8 +20,6 @@
 }
 
 .ratingContainer {
-  border-bottom: 1px solid var(--Semi-dark-blue);
-  padding-bottom: 2rem;
   margin-bottom: 2rem;
 }
 
@@ -32,6 +30,18 @@
   text-transform: capitalize;
   font-size: inherit;
   padding: 0;
+}
+
+@media (max-width: 23em) {
+  .container {
+    width: 95%;
+  }
+}
+
+@media (max-width: 21.625em) {
+  .container {
+    width: 87.5%;
+  }
 }
 
 @media (min-width: 48em) {

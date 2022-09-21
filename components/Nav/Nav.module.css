@@ -1,6 +1,12 @@
+.header {
+  width: 100%;
+  background-color: var(--Semi-dark-blue);
+}
+
 .nav {
   background: var(--Semi-dark-blue);
-  padding: 0 1.25rem;
+  width: 90%;
+  margin: 0 auto;
   height: 56px;
   display: flex;
   justify-content: space-between;
@@ -43,7 +49,22 @@
   position: relative;
 }
 
+@media (max-width: 23em) {
+  .nav {
+    width: 95%;
+  }
+}
+
+@media (max-width: 21.625em) {
+  .nav {
+    width: 87.5%;
+  }
+}
+
 @media (min-width: 48em) {
+  .header {
+    background-color: transparent;
+  }
   .nav {
     height: 72px;
     padding: 0 1.5rem;

@@ -1,10 +1,9 @@
 .container {
   font-size: 1rem;
   margin: 0 auto 2rem;
-  padding: 0 1.25rem 2rem;
+  width: 90%;
   position: relative;
   z-index: 5;
-  border-bottom: 1px solid var(--Semi-dark-blue);
 }
 
 .justWatchLogoContainer {
@@ -35,6 +34,18 @@
   overflow: hidden;
   width: 40px;
   height: 40px;
+}
+
+@media (max-width: 23em) {
+  .container {
+    width: 95%;
+  }
+}
+
+@media (max-width: 21.625em) {
+  .container {
+    width: 87.5%;
+  }
 }
 
 @media (min-width: 48em) {

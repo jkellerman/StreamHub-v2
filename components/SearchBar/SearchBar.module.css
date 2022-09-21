@@ -8,7 +8,7 @@
 }
 
 .heroSearch {
-  padding: 0 1.25rem;
+  width: 90%;
   margin: 1.5rem auto 0;
   display: flex;
   align-items: center;
@@ -46,6 +46,18 @@
 
 .input:focus {
   border-bottom: 1px solid var(--Greyish-blue);
+}
+
+@media (max-width: 23em) {
+  .heroSearch {
+    width: 95%;
+  }
+}
+
+@media (max-width: 21.625em) {
+  .heroSearch {
+    width: 87.5%;
+  }
 }
 
 @media (min-width: 48em) {

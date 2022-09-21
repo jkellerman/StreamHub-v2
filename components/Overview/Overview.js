@@ -43,11 +43,13 @@ const Overview = ({
           </p>
         )}
       </section>
+      <hr />
       {vote_average > 0 && (
         <div className={styles.ratingContainer}>
           <StarRating rating={vote_average} />
         </div>
       )}
+      <hr />
     </>
   );
 };

@@ -12,7 +12,7 @@
   position: absolute;
   z-index: 5;
   padding: 1rem 0;
-  min-width: 175px;
+  min-width: 200px;
   max-height: 325px;
   overflow-y: scroll;
 }
@@ -55,11 +55,9 @@
   .dropdown {
     top: 5rem;
     left: 7.5rem;
-    font-size: 1rem;
   }
 
   .list {
-    min-width: 175px;
     max-height: 375px;
   }
 }

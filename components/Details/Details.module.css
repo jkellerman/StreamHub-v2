@@ -1,9 +1,8 @@
 .details {
   position: relative;
   z-index: 5;
-  padding: 0 1.25rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid var(--Semi-dark-blue);
+  margin: 0 auto 2rem;
+  width: 90%;
 }
 
 .container {
@@ -42,6 +41,18 @@
   background-color: var(--Greyish-blue);
   padding: 0.25rem 0.75rem;
   border-radius: 10px;
+}
+
+@media (max-width: 23em) {
+  .details {
+    width: 95%;
+  }
+}
+
+@media (max-width: 21.625em) {
+  .details {
+    width: 87.5%;
+  }
 }
 
 @media (min-width: 48em) {

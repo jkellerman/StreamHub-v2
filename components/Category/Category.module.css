@@ -11,6 +11,20 @@
 }
 
 @media (max-width: 23em) {
+  .container {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
+    margin: 1rem 0 1.5rem;
+    width: 100%;
+  }
+
+  .linkContainer {
+    width: calc(35% - -40px);
+  }
+}
+
+@media (max-width: 21.625em) {
   .linkContainer {
     width: calc(100%);
   }
