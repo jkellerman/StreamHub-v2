@@ -13,7 +13,7 @@ const WatchProviders = ({ watch_providers }) => {
             alt="just watch logo"
             layout="fill"
             objectFit="contain"
-            priority
+            unoptimized={true}
           />
         </div>
         <div className={styles.providers}>
@@ -36,7 +36,7 @@ const WatchProviders = ({ watch_providers }) => {
                         alt={provider.provider_name}
                         layout="fill"
                         objectFit="contain"
-                        priority
+                        unoptimized={true}
                       />
                     </a>
                   );
@@ -62,7 +62,7 @@ const WatchProviders = ({ watch_providers }) => {
                         alt={provider.provider_name}
                         layout="fill"
                         objectFit="cover"
-                        priority
+                        unoptimized={true}
                       />
                     </a>
                   );
@@ -88,7 +88,7 @@ const WatchProviders = ({ watch_providers }) => {
                         alt={provider.provider_name}
                         layout="fill"
                         objectFit="cover"
-                        priority
+                        unoptimized={true}
                       />
                     </a>
                   );

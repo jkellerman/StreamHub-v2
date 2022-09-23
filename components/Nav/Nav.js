@@ -13,7 +13,14 @@ const Nav = () => {
       <nav className={styles.nav}>
         <Link href="/">
           <a aria-label="home" className={styles.imageContainer}>
-            <Image src={logo} alt="logo" layout="fill" objectFit="contain" />
+            <Image
+              src={logo}
+              alt="logo"
+              layout="fill"
+              objectFit="contain"
+              unoptimized={true}
+              priority={true}
+            />
           </a>
         </Link>
         <div className={styles.navLinksContainer}>
@@ -27,6 +34,8 @@ const Nav = () => {
             alt="user avatar"
             layout="fill"
             objectFit="contain"
+            unoptimized={true}
+            priority={true}
           />
         </div>
       </nav>

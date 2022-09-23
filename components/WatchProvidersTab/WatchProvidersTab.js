@@ -16,7 +16,7 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
           alt="just watch logo"
           layout="fill"
           objectFit="contain"
-          priority
+          unoptimized={true}
         />
       </div>
       <div className={styles.providers}>
@@ -39,7 +39,7 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
                       alt={provider.provider_name}
                       layout="fill"
                       objectFit="cover"
-                      priority
+                      unoptimized={true}
                     />
                   </a>
                 );
@@ -65,7 +65,7 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
                       alt={provider.provider_name}
                       layout="fill"
                       objectFit="cover"
-                      priority
+                      unoptimized={true}
                     />
                   </a>
                 );
@@ -91,7 +91,7 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
                       alt={provider.provider_name}
                       layout="fill"
                       objectFit="cover"
-                      priority
+                      unoptimized={true}
                     />
                   </a>
                 );

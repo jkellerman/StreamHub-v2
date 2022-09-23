@@ -1,7 +1,11 @@
-.heading {
-  text-transform: capitalize;
+.heading,
+.message {
   width: 90%;
   margin: 1.25rem auto 0;
+}
+
+.heading {
+  text-transform: capitalize;
 }
 
 .suggestions {
@@ -46,9 +50,10 @@
 }
 
 .message {
-  padding: 0 1.5rem;
+  width: 90%;
+  margin: 2rem auto;
   font-style: italic;
-  margin-bottom: 2rem;
+  font-size: 0.85rem;
 }
 
 .name {
@@ -57,14 +62,20 @@
 
 @media (max-width: 23em) {
   .heading,
-  .suggestions {
+  .suggestions,
+  .message {
     width: 95%;
+  }
+
+  .message {
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 21.625em) {
   .heading,
-  .suggestions {
+  .suggestions,
+  .message {
     width: 87.5%;
   }
 }
@@ -103,6 +114,7 @@
 
   .message {
     width: 100%;
+    font-size: 1rem;
   }
 }
 
@@ -138,7 +150,7 @@
   }
 }
 
-@media (min-width: 96em) {
+@media (min-width: 90em) {
   .container {
     top: 2.5rem;
   }

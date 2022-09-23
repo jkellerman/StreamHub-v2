@@ -17,7 +17,7 @@ const Footer = () => {
               alt="MovieDB Logo"
               layout="fill"
               objectFit="contain"
-              priority
+              unoptimized={true}
             />
           </div>
         </div>

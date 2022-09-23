@@ -27,7 +27,7 @@ const Hero = ({
           layout="fill"
           objectFit="cover"
           objectPosition={"top"}
-          priority
+          priority={true}
         />
       </div>
       <HeroContent

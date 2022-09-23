@@ -16,6 +16,7 @@ const Card = ({ id, image, seriesName, title }) => {
         <Image
           src={`${BASE_URL_IMAGE}${image}`}
           alt={`${seriesName || title}`}
+          unoptimized={true}
           layout="fill"
           objectFit="cover"
           placeholder="blur"

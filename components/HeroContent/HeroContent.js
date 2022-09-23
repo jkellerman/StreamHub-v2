@@ -33,6 +33,7 @@ const Content = ({
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             shimmer(240, 140)
           )}`}
+          unoptimized={true}
         />
       </div>
       <div className={styles.content}>

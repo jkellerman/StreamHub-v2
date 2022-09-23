@@ -1,5 +1,6 @@
 .posterContainer {
   display: none;
+  position: relative;
 }
 
 @media (min-width: 48em) {
@@ -13,7 +14,6 @@
   }
   .posterContainer {
     display: block;
-    position: relative;
     min-width: 170px;
     max-height: 250px;
   }

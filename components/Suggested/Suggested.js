@@ -38,6 +38,7 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
                       src={`${BASE_URL_IMAGE}${suggestion.backdrop_path}`}
                       alt={`${suggestion.title} backdrop`}
                       layout="fill"
+                      unoptimized={true}
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={`data:image/svg+xml;base64,${toBase64(

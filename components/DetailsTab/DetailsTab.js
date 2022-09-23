@@ -121,6 +121,7 @@ const DetailsTab = ({
         <Image
           src={`${BASE_URL_IMAGE}${poster}`}
           alt={`${name} poster`}
+          unoptimized={true}
           layout="fill"
           objectFit="cover"
           placeholder="blur"

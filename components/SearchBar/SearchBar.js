@@ -26,7 +26,14 @@ const Search = ({ all, movies, series, hero }) => {
       autoComplete="off"
     >
       <div className={styles.imageContainer}>
-        <Image src={img} alt="icon-search" layout="fill" objectFit="contain" />
+        <Image
+          src={img}
+          alt="icon-search"
+          layout="fill"
+          objectFit="contain"
+          unoptimized={true}
+          priority={true}
+        />
       </div>
       {all && (
         <input

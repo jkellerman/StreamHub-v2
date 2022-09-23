@@ -29,6 +29,7 @@ const TrendingCard = ({
             layout="fill"
             objectFit="cover"
             placeholder="blur"
+            unoptimized={true}
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
               shimmer(240, 140)
             )}`}
