@@ -15,6 +15,7 @@
 
 .link {
   position: relative;
+  margin-right: 1rem;
 }
 
 @media (max-width: 20em) {
@@ -22,12 +23,24 @@
     width: 220px;
     height: 120px;
   }
+
+  .link {
+    margin-right: 0.75rem;
+  }
 }
 
 @media (min-width: 48em) {
   .container {
     width: 470px;
     height: 230px;
+  }
+
+  .link {
+    margin-right: 2.5rem;
+  }
+
+  .link:last-of-type {
+    margin-right: 0;
   }
 }
 

@@ -1,7 +1,7 @@
 .banner {
   display: flex;
   overflow-x: scroll;
-  gap: 1rem;
+  overscroll-behavior-inline: contain;
   margin-bottom: 1.5rem;
 }
 
@@ -15,15 +15,8 @@
   background-color: var(--Greyish-blue);
 }
 
-@media (max-width: 20em) {
-  .banner {
-    gap: 0.75rem;
-  }
-}
-
 @media (min-width: 48em) {
   .banner {
-    gap: 2.5rem;
     margin-bottom: 1rem;
   }
 

@@ -16,7 +16,7 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
         <div className={styles.suggestions}>
           {suggestedArr.map((suggestion) => {
             return (
-              <article key={suggestion.id}>
+              <article key={suggestion.id} className={styles.linkContainer}>
                 <Link
                   href={
                     movies

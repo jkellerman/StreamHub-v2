@@ -7,7 +7,7 @@
 .suggestions {
   display: flex;
   overflow-x: scroll;
-  gap: 1rem;
+  overscroll-behavior-inline: contain;
   width: 90%;
   margin: 1.25rem auto 2rem;
 }
@@ -20,6 +20,14 @@
 .suggestions::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background-color: var(--Greyish-blue);
+}
+
+.linkContainer {
+  margin-right: 1rem;
+}
+
+.linkContainer:last-of-type {
+  margin-right: 0;
 }
 
 .suggestionContainer {
@@ -68,7 +76,6 @@
     width: 93.75%;
   }
   .heading {
-    /* padding: 0 2rem; */
     font-size: 1.25rem;
     margin: 1.65rem 0 2rem;
   }
@@ -92,6 +99,10 @@
 
   .name {
     font-size: 0.935rem;
+  }
+
+  .message {
+    width: 100%;
   }
 }
 
