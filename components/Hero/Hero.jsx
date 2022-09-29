@@ -27,6 +27,7 @@ const Hero = ({
           layout="fill"
           objectFit="cover"
           objectPosition={"top"}
+          unoptimized={true}
           priority={true}
         />
       </div>

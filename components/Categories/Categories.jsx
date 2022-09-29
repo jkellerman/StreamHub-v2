@@ -13,7 +13,7 @@ const Categories = () => {
     (type) => type.media_type !== "person"
   );
 
-  const arr = sliceArray(filteredArr, 15);
+  const arr = sliceArray(filteredArr, 10);
   return (
     <>
       <Trending arr={arr} />

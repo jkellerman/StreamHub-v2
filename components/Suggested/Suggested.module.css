@@ -8,30 +8,30 @@
   text-transform: capitalize;
 }
 
+.outerContainer {
+  position: relative;
+}
+
 .suggestions {
   display: flex;
   overflow-x: scroll;
   overscroll-behavior-inline: contain;
+  scroll-behavior: smooth;
   width: 90%;
   margin: 1.25rem auto 2rem;
+  scrollbar-width: none;
 }
 
 .suggestions::-webkit-scrollbar {
-  height: 5px;
-  background-color: transparent;
+  display: none;
 }
 
 .suggestions::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background-color: var(--Greyish-blue);
+  display: none;
 }
 
 .linkContainer {
-  margin-right: 1rem;
-}
-
-.linkContainer:last-of-type {
-  margin-right: 0;
+  position: relative;
 }
 
 .suggestionContainer {
@@ -42,6 +42,12 @@
   min-width: 134px;
   height: 90px;
   opacity: 0.7;
+  margin-right: 1rem;
+}
+
+.linkContainer:hover {
+  opacity: 1;
+  transition: all 200ms ease-in;
 }
 
 .suggestionContainer:hover {
@@ -58,6 +64,36 @@
 
 .name {
   font-size: 0.75rem;
+  max-width: 95%;
+}
+
+.navigation {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  transform: translateY(-50%);
+  margin: auto;
+  height: 35px;
+  width: 35px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: none;
+  animation: fade 200ms ease-in;
+}
+
+.navigationPrev {
+  left: 0;
+}
+.navigationNext {
+  right: 0;
+}
+
+@media (hover: hover) {
+  .outerContainer:hover .navigation {
+    display: block;
+  }
 }
 
 @media (max-width: 23em) {
@@ -134,8 +170,7 @@
     width: unset;
   }
 
-  .message,
-  .suggestions {
+  .outerContainer {
     margin: 0 2.25rem 2rem 11rem;
     width: unset;
   }

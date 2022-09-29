@@ -30,6 +30,7 @@
   text-transform: capitalize;
   font-size: inherit;
   padding: 0;
+  cursor: pointer;
 }
 
 @media (max-width: 23em) {

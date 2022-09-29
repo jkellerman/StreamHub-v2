@@ -93,10 +93,12 @@ const DetailsTab = ({
                 <div>{series_age_rating}</div>
               )}
             </li>
-            {runtime ? (
+            {runtime >= 0 ? (
               <li className={styles.listItem}>
                 <div className={styles.name}>Runtime</div>
-                <div> {toHoursAndMinutes(runtime)} </div>
+                <div>
+                  {runtime > 0 ? `${toHoursAndMinutes(runtime)}` : null}{" "}
+                </div>
               </li>
             ) : (
               <li className={styles.listItem}>

@@ -1,18 +1,82 @@
+.outerBanner {
+  position: relative;
+}
+
 .banner {
   display: flex;
   overflow-x: scroll;
   overscroll-behavior-inline: contain;
+  scroll-behavior: smooth;
   margin-bottom: 1.5rem;
+  scrollbar-width: none;
 }
 
 .banner::-webkit-scrollbar {
+  display: none;
   height: 5px;
   background-color: transparent;
 }
 
 .banner::-webkit-scrollbar-thumb {
+  display: none;
   border-radius: 5px;
   background-color: var(--Greyish-blue);
+}
+
+.container {
+  position: relative;
+}
+
+.link {
+  min-width: 240px;
+  height: 140px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  opacity: 0.7;
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.link:hover {
+  opacity: 1;
+  transition: all 200ms ease-in;
+}
+
+.navigation {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 35px;
+  width: 35px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: none;
+  animation: fade 200ms ease-in;
+}
+
+.navigationPrev {
+  left: 0;
+}
+.navigationNext {
+  right: 0;
+}
+
+@media (hover: hover) {
+  .outerBanner:hover .navigation {
+    display: block;
+  }
+}
+
+@media (max-width: 20em) {
+  .link {
+    width: 220px;
+    height: 120px;
+    margin-right: 0.75rem;
+  }
 }
 
 @media (min-width: 48em) {
@@ -26,5 +90,40 @@
 
   .banner::-webkit-scrollbar-thumb {
     border-radius: 8px;
+  }
+
+  .link {
+    width: 470px;
+    height: 230px;
+    margin-right: 2.5rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .link {
+    width: 420px;
+    height: 230px;
+  }
+}
+
+@media (min-width: 75em) {
+  .link {
+    width: 470px;
+    height: 230px;
+  }
+}
+
+@media (min-width: 91em) {
+  .link {
+    width: 530px;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

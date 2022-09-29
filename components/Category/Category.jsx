@@ -20,7 +20,7 @@ const Category = ({ endpoint, type }) => {
 
   return (
     <section>
-      <h1>{type}</h1>
+      <h2 className={styles.heading}>{type}</h2>
       <div className={styles.container}>
         {arr.map((show) => {
           return (

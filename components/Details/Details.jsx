@@ -15,15 +15,15 @@ const Details = ({
     <>
       <section className={styles.details}>
         <div className={styles.container}>
-          <h4 className={styles.heading}>
+          <div className={styles.heading}>
             {director ? "director" : "network"}
-          </h4>
+          </div>
           <div className={styles.description}>
             {director ? director : `${network}`}
           </div>
         </div>
         <div className={styles.container}>
-          <h4 className={styles.heading}>cast</h4>
+          <div className={styles.heading}>cast</div>
           <ul className={styles.castContainer}>
             {cast.map((member, index) => {
               return (
@@ -36,7 +36,7 @@ const Details = ({
           </ul>
         </div>
         <div className={`${styles.container}`}>
-          <h4 className={styles.heading}>genres</h4>
+          <div className={styles.heading}>genres</div>
           <div className={styles.linksContainer}>
             {genres.map((genre) => {
               return (
@@ -57,7 +57,9 @@ const Details = ({
           </div>
         </div>
         <div className={styles.container}>
-          <h4 className={styles.heading}>{runtime ? "runtime" : "seasons"}</h4>
+          <div className={styles.heading}>
+            {runtime ? "runtime" : "seasons"}
+          </div>
           {runtime && (
             <div className={styles.description}>
               {toHoursAndMinutes(runtime)}
