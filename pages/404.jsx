@@ -1,13 +1,15 @@
 import Head from "next/head";
 import Link from "next/link";
+import SearchBar from "@/components/SearchBar/SearchBar";
 
 const Custom404 = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>404 - Not Found | Entertainment App</title>
       </Head>
       <main>
+        <SearchBar all />
         <h1>404 - Page Not Found</h1>
         <Link href="/" passHref>
           <button
@@ -26,7 +28,7 @@ const Custom404 = () => {
           </button>
         </Link>
       </main>
-    </div>
+    </>
   );
 };
 

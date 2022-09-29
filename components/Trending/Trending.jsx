@@ -65,6 +65,7 @@ const Trending = ({ arr }) => {
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
             onClick={handleClickPrev}
+            aria-label="click for previous trending"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
               {" "}
@@ -82,6 +83,7 @@ const Trending = ({ arr }) => {
           <button
             className={`${styles.navigation} ${styles.navigationNext}`}
             onClick={handleClickNext}
+            aria-label="click for more trending"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
               --! Font Awesome Pro 6.2.0 by @fontawesome -

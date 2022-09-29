@@ -34,10 +34,12 @@ const DetailsTab = ({
             : styles.details
         }
       >
-        <div>
-          <div className={styles.name}>overview</div>
-          <p className={styles.overview}>{overview}</p>
-        </div>
+        {overview && (
+          <div>
+            <div className={styles.name}>overview</div>
+            <p className={styles.overview}>{overview}</p>
+          </div>
+        )}
 
         <div className={styles.attributes}>
           <ul className={styles.list}>

@@ -79,6 +79,7 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
             onClick={handleClickPrevSuggestion}
+            aria-label="click for previous suggestions"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
               {" "}
@@ -96,6 +97,7 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
           <button
             className={`${styles.navigation} ${styles.navigationNext}`}
             onClick={handleClickNextSuggestion}
+            aria-label="click for more suggestions"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
               --! Font Awesome Pro 6.2.0 by @fontawesome -
