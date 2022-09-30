@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 const useSlider = () => {
   const [isScrollAtStart, setIsScrollAtStart] = useState(true);
   const [isScrollAtEnd, setIsScrollAtEnd] = useState(false);
+  const [isScrollAvailable, setIsScrollAvailable] = useState(false);
   const sliderRef = useRef();
   const cardRef = useRef();
 
@@ -21,6 +22,12 @@ const useSlider = () => {
       setIsScrollAtEnd(true);
     } else {
       setIsScrollAtEnd(false);
+    }
+  };
+
+  const mouseEnterSlide = () => {
+    if (sliderRef.current.scrollWidth > sliderRef.current.offsetWidth) {
+      setIsScrollAvailable(true);
     }
   };
 
@@ -64,11 +71,13 @@ const useSlider = () => {
   return {
     isScrollAtStart,
     isScrollAtEnd,
+    isScrollAvailable,
     getScrollPosition,
     handleClickNext,
     handleClickPrev,
     handleClickNextSuggestion,
     handleClickPrevSuggestion,
+    mouseEnterSlide,
     sliderRef,
     cardRef,
   };

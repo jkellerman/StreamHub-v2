@@ -73,7 +73,7 @@
 
 @media (max-width: 20em) {
   .link {
-    width: 220px;
+    min-width: 220px;
     height: 120px;
     margin-right: 0.75rem;
   }
@@ -93,7 +93,7 @@
   }
 
   .link {
-    width: 470px;
+    min-width: 470px;
     height: 230px;
     margin-right: 2.5rem;
   }
@@ -101,21 +101,21 @@
 
 @media (min-width: 64em) {
   .link {
-    width: 420px;
+    min-width: 420px;
     height: 230px;
   }
 }
 
 @media (min-width: 75em) {
   .link {
-    width: 470px;
+    min-width: 470px;
     height: 230px;
   }
 }
 
 @media (min-width: 91em) {
   .link {
-    width: 530px;
+    min-width: 530px;
   }
 }
 

@@ -8,9 +8,11 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
   const {
     isScrollAtStart,
     isScrollAtEnd,
+    isScrollAvailable,
     getScrollPosition,
     handleClickNextSuggestion,
     handleClickPrevSuggestion,
+    mouseEnterSlide,
     sliderRef,
     cardRef,
   } = useSlider();
@@ -30,6 +32,7 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
             className={styles.suggestions}
             ref={sliderRef}
             onScroll={getScrollPosition}
+            onMouseEnter={mouseEnterSlide}
           >
             {suggestedArr.map((suggestion) => {
               return (
@@ -93,7 +96,9 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
             </svg>
           </button>
         )}
-        {suggested.results.length === 0 || isScrollAtEnd ? null : (
+        {suggested.results.length === 0 ||
+        isScrollAtEnd ||
+        !isScrollAvailable ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationNext}`}
             onClick={handleClickNextSuggestion}
