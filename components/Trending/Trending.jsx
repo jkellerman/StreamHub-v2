@@ -46,17 +46,16 @@ const Trending = ({ arr }) => {
                         shimmer(240, 140)
                       )}`}
                     />
-
-                    <TrendingCardDetails
-                      image={item.backdrop_path}
-                      movieTitle={item.title}
-                      seriesName={item.name}
-                      year={item.release_date}
-                      type={item.media_type}
-                      airDate={item.first_air_date}
-                    />
                   </a>
                 </Link>
+                <TrendingCardDetails
+                  image={item.backdrop_path}
+                  movieTitle={item.title}
+                  seriesName={item.name}
+                  year={item.release_date}
+                  type={item.media_type}
+                  airDate={item.first_air_date}
+                />
               </article>
             );
           })}
