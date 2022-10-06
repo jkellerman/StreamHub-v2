@@ -1,5 +1,6 @@
 .buttonContainer {
   position: relative;
+  /* animation: fade 250ms ease-in; */
 }
 
 .button {
@@ -23,4 +24,13 @@
   position: relative;
   top: -0.05rem;
   right: -0.75rem;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7;
+  }
 }

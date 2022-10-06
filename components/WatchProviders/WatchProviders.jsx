@@ -1,6 +1,6 @@
 import styles from "@/components/WatchProviders/WatchProviders.module.css";
-import { BASE_URL_IMAGE } from "@/utils/utils";
-import Image from "next/image";
+import { LOGO_URL_IMAGE } from "@/utils/utils";
+import Image from "next/future/image";
 import img from "@/public/assets/justwatch.svg";
 
 const WatchProviders = ({ watch_providers }) => {
@@ -11,9 +11,11 @@ const WatchProviders = ({ watch_providers }) => {
           <Image
             src={img}
             alt="just watch logo"
-            layout="fill"
-            objectFit="contain"
             unoptimized={true}
+            width={100}
+            height={50}
+            className={styles.logo}
+            priority={true}
           />
         </div>
         <div className={styles.providers}>
@@ -29,14 +31,15 @@ const WatchProviders = ({ watch_providers }) => {
                       href={watch_providers.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={styles.iconContainer}
                     >
                       <Image
-                        src={`${BASE_URL_IMAGE}${provider.logo_path}`}
+                        src={`${LOGO_URL_IMAGE}${provider.logo_path}`}
                         alt={provider.provider_name}
-                        layout="fill"
-                        objectFit="contain"
                         unoptimized={true}
+                        className={styles.icon}
+                        width={40}
+                        height={40}
+                        priority={true}
                       />
                     </a>
                   );
@@ -58,11 +61,13 @@ const WatchProviders = ({ watch_providers }) => {
                       className={styles.iconContainer}
                     >
                       <Image
-                        src={`${BASE_URL_IMAGE}${provider.logo_path}`}
+                        src={`${LOGO_URL_IMAGE}${provider.logo_path}`}
                         alt={provider.provider_name}
-                        layout="fill"
-                        objectFit="cover"
                         unoptimized={true}
+                        className={styles.icon}
+                        width={40}
+                        height={40}
+                        priority={true}
                       />
                     </a>
                   );
@@ -84,11 +89,13 @@ const WatchProviders = ({ watch_providers }) => {
                       className={styles.iconContainer}
                     >
                       <Image
-                        src={`${BASE_URL_IMAGE}${provider.logo_path}`}
+                        src={`${LOGO_URL_IMAGE}${provider.logo_path}`}
                         alt={provider.provider_name}
-                        layout="fill"
-                        objectFit="cover"
                         unoptimized={true}
+                        className={styles.icon}
+                        width={40}
+                        height={40}
+                        priority={true}
                       />
                     </a>
                   );

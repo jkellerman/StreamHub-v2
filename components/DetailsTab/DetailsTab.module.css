@@ -1,4 +1,4 @@
-.posterContainer {
+.poster {
   display: none;
   position: relative;
 }
@@ -12,14 +12,12 @@
     margin-bottom: 2rem;
     line-height: 25px;
   }
-  .posterContainer {
-    display: block;
-    min-width: 170px;
-    max-height: 250px;
-  }
-
   .poster {
+    display: block;
     border-radius: 8px;
+    width: auto !important;
+    height: 230px !important;
+    object-fit: contain;
   }
 
   .list {
@@ -73,7 +71,7 @@
     justify-content: flex-end;
   }
 
-  .posterContainer {
+  .poster {
     display: none;
   }
 

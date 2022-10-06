@@ -13,6 +13,12 @@
   height: 300px;
 }
 
+.backgroundImage {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
 .overlay {
   position: absolute;
   width: 100%;

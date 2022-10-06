@@ -9,7 +9,7 @@ const TrendingCardDetails = ({
 }) => {
   return (
     <>
-      <div className={styles.title}>
+      <h2 className={styles.title}>
         {seriesName && seriesName.length > 27
           ? `${seriesName.slice(0, 27)}...`
           : seriesName}
@@ -17,7 +17,7 @@ const TrendingCardDetails = ({
         {movieTitle && movieTitle.length > 27
           ? `${movieTitle.slice(0, 27)}...`
           : movieTitle}
-      </div>
+      </h2>
       <div className={styles.details}>
         {year && <span>{year.slice(0, 4)} &nbsp;•&nbsp;</span>}
         {airDate && <span>{airDate.slice(0, 4)} &nbsp;•&nbsp;</span>}

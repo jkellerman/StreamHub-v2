@@ -1,11 +1,11 @@
 import styles from "@/components/DetailsTab/DetailsTab.module.css";
 import {
   toHoursAndMinutes,
-  BASE_URL_IMAGE,
+  POSTER_URL_IMAGE,
   shimmer,
   toBase64,
 } from "@/utils/utils";
-import Image from "next/image";
+import Image from "next/future/image";
 import Link from "next/link";
 import StarRating from "../StarRating/StarRating";
 
@@ -121,20 +121,17 @@ const DetailsTab = ({
           </ul>
         </div>
       </div>
-      <div className={styles.posterContainer}>
-        <Image
-          src={`${BASE_URL_IMAGE}${poster}`}
-          alt={`${name} poster`}
-          unoptimized={true}
-          layout="fill"
-          objectFit="cover"
-          placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            shimmer(240, 140)
-          )}`}
-          className={styles.poster}
-        />
-      </div>
+      <Image
+        src={`${POSTER_URL_IMAGE}${poster}`}
+        alt={`${name} poster`}
+        unoptimized={true}
+        placeholder="blur"
+        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
+        className={styles.poster}
+        width={170}
+        height={250}
+        priority={true}
+      />
     </>
   );
 };

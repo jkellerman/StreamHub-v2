@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
-import { BASE_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
+import Image from "next/future/image";
+import { BACKDROP_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 import styles from "../Card/Card.module.css";
 
 const Card = ({ id, image, seriesName, title }) => {
@@ -14,15 +14,17 @@ const Card = ({ id, image, seriesName, title }) => {
     >
       <a className={styles.container}>
         <Image
-          src={`${BASE_URL_IMAGE}${image}`}
+          src={`${BACKDROP_URL_IMAGE}${image}`}
           alt={`${seriesName || title}`}
           unoptimized={true}
-          layout="fill"
-          objectFit="cover"
           placeholder="blur"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             shimmer(240, 140)
           )}`}
+          width={164}
+          height={110}
+          className={styles.card}
+          priority={true}
         />
       </a>
     </Link>

@@ -1,4 +1,5 @@
-import Image from "next/image";
+import Image from "next/future/image";
+import attribution from "@/public/attribution.svg";
 import styles from "../Footer/Footer.module.css";
 
 const Footer = () => {
@@ -13,11 +14,12 @@ const Footer = () => {
         <div className={styles.logo}>
           <div className={styles.imageContainer}>
             <Image
-              src="/attribution.svg"
+              src={attribution}
               alt="MovieDB Logo"
-              layout="fill"
-              objectFit="contain"
               unoptimized={true}
+              width={72}
+              height={16}
+              priority={true}
             />
           </div>
         </div>

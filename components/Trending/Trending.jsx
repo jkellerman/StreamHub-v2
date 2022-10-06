@@ -1,9 +1,11 @@
 import styles from "@/components/Trending/Trending.module.css";
-import Image from "next/image";
+import Image from "next/future/image";
 import Link from "next/link";
-import { BASE_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
+import { BACKDROP_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 import TrendingCardDetails from "@/components/TrendingCardDetails/TrendingCardDetails";
 import useSlider from "hooks/useSlider";
+import chevronLeft from "@/public/assets/chevron-left-solid.svg";
+import chevronRight from "@/public/assets/chevron-right-solid.svg";
 
 const Trending = ({ arr }) => {
   const {
@@ -15,6 +17,7 @@ const Trending = ({ arr }) => {
     sliderRef,
     cardRef,
   } = useSlider();
+
   return (
     <section>
       <h1>Trending</h1>
@@ -36,15 +39,17 @@ const Trending = ({ arr }) => {
                 >
                   <a className={styles.link} ref={cardRef}>
                     <Image
-                      src={`${BASE_URL_IMAGE}${item.backdrop_path}`}
+                      src={`${BACKDROP_URL_IMAGE}${item.backdrop_path}`}
                       alt={item.title ? `${item.title}` : `${item.name}`}
-                      layout="fill"
-                      objectFit="cover"
                       placeholder="blur"
                       unoptimized={true}
                       blurDataURL={`data:image/svg+xml;base64,${toBase64(
                         shimmer(240, 140)
                       )}`}
+                      width={220}
+                      height={120}
+                      priority={true}
+                      className={styles.trendingCard}
                     />
                   </a>
                 </Link>
@@ -66,16 +71,12 @@ const Trending = ({ arr }) => {
             onClick={handleClickPrev}
             aria-label="click for previous trending"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-              {" "}
-              Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com
-              License - https://fontawesome.com/license (Commercial License)
-              Copyright 2022 Fonticons, Inc.{" "}
-              <path
-                d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"
-                fill="#FFF"
-              />
-            </svg>
+            <Image
+              src={chevronLeft}
+              alt="arrow left"
+              unoptimized={true}
+              className={styles.arrow}
+            />
           </button>
         )}
         {isScrollAtEnd ? null : (
@@ -84,15 +85,13 @@ const Trending = ({ arr }) => {
             onClick={handleClickNext}
             aria-label="click for more trending"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-              --! Font Awesome Pro 6.2.0 by @fontawesome -
-              https://fontawesome.com License - https://fontawesome.com/license
-              (Commercial License) Copyright 2022 Fonticons, Inc.{" "}
-              <path
-                d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
-                fill="#FFF"
-              />
-            </svg>
+            <Image
+              src={chevronRight}
+              alt="arrow right"
+              unoptimized={true}
+              className={styles.arrow}
+              priority={true}
+            />
           </button>
         )}
       </div>

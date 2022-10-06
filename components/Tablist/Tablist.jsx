@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import WatchProvidersTab from "../WatchProvidersTab/WatchProvidersTab";
 import Tab from "../Tab/Tab";
 import DetailsTab from "../DetailsTab/DetailsTab";
+import Router from "next/router";
 
 const Tablist = ({
   name,
@@ -22,6 +23,9 @@ const Tablist = ({
 }) => {
   const [activeTab, setActiveTab] = useState(1);
   const tab = useRef();
+
+  Router.events.on("routeChangeComplete", () => setActiveTab(1));
+  Router.events.on("routeChangeError", () => setActiveTab(1));
 
   const handleClick = (number) => {
     setActiveTab(number);

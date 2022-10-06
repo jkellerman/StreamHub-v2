@@ -37,7 +37,7 @@ const CardDetails = ({ airDate, seriesName, releaseDate, title }) => {
           &nbsp; {seriesName ? "series" : "movie"}
         </span>
       </div>
-      <h2 className={styles.title}>{seriesName || title}</h2>
+      <h3 className={styles.title}>{seriesName || title}</h3>
     </div>
   );
 };

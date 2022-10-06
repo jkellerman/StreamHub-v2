@@ -51,7 +51,7 @@
   display: none;
 }
 
-.posterContainer {
+.poster {
   display: none;
 }
 
@@ -108,12 +108,13 @@
     display: block;
   }
 
-  .posterContainer {
+  .poster {
     display: block;
     position: relative;
-    min-width: 150px;
-    min-height: 230px;
+    width: auto !important;
+    min-height: 230px !important;
     overflow: hidden;
+    object-fit: cover;
   }
 
   .list {
@@ -131,9 +132,9 @@
     bottom: 2rem;
   }
 
-  .posterContainer {
-    min-width: 200px;
-    min-height: 300px;
+  .poster {
+    min-height: 300px !important;
+    width: auto !important;
   }
 
   .overview {

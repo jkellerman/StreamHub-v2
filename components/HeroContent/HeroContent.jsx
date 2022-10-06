@@ -1,12 +1,12 @@
 import styles from "../HeroContent/HeroContent.module.css";
 import {
   toHoursAndMinutes,
-  BASE_URL_IMAGE,
+  POSTER_URL_IMAGE,
   shimmer,
   toBase64,
 } from "@/utils/utils";
 import StarRating from "../StarRating/StarRating";
-import Image from "next/image";
+import Image from "next/future/image";
 
 const Content = ({
   title,
@@ -23,19 +23,18 @@ const Content = ({
 }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.posterContainer}>
-        <Image
-          src={`${BASE_URL_IMAGE}${poster}`}
-          alt={`${title} poster`}
-          layout="fill"
-          objectFit="contain"
-          placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            shimmer(240, 140)
-          )}`}
-          unoptimized={true}
-        />
-      </div>
+      <Image
+        src={`${POSTER_URL_IMAGE}${poster}`}
+        alt={`${title} poster`}
+        placeholder="blur"
+        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
+        unoptimized={true}
+        width={150}
+        height={230}
+        className={styles.poster}
+        priority={true}
+      />
+
       <div className={styles.content}>
         <h1 className={styles.title}>{title}</h1>
         <div className={styles.tagline}>

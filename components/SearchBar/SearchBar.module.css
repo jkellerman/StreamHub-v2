@@ -17,7 +17,7 @@
   z-index: 5;
 }
 
-.imageContainer {
+.searchIcon {
   position: relative;
   top: -0.3rem;
   width: 24px;
@@ -71,7 +71,7 @@
     padding: 0;
   }
 
-  .imageContainer {
+  .searchIcon {
     width: 32px;
     height: 32px;
   }

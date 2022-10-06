@@ -1,6 +1,6 @@
 import styles from "../Hero/Hero.module.css";
-import Image from "next/image";
-import { BASE_URL_IMAGE } from "@/utils/utils";
+import Image from "next/future/image";
+import { BACKGROUND_URL_IMAGE } from "@/utils/utils";
 import HeroContent from "../HeroContent/HeroContent";
 
 const Hero = ({
@@ -22,13 +22,13 @@ const Hero = ({
       <div className={styles.overlay}></div>
       <div className={styles.imageContainer}>
         <Image
-          src={`${BASE_URL_IMAGE}${image}`}
+          src={`${BACKGROUND_URL_IMAGE}${image}`}
           alt={`${title} backdrop`}
-          layout="fill"
-          objectFit="cover"
-          objectPosition={"top"}
           unoptimized={true}
           priority={true}
+          width={1000}
+          height={300}
+          className={styles.backgroundImage}
         />
       </div>
       <HeroContent

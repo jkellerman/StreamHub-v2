@@ -1,5 +1,5 @@
 import styles from "../SearchBar/SearchBar.module.css";
-import Image from "next/image";
+import Image from "next/future/image";
 import img from "@/public/assets/icon-search.svg";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -25,16 +25,14 @@ const Search = ({ all, movies, series, hero }) => {
       onSubmit={handleSubmit}
       autoComplete="off"
     >
-      <div className={styles.imageContainer}>
-        <Image
-          src={img}
-          alt="icon-search"
-          layout="fill"
-          objectFit="contain"
-          unoptimized={true}
-          priority={true}
-        />
-      </div>
+      <Image
+        src={img}
+        alt="icon-search"
+        unoptimized={true}
+        className={styles.searchIcon}
+        priority={true}
+      />
+
       {all && (
         <input
           type="text"

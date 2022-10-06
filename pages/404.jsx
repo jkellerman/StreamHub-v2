@@ -22,6 +22,7 @@ const Custom404 = () => {
               fontSize: "inherit",
               marginLeft: "1rem",
               padding: "0.5em 1.25em",
+              cursor: "pointer",
             }}
           >
             Go home
