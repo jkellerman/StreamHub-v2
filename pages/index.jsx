@@ -88,7 +88,7 @@ export async function getStaticProps() {
   //   upcoming movies
 
   const upcomingEndpoint = `
-    https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.API_KEY}&language=en-GBpage=1&region=GB`;
+  https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.API_KEY}&language=en-GBpage=1&region=GB`;
   const upcomingResponse = await fetch(upcomingEndpoint);
   const upcomingData = await upcomingResponse.json();
 
