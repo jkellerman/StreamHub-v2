@@ -1,6 +1,7 @@
 import Head from "next/head";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import { useRouter } from "next/router";
+import styles from "@/components/DropdownButton/DropdownButton.module.css";
 
 const Custom500 = () => {
   const router = useRouter();
@@ -14,17 +15,8 @@ const Custom500 = () => {
         <h1>Currently unavailable</h1>
         <button
           onClick={() => router.back()}
-          style={{
-            background: "var(--Greyish-blue)",
-            color: "white",
-            border: "1px solid var(--Greyish-blue)",
-            borderRadius: "20px",
-            textTransform: "capitalize",
-            fontSize: "inherit",
-            marginLeft: "1rem",
-            padding: "0.5em 1.25em",
-            cursor: "pointer",
-          }}
+          className={styles.button}
+          style={{ marginLeft: "1rem" }}
         >
           Go back
         </button>

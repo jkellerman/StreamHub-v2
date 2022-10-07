@@ -1,28 +1,13 @@
-import useFetch from "hooks/useFetch";
-import { sliceArray } from "@/utils/utils";
 import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import styles from "@/components/Category/Category.module.css";
 
-const Category = ({ endpoint, type }) => {
-  const { data, isError } = useFetch(endpoint, type);
-
-  if (!data) {
-    return [];
-  }
-  if (isError) return `An error occured, reload page`;
-
-  const filteredArr = data.data.results.filter(
-    (item) => item.backdrop_path !== null
-  );
-
-  const arr = sliceArray(filteredArr, 12);
-
+const Category = ({ data, category }) => {
   return (
     <section>
-      <h2 className={styles.heading}>{type}</h2>
+      <h2 className={styles.heading}>{category}</h2>
       <div className={styles.container}>
-        {arr.map((show) => {
+        {data.map((show) => {
           return (
             <article key={show.id} className={styles.linkContainer}>
               <Card
