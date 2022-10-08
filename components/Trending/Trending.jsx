@@ -7,7 +7,7 @@ import useSlider from "hooks/useSlider";
 import chevronLeft from "@/public/assets/chevron-left-solid.svg";
 import chevronRight from "@/public/assets/chevron-right-solid.svg";
 
-const Trending = ({ trending, time }) => {
+const Trending = ({ trending, type }) => {
   const {
     isScrollAtStart,
     isScrollAtEnd,
@@ -20,7 +20,7 @@ const Trending = ({ trending, time }) => {
 
   return (
     <section>
-      <h1>{time}</h1>
+      <h1>{type}</h1>
       <div className={styles.outerBanner}>
         <div
           className={styles.banner}

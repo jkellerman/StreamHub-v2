@@ -5,7 +5,7 @@ import styles from "@/components/Category/Category.module.css";
 const Category = ({ data, category }) => {
   return (
     <section>
-      <h2 className={styles.heading}>{category}</h2>
+      <h1 className={styles.heading}>{category}</h1>
       <div className={styles.container}>
         {data.map((show) => {
           return (

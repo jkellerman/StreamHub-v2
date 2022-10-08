@@ -24,7 +24,7 @@ export default function Home({
       </Head>
       <main>
         <SearchBar all />
-        <Trending trending={trending} />
+        <Trending trending={trending} type="trending" />
         <Category data={popularShows} category="popular shows" />
         <Category data={popularMovies} category="popular movies" />
         <Category data={topRatedShows} category="top rated shows" />
