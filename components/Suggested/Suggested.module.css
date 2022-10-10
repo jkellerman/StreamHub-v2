@@ -179,7 +179,7 @@
     margin: 0;
     width: 100%;
     position: relative;
-    top: -6rem;
+    top: -10rem;
   }
 
   .heading {
@@ -212,7 +212,7 @@
 
 @media (min-width: 90em) {
   .container {
-    top: 2.5rem;
+    top: -15rem;
   }
 }
 

@@ -28,7 +28,7 @@
     margin: 0 2.25rem 0 11rem;
     width: unset;
     position: relative;
-    top: -8rem;
+    top: -12rem;
     z-index: 5;
   }
 
@@ -39,6 +39,6 @@
 
 @media (min-width: 90em) {
   .container {
-    top: 0;
+    top: -18rem;
   }
 }

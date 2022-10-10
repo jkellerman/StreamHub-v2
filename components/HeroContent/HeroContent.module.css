@@ -91,7 +91,7 @@
     flex-direction: row;
     align-items: flex-start;
     gap: 2rem;
-    bottom: 10rem;
+    bottom: 15rem;
     margin: 4.15rem 2.25rem 0 11rem;
     width: unset;
     left: 0;
@@ -129,7 +129,7 @@
 
 @media (min-width: 90em) {
   .container {
-    bottom: 2rem;
+    bottom: 20rem;
   }
 
   .poster {

@@ -47,13 +47,13 @@
     height: 470px;
   }
 }
-@media (min-width: 48em) {
+@media (min-width: 64em) {
   .imageContainer {
-    height: 370px;
+    height: 550px;
   }
 
   .overlay {
-    height: 390px;
+    height: 570px;
   }
 }
 
@@ -71,20 +71,10 @@
   }
 
   .imageContainer {
-    height: 550px;
+    height: 100vh;
   }
 
   .overlay {
-    height: 570px;
-  }
-}
-
-@media (min-width: 90em) {
-  .imageContainer {
-    height: 700px;
-  }
-
-  .overlay {
-    height: 720px;
+    height: 102vh;
   }
 }

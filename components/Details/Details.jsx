@@ -18,7 +18,7 @@ const Details = ({
           <div className={styles.heading}>
             {director ? "director" : "network"}
           </div>
-          <div className={styles.description}>
+          <div className={styles.director}>
             {director ? director : `${network}`}
           </div>
         </div>
