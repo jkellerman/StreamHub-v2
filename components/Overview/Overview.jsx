@@ -14,15 +14,19 @@ const Overview = ({
   return (
     <>
       <section className={styles.container}>
-        {age_rating === "" || age_rating ? (
-          <span className={styles.ageRating}>
-            {age_rating !== "" ? `${age_rating}` : "NR"}
-          </span>
-        ) : (
+        {age_rating === "" ||
+          (age_rating && (
+            <span className={styles.ageRating}>
+              {age_rating !== "" ? `${age_rating}` : "NR"}
+            </span>
+          ))}
+
+        {series_age_rating && (
           <span className={styles.ageRating}>
             {series_age_rating.length > 0 ? `${series_age_rating}` : "NR"}
           </span>
         )}
+
         {release_date ? (
           <span className={styles.date}>{release_date.slice(0, 4)}</span>
         ) : (

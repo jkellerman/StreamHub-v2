@@ -15,15 +15,15 @@ const Details = ({
     <>
       <section className={styles.details}>
         <div className={styles.container}>
-          <div className={styles.heading}>
+          <span className={styles.heading}>
             {director ? "director" : "network"}
-          </div>
-          <div className={styles.director}>
+          </span>
+          <span className={styles.director}>
             {director ? director : `${network}`}
-          </div>
+          </span>
         </div>
         <div className={styles.container}>
-          <div className={styles.heading}>cast</div>
+          <span className={styles.heading}>cast</span>
           <ul className={styles.castContainer}>
             {cast.map((member, index) => {
               return (
@@ -36,7 +36,7 @@ const Details = ({
           </ul>
         </div>
         <div className={`${styles.container}`}>
-          <div className={styles.heading}>genres</div>
+          <span className={styles.heading}>genres</span>
           <div className={styles.linksContainer}>
             {genres.map((genre) => {
               return (
@@ -56,21 +56,22 @@ const Details = ({
             })}
           </div>
         </div>
-        <div className={styles.container}>
-          <div className={styles.heading}>
-            {runtime ? "runtime" : "seasons"}
+        {runtime >= 0 ? (
+          <div className={styles.container}>
+            <span className={styles.heading}>runtime</span>
+            <span className={styles.description}>
+              {runtime > 0 ? `${toHoursAndMinutes(runtime)}` : null}{" "}
+            </span>
           </div>
-          {runtime && (
-            <div className={styles.description}>
-              {toHoursAndMinutes(runtime)}
-            </div>
-          )}
-          {seasons && (
-            <div className={styles.description}>
+        ) : (
+          <div className={styles.container}>
+            <span className={styles.heading}>seasons</span>
+
+            <span className={styles.description}>
               {seasons > 1 ? `${seasons} seasons` : `${seasons} season`}
-            </div>
-          )}
-        </div>
+            </span>
+          </div>
+        )}
       </section>
       <hr />
     </>

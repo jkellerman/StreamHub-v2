@@ -1,6 +1,6 @@
 import styles from "@/components/Suggested/Suggested.module.css";
 import Link from "next/link";
-import Image from "next/future/image";
+import Image from "next/image";
 import { SUGGESTIONS_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 import useSlider from "hooks/useSlider";
 import chevronLeft from "@/public/assets/chevron-left-solid.svg";
@@ -71,10 +71,9 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
                         blurDataURL={`data:image/svg+xml;base64,${toBase64(
                           shimmer(240, 140)
                         )}`}
-                        width={134}
-                        height={90}
+                        layout="fill"
+                        objectFit="cover"
                         className={styles.suggestionCard}
-                        priority={true}
                       />
                     </a>
                   </Link>

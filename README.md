@@ -48,8 +48,8 @@ Added features:
 
 ### 🔗&nbsp;Links
 
-- Solution URL: [Solution](https://github.com/jkellerman/entertainment)
-- Live Site URL: [Live](https://entertainment-uk.vercel.app/)
+- Solution: [Solution](https://github.com/jkellerman/entertainment)
+- Live Site: [Live](https://entertainmentuk.vercel.app/)
 
 ### 🧰&nbsp;Built with
 
@@ -75,14 +75,27 @@ I got the idea for the user to search by genre from Disney+, whose UI has a drop
 
 ### 💡&nbsp;What I learned
 
+#### SWR
+
 When developing this application, I discovered the `SWR` hook provided by Next.js, which is a simple way to render client-side data, similar to the React useEffect hook, but with the added benefit of handling caching, revalidation, and refetching on intervals. Before switching to ISR for the homepage, I originally chose **_useSWR_** to fetch data client side but ran into a problem where fetching did not update when switching between genre pages. This is because the images are cached using SWR. The solution would be to implement some of the hook's available options, but in order to save time, I decided to stick to what I know and use the useEffect hook. However, this is something I will definitely look into in the future. I also went with useEffect for infinite loading at the bottom of movie, series, and search pages, but Next.JS also provides another hook called `useSWRInfinite`, which I will investigate further in the future.
+
+#### Sliders
 
 The design included a trending section that overflowed the viewport width but no specific design for scrolling through what's trending. I'd previously created carousels using vanilla JS but was looking for something simple to set up. Regrettably, I had difficulty using multiple libraries for carousels. SwiperJS was causing a problem with no smooth transition on Safari browser, which I couldn't find a solution to. I then used keen-slider, but the problem was that the animation they used, which I believe was something similar to ease or ease-in, was causing the slides to flicker, and there was no option I could find to change the animation.
 
 Despite learning about a variety of slider library options, I ultimately implemented my own. I wanted to allow the user to click through the trending section because horizontal scrolling with a mouse does not provide a good user experience. This isn't an issue for mobile devices or Mac trackpad users, so I wanted a combination of buttons and the ability to scroll with touch. I configured it so that the buttons would only appear on hover. In the past, I've discovered that hover states stick to mobile devices when clicked. I found a solution [here](https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/). On mobile devices, no buttons will appear, and users can easily scroll with touch. I also configured the slider so that when buttons are clicked, it scrolls the width of an individual card and its margin-right, which I accomplished by gaining access to the slider DOM node via the **_useRef_** hook and accessing its properties via `.getComputedStyle().getPropertyValue()`.
 
+#### Image Optimization
+
+This app also taught me about image optimization and how it affects performance. I didn't set any images to 'unoptimised' when I first deployed my application, and to my horror, I discovered that a hobby vercel account has a limit of 1000 optimised images. With the sheer number of images in this app, I quickly reached the limit and received a warning that my account would be suspended, which meant I had to convert all of my images from webp back to jpeg. In the future, I may simply convert the background image to webp format to optimise LCP (Largest Contentful Paint), because these images take longer to load, especially on larger screens.
+
+There were a few other things I did to improve image performance. I ensured that the images coming from the API were wide enough for the size of their container while still maintaining good quality. If images are retrieved from the API in their original dimensions, the browser will render images with sizes such as 3840 x 2160.
+
+I also made use of the [next/future/image](https://nextjs.org/docs/api-reference/next/future/image) component, which makes use of the native img component to improve performance. However, Next has stated in their documentation that there is a known bug in Safari where the component displays a grey border while loading, and their proposed fix currently does not work. The documentation states that setting images to 'priority' will resolve the issue, but this isn't an optimal solution for images below the fold, so I resorted to using [next/image](https://nextjs.org/docs/api-reference/next/image) for `lazy loading` for these images.
+
 ### 👨‍💻&nbsp;Continued development
 
-- Allow users to bookmark movies and TV shows if they have login credentials.
-- Explore and understand the options provided by the Next.js SWR hook.
+- Allow users with login credentials to bookmark movies and TV shows.
+- Investigate and comprehend the options provided by the SWR hook.
 - Create a loop and autoplay for slider.
+- Convert the large background images to 'optimised', so that Next.js converts them from jpeg to webp.

@@ -5,7 +5,7 @@ import {
   shimmer,
   toBase64,
 } from "@/utils/utils";
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 import StarRating from "../StarRating/StarRating";
 
@@ -121,17 +121,20 @@ const DetailsTab = ({
           </ul>
         </div>
       </div>
-      <Image
-        src={`${POSTER_URL_IMAGE}${poster}`}
-        alt={`${name} poster`}
-        unoptimized={true}
-        placeholder="blur"
-        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
-        className={styles.poster}
-        width={170}
-        height={250}
-        priority={true}
-      />
+      <div className={styles.posterContainer}>
+        <Image
+          src={`${POSTER_URL_IMAGE}${poster}`}
+          alt={`${name} poster`}
+          unoptimized={true}
+          layout="fill"
+          objectFit="contain"
+          placeholder="blur"
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(
+            shimmer(240, 140)
+          )}`}
+          className={styles.poster}
+        />
+      </div>
     </>
   );
 };

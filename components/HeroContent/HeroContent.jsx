@@ -42,15 +42,14 @@ const Content = ({
         </div>
         <div>
           <ul className={styles.list}>
-            {age_rating === "" || age_rating ? (
-              <li className={styles.ageRating}>
-                {age_rating === "" ? "NR" : `${age_rating}`}
-              </li>
-            ) : (
+            {age_rating && <li className={styles.ageRating}>{age_rating}</li>}
+
+            {series_age_rating && (
               <li className={styles.ageRating}>
                 {series_age_rating.length === 0 ? "NR" : `${series_age_rating}`}
               </li>
             )}
+
             {release_date ? (
               <li>{release_date.slice(0, 4)}</li>
             ) : (

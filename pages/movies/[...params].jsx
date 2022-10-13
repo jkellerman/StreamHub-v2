@@ -121,13 +121,12 @@ export async function getServerSideProps(context) {
   const watch_providers = getWatchProviders.GB || [];
 
   const certification =
-    release_dates.results.find((country) => country.iso_3166_1 === "US") || [];
+    release_dates.results.find((country) => country.iso_3166_1 === "GB") ||
+    release_dates.results.find((country) => country.iso_3166_1 === "US") ||
+    [];
 
-  if (certification.length === 0) return;
-
-  const age_rating = certification.release_dates.find(
-    (item) => item.certification !== "" || []
-  );
+  const age_rating =
+    certification.release_dates.find((item) => item.certification !== "") || [];
 
   return {
     props: {

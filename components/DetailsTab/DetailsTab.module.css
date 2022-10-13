@@ -1,4 +1,4 @@
-.poster {
+.posterContainer {
   display: none;
   position: relative;
 }
@@ -12,12 +12,17 @@
     margin-bottom: 2rem;
     line-height: 25px;
   }
-  .poster {
+  .posterContainer {
     display: block;
     border-radius: 8px;
-    width: auto !important;
     height: 230px !important;
-    object-fit: contain;
+    min-width: 153px;
+    width: auto !important;
+    overflow: hidden;
+  }
+
+  .poster {
+    border-radius: 8px;
   }
 
   .list {
@@ -63,6 +68,13 @@
   }
 }
 
+@media (min-width: 64em) {
+  .posterContainer {
+    min-width: 200px;
+    height: 300px !important;
+  }
+}
+
 @media (min-width: 75em) {
   .details {
     display: flex;
@@ -71,7 +83,7 @@
     justify-content: flex-end;
   }
 
-  .poster {
+  .posterContainer {
     display: none;
   }
 

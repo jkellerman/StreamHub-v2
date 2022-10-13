@@ -90,7 +90,6 @@ const Trending = ({ trending, type }) => {
               alt="arrow right"
               unoptimized={true}
               className={styles.arrow}
-              priority={true}
             />
           </button>
         )}
