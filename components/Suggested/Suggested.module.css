@@ -33,8 +33,8 @@
 .linkContainer {
   position: relative;
   margin-right: 1rem;
-  min-width: 250px;
-  max-width: 250px;
+  min-width: 220px;
+  max-width: 220px;
   height: 182px;
   overflow: hidden;
 }
@@ -158,18 +158,6 @@
   .message {
     width: 100%;
     font-size: 1rem;
-  }
-}
-
-@media (min-width: 64em) {
-  .linkContainer {
-    min-width: 220px;
-    max-width: 220px;
-    height: 182px;
-  }
-
-  .suggestionContainer {
-    height: 140px;
   }
 }
 
