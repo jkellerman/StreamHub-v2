@@ -99,3 +99,4 @@ I also made use of the [next/future/image](https://nextjs.org/docs/api-reference
 - Investigate and comprehend the options provided by the SWR hook.
 - Create a loop and autoplay for slider.
 - Convert the large background images to 'optimised', so that Next.js converts them from jpeg to webp.
+- Allow users to search streaming platforms via geolocation

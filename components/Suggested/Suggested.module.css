@@ -33,9 +33,9 @@
 .linkContainer {
   position: relative;
   margin-right: 1rem;
-  min-width: 134px;
-  max-width: 134px;
-  height: 139px;
+  min-width: 200px;
+  max-width: 200px;
+  height: 162px;
   overflow: hidden;
 }
 
@@ -45,7 +45,7 @@
   border-radius: 8px;
   overflow: hidden;
   min-width: 100%;
-  height: 90px;
+  height: 120px;
   opacity: 0.7;
   margin-right: 1rem;
 }
@@ -69,7 +69,7 @@
 }
 
 .name {
-  font-size: 0.75rem;
+  font-size: 0.9375rem;
   max-width: 95%;
 }
 
@@ -148,16 +148,6 @@
 
   .suggestions::-webkit-scrollbar-thumb {
     border-radius: 8px;
-  }
-
-  .linkContainer {
-    min-width: 200px;
-    max-width: 200px;
-    height: 162px;
-  }
-
-  .suggestionContainer {
-    height: 120px;
   }
 
   .name {
