@@ -49,7 +49,7 @@ const useInfiniteScroll = (endpoint) => {
     // How far down page the event should take place
     if (
       window.innerHeight + window.scrollY >=
-      document.body.scrollHeight - 100
+      document.body.scrollHeight - 200
     ) {
       setNewImages(true);
     }
