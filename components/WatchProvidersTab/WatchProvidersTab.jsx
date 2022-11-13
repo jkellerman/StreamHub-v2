@@ -51,7 +51,7 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
         )}
         {watch_providers.buy && (
           <div>
-            <h3 className={styles.headingMethod}>Buy</h3>
+            <h2 className={styles.headingMethod}>Buy</h2>
             <div className={styles.icons}>
               {watch_providers.buy.map((provider) => {
                 return (

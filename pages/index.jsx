@@ -25,12 +25,24 @@ export default function Home({
       <main>
         <SearchBar all />
         <Trending trending={trending} type="trending" />
-        <Category data={popularShows} category="popular shows" />
-        <Category data={popularMovies} category="popular movies" />
-        <Category data={topRatedShows} category="top rated shows" />
-        <Category data={upcoming} category="upcoming movies" />
-        <Category data={onTheAir} category="on the air" />
-        <Category data={topRatedMovies} category="top rated movies" />
+        <Category data={popularShows} type="series" category="popular shows" />
+        <Category
+          data={popularMovies}
+          type="movies"
+          category="popular movies"
+        />
+        <Category
+          data={topRatedShows}
+          type="series"
+          category="top rated shows"
+        />
+        <Category data={upcoming} type="movies" category="upcoming movies" />
+        <Category data={onTheAir} type="series" category="on the air" />
+        <Category
+          data={topRatedMovies}
+          type="movies"
+          category="top rated movies"
+        />
       </main>
     </>
   );

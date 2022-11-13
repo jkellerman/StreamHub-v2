@@ -3,7 +3,7 @@
   font-weight: 300;
   text-transform: capitalize;
   display: inline-block;
-  margin: 1.5 auto;
+  margin: 0.75rem 1rem 0.75rem 0;
 }
 
 .container {
@@ -16,6 +16,14 @@
 
 .linkContainer {
   width: calc(50% - 10px);
+}
+
+.iconMovies {
+  transform: translateY(0.25rem);
+}
+
+.iconSeries {
+  transform: translateY(0.175rem);
 }
 
 @media (max-width: 23em) {
@@ -50,6 +58,15 @@
 @media (min-width: 48em) {
   .heading {
     font-size: 2rem;
+    margin: 1.5rem 1rem 1.5rem 0;
+  }
+
+  .iconMovies {
+    transform: translateY(0.1rem);
+  }
+
+  .iconSeries {
+    transform: unset;
   }
   .container {
     gap: 1.875rem;

@@ -1,5 +1,19 @@
+.heading {
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-transform: capitalize;
+  display: inline-block;
+  margin: 0.75rem 1rem 0.75rem 0;
+}
+.iconMovies,
+.iconSeries {
+  transform: translateY(0.25rem);
+  margin-right: 0.5rem;
+}
+
 .outerBanner {
   position: relative;
+  margin-top: 0.75rem;
 }
 
 .banner {
@@ -79,6 +93,9 @@
 }
 
 @media (hover: hover) {
+  .outerBanner {
+    margin-top: 0;
+  }
   .outerBanner:hover .navigation {
     display: block;
   }
@@ -93,6 +110,17 @@
 }
 
 @media (min-width: 48em) {
+  .heading {
+    font-size: 2rem;
+    margin: 1.5rem 1rem 1.5rem 0;
+  }
+
+  .iconMovies,
+  .iconSeries {
+    transform: unset;
+    margin-right: 0.5rem;
+  }
+
   .banner {
     margin-bottom: 1rem;
   }

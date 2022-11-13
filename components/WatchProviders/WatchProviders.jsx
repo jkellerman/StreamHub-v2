@@ -49,7 +49,7 @@ const WatchProviders = ({ watch_providers }) => {
           )}
           {watch_providers.buy && (
             <div>
-              <h3 className={styles.headingMethod}>Buy</h3>
+              <h2 className={styles.headingMethod}>Buy</h2>
               <div className={styles.icons}>
                 {watch_providers.buy.map((provider) => {
                   return (
@@ -77,7 +77,7 @@ const WatchProviders = ({ watch_providers }) => {
           )}
           {watch_providers.rent && (
             <div>
-              <h3 className={styles.headingMethod}>Rent</h3>
+              <h2 className={styles.headingMethod}>Rent</h2>
               <div className={styles.icons}>
                 {watch_providers.rent.map((provider) => {
                   return (
