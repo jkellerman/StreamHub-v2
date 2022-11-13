@@ -79,29 +79,33 @@ const Dropdown = ({ type, name, popular, movieGenreList, seriesGenreList }) => {
 
       {type === "series" && isDropdownOpen && (
         <ul className={styles.list} ref={dropDownRef}>
-          <li className={popular ? styles.listItemCurrent : styles.listItem}>
-            <Link href="/series">
-              <a className={styles.link} onClick={toggleDropdown}>
-                Popular
-              </a>
-            </Link>
-          </li>
-          {seriesGenreList.genres.map((genre) => {
-            return (
-              <li
-                key={genre.id}
-                className={
-                  name === genre.name ? styles.listItemCurrent : styles.listItem
-                }
-              >
-                <Link href={`/series/genre/${genre.id}?name=${genre.name}`}>
-                  <a className={styles.link} onClick={toggleDropdown}>
-                    {genre.name}
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
+          <div className={styles.listContainer}>
+            <li className={popular ? styles.listItemCurrent : styles.listItem}>
+              <Link href="/series">
+                <a className={styles.link} onClick={toggleDropdown}>
+                  Popular
+                </a>
+              </Link>
+            </li>
+            {seriesGenreList.genres.map((genre) => {
+              return (
+                <li
+                  key={genre.id}
+                  className={
+                    name === genre.name
+                      ? styles.listItemCurrent
+                      : styles.listItem
+                  }
+                >
+                  <Link href={`/series/genre/${genre.id}?name=${genre.name}`}>
+                    <a className={styles.link} onClick={toggleDropdown}>
+                      {genre.name}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </div>
         </ul>
       )}
     </div>
