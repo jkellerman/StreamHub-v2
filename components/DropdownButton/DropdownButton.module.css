@@ -1,6 +1,7 @@
 .buttonContainer {
-  position: relative;
-  /* animation: fade 250ms ease-in; */
+  position: absolute;
+  top: 7.5rem;
+  left: 6rem;
 }
 
 .button {
@@ -15,15 +16,41 @@
   transition: all 0.2s;
 }
 
-.button:focus,
-.button:hover {
+.button:focus {
   background: var(--Semi-dark-blue);
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background: var(--Semi-dark-blue);
+  }
 }
 
 .chevron {
   position: relative;
   top: -0.05rem;
   right: -0.75rem;
+}
+
+@media (min-width: 48em) {
+  .buttonContainer {
+    top: 13rem;
+    left: 8.5rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .buttonContainer {
+    top: 13rem;
+    left: 9rem;
+  }
+}
+
+@media (min-width: 75em) {
+  .buttonContainer {
+    top: 9rem;
+    left: 18rem;
+  }
 }
 
 @keyframes fade {

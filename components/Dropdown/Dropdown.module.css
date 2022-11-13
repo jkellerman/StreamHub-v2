@@ -1,37 +1,30 @@
-.dropdown {
-  position: absolute;
-  top: 2.5rem;
-  left: 4.5rem;
-  font-size: 1rem;
-  animation: fade 250ms ease-in;
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 0;
 }
-
 .list {
-  background: var(--Semi-dark-blue);
-  border-radius: 5px;
-  border: 1px solid var(--Greyish-blue);
   position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--Dark-blue);
   z-index: 5;
-  padding: 1rem 0;
-  min-width: 200px;
-  max-height: 325px;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
   overflow-y: scroll;
+  animation: enter 250ms ease forwards;
 }
 
-.listItem {
+.listItem,
+.listItemCurrent {
   list-style: none;
-  padding: 0.5rem 0;
-}
-
-.listItem:hover,
-.listItemCurrent:hover {
-  background: var(--Greyish-blue);
-  transition: all 0.2s;
+  padding: 0.5rem 2rem;
 }
 
 .listItemCurrent {
-  list-style: none;
-  padding: 0.5rem 0;
   position: relative;
 }
 
@@ -44,7 +37,7 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   position: absolute;
-  left: 0.75rem;
+  left: 2rem;
   top: 0.75rem;
 }
 
@@ -52,22 +45,61 @@
   padding-left: 1.5rem;
 }
 
-@media (min-width: 48em) {
-  .dropdown {
-    top: 5rem;
-    left: 7.5rem;
-  }
-
-  .list {
-    max-height: 375px;
+@media (hover: hover) {
+  .listItem:hover,
+  .listItemCurrent:hover {
+    background: var(--Greyish-blue);
+    transition: all 0.2s;
   }
 }
 
-@keyframes fade {
+@media (min-width: 48em) {
+  .listContainer {
+    display: unset;
+  }
+  .list {
+    background: var(--Semi-dark-blue);
+    border-radius: 5px;
+    border: 1px solid var(--Greyish-blue);
+    position: absolute;
+    top: 16.5rem;
+    left: 8.5rem;
+    z-index: 5;
+    padding: 1rem 0;
+    max-width: 200px;
+    max-height: 375px;
+    overflow-y: scroll;
+    animation: unset;
+    display: unset;
+    justify-content: unset;
+  }
+
+  .listItem,
+  .listItemCurrent {
+    padding: 0.5rem 0;
+  }
+
+  .listItemCurrent::before {
+    left: 0.75rem;
+  }
+
+  .link {
+    padding-left: 1.5rem;
+  }
+}
+
+@media (min-width: 75em) {
+  .list {
+    top: 12.5rem;
+    left: 18rem;
+  }
+}
+
+@keyframes enter {
   from {
-    opacity: 0;
+    transform: translateY(100vh);
   }
   to {
-    opacity: 0.7;
+    transform: translateY(0vh);
   }
 }

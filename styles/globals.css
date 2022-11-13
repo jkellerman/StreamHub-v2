@@ -21,7 +21,7 @@ body {
 main {
   width: 90%;
   margin: 0 auto;
-  position: relative;
+  /* position: relative; */
 }
 
 a {
@@ -62,6 +62,10 @@ hr {
   }
 }
 
+.noScroll {
+  overflow: hidden;
+}
+
 /* ==============
 Progress bar styles 
 ==================*/
@@ -96,6 +100,10 @@ Progress bar styles
 @media (min-width: 48em) {
   #nprogress .bar {
     height: 5px;
+  }
+
+  .noScroll {
+    overflow: visible;
   }
 }
 

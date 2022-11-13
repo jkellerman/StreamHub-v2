@@ -12,6 +12,7 @@ const Dropdown = ({ type, name, popular, movieGenreList, seriesGenreList }) => {
   };
 
   useEffect(() => {
+    // Close dropdown when click outside dropdown box
     const checkIfClickedOutside = (e) => {
       if (
         isDropdownOpen &&
@@ -28,6 +29,13 @@ const Dropdown = ({ type, name, popular, movieGenreList, seriesGenreList }) => {
     };
   }, [isDropdownOpen]);
 
+  useEffect(() => {
+    // Prevent user from scrolling (for when mobile list is open)
+    const body = document.querySelector("body");
+    if (isDropdownOpen) return body.classList.add("noScroll");
+    return body.classList.remove("noScroll");
+  }, [isDropdownOpen]);
+
   return (
     <div className={styles.dropdown}>
       <DropdownButton
@@ -38,30 +46,34 @@ const Dropdown = ({ type, name, popular, movieGenreList, seriesGenreList }) => {
 
       {type === "movies" && isDropdownOpen && (
         <ul className={styles.list} ref={dropDownRef}>
-          <li className={popular ? styles.listItemCurrent : styles.listItem}>
-            <Link href="/movies">
-              <a className={styles.link} onClick={toggleDropdown}>
-                Popular
-              </a>
-            </Link>
-          </li>
+          <div className={styles.listContainer}>
+            <li className={popular ? styles.listItemCurrent : styles.listItem}>
+              <Link href="/movies">
+                <a className={styles.link} onClick={toggleDropdown}>
+                  Popular
+                </a>
+              </Link>
+            </li>
 
-          {movieGenreList.genres.map((genre) => {
-            return (
-              <li
-                key={genre.id}
-                className={
-                  name === genre.name ? styles.listItemCurrent : styles.listItem
-                }
-              >
-                <Link href={`/movies/genre/${genre.id}?name=${genre.name}`}>
-                  <a className={styles.link} onClick={toggleDropdown}>
-                    {genre.name}
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
+            {movieGenreList.genres.map((genre) => {
+              return (
+                <li
+                  key={genre.id}
+                  className={
+                    name === genre.name
+                      ? styles.listItemCurrent
+                      : styles.listItem
+                  }
+                >
+                  <Link href={`/movies/genre/${genre.id}?name=${genre.name}`}>
+                    <a className={styles.link} onClick={toggleDropdown}>
+                      {genre.name}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </div>
         </ul>
       )}
 

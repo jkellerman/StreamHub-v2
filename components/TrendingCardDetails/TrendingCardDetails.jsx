@@ -10,12 +10,12 @@ const TrendingCardDetails = ({
   return (
     <>
       <h2 className={styles.title}>
-        {seriesName && seriesName.length > 27
-          ? `${seriesName.slice(0, 27)}...`
+        {seriesName && seriesName.length > 26
+          ? `${seriesName.slice(0, 26)}...`
           : seriesName}
 
-        {movieTitle && movieTitle.length > 27
-          ? `${movieTitle.slice(0, 27)}...`
+        {movieTitle && movieTitle.length > 26
+          ? `${movieTitle.slice(0, 26)}...`
           : movieTitle}
       </h2>
       <div className={styles.details}>
