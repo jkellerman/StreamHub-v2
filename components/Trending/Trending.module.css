@@ -3,7 +3,7 @@
   font-weight: 300;
   text-transform: capitalize;
   display: inline-block;
-  margin: 0.75rem 1rem 0.75rem 0;
+  margin: 0.75rem 1rem 1.5rem 0;
 }
 .iconMovies,
 .iconSeries {
@@ -106,7 +106,7 @@
 @media (min-width: 48em) {
   .heading {
     font-size: 2rem;
-    margin: 1.5rem 1rem 1.5rem 0;
+    margin: 1.5rem 1rem 2rem 0;
   }
 
   .iconMovies,
