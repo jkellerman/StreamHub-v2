@@ -13,7 +13,6 @@
 
 .outerBanner {
   position: relative;
-  margin-top: 0.75rem;
 }
 
 .banner {
@@ -92,9 +91,6 @@
 }
 
 @media (hover: hover) {
-  .outerBanner {
-    margin-top: 0;
-  }
   .outerBanner:hover .navigation {
     display: block;
   }
