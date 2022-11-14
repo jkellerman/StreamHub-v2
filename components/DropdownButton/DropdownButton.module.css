@@ -1,7 +1,7 @@
 .buttonContainer {
   position: absolute;
   top: 7.5rem;
-  left: 6.5rem;
+  left: 5.5rem;
 }
 
 .button {
@@ -30,6 +30,12 @@
   position: relative;
   top: -0.05rem;
   right: -0.75rem;
+}
+
+@media (min-width: 30em) {
+  .buttonContainer {
+    left: 6.5rem;
+  }
 }
 
 @media (min-width: 48em) {
