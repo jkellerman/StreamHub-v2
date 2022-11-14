@@ -47,11 +47,6 @@
     height: 174px;
   }
 }
-@media (min-width: 75em) {
-  .container {
-    height: 190px;
-  }
-}
 
 @keyframes fade {
   from {

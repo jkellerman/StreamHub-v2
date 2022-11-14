@@ -41,8 +41,8 @@
 }
 
 .link {
-  min-width: 270px;
-  height: 170px;
+  min-width: 240px;
+  height: 140px;
   position: relative;
   border-radius: 8px;
   overflow: hidden;
@@ -127,13 +127,6 @@
     min-width: 470px;
     height: 230px;
     margin-right: 2.5rem;
-  }
-}
-
-@media (min-width: 64em) {
-  .link {
-    min-width: 530px;
-    height: 300px;
   }
 }
 

@@ -51,7 +51,6 @@
   }
   .container {
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    /* margin-top: 0; */
     margin-bottom: 2rem;
   }
 }
@@ -65,17 +64,5 @@
 @media (min-width: 75em) {
   .container {
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  }
-}
-
-@media (min-width: 91em) {
-  .container {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  }
-}
-
-@media (min-width: 110.75em) {
-  .container {
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   }
 }
