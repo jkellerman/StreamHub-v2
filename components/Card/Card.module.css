@@ -3,8 +3,6 @@
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  min-width: 100%;
-  width: 164px;
   height: 110px;
   opacity: 0.7;
   animation: fade 250ms ease-in;
@@ -21,17 +19,37 @@
   transition: all 250ms ease-in;
 }
 
-@media (min-width: 48em) {
+@media (max-width: 23em) {
   .container {
-    width: 220px;
     height: 140px;
   }
 }
 
+@media (min-width: 18.5625em) {
+  .container {
+    height: 110px;
+  }
+}
+
+@media (min-width: 48em) {
+  .container {
+    height: 140px;
+  }
+}
+
+@media (min-width: 56.25em) {
+  .container {
+    height: 174px;
+  }
+}
 @media (min-width: 64em) {
   .container {
-    width: 280px;
     height: 174px;
+  }
+}
+@media (min-width: 75em) {
+  .container {
+    height: 190px;
   }
 }
 

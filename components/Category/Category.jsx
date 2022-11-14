@@ -4,7 +4,7 @@ import styles from "@/components/Category/Category.module.css";
 
 const Category = ({ data, category, type }) => {
   return (
-    <section>
+    <section className={styles.section}>
       <h1 className={styles.heading}>{category}</h1>
 
       {type === "movies" && (
