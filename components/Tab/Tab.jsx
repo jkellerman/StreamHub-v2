@@ -5,7 +5,7 @@ const Tab = ({ activeTab, handleClick, tab, handleScroll }) => {
     <>
       {tab === 1 && (
         <div className={styles.tabContainer}>
-          <a
+          <button
             className={
               activeTab === 1
                 ? `${styles.tab} ${styles.active}`
@@ -17,12 +17,12 @@ const Tab = ({ activeTab, handleClick, tab, handleScroll }) => {
             }}
           >
             Where to watch
-          </a>
+          </button>
         </div>
       )}
       {tab === 2 && (
         <div className={styles.tabContainer}>
-          <a
+          <button
             className={
               activeTab === 2
                 ? `${styles.tab} ${styles.active}`
@@ -34,7 +34,7 @@ const Tab = ({ activeTab, handleClick, tab, handleScroll }) => {
             }}
           >
             Details
-          </a>
+          </button>
         </div>
       )}
     </>

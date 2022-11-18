@@ -1,6 +1,6 @@
 @media (min-width: 48em) {
   .tabContainer {
-    display: inline-block;
+    /* display: inline-block; */
     position: relative;
   }
 
@@ -8,7 +8,11 @@
     text-transform: uppercase;
     font-weight: 500;
     font-size: 1.25rem;
+    font-family: inherit;
     cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--Pure-white);
   }
 
   .tab:hover {

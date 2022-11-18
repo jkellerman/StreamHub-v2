@@ -5,7 +5,7 @@ import img from "@/public/assets/justwatch.svg";
 
 const WatchProvidersTab = ({ watch_providers, activeTab }) => {
   return (
-    <section
+    <div
       className={
         activeTab === 1 ? `${styles.container} ${styles.active}` : null
       }
@@ -102,7 +102,7 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
           </div>
         )}
       </div>
-    </section>
+    </div>
   );
 };
 

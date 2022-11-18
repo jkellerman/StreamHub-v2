@@ -37,7 +37,7 @@ const Tablist = ({
 
   return (
     <section className={styles.container} ref={tab}>
-      <nav className={styles.tabs}>
+      <div className={styles.tabs}>
         <Tab
           activeTab={activeTab}
           handleClick={handleClick}
@@ -50,17 +50,17 @@ const Tablist = ({
           tab={2}
           handleScroll={handleScroll}
         />
-      </nav>
-      <section className={styles.contentContainer}>
-        <article>
+      </div>
+      <article>
+        <div>
           {activeTab === 1 && (
             <WatchProvidersTab
               watch_providers={watch_providers}
               activeTab={activeTab}
             />
           )}
-        </article>
-        <article className={styles.detailsContainer}>
+        </div>
+        <div className={styles.detailsContainer}>
           {activeTab === 2 && (
             <DetailsTab
               name={name}
@@ -79,8 +79,8 @@ const Tablist = ({
               activeTab={activeTab}
             />
           )}
-        </article>
-      </section>
+        </div>
+      </article>
     </section>
   );
 };
