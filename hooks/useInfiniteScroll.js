@@ -8,6 +8,7 @@ const useInfiniteScroll = (endpoint) => {
   const mounted = useRef(false);
   const url = `${endpoint}/${page}`;
 
+  // fetch films/series everytime url page in url changes
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -60,9 +61,12 @@ const useInfiniteScroll = (endpoint) => {
     return () => window.removeEventListener("scroll", event);
   }, []);
 
+  // If navigated to new page, set page number from api to 1
+
   useEffect(() => {
     setPage(1);
   }, [endpoint]);
+
   return { cards, isLoading };
 };
 
