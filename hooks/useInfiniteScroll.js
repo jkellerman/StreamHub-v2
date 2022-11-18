@@ -8,7 +8,7 @@ const useInfiniteScroll = (endpoint) => {
   const mounted = useRef(false);
   const url = `${endpoint}/${page}`;
 
-  // fetch films/series everytime url page in url changes
+  // fetch films/series everytime page in url changes
   useEffect(() => {
     const fetchMovies = async () => {
       try {

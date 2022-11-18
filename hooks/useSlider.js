@@ -15,6 +15,8 @@ const useSlider = () => {
     if (sliderRef.current.scrollLeft === 0) {
       setIsScrollAtStart(true);
     }
+
+    // Find if scroll is at end to remove/add arrow
     if (
       sliderRef.current.scrollLeft + sliderRef.current.offsetWidth + 1 >=
       sliderRef.current.scrollWidth
@@ -24,6 +26,8 @@ const useSlider = () => {
       setIsScrollAtEnd(false);
     }
   };
+
+  // Arrows appear if mouse hovers over slider
 
   const mouseEnterSlide = () => {
     if (sliderRef.current.scrollWidth > sliderRef.current.offsetWidth) {
@@ -48,6 +52,8 @@ const useSlider = () => {
       cardRef.current.getBoundingClientRect().width +
       parseInt(cardWidthPlusMargin);
   };
+
+  // Suggestions sliders scroll width of two cards when arrow is clicked
   const handleClickPrevSuggestion = () => {
     const cardWidthPlusMargin = window
       .getComputedStyle(cardRef.current)
