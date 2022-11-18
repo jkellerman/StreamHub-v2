@@ -161,6 +161,18 @@
   }
 }
 
+@media (min-width: 64em) {
+  .linkContainer {
+    min-width: 280px;
+    max-width: 280px;
+    height: 222px;
+  }
+
+  .suggestionContainer {
+    height: 180px;
+  }
+}
+
 @media (min-width: 75em) {
   .container {
     border-top: unset;
