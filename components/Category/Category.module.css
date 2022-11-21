@@ -2,12 +2,30 @@
   margin-top: 1.5rem;
 }
 
+.headingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .heading {
   font-size: 1.25rem;
   font-weight: 300;
   text-transform: capitalize;
   display: inline-block;
-  margin: 0.75rem 1rem 0.75rem 0;
+  margin: 0.75rem 1rem 0rem 0;
+}
+
+.categoryLink {
+  font-size: 0.8rem;
+  transform: translateY(50%);
+  color: var(--Red);
+}
+
+.categoryLink:hover {
+  color: var(--Pure-white);
+  text-decoration: underline;
+  transition: all 200ms;
 }
 
 .container {
@@ -20,6 +38,10 @@
 
 .linkContainer {
   width: 100%;
+}
+
+.iconTrending {
+  margin-right: 0.5rem;
 }
 
 .iconMovies {
@@ -39,7 +61,11 @@
 @media (min-width: 48em) {
   .heading {
     font-size: 2rem;
-    margin: 1.5rem 1rem 1.5rem 0;
+    margin: 1.5rem 1rem 0.5rem 0;
+  }
+
+  .categoryLink {
+    font-size: 1rem;
   }
 
   .iconMovies {

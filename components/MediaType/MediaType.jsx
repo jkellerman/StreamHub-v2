@@ -49,6 +49,5 @@ const MediaType = ({
     </section>
   );
 };
-// };
 
 export default MediaType;

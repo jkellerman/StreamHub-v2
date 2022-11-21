@@ -19,7 +19,9 @@ const WatchProviders = ({ watch_providers }) => {
           />
         </div>
         <div className={styles.providers}>
-          {watch_providers.length === 0 && <span>No current providers</span>}
+          {watch_providers.length === 0 && (
+            <span>Not available for streaming</span>
+          )}
           {watch_providers.flatrate && (
             <div>
               <h2 className={styles.headingMethod}>Stream</h2>
