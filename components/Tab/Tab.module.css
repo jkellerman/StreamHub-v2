@@ -1,6 +1,5 @@
 @media (min-width: 48em) {
   .tabContainer {
-    /* display: inline-block; */
     position: relative;
   }
 
@@ -13,6 +12,7 @@
     background: none;
     border: none;
     color: var(--Pure-white);
+    padding: 0;
   }
 
   .tab:hover {

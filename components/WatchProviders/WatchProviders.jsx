@@ -7,21 +7,20 @@ const WatchProviders = ({ watch_providers }) => {
   return (
     <>
       <section className={styles.container}>
-        <div className={styles.justWatchLogoContainer}>
-          <Image
-            src={img}
-            alt="just watch logo"
-            unoptimized={true}
-            width={100}
-            height={50}
-            className={styles.logo}
-            priority={true}
-          />
-        </div>
+        {watch_providers.length === 0 ? null : (
+          <div className={styles.justWatchLogoContainer}>
+            <Image
+              src={img}
+              alt="just watch logo"
+              unoptimized={true}
+              width={100}
+              height={50}
+              className={styles.logo}
+              priority={true}
+            />
+          </div>
+        )}
         <div className={styles.providers}>
-          {watch_providers.length === 0 && (
-            <span>Not available for streaming</span>
-          )}
           {watch_providers.flatrate && (
             <div>
               <h2 className={styles.headingMethod}>Stream</h2>
