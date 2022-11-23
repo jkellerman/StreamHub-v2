@@ -33,7 +33,7 @@
   grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
   row-gap: clamp(1rem, 1.6vw + 0.5rem, 2rem);
   column-gap: clamp(1rem, 2.4vw + 0.25rem, 2.5rem);
-  margin-top: 1rem;
+  margin: 1rem 0;
 }
 
 .linkContainer {

@@ -48,12 +48,6 @@
   border-bottom: 1px solid var(--Greyish-blue);
 }
 
-@media (max-width: 23em) {
-  .heroSearch {
-    width: 95%;
-  }
-}
-
 @media (max-width: 21.625em) {
   .heroSearch {
     width: 87.5%;

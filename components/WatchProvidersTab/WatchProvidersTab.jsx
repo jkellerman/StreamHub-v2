@@ -23,7 +23,7 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
       </div>
       <div className={styles.providers}>
         {watch_providers.length === 0 && (
-          <span>Not available for streaming</span>
+          <span>Not available to watch online</span>
         )}
         {watch_providers.flatrate && (
           <div>

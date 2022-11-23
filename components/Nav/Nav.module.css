@@ -47,18 +47,6 @@
   border-radius: 50%;
 }
 
-@media (max-width: 23em) {
-  .nav {
-    width: 95%;
-  }
-}
-
-@media (max-width: 21.625em) {
-  .nav {
-    width: 87.5%;
-  }
-}
-
 @media (min-width: 48em) {
   .header {
     background-color: transparent;

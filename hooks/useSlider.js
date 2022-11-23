@@ -61,7 +61,7 @@ const useSlider = () => {
     sliderRef.current.scrollLeft -=
       (cardRef.current.getBoundingClientRect().width +
         parseInt(cardWidthPlusMargin)) *
-      2;
+      4;
   };
 
   const handleClickNextSuggestion = () => {
@@ -71,7 +71,7 @@ const useSlider = () => {
     sliderRef.current.scrollLeft +=
       (cardRef.current.getBoundingClientRect().width +
         parseInt(cardWidthPlusMargin)) *
-      2;
+      4;
   };
 
   return {

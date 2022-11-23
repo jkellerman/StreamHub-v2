@@ -19,7 +19,7 @@ export default function Home({
         <title>Entertainment | Streaming Movies and TV series guide</title>
         <meta
           name="description"
-          content="Entertainment allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other other providers in one place."
+          content="Entertainment allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other providers in one place."
         />
       </Head>
       <main>

@@ -55,17 +55,6 @@
   display: none;
 }
 
-@media (max-width: 23em) {
-  .container {
-    left: 0.5625rem;
-  }
-}
-@media (max-width: 21.625em) {
-  .container {
-    left: 1.25rem;
-  }
-}
-
 @media (min-width: 30em) {
   .container {
     left: 2rem;
