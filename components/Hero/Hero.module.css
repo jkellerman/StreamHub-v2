@@ -5,6 +5,7 @@
 
 .hero {
   position: relative;
+  margin-bottom: -5rem;
 }
 
 .imageContainer {
@@ -76,5 +77,15 @@
 
   .overlay {
     height: 102vh;
+  }
+
+  .hero {
+    margin-bottom: -34rem;
+  }
+}
+
+@media (min-width: 90em) {
+  .hero {
+    margin-bottom: -37rem;
   }
 }

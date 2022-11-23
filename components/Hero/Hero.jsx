@@ -18,19 +18,21 @@ const Hero = ({
   title,
 }) => {
   return (
-    <section className={styles.hero}>
-      <div className={styles.overlay}></div>
-      <div className={styles.imageContainer}>
-        <Image
-          src={`${BACKGROUND_URL_IMAGE}${image}`}
-          alt={`${title} backdrop`}
-          unoptimized={true}
-          priority={true}
-          width={1000}
-          height={300}
-          className={styles.backgroundImage}
-        />
-      </div>
+    <>
+      <section className={styles.hero}>
+        <div className={styles.overlay}></div>
+        <div className={styles.imageContainer}>
+          <Image
+            src={`${BACKGROUND_URL_IMAGE}${image}`}
+            alt={`${title} backdrop`}
+            unoptimized={true}
+            priority={true}
+            width={1000}
+            height={300}
+            className={styles.backgroundImage}
+          />
+        </div>
+      </section>
       <HeroContent
         tagline={tagline}
         age_rating={age_rating}
@@ -44,7 +46,7 @@ const Hero = ({
         seasons={seasons}
         title={title}
       />
-    </section>
+    </>
   );
 };
 

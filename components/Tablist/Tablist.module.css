@@ -26,20 +26,13 @@
 
 @media (min-width: 75em) {
   .container {
-    margin: 0 2.25rem 0 11rem;
+    margin: 0 2.25rem 2rem 11rem;
     width: unset;
     position: relative;
-    top: -12rem;
     z-index: 5;
   }
 
   .tabs {
     gap: 2.5rem;
-  }
-}
-
-@media (min-width: 90em) {
-  .container {
-    top: -18rem;
   }
 }

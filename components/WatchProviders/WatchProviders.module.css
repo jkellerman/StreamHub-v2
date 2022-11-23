@@ -43,18 +43,6 @@
   object-fit: contain;
 }
 
-@media (max-width: 23em) {
-  .container {
-    width: 95%;
-  }
-}
-
-@media (max-width: 21.625em) {
-  .container {
-    width: 87.5%;
-  }
-}
-
 @media (min-width: 48em) {
   .container {
     display: none;

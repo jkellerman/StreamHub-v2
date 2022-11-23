@@ -1,9 +1,9 @@
 .container {
   z-index: 5;
-  position: absolute;
-  left: 1.25rem;
-  bottom: 2.5rem;
-  margin-right: 2rem;
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
 }
 
 .list {
@@ -56,16 +56,13 @@
 }
 
 @media (min-width: 30em) {
-  .container {
-    left: 2rem;
-  }
 }
 
 @media (min-width: 48em) {
   .container {
-    width: 100%;
-    padding-left: 1.75rem;
-    left: 0rem;
+    width: 93.75%;
+    padding: 0;
+    margin-bottom: 4rem;
   }
 
   .tagline {
@@ -76,12 +73,12 @@
 
 @media (min-width: 75em) {
   .container {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     gap: 2rem;
-    bottom: 15rem;
-    margin: 4.15rem 2.25rem 0 11rem;
+    margin: 4.15rem 2.25rem 2rem 11rem;
     width: unset;
     left: 0;
     padding: 0;
@@ -117,15 +114,6 @@
 }
 
 @media (min-width: 90em) {
-  .container {
-    bottom: 20rem;
-  }
-
-  .poster {
-    min-height: 300px !important;
-    width: auto !important;
-  }
-
   .overview {
     font-size: 1.25rem;
   }

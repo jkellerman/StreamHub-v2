@@ -126,6 +126,7 @@
     margin: 2rem auto 0;
     border-top: 2px solid var(--Semi-dark-blue);
     width: 93.75%;
+    z-index: 10;
   }
   .heading {
     font-size: 1.25rem;
@@ -175,7 +176,6 @@
     margin: 0;
     width: 100%;
     position: relative;
-    top: -10rem;
   }
 
   .heading {
@@ -192,12 +192,6 @@
 
   .message {
     padding: unset;
-  }
-}
-
-@media (min-width: 90em) {
-  .container {
-    top: -12rem;
   }
 }
 
