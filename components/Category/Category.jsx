@@ -38,7 +38,7 @@ const Category = ({ data, category, type }) => {
             </svg>
           )}
         </div>
-        <Link href={`/${category.replace(/\s/g, "")}`}>
+        <Link href={`/${type}/${category.replace(/\s/g, "")}`}>
           <a className={styles.categoryLink}>see more</a>
         </Link>
       </div>

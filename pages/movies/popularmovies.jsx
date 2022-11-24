@@ -2,11 +2,11 @@ import Head from "next/head";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import CategoryResults from "@/components/CategoryResults/CategoryResults";
 
-const TopRatedMovies = () => {
+const PopularMovies = () => {
   return (
     <>
       <Head>
-        <title>Top Rated Movies | Streaming Movies and TV series guide</title>
+        <title>Popular Movies | Streaming Movies and TV series guide</title>
         <meta
           name="description"
           content="Entertainment allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other other providers in one place."
@@ -15,8 +15,8 @@ const TopRatedMovies = () => {
       <main>
         <SearchBar all />
         <CategoryResults
-          endpoint="api/topratedmovies"
-          category="top rated movies"
+          endpoint="/api/popularmovies"
+          category="popular movies"
           type="movies"
         />
       </main>
@@ -24,4 +24,4 @@ const TopRatedMovies = () => {
   );
 };
 
-export default TopRatedMovies;
+export default PopularMovies;
