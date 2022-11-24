@@ -15,7 +15,7 @@ const UpcomingMovies = () => {
       <main>
         <SearchBar all />
         <CategoryResults
-          endpoint="/api/upcomingmovies"
+          endpoint="/api/movies/upcomingmovies"
           category="upcoming movies"
           type="movies"
         />

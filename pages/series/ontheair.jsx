@@ -15,7 +15,7 @@ const OnTheAir = () => {
       <main>
         <SearchBar all />
         <CategoryResults
-          endpoint="/api/ontheair"
+          endpoint="/api/series/ontheair"
           category="on the air"
           type="series"
         />

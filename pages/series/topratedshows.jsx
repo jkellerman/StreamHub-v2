@@ -15,7 +15,7 @@ const TopRatedShows = () => {
       <main>
         <SearchBar all />
         <CategoryResults
-          endpoint="/api/topratedshows"
+          endpoint="/api/series/topratedshows"
           category="top rated shows"
           type="series"
         />
