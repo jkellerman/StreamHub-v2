@@ -1,6 +1,6 @@
 # Entertainment web app
 
-This is my own solution to the [Entertainment web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X) with added features. Frontend Mentor challenges help you improve your coding skills by provided professional Figma designs to help you build realistic projects.
+This is my solution to the [Entertainment web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X) with added features. Frontend Mentor challenges help you improve your coding skills by provided professional Figma designs to help you build realistic projects.
 
 ## Table of contents
 
@@ -36,17 +36,23 @@ Some features I added:
 
 ### 📸&nbsp;Previews
 
-<img src="./public/previews/home.png" alt="homepage" width="1000"/>
+#### mobile
+
+<img src="./public/previews/mobile.png" alt="mobile view" height="1000"/>
+
+#### desktop
 
 <img src="./public/previews/info-page.png" alt="info page" width="1000"/>
+
+<img src="./public/previews/home.png" alt="homepage" width="1000"/>
 
 <img src="./public/previews/search-results.png" alt="search results" width="1000"/>
 
 <img src="./public/previews/genre.png" alt="genre" width="1000"/>
 
-<img src="./public/previews/tablet-details.png" alt="tablet view" width="500"/>
+#### tablet
 
-<img src="./public/previews/mobile.png" alt="mobile view" height="1000"/>
+<img src="./public/previews/tablet-details.png" alt="tablet view" width="500"/>
 
 ### 🔗&nbsp;Links
 
