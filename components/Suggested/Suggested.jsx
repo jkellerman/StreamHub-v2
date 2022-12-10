@@ -82,7 +82,7 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
             );
           })}
         </div>
-        {suggested.results.length === 0 ? null : isScrollAtStart ? (
+        {suggested.results.length < 3 ? null : isScrollAtStart ? (
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
             onClick={handleClickPrevSuggestion}
@@ -110,7 +110,7 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
             </svg>
           </button>
         )}
-        {suggested.results.length === 0 ? null : isScrollAtEnd ? (
+        {suggested.results.length < 3 ? null : isScrollAtEnd ? (
           <button
             className={`${styles.navigation} ${styles.navigationNext}`}
             onClick={handleClickNextSuggestion}

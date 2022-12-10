@@ -114,10 +114,10 @@
   .navigationPrev {
     left: unset;
     margin-right: 1.75rem;
-    right: 0;
+    right: 1.5rem;
   }
   .navigationNext {
-    right: 0;
+    right: 1.5rem;
   }
 }
 
@@ -167,6 +167,13 @@
 
   .navigation {
     top: -3rem;
+  }
+
+  .navigationPrev {
+    right: 0;
+  }
+  .navigationNext {
+    right: 0;
   }
 }
 
