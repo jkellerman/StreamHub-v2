@@ -133,7 +133,7 @@
     margin: 1.65rem 0 2rem;
   }
   .suggestions {
-    margin: 0 auto 2rem;
+    margin-top: 2.5rem;
     width: 100%;
   }
 
@@ -166,7 +166,7 @@
   }
 
   .navigation {
-    top: -2.75rem;
+    top: -3rem;
   }
 }
 

@@ -31,7 +31,7 @@ const Series = ({
   return (
     <>
       <Head>
-        <title>{`Watch ${title} Online | Entertainment`}</title>
+        <title>{`Watch ${title} Online | Reelgood`}</title>
         <meta name="description" content={`Where to watch ${title}`} />
       </Head>
       <main className={styles.main}>

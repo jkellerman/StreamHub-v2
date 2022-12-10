@@ -12,7 +12,7 @@ const SeriesGenre = ({ genreList }) => {
   return (
     <>
       <Head>
-        <title>{`Watch ${name} TV Shows Online | Entertainment`}</title>
+        <title>{`Watch ${name} TV Shows Online | Reelgood`}</title>
         <meta
           name="description"
           content={`Search and discover the best ${name} TV shows from Netflix, Amazon Prime, Disney+ and many more services.`}

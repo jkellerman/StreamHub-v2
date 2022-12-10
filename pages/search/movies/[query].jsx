@@ -9,7 +9,7 @@ const MoviesSearch = () => {
   return (
     <>
       <Head>
-        <title>{`${query} | Entertainment`}</title>
+        <title>{`${query} | Reelgood`}</title>
         <meta name="description" content={`Where to watch ${query}`} />
       </Head>
       <main>
