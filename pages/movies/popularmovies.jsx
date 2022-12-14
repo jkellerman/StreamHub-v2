@@ -15,7 +15,7 @@ const PopularMovies = () => {
       <main>
         <SearchBar all />
         <CategoryResults
-          endpoint="/api/movies/popularmovies"
+          endpoint="/api/movies/popular"
           category="popular movies"
           type="movies"
         />

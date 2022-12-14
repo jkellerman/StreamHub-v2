@@ -15,7 +15,7 @@ const TopRatedMovies = () => {
       <main>
         <SearchBar all />
         <CategoryResults
-          endpoint="/api/movies/topratedmovies"
+          endpoint="/api/movies/top_rated"
           category="top rated movies"
           type="movies"
         />
