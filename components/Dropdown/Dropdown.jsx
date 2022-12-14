@@ -65,7 +65,12 @@ const Dropdown = ({ type, name, popular, movieGenreList, seriesGenreList }) => {
                       : styles.listItem
                   }
                 >
-                  <Link href={`/movies/genre/${genre.id}?name=${genre.name}`}>
+                  <Link
+                    href={`/movies/genre/${genre.id}?name=${genre.name}`.replace(
+                      /\s+/g,
+                      "-"
+                    )}
+                  >
                     <a className={styles.link} onClick={toggleDropdown}>
                       {genre.name}
                     </a>
@@ -97,7 +102,12 @@ const Dropdown = ({ type, name, popular, movieGenreList, seriesGenreList }) => {
                       : styles.listItem
                   }
                 >
-                  <Link href={`/series/genre/${genre.id}?name=${genre.name}`}>
+                  <Link
+                    href={`/series/genre/${genre.id}?name=${genre.name}`.replace(
+                      /\s+/g,
+                      "-"
+                    )}
+                  >
                     <a className={styles.link} onClick={toggleDropdown}>
                       {genre.name}
                     </a>

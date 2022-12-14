@@ -1,11 +1,14 @@
 import styles from "../CardDetails/CardDetails.module.css";
+import { DATE_SLICE } from "@/utils/utils";
 
 const CardDetails = ({ airDate, seriesName, releaseDate, title }) => {
   return (
     <div>
       <div className={styles.details}>
-        {airDate && <span>{airDate.slice(0, 4)} &nbsp;•&nbsp;</span>}
-        {releaseDate && <span>{releaseDate.slice(0, 4)} &nbsp;•&nbsp;</span>}
+        {airDate && <span>{airDate.slice(0, DATE_SLICE)} &nbsp;•&nbsp;</span>}
+        {releaseDate && (
+          <span>{releaseDate.slice(0, DATE_SLICE)} &nbsp;•&nbsp;</span>
+        )}
         {title ? (
           <svg
             width="24"

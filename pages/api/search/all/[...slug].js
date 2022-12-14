@@ -1,8 +1,8 @@
 export default async function handler(req, res) {
   try {
-    const { params } = req.query;
+    const { slug } = req.query;
 
-    const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&page=${params[0]}&include_adult=false`;
+    const URL = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-GB&query=${slug[0]}&page=${slug[1]}&include_adult=false`;
     const response = await fetch(URL);
     const data = await response.json();
     res.status(200).json({ data: data });

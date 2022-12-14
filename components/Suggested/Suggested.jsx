@@ -3,14 +3,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { POSTER_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 import useSlider from "hooks/useSlider";
+const SUGGESTED_SLIDE_MULTIPLIER = 4;
+const SUGGESTED_ARROWS_DISPLAY_MINIMUM = 3;
 
 const Suggested = ({ suggested, movies, closeReadMore }) => {
   const {
     isScrollAtStart,
     isScrollAtEnd,
     getScrollPosition,
-    handleClickNextSuggestion,
-    handleClickPrevSuggestion,
+    handleClickNext,
+    handleClickPrev,
     mouseEnterSlide,
     sliderRef,
     cardRef,
@@ -40,11 +42,11 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
                     movies
                       ? `/movies/${suggestion.id}/${suggestion.title.replace(
                           /\s+/g,
-                          "-"
+                          ""
                         )}`
                       : `/series/${suggestion.id}/${suggestion.name.replace(
                           /\s+/g,
-                          "-"
+                          ""
                         )}`
                   }
                   rel="preload"
@@ -82,10 +84,11 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
             );
           })}
         </div>
-        {suggested.results.length < 3 ? null : isScrollAtStart ? (
+        {suggested.results.length <
+        SUGGESTED_ARROWS_DISPLAY_MINIMUM ? null : isScrollAtStart ? (
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
-            onClick={handleClickPrevSuggestion}
+            onClick={() => handleClickPrev(SUGGESTED_SLIDE_MULTIPLIER)}
             aria-label="click for previous suggestions"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -99,7 +102,7 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
         ) : (
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
-            onClick={handleClickPrevSuggestion}
+            onClick={() => handleClickPrev(SUGGESTED_SLIDE_MULTIPLIER)}
             aria-label="click for previous suggestions"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -110,10 +113,11 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
             </svg>
           </button>
         )}
-        {suggested.results.length < 3 ? null : isScrollAtEnd ? (
+        {suggested.results.length <
+        SUGGESTED_ARROWS_DISPLAY_MINIMUM ? null : isScrollAtEnd ? (
           <button
             className={`${styles.navigation} ${styles.navigationNext}`}
-            onClick={handleClickNextSuggestion}
+            onClick={() => handleClickNext(SUGGESTED_SLIDE_MULTIPLIER)}
             aria-label="click for more suggestions"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -127,7 +131,7 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
         ) : (
           <button
             className={`${styles.navigation} ${styles.navigationNext}`}
-            onClick={handleClickNextSuggestion}
+            onClick={() => handleClickNext(SUGGESTED_SLIDE_MULTIPLIER)}
             aria-label="click for more suggestions"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">

@@ -2,6 +2,7 @@ import styles from "@/components/WatchProviders/WatchProviders.module.css";
 import { LOGO_URL_IMAGE } from "@/utils/utils";
 import Image from "next/future/image";
 import img from "@/public/assets/justwatch.svg";
+const LOGO_SIZE = 40;
 
 const WatchProviders = ({ watch_providers }) => {
   return (
@@ -15,7 +16,6 @@ const WatchProviders = ({ watch_providers }) => {
               unoptimized={true}
               width={100}
               height={50}
-              className={styles.logo}
               priority={true}
             />
           </div>
@@ -38,8 +38,8 @@ const WatchProviders = ({ watch_providers }) => {
                         alt={provider.provider_name}
                         unoptimized={true}
                         className={styles.icon}
-                        width={40}
-                        height={40}
+                        width={LOGO_SIZE}
+                        height={LOGO_SIZE}
                         priority={true}
                       />
                     </a>
@@ -66,8 +66,8 @@ const WatchProviders = ({ watch_providers }) => {
                         alt={provider.provider_name}
                         unoptimized={true}
                         className={styles.icon}
-                        width={40}
-                        height={40}
+                        width={LOGO_SIZE}
+                        height={LOGO_SIZE}
                         priority={true}
                       />
                     </a>
@@ -94,8 +94,8 @@ const WatchProviders = ({ watch_providers }) => {
                         alt={provider.provider_name}
                         unoptimized={true}
                         className={styles.icon}
-                        width={40}
-                        height={40}
+                        width={LOGO_SIZE}
+                        height={LOGO_SIZE}
                         priority={true}
                       />
                     </a>

@@ -16,7 +16,7 @@ const Movies = ({ genreList }) => {
         <SearchBar movies />
         <MediaType
           type="movies"
-          endpoint="api/movies"
+          endpoint="api/movies/popularmovies"
           popular
           movieGenreList={genreList}
         />

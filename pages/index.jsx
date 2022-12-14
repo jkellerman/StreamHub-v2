@@ -9,7 +9,7 @@ export default function Home({
   popularShows,
   popularMovies,
   topRatedShows,
-  upcoming,
+  upcomingMovies,
   onTheAir,
   topRatedMovies,
 }) {
@@ -25,24 +25,28 @@ export default function Home({
       <main>
         <SearchBar all />
         <Trending trending={trending} type="trending" />
-        <Category data={popularShows} type="series" category="popular shows" />
         <Category
           data={popularMovies}
           type="movies"
           category="popular movies"
+        />
+        <Category data={popularShows} type="series" category="popular shows" />
+        <Category
+          data={upcomingMovies}
+          type="movies"
+          category="upcoming movies"
         />
         <Category
           data={topRatedShows}
           type="series"
           category="top rated shows"
         />
-        <Category data={upcoming} type="movies" category="upcoming movies" />
-        <Category data={onTheAir} type="series" category="on the air" />
         <Category
           data={topRatedMovies}
           type="movies"
           category="top rated movies"
         />
+        <Category data={onTheAir} type="series" category="on the air" />
       </main>
     </>
   );
@@ -66,25 +70,6 @@ export async function getStaticProps() {
 
   const trending = sliceArray(trendingFiltered, 10);
 
-  //   popular shows
-
-  const popularShowsEndpoint = `
-    https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}&language=en-GB&page=1`;
-  const popularShowsResponse = await fetch(popularShowsEndpoint);
-  const popularShowsData = await popularShowsResponse.json();
-
-  if (!popularShowsResponse.ok) {
-    throw new Error(
-      `Failed to fetch posts, received status ${popularShowsResponse.status}`
-    );
-  }
-
-  const popularShowsFilteredArr = popularShowsData.results.filter(
-    (item) => item.backdrop_path !== null
-  );
-
-  const popularShows = sliceArray(popularShowsFilteredArr, 12);
-
   //   popular movies
 
   const popularMoviesEndpoint = `
@@ -104,22 +89,24 @@ export async function getStaticProps() {
 
   const popularMovies = sliceArray(popularMoviesFilteredArr, 12);
 
-  // top rated shows
-  const topRatedShowsEndpoint = `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.API_KEY}`;
-  const topRatedShowsResponse = await fetch(topRatedShowsEndpoint);
-  const topRatedShowsData = await topRatedShowsResponse.json();
+  //   popular shows
 
-  if (!topRatedShowsResponse.ok) {
+  const popularShowsEndpoint = `
+    https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}&language=en-GB&page=1`;
+  const popularShowsResponse = await fetch(popularShowsEndpoint);
+  const popularShowsData = await popularShowsResponse.json();
+
+  if (!popularShowsResponse.ok) {
     throw new Error(
-      `Failed to fetch posts, received status ${topRatedShowsResponse.status}`
+      `Failed to fetch posts, received status ${popularShowsResponse.status}`
     );
   }
 
-  const topRatedShowsFilteredArr = topRatedShowsData.results.filter(
+  const popularShowsFilteredArr = popularShowsData.results.filter(
     (item) => item.backdrop_path !== null
   );
 
-  const topRatedShows = sliceArray(topRatedShowsFilteredArr, 12);
+  const popularShows = sliceArray(popularShowsFilteredArr, 12);
 
   //   upcoming movies
 
@@ -138,25 +125,24 @@ export async function getStaticProps() {
     (item) => item.backdrop_path !== null
   );
 
-  const upcoming = sliceArray(upcomingFilteredArr, 12);
+  const upcomingMovies = sliceArray(upcomingFilteredArr, 12);
 
-  //   on the air
+  // top rated shows
+  const topRatedShowsEndpoint = `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.API_KEY}`;
+  const topRatedShowsResponse = await fetch(topRatedShowsEndpoint);
+  const topRatedShowsData = await topRatedShowsResponse.json();
 
-  const onTheAirEndpoint = `https://api.themoviedb.org/3/tv/on_the_air?api_key=${process.env.API_KEY}`;
-  const onTheAirResponse = await fetch(onTheAirEndpoint);
-  const onTheAirData = await onTheAirResponse.json();
-
-  if (!onTheAirResponse.ok) {
+  if (!topRatedShowsResponse.ok) {
     throw new Error(
-      `Failed to fetch posts, received status ${onTheAirResponse.status}`
+      `Failed to fetch posts, received status ${topRatedShowsResponse.status}`
     );
   }
 
-  const onTheAirFilteredArr = onTheAirData.results.filter(
+  const topRatedShowsFilteredArr = topRatedShowsData.results.filter(
     (item) => item.backdrop_path !== null
   );
 
-  const onTheAir = sliceArray(onTheAirFilteredArr, 12);
+  const topRatedShows = sliceArray(topRatedShowsFilteredArr, 12);
 
   //   top rated movies
 
@@ -177,15 +163,33 @@ export async function getStaticProps() {
 
   const topRatedMovies = sliceArray(topRatedMoviesFilteredArr, 12);
 
+  //   on the air
+
+  const onTheAirEndpoint = `https://api.themoviedb.org/3/tv/on_the_air?api_key=${process.env.API_KEY}`;
+  const onTheAirResponse = await fetch(onTheAirEndpoint);
+  const onTheAirData = await onTheAirResponse.json();
+
+  if (!onTheAirResponse.ok) {
+    throw new Error(
+      `Failed to fetch posts, received status ${onTheAirResponse.status}`
+    );
+  }
+
+  const onTheAirFilteredArr = onTheAirData.results.filter(
+    (item) => item.backdrop_path !== null
+  );
+
+  const onTheAir = sliceArray(onTheAirFilteredArr, 12);
+
   return {
     props: {
       trending,
-      popularShows,
       popularMovies,
+      popularShows,
+      upcomingMovies,
       topRatedShows,
-      upcoming,
-      onTheAir,
       topRatedMovies,
+      onTheAir,
     },
     revalidate: 1,
   };

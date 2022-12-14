@@ -1,33 +1,31 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 const useInfiniteScroll = (endpoint) => {
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [newImages, setNewImages] = useState(false);
-  const mounted = useRef(false);
+  const [shouldFetch, setShouldFetch] = useState(false);
   const url = `${endpoint}/${page}`;
+  // const mounted = useRef(false); // mounted useRef needed in react 18 strict mode when running locally to stop page 1 from endpoint rendering twice when component mounts
 
   // fetch films/series everytime page in url changes
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        if (!url) return;
         const response = await fetch(url);
         const data = await response.json();
         const filteredArr = data.data.results.filter(
           (item) => item.backdrop_path !== null && !item.known_for_department
         );
-        const arr = filteredArr;
-
         setCards((prev) => {
-          if (page === 1) return arr;
-          else return [...prev, ...arr];
+          if (page === 1)
+            return filteredArr; // function stops here when page is set back to one after genre page switches, otherwise new cards for new genre page won't render
+          else return [...prev, ...filteredArr];
         });
-        setNewImages(false);
+        setShouldFetch(false);
         setIsLoading(false);
       } catch (error) {
-        setNewImages(false);
+        setShouldFetch(false);
         setIsLoading(false);
       }
     };
@@ -35,24 +33,23 @@ const useInfiniteScroll = (endpoint) => {
   }, [url]);
 
   useEffect(() => {
-    // Using mounted ref to stop newImages being rendered on initial render. Here we want new images only to render on 2nd, 3rd, 4th, etc.
-    if (!mounted.current) {
-      mounted.current = true;
-      return;
-    }
-    if (!newImages) return;
+    // if (!mounted.current) {
+    //   mounted.current = true;
+    //   return;
+    // } // Using mounted ref to stop double fetching when running locally in React 18 strict mode (see comment above)
+    if (!shouldFetch) return;
     setPage((OldPage) => {
       return OldPage + 1;
     });
-  }, [newImages]);
+  }, [shouldFetch]);
 
+  // Event for when scrolled to the bottom of the page
   const event = () => {
-    // How far down page the event should take place
     if (
       window.innerHeight + window.scrollY >=
       document.body.scrollHeight - 200
     ) {
-      setNewImages(true);
+      setShouldFetch(true);
     }
   };
 
@@ -61,8 +58,7 @@ const useInfiniteScroll = (endpoint) => {
     return () => window.removeEventListener("scroll", event);
   }, []);
 
-  // If navigated to new page, set page number from api to 1
-
+  // If navigated to new page, set page number to 1
   useEffect(() => {
     setPage(1);
   }, [endpoint]);

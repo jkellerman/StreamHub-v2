@@ -4,26 +4,26 @@ import SearchBar from "@/components/SearchBar/SearchBar";
 import Hero from "@/components/Hero/Hero";
 import Details from "@/components/Details/Details";
 import Overview from "@/components/Overview/Overview";
-import WatchProviders from "@/components/WatchProviders/WatchProviders";
 import Tablist from "@/components/Tablist/Tablist";
+import WatchProviders from "@/components/WatchProviders/WatchProviders";
 import Suggested from "@/components/Suggested/Suggested";
 import useReadMore from "hooks/useReadMore";
 
-const Movie = ({
+const Series = ({
   name,
   backdrop,
   tagline,
-  age_rating,
-  release_date,
-  runtime,
+  series_age_rating,
+  air_date,
   vote_average,
   overview,
   poster,
-  director,
   cast,
   genres,
   watch_providers,
   suggested,
+  seasons,
+  network,
   title,
 }) => {
   const { readMore, handleToggle, closeReadMore } = useReadMore();
@@ -35,83 +35,90 @@ const Movie = ({
         <meta name="description" content={`Where to watch ${title}`} />
       </Head>
       <main className={styles.main}>
-        <SearchBar movies hero />
+        <SearchBar series hero />
         <Hero
           image={backdrop}
           name={name}
           tagline={tagline}
-          age_rating={age_rating.certification}
-          release_date={release_date}
-          runtime={runtime}
+          series_age_rating={series_age_rating}
+          air_date={air_date}
           rating={vote_average}
           overview={overview}
           poster={poster}
+          seasons={seasons}
           title={title}
         />
         <WatchProviders watch_providers={watch_providers} />
         <Overview
           overview={overview}
-          age_rating={age_rating.certification}
-          release_date={release_date}
+          series_age_rating={series_age_rating}
+          air_date={air_date}
           vote_average={vote_average}
           readMore={readMore}
           handleToggle={handleToggle}
         />
         <Details
-          director={director}
+          network={network}
           cast={cast}
           genres={genres}
-          runtime={runtime}
-          movies
+          seasons={seasons}
+          series
         />
         <Tablist
           name={name}
-          age_rating={age_rating}
-          release_date={release_date}
-          runtime={runtime}
+          series_age_rating={series_age_rating}
+          release_date={air_date}
+          seasons={seasons}
           vote_average={vote_average}
           overview={overview}
           poster={poster}
-          director={director}
+          network={network}
           cast={cast}
           genres={genres}
           watch_providers={watch_providers}
         />
-        <Suggested suggested={suggested} movies closeReadMore={closeReadMore} />
+        <Suggested suggested={suggested} series closeReadMore={closeReadMore} />
       </main>
     </>
   );
 };
 
-export default Movie;
+export default Series;
 
 export async function getServerSideProps(context) {
   const { query } = context;
-  const { params } = query;
+  const { slug } = query;
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${params[0]}?api_key=${process.env.API_KEY}&language=en-GB&append_to_response=credits,recommendations,watch%2Fproviders,release_dates`
+    `https://api.themoviedb.org/3/tv/${slug[0]}?api_key=${process.env.API_KEY}&language=en-GB&append_to_response=credits,recommendations,watch%2Fproviders,content_ratings`
   );
+
   const data = await response.json();
 
   const {
     backdrop_path,
     tagline,
-    release_dates,
-    release_date,
-    runtime,
+    content_ratings,
+    first_air_date,
     vote_average,
     overview,
     poster_path,
     credits,
     genres,
     recommendations,
-    title,
+    number_of_seasons,
+    networks,
+    name: title,
   } = data;
 
-  const getDirector = credits.crew.find(
-    (crew) => crew.department === "Directing"
-  );
-  const director = getDirector.name;
+  const certification =
+    content_ratings.results.find((country) => country.iso_3166_1 === "GB") ||
+    [];
+
+  const age_rating = certification.rating || [];
+
+  const network = networks.map((item) => {
+    return item.name;
+  });
 
   const getCast = credits.cast;
   const cast = getCast.slice(0, 4);
@@ -120,30 +127,22 @@ export async function getServerSideProps(context) {
 
   const watch_providers = getWatchProviders.GB || [];
 
-  const certification =
-    release_dates.results.find((country) => country.iso_3166_1 === "GB") ||
-    release_dates.results.find((country) => country.iso_3166_1 === "US") ||
-    [];
-
-  const age_rating =
-    certification.release_dates.find((item) => item.certification !== "") || [];
-
   return {
     props: {
-      name: params[1],
+      name: slug[1],
       backdrop: backdrop_path,
       tagline,
-      age_rating,
-      release_date,
-      runtime,
+      series_age_rating: age_rating,
+      air_date: first_air_date,
       vote_average,
       overview,
       poster: poster_path,
-      director,
       cast,
       genres,
       watch_providers,
       suggested: recommendations,
+      seasons: number_of_seasons,
+      network,
       title,
     },
   };

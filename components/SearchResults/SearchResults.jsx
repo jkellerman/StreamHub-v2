@@ -8,7 +8,7 @@ import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 const SearchResults = ({ endpoint }) => {
   const router = useRouter();
-  const { query } = router.query;
+  const { id } = router.query;
   const { cards, isLoading } = useInfiniteScroll(endpoint);
   if (isLoading) return <LoadingAnimation />;
 
@@ -16,8 +16,8 @@ const SearchResults = ({ endpoint }) => {
     <>
       <div className={searchResultsStyles.heading}>
         {cards.length !== 0
-          ? `Results found for '${query.replaceAll("-", " ")}'`
-          : `No Results found for '${query.replaceAll("-", " ")}'`}
+          ? `Results found for '${id.replaceAll("-", " ")}'`
+          : `No Results found for '${id.replaceAll("-", " ")}'`}
       </div>
       <div className={categoryStyles.container}>
         {cards.map((item) => {

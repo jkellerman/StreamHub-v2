@@ -65,8 +65,8 @@ const Trending = ({ trending, type }) => {
                 <Link
                   href={
                     item.title
-                      ? `/movies/${item.id}/${item.title.replaceAll(" ", "-")}`
-                      : `/series/${item.id}/${item.name.replaceAll(" ", "-")}`
+                      ? `/movies/${item.id}/${item.title.replace(/\s+/g, "")}`
+                      : `/series/${item.id}/${item.name.replace(/\s+/g, "")}`
                   }
                 >
                   <a className={styles.link} ref={cardRef}>
@@ -100,7 +100,7 @@ const Trending = ({ trending, type }) => {
         {isScrollAtStart ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
-            onClick={handleClickPrev}
+            onClick={() => handleClickPrev()}
             aria-label="click for previous trending"
           >
             <Image
@@ -114,8 +114,8 @@ const Trending = ({ trending, type }) => {
         {isScrollAtEnd ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationNext}`}
-            onClick={handleClickNext}
-            aria-label="click for more trending"
+            onClick={() => handleClickNext()}
+            aria-label="click for next trending"
           >
             <Image
               src={chevronRight}

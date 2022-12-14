@@ -97,8 +97,8 @@
   .poster {
     display: block;
     position: relative;
-    width: auto !important;
-    min-height: 230px !important;
+    width: auto;
+    min-height: 230px;
     overflow: hidden;
     object-fit: cover;
   }
