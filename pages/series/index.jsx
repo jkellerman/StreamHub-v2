@@ -16,7 +16,7 @@ const Series = ({ genreList }) => {
         <SearchBar series />
         <MediaType
           type="series"
-          endpoint="api/series"
+          endpoint="api/series/popular"
           popular
           seriesGenreList={genreList}
         />
