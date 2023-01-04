@@ -3,8 +3,6 @@ import QueryString from "qs";
 
 export default async function handler(req, res) {
   try {
-    console.log("Here");
-
     const { id, ...queryParams } = req.query;
     const queryString = QueryString.stringify(
       {
@@ -20,7 +18,6 @@ export default async function handler(req, res) {
 
     const response = await fetch(url);
     const data = await response.json();
-    console.log("🚀 ~ file: [id].js:18 ~ handler ~ data", data);
 
     res.status(200).json({ data });
   } catch (error) {
