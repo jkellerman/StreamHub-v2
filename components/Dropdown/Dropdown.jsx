@@ -2,8 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import styles from "../Dropdown/Dropdown.module.css";
 import Link from "next/link";
 import DropdownButton from "../DropdownButton/DropdownButton";
+import QueryString from "qs";
 
-const Dropdown = ({ type, name, popular, movieGenreList, seriesGenreList }) => {
+const Dropdown = ({ type, selectedGenre, genreList }) => {
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
   const dropDownRef = useRef();
 
@@ -40,66 +41,25 @@ const Dropdown = ({ type, name, popular, movieGenreList, seriesGenreList }) => {
     <div className={styles.dropdown}>
       <DropdownButton
         toggleDropdown={toggleDropdown}
-        popular={popular}
-        name={name}
+        name={selectedGenre.name}
       />
 
-      {type === "movies" && isDropdownOpen && (
+      {isDropdownOpen && (
         <ul className={styles.list} ref={dropDownRef}>
           <div className={styles.listContainer}>
-            <li className={popular ? styles.listItemCurrent : styles.listItem}>
-              <Link href="/movies">
-                <a className={styles.link} onClick={toggleDropdown}>
-                  Popular
-                </a>
-              </Link>
-            </li>
-
-            {movieGenreList.genres.map((genre) => {
+            {genreList.map(({ id, name}) => {
               return (
                 <li
-                  key={genre.id}
+                  key={id}
                   className={
-                    name === genre.name
+                    selectedGenre.name === name
                       ? styles.listItemCurrent
                       : styles.listItem
                   }
                 >
-                  <Link href={`/movies/genre/${genre.id}?name=${genre.name}`}>
+                  <Link href={`/${type}?${QueryString.stringify({genre: name.toLowerCase()})}`}>
                     <a className={styles.link} onClick={toggleDropdown}>
-                      {genre.name}
-                    </a>
-                  </Link>
-                </li>
-              );
-            })}
-          </div>
-        </ul>
-      )}
-
-      {type === "series" && isDropdownOpen && (
-        <ul className={styles.list} ref={dropDownRef}>
-          <div className={styles.listContainer}>
-            <li className={popular ? styles.listItemCurrent : styles.listItem}>
-              <Link href="/series">
-                <a className={styles.link} onClick={toggleDropdown}>
-                  Popular
-                </a>
-              </Link>
-            </li>
-            {seriesGenreList.genres.map((genre) => {
-              return (
-                <li
-                  key={genre.id}
-                  className={
-                    name === genre.name
-                      ? styles.listItemCurrent
-                      : styles.listItem
-                  }
-                >
-                  <Link href={`/series/genre/${genre.id}?name=${genre.name}`}>
-                    <a className={styles.link} onClick={toggleDropdown}>
-                      {genre.name}
+                      {name}
                     </a>
                   </Link>
                 </li>
