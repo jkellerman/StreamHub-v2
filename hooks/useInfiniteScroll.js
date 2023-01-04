@@ -56,9 +56,9 @@ const useInfiniteScroll = (endpoint) => {
   }, []);
 
   // If navigated to new page, set page number from api to 1
-
   useEffect(() => {
     setPage(1);
+    setCards([]);
   }, [endpoint]);
 
   return { cards, isLoading };
