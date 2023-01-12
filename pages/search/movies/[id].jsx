@@ -3,21 +3,21 @@ import SearchBar from "@/components/SearchBar/SearchBar";
 import SearchResults from "@/components/SearchResults/SearchResults";
 import { useRouter } from "next/router";
 
-const Search = () => {
+const MoviesSearch = () => {
   const router = useRouter();
-  const { query } = router.query;
+  const { id } = router.query;
   return (
     <>
       <Head>
-        <title>{`${query} | Reelgood`}</title>
-        <meta name="description" content={`Where to watch ${query}`} />
+        <title>{`${id} | Reelgood`}</title>
+        <meta name="description" content={`Where to watch ${id}`} />
       </Head>
       <main>
-        <SearchBar all />
-        <SearchResults all endpoint={`/api/search/all/${query}`} />
+        <SearchBar movies />
+        <SearchResults movies endpoint={`/api/search/movies/${id}`} />
       </main>
     </>
   );
 };
 
-export default Search;
+export default MoviesSearch;

@@ -1,4 +1,6 @@
 import styles from "@/components/TrendingCardDetails/TrendingCardDetails.module.css";
+import { DATE_SLICE } from "@/utils/utils";
+const NAME_SLICE = 26;
 
 const TrendingCardDetails = ({
   movieTitle,
@@ -10,17 +12,17 @@ const TrendingCardDetails = ({
   return (
     <>
       <h2 className={styles.title}>
-        {seriesName && seriesName.length > 26
-          ? `${seriesName.slice(0, 26)}...`
+        {seriesName && seriesName.length > NAME_SLICE
+          ? `${seriesName.slice(0, NAME_SLICE)}...`
           : seriesName}
 
-        {movieTitle && movieTitle.length > 26
-          ? `${movieTitle.slice(0, 26)}...`
+        {movieTitle && movieTitle.length > NAME_SLICE
+          ? `${movieTitle.slice(0, NAME_SLICE)}...`
           : movieTitle}
       </h2>
       <div className={styles.details}>
-        {year && <span>{year.slice(0, 4)} &nbsp;•&nbsp;</span>}
-        {airDate && <span>{airDate.slice(0, 4)} &nbsp;•&nbsp;</span>}
+        {year && <span>{year.slice(0, DATE_SLICE)} &nbsp;•&nbsp;</span>}
+        {airDate && <span>{airDate.slice(0, DATE_SLICE)} &nbsp;•&nbsp;</span>}
         {type === "movie" ? (
           <svg
             width="24"

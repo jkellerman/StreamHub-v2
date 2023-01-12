@@ -26,7 +26,7 @@ const useInfiniteScroll = (endpoint) => {
         setNewImages(false);
         setIsLoading(false);
       } catch (error) {
-        setNewImages(false);
+        setShouldFetch(false);
         setIsLoading(false);
       }
     };
@@ -40,13 +40,13 @@ const useInfiniteScroll = (endpoint) => {
     });
   }, [newImages]);
 
+  // Event for when scrolled to the bottom of the page
   const event = () => {
-    // How far down page the event should take place
     if (
       window.innerHeight + window.scrollY >=
       document.body.scrollHeight - 200
     ) {
-      setNewImages(true);
+      setShouldFetch(true);
     }
   };
 
