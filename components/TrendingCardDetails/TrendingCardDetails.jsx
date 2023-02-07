@@ -10,15 +10,10 @@ const TrendingCardDetails = ({
   airDate,
 }) => {
   return (
-    <>
+    <div className={styles.detailsContainer}>
       <h2 className={styles.title}>
-        {seriesName && seriesName.length > NAME_SLICE
-          ? `${seriesName.slice(0, NAME_SLICE)}...`
-          : seriesName}
-
-        {movieTitle && movieTitle.length > NAME_SLICE
-          ? `${movieTitle.slice(0, NAME_SLICE)}...`
-          : movieTitle}
+        {seriesName}
+        {movieTitle}
       </h2>
       <div className={styles.details}>
         {year && <span>{year.slice(0, DATE_SLICE)} &nbsp;•&nbsp;</span>}
@@ -52,7 +47,7 @@ const TrendingCardDetails = ({
         )}
         <span>&nbsp;{type === "tv" ? "series" : type}</span>
       </div>
-    </>
+    </div>
   );
 };
 

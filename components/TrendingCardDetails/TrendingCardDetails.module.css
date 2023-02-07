@@ -1,19 +1,28 @@
-.title {
+.detailsContainer {
   position: absolute;
-  bottom: 0rem;
-  left: 1rem;
+  left: 0;
+  bottom: 0;
+  width: calc(100% - 1rem);
+  padding: 0 0 1.5rem 2.5rem;
+}
+
+.title {
+  margin: 0;
+  position: relative;
+  bottom: -1.75rem;
   font-size: 1rem;
   font-weight: 500;
-  margin: 1rem auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .details {
   font-size: 0.75rem;
   font-weight: 500;
   text-transform: capitalize;
-  position: absolute;
-  bottom: 2.75rem;
-  left: 1rem;
+  position: relative;
+  bottom: 1.75rem;
 }
 
 .iconMovies {
@@ -30,15 +39,28 @@
   }
 }
 
-@media (min-width: 48em) {
+@media (min-width: 30em) {
+  .title {
+    font-size: 1.25rem;
+  }
+
   .details {
-    left: 2rem;
-    bottom: 4.5rem;
+    font-size: 0.975rem;
+  }
+}
+
+@media (min-width: 48em) {
+  .detailsContainer {
+    width: calc(100% - 1.75rem);
+    padding: 0 0 1.5rem 3.5rem;
   }
 
   .title {
     font-size: 1.75rem;
-    left: 2rem;
-    margin: 1.5rem auto;
+  }
+
+  .details {
+    font-size: 1rem;
+    bottom: 2.5rem;
   }
 }

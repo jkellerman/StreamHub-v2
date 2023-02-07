@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .heading {
@@ -29,15 +30,15 @@
 }
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
-  row-gap: clamp(1rem, 1.6vw + 0.5rem, 2rem);
-  column-gap: clamp(1rem, 2.4vw + 0.25rem, 2.5rem);
-  margin: 1rem 0;
+  place-content: center flex-start;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 0 0 -20px;
 }
 
 .linkContainer {
-  width: 100%;
+  margin: 0 0 20px 20px;
+  width: calc(50% - 20px);
 }
 
 .iconTrending {
@@ -52,9 +53,9 @@
   transform: translateY(0.175rem);
 }
 
-@media (min-width: 38em) {
-  .container {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+@media (min-width: 30em) {
+  .linkContainer {
+    width: calc(33.333% - 20px);
   }
 }
 
@@ -75,20 +76,23 @@
   .iconSeries {
     transform: unset;
   }
-  .container {
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    margin-bottom: 2rem;
-  }
 }
 
 @media (min-width: 56.25em) {
-  .container {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  .linkContainer {
+    width: calc(25% - 20px);
+    margin-bottom: 35px;
   }
 }
 
-@media (min-width: 75em) {
-  .container {
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+@media (min-width: 96em) {
+  .linkContainer {
+    width: calc(20% - 20px);
+  }
+}
+
+@media (min-width: 118.75em) {
+  .linkContainer {
+    width: calc(16.666667% - 20px);
   }
 }
