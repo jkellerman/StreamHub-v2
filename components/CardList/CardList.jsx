@@ -1,12 +1,9 @@
-import useInfiniteScroll from "hooks/useInfiniteScroll";
 import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import styles from "@/components/Category/Category.module.css";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
-const CardList = ({ endpoint }) => {
-  const { cards, isLoading } = useInfiniteScroll(endpoint);
-  
+const CardList = ({ cards, isLoading }) => {
   if (isLoading) return <LoadingAnimation />;
 
   return (

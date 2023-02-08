@@ -65,8 +65,8 @@ const Trending = ({ trending, type }) => {
                 <Link
                   href={
                     item.title
-                      ? `/movies/${item.id}/${item.title.replaceAll(" ", "-")}`
-                      : `/series/${item.id}/${item.name.replaceAll(" ", "-")}`
+                      ? `/movie/${item.id}?${item.title.replace(/ /g, "")}`
+                      : `/show/${item.id}?${item.name.replace(/ /g, "")}`
                   }
                 >
                   <a className={styles.link} ref={cardRef}>

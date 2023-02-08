@@ -1,65 +1,89 @@
+import { useState, useEffect } from "react";
 import QueryString from "qs";
-import { useState, useEffect, useRef } from "react";
 
 const useInfiniteScroll = (endpoint) => {
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [newImages, setNewImages] = useState(false);
+  const [totalPages, setTotalPages] = useState(null);
+  const [shouldFetch, setShouldFetch] = useState(false);
 
-  // fetch films/series everytime page in url changes
+  const handleScroll = () => {
+    if (
+      window.innerHeight + window.scrollY >=
+      document.body.scrollHeight - 50
+    ) {
+      setShouldFetch(true);
+    }
+  };
+
   useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldFetch) return;
+    if (page <= totalPages) {
+      setPage((OldPage) => {
+        return OldPage + 1;
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shouldFetch]);
+
+  // Below, need two useEffects because if you call endpoint and page together, switching between genre pages results in page duplication due to page number carry-over from previous page.
+
+  // Warning: Attempts to remove duplication will likely break the code. When refactoring keep an eye on page number in terminal.
+
+  useEffect(() => {
+    setPage(1);
     const fetchMovies = async () => {
       try {
-        const queryString = QueryString.stringify(
-          { page },
-          { addQueryPrefix: true }
+        const response = await fetch(`${endpoint}?page=1`);
+        const data = await response.json();
+        const filteredArr = data.data.results.filter(
+          (item) => item.backdrop_path !== null && !item.known_for_department
         );
+        setTotalPages(data.data.total_pages);
+        setCards(filteredArr);
+        setShouldFetch(false);
+        setIsLoading(false);
+      } catch (error) {
+        setShouldFetch(false);
+        setIsLoading(false);
+      }
+    };
+
+    fetchMovies();
+  }, [endpoint]);
+
+  useEffect(() => {
+    if (page === 1) return;
+    const fetchMoreMovies = async () => {
+      const queryString = QueryString.stringify(
+        { page },
+        { addQueryPrefix: true }
+      );
+      try {
         const response = await fetch(`${endpoint}${queryString}`);
         const data = await response.json();
         const filteredArr = data.data.results.filter(
           (item) => item.backdrop_path !== null && !item.known_for_department
         );
-        const arr = filteredArr;
-
-        setCards((prev) => [...prev, ...arr]);
-        setNewImages(false);
+        setCards((prev) => {
+          return [...prev, ...filteredArr];
+        });
+        setShouldFetch(false);
         setIsLoading(false);
       } catch (error) {
-        setNewImages(false);
+        setShouldFetch(false);
         setIsLoading(false);
       }
     };
-    fetchMovies();
-  }, [endpoint, page]);
-
-  useEffect(() => {
-    if (!newImages) return;
-    setPage((OldPage) => {
-      return OldPage + 1;
-    });
-  }, [newImages]);
-
-  const event = () => {
-    // How far down page the event should take place
-    if (
-      window.innerHeight + window.scrollY >=
-      document.body.scrollHeight - 200
-    ) {
-      setNewImages(true);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", event);
-    return () => window.removeEventListener("scroll", event);
-  }, []);
-
-  // If navigated to new page, set page number from api to 1
-  useEffect(() => {
-    setPage(1);
-    setCards([]);
-  }, [endpoint]);
+    fetchMoreMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   return { cards, isLoading };
 };

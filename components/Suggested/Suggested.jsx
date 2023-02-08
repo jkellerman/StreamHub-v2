@@ -38,11 +38,11 @@ const Suggested = ({ suggested, movies, closeReadMore }) => {
                 <Link
                   href={
                     movies
-                      ? `/movies/${suggestion.id}/${suggestion.title.replace(
+                      ? `/movie/${suggestion.id}?${suggestion.title.replace(
                           /\s+/g,
                           "-"
                         )}`
-                      : `/series/${suggestion.id}/${suggestion.name.replace(
+                      : `/show/${suggestion.id}?${suggestion.name.replace(
                           /\s+/g,
                           "-"
                         )}`

@@ -47,7 +47,7 @@ const Dropdown = ({ type, selectedGenre, genreList }) => {
       {isDropdownOpen && (
         <ul className={styles.list} ref={dropDownRef}>
           <div className={styles.listContainer}>
-            {genreList.map(({ id, name}) => {
+            {genreList.map(({ id, name }) => {
               return (
                 <li
                   key={id}
@@ -57,7 +57,11 @@ const Dropdown = ({ type, selectedGenre, genreList }) => {
                       : styles.listItem
                   }
                 >
-                  <Link href={`/${type}?${QueryString.stringify({genre: name.toLowerCase()})}`}>
+                  <Link
+                    href={`/${type}?${QueryString.stringify({
+                      genre: name.toLowerCase(),
+                    })}`}
+                  >
                     <a className={styles.link} onClick={toggleDropdown}>
                       {name}
                     </a>

@@ -8,6 +8,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import StarRating from "../StarRating/StarRating";
+import QueryString from "qs";
 
 const DetailsTab = ({
   name,
@@ -52,8 +53,12 @@ const DetailsTab = ({
                       key={genre.id}
                       href={
                         age_rating
-                          ? `/movies/genre/${genre.id}?name=${genre.name}`
-                          : `/series/genre/${genre.id}?name=${genre.name}`
+                          ? `/movies?${QueryString.stringify({
+                              genre: genre.name.toLowerCase(),
+                            })}`
+                          : `/series?${QueryString.stringify({
+                              genre: genre.name.toLowerCase(),
+                            })}`
                       }
                     >
                       <a className={styles.genre}>{genre.name}</a>

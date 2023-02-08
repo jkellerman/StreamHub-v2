@@ -8,13 +8,19 @@ import CardList from "@/components/CardList/CardList";
 
 import { DEFAULT_SERIES_GENRE } from "@/constants/app";
 import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import useInfiniteScroll from "hooks/useInfiniteScroll";
 
 const Series = ({ genreList }) => {
   const { query, pathname } = useRouter();
-  const genre = genreList.find(({ name }) => name.toLowerCase() === query.genre) || DEFAULT_SERIES_GENRE;
+  const genre =
+    genreList.find(({ name }) => name.toLowerCase() === query.genre) ||
+    DEFAULT_SERIES_GENRE;
   const isDefaultGenre = genre.name === DEFAULT_SERIES_GENRE.name;
-  const endpoint = !isDefaultGenre ? `api/series/genre/${genre.id}` : "api/series/popular"
-  const pageType = pathname.replace(/\//g, '')
+  const endpoint = !isDefaultGenre
+    ? `api/series/genre/${genre.id}`
+    : "api/series/popular";
+  const pageType = pathname.replace(/\//g, "");
+  const { cards, isLoading } = useInfiniteScroll(endpoint);
 
   return (
     <>
@@ -28,15 +34,13 @@ const Series = ({ genreList }) => {
       <main>
         <SearchBar series />
         <section>
-          <Dropdown 
+          <Dropdown
             type={pageType}
             selectedGenre={genre}
             genreList={genreList}
           />
           <h1>{pageType}</h1>
-          <CardList
-            endpoint={endpoint}
-          />
+          <CardList cards={cards} isLoading={isLoading} />
         </section>
       </main>
     </>
@@ -47,16 +51,15 @@ export default Series;
 
 export async function getStaticProps() {
   const response = await fetch(
-    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
+    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(
+      BASE_TMDB_QUERY_PARAMS
+    )}`
   );
   const genreList = await response.json();
 
   return {
     props: {
-      genreList: [
-        DEFAULT_SERIES_GENRE,
-        ...genreList.genres
-      ],
+      genreList: [DEFAULT_SERIES_GENRE, ...genreList.genres],
     },
   };
 }

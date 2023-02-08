@@ -5,3 +5,8 @@ export const BASE_TMDB_QUERY_PARAMS = {
   language: "en-GB",
   sort_by: "popularity.desc",
 };
+
+export const BASE_TMDB_QUERY_SEARCH_PARAMS = {
+  api_key: process.env.API_KEY,
+  language: "en-GB",
+};

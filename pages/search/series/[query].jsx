@@ -1,11 +1,15 @@
 import Head from "next/head";
 import SearchBar from "@/components/SearchBar/SearchBar";
-import SearchResults from "@/components/SearchResults/SearchResults";
 import { useRouter } from "next/router";
+import CardList from "@/components/CardList/CardList";
+import useInfiniteScroll from "hooks/useInfiniteScroll";
 
-const SeriesSearch = () => {
-  const router = useRouter();
-  const { query } = router.query;
+const SearchSeries = () => {
+  const {
+    query: { query },
+  } = useRouter();
+  const endpoint = `/api/search/series/${query}`;
+  const { cards, isLoading } = useInfiniteScroll(endpoint);
   return (
     <>
       <Head>
@@ -14,10 +18,19 @@ const SeriesSearch = () => {
       </Head>
       <main>
         <SearchBar series />
-        <SearchResults series endpoint={`/api/search/series/${query}`} />
+        <section>
+          {!isLoading && (
+            <h1>
+              {cards.length !== 0
+                ? `Results found for '${query.replace(/-/g, " ")}'`
+                : `No Results found for '${query.replace(/-/g, " ")}'`}
+            </h1>
+          )}
+          <CardList cards={cards} isLoading={isLoading} />
+        </section>
       </main>
     </>
   );
 };
 
-export default SeriesSearch;
+export default SearchSeries;
