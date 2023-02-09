@@ -2,6 +2,7 @@ import styles from "@/components/WatchProvidersTab/WatchProvidersTab.module.css"
 import { LOGO_URL_IMAGE } from "@/utils/utils";
 import Image from "next/future/image";
 import img from "@/public/assets/justwatch.svg";
+const LOGO_SIZE = 40;
 
 const WatchProvidersTab = ({ watch_providers, activeTab }) => {
   return (
@@ -42,8 +43,8 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
                       alt={provider.provider_name}
                       unoptimized={true}
                       className={styles.icon}
-                      width={40}
-                      height={40}
+                      width={LOGO_SIZE}
+                      height={LOGO_SIZE}
                     />
                   </a>
                 );
@@ -68,8 +69,8 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
                       alt={provider.provider_name}
                       unoptimized={true}
                       className={styles.icon}
-                      width={40}
-                      height={40}
+                      width={LOGO_SIZE}
+                      height={LOGO_SIZE}
                     />
                   </a>
                 );
@@ -94,8 +95,8 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
                       alt={provider.provider_name}
                       unoptimized={true}
                       className={styles.icon}
-                      width={40}
-                      height={40}
+                      width={LOGO_SIZE}
+                      height={LOGO_SIZE}
                     />
                   </a>
                 );

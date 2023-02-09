@@ -15,9 +15,9 @@
   .posterContainer {
     display: block;
     border-radius: 8px;
-    height: 230px !important;
+    height: 230px;
     min-width: 153px;
-    width: auto !important;
+    width: auto;
     overflow: hidden;
   }
 
@@ -79,7 +79,7 @@
 @media (min-width: 64em) {
   .posterContainer {
     min-width: 200px;
-    height: 300px !important;
+    height: 300px;
   }
 }
 

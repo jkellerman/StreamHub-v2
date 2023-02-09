@@ -4,6 +4,7 @@ import {
   POSTER_URL_IMAGE,
   shimmer,
   toBase64,
+  DATE_SLICE,
 } from "@/utils/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -90,7 +91,7 @@ const DetailsTab = ({
           <ul className={styles.attributesList}>
             <li className={styles.listItem}>
               <div className={styles.name}>release date</div>
-              <div>{release_date.slice(0, 4)}</div>
+              <div>{release_date.slice(0, DATE_SLICE)}</div>
             </li>
             <li className={styles.listItem}>
               <div className={styles.name}>Certification</div>

@@ -12,7 +12,7 @@ const Nav = () => {
     <header className={styles.header}>
       <nav className={styles.nav}>
         <Link href="/">
-          <a aria-label="go home">
+          <a aria-label="home">
             <Image
               src={logo}
               alt="logo"

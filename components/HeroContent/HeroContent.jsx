@@ -4,9 +4,11 @@ import {
   POSTER_URL_IMAGE,
   shimmer,
   toBase64,
+  DATE_SLICE,
 } from "@/utils/utils";
 import StarRating from "../StarRating/StarRating";
 import Image from "next/future/image";
+const OVERVIEW_CUTOFF = 320;
 
 const Content = ({
   title,
@@ -51,9 +53,9 @@ const Content = ({
             )}
 
             {release_date ? (
-              <li>{release_date.slice(0, 4)}</li>
+              <li>{release_date.slice(0, DATE_SLICE)}</li>
             ) : (
-              <li>{air_date.slice(0, 4)}</li>
+              <li>{air_date.slice(0, DATE_SLICE)}</li>
             )}
             {runtime ? (
               <li
@@ -70,7 +72,9 @@ const Content = ({
           </ul>
         </div>
         <p className={styles.overview}>
-          {overview.length > 320 ? `${overview.slice(0, 320)}...` : overview}
+          {overview.length > OVERVIEW_CUTOFF
+            ? `${overview.slice(0, OVERVIEW_CUTOFF)}...`
+            : overview}
         </p>
       </div>
     </div>

@@ -13,11 +13,6 @@
   object-fit: contain;
 }
 
-.logo {
-  width: 100% !important;
-  height: 100% !important;
-}
-
 .providers {
   font-style: italic;
 }

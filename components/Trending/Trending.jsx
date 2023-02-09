@@ -100,7 +100,7 @@ const Trending = ({ trending, type }) => {
         {isScrollAtStart ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
-            onClick={handleClickPrev}
+            onClick={() => handleClickPrev()}
             aria-label="click for previous trending"
           >
             <Image
@@ -114,8 +114,8 @@ const Trending = ({ trending, type }) => {
         {isScrollAtEnd ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationNext}`}
-            onClick={handleClickNext}
-            aria-label="click for more trending"
+            onClick={() => handleClickNext()}
+            aria-label="click for next trending"
           >
             <Image
               src={chevronRight}
