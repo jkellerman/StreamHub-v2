@@ -1,7 +1,6 @@
-import Card from "@/components/Card/Card";
-import CardDetails from "@/components/CardDetails/CardDetails";
 import styles from "@/components/Category/Category.module.css";
 import Link from "next/link";
+import CardList from "../CardList/CardList";
 
 const Category = ({ data, category, type }) => {
   return (
@@ -42,28 +41,7 @@ const Category = ({ data, category, type }) => {
           <a className={styles.categoryLink}>see more</a>
         </Link>
       </div>
-      <div className={styles.container}>
-        {data.map((show) => {
-          return (
-            <article key={show.id} className={styles.linkContainer}>
-              <Card
-                id={show.id}
-                image={show.backdrop_path}
-                airDate={show.first_air_date}
-                seriesName={show.name}
-                releaseDate={show.release_date}
-                title={show.title}
-              />
-              <CardDetails
-                airDate={show.first_air_date}
-                seriesName={show.name}
-                releaseDate={show.release_date}
-                title={show.title}
-              />
-            </article>
-          );
-        })}
-      </div>
+      <CardList cards={data} />
     </section>
   );
 };

@@ -38,11 +38,7 @@ const Movies = ({ genreList }) => {
             genreList={genreList}
           />
           <h1>{pageType}</h1>
-          <CardList
-            // movieGenreList={genreList}
-            cards={cards}
-            isLoading={isLoading}
-          />
+          <CardList cards={cards} isLoading={isLoading} />
         </section>
       </main>
     </>
