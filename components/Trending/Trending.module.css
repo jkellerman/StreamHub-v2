@@ -110,7 +110,7 @@
 
 @media (min-width: 30em) {
   .container {
-    min-width: 57.5%;
+    min-width: 66%;
   }
 }
 
@@ -150,25 +150,25 @@
 
 @media (min-width: 64em) {
   .container {
-    min-width: 40%;
+    min-width: 45%;
   }
 }
 
 @media (min-width: 75em) {
   .container {
-    min-width: 37%;
+    min-width: 40%;
   }
 }
 
 @media (min-width: 96em) {
   .container {
-    min-width: 33.333%;
+    min-width: 37%;
   }
 }
 
 @media (min-width: 118.75em) {
   .container {
-    min-width: 30%;
+    min-width: 33.333%;
   }
 }
 
