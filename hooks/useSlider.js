@@ -16,7 +16,6 @@ const useSlider = () => {
       setIsScrollAtStart(true);
     }
 
-    // Find if scroll is at end to remove/add arrow
     if (
       sliderRef.current.scrollLeft + sliderRef.current.offsetWidth + 1 >=
       sliderRef.current.scrollWidth
@@ -26,8 +25,6 @@ const useSlider = () => {
       setIsScrollAtEnd(false);
     }
   };
-
-  // Arrows appear if mouse hovers over slider
 
   const mouseEnterSlide = () => {
     if (sliderRef.current.scrollWidth > sliderRef.current.offsetWidth) {
@@ -41,7 +38,7 @@ const useSlider = () => {
   const handleClickPrev = (slideMultiplier = 1) => {
     const cardWidthPlusMargin = window
       .getComputedStyle(cardRef.current)
-      .getPropertyValue("margin-right");
+      .getPropertyValue("margin-left");
     sliderRef.current.scrollLeft -=
       (cardRef.current.getBoundingClientRect().width +
         parseInt(cardWidthPlusMargin)) *
@@ -51,7 +48,7 @@ const useSlider = () => {
   const handleClickNext = (slideMultiplier = 1) => {
     const cardWidthPlusMargin = window
       .getComputedStyle(cardRef.current)
-      .getPropertyValue("margin-right");
+      .getPropertyValue("margin-left");
     sliderRef.current.scrollLeft +=
       (cardRef.current.getBoundingClientRect().width +
         parseInt(cardWidthPlusMargin)) *

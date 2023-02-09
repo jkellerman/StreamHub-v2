@@ -1,7 +1,7 @@
 import styles from "@/components/Trending/Trending.module.css";
 import Image from "next/future/image";
 import Link from "next/link";
-import { BACKDROP_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
+import { TRENDING_BACKDROP_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 import TrendingCardDetails from "@/components/TrendingCardDetails/TrendingCardDetails";
 import useSlider from "hooks/useSlider";
 import chevronLeft from "@/public/assets/chevron-left-solid.svg";
@@ -71,7 +71,7 @@ const Trending = ({ trending, type }) => {
                 >
                   <a className={styles.link} ref={cardRef}>
                     <Image
-                      src={`${BACKDROP_URL_IMAGE}${item.backdrop_path}`}
+                      src={`${TRENDING_BACKDROP_URL_IMAGE}${item.backdrop_path}`}
                       alt={item.title ? `${item.title}` : `${item.name}`}
                       placeholder="blur"
                       unoptimized={true}
