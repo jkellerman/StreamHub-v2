@@ -1,4 +1,4 @@
-import styles from "../mediaDetails/mediaDetails.module.css";
+import styles from "@/components/atoms/MediaDetails/MediaDetails.module.css";
 import Link from "next/link";
 import { toHoursAndMinutes } from "@/utils/utils";
 
