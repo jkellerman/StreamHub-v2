@@ -1,11 +1,11 @@
 import Head from "next/head";
-import SearchBar from "@/components/SearchBar/SearchBar";
-import CardList from "@/components/CardList/CardList";
+import SearchBar from "@/components/atoms/SearchBar/SearchBar";
+import CardList from "@/components/molecules/CardList/CardList";
 import useInfiniteScroll from "hooks/useInfiniteScroll";
 import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import QueryString from "qs";
 import { useRouter } from "next/router";
-import Dropdown from "@/components/Dropdown/Dropdown";
+import Dropdown from "@/components/molecules/Dropdown/Dropdown";
 import { DEFAULT_MOVIES_GENRE } from "@/constants/app";
 
 const Movies = ({ genreList }) => {

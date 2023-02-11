@@ -1,7 +1,7 @@
 import Head from "next/head";
-import SearchBar from "@/components/SearchBar/SearchBar";
+import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import { useRouter } from "next/router";
-import CardList from "@/components/CardList/CardList";
+import CardList from "@/components/molecules/CardList/CardList";
 import useInfiniteScroll from "hooks/useInfiniteScroll";
 
 const SearchSeries = () => {

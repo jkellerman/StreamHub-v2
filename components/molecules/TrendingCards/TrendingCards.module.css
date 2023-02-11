@@ -1,0 +1,144 @@
+.outerBanner {
+  position: relative;
+  margin-left: -1.5rem;
+}
+
+.banner {
+  place-content: center flex-start;
+  display: flex;
+  overflow-x: scroll;
+  overscroll-behavior-inline: contain;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  animation: fade 250ms ease-in;
+}
+
+.banner::-webkit-scrollbar,
+.banner::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.container {
+  position: relative;
+  min-width: 75%;
+  overflow: hidden;
+}
+
+.link {
+  position: relative;
+  border-radius: 8px;
+  display: inline-block;
+  margin-left: 1.5rem;
+}
+
+.link:hover {
+  opacity: 0.6;
+  transition: all 100ms ease-in;
+}
+
+.trendingCard {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.navigation {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  transform: translateY(-10%);
+  margin: auto;
+  height: 35px;
+  width: 35px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: none;
+  animation: fadeArrow 200ms ease-in;
+}
+
+.arrow {
+  width: 100%;
+  height: 100%;
+}
+
+.navigationPrev {
+  left: 2.5rem;
+}
+.navigationNext {
+  right: 0;
+}
+
+@media (hover: hover) {
+  .outerBanner:hover .navigation {
+    display: block;
+  }
+}
+
+@media (min-width: 30em) {
+  .container {
+    min-width: 66%;
+  }
+}
+
+@media (min-width: 48em) {
+  .outerBanner {
+    margin-left: -2rem;
+  }
+
+  .banner::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .banner::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+  }
+
+  .link {
+    margin-left: 2rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .container {
+    min-width: 45%;
+  }
+}
+
+@media (min-width: 75em) {
+  .container {
+    min-width: 40%;
+  }
+}
+
+@media (min-width: 96em) {
+  .container {
+    min-width: 37%;
+  }
+}
+
+@media (min-width: 118.75em) {
+  .container {
+    min-width: 33.333%;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
+
+@keyframes fadeArrow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

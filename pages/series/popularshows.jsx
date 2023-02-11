@@ -1,6 +1,6 @@
 import Head from "next/head";
-import SearchBar from "@/components/SearchBar/SearchBar";
-import CategoryResults from "@/components/CategoryResults/CategoryResults";
+import SearchBar from "@/components/atoms/SearchBar/SearchBar";
+import CategoryResults from "@/components/organisms/CategoryResults/CategoryResults";
 
 const PopularShows = () => {
   return (

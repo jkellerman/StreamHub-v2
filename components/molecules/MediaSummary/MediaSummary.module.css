@@ -1,0 +1,61 @@
+.container {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.ageRating {
+  margin-right: 1rem;
+  font-weight: 500;
+  border: 1px solid var(--Pure-white);
+  padding: 0.15rem 0.5rem;
+}
+
+.date {
+  font-weight: 500;
+}
+
+.overviewContainer {
+  height: 100px;
+}
+
+.overview {
+  width: 100%;
+  height: 100px;
+  line-height: 25px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  text-overflow: ellipsis;
+}
+
+.expand {
+  height: unset;
+  overflow: visible;
+  display: block;
+  text-overflow: unset;
+}
+
+.readMoreToggle {
+  background: transparent;
+  color: var(--Red);
+  border: none;
+  text-transform: capitalize;
+  font-size: inherit;
+  padding: 0;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.ratingContainer {
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 48em) {
+  .container {
+    display: none;
+  }
+  .ratingContainer {
+    display: none;
+  }
+}

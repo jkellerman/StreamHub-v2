@@ -1,18 +1,16 @@
 import Head from "next/head";
-import styles from "@/components/Hero/Hero.module.css";
-import SearchBar from "@/components/SearchBar/SearchBar";
-import Hero from "@/components/Hero/Hero";
-import Details from "@/components/Details/Details";
-import Overview from "@/components/Overview/Overview";
-import WatchProviders from "@/components/WatchProviders/WatchProviders";
-import Tablist from "@/components/Tablist/Tablist";
-import Suggested from "@/components/Suggested/Suggested";
-import useReadMore from "hooks/useReadMore";
+import styles from "@/components/organisms/Hero/Hero.module.css";
+import SearchBar from "@/components/atoms/SearchBar/SearchBar";
+import Hero from "@/components/organisms/Hero/Hero";
+import MediaDetails from "@/components/atoms/MediaDetails/MediaDetails";
+import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
+import WatchProviders from "@/components/atoms/WatchProviders/WatchProviders";
+import Tablist from "@/components/organisms/TabList/TabList";
+import Suggested from "@/components/molecules/Suggested/Suggested";
 import qs from "qs";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 
 const Movie = ({
-  name,
   backdrop,
   tagline,
   age_rating,
@@ -28,8 +26,6 @@ const Movie = ({
   suggested,
   title,
 }) => {
-  const { readMore, handleToggle, closeReadMore } = useReadMore();
-
   return (
     <>
       <Head>
@@ -40,7 +36,6 @@ const Movie = ({
         <SearchBar movies hero />
         <Hero
           image={backdrop}
-          name={name}
           tagline={tagline}
           age_rating={age_rating.certification}
           release_date={release_date}
@@ -51,15 +46,13 @@ const Movie = ({
           title={title}
         />
         <WatchProviders watch_providers={watch_providers} />
-        <Overview
+        <MediaSummary
           overview={overview}
           age_rating={age_rating.certification}
           release_date={release_date}
           vote_average={vote_average}
-          readMore={readMore}
-          handleToggle={handleToggle}
         />
-        <Details
+        <MediaDetails
           director={director}
           cast={cast}
           genres={genres}
@@ -67,7 +60,6 @@ const Movie = ({
           movies
         />
         <Tablist
-          name={name}
           age_rating={age_rating}
           release_date={release_date}
           runtime={runtime}
@@ -78,8 +70,9 @@ const Movie = ({
           cast={cast}
           genres={genres}
           watch_providers={watch_providers}
+          title={title}
         />
-        <Suggested suggested={suggested} movies closeReadMore={closeReadMore} />
+        <Suggested suggested={suggested} movies />
       </main>
     </>
   );

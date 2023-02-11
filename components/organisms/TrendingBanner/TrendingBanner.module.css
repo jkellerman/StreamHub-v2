@@ -1,0 +1,48 @@
+.headingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.heading {
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-transform: capitalize;
+  display: inline-block;
+  margin: 0.75rem 1rem 1rem 0;
+}
+
+.categoryLink {
+  font-size: 0.8rem;
+  color: var(--Red);
+}
+
+.categoryLink:hover {
+  color: var(--Pure-white);
+  text-decoration: underline;
+  transition: all 200ms;
+}
+
+.iconMovies,
+.iconSeries {
+  transform: translateY(0.25rem);
+  margin-right: 0.5rem;
+}
+
+@media (min-width: 48em) {
+  .heading {
+    font-size: 2rem;
+    margin: 1.5rem 1rem 1rem 0;
+  }
+
+  .categoryLink {
+    transform: translateY(50%);
+    font-size: 1rem;
+  }
+
+  .iconMovies,
+  .iconSeries {
+    transform: unset;
+    margin-right: 0.5rem;
+  }
+}

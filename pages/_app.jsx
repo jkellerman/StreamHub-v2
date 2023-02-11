@@ -1,6 +1,6 @@
 import "../styles/globals.css";
-import Nav from "@/components/Nav/Nav";
-import Footer from "@/components/Footer/Footer";
+import Nav from "@/components/molecules/Nav/Nav";
+import Footer from "@/components/molecules/Footer/Footer";
 import NProgress from "nprogress";
 import Router from "next/router";
 

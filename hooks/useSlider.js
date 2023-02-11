@@ -4,8 +4,8 @@ const useSlider = () => {
   const [isScrollAtStart, setIsScrollAtStart] = useState(true);
   const [isScrollAtEnd, setIsScrollAtEnd] = useState(false);
   const [isScrollAvailable, setIsScrollAvailable] = useState(false);
-  const sliderRef = useRef();
-  const cardRef = useRef();
+  const sliderRef = useRef(null);
+  const cardRef = useRef(null);
 
   const getScrollPosition = () => {
     if (sliderRef.current.scrollLeft > 0) {

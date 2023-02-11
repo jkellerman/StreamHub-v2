@@ -1,0 +1,21 @@
+.main {
+  width: 100vw;
+  margin: 0;
+}
+
+.hero {
+  position: relative;
+  margin-bottom: -5rem;
+}
+
+@media (min-width: 75em) {
+  .hero {
+    margin-bottom: -34rem;
+  }
+}
+
+@media (min-width: 90em) {
+  .hero {
+    margin-bottom: -37rem;
+  }
+}

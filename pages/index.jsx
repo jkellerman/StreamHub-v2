@@ -1,8 +1,8 @@
 import Head from "next/head";
-import SearchBar from "@/components/SearchBar/SearchBar";
+import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import { sliceArray } from "@/utils/utils";
-import Trending from "@/components/Trending/Trending";
-import Category from "@/components/Category/Category";
+import Trending from "@/components/organisms/TrendingBanner/TrendingBanner";
+import Category from "@/components/organisms/Category/Category";
 
 export default function Home({
   trending,

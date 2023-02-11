@@ -32,7 +32,7 @@ const useInfiniteScroll = (endpoint) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldFetch]);
 
-  // Below, need two useEffects because if you call endpoint and page together, switching between genre pages results in page duplication due to page number carry-over from previous page.
+  // Below, need two separate useEffects because if you call endpoint and page together, endpoint may be called before page when switching between genre pages, which results in page duplication due to page number carry-over from previous page.
 
   // Warning: Attempts to remove duplication will likely break the code. When refactoring keep an eye on page number in terminal.
 
