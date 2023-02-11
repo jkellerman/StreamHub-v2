@@ -1,4 +1,4 @@
-import styles from "../Tablist/Tablist.module.css";
+import styles from "../TabList/TabList.module.css";
 import { useState, useRef } from "react";
 import WatchProvidersTab from "@/components/atoms/WatchProvidersTab/WatchProvidersTab";
 import TabButton from "@/components/atoms/TabButton/TabButton";
