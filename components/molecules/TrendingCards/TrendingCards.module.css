@@ -84,20 +84,12 @@
 }
 
 @media (min-width: 48em) {
-  .outerBanner {
-    margin-left: -2rem;
-  }
-
   .banner::-webkit-scrollbar {
     height: 8px;
   }
 
   .banner::-webkit-scrollbar-thumb {
     border-radius: 8px;
-  }
-
-  .link {
-    margin-left: 2rem;
   }
 }
 
