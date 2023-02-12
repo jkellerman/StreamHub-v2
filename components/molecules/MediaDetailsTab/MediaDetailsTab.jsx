@@ -1,14 +1,15 @@
 import styles from "../MediaDetailsTab/MediaDetailsTab.module.css";
 import { toHoursAndMinutes } from "@/utils/utils";
-import Link from "next/link";
+
 import StarRating from "../../atoms/StarRating/StarRating";
-import QueryString from "qs";
+
 import Poster from "@/components/atoms/Poster/Poster";
 import Certification from "@/components/atoms/Certification/Certification";
 import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
 import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
 import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
 import Cast from "@/components/atoms/Cast/Cast";
+import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
 
 const MediaDetailsTab = ({
   movie_age_rating,
@@ -26,6 +27,7 @@ const MediaDetailsTab = ({
   network,
   activeTab,
   title,
+  movies,
 }) => {
   // TODO: improve class naming and add dd
 
@@ -46,33 +48,11 @@ const MediaDetailsTab = ({
         )}
 
         <div className={styles.attributes}>
-          <ul className={styles.list}>
-            <li className={styles.listItem}>
-              <div className={styles.name}>genres</div>
-              <div className={styles.value}>
-                {genres.map((genre) => {
-                  return (
-                    <Link
-                      key={genre.id}
-                      href={
-                        movie_age_rating
-                          ? `/movies?${QueryString.stringify({
-                              genre: genre.name.toLowerCase(),
-                            })}`
-                          : `/series?${QueryString.stringify({
-                              genre: genre.name.toLowerCase(),
-                            })}`
-                      }
-                    >
-                      <a className={styles.genre}>{genre.name}</a>
-                    </Link>
-                  );
-                })}
-              </div>
-            </li>
+          <dl className={styles.list}>
+            <MediaGenres genres={genres} movies={movies} />
             <Cast cast={cast} />
             <MediaDirectorOrNetwork director={director} network={network} />
-          </ul>
+          </dl>
           <ul className={styles.attributesList}>
             <li className={styles.listItem}>
               <div className={styles.name}>release date</div>

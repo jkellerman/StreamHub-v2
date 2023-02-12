@@ -21,6 +21,7 @@ const Tablist = ({
   network,
   series_age_rating,
   title,
+  movies,
 }) => {
   const [activeTab, setActiveTab] = useState("watch");
   const tab = useRef();
@@ -79,6 +80,7 @@ const Tablist = ({
               network={network}
               activeTab={activeTab}
               title={title}
+              movies={movies}
             />
           )}
         </div>

@@ -1,8 +1,8 @@
 import styles from "../MediaDetails/MediaDetails.module.css";
-import Link from "next/link";
 import { toHoursAndMinutes } from "@/utils/utils";
 import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
 import Cast from "@/components/atoms/Cast/Cast";
+import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
 
 const MediaDetails = ({
   director,
@@ -20,30 +20,8 @@ const MediaDetails = ({
         <dl className={styles.list}>
           <MediaDirectorOrNetwork director={director} network={network} />
           <Cast cast={cast} />
+          <MediaGenres genres={genres} movies={movies} />
         </dl>
-
-        {/* Genre Links */}
-        <div className={`${styles.container}`}>
-          <span className={styles.heading}>genres</span>
-          <div className={styles.linksContainer}>
-            {genres.map((genre) => {
-              return (
-                <Link
-                  key={genre.id}
-                  href={
-                    movies
-                      ? `/movies/genre/${genre.id}?name=${genre.name}`
-                      : `/series/genre/${genre.id}?name=${genre.name}`
-                  }
-                >
-                  <a className={`${styles.description} ${styles.genre}`}>
-                    {genre.name}
-                  </a>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
 
         {/* Runtime/Seasons */}
         {runtime >= 0 ? (

@@ -7,6 +7,8 @@
 .name {
   margin: 0;
   white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .detailItem {
@@ -18,13 +20,27 @@
 .group {
   display: flex;
   flex-wrap: wrap;
+  row-gap: 0.5rem;
+}
+
+.name {
+  margin-left: 0;
+}
+
+.genre {
+  margin-right: 0.5rem;
+  background-color: var(--Greyish-blue);
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  white-space: nowrap;
 }
 
 @media (min-width: 48em) {
   .detailItem {
-    width: 160px;
+    width: 165px;
     margin-right: 0.5rem;
     flex-direction: column;
+    margin-bottom: none;
   }
 
   .heading {
