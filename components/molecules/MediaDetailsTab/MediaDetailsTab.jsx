@@ -7,6 +7,7 @@ import Poster from "@/components/atoms/Poster/Poster";
 import Certification from "@/components/atoms/Certification/Certification";
 import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
 import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
+import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
 
 const MediaDetailsTab = ({
   movie_age_rating,
@@ -25,6 +26,8 @@ const MediaDetailsTab = ({
   activeTab,
   title,
 }) => {
+  // TODO: improve class naming and add dd
+
   return (
     <>
       <div
@@ -74,17 +77,7 @@ const MediaDetailsTab = ({
                 })}
               </div>
             </li>
-            {director ? (
-              <li className={styles.listItem}>
-                <div className={styles.name}>director</div>
-                <div>{director}</div>
-              </li>
-            ) : (
-              <li className={styles.listItem}>
-                <div className={styles.name}>network</div>
-                <div>{network}</div>
-              </li>
-            )}
+            <MediaDirectorOrNetwork director={director} network={network} />
           </ul>
           <ul className={styles.attributesList}>
             <li className={styles.listItem}>

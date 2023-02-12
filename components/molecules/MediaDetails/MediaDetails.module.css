@@ -30,6 +30,10 @@
   margin: 0;
 }
 
+.list {
+  padding-left: 0;
+}
+
 .linksContainer {
   display: flex;
   flex-wrap: wrap;

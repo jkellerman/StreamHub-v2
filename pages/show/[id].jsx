@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "@/components/organisms/Hero/Hero.module.css";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import Hero from "@/components/organisms/Hero/Hero";
-import MediaDetails from "@/components/atoms/MediaDetails/MediaDetails";
+import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
 import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
 import Tablist from "@/components/organisms/TabList/TabList";
 import WatchProviders from "@/components/atoms/WatchProviders/WatchProviders";

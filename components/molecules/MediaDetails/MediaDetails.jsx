@@ -1,6 +1,7 @@
-import styles from "@/components/atoms/MediaDetails/MediaDetails.module.css";
+import styles from "../MediaDetails/MediaDetails.module.css";
 import Link from "next/link";
 import { toHoursAndMinutes } from "@/utils/utils";
+import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
 
 const Details = ({
   director,
@@ -11,18 +12,13 @@ const Details = ({
   seasons,
   movies,
 }) => {
+  // TODO: improve class naming
   return (
     <>
       <section className={styles.details}>
-        {/* Director/Network */}
-        <div className={styles.container}>
-          <span className={styles.heading}>
-            {director ? "director" : "network"}
-          </span>
-          <span className={styles.director}>
-            {director ? director : `${network}`}
-          </span>
-        </div>
+        <dl className={styles.list}>
+          <MediaDirectorOrNetwork director={director} network={network} />
+        </dl>
 
         {/* Cast */}
         <div className={styles.container}>
