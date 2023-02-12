@@ -2,8 +2,9 @@ import styles from "../MediaDetails/MediaDetails.module.css";
 import Link from "next/link";
 import { toHoursAndMinutes } from "@/utils/utils";
 import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
+import Cast from "@/components/atoms/Cast/Cast";
 
-const Details = ({
+const MediaDetails = ({
   director,
   cast,
   genres,
@@ -18,22 +19,8 @@ const Details = ({
       <section className={styles.details}>
         <dl className={styles.list}>
           <MediaDirectorOrNetwork director={director} network={network} />
+          <Cast cast={cast} />
         </dl>
-
-        {/* Cast */}
-        <div className={styles.container}>
-          <span className={styles.heading}>cast</span>
-          <ul className={styles.castContainer}>
-            {cast.map((member, index) => {
-              return (
-                <li className={styles.description} key={member.id}>
-                  {index === cast.length - 1 ? member.name : `${member.name},`}
-                  &nbsp;
-                </li>
-              );
-            })}
-          </ul>
-        </div>
 
         {/* Genre Links */}
         <div className={`${styles.container}`}>
@@ -81,4 +68,4 @@ const Details = ({
   );
 };
 
-export default Details;
+export default MediaDetails;

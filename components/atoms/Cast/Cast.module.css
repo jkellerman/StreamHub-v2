@@ -6,19 +6,23 @@
 
 .name {
   margin: 0;
-  display: flex;
+  white-space: nowrap;
 }
 
 .detailItem {
   display: flex;
-  margin-bottom: 2rem;
+  flex-direction: row;
+}
+
+.group {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 @media (min-width: 48em) {
   .detailItem {
     width: 160px;
     margin-right: 0.5rem;
-    margin-bottom: 0;
     flex-direction: column;
   }
 

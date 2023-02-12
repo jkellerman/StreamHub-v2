@@ -8,6 +8,7 @@ import Certification from "@/components/atoms/Certification/Certification";
 import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
 import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
 import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
+import Cast from "@/components/atoms/Cast/Cast";
 
 const MediaDetailsTab = ({
   movie_age_rating,
@@ -69,14 +70,7 @@ const MediaDetailsTab = ({
                 })}
               </div>
             </li>
-            <li className={styles.listItem}>
-              <div className={styles.name}>cast</div>
-              <div>
-                {cast.map((member) => {
-                  return <div key={member.id}>{member.name}</div>;
-                })}
-              </div>
-            </li>
+            <Cast cast={cast} />
             <MediaDirectorOrNetwork director={director} network={network} />
           </ul>
           <ul className={styles.attributesList}>
