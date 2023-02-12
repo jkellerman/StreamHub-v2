@@ -1,5 +1,5 @@
 import Card from "@/components/atoms/Card/Card";
-import CardDetails from "@/components/atoms/CardDetails/CardDetails";
+import CardDetails from "@/components/molecules/CardDetails/CardDetails";
 import styles from "@/components/organisms/Category/Category.module.css";
 import LoadingAnimation from "@/components/atoms/LoadingAnimation/LoadingAnimation";
 
@@ -14,15 +14,13 @@ const CardList = ({ cards, isLoading }) => {
             <Card
               id={item.id}
               image={item.backdrop_path}
-              releaseDate={item.release_date}
               title={item.title}
-              airDate={item.first_air_date}
               seriesName={item.name}
             />
             <CardDetails
-              releaseDate={item.release_date}
+              release_date={item.release_date}
               title={item.title}
-              airDate={item.first_air_date}
+              air_date={item.first_air_date}
               seriesName={item.name}
             />
           </article>

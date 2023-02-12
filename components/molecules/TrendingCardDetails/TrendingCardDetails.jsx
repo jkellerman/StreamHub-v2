@@ -1,15 +1,23 @@
-import styles from "../CardDetails/CardDetails.module.css";
-import { DATE_SLICE } from "@/utils/utils";
+import styles from "@/components/molecules/TrendingCardDetails/TrendingCardDetails.module.css";
+import ReleaseDate from "../../atoms/ReleaseDate/ReleaseDate";
 
-const CardDetails = ({ airDate, seriesName, releaseDate, title }) => {
+const TrendingCardDetails = ({
+  movieTitle,
+  release_date,
+  type,
+  seriesName,
+  air_date,
+}) => {
   return (
-    <div>
+    <div className={styles.detailsContainer}>
+      <h2 className={styles.title}>
+        {seriesName}
+        {movieTitle}
+      </h2>
       <div className={styles.details}>
-        {airDate && <span>{airDate.slice(0, DATE_SLICE)} &nbsp;•&nbsp;</span>}
-        {releaseDate && (
-          <span>{releaseDate.slice(0, DATE_SLICE)} &nbsp;•&nbsp;</span>
-        )}
-        {title ? (
+        <ReleaseDate release_date={release_date} air_date={air_date} />
+        &nbsp;&nbsp;•&nbsp;
+        {type === "movie" ? (
           <svg
             width="24"
             height="24"
@@ -36,13 +44,10 @@ const CardDetails = ({ airDate, seriesName, releaseDate, title }) => {
             />
           </svg>
         )}
-        <span className={styles.type}>
-          &nbsp; {seriesName ? "series" : "movie"}
-        </span>
+        <span>&nbsp;{type === "tv" ? "series" : type}</span>
       </div>
-      <h2 className={styles.title}>{seriesName || title}</h2>
     </div>
   );
 };
 
-export default CardDetails;
+export default TrendingCardDetails;

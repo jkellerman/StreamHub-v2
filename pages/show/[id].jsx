@@ -62,7 +62,7 @@ const Series = ({
         />
         <Tablist
           series_age_rating={series_age_rating}
-          release_date={air_date}
+          air_date={air_date}
           seasons={seasons}
           vote_average={vote_average}
           overview={overview}

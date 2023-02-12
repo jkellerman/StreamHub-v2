@@ -1,14 +1,16 @@
 import styles from "../MediaDetailsTab/MediaDetailsTab.module.css";
-import { toHoursAndMinutes, DATE_SLICE } from "@/utils/utils";
+import { toHoursAndMinutes } from "@/utils/utils";
 import Link from "next/link";
 import StarRating from "../../atoms/StarRating/StarRating";
 import QueryString from "qs";
 import Poster from "@/components/atoms/Poster/Poster";
 import Certification from "@/components/atoms/Certification/Certification";
+import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
 
 const MediaDetailsTab = ({
   movie_age_rating,
   release_date,
+  air_date,
   runtime,
   vote_average,
   overview,
@@ -86,7 +88,11 @@ const MediaDetailsTab = ({
           <ul className={styles.attributesList}>
             <li className={styles.listItem}>
               <div className={styles.name}>release date</div>
-              <div>{release_date.slice(0, DATE_SLICE)}</div>
+              <ReleaseDate
+                release_date={release_date}
+                air_date={air_date}
+                mediaDetailsTab
+              />
             </li>
             <li className={styles.listItem}>
               <div className={styles.name}>Certification</div>

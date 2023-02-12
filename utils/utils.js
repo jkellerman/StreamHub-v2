@@ -15,8 +15,6 @@ export const sliceArray = (arr, limit) => {
 
 // Slice Date
 
-export const DATE_SLICE = 4;
-
 // Convert runtime minutes to hour and minutes format
 
 export const toHoursAndMinutes = (totalMinutes) => {

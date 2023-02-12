@@ -8,6 +8,7 @@ import Router from "next/router";
 const Tablist = ({
   movie_age_rating,
   release_date,
+  air_date,
   runtime,
   vote_average,
   overview,
@@ -65,6 +66,7 @@ const Tablist = ({
             <MediaDetailsTab
               movie_age_rating={movie_age_rating}
               release_date={release_date}
+              air_date={air_date}
               runtime={runtime}
               vote_average={vote_average}
               overview={overview}

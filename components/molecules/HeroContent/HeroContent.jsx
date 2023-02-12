@@ -1,8 +1,9 @@
 import styles from "../HeroContent/HeroContent.module.css";
-import { toHoursAndMinutes, DATE_SLICE } from "@/utils/utils";
+import { toHoursAndMinutes } from "@/utils/utils";
 import StarRating from "../../atoms/StarRating/StarRating";
 import Poster from "@/components/atoms/Poster/Poster";
 import Certification from "@/components/atoms/Certification/Certification";
+import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
 
 const HeroContent = ({
   title,
@@ -36,11 +37,11 @@ const HeroContent = ({
               series_age_rating={series_age_rating}
             />
 
-            {release_date ? (
-              <div>{release_date.slice(0, DATE_SLICE)}</div>
-            ) : (
-              <div>{air_date.slice(0, DATE_SLICE)}</div>
-            )}
+            <ReleaseDate
+              air_date={air_date}
+              release_date={release_date}
+              styled
+            />
             {runtime ? (
               <div
                 className={rating > 0 ? styles.runtime : styles.displayRuntime}

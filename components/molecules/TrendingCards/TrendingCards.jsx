@@ -2,7 +2,7 @@ import Image from "next/future/image";
 import Link from "next/link";
 import styles from "@/components/molecules/TrendingCards/TrendingCards.module.css";
 import { TRENDING_BACKDROP_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
-import TrendingCardDetails from "@/components/atoms/TrendingCardDetails/TrendingCardDetails";
+import TrendingCardDetails from "@/components/molecules/TrendingCardDetails/TrendingCardDetails";
 import chevronLeft from "@/public/assets/chevron-left-solid.svg";
 import chevronRight from "@/public/assets/chevron-right-solid.svg";
 import useSlider from "hooks/useSlider";
@@ -56,9 +56,9 @@ const TrendingCards = ({ trending }) => {
                   image={item.backdrop_path}
                   movieTitle={item.title}
                   seriesName={item.name}
-                  year={item.release_date}
+                  release_date={item.release_date}
                   type={item.media_type}
-                  airDate={item.first_air_date}
+                  air_date={item.first_air_date}
                 />
               </article>
             );
