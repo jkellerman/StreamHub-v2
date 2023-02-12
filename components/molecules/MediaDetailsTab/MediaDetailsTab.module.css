@@ -2,11 +2,6 @@
   .details.active {
     animation: fade 200ms ease-in;
   }
-  .overview {
-    margin-top: 0;
-    margin-bottom: 2rem;
-    line-height: 25px;
-  }
 
   .list {
     margin-bottom: 2rem;
@@ -73,10 +68,6 @@
 
   .attributesList {
     display: flex;
-  }
-
-  .overview {
-    margin-bottom: 0;
   }
 
   .genre {

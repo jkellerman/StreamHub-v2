@@ -1,8 +1,8 @@
 import styles from "../MediaSummary/MediaSummary.module.css";
 import StarRating from "../../atoms/StarRating/StarRating";
-import useReadMore from "hooks/useReadMore";
 import Certification from "@/components/atoms/Certification/Certification";
 import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
+import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
 
 const MediaSummary = ({
   movie_age_rating,
@@ -12,8 +12,6 @@ const MediaSummary = ({
   series_age_rating,
   air_date,
 }) => {
-  const { readMore, handleToggle } = useReadMore();
-
   return (
     <>
       <section className={styles.container}>
@@ -22,27 +20,8 @@ const MediaSummary = ({
           series_age_rating={series_age_rating}
         />
         <ReleaseDate release_date={release_date} air_date={air_date} styled />
-
-        {/* Overview */}
-
-        <p
-          className={
-            !readMore
-              ? `${styles.overview}`
-              : `${styles.overview} ${styles.expand}`
-          }
-        >
-          {overview}
-        </p>
-        {overview.split(" ").length > 32 && (
-          <button className={styles.readMoreToggle} onClick={handleToggle}>
-            {!readMore ? "Read more" : "Show Less"}
-          </button>
-        )}
+        <MediaOverview overview={overview} mediaSummary />
       </section>
-
-      {/* rating */}
-
       {vote_average > 0 && (
         <>
           <hr />

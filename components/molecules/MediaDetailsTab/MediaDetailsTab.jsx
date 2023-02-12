@@ -6,6 +6,7 @@ import QueryString from "qs";
 import Poster from "@/components/atoms/Poster/Poster";
 import Certification from "@/components/atoms/Certification/Certification";
 import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
+import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
 
 const MediaDetailsTab = ({
   movie_age_rating,
@@ -36,7 +37,7 @@ const MediaDetailsTab = ({
         {overview && (
           <div>
             <div className={styles.name}>overview</div>
-            <p className={styles.overview}>{overview}</p>
+            <MediaOverview overview={overview} />
           </div>
         )}
 

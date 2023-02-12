@@ -2,6 +2,8 @@ import Image from "next/image";
 import styles from "../Poster/Poster.module.css";
 import { POSTER_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 
+// SUGGESTED POSTERS IN SUGGESTED COMPONENT
+
 const Poster = ({ poster, title, hero }) => {
   return (
     <div

@@ -3,6 +3,7 @@ import StarRating from "../../atoms/StarRating/StarRating";
 import Poster from "@/components/atoms/Poster/Poster";
 import Certification from "@/components/atoms/Certification/Certification";
 import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
+import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
 
 const HeroContent = ({
   title,
@@ -36,9 +37,7 @@ const HeroContent = ({
           <ReleaseDate air_date={air_date} release_date={release_date} styled />
           <StarRating rating={rating} />
         </div>
-
-        {/* Overview */}
-        <p className={styles.overview}>{overview}</p>
+        <MediaOverview overview={overview} hero />
       </div>
     </div>
   );

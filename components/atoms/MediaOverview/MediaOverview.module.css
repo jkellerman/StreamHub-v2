@@ -1,0 +1,56 @@
+.overview {
+  line-height: 25px;
+}
+
+.heroOverview {
+  display: none;
+}
+
+.mediaSummaryOverview {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  text-overflow: ellipsis;
+}
+
+.expand {
+  height: unset;
+  overflow: visible;
+  display: block;
+  text-overflow: unset;
+}
+
+.readMoreToggle {
+  background: transparent;
+  color: var(--Red);
+  border: none;
+  text-transform: capitalize;
+  font-size: inherit;
+  padding: 0;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 48em) {
+  .mediaDetailsTab {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 75em) {
+  .heroOverview {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+  }
+
+  .overview {
+    margin-bottom: 0;
+  }
+}

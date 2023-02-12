@@ -40,13 +40,6 @@
   display: inline-block;
 }
 
-.overview {
-  line-height: 25px;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--Semi-dark-blue);
-  display: none;
-}
-
 @media (min-width: 48em) {
   .container {
     width: 93.75%;
@@ -75,17 +68,6 @@
 
   .content {
     max-width: 80%;
-  }
-  .overview {
-    width: unset;
-    padding-bottom: unset;
-    border-bottom: unset;
-    height: 100%;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    text-overflow: ellipsis;
   }
 
   .list {
