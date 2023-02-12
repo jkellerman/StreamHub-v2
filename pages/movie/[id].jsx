@@ -37,7 +37,7 @@ const Movie = ({
         <Hero
           image={backdrop}
           tagline={tagline}
-          age_rating={age_rating.certification}
+          movie_age_rating={age_rating.certification}
           release_date={release_date}
           runtime={runtime}
           rating={vote_average}
@@ -48,7 +48,7 @@ const Movie = ({
         <WatchProviders watch_providers={watch_providers} />
         <MediaSummary
           overview={overview}
-          age_rating={age_rating.certification}
+          movie_age_rating={age_rating.certification}
           release_date={release_date}
           vote_average={vote_average}
         />
@@ -60,7 +60,7 @@ const Movie = ({
           movies
         />
         <Tablist
-          age_rating={age_rating}
+          movie_age_rating={age_rating.certification}
           release_date={release_date}
           runtime={runtime}
           vote_average={vote_average}

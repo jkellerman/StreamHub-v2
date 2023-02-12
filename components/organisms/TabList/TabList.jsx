@@ -6,7 +6,7 @@ import MediaDetailsTab from "@/components/molecules/MediaDetailsTab/MediaDetails
 import Router from "next/router";
 
 const Tablist = ({
-  age_rating,
+  movie_age_rating,
   release_date,
   runtime,
   vote_average,
@@ -63,7 +63,7 @@ const Tablist = ({
         <div className={styles.detailsContainer}>
           {activeTab === "details" && (
             <MediaDetailsTab
-              age_rating={age_rating}
+              movie_age_rating={movie_age_rating}
               release_date={release_date}
               runtime={runtime}
               vote_average={vote_average}

@@ -1,11 +1,11 @@
 import styles from "../Hero/Hero.module.css";
-import HeroBackground from "../../atoms/HeroBackground/HeroBackround";
+import HeroBackground from "../../atoms/HeroBackground/HeroBackground";
 import HeroContent from "../../molecules/HeroContent/HeroContent";
 
 const Hero = ({
   image,
   tagline,
-  age_rating,
+  movie_age_rating,
   series_age_rating,
   release_date,
   runtime,
@@ -23,7 +23,7 @@ const Hero = ({
       </section>
       <HeroContent
         tagline={tagline}
-        age_rating={age_rating}
+        movie_age_rating={movie_age_rating}
         series_age_rating={series_age_rating}
         release_date={release_date}
         runtime={runtime}

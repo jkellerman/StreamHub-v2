@@ -2,11 +2,12 @@ import styles from "../HeroContent/HeroContent.module.css";
 import { toHoursAndMinutes, DATE_SLICE } from "@/utils/utils";
 import StarRating from "../../atoms/StarRating/StarRating";
 import Poster from "@/components/atoms/Poster/Poster";
+import Certification from "@/components/atoms/Certification/Certification";
 
 const HeroContent = ({
   title,
   tagline,
-  age_rating,
+  movie_age_rating,
   series_age_rating,
   release_date,
   runtime,
@@ -29,33 +30,30 @@ const HeroContent = ({
 
         {/* age certification, release year and runtime & rating */}
         <div>
-          <ul className={styles.list}>
-            {age_rating && <li className={styles.ageRating}>{age_rating}</li>}
-
-            {series_age_rating && (
-              <li className={styles.ageRating}>
-                {series_age_rating.length === 0 ? "NR" : `${series_age_rating}`}
-              </li>
-            )}
+          <div className={styles.list}>
+            <Certification
+              movie_age_rating={movie_age_rating}
+              series_age_rating={series_age_rating}
+            />
 
             {release_date ? (
-              <li>{release_date.slice(0, DATE_SLICE)}</li>
+              <div>{release_date.slice(0, DATE_SLICE)}</div>
             ) : (
-              <li>{air_date.slice(0, DATE_SLICE)}</li>
+              <div>{air_date.slice(0, DATE_SLICE)}</div>
             )}
             {runtime ? (
-              <li
+              <div
                 className={rating > 0 ? styles.runtime : styles.displayRuntime}
               >
                 {toHoursAndMinutes(runtime)}
-              </li>
+              </div>
             ) : (
-              <li className={styles.seasons}>
+              <div className={styles.seasons}>
                 {seasons > 1 ? `${seasons} seasons` : `${seasons} season`}
-              </li>
+              </div>
             )}
-            <li>{rating > 0 && <StarRating rating={rating} />}</li>
-          </ul>
+            <div>{rating > 0 && <StarRating rating={rating} />}</div>
+          </div>
         </div>
 
         {/* Overview */}

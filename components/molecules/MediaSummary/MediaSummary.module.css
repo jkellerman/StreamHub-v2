@@ -3,13 +3,6 @@
   width: 90%;
 }
 
-.ageRating {
-  margin-right: 1rem;
-  font-weight: 500;
-  border: 1px solid var(--Pure-white);
-  padding: 0.15rem 0.5rem;
-}
-
 .date {
   font-weight: 500;
 }

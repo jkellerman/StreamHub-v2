@@ -2,9 +2,10 @@ import styles from "../MediaSummary/MediaSummary.module.css";
 import StarRating from "../../atoms/StarRating/StarRating";
 import { DATE_SLICE } from "@/utils/utils";
 import useReadMore from "hooks/useReadMore";
+import Certification from "@/components/atoms/Certification/Certification";
 
 const MediaSummary = ({
-  age_rating,
+  movie_age_rating,
   overview,
   release_date,
   vote_average,
@@ -18,18 +19,10 @@ const MediaSummary = ({
       <section className={styles.container}>
         {/* Age rating */}
 
-        {age_rating === "" ||
-          (age_rating && (
-            <span className={styles.ageRating}>
-              {age_rating !== "" ? `${age_rating}` : "NR"}
-            </span>
-          ))}
-
-        {series_age_rating && (
-          <span className={styles.ageRating}>
-            {series_age_rating.length > 0 ? `${series_age_rating}` : "NR"}
-          </span>
-        )}
+        <Certification
+          movie_age_rating={movie_age_rating}
+          series_age_rating={series_age_rating}
+        />
 
         {/* Release year */}
 

@@ -30,11 +30,6 @@
   font-size: 0.9375rem;
 }
 
-.ageRating {
-  border: 1px solid var(--Pure-white);
-  padding: 0.15rem 0.5rem;
-}
-
 .runtime,
 .seasons {
   display: none;
@@ -49,9 +44,6 @@
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--Semi-dark-blue);
   display: none;
-}
-
-@media (min-width: 30em) {
 }
 
 @media (min-width: 48em) {
@@ -102,5 +94,9 @@
 
   .content {
     margin: 0;
+  }
+
+  .tagline {
+    margin-bottom: 1rem;
   }
 }

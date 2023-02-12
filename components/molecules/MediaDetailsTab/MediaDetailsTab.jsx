@@ -4,9 +4,10 @@ import Link from "next/link";
 import StarRating from "../../atoms/StarRating/StarRating";
 import QueryString from "qs";
 import Poster from "@/components/atoms/Poster/Poster";
+import Certification from "@/components/atoms/Certification/Certification";
 
 const MediaDetailsTab = ({
-  age_rating,
+  movie_age_rating,
   release_date,
   runtime,
   vote_average,
@@ -47,7 +48,7 @@ const MediaDetailsTab = ({
                     <Link
                       key={genre.id}
                       href={
-                        age_rating
+                        movie_age_rating
                           ? `/movies?${QueryString.stringify({
                               genre: genre.name.toLowerCase(),
                             })}`
@@ -89,11 +90,11 @@ const MediaDetailsTab = ({
             </li>
             <li className={styles.listItem}>
               <div className={styles.name}>Certification</div>
-              {age_rating ? (
-                <div>{age_rating.certification}</div>
-              ) : (
-                <div>{series_age_rating}</div>
-              )}
+              <Certification
+                movie_age_rating={movie_age_rating}
+                series_age_rating={series_age_rating}
+                mediaDetailsTab
+              />
             </li>
             {runtime >= 0 ? (
               <li className={styles.listItem}>
