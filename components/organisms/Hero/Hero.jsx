@@ -26,12 +26,10 @@ const Hero = ({
         movie_age_rating={movie_age_rating}
         series_age_rating={series_age_rating}
         release_date={release_date}
-        runtime={runtime}
         rating={rating}
         overview={overview}
         poster={poster}
         air_date={air_date}
-        seasons={seasons}
         title={title}
       />
     </>

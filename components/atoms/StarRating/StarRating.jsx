@@ -5,19 +5,23 @@ import styles from "../StarRating/StarRating.module.css";
 
 const StarRating = ({ rating }) => {
   return (
-    <div className={styles.container}>
-      <span>{filmRating(rating)}</span>
-      <Rating
-        className={styles.stars}
-        start={0}
-        stop={10}
-        step={2}
-        initialRating={rating}
-        emptySymbol={<FaRegStar />}
-        fullSymbol={<FaStar />}
-        readonly={true}
-      />
-    </div>
+    <>
+      {rating > 0 && (
+        <div className={styles.container}>
+          <span>{filmRating(rating)}</span>
+          <Rating
+            className={styles.stars}
+            start={0}
+            stop={10}
+            step={2}
+            initialRating={rating}
+            emptySymbol={<FaRegStar />}
+            fullSymbol={<FaStar />}
+            readonly={true}
+          />
+        </div>
+      )}
+    </>
   );
 };
 

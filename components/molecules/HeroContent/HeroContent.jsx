@@ -1,5 +1,4 @@
 import styles from "../HeroContent/HeroContent.module.css";
-import { toHoursAndMinutes } from "@/utils/utils";
 import StarRating from "../../atoms/StarRating/StarRating";
 import Poster from "@/components/atoms/Poster/Poster";
 import Certification from "@/components/atoms/Certification/Certification";
@@ -11,12 +10,10 @@ const HeroContent = ({
   movie_age_rating,
   series_age_rating,
   release_date,
-  runtime,
   rating,
   overview,
   poster,
   air_date,
-  seasons,
 }) => {
   return (
     <div className={styles.container}>
@@ -30,31 +27,14 @@ const HeroContent = ({
         </div>
 
         {/* age certification, release year and runtime & rating */}
-        <div>
-          <div className={styles.list}>
-            <Certification
-              movie_age_rating={movie_age_rating}
-              series_age_rating={series_age_rating}
-            />
 
-            <ReleaseDate
-              air_date={air_date}
-              release_date={release_date}
-              styled
-            />
-            {runtime ? (
-              <div
-                className={rating > 0 ? styles.runtime : styles.displayRuntime}
-              >
-                {toHoursAndMinutes(runtime)}
-              </div>
-            ) : (
-              <div className={styles.seasons}>
-                {seasons > 1 ? `${seasons} seasons` : `${seasons} season`}
-              </div>
-            )}
-            <div>{rating > 0 && <StarRating rating={rating} />}</div>
-          </div>
+        <div className={styles.list}>
+          <Certification
+            movie_age_rating={movie_age_rating}
+            series_age_rating={series_age_rating}
+          />
+          <ReleaseDate air_date={air_date} release_date={release_date} styled />
+          <StarRating rating={rating} />
         </div>
 
         {/* Overview */}

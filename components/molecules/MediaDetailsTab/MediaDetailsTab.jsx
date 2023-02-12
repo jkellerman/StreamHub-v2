@@ -120,9 +120,7 @@ const MediaDetailsTab = ({
             {vote_average > 0 && (
               <li className={styles.listItem}>
                 <div className={styles.name}>Rating</div>
-                <div>
-                  <StarRating rating={vote_average} />
-                </div>
+                <StarRating rating={vote_average} />
               </li>
             )}
           </ul>
