@@ -1,11 +1,11 @@
 import useInfiniteScroll from "hooks/useInfiniteScroll";
 import styles from "@/components/organisms/Category/Category.module.css";
-import LoadingAnimation from "@/components/atoms/LoadingAnimation/LoadingAnimation";
+import Spinner from "@/components/atoms/Spinner/Spinner";
 import CardList from "@/components/molecules/CardList/CardList";
 
 const CategoryResults = ({ endpoint, category, type }) => {
   const { cards, isLoading } = useInfiniteScroll(endpoint);
-  if (isLoading) return <LoadingAnimation />;
+  if (isLoading) return <Spinner />;
 
   const arr = cards.filter((item) => item.backdrop_path !== null);
 

@@ -1,10 +1,10 @@
 import Card from "@/components/atoms/Card/Card";
 import CardDetails from "@/components/molecules/CardDetails/CardDetails";
 import styles from "@/components/organisms/Category/Category.module.css";
-import LoadingAnimation from "@/components/atoms/LoadingAnimation/LoadingAnimation";
+import Spinner from "@/components/atoms/Spinner/Spinner";
 
 const CardList = ({ cards, isLoading }) => {
-  if (isLoading) return <LoadingAnimation />;
+  if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.container}>
