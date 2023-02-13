@@ -5,7 +5,6 @@ import { POSTER_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 import useSlider from "hooks/useSlider";
 const SUGGESTED_SLIDE_MULTIPLIER = 4;
 const SUGGESTED_ARROWS_DISPLAY_MINIMUM = 3;
-import useReadMore from "hooks/useReadMore";
 
 const Suggested = ({ suggested, movies }) => {
   const {
@@ -18,8 +17,6 @@ const Suggested = ({ suggested, movies }) => {
     sliderRef,
     cardRef,
   } = useSlider();
-
-  const { closeReadMore } = useReadMore();
 
   const suggestedArr = suggested.results.filter(
     (suggested) => suggested.poster_path !== null
@@ -61,7 +58,6 @@ const Suggested = ({ suggested, movies }) => {
                   <a
                     className={styles.suggestionContainer}
                     onClick={() => {
-                      closeReadMore();
                       setTimeout(() => {
                         sliderRef.current.scrollLeft = 0;
                       }, 1000);

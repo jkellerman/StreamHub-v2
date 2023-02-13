@@ -1,8 +1,13 @@
 import styles from "../MediaOverview/MediaOverview.module.css";
-import useReadMore from "hooks/useReadMore";
+import { useState } from "react";
 
 const MediaOverview = ({ hero, overview, mediaSummary }) => {
-  const { readMore, handleToggle } = useReadMore();
+  const [readMore, setReadMore] = useState(false);
+
+  const handleToggle = () => {
+    setReadMore(!readMore);
+  };
+
   return (
     <>
       {mediaSummary && (
@@ -17,7 +22,10 @@ const MediaOverview = ({ hero, overview, mediaSummary }) => {
             {overview}
           </p>
           {overview.split(" ").length > 32 && (
-            <button className={styles.readMoreToggle} onClick={handleToggle}>
+            <button
+              className={styles.readMoreToggle}
+              onClick={() => handleToggle()}
+            >
               {!readMore ? "Read more" : "Show Less"}
             </button>
           )}
