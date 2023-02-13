@@ -11,17 +11,15 @@ const MediaRunTimeOrSeasons = ({ runtime, seasons }) => {
   return (
     <>
       <div className={styles.detailItem}>
-        <dt className={styles.heading}>{runtime ? "runtime" : "seasons"}</dt>
-        {runtime && (
+        <dt className={styles.heading}>
+          {runtime >= 0 ? "runtime" : "seasons"}
+        </dt>
+        {runtime >= 0 && (
           <dd className={styles.description}>
-            {runtime && runtime > 0 ? `${toHoursAndMinutes(runtime)}` : null}
+            {runtime > 0 ? `${toHoursAndMinutes(runtime)}` : null}
           </dd>
         )}
-        {seasons && (
-          <dd className={styles.description}>
-            {seasons > 1 ? `${seasons} seasons` : `${seasons} season`};
-          </dd>
-        )}
+        {seasons && <dd className={styles.description}>{seasons}</dd>}
       </div>
     </>
   );
