@@ -6,31 +6,27 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
 }
 
 .heading {
-  font-size: 1.25rem;
-  font-weight: 300;
+  font-size: var(--heading-l);
+  font-weight: var(--fw-light);
   text-transform: capitalize;
   display: inline-block;
-  margin: 0.75rem 1rem 0rem 0;
+  margin: 0.75rem 1rem 1.25rem 0;
 }
 
 .categoryLink {
-  font-size: 0.8rem;
-  transform: translateY(50%);
-  color: var(--Red);
+  font-size: var(--body-l);
+  color: var(--red);
 }
 
 .categoryLink:hover {
-  color: var(--Pure-white);
-  text-decoration: underline;
-  transition: all 200ms;
+  color: var(--greyish-blue);
+  transition: var(--transition);
 }
 
 .container {
-  place-content: center flex-start;
   display: flex;
   flex-flow: row wrap;
   margin: 0 0 0 -20px;
@@ -61,12 +57,7 @@
 
 @media (min-width: 48em) {
   .heading {
-    font-size: 2rem;
-    margin: 1.5rem 1rem 0.5rem 0;
-  }
-
-  .categoryLink {
-    font-size: 1rem;
+    margin: 1.5rem 1rem 1.75rem 0;
   }
 
   .iconMovies {

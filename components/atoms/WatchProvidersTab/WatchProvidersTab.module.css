@@ -1,38 +1,37 @@
-@media (min-width: 48em) {
-  .container.active {
-    animation: fade 200ms ease-in;
-  }
-  .justWatchLogoContainer {
-    margin-top: 1rem;
-    position: relative;
-    width: 130px;
-    height: 80px;
-  }
+.headingMethod {
+  font-size: var(--heading-xs);
+}
 
-  .logo {
-    width: 100%;
-    height: 100%;
-  }
+.container.active {
+  animation: fade var(--fade-animation);
+}
 
-  .headingMethod {
-    font-size: 1.25rem;
-  }
+.justWatchLogoContainer {
+  margin-top: 1rem;
+  position: relative;
+  width: 130px;
+  height: 80px;
+}
 
-  .icons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+.logo {
+  width: 100%;
+  height: 100%;
+}
 
-  .icon {
-    display: inline-block;
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-  }
+.icons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.icon {
+  display: inline-block;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
 }
 
 @keyframes fade {

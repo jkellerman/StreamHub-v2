@@ -1,6 +1,6 @@
 .ageRating {
-  border: 1px solid var(--Pure-white);
+  border: 1px solid var(--pure-white);
   padding: 0.15rem 0.5rem;
-  font-weight: bold;
+  font-weight: var(--fw-med);
   margin-right: 0.75rem;
 }

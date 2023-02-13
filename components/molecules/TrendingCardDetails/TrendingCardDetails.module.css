@@ -3,23 +3,23 @@
   left: 0;
   bottom: 0;
   width: calc(100% - 1rem);
-  padding: 0 0 1.5rem 2.5rem;
+  padding: 0 0 1.25rem 2.5rem;
 }
 
 .title {
   margin: 0;
   position: relative;
   bottom: -1.75rem;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: var(--heading-s);
+  font-weight: var(--fw-med);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .details {
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: var(--body-m);
+  font-weight: var(--fw-light);
   text-transform: capitalize;
   position: relative;
   bottom: 1.75rem;
@@ -35,36 +35,25 @@
 
 @media (max-width: 20em) {
   .title {
-    font-size: 0.975rem;
-  }
-
-  .detailsContainer {
-    padding: 0 0 1.25rem 2.25rem;
-  }
-}
-
-@media (min-width: 30em) {
-  .title {
-    font-size: 1.25rem;
+    font-size: var(--heading-xs);
   }
 
   .details {
-    font-size: 0.975rem;
+    font-size: var(--body-s);
+  }
+
+  .detailsContainer {
+    padding: 0 0 1rem 2.25rem;
   }
 }
 
 @media (min-width: 48em) {
   .detailsContainer {
     width: calc(100% - 1.75rem);
-    padding: 0 0 1.75rem 3.75rem;
-  }
-
-  .title {
-    font-size: 1.75rem;
+    padding: 0 0 1.5rem 3.5rem;
   }
 
   .details {
-    font-size: 1rem;
     bottom: 2.75rem;
   }
 }

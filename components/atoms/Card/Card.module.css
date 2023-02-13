@@ -1,12 +1,12 @@
 .container {
   position: relative;
-  border-radius: 8px;
+  border-radius: var(--border-radius-s);
   overflow: hidden;
-  animation: fade 250ms ease-in;
+  animation: fade var(--fade-animation);
 }
 
 .card {
-  border-radius: 8px;
+  border-radius: var(--border-radius-s);
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -14,7 +14,7 @@
 
 .container:hover {
   opacity: 0.6;
-  transition: all 100ms ease-in;
+  transition: var(--transition);
 }
 
 @keyframes fade {

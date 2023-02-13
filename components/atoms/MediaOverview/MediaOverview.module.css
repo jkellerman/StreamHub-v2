@@ -1,5 +1,7 @@
 .overview {
   line-height: 25px;
+  font-size: var(--body-l);
+  font-weight: var(--fw-light);
 }
 
 .heroOverview {
@@ -25,10 +27,10 @@
 
 .readMoreToggle {
   background: transparent;
-  color: var(--Red);
+  color: var(--red);
   border: none;
   text-transform: capitalize;
-  font-size: inherit;
+  font-size: var(--body-l);
   padding: 0;
   cursor: pointer;
   margin-bottom: 2rem;

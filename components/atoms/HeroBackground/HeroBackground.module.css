@@ -17,7 +17,6 @@
   z-index: 3;
   top: -0.75rem;
   left: 0;
-  background-color: var(--Dark-Blue);
   background-image: linear-gradient(
     rgba(16, 20, 30, 1) 5%,
     rgba(16, 20, 30, 0.75) 30%,

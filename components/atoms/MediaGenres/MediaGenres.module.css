@@ -1,5 +1,5 @@
 .heading {
-  font-weight: 500;
+  font-weight: var(--fw-med);
   text-transform: capitalize;
   min-width: 75px;
 }
@@ -29,10 +29,18 @@
 
 .genre {
   margin-right: 0.5rem;
-  background-color: var(--Greyish-blue);
+  background-color: var(--greyish-blue);
   padding: 0.25rem 0.75rem;
-  border-radius: 10px;
+  border: 1px solid var(--greyish-blue);
+  border-radius: var(--border-radius-l);
   white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .genre:hover {
+    background-color: transparent;
+    transition: var(--transition);
+  }
 }
 
 @media (min-width: 48em) {
@@ -45,7 +53,7 @@
 
   .heading {
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     min-width: none;
   }
 }

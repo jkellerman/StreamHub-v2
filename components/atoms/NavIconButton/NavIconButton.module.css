@@ -1,12 +1,12 @@
 .inactive {
-  fill: var(--Greyish-blue);
+  fill: var(--greyish-blue);
 }
 
 .inactive:hover {
-  fill: var(--Red);
+  fill: var(--red);
   transition: all 0.2s;
 }
 
 .active {
-  fill: var(--Pure-white);
+  fill: var(--pure-white);
 }

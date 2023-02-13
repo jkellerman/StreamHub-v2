@@ -1,4 +1,5 @@
 import Head from "next/head";
+import styles from "@/components/organisms/Category/Category.module.css";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import CardList from "@/components/molecules/CardList/CardList";
 import useInfiniteScroll from "hooks/useInfiniteScroll";
@@ -37,7 +38,7 @@ const Movies = ({ genreList }) => {
             selectedGenre={genre}
             genreList={genreList}
           />
-          <h1>{pageType}</h1>
+          <h1 className={styles.heading}>{pageType}</h1>
           <CardList cards={cards} isLoading={isLoading} />
         </section>
       </main>

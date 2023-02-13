@@ -3,7 +3,7 @@
 }
 
 .mediaDetails.active {
-  animation: fade 200ms ease-in;
+  animation: fade var(--fade-animation);
 }
 
 .list,
@@ -25,35 +25,12 @@
 
 .heading {
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: var(--fw-med);
   margin-bottom: 0.5rem;
-}
-
-.value {
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.25rem;
-  align-items: flex-start;
-}
-
-.genre {
-  margin-bottom: 0.5rem;
-  background-color: var(--Greyish-blue);
-  border: 1px solid var(--Greyish-blue);
-  padding: 0.25rem 0.75rem;
-  border-radius: 10px;
-  white-space: nowrap;
-  transition: all 0.2s;
 }
 
 .releaseDate {
   width: 165px;
-}
-
-@media (hover: hover) {
-  .genre:hover {
-    background-color: var(--Dark-blue);
-  }
 }
 
 @media (min-width: 75em) {
@@ -73,20 +50,6 @@
 
   .attributesList {
     display: flex;
-  }
-
-  .genre {
-    margin-bottom: unset;
-    background-color: unset;
-    border-radius: unset;
-    padding: unset;
-    color: var(--Red);
-    border: none;
-  }
-
-  .genre:hover {
-    color: var(--Pure-white);
-    transition: all 200ms;
   }
 }
 

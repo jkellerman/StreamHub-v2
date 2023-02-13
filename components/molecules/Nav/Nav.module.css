@@ -1,17 +1,17 @@
 .header {
   width: 100%;
-  background-color: var(--Semi-dark-blue);
+  background-color: var(--semi-dark-blue);
 }
 
 .nav {
-  background: var(--Semi-dark-blue);
+  background: var(--semi-dark-blue);
   width: 90%;
   margin: 0 auto;
   height: 56px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 11;
+  z-index: 10;
 }
 
 .logo {
@@ -28,22 +28,22 @@
 }
 
 .inactive {
-  fill: var(--Greyish-blue);
+  fill: var(--greyish-blue);
 }
 
 .inactive:hover {
-  fill: var(--Red);
-  transition: all 0.2s;
+  fill: var(--red);
+  transition: var(--transition);
 }
 
 .active {
-  fill: var(--Pure-white);
+  fill: var(--pure-white);
 }
 
 .avatar {
   width: 24px;
   height: 24px;
-  border: 1px solid var(--Pure-white);
+  border: 1px solid var(--pure-white);
   border-radius: 50%;
 }
 
@@ -82,7 +82,7 @@
     position: fixed;
     top: 1rem;
     left: 2rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius-l);
   }
 
   .navLinksContainer {

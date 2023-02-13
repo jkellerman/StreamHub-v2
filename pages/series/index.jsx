@@ -1,6 +1,7 @@
 import Head from "next/head";
 import QueryString from "qs";
 import { useRouter } from "next/router";
+import styles from "@/components/organisms/Category/Category.module.css";
 
 import Dropdown from "@/components/molecules/Dropdown/Dropdown";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
@@ -39,7 +40,7 @@ const Series = ({ genreList }) => {
             selectedGenre={genre}
             genreList={genreList}
           />
-          <h1>{pageType}</h1>
+          <h1 className={styles.heading}>{pageType}</h1>
           <CardList cards={cards} isLoading={isLoading} />
         </section>
       </main>

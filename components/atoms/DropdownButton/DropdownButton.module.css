@@ -1,28 +1,28 @@
 .buttonContainer {
   position: absolute;
-  top: 7.5rem;
+  top: 7.25rem;
   left: 5.5rem;
 }
 
 .button {
-  background: var(--Greyish-blue);
-  color: var(--Pure-white);
+  background: var(--greyish-blue);
+  color: var(--pure-white);
   padding: 0.5em 1.75em 0.5em 1.25em;
-  border-radius: 20px;
-  border: 1px solid var(--Greyish-blue);
+  border-radius: var(--border-radius-l);
+  border: 1px solid var(--greyish-blue);
   text-transform: capitalize;
   font-size: inherit;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: var(--transition);
 }
 
 .button:focus {
-  background: var(--Semi-dark-blue);
+  background: var(--semi-dark-blue);
 }
 
 @media (hover: hover) {
   .button:hover {
-    background: var(--Semi-dark-blue);
+    background: var(--semi-dark-blue);
   }
 }
 
@@ -34,27 +34,26 @@
 
 @media (min-width: 30em) {
   .buttonContainer {
-    left: 6.5rem;
+    left: 6rem;
   }
 }
 
 @media (min-width: 48em) {
   .buttonContainer {
-    top: 13rem;
+    top: 12.75rem;
     left: 8.5rem;
   }
 }
 
 @media (min-width: 64em) {
   .buttonContainer {
-    top: 13rem;
     left: 9rem;
   }
 }
 
 @media (min-width: 75em) {
   .buttonContainer {
-    top: 9rem;
+    top: 8.75rem;
     left: 18rem;
   }
 }

@@ -1,29 +1,11 @@
 .details {
-  position: relative;
-  z-index: 5;
   margin: 0 auto 2rem;
   width: 90%;
-}
-
-.list {
-  padding-left: 0;
-}
-
-.linksContainer {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 0.5rem;
+  font-size: var(--body-l);
 }
 
 @media (min-width: 48em) {
   .details {
     display: none;
-  }
-
-  .heading {
-    text-transform: capitalize;
-    font-weight: 500;
-    min-width: 75px;
-    margin-right: 1rem;
   }
 }

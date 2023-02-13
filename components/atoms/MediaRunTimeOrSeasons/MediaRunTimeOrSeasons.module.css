@@ -1,5 +1,5 @@
 .heading {
-  font-weight: 500;
+  font-weight: var(--fw-med);
   text-transform: capitalize;
   min-width: 75px;
 }

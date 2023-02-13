@@ -10,25 +10,21 @@
   display: none;
   padding-left: 0;
   align-items: center;
-  font-weight: bold;
-}
-
-.list li {
-  list-style: none;
-  margin-right: 1rem;
-  font-weight: 500;
+  font-size: var(--heading-xs);
+  font-weight: var(--fw-med);
 }
 
 .title {
   margin: 0;
-  font-weight: 500;
+  font-weight: var(--fw-med);
+  font-size: var(--heading-l);
 }
 
 .tagline {
   opacity: 0.7;
   font-style: italic;
   margin-top: 0.5rem;
-  font-size: 0.9375rem;
+  font-size: var(--body-l);
 }
 
 .runtime,
@@ -45,11 +41,6 @@
     width: 93.75%;
     padding: 0;
     margin-bottom: 4rem;
-  }
-
-  .tagline {
-    font-size: 1rem;
-    font-size: 16px;
   }
 }
 
@@ -71,7 +62,6 @@
   }
 
   .list {
-    font-size: 1.25rem;
     display: flex;
   }
 

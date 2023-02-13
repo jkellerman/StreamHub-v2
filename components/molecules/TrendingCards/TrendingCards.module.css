@@ -4,13 +4,12 @@
 }
 
 .banner {
-  place-content: center flex-start;
   display: flex;
   overflow-x: scroll;
   overscroll-behavior-inline: contain;
   scroll-behavior: smooth;
   scrollbar-width: none;
-  animation: fade 250ms ease-in;
+  animation: var(--fade-animation);
 }
 
 .banner::-webkit-scrollbar,
@@ -26,18 +25,18 @@
 
 .link {
   position: relative;
-  border-radius: 8px;
+  border-radius: var(--border-radius-s);
   display: inline-block;
   margin-left: 1.5rem;
 }
 
 .link:hover {
   opacity: 0.6;
-  transition: all 100ms ease-in;
+  transition: var(--transition);
 }
 
 .trendingCard {
-  border-radius: 8px;
+  border-radius: var(--border-radius-s);
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -56,7 +55,7 @@
   border: none;
   cursor: pointer;
   display: none;
-  animation: fadeArrow 200ms ease-in;
+  animation: fadeArrow var(--fade-arrow);
 }
 
 .arrow {
@@ -80,16 +79,6 @@
 @media (min-width: 30em) {
   .container {
     min-width: 66%;
-  }
-}
-
-@media (min-width: 48em) {
-  .banner::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .banner::-webkit-scrollbar-thumb {
-    border-radius: 8px;
   }
 }
 

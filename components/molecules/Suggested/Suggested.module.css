@@ -1,7 +1,8 @@
-.heading,
-.message {
+.heading {
   width: 90%;
   margin: 1.25rem auto 0;
+  font-size: var(--heading-xs);
+  font-weight: var(--fw-light);
 }
 
 .heading {
@@ -42,11 +43,10 @@
 .suggestionContainer {
   display: inline-block;
   position: relative;
-  border-radius: 8px;
+  border-radius: var(--border-radius-s);
   overflow: hidden;
   min-width: 100%;
   height: 185px;
-  opacity: 0.7;
   margin-right: 1.5rem;
 }
 
@@ -57,19 +57,13 @@
 
 .linkContainer:hover,
 .suggestionContainer:hover {
-  opacity: 1;
-  transition: all 200ms ease-in;
-}
-
-.message {
-  width: 90%;
-  margin: 2rem auto;
-  font-style: italic;
-  font-size: 0.85rem;
+  opacity: 0.7;
+  transition: var(--transition);
 }
 
 .name {
-  font-size: 0.9375rem;
+  font-size: var(--heading-xs);
+  font-weight: var(--fw-light);
   max-width: 95%;
 }
 
@@ -86,7 +80,7 @@
   border: none;
   cursor: pointer;
   display: none;
-  animation: fadeArrow 100ms ease-in;
+  animation: fadeArrow var(--fade-arrow);
 }
 
 .navigationPrev {
@@ -124,7 +118,6 @@
     z-index: 10;
   }
   .heading {
-    font-size: 1.25rem;
     margin: 1.65rem 0 2rem;
   }
   .suggestions {
@@ -140,14 +133,6 @@
 
   .suggestionContainer {
     height: 240px;
-  }
-
-  .suggestions::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .suggestions::-webkit-scrollbar-thumb {
-    border-radius: 8px;
   }
 
   .name {

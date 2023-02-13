@@ -10,7 +10,7 @@
   }
 
   .tabs {
-    border-bottom: 1px solid var(--Greyish-blue);
+    border-bottom: var(--input-active);
     padding-bottom: 2rem;
     display: flex;
     gap: 1.5rem;

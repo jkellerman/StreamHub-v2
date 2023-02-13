@@ -26,7 +26,7 @@ const Suggested = ({ suggested, movies }) => {
     <section className={styles.container}>
       {/* heading */}
       {!suggested.results.length > 0 ? null : (
-        <div className={styles.heading}>people also liked</div>
+        <h3 className={styles.heading}>people also liked</h3>
       )}
 
       {/* banner */}

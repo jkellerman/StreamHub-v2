@@ -8,7 +8,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: var(--Dark-blue);
+  background: var(--dark-blue);
   z-index: 5;
   padding: 0;
   margin: 0;
@@ -30,12 +30,12 @@
 
 .listItemCurrent::before {
   content: "";
-  background: var(--Pure-white);
+  background: var(--pure-white);
   width: 0.5px;
   height: 10px;
-  border: 1px solid var(--Pure-white);
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border: 1px solid var(--pure-white);
+  border-top-right-radius: var(--border-radius-s);
+  border-bottom-right-radius: var(--border-radius-s);
   position: absolute;
   left: 2rem;
   top: 1.25rem;
@@ -48,8 +48,8 @@
 @media (hover: hover) {
   .listItem:hover,
   .listItemCurrent:hover {
-    background: var(--Greyish-blue);
-    transition: all 0.2s;
+    background: var(--greyish-blue);
+    transition: var(--transition);
   }
 }
 
@@ -58,9 +58,9 @@
     display: unset;
   }
   .list {
-    background: var(--Semi-dark-blue);
-    border-radius: 5px;
-    border: 1px solid var(--Greyish-blue);
+    background: var(--semi-dark-blue);
+    border-radius: var(--border-radius-s);
+    border: 1px solid var(--greyish-blue);
     position: absolute;
     top: 16.5rem;
     left: 8.5rem;

@@ -1,9 +1,44 @@
 :root {
-  --Dark-blue: hsl(223, 30%, 9%);
-  --Red: hsl(0, 97%, 63%);
-  --Greyish-blue: hsl(223, 23%, 46%);
-  --Semi-dark-blue: hsl(223, 36%, 14%);
-  --Pure-white: hsl(0, 0%, 100%);
+  --dark-blue: hsl(223, 30%, 9%);
+  --greyish-blue: hsl(223, 23%, 46%);
+  --pure-white: hsl(0, 0%, 100%);
+  --red: hsl(0, 97%, 63%);
+  --semi-dark-blue: hsl(223, 36%, 14%);
+  --gold: hsl(50, 100%, 50%);
+
+  --border-radius-l: 20px;
+  --border-radius-s: 8px;
+
+  --card-hover: 0.6;
+
+  --input-active: 1px solid var(--greyish-blue);
+
+  --fade-animation: 250ms ease-in;
+  --fade-arrow: 100ms ease-in
+  --transition: all 100ms ease-in;
+
+  --fw-light: 300;
+  --fw-med: 500;
+
+  --body-l: 0.9375rem;
+  --body-m: 0.75rem;
+  --body-s: 0.6875rem;
+  --heading-l: 1.25rem;
+  --heading-m: 1rem;
+  --heading-s: 0.9375rem;
+  --heading-xs: 0.875rem;
+}
+
+@media (min-width: 48em) {
+  :root {
+    --body-l: 1rem;
+    --body-m: 0.9375rem;
+    --body-s: 0.8125rem;
+    --heading-l: 2rem;
+    --heading-m: 1.5rem;
+    --heading-s: 1.5rem;
+    --heading-xs: 1.125rem;
+  }
 }
 
 html,
@@ -13,9 +48,9 @@ body {
   font-family: "Outfit", sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
     sans-serif;
-  background: var(--Dark-blue);
-  color: var(--Pure-white);
-  font-weight: 300;
+  background: var(--dark-blue);
+  color: var(--pure-white);
+  font-weight: var(--fw-light);
 }
 
 main {
@@ -33,48 +68,25 @@ a {
 }
 
 h1 {
-  font-size: 1.25rem;
-  font-weight: 300;
   text-transform: capitalize;
   display: inline-block;
 }
 
 hr {
-  border: 0.5px solid var(--Semi-dark-blue);
+  border: 0.5px solid var(--semi-dark-blue);
   margin: 0 0 2rem;
-}
-
-@media (min-width: 48em) {
-  body {
-    font-size: 1rem;
-  }
-  main {
-    width: 93.75%;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  hr {
-    display: none;
-  }
 }
 
 .no-scroll {
   overflow: hidden;
 }
 
-/* ==============
-Progress bar styles 
-==================*/
-
 #nprogress {
   pointer-events: none;
 }
 
 #nprogress .bar {
-  background: var(--Red);
+  background: var(--red);
   position: fixed;
   z-index: 1031;
   top: 0;
@@ -83,7 +95,23 @@ Progress bar styles
   height: 2px;
 }
 
+/* Safari 15+ displays a gray border while loading. Solution at https://nextjs.org/docs/api-reference/next/future/image */
+
+@media not all and (min-resolution: 0.001dpcm) {
+  img[loading="lazy"] {
+    clip-path: inset(0.5px);
+  }
+}
+
 @media (min-width: 48em) {
+  main {
+    width: 93.75%;
+  }
+
+  hr {
+    display: none;
+  }
+
   #nprogress .bar {
     height: 5px;
   }
@@ -97,13 +125,5 @@ Progress bar styles
   main {
     margin: 4rem 2.25rem 0 11rem;
     width: unset;
-  }
-}
-
-/* Safari 15+ displays a gray border while loading. Solution at https://nextjs.org/docs/api-reference/next/future/image */
-
-@media not all and (min-resolution: 0.001dpcm) {
-  img[loading="lazy"] {
-    clip-path: inset(0.5px);
   }
 }

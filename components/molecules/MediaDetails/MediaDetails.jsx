@@ -17,7 +17,7 @@ const MediaDetails = ({
   return (
     <>
       <section className={styles.details}>
-        <dl className={styles.list}>
+        <dl>
           <MediaDirectorOrNetwork director={director} network={network} />
           <Cast cast={cast} />
           <MediaGenres genres={genres} movies={movies} />

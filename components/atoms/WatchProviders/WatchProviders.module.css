@@ -1,5 +1,6 @@
 .container {
-  font-size: 1rem;
+  font-size: var(--body-m);
+  font-weight: var(--fw-light);
   margin: 0 auto 2rem;
   width: 90%;
   position: relative;
@@ -18,7 +19,7 @@
 }
 
 .headingMethod {
-  font-size: 1rem;
+  font-size: var(--heading-s);
   font-style: normal;
 }
 
@@ -31,7 +32,7 @@
 .icon {
   display: inline-block;
   position: relative;
-  border-radius: 8px;
+  border-radius: var(--border-radius-s);
   overflow: hidden;
   width: 40px;
   height: 40px;
@@ -41,17 +42,5 @@
 @media (min-width: 48em) {
   .container {
     display: none;
-  }
-  .justWatchLogoContainer {
-    width: 150px;
-    height: 100px;
-  }
-
-  .headingMethod {
-    font-size: 1.5rem;
-  }
-
-  .icons {
-    gap: 1rem;
   }
 }
