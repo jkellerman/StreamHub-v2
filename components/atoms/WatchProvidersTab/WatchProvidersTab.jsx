@@ -8,7 +8,7 @@ const WatchProvidersTab = ({ watch_providers, activeTab }) => {
   return (
     <div
       className={
-        activeTab === 1 ? `${styles.container} ${styles.active}` : null
+        activeTab === "watch" ? `${styles.container} ${styles.active}` : null
       }
     >
       <div className={styles.justWatchLogoContainer}>

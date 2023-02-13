@@ -1,8 +1,5 @@
 import styles from "../MediaDetailsTab/MediaDetailsTab.module.css";
-import { toHoursAndMinutes } from "@/utils/utils";
-
 import StarRating from "../../atoms/StarRating/StarRating";
-
 import Poster from "@/components/atoms/Poster/Poster";
 import Certification from "@/components/atoms/Certification/Certification";
 import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
@@ -66,7 +63,7 @@ const MediaDetailsTab = ({
             </div>
 
             <div className={styles.listItem}>
-              <dt className={styles.heading}>Certification</dt>
+              <dt className={styles.heading}>certification</dt>
               <Certification
                 movie_age_rating={movie_age_rating}
                 series_age_rating={series_age_rating}
@@ -78,7 +75,7 @@ const MediaDetailsTab = ({
 
             {vote_average > 0 && (
               <div className={styles.listItem}>
-                <dt className={styles.heading}>Rating</dt>
+                <dt className={styles.heading}>rating</dt>
                 <StarRating rating={vote_average} />
               </div>
             )}
