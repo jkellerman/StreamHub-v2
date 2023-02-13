@@ -1,61 +1,66 @@
-@media (min-width: 48em) {
-  .details.active {
-    animation: fade 200ms ease-in;
-  }
+.overviewContainer {
+  margin-bottom: 2rem;
+}
 
-  .list {
-    margin-bottom: 2rem;
-  }
+.mediaDetails.active {
+  animation: fade 200ms ease-in;
+}
 
-  .list,
-  .attributesList {
-    padding-left: 0;
-    display: flex;
-  }
+.list,
+.attributesList {
+  padding-left: 0;
+  display: flex;
+}
 
-  .attributesList {
-    flex-wrap: wrap;
-    row-gap: 2rem;
-  }
+.attributesList {
+  flex-wrap: wrap;
+  row-gap: 2rem;
+}
 
-  .listItem {
-    list-style: none;
-    width: 160px;
-    margin-right: 0.5rem;
-  }
+.listItem {
+  list-style: none;
+  width: 160px;
+  margin-right: 0.5rem;
+}
 
-  .name {
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
+.heading {
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
 
-  .value {
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.25rem;
-    align-items: flex-start;
-  }
+.value {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+  align-items: flex-start;
+}
 
-  .genre {
-    margin-bottom: 0.5rem;
-    background-color: var(--Greyish-blue);
-    border: 1px solid var(--Greyish-blue);
-    padding: 0.25rem 0.75rem;
-    border-radius: 10px;
-    white-space: nowrap;
-    transition: all 0.2s;
-  }
+.genre {
+  margin-bottom: 0.5rem;
+  background-color: var(--Greyish-blue);
+  border: 1px solid var(--Greyish-blue);
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
 
-  @media (hover: hover) {
-    .genre:hover {
-      background-color: var(--Dark-blue);
-    }
+.releaseDate {
+  width: 165px;
+}
+
+@media (hover: hover) {
+  .genre:hover {
+    background-color: var(--Dark-blue);
   }
 }
 
 @media (min-width: 75em) {
-  .details {
+  .overviewContainer {
+    margin-bottom: none;
+  }
+  .mediaDetails {
     display: flex;
     flex-direction: row-reverse;
     width: 90%;

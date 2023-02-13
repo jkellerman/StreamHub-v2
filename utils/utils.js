@@ -13,17 +13,6 @@ export const sliceArray = (arr, limit) => {
   return arr.slice(0, limit);
 };
 
-// Slice Date
-
-// Convert runtime minutes to hour and minutes format
-
-export const toHoursAndMinutes = (totalMinutes) => {
-  const minutes = totalMinutes % 60;
-  const hours = Math.floor(totalMinutes / 60);
-
-  return `${hours} hr ${minutes} mins`;
-};
-
 // Get film rating between 1-5 to 1 decimal
 
 export const filmRating = (number) => {

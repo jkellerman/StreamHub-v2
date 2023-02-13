@@ -35,6 +35,9 @@
 }
 
 @media (min-width: 48em) {
+  .mediaDetailsTabOverview {
+    margin-top: 0.5rem;
+  }
   .mediaDetailsTab {
     margin-top: 0;
     margin-bottom: 2rem;

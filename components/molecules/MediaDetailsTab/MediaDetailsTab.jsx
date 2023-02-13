@@ -10,6 +10,7 @@ import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
 import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
 import Cast from "@/components/atoms/Cast/Cast";
 import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
+import MediaRunTimeOrSeasons from "@/components/atoms/MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
 
 const MediaDetailsTab = ({
   movie_age_rating,
@@ -36,13 +37,13 @@ const MediaDetailsTab = ({
       <div
         className={
           activeTab === "details"
-            ? `${styles.details} ${styles.active}`
-            : styles.details
+            ? `${styles.mediaDetails} ${styles.active}`
+            : styles.mediaDetails
         }
       >
         {overview && (
-          <div>
-            <div className={styles.name}>overview</div>
+          <div className={styles.overviewContainer}>
+            <div className={styles.heading}>overview</div>
             <MediaOverview overview={overview} />
           </div>
         )}
@@ -53,45 +54,35 @@ const MediaDetailsTab = ({
             <Cast cast={cast} />
             <MediaDirectorOrNetwork director={director} network={network} />
           </dl>
-          <ul className={styles.attributesList}>
-            <li className={styles.listItem}>
-              <div className={styles.name}>release date</div>
+
+          <dl className={styles.attributesList}>
+            <div className={`${styles.listItem} ${styles.releaseDate}`}>
+              <dt className={styles.heading}>release date</dt>
               <ReleaseDate
                 release_date={release_date}
                 air_date={air_date}
                 mediaDetailsTab
               />
-            </li>
-            <li className={styles.listItem}>
-              <div className={styles.name}>Certification</div>
+            </div>
+
+            <div className={styles.listItem}>
+              <dt className={styles.heading}>Certification</dt>
               <Certification
                 movie_age_rating={movie_age_rating}
                 series_age_rating={series_age_rating}
                 mediaDetailsTab
               />
-            </li>
-            {runtime >= 0 ? (
-              <li className={styles.listItem}>
-                <div className={styles.name}>Runtime</div>
-                <div>
-                  {runtime > 0 ? `${toHoursAndMinutes(runtime)}` : null}{" "}
-                </div>
-              </li>
-            ) : (
-              <li className={styles.listItem}>
-                <div className={styles.name}>Seasons</div>
-                <div>
-                  {seasons > 1 ? `${seasons} seasons` : `${seasons} season`}{" "}
-                </div>
-              </li>
-            )}
+            </div>
+
+            <MediaRunTimeOrSeasons runtime={runtime} seasons={seasons} />
+
             {vote_average > 0 && (
-              <li className={styles.listItem}>
-                <div className={styles.name}>Rating</div>
+              <div className={styles.listItem}>
+                <dt className={styles.heading}>Rating</dt>
                 <StarRating rating={vote_average} />
-              </li>
+              </div>
             )}
-          </ul>
+          </dl>
         </div>
       </div>
       <Poster poster={poster} title={title} />
