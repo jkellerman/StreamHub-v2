@@ -1,9 +1,11 @@
 import styles from "@/components/molecules/Recommendations/Recommendations.module.css";
+import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { shimmer, toBase64 } from "@/utils/utils";
 import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 import useSlider from "hooks/useSlider";
+import { useRouter } from "next/router";
 const SLIDE_MULTIPLIER = 4;
 const ARROWS_DISPLAY_MINIMUM = 3;
 
@@ -22,6 +24,21 @@ const Suggested = ({ suggested, movies }) => {
   const suggestedArr = suggested.results.filter(
     (suggested) => suggested.poster_path !== null
   );
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      sliderRef.current.scrollLeft = 0;
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.events]);
 
   return (
     <section className={styles.container}>
@@ -60,14 +77,7 @@ const Suggested = ({ suggested, movies }) => {
                   }
                   rel="preload"
                 >
-                  <a
-                    className={styles.suggestionContainer}
-                    onClick={() => {
-                      setTimeout(() => {
-                        sliderRef.current.scrollLeft = 0;
-                      }, 1000);
-                    }}
-                  >
+                  <a className={styles.suggestionContainer}>
                     <Image
                       src={`${POSTER_URL_IMAGE}${suggestion.poster_path}`}
                       alt={`${suggestion.title} poster`}
