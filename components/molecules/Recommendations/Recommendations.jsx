@@ -6,8 +6,6 @@ import { shimmer, toBase64 } from "@/utils/utils";
 import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 import useSlider from "hooks/useSlider";
 import { useRouter } from "next/router";
-const SLIDE_MULTIPLIER = 4;
-const ARROWS_DISPLAY_MINIMUM = 3;
 
 const Suggested = ({ suggested, movies }) => {
   const {
@@ -116,7 +114,7 @@ const Suggested = ({ suggested, movies }) => {
         {!isScrollAvailable ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
-            onClick={() => handleClickPrev(SLIDE_MULTIPLIER)}
+            onClick={() => handleClickPrev()}
             aria-label="click for previous suggestions"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">

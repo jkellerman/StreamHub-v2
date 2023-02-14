@@ -29,32 +29,30 @@ const useSlider = () => {
   // Slide multiplier = the number cards it slides by
   // Different for trending slider on homepage and suggested slider for movie/series recommendations
 
-  const handleClickPrev = (slideMultiplier = 1) => {
-    const cardWidthPlusMargin = window
-      .getComputedStyle(cardRef.current)
-      .getPropertyValue("margin-left");
-    sliderRef.current.scrollLeft -=
-      (cardRef.current.getBoundingClientRect().width +
-        parseInt(cardWidthPlusMargin)) *
-      slideMultiplier;
-  };
-
-  const handleClickNext = () => {
-    const cardWidthPlusMargin = window
+  const handleClickPrev = () => {
+    const cardMargin = window
       .getComputedStyle(cardRef.current)
       .getPropertyValue("margin-left");
     const cardWidth = cardRef.current.getBoundingClientRect().width;
-    const scrollPosition = sliderRef.current.scrollLeft;
+    const cardWidthPlusMargin = parseInt(cardMargin) + cardWidth;
     const numVisibleCards = Math.floor(
-      sliderRef.current.offsetWidth / cardWidth
+      sliderRef.current.offsetWidth / cardWidthPlusMargin
     );
+    sliderRef.current.scrollLeft -=
+      (cardWidth + parseInt(cardMargin)) * numVisibleCards;
+  };
 
-    // Calculate the number of cards to scroll back by
-    const numCardsToScroll =
-      numVisibleCards - ((scrollPosition / cardWidth) % numVisibleCards);
-
+  const handleClickNext = () => {
+    const cardMargin = window
+      .getComputedStyle(cardRef.current)
+      .getPropertyValue("margin-left");
+    const cardWidth = cardRef.current.getBoundingClientRect().width;
+    const cardWidthPlusMargin = parseInt(cardMargin) + cardWidth;
+    const numVisibleCards = Math.floor(
+      sliderRef.current.offsetWidth / cardWidthPlusMargin
+    );
     sliderRef.current.scrollLeft +=
-      (cardWidth + parseInt(cardWidthPlusMargin)) * numCardsToScroll;
+      (cardWidth + parseInt(cardMargin)) * numVisibleCards;
   };
 
   return {
