@@ -1,7 +1,8 @@
 import styles from "@/components/molecules/Suggested/Suggested.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { POSTER_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
+import { shimmer, toBase64 } from "@/utils/utils";
+import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 import useSlider from "hooks/useSlider";
 const SUGGESTED_SLIDE_MULTIPLIER = 4;
 const SUGGESTED_ARROWS_DISPLAY_MINIMUM = 3;

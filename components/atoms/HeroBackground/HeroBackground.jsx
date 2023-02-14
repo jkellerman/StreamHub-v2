@@ -1,5 +1,5 @@
 import Image from "next/future/image";
-import { BACKGROUND_URL_IMAGE } from "@/utils/utils";
+import { BACKGROUND_URL_IMAGE } from "@/constants/tmdb";
 import styles from "../HeroBackground/HeroBackground.module.css";
 
 const HeroBackground = ({ image, title }) => {

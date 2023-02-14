@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/future/image";
-import { BACKDROP_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
 import styles from "../Card/Card.module.css";
+import { shimmer, toBase64 } from "@/utils/utils";
+import { BACKDROP_URL_IMAGE } from "@/constants/tmdb";
 
 const Card = ({ id, image, seriesName, title }) => {
   return (

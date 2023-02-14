@@ -1,5 +1,5 @@
 import styles from "@/components/atoms/WatchProvidersTab/WatchProvidersTab.module.css";
-import { LOGO_URL_IMAGE } from "@/utils/utils";
+import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import Image from "next/future/image";
 import img from "@/public/assets/justwatch.svg";
 const LOGO_SIZE = 40;
