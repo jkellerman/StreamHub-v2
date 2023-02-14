@@ -26,9 +26,6 @@ const useSlider = () => {
     }
   };
 
-  // Slide multiplier = the number cards it slides by
-  // Different for trending slider on homepage and suggested slider for movie/series recommendations
-
   const handleClickPrev = () => {
     const cardMargin = window
       .getComputedStyle(cardRef.current)

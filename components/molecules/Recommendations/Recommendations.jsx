@@ -27,6 +27,13 @@ const Suggested = ({ suggested, movies }) => {
 
   const router = useRouter();
 
+  useEffect(() => {
+    if (sliderRef.current.scrollWidth > sliderRef.current.offsetWidth) {
+      setIsScrollAvailable(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Get slider to default position when route changes & set availability for nav buttons
   useEffect(() => {
     const handleRouteChange = () => {
@@ -36,8 +43,6 @@ const Suggested = ({ suggested, movies }) => {
         sliderRef.current.scrollLeft = 0;
       } else {
         setIsScrollAvailable(false);
-        setIsScrollAtEnd(false);
-        sliderRef.current.scrollLeft = 0;
       }
     };
 
