@@ -11,6 +11,7 @@
 
 .outerContainer {
   position: relative;
+  margin-left: -1.5rem;
 }
 
 .suggestions {
@@ -33,7 +34,7 @@
 
 .linkContainer {
   position: relative;
-  margin-right: 1.5rem;
+  margin-left: 1.5rem;
   min-width: 130px;
   max-width: 130px;
   height: 227px;
@@ -47,12 +48,11 @@
   overflow: hidden;
   min-width: 100%;
   height: 185px;
-  margin-right: 1.5rem;
 }
 
 .suggestionCard {
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
 }
 
 .linkContainer:hover,
@@ -173,7 +173,7 @@
   }
 
   .outerContainer {
-    margin: 0 2.25rem 2rem 11rem;
+    margin: 0 2.25rem 2rem 9.5rem;
     width: unset;
   }
 

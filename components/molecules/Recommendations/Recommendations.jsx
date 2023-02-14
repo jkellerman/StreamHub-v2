@@ -1,11 +1,11 @@
-import styles from "@/components/molecules/Suggested/Suggested.module.css";
+import styles from "@/components/molecules/Recommendations/Recommendations.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { shimmer, toBase64 } from "@/utils/utils";
 import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 import useSlider from "hooks/useSlider";
-const SUGGESTED_SLIDE_MULTIPLIER = 4;
-const SUGGESTED_ARROWS_DISPLAY_MINIMUM = 3;
+const SLIDE_MULTIPLIER = 4;
+const ARROWS_DISPLAY_MINIMUM = 3;
 
 const Suggested = ({ suggested, movies }) => {
   const {
@@ -41,7 +41,11 @@ const Suggested = ({ suggested, movies }) => {
           {/* Poster links */}
           {suggestedArr.map((suggestion) => {
             return (
-              <article key={suggestion.id} className={styles.linkContainer}>
+              <article
+                key={suggestion.id}
+                className={styles.linkContainer}
+                ref={cardRef}
+              >
                 <Link
                   href={
                     movies
@@ -63,7 +67,6 @@ const Suggested = ({ suggested, movies }) => {
                         sliderRef.current.scrollLeft = 0;
                       }, 1000);
                     }}
-                    ref={cardRef}
                   >
                     <Image
                       src={`${POSTER_URL_IMAGE}${suggestion.poster_path}`}
@@ -90,10 +93,10 @@ const Suggested = ({ suggested, movies }) => {
         </div>
 
         {/* Arrows */}
-        {suggested.results.length < SUGGESTED_ARROWS_DISPLAY_MINIMUM ? null : (
+        {suggested.results.length < ARROWS_DISPLAY_MINIMUM ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
-            onClick={() => handleClickPrev(SUGGESTED_SLIDE_MULTIPLIER)}
+            onClick={() => handleClickPrev(SLIDE_MULTIPLIER)}
             aria-label="click for previous suggestions"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -105,10 +108,10 @@ const Suggested = ({ suggested, movies }) => {
             </svg>
           </button>
         )}
-        {suggested.results.length < SUGGESTED_ARROWS_DISPLAY_MINIMUM ? null : (
+        {suggested.results.length < ARROWS_DISPLAY_MINIMUM ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationNext}`}
-            onClick={() => handleClickNext(SUGGESTED_SLIDE_MULTIPLIER)}
+            onClick={() => handleClickNext(SLIDE_MULTIPLIER)}
             aria-label="click for more suggestions"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">

@@ -53,6 +53,10 @@ const useSlider = () => {
       (cardRef.current.getBoundingClientRect().width +
         parseInt(cardWidthPlusMargin)) *
       slideMultiplier;
+    console.log(
+      cardRef.current.getBoundingClientRect().width +
+        parseInt(cardWidthPlusMargin)
+    );
   };
 
   return {
