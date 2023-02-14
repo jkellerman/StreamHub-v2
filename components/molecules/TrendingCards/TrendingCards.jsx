@@ -1,7 +1,8 @@
 import Image from "next/future/image";
 import Link from "next/link";
 import styles from "@/components/molecules/TrendingCards/TrendingCards.module.css";
-import { TRENDING_BACKDROP_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
+import { shimmer, toBase64 } from "@/utils/utils";
+import { TRENDING_BACKDROP_URL_IMAGE } from "@/constants/tmdb";
 import TrendingCardDetails from "@/components/molecules/TrendingCardDetails/TrendingCardDetails";
 import chevronLeft from "@/public/assets/chevron-left-solid.svg";
 import chevronRight from "@/public/assets/chevron-right-solid.svg";
@@ -25,6 +26,7 @@ const TrendingCards = ({ trending }) => {
           className={styles.banner}
           ref={sliderRef}
           onScroll={getScrollPosition}
+          id="trending"
         >
           {trending.map((item) => {
             return (

@@ -1,19 +1,22 @@
-import styles from "@/components/molecules/Suggested/Suggested.module.css";
+import styles from "@/components/molecules/Recommendations/Recommendations.module.css";
+import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { POSTER_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
+import { shimmer, toBase64 } from "@/utils/utils";
+import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 import useSlider from "hooks/useSlider";
-const SUGGESTED_SLIDE_MULTIPLIER = 4;
-const SUGGESTED_ARROWS_DISPLAY_MINIMUM = 3;
+import { useRouter } from "next/router";
 
 const Suggested = ({ suggested, movies }) => {
   const {
+    isScrollAvailable,
     isScrollAtStart,
     isScrollAtEnd,
     getScrollPosition,
     handleClickNext,
     handleClickPrev,
-    mouseEnterSlide,
+    setIsScrollAvailable,
+    setIsScrollAtEnd,
     sliderRef,
     cardRef,
   } = useSlider();
@@ -21,6 +24,30 @@ const Suggested = ({ suggested, movies }) => {
   const suggestedArr = suggested.results.filter(
     (suggested) => suggested.poster_path !== null
   );
+
+  const router = useRouter();
+
+  // Get slider to default position when route changes & set availability for nav buttons
+  useEffect(() => {
+    const handleRouteChange = () => {
+      if (sliderRef.current.scrollWidth > sliderRef.current.offsetWidth) {
+        setIsScrollAvailable(true);
+        setIsScrollAtEnd(false);
+        sliderRef.current.scrollLeft = 0;
+      } else {
+        setIsScrollAvailable(false);
+        setIsScrollAtEnd(false);
+        sliderRef.current.scrollLeft = 0;
+      }
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.events]);
 
   return (
     <section className={styles.container}>
@@ -35,12 +62,15 @@ const Suggested = ({ suggested, movies }) => {
           className={styles.suggestions}
           ref={sliderRef}
           onScroll={getScrollPosition}
-          onMouseEnter={mouseEnterSlide}
         >
           {/* Poster links */}
           {suggestedArr.map((suggestion) => {
             return (
-              <article key={suggestion.id} className={styles.linkContainer}>
+              <article
+                key={suggestion.id}
+                className={styles.linkContainer}
+                ref={cardRef}
+              >
                 <Link
                   href={
                     movies
@@ -55,15 +85,7 @@ const Suggested = ({ suggested, movies }) => {
                   }
                   rel="preload"
                 >
-                  <a
-                    className={styles.suggestionContainer}
-                    onClick={() => {
-                      setTimeout(() => {
-                        sliderRef.current.scrollLeft = 0;
-                      }, 1000);
-                    }}
-                    ref={cardRef}
-                  >
+                  <a className={styles.suggestionContainer}>
                     <Image
                       src={`${POSTER_URL_IMAGE}${suggestion.poster_path}`}
                       alt={`${suggestion.title} poster`}
@@ -89,10 +111,10 @@ const Suggested = ({ suggested, movies }) => {
         </div>
 
         {/* Arrows */}
-        {suggested.results.length < SUGGESTED_ARROWS_DISPLAY_MINIMUM ? null : (
+        {!isScrollAvailable ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
-            onClick={() => handleClickPrev(SUGGESTED_SLIDE_MULTIPLIER)}
+            onClick={() => handleClickPrev()}
             aria-label="click for previous suggestions"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -104,10 +126,10 @@ const Suggested = ({ suggested, movies }) => {
             </svg>
           </button>
         )}
-        {suggested.results.length < SUGGESTED_ARROWS_DISPLAY_MINIMUM ? null : (
+        {!isScrollAvailable ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationNext}`}
-            onClick={() => handleClickNext(SUGGESTED_SLIDE_MULTIPLIER)}
+            onClick={() => handleClickNext()}
             aria-label="click for more suggestions"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">

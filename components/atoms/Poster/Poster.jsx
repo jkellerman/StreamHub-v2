@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "../Poster/Poster.module.css";
-import { POSTER_URL_IMAGE, shimmer, toBase64 } from "@/utils/utils";
+import { shimmer, toBase64 } from "@/utils/utils";
+import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 
 // SUGGESTED POSTERS IN SUGGESTED COMPONENT
 

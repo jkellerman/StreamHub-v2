@@ -6,7 +6,7 @@ import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
 import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
 import WatchProviders from "@/components/atoms/WatchProviders/WatchProviders";
 import Tablist from "@/components/organisms/TabList/TabList";
-import Suggested from "@/components/molecules/Suggested/Suggested";
+import Suggested from "@/components/molecules/Recommendations/Recommendations";
 import qs from "qs";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 

@@ -26,33 +26,33 @@ const useSlider = () => {
     }
   };
 
-  const mouseEnterSlide = () => {
-    if (sliderRef.current.scrollWidth > sliderRef.current.offsetWidth) {
-      setIsScrollAvailable(true);
-    }
-  };
-
   // Slide multiplier = the number cards it slides by
   // Different for trending slider on homepage and suggested slider for movie/series recommendations
 
-  const handleClickPrev = (slideMultiplier = 1) => {
-    const cardWidthPlusMargin = window
+  const handleClickPrev = () => {
+    const cardMargin = window
       .getComputedStyle(cardRef.current)
       .getPropertyValue("margin-left");
+    const cardWidth = cardRef.current.getBoundingClientRect().width;
+    const cardWidthPlusMargin = parseInt(cardMargin) + cardWidth;
+    const numVisibleCards = Math.floor(
+      sliderRef.current.offsetWidth / cardWidthPlusMargin
+    );
     sliderRef.current.scrollLeft -=
-      (cardRef.current.getBoundingClientRect().width +
-        parseInt(cardWidthPlusMargin)) *
-      slideMultiplier;
+      (cardWidth + parseInt(cardMargin)) * numVisibleCards;
   };
 
-  const handleClickNext = (slideMultiplier = 1) => {
-    const cardWidthPlusMargin = window
+  const handleClickNext = () => {
+    const cardMargin = window
       .getComputedStyle(cardRef.current)
       .getPropertyValue("margin-left");
+    const cardWidth = cardRef.current.getBoundingClientRect().width;
+    const cardWidthPlusMargin = parseInt(cardMargin) + cardWidth;
+    const numVisibleCards = Math.floor(
+      sliderRef.current.offsetWidth / cardWidthPlusMargin
+    );
     sliderRef.current.scrollLeft +=
-      (cardRef.current.getBoundingClientRect().width +
-        parseInt(cardWidthPlusMargin)) *
-      slideMultiplier;
+      (cardWidth + parseInt(cardMargin)) * numVisibleCards;
   };
 
   return {
@@ -62,7 +62,8 @@ const useSlider = () => {
     getScrollPosition,
     handleClickNext,
     handleClickPrev,
-    mouseEnterSlide,
+    setIsScrollAvailable,
+    setIsScrollAtEnd,
     sliderRef,
     cardRef,
   };
