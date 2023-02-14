@@ -5,7 +5,13 @@
 
 .hero {
   position: relative;
-  margin-bottom: -5rem;
+  margin-bottom: -2rem;
+}
+
+@media (min-width: 48em) {
+  .hero {
+    margin-bottom: -4rem;
+  }
 }
 
 @media (min-width: 75em) {

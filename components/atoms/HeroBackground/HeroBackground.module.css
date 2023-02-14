@@ -1,7 +1,7 @@
 .imageContainer {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: auto;
 }
 
 .backgroundImage {
@@ -13,7 +13,7 @@
 .overlay {
   position: absolute;
   width: 100%;
-  height: 315px;
+  height: 108%;
   z-index: 3;
   top: -0.75rem;
   left: 0;
@@ -26,25 +26,6 @@
     rgba(16, 20, 30, 0.75) 70%,
     rgba(16, 20, 30, 1) 90%
   );
-}
-
-@media (min-width: 30em) {
-  .imageContainer {
-    height: 450px;
-  }
-
-  .overlay {
-    height: 470px;
-  }
-}
-@media (min-width: 64em) {
-  .imageContainer {
-    height: 550px;
-  }
-
-  .overlay {
-    height: 570px;
-  }
 }
 
 @media (min-width: 75em) {
