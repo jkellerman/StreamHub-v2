@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import DropdownBox from "@/components/atoms/DropdownMenu/DropdownMenu";
+import DropdownMenu from "@/components/atoms/DropdownMenu/DropdownMenu";
 import DropdownButton from "@/components/atoms/DropdownButton/DropdownButton";
 
 const Dropdown = ({ type, selectedGenre, genreList }) => {
@@ -18,7 +18,7 @@ const Dropdown = ({ type, selectedGenre, genreList }) => {
         dropDownRef.current &&
         !dropDownRef.current.contains(e.target)
       ) {
-        setIsDropDownOpen(false);
+        toggleDropdown();
       }
     };
     document.addEventListener("mousedown", checkIfClickedOutside);
@@ -26,6 +26,8 @@ const Dropdown = ({ type, selectedGenre, genreList }) => {
     return () => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDropdownOpen]);
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const Dropdown = ({ type, selectedGenre, genreList }) => {
         toggleDropdown={toggleDropdown}
         name={selectedGenre.name}
       />
-      <DropdownBox
+      <DropdownMenu
         isDropdownOpen={isDropdownOpen}
         genreList={genreList}
         selectedGenre={selectedGenre}

@@ -7,13 +7,13 @@ const DropDownMenu = ({
   type,
   genreList,
   selectedGenre,
-  dropDownRef,
+  dropdownRef,
   toggleDropdown,
 }) => {
   return (
     <>
       {isDropdownOpen && (
-        <ul className={styles.list} ref={dropDownRef}>
+        <ul className={styles.list} ref={dropdownRef}>
           <div className={styles.listContainer}>
             {genreList.map(({ id, name }) => {
               return (
