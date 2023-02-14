@@ -45,18 +45,22 @@ const useSlider = () => {
       slideMultiplier;
   };
 
-  const handleClickNext = (slideMultiplier = 1) => {
+  const handleClickNext = () => {
     const cardWidthPlusMargin = window
       .getComputedStyle(cardRef.current)
       .getPropertyValue("margin-left");
-    sliderRef.current.scrollLeft +=
-      (cardRef.current.getBoundingClientRect().width +
-        parseInt(cardWidthPlusMargin)) *
-      slideMultiplier;
-    console.log(
-      cardRef.current.getBoundingClientRect().width +
-        parseInt(cardWidthPlusMargin)
+    const cardWidth = cardRef.current.getBoundingClientRect().width;
+    const scrollPosition = sliderRef.current.scrollLeft;
+    const numVisibleCards = Math.floor(
+      sliderRef.current.offsetWidth / cardWidth
     );
+
+    // Calculate the number of cards to scroll back by
+    const numCardsToScroll =
+      numVisibleCards - ((scrollPosition / cardWidth) % numVisibleCards);
+
+    sliderRef.current.scrollLeft +=
+      (cardWidth + parseInt(cardWidthPlusMargin)) * numCardsToScroll;
   };
 
   return {
