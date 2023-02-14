@@ -26,12 +26,6 @@ const useSlider = () => {
     }
   };
 
-  const mouseEnterSlide = () => {
-    if (sliderRef.current.scrollWidth > sliderRef.current.offsetWidth) {
-      setIsScrollAvailable(true);
-    }
-  };
-
   // Slide multiplier = the number cards it slides by
   // Different for trending slider on homepage and suggested slider for movie/series recommendations
 
@@ -70,7 +64,8 @@ const useSlider = () => {
     getScrollPosition,
     handleClickNext,
     handleClickPrev,
-    mouseEnterSlide,
+    setIsScrollAvailable,
+    setIsScrollAtEnd,
     sliderRef,
     cardRef,
   };

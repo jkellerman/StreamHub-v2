@@ -11,12 +11,14 @@ const ARROWS_DISPLAY_MINIMUM = 3;
 
 const Suggested = ({ suggested, movies }) => {
   const {
+    isScrollAvailable,
     isScrollAtStart,
     isScrollAtEnd,
     getScrollPosition,
     handleClickNext,
     handleClickPrev,
-    mouseEnterSlide,
+    setIsScrollAvailable,
+    setIsScrollAtEnd,
     sliderRef,
     cardRef,
   } = useSlider();
@@ -27,9 +29,18 @@ const Suggested = ({ suggested, movies }) => {
 
   const router = useRouter();
 
+  // Get slider to default position when route changes & set availability for nav buttons
   useEffect(() => {
     const handleRouteChange = () => {
-      sliderRef.current.scrollLeft = 0;
+      if (sliderRef.current.scrollWidth > sliderRef.current.offsetWidth) {
+        setIsScrollAvailable(true);
+        setIsScrollAtEnd(false);
+        sliderRef.current.scrollLeft = 0;
+      } else {
+        setIsScrollAvailable(false);
+        setIsScrollAtEnd(false);
+        sliderRef.current.scrollLeft = 0;
+      }
     };
 
     router.events.on("routeChangeComplete", handleRouteChange);
@@ -53,7 +64,6 @@ const Suggested = ({ suggested, movies }) => {
           className={styles.suggestions}
           ref={sliderRef}
           onScroll={getScrollPosition}
-          onMouseEnter={mouseEnterSlide}
         >
           {/* Poster links */}
           {suggestedArr.map((suggestion) => {
@@ -103,7 +113,7 @@ const Suggested = ({ suggested, movies }) => {
         </div>
 
         {/* Arrows */}
-        {suggested.results.length < ARROWS_DISPLAY_MINIMUM ? null : (
+        {!isScrollAvailable ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
             onClick={() => handleClickPrev(SLIDE_MULTIPLIER)}
@@ -118,7 +128,7 @@ const Suggested = ({ suggested, movies }) => {
             </svg>
           </button>
         )}
-        {suggested.results.length < ARROWS_DISPLAY_MINIMUM ? null : (
+        {!isScrollAvailable ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationNext}`}
             onClick={() => handleClickNext()}

@@ -26,6 +26,7 @@ const TrendingCards = ({ trending }) => {
           className={styles.banner}
           ref={sliderRef}
           onScroll={getScrollPosition}
+          id="trending"
         >
           {trending.map((item) => {
             return (
