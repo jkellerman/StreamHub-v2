@@ -6,19 +6,19 @@
   .container {
     display: block;
     width: 93.75%;
-    margin: 1rem auto;
+    margin: 1rem auto 3rem;
   }
 
   .tabs {
     border-bottom: var(--input-active);
     padding-bottom: 2rem;
+    margin-bottom: 2rem;
     display: flex;
     gap: 1.5rem;
   }
 
   .detailsContainer {
     display: flex;
-    padding-top: 2rem;
     gap: 2rem;
     justify-content: space-between;
   }
@@ -26,7 +26,7 @@
 
 @media (min-width: 75em) {
   .container {
-    margin: 0 2.25rem 2rem 11rem;
+    margin: 0 2.25rem 3rem 11rem;
     width: unset;
     position: relative;
     z-index: 5;
