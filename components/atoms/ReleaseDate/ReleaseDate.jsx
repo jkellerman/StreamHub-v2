@@ -5,13 +5,15 @@ const DATE_SLICE = 4;
 const ReleaseDate = ({ release_date, air_date, styled, mediaDetailsTab }) => {
   return (
     <>
-      {release_date ? (
+      {release_date && (
         <span className={styled ? styles.date : null}>
           {mediaDetailsTab ? release_date : release_date.slice(0, DATE_SLICE)}
         </span>
-      ) : (
+      )}
+
+      {air_date && (
         <span className={styled ? styles.date : null}>
-          {mediaDetailsTab ? air_date : air_date.slice(0, DATE_SLICE)}
+          {air_date.slice(0, DATE_SLICE)}
         </span>
       )}
     </>
