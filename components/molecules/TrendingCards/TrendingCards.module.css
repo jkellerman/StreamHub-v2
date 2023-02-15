@@ -9,7 +9,7 @@
   overscroll-behavior-inline: contain;
   scroll-behavior: smooth;
   scrollbar-width: none;
-  animation: var(--fade-animation);
+  animation: fade var(--fade-animation);
 }
 
 .banner::-webkit-scrollbar,
@@ -55,7 +55,7 @@
   border: none;
   cursor: pointer;
   display: none;
-  animation: fadeArrow var(--fade-arrow);
+  animation: fadeArrow 200ms ease-in-out;
 }
 
 .arrow {

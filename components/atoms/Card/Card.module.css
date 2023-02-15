@@ -12,9 +12,11 @@
   object-fit: contain;
 }
 
-.container:hover {
-  opacity: 0.6;
-  transition: var(--transition);
+@media (hover: hover) {
+  .container:hover {
+    opacity: 0.6;
+    transition: var(--transition);
+  }
 }
 
 @keyframes fade {

@@ -4,14 +4,6 @@
   font-weight: var(--fw-light);
 }
 
-.imageContainer {
-  transform: translateY(0.25rem);
-  display: inline-block;
-  width: 72px;
-  height: 16px;
-  position: relative;
-}
-
 .span {
   color: inherit;
   text-decoration: none;
@@ -19,14 +11,6 @@
 
 .attribution {
   visibility: hidden;
-}
-
-@media (min-width: 48em) {
-  .imageContainer {
-    transform: translateY(0.75rem);
-    width: 100px;
-    height: 22.25px;
-  }
 }
 
 @media (min-width: 75em) {

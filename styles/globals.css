@@ -14,8 +14,7 @@
   --input-active: 1px solid var(--greyish-blue);
 
   --fade-animation: 250ms ease-in;
-  --fade-arrow: 100ms ease-in
-  --transition: all 200ms ease-in;
+  --transition: all 150ms ease-in;
 
   --fw-light: 300;
   --fw-med: 500;

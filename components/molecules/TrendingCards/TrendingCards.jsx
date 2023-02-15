@@ -20,7 +20,6 @@ const TrendingCards = ({ trending }) => {
   } = useSlider();
   return (
     <>
-      {" "}
       <div className={styles.outerBanner}>
         <div
           className={styles.banner}

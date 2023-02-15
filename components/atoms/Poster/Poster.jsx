@@ -3,7 +3,7 @@ import styles from "../Poster/Poster.module.css";
 import { shimmer, toBase64 } from "@/utils/utils";
 import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 
-// SUGGESTED POSTERS IN SUGGESTED COMPONENT
+// RECOMMENDED POSTERS IN RECOMMENDATION COMPONENT
 
 const Poster = ({ poster, title, hero }) => {
   return (

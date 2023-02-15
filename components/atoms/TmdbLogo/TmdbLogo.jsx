@@ -6,7 +6,7 @@ const TmdbLogo = () => {
   return (
     <>
       {" "}
-      <div className={styles.logo}>
+      <div>
         <div className={styles.imageContainer}>
           <Image
             src={attribution}

@@ -6,7 +6,7 @@ import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
 import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
 import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
 import Tablist from "@/components/organisms/TabList/TabList";
-import Suggested from "@/components/molecules/Recommendations/Recommendations";
+import Recommendations from "@/components/molecules/Recommendations/Recommendations";
 import qs from "qs";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 
@@ -23,7 +23,7 @@ const Movie = ({
   cast,
   genres,
   watch_providers,
-  suggested,
+  recommendations,
   title,
 }) => {
   return (
@@ -73,7 +73,7 @@ const Movie = ({
           title={title}
           movies
         />
-        <Suggested suggested={suggested} movies />
+        <Recommendations recommendations={recommendations} movies />
       </main>
     </>
   );
@@ -147,7 +147,7 @@ export async function getServerSideProps(context) {
       cast,
       genres,
       watch_providers,
-      suggested: recommendations,
+      recommendations,
       title,
     },
   };

@@ -7,7 +7,7 @@ import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 import useSlider from "hooks/useSlider";
 import { useRouter } from "next/router";
 
-const Suggested = ({ suggested, movies }) => {
+const Recommendations = ({ recommendations, movies }) => {
   const {
     isScrollAvailable,
     isScrollAtStart,
@@ -21,11 +21,13 @@ const Suggested = ({ suggested, movies }) => {
     cardRef,
   } = useSlider();
 
-  const suggestedArr = suggested.results.filter(
-    (suggested) => suggested.poster_path !== null
+  const recommendationsArr = recommendations.results.filter(
+    (recommendations) => recommendations.poster_path !== null
   );
 
   const router = useRouter();
+
+  // Set scroll availability everytime component mounts otherwise nav buttons may not update when between page renders.
 
   useEffect(() => {
     if (sliderRef.current.scrollWidth > sliderRef.current.offsetWidth) {
@@ -34,7 +36,7 @@ const Suggested = ({ suggested, movies }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Get slider to default position when route changes & set availability for nav buttons
+  // When route changees, set slider to default position & set availability for nav buttons
   useEffect(() => {
     const handleRouteChange = () => {
       if (sliderRef.current.scrollWidth > sliderRef.current.offsetWidth) {
@@ -57,7 +59,7 @@ const Suggested = ({ suggested, movies }) => {
   return (
     <section className={styles.container}>
       {/* heading */}
-      {!suggested.results.length > 0 ? null : (
+      {!recommendations.results.length > 0 ? null : (
         <h3 className={styles.heading}>people also liked</h3>
       )}
 
@@ -69,7 +71,7 @@ const Suggested = ({ suggested, movies }) => {
           onScroll={getScrollPosition}
         >
           {/* Poster links */}
-          {suggestedArr.map((suggestion) => {
+          {recommendationsArr.map((suggestion) => {
             return (
               <article
                 key={suggestion.id}
@@ -151,4 +153,4 @@ const Suggested = ({ suggested, movies }) => {
   );
 };
 
-export default Suggested;
+export default Recommendations;

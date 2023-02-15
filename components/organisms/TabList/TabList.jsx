@@ -5,7 +5,7 @@ import TabButton from "@/components/atoms/TabButton/TabButton";
 import MediaDetailsTab from "@/components/molecules/MediaDetailsTab/MediaDetailsTab";
 import Router from "next/router";
 
-const Tablist = ({
+const TabList = ({
   movie_age_rating,
   release_date,
   air_date,
@@ -89,4 +89,4 @@ const Tablist = ({
   );
 };
 
-export default Tablist;
+export default TabList;

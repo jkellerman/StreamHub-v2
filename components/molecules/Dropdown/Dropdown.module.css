@@ -36,7 +36,6 @@
 
 .listItemCurrent {
   position: relative;
-  background: var(--greyish-blue);
 }
 
 .listItemCurrent::before {
@@ -97,6 +96,10 @@
   .listItem,
   .listItemCurrent {
     padding: 0.5rem 0;
+  }
+
+  .listItemCurrent {
+    background: var(--greyish-blue);
   }
 
   .listItemCurrent::before {

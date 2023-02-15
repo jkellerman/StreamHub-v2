@@ -39,13 +39,3 @@
 .tab.active::after {
   opacity: 1;
 }
-
-.tabSuggested {
-  display: none;
-}
-
-@media (min-width: 64em) {
-  .tabSuggested {
-    display: inline-block;
-  }
-}

@@ -27,15 +27,6 @@
   font-size: var(--body-l);
 }
 
-.runtime,
-.seasons {
-  display: none;
-}
-
-.displayRuntime {
-  display: inline-block;
-}
-
 @media (min-width: 48em) {
   .container {
     width: 93.75%;

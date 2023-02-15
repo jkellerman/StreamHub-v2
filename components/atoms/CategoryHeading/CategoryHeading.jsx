@@ -39,7 +39,7 @@ const CategoryHeading = ({ type, category, home, trending }) => {
         {type === "series" && (
           <Image
             src={tv}
-            alt="movie-icon"
+            alt="tv-icon"
             unoptimized={true}
             className={styles.icon}
           />

@@ -26,17 +26,19 @@ const useSlider = () => {
     }
   };
 
+  // When clicked, scroll by the number of cards fully visible in viewport.
+
   const handleClickPrev = () => {
     const cardMargin = window
       .getComputedStyle(cardRef.current)
       .getPropertyValue("margin-left");
     const cardWidth = cardRef.current.getBoundingClientRect().width;
     const cardWidthPlusMargin = parseInt(cardMargin) + cardWidth;
-    const numVisibleCards = Math.floor(
+    const numOfFullyVisibleCards = Math.floor(
       sliderRef.current.offsetWidth / cardWidthPlusMargin
     );
     sliderRef.current.scrollLeft -=
-      (cardWidth + parseInt(cardMargin)) * numVisibleCards;
+      cardWidthPlusMargin * numOfFullyVisibleCards;
   };
 
   const handleClickNext = () => {
@@ -45,11 +47,11 @@ const useSlider = () => {
       .getPropertyValue("margin-left");
     const cardWidth = cardRef.current.getBoundingClientRect().width;
     const cardWidthPlusMargin = parseInt(cardMargin) + cardWidth;
-    const numVisibleCards = Math.floor(
+    const numOfFullyVisibleCards = Math.floor(
       sliderRef.current.offsetWidth / cardWidthPlusMargin
     );
     sliderRef.current.scrollLeft +=
-      (cardWidth + parseInt(cardMargin)) * numVisibleCards;
+      cardWidthPlusMargin * numOfFullyVisibleCards;
   };
 
   return {

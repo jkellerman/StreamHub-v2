@@ -9,7 +9,7 @@
 .title {
   margin: 0;
   position: relative;
-  bottom: -1.75rem;
+  bottom: -1.25rem;
   font-size: var(--heading-s);
   font-weight: var(--fw-med);
   white-space: nowrap;
@@ -26,11 +26,17 @@
 }
 
 .iconMovies {
-  transform: translate(0.25rem, 0.8rem);
+  transform: translateY(20%);
+  width: 15px;
+  height: 15px;
+  margin-right: 0.25rem;
 }
 
 .iconSeries {
-  transform: translate(0.25rem, 0.7rem);
+  transform: translateY(10%);
+  width: 15px;
+  height: 15px;
+  margin-right: 0.25rem;
 }
 
 @media (max-width: 20em) {
@@ -54,6 +60,14 @@
   }
 
   .details {
-    bottom: 2.75rem;
+    bottom: 2.5rem;
+  }
+
+  .iconMovies {
+    transform: translateY(15%);
+  }
+
+  .iconSeries {
+    transform: translateY(5%);
   }
 }

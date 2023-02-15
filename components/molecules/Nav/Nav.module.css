@@ -27,19 +27,6 @@
   align-items: center;
 }
 
-.inactive {
-  fill: var(--greyish-blue);
-}
-
-.inactive:hover {
-  fill: var(--red);
-  transition: var(--transition);
-}
-
-.active {
-  fill: var(--pure-white);
-}
-
 .avatar {
   width: 24px;
   height: 24px;
