@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
-import styles from "@/components/atoms/Button/Button.module.css";
+import headingStyles from "@/components/organisms/MediaCategoriesHomePage/MediaCategoriesHomePage.module.css";
+import buttonStyles from "@/components/atoms/Button/Button.module.css";
 
 const Custom404 = () => {
   return (
@@ -11,11 +12,11 @@ const Custom404 = () => {
       </Head>
       <main>
         <SearchBar all />
-        <h1>404 - Page Not Found</h1>
+        <h1 className={headingStyles.heading}>404 - Page Not Found</h1>
         <Link href="/" passHref>
-          <button className={styles.button} style={{ marginLeft: "1rem" }}>
+          <a className={buttonStyles.button} style={{ marginLeft: "1rem" }}>
             Go home
-          </button>
+          </a>
         </Link>
       </main>
     </>

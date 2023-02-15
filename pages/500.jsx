@@ -1,7 +1,8 @@
 import Head from "next/head";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import { useRouter } from "next/router";
-import styles from "@/components/atoms/Button/Button.module.css";
+import headingStyles from "@/components/organisms/MediaCategoriesHomePage/MediaCategoriesHomePage.module.css";
+import buttonStyles from "@/components/atoms/Button/Button.module.css";
 
 const Custom500 = () => {
   const router = useRouter();
@@ -12,10 +13,10 @@ const Custom500 = () => {
       </Head>
       <main>
         <SearchBar all />
-        <h1>Currently unavailable</h1>
+        <h1 className={headingStyles.heading}>Currently unavailable</h1>
         <button
           onClick={() => router.back()}
-          className={styles.button}
+          className={buttonStyles.button}
           style={{ marginLeft: "1rem" }}
         >
           Go back

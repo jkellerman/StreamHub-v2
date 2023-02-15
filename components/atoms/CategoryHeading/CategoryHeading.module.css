@@ -28,27 +28,23 @@
   transition: var(--transition);
 }
 
-.iconTrending {
-  margin-right: 0.5rem;
-}
-
-.iconMovies {
-  transform: translateY(0.25rem);
-}
-
-.iconSeries {
-  transform: translateY(0.175rem);
+.icon {
+  width: 15px;
+  height: 15px;
 }
 
 @media (min-width: 48em) {
   .heading {
     margin-top: 1rem;
   }
-  .iconMovies {
-    transform: translateY(0.1rem);
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    transform: translateY(5%);
   }
 
-  .iconSeries {
-    transform: unset;
+  .headingAndIconWrapper {
+    gap: 0.75rem;
   }
 }

@@ -11,8 +11,6 @@ const Button = ({ toggleDropdown, name, dropdown }) => {
           src={img}
           alt="down-arrow"
           unoptimized={true}
-          width={10}
-          height={10}
           className={styles.chevron}
         />
       )}

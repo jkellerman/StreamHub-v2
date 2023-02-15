@@ -19,5 +19,6 @@
 @media (min-width: 48em) {
   .heading {
     margin-top: 1rem;
+    margin-bottom: 1.75rem;
   } /* for index pages */
 }

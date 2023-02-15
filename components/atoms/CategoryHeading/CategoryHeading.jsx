@@ -16,15 +16,13 @@ const CategoryHeading = ({ type, category, home, trending }) => {
               src={movie}
               alt="movie-icon"
               unoptimized={true}
-              width={15}
-              height={15}
+              className={styles.icon}
             />
             <Image
               src={tv}
               alt="movie-icon"
               unoptimized={true}
-              width={15}
-              height={15}
+              className={styles.icon}
             />
           </>
         )}
@@ -34,8 +32,7 @@ const CategoryHeading = ({ type, category, home, trending }) => {
             src={movie}
             alt="movie-icon"
             unoptimized={true}
-            width={15}
-            height={15}
+            className={styles.icon}
           />
         )}
 
@@ -44,8 +41,7 @@ const CategoryHeading = ({ type, category, home, trending }) => {
             src={tv}
             alt="movie-icon"
             unoptimized={true}
-            width={15}
-            height={15}
+            className={styles.icon}
           />
         )}
       </div>

@@ -38,7 +38,7 @@
 
 @media (hover: hover) {
   .genre:hover {
-    background-color: transparent;
+    background-color: var(--semi-dark-blue);
     transition: var(--transition);
   }
 }

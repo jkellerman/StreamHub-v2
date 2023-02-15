@@ -7,7 +7,7 @@
   cursor: pointer;
   transition: var(--transition);
   background-color: var(--greyish-blue);
-  padding: 0.25rem 0.75rem;
+  padding: 0.35em 1.5em 0.35em 1em;
   white-space: nowrap;
 }
 
@@ -23,12 +23,21 @@
 
 .chevron {
   position: relative;
-  top: 0.075rem;
+  top: 0.05rem;
   right: -0.5rem;
+  width: 7px;
+  height: 7px;
 }
 
 @media (min-width: 48em) {
   .button {
     padding: 0.5em 1.75em 0.5em 1.25em;
+  }
+
+  .chevron {
+    top: 0.075rem;
+    right: -0.5rem;
+    width: 10px;
+    height: 10px;
   }
 }

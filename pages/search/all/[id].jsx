@@ -3,6 +3,7 @@ import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import { useRouter } from "next/router";
 import CardList from "@/components/molecules/CardList/CardList";
 import useInfiniteScroll from "hooks/useInfiniteScroll";
+import styles from "@/components/organisms/MediaCategoriesHomePage/MediaCategoriesHomePage.module.css";
 
 const Search = () => {
   const {
@@ -20,7 +21,7 @@ const Search = () => {
         <SearchBar all />
         <section>
           {!isLoading && (
-            <h1>
+            <h1 className={styles.heading}>
               {cards.length !== 0
                 ? `Results found for '${id.replace(/-/g, " ")}'`
                 : `No Results found for '${id.replace(/-/g, " ")}'`}
