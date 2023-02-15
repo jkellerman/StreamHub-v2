@@ -13,7 +13,7 @@ const PopularMovies = () => {
         />
       </Head>
       <main>
-        <SearchBar all />
+        <SearchBar movies />
         <CategoryResults
           endpoint="/api/movies/popular"
           category="popular movies"

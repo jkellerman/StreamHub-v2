@@ -13,7 +13,7 @@ const OnTheAir = () => {
         />
       </Head>
       <main>
-        <SearchBar all />
+        <SearchBar series />
         <CategoryResults
           endpoint="/api/series/on_the_air"
           category="on the air"

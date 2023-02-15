@@ -13,7 +13,7 @@ const UpcomingMovies = () => {
         />
       </Head>
       <main>
-        <SearchBar all />
+        <SearchBar movies />
         <CategoryResults
           endpoint="/api/movies/upcoming"
           category="upcoming movies"
