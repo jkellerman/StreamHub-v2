@@ -1,6 +1,6 @@
 import styles from "../TabList/TabList.module.css";
 import { useState, useRef } from "react";
-import WatchProvidersTab from "@/components/atoms/WatchProvidersTab/WatchProvidersTab";
+import WatchProvidersTab from "@/components/molecules/WatchProvidersTab/WatchProvidersTab";
 import TabButton from "@/components/atoms/TabButton/TabButton";
 import MediaDetailsTab from "@/components/molecules/MediaDetailsTab/MediaDetailsTab";
 import Router from "next/router";

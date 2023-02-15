@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from "react";
-import DropdownMenu from "@/components/atoms/DropdownMenu/DropdownMenu";
+import Link from "next/link";
+import styles from "../Dropdown/Dropdown.module.css";
+import QueryString from "qs";
 import Button from "@/components/atoms/Button/Button";
 
 const Dropdown = ({ type, selectedGenre, genreList }) => {
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
-  const dropDownRef = useRef(null);
+  const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setIsDropDownOpen(!isDropdownOpen);
@@ -15,8 +17,8 @@ const Dropdown = ({ type, selectedGenre, genreList }) => {
     const checkIfClickedOutside = (e) => {
       if (
         isDropdownOpen &&
-        dropDownRef.current &&
-        !dropDownRef.current.contains(e.target)
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target)
       ) {
         toggleDropdown();
       }
@@ -42,14 +44,34 @@ const Dropdown = ({ type, selectedGenre, genreList }) => {
         name={selectedGenre.name}
         dropdown
       />
-      <DropdownMenu
-        isDropdownOpen={isDropdownOpen}
-        genreList={genreList}
-        selectedGenre={selectedGenre}
-        type={type}
-        dropdownRef={dropDownRef}
-        toggleDropdown={toggleDropdown}
-      />
+      {isDropdownOpen && (
+        <ul className={styles.list} ref={dropdownRef}>
+          <div className={styles.listContainer}>
+            {genreList.map(({ id, name }) => {
+              return (
+                <li
+                  key={id}
+                  className={
+                    selectedGenre.name === name
+                      ? styles.listItemCurrent
+                      : styles.listItem
+                  }
+                >
+                  <Link
+                    href={`/${type}?${QueryString.stringify({
+                      genre: name.toLowerCase(),
+                    })}`}
+                  >
+                    <a className={styles.link} onClick={toggleDropdown}>
+                      {name}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </div>
+        </ul>
+      )}
     </div>
   );
 };
