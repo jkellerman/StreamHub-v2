@@ -66,36 +66,30 @@ const Recommendations = ({ recommendations, movies }) => {
       {/* banner */}
       <div className={styles.outerContainer}>
         <div
-          className={styles.suggestions}
+          className={styles.recommendations}
           ref={sliderRef}
           onScroll={getScrollPosition}
         >
           {/* Poster links */}
-          {recommendationsArr.map((suggestion) => {
+          {recommendationsArr.map((item) => {
             return (
               <article
-                key={suggestion.id}
+                key={item.id}
                 className={styles.linkContainer}
                 ref={cardRef}
               >
                 <Link
                   href={
                     movies
-                      ? `/movie/${suggestion.id}?${suggestion.title.replace(
-                          /\s+/g,
-                          ""
-                        )}`
-                      : `/show/${suggestion.id}?${suggestion.name.replace(
-                          /\s+/g,
-                          ""
-                        )}`
+                      ? `/movie/${item.id}?${item.title.replace(/\s+/g, "")}`
+                      : `/show/${item.id}?${item.name.replace(/\s+/g, "")}`
                   }
                   rel="preload"
                 >
-                  <a className={styles.suggestionContainer}>
+                  <a className={styles.recommendationContainer}>
                     <Image
-                      src={`${POSTER_URL_IMAGE}${suggestion.poster_path}`}
-                      alt={`${suggestion.title} poster`}
+                      src={`${POSTER_URL_IMAGE}${item.poster_path}`}
+                      alt={`${item.title} poster`}
                       unoptimized={true}
                       placeholder="blur"
                       blurDataURL={`data:image/svg+xml;base64,${toBase64(
@@ -103,14 +97,14 @@ const Recommendations = ({ recommendations, movies }) => {
                       )}`}
                       layout="fill"
                       objectFit="cover"
-                      className={styles.suggestionCard}
+                      className={styles.recommendationCard}
                     />
                   </a>
                 </Link>
                 {movies ? (
-                  <div className={styles.name}>{suggestion.title}</div>
+                  <div className={styles.name}>{item.title}</div>
                 ) : (
-                  <div className={styles.name}>{suggestion.name}</div>
+                  <div className={styles.name}>{item.name}</div>
                 )}
               </article>
             );
@@ -122,7 +116,7 @@ const Recommendations = ({ recommendations, movies }) => {
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
             onClick={() => handleClickPrev()}
-            aria-label="click for previous suggestions"
+            aria-label="click for previous recommendation"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
               <path
@@ -137,7 +131,7 @@ const Recommendations = ({ recommendations, movies }) => {
           <button
             className={`${styles.navigation} ${styles.navigationNext}`}
             onClick={() => handleClickNext()}
-            aria-label="click for more suggestions"
+            aria-label="click for more recommendation"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
               <path
