@@ -1,4 +1,4 @@
-import styles from "@/components/atoms/WatchProviders/WatchProviders.module.css";
+import styles from "../WatchProviders/WatchProviders.module.css";
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import Image from "next/future/image";
 import img from "@/public/assets/justwatch.svg";

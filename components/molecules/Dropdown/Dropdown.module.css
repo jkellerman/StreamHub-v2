@@ -4,6 +4,11 @@
   justify-content: center;
   padding: 6rem 0;
 }
+
+.listContainer:hover > .listItemCurrent {
+  background: var(--dark-blue);
+}
+
 .list {
   position: absolute;
   top: 0;
@@ -12,10 +17,15 @@
   z-index: 5;
   padding: 0;
   margin: 0;
+  width: 0;
+  height: 0;
+  overflow-y: scroll;
+  transition: height 250ms ease-in-out;
+}
+
+.open {
   width: 100vw;
   height: 100vh;
-  overflow-y: scroll;
-  animation: enter 250ms ease forwards;
 }
 
 .listItem,
@@ -26,6 +36,7 @@
 
 .listItemCurrent {
   position: relative;
+  background: var(--greyish-blue);
 }
 
 .listItemCurrent::before {
@@ -43,6 +54,9 @@
 
 .link {
   padding-left: 1.5rem;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 @media (hover: hover) {
@@ -57,21 +71,27 @@
   .listContainer {
     display: unset;
   }
+
+  .listContainer:hover > .listItemCurrent {
+    background: var(--semi-dark-blue);
+  }
   .list {
     background: var(--semi-dark-blue);
     border-radius: var(--border-radius-s);
-    border: 1px solid var(--greyish-blue);
     position: absolute;
     top: 16.5rem;
     left: 8.5rem;
-    z-index: 5;
-    padding: 1rem 0;
-    max-width: 200px;
-    max-height: 375px;
     overflow-y: scroll;
-    animation: unset;
     display: unset;
     justify-content: unset;
+    transition: height 100ms ease-in-out;
+  }
+
+  .open {
+    width: 200px;
+    height: 375px;
+    padding: 1rem 0;
+    border: 1px solid var(--greyish-blue);
   }
 
   .listItem,
@@ -93,14 +113,5 @@
   .list {
     top: 12.5rem;
     left: 18rem;
-  }
-}
-
-@keyframes enter {
-  from {
-    transform: translateY(100vh);
-  }
-  to {
-    transform: translateY(0vh);
   }
 }
