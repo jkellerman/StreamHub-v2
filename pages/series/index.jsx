@@ -1,7 +1,7 @@
 import Head from "next/head";
 import QueryString from "qs";
 import { useRouter } from "next/router";
-import styles from "@/components/organisms/Category/Category.module.css";
+import styles from "../../components/organisms/MediaCategoriesHomePage/MediaCategoriesHomePage.module.css";
 
 import Dropdown from "@/components/molecules/Dropdown/Dropdown";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
@@ -35,12 +35,14 @@ const Series = ({ genreList }) => {
       <main>
         <SearchBar series />
         <section>
-          <Dropdown
-            type={pageType}
-            selectedGenre={genre}
-            genreList={genreList}
-          />
-          <h1 className={styles.heading}>{pageType}</h1>
+          <div className={styles.headingAndDropdownButtonWrapper}>
+            <h1 className={styles.heading}>{pageType}</h1>
+            <Dropdown
+              type={pageType}
+              selectedGenre={genre}
+              genreList={genreList}
+            />
+          </div>
           <CardList cards={cards} isLoading={isLoading} />
         </section>
       </main>

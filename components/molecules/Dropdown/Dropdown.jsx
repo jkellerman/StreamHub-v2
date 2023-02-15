@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import DropdownMenu from "@/components/atoms/DropdownMenu/DropdownMenu";
-import DropdownButton from "@/components/atoms/DropdownButton/DropdownButton";
+import Button from "@/components/atoms/Button/Button";
 
 const Dropdown = ({ type, selectedGenre, genreList }) => {
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
@@ -37,9 +37,10 @@ const Dropdown = ({ type, selectedGenre, genreList }) => {
 
   return (
     <div>
-      <DropdownButton
+      <Button
         toggleDropdown={toggleDropdown}
         name={selectedGenre.name}
+        dropdown
       />
       <DropdownMenu
         isDropdownOpen={isDropdownOpen}

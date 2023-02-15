@@ -1,6 +1,6 @@
 import Head from "next/head";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
-import CategoryResults from "@/components/organisms/CategoryResults/CategoryResults";
+import CategoryResults from "@/components/organisms/MediaCategory/MediaCategory";
 
 const TopRatedMovies = () => {
   return (

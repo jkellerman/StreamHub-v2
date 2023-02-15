@@ -1,0 +1,34 @@
+.button {
+  color: var(--pure-white);
+  border-radius: var(--border-radius-l);
+  border: 1px solid var(--greyish-blue);
+  text-transform: capitalize;
+  font-size: var(--body-m);
+  cursor: pointer;
+  transition: var(--transition);
+  background-color: var(--greyish-blue);
+  padding: 0.25rem 0.75rem;
+  white-space: nowrap;
+}
+
+.button:focus {
+  background: var(--semi-dark-blue);
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background: var(--semi-dark-blue);
+  }
+}
+
+.chevron {
+  position: relative;
+  top: 0.075rem;
+  right: -0.5rem;
+}
+
+@media (min-width: 48em) {
+  .button {
+    padding: 0.5em 1.75em 0.5em 1.25em;
+  }
+}

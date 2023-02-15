@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
-import styles from "@/components/atoms/DropdownButton/DropdownButton.module.css";
+import styles from "@/components/atoms/Button/Button.module.css";
 
 const Custom404 = () => {
   return (

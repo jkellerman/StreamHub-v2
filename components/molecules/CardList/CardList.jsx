@@ -1,6 +1,7 @@
 import Card from "@/components/atoms/Card/Card";
 import CardDetails from "@/components/molecules/CardDetails/CardDetails";
-import styles from "@/components/organisms/Category/Category.module.css";
+import styles from "../CardList/CardList.module.css";
+
 import Spinner from "@/components/atoms/Spinner/Spinner";
 
 const CardList = ({ cards, isLoading }) => {

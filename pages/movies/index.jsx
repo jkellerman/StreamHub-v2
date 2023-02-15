@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "@/components/organisms/Category/Category.module.css";
+import styles from "@/components/organisms/MediaCategoriesHomePage/MediaCategoriesHomePage.module.css";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import CardList from "@/components/molecules/CardList/CardList";
 import useInfiniteScroll from "hooks/useInfiniteScroll";
@@ -33,12 +33,15 @@ const Movies = ({ genreList }) => {
       <main>
         <SearchBar movies />
         <section>
-          <Dropdown
-            type={pageType}
-            selectedGenre={genre}
-            genreList={genreList}
-          />
-          <h1 className={styles.heading}>{pageType}</h1>
+          <div className={styles.headingAndDropdownButtonWrapper}>
+            <h1 className={styles.heading}>{pageType}</h1>
+            <Dropdown
+              type={pageType}
+              selectedGenre={genre}
+              genreList={genreList}
+            />
+          </div>
+
           <CardList cards={cards} isLoading={isLoading} />
         </section>
       </main>

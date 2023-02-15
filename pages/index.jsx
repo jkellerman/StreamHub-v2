@@ -2,7 +2,7 @@ import Head from "next/head";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import { sliceArray } from "@/utils/utils";
 import Trending from "@/components/organisms/TrendingBanner/TrendingBanner";
-import Category from "@/components/organisms/Category/Category";
+import Category from "@/components/organisms/MediaCategoriesHomePage/MediaCategoriesHomePage";
 
 export default function Home({
   trending,
@@ -24,7 +24,7 @@ export default function Home({
       </Head>
       <main>
         <SearchBar all />
-        <Trending trending={trending} type="trending" />
+        <Trending trending={trending} type="trending" category="trending" />
         <Category
           data={popularMovies}
           type="movies"

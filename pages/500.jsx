@@ -1,7 +1,7 @@
 import Head from "next/head";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import { useRouter } from "next/router";
-import styles from "@/components/atoms/DropdownButton/DropdownButton.module.css";
+import styles from "@/components/atoms/Button/Button.module.css";
 
 const Custom500 = () => {
   const router = useRouter();
