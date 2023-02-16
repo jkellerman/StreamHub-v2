@@ -13,7 +13,7 @@ const ReleaseDate = ({ release_date, air_date, styled, mediaDetailsTab }) => {
 
       {air_date && (
         <span className={styled ? styles.date : null}>
-          {air_date.slice(0, DATE_SLICE)}
+          {mediaDetailsTab ? air_date : air_date.slice(0, DATE_SLICE)}
         </span>
       )}
     </>
