@@ -83,7 +83,7 @@ const MediaDetailsTab: React.FC<MediaDetailsTabProps> = ({
               />
             </div>
 
-            <div className={styles.listItem}>
+            <div className={`${styles.listItem} ${styles.certification}`}>
               <dt className={styles.heading}>certification</dt>
               <Certification
                 movie_age_rating={movie_age_rating}

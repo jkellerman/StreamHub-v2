@@ -22,7 +22,7 @@
 
 @media (min-width: 48em) {
   .detailItem {
-    width: 160px;
+    width: 165px;
     margin-right: 0.5rem;
     flex-direction: column;
   }

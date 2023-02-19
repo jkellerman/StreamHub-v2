@@ -29,7 +29,8 @@
   margin-bottom: 0.5rem;
 }
 
-.releaseDate {
+.releaseDate,
+.certification {
   width: 165px;
 }
 
