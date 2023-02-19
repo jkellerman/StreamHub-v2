@@ -47,15 +47,14 @@
   z-index: 1;
   top: 0;
   bottom: 0;
-  transform: translateY(-10%);
   margin: auto;
-  height: 35px;
-  width: 35px;
-  background: transparent;
+  height: 100%;
+  width: 25px;
+  background: hsla(223, 23%, 46%, 0.8);
   border: none;
   cursor: pointer;
   display: none;
-  animation: fadeArrow 200ms ease-in-out;
+  animation: fadeArrow 200ms ease-in;
 }
 
 .arrow {
@@ -64,7 +63,7 @@
 }
 
 .navigationPrev {
-  left: 2.5rem;
+  left: 0;
 }
 .navigationNext {
   right: 0;
@@ -79,6 +78,12 @@
 @media (min-width: 30em) {
   .container {
     min-width: 66%;
+  }
+}
+
+@media (min-width: 48em) {
+  .navigation {
+    width: 35px;
   }
 }
 
