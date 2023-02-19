@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
 import styles from "@/components/molecules/Recommendations/Recommendations.module.css";
-import Link from "next/link";
-import Image from "next/image";
-import { shimmer, toBase64 } from "@/utils/utils";
-import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 import useSlider from "hooks/useSlider";
 import { useRouter } from "next/router";
 import { Media } from "types";
+import Poster from "@/components/atoms/Poster/Poster";
 
 interface RecommendationsProps {
   movies?: boolean;
@@ -85,41 +82,21 @@ const Recommendations: React.FC<RecommendationsProps> = ({
           ref={sliderRef}
           onScroll={getScrollPosition}
         >
-          {/* Poster links */}
-          {recommendationsArr.map((item) => {
+          {recommendationsArr.map(({ id, poster_path, title, name }) => {
             return (
-              <article
-                key={item.id}
-                className={styles.linkContainer}
-                ref={cardRef}
-              >
-                <Link
-                  href={
-                    movies
-                      ? `/movie/${item.id}?${item.title.replace(/\s+/g, "")}`
-                      : `/show/${item.id}?${item.name.replace(/\s+/g, "")}`
-                  }
-                  rel="preload"
-                >
-                  <a className={styles.recommendationContainer}>
-                    <Image
-                      src={`${POSTER_URL_IMAGE}${item.poster_path}`}
-                      alt={`${item.title} poster`}
-                      unoptimized={true}
-                      placeholder="blur"
-                      blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                        shimmer(240, 140)
-                      )}`}
-                      layout="fill"
-                      objectFit="cover"
-                      className={styles.recommendationCard}
-                    />
-                  </a>
-                </Link>
+              <article key={id} className={styles.linkContainer} ref={cardRef}>
+                <Poster
+                  poster={poster_path}
+                  title={title}
+                  recommendation
+                  movies={movies}
+                  id={id}
+                  name={name}
+                />
                 {movies ? (
-                  <div className={styles.name}>{item.title}</div>
+                  <div className={styles.name}>{title}</div>
                 ) : (
-                  <div className={styles.name}>{item.name}</div>
+                  <div className={styles.name}>{name}</div>
                 )}
               </article>
             );
