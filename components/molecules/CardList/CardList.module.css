@@ -24,12 +24,6 @@
 
 @media (min-width: 96em) {
   .linkContainer {
-    width: calc(20% - 20px);
-  }
-}
-
-@media (min-width: 118.75em) {
-  .linkContainer {
     width: calc(16.666667% - 20px);
   }
 }
