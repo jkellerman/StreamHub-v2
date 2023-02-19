@@ -37,7 +37,7 @@ const Recommendations: React.FC<RecommendationsProps> = ({
 
   const router = useRouter();
 
-  // Set scroll availability everytime component mounts otherwise nav buttons may not update when between page renders.
+  // Set scroll availability everytime component mounts otherwise nav buttons may not update between page renders.
 
   useEffect(() => {
     if (sliderRef.current) {

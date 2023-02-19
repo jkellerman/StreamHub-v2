@@ -1,5 +1,5 @@
 import styles from "../MediaOverview/MediaOverview.module.css";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 interface MediaOverviewProps {
   hero?: boolean;
@@ -12,11 +12,33 @@ const MediaOverview: React.FC<MediaOverviewProps> = ({
   overview,
   mediaSummary,
 }) => {
+  const [showToggle, setShowToggle] = useState(false);
   const [readMore, setReadMore] = useState(false);
+  const paragraphRef = useRef<HTMLParagraphElement>(null);
 
   const handleToggle = () => {
     setReadMore(!readMore);
   };
+
+  const checkShowToggle = () => {
+    if (paragraphRef.current) {
+      setShowToggle(
+        paragraphRef.current.scrollHeight > paragraphRef.current.offsetHeight
+      );
+    }
+  };
+
+  useEffect(() => {
+    checkShowToggle();
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      checkShowToggle();
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
@@ -28,10 +50,11 @@ const MediaOverview: React.FC<MediaOverviewProps> = ({
                 ? `${styles.mediaSummaryOverview} ${styles.overview}`
                 : `${styles.mediaSummaryOverview} ${styles.overview} ${styles.expand}`
             }
+            ref={paragraphRef}
           >
             {overview}
           </p>
-          {overview.split(" ").length > 32 && (
+          {showToggle && (
             <button
               className={styles.readMoreToggle}
               onClick={() => handleToggle()}

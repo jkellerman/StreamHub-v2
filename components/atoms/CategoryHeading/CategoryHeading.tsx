@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/future/image";
 import movie from "@/public/assets/icon-category-movie.svg";
 import tv from "@/public/assets/icon-category-tv.svg";
-import { Media } from "types";
 
 interface CategoryHeadingProps {
   trending?: boolean;

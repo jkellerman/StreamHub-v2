@@ -10,11 +10,11 @@
 
 .mediaSummaryOverview {
   width: 100%;
-  height: 100px;
+  height: 100%;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   text-overflow: ellipsis;
 }
 
@@ -33,16 +33,11 @@
   font-size: var(--body-l);
   padding: 0;
   cursor: pointer;
-  margin-bottom: 2rem;
 }
 
 @media (min-width: 48em) {
   .mediaDetailsTabOverview {
     margin-top: 0.5rem;
-  }
-  .mediaDetailsTab {
-    margin-top: 0;
-    margin-bottom: 2rem;
   }
 }
 
