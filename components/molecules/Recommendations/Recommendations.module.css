@@ -41,18 +41,8 @@
   overflow: hidden;
 }
 
-.recommendationContainer {
-  display: inline-block;
-  position: relative;
-  border-radius: var(--border-radius-s);
-  overflow: hidden;
-  min-width: 100%;
-  height: 185px;
-}
-
 @media (hover: hover) {
-  .linkContainer:hover,
-  .recommendationContainer:hover {
+  .linkContainer:hover {
     opacity: 0.7;
     transition: var(--transition);
   }
@@ -125,10 +115,6 @@
     min-width: 160px;
     max-width: 160px;
     height: 282px;
-  }
-
-  .recommendationContainer {
-    height: 240px;
   }
 
   .name {
