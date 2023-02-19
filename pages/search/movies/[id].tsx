@@ -14,7 +14,7 @@ const SearchMovies = () => {
   return (
     <>
       <Head>
-        <title>{`${id} | Reelgood`}</title>
+        <title>{`${id?.toString().replace(/-/g, " ")} | Reelgood`}</title>
         <meta name="description" content={`Where to watch ${id}`} />
       </Head>
       <main>
