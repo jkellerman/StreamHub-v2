@@ -28,7 +28,6 @@ const useInfiniteScroll = (endpoint: string) => {
           (item: IMovieData) =>
             item.backdrop_path !== null && !item.known_for_department
         );
-        console.log(filteredArr);
         setTotalPages(data.data.total_pages);
         setCards(filteredArr);
         setShouldFetch(false);
