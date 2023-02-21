@@ -70,7 +70,7 @@ const Recommendations: React.FC<RecommendationsProps> = ({
   return (
     <section className={styles.container}>
       {/* heading */}
-      {recommendations.results.length === 0 ? null : (
+      {recommendationsArr.length === 0 ? null : (
         <h3 className={styles.heading}>people also liked</h3>
       )}
 
