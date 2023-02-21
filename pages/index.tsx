@@ -12,7 +12,6 @@ interface HomeProps {
   popularMovies: Media.IMediaItem[];
   topRatedShows: Media.IMediaItem[];
   upcomingMovies: Media.IMediaItem[];
-  onTheAir: Media.IMediaItem[];
   topRatedMovies: Media.IMediaItem[];
 }
 
@@ -22,7 +21,6 @@ const Home: React.FC<HomeProps> = ({
   popularMovies,
   topRatedShows,
   upcomingMovies,
-  onTheAir,
   topRatedMovies,
 }) => {
   return (
@@ -61,11 +59,6 @@ const Home: React.FC<HomeProps> = ({
           data={topRatedMovies}
           type="movies"
           category="top rated movies"
-        />
-        <MediaCategoryHomePage
-          data={onTheAir}
-          type="series"
-          category="on the air"
         />
       </main>
     </>
@@ -193,24 +186,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const topRatedMovies = sliceArray(topRatedMoviesFilteredArr, 12);
 
-  //   on the air
-
-  const onTheAirEndpoint = `https://api.themoviedb.org/3/tv/on_the_air?api_key=${process.env.API_KEY}`;
-  const onTheAirResponse = await fetch(onTheAirEndpoint);
-  const onTheAirData = await onTheAirResponse.json();
-
-  if (!onTheAirResponse.ok) {
-    throw new Error(
-      `Failed to fetch posts, received status ${onTheAirResponse.status}`
-    );
-  }
-
-  const onTheAirFilteredArr = onTheAirData.results.filter(
-    (item: Media.IMediaItem) => item.backdrop_path !== null
-  );
-
-  const onTheAir = sliceArray(onTheAirFilteredArr, 12);
-
   return {
     props: {
       trending,
@@ -219,7 +194,6 @@ export const getStaticProps: GetStaticProps = async () => {
       upcomingMovies,
       topRatedShows,
       topRatedMovies,
-      onTheAir,
     },
     revalidate: 1,
   };
