@@ -32,9 +32,9 @@ const MediaSummary: React.FC<MediaSummaryProps> = ({
         <ReleaseDate release_date={release_date} air_date={air_date} styled />
         <MediaOverview overview={overview} mediaSummary />
       </section>
+      <hr />
       {star_rating > 0 && (
         <>
-          <hr />
           <div className={styles.ratingContainer}>
             <StarRating star_rating={star_rating} />
           </div>
