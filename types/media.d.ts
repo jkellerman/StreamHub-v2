@@ -54,6 +54,7 @@ export declare namespace Media {
     title: string;
     name: string;
     poster_path: string;
+    backdrop_path: string;
   }
 
   export interface IRecommendationsList {

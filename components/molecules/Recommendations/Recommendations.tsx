@@ -29,11 +29,10 @@ const Recommendations: React.FC<RecommendationsProps> = ({
 
   const recommendationsArr = recommendations.results?.filter(
     (recommendations: Media.IRecommendations) =>
-      recommendations.poster_path !== null
+      recommendations.backdrop_path !== null
   );
 
   const router = useRouter();
-
   // Set scroll availability everytime component mounts otherwise nav buttons may not update between page renders.
 
   useEffect(() => {

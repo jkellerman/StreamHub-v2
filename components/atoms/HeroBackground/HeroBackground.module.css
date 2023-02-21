@@ -7,7 +7,7 @@
 .backgroundImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .overlay {
@@ -39,13 +39,5 @@
       rgba(16, 20, 30, 0.75) 50%,
       rgba(16, 20, 30, 1) 80%
     );
-  }
-
-  .imageContainer {
-    height: 100vh;
-  }
-
-  .overlay {
-    height: 102vh;
   }
 }
