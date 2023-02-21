@@ -30,12 +30,14 @@ const CategoryHeading: React.FC<CategoryHeadingProps> = ({
               alt="movie-icon"
               unoptimized={true}
               className={styles.icon}
+              priority={true}
             />
             <Image
               src={tv}
               alt="movie-icon"
               unoptimized={true}
               className={styles.icon}
+              priority={true}
             />
           </>
         )}
@@ -46,6 +48,7 @@ const CategoryHeading: React.FC<CategoryHeadingProps> = ({
             alt="movie-icon"
             unoptimized={true}
             className={styles.icon}
+            priority={true}
           />
         )}
 
@@ -55,6 +58,7 @@ const CategoryHeading: React.FC<CategoryHeadingProps> = ({
             alt="tv-icon"
             unoptimized={true}
             className={styles.icon}
+            priority={true}
           />
         )}
       </div>

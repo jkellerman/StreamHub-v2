@@ -19,8 +19,8 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ image, title }) => {
           alt={`${title} backdrop`}
           unoptimized={true}
           priority={true}
-          width={0}
-          height={0}
+          width={1000}
+          height={300}
           className={styles.backgroundImage}
         />
       </div>
