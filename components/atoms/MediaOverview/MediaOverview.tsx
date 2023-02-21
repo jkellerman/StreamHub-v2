@@ -20,24 +20,14 @@ const MediaOverview: React.FC<MediaOverviewProps> = ({
     setReadMore(!readMore);
   };
 
-  const checkShowToggle = () => {
+  useEffect(() => {
     if (paragraphRef.current) {
-      setShowToggle(
+      if (
         paragraphRef.current.scrollHeight > paragraphRef.current.offsetHeight
-      );
+      ) {
+        setShowToggle(true);
+      }
     }
-  };
-
-  useEffect(() => {
-    checkShowToggle();
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      checkShowToggle();
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
