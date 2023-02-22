@@ -1,6 +1,6 @@
 # Reelgood web app
 
-This web app is a resource for discovering new movies and TV shows, and finding where to watch them online.
+This web app is a resource for discovering new movies and TV shows, and finding where to stream them online.
 
 ## Table of contents
 
@@ -9,9 +9,8 @@ This web app is a resource for discovering new movies and TV shows, and finding 
   - [Links](#links)
   - [Built with](#built-with)
 - [My process](#my-process)
-  - [Rendering methods](#rendering-methods)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
+  - [Challenges](#challenges)
+  - [Continued Development](#continued-development)
 - [Acknowledgements](#acknowledgements)
 
 ## Overview
@@ -20,9 +19,8 @@ Users should be able to:
 
 - View the optimal layout for the app depending on their device's screen size
 - Navigate between Home, Movies, TV Series pages.
-- Search for relevant shows on all pages
-- Retrieve movies and TV series data from the TMDB API
-- Be able to select movies and TV series by genre
+- Search for any movie or series on all pages
+- Be able to view movies and TV series by genre
 - Click to view information for all movies and shows
 - Infinitely load in Movies, TV series and Search pages.
 
@@ -30,21 +28,15 @@ Users should be able to:
 
 #### mobile
 
-<img src="./public/previews/mobile.png" alt="mobile view" height="1000"/>
-
-#### desktop
-
-<img src="./public/previews/info-page.png" alt="info page" width="1000"/>
-
-<img src="./public/previews/home.png" alt="homepage" width="1000"/>
-
-<img src="./public/previews/search-results.png" alt="search results" width="1000"/>
-
-<img src="./public/previews/genre.png" alt="genre" width="1000"/>
+<img src="./public/previews/mobile.png" alt="mobile view" width="1000"/>
 
 #### tablet
 
-<img src="./public/previews/tablet-details.png" alt="tablet view" width="500"/>
+<img src="./public/previews/tablet.png" alt="tablet view" width="1000"/>
+
+#### desktop
+
+<img src="./public/previews/desktop.png" alt="info page" width="1000"/>
 
 ### 🔗&nbsp;Links
 
@@ -53,52 +45,47 @@ Users should be able to:
 
 ### 🧰&nbsp;Built with
 
-- [Next.js](https://nextjs.org/) - React framework
+- [TypeScript](https://www.typescriptlang.org/)
+- [Next.js](https://nextjs.org/)
 - [CSS Modules](https://github.com/css-modules/css-modules)
-- [TMDB](https://www.themoviedb.org/?language=en-GB) - API
+- [TMDB API](https://www.themoviedb.org/?language=en-GB)
 
 ## 💭&nbsp;My process
 
-I chose to use the TMDB API, which has no request limitations and a wide variety of data points. I found that some of the data points were occasionally inconsistent, which is why a very small amount of films or series will throw a server-side error. This became a bit of a headache, so in order to not spend too long on this, I created a custom 500 page which let's the user know this page is currently unavailable and presents an option to go back to the previous page on the rare chance this occurs. I also decided to let users browse films and shows by genre, as well as get information on any movie or show, including where to stream it, and suggestions for similar movies and shows.
+This app is designed to help you quickly discover what films and TV series are trending and available to watch on popular streaming platforms. I chose to use the TMDB API due to its extensive collection of data points and unlike some other APIs, doesn't have any request limitations. Originally conceived as a personal project to be completed in a month, I have been continuously improving and deploying the app beyond my initial deadline, as I found it quite a useful project to focus on some performance optimisation, user experience and just a playground for adding any new skills I've picked up. I've learned a lot during the process and I plan to further enhance the app's functionality by adding a back-end soon.
 
-### Rendering methods
+There were a few decisions I made with performance in mind. The first was utilising Next.JS to take advantage of different rendering techniques. When creating the home page, I opted to use `Incremental Static Regeneration (ISR)` to dynamically generate and update the page. This decision was based on ISR's ability to serve dynamic content statically, resulting in faster load times and reduced server load. Since the content of the home page relies on data from a third-party API and the content doesn't change too frequently, I needed a solution that could ensure the content is up-to-date without any delay in rendering. ISR helped me to achieve this by generating pages with the latest data at request time and caching them as static files for future requests.
 
-Now that I'm comfortable with React, I decided to dive into Next.js to learn about some of the framework's out-of-the-box tools, such as their file-system based router and some of the different rendering methods.
+For the other pages in the app, I used different rendering methods, mainly just for experimentation. However, I ultimately decided to use server-side rendering for the individual movie/series pages. These provide crucial information about the film/series and where to find them online, and SSR would provide benefits in terms of SEO in a real-case scenario.
 
-As this is my first Next.js application, I wanted to experiment with various rendering techniques while also thinking about the techniques that would be most appropriate for SEO. I decided that pre-rendering the data would be the greatest solution because it isn't sitting behind user authentication and would benefit from SEO to increase organic traffic. The user can click on or search for an infinite number of movies and TV series, hence `server side rendering`—which will render new API Data at request time—is the ideal rendering choice while keeping SEO in mind. I used this method for the individual movie and TV series pages.
+### Challenges
 
-The categories on the homepage remain unchanged, and the category data from TMDB is only updated daily. As a result, I determined that using `incremental static regeneration (ISR)` to benefit from fast initial load times while considering SEO would be a good option here. Data will be fetched at build time, and once a user clicks on the homepage, data will be revalidated and fresh data will be rendered in time for subsequent visits. I considered using Next.js's new on-demand ISR, but I couldn't find a way to call the revalidate route without exposing the secret token to the client, so I stuck with ISR. I used client-side rendering for the movie, series, and search pages to allow for smooth transitions between these pages, especially when users switch between genres.
+#### Slider
 
-One of the advantages of using NextJS is that CSS modules are included, which I found useful. I prefer scoping styles locally to writing long scss/css files because it is easier to refactor code. I had been using styled components to style my applications recently, but after researching and reading numerous articles such as [this](https://www.puruvj.dev/blog/move-to-css-modules-from-styled-components), because Javascript is more demanding on the main thread, I decided to use CSS in separate files for better performance.
+The homepage design is from [Frontend Mentor](https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X) and it featured a trending section that exceeded the viewport width. Initially, I tried to implement a solution using various slider libraries, but they presented some UI issues, so I decided to create my own.
 
-Another advantage is the ability to create API routes with Next.js. Setting up api endpoints on the server allows you to mask the URL of an external service and use server environment variables to prevent unauthorised access to your API keys.
+To enhance the user experience, I wanted to allow users to click through the slider instead of relying on horizontal scrolling with a mouse, which can be inconvenient. However, I also wanted to cater to mobile device and Mac trackpad users who might prefer touch-based scrolling. Therefore, I created a hybrid solution that includes both buttons and scrolling capabilities.
 
-### 💡&nbsp;What I learned
+Also, clicking the navigation buttons will cause the slider to scroll by the number of cards that are fully visible in the viewport, ensuring consistency and smooth navigation across all screen sizes.
 
-#### No slider library needed 😎
+#### Infinite Scroll
 
-The homepage design is from [Frontend Mentor](https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X) and included a trending section that overflowed the viewport width but no specific design for scrolling through what's trending. I'd previously created carousels using vanilla JS but was looking for something simple to set up. Regrettably, I had difficulty using multiple libraries for carousels. SwiperJS was causing a problem with no smooth transition on Safari browser, which I couldn't find a solution to. I then used keen-slider, but the problem was that the animation they used, which I believe was something similar to ease or ease-in, was causing the slides to flicker, and there was no option I could find to change the animation.
+For the interior pages, I implemented an infinite scroll to enable users to easily search through all available movies and series. To accomplish this, I created a custom hook that I used in the movie/series, search, and genre pages. However, I encountered some challenges when implementing the logic. At first, I tried to fetch both the endpoint and the page number in a single useEffect. Unfortunately, this approach didn't work as expected. The endpoint kept being called before the page number, causing duplication issues when switching between genre pages using the dropdown. To fix this problem, I separated the logic for fetching the endpoint and page number into two separate useEffects. This solution worked perfectly. However, if you have any better ideas for improving the implementation, I would be happy to hear them 😁.
 
-Despite learning about a variety of slider library options, I ultimately implemented my own. I wanted to allow the user to click through the trending section because horizontal scrolling with a mouse does not provide a good user experience. This isn't an issue for mobile devices or Mac trackpad users, so I wanted a combination of buttons and the ability to scroll with touch. I configured it so that the buttons would only appear on hover. In the past, I've discovered that hover states stick to mobile devices when clicked. I found a solution [here](https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/). On mobile devices, no buttons will appear, and users can easily scroll with touch. I also configured the slider so that when buttons are clicked, it scrolls the width of an individual card and its margin-right, which I accomplished by gaining access to the slider DOM node via the **_useRef_** hook and accessing its properties via `.getComputedStyle().getPropertyValue()`.
+#### Image Optimisation
 
-#### SWR
+Although I'm a fan of Next.js, I encountered some challenges with the Next/image component during implementation. However, I made sure to use best practices wherever possible, such as `lazy loading` images below the fold and prioritising images with the `largest contentful paint (LCP)`.
 
-I discovered the `SWR` hook provided by Next.js, which is a simple way to render client-side data, similar to the React useEffect hook, but with the added benefit of handling caching, revalidation, and refetching on intervals. Before switching to ISR for the homepage, I originally chose **_useSWR_** to fetch data client side but ran into a problem where fetching did not update when switching between genre pages. This is because the images are cached using SWR. The solution would be to implement some of the hook's available options, but in order to save time, I decided to stick to what I know and use the useEffect hook. However, this is something I will definitely look into in the future. I also went with useEffect for infinite loading at the bottom of movie, series, and search pages, but Next.JS also provides another hook called `useSWRInfinite`, which I will investigate further in the future.
+One of the main benefits of using Next/Image is the out-of-box conversion of images to WebP formats. Next-gen formats such as WebP offer better compression and quality than traditional formats like JPEG and PNG, without sacrificing image quality. This can lead to smaller file sizes and faster page load times, which can improve overall performance. Unfortunately, due to the optimised image limit on Vercel Hobby accounts, I wasn't able to optimise the images across my app in next-gen formats.
 
-#### Image Optimization
-
-Building this app also taught me more about image optimization and how it affects performance. I didn't set any images to 'unoptimised' when I first deployed my application, and discovered that a hobby vercel account has a limit of 1000 optimised images per month. With the sheer number of images in this app, I quickly reached the limit, which meant I had to convert all of my images from webp back to jpeg. In the future, I may simply convert the background image to webp format to optimise LCP (Largest Contentful Paint), because these images take longer to load, especially on larger screens.
-
-There were a few other things I did to improve image performance. I ensured that the images coming from the API were wide enough for the size of their container while still maintaining good quality. If images are retrieved from the API in their original dimensions, the browser will render really large images with sizes such as 3840 x 2160, which is not optimal.
-
-I also made use of the [next/future/image](https://nextjs.org/docs/api-reference/next/future/image) component, which makes use of the native img component to improve performance. However, Next has stated in their documentation that there is a known bug in Safari where the component displays a grey border while loading, and their proposed fix currently does not work. The documentation states that setting images to 'priority' will also resolve the issue, but this isn't an optimal solution for images below the fold, so I resorted to using [next/image](https://nextjs.org/docs/api-reference/next/image) for `lazy loading` for these images.
+I also noticed some slight performance hits on mobile devices due to the original aspect ratios of the images across all breakpoints. However, I may explore using a custom loader in the future to address this issue and further optimise the images.
 
 ### 👨‍💻&nbsp;Continued development
 
 - Allow users with login credentials to bookmark movies and TV shows.
-- Investigate and comprehend the options provided by the SWR hook.
-- Allow users to see streaming platforms based on their geolocation.
+- Allow users to view streaming platforms based on their geolocation.
 
 ## Acknowledgements
 
 - [Entertainment web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X) for the homepage and nav design.
+- [Fran](https://github.com/franmsilva) for helping me clean up the api routes.
