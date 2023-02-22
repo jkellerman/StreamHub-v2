@@ -78,7 +78,7 @@ Although I'm a fan of Next.js, I encountered some challenges with the Next/image
 
 One of the main benefits of using Next/Image is the out-of-box conversion of images to WebP formats. Next-gen formats such as WebP offer better compression and quality than traditional formats like JPEG and PNG, without sacrificing image quality. This can lead to smaller file sizes and faster page load times, which can improve overall performance. Unfortunately, due to the optimised image limit on Vercel Hobby accounts, I wasn't able to optimise the images across my app in next-gen formats.
 
-I also noticed some slight performance hits on mobile devices due to the original aspect ratios of the images across all breakpoints. However, I may explore using a custom loader in the future to address this issue and further optimise the images.
+There is also some room for improving the page load speed in mobile devices according to Chrome Lighthouse report. This is because the original aspect ratios of the images are rendering across all breakpoints, and ideally pages should serve images that are not larger than the version that's rendered on the user's screen. I may explore using a custom loader in the future to address this issue and further optimise the images.
 
 ### 👨‍💻&nbsp;Continued development
 
