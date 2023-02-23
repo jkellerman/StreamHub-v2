@@ -16,7 +16,7 @@ const useInfiniteScroll = (endpoint: string) => {
 
   // Need two separate useEffects to fetch movie data for endpoint and the page number. If endpoint and page are called together, endpoint may be called before page when switching between genre pages, which results in page duplication due to page number carry-over from previous page.
 
-  // Warning: Attempts to call endpoint and page together will likely break the code. When refactoring keep an eye on page number in terminal.
+  // When refactoring keep an eye on page number in terminal
 
   useEffect(() => {
     setPage(1);
@@ -30,10 +30,8 @@ const useInfiniteScroll = (endpoint: string) => {
         );
         setTotalPages(data.data.total_pages);
         setCards(filteredArr);
-        setShouldFetch(false);
         setIsLoading(false);
       } catch (error) {
-        setShouldFetch(false);
         setIsLoading(false);
       }
     };
@@ -44,7 +42,7 @@ const useInfiniteScroll = (endpoint: string) => {
   const handleScroll = () => {
     if (
       window.innerHeight + window.scrollY >=
-      document.body.scrollHeight - 50
+      document.body.scrollHeight - 75
     ) {
       setShouldFetch(true);
     }
@@ -82,11 +80,11 @@ const useInfiniteScroll = (endpoint: string) => {
         setCards((prev) => {
           return [...prev, ...filteredArr];
         });
-        setShouldFetch(false);
         setIsLoading(false);
+        setShouldFetch(false);
       } catch (error) {
-        setShouldFetch(false);
         setIsLoading(false);
+        setShouldFetch(false);
       }
     };
     fetchMoreMovies();
