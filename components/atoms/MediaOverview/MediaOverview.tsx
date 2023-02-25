@@ -1,5 +1,6 @@
 import styles from "../MediaOverview/MediaOverview.module.css";
 import React, { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 
 interface MediaOverviewProps {
   hero?: boolean;
@@ -12,23 +13,34 @@ const MediaOverview: React.FC<MediaOverviewProps> = ({
   overview,
   mediaSummary,
 }) => {
-  const [showToggle, setShowToggle] = useState(false);
-  const [readMore, setReadMore] = useState(false);
+  const [showToggle, setShowToggle] = useState<boolean>(false);
+  const [readMore, setReadMore] = useState<boolean>(false);
   const paragraphRef = useRef<HTMLParagraphElement>(null);
+  const router = useRouter();
 
-  const handleToggle = () => {
-    setReadMore(!readMore);
-  };
-
-  useEffect(() => {
+  const handleShowToggle = () => {
     if (paragraphRef.current) {
       if (
         paragraphRef.current.scrollHeight > paragraphRef.current.offsetHeight
       ) {
         setShowToggle(true);
+      } else {
+        setShowToggle(false);
       }
     }
-  }, []);
+  };
+
+  useEffect(() => {
+    handleShowToggle();
+    router.events.on("routeChangeComplete", handleShowToggle);
+    return () => {
+      router.events.off("routeChangeComplete", handleShowToggle);
+    };
+  }, [router, overview]);
+
+  const handleToggle = () => {
+    setReadMore(!readMore);
+  };
 
   return (
     <>
