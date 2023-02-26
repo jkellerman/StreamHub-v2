@@ -4,13 +4,13 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 interface NavIconButtonProps {
-  all?: boolean;
+  home?: boolean;
   movies?: boolean;
   series?: boolean;
 }
 
 const NavIconButton: React.FC<NavIconButtonProps> = ({
-  all,
+  home,
   movies,
   series,
 }) => {
@@ -18,11 +18,11 @@ const NavIconButton: React.FC<NavIconButtonProps> = ({
 
   return (
     <>
-      {all && (
+      {home && (
         <Link href={"/"}>
           <a
-            aria-label="all"
-            title="all"
+            aria-label="home"
+            title="home"
             className={
               router.pathname === "/"
                 ? `${styles.active}`
