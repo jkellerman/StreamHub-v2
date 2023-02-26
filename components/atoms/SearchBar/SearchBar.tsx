@@ -40,40 +40,21 @@ const Search: React.FC<SearchProps> = ({ all, movies, series, hero }) => {
         className={styles.searchIcon}
         priority={true}
       />
-
-      {all && (
-        <input
-          type="text"
-          name="search"
-          aria-label="Search"
-          placeholder="Search for movies or TV series"
-          className={styles.input}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      )}
-      {movies && (
-        <input
-          type="text"
-          name="search"
-          aria-label="Search"
-          placeholder="Search for movies"
-          className={styles.input}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      )}
-      {series && (
-        <input
-          type="text"
-          name="search"
-          aria-label="Search"
-          placeholder="Search for TV series"
-          className={styles.input}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      )}
+      <input
+        type="text"
+        name="search"
+        aria-label="Search"
+        placeholder={
+          all
+            ? "Search for movies or TV series"
+            : movies
+            ? "Search for movies"
+            : "Search for TV series"
+        }
+        className={styles.input}
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
     </form>
   );
 };

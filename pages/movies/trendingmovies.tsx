@@ -2,7 +2,7 @@ import Head from "next/head";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import MediaCategory from "@/components/organisms/MediaCategory/MediaCategory";
 
-const Trending = () => {
+const TrendingMovies = () => {
   return (
     <>
       <Head>
@@ -13,15 +13,15 @@ const Trending = () => {
         />
       </Head>
       <main>
-        <SearchBar all />
+        <SearchBar movies />
         <MediaCategory
-          endpoint="api/trending"
-          category="trending"
-          type="trending"
+          endpoint="/api/trending/movie/week"
+          category="trending movies"
+          type="movies"
         />
       </main>
     </>
   );
 };
 
-export default Trending;
+export default TrendingMovies;

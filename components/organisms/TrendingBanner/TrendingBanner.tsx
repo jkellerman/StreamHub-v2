@@ -16,7 +16,7 @@ const TrendingBanner: React.FC<TrendingBannerProps> = ({
 }) => {
   return (
     <section>
-      <CategoryHeading type={type} category={category} trending />
+      <CategoryHeading type={type} category={category} home />
       <TrendingCards cards={data} />
     </section>
   );

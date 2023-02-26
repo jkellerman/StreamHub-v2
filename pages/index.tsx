@@ -7,20 +7,22 @@ import { GetStaticProps } from "next";
 import { Media } from "types";
 
 interface HomeProps {
-  trending: Media.IMediaItem[];
-  popularShows: Media.IMediaItem[];
+  trendingSeries: Media.IMediaItem[];
   popularMovies: Media.IMediaItem[];
-  topRatedShows: Media.IMediaItem[];
+  popularShows: Media.IMediaItem[];
+  trendingMovies: Media.IMediaItem[];
   upcomingMovies: Media.IMediaItem[];
+  topRatedShows: Media.IMediaItem[];
   topRatedMovies: Media.IMediaItem[];
 }
 
 const Home: React.FC<HomeProps> = ({
-  trending,
-  popularShows,
+  trendingSeries,
   popularMovies,
-  topRatedShows,
   upcomingMovies,
+  trendingMovies,
+  popularShows,
+  topRatedShows,
   topRatedMovies,
 }) => {
   return (
@@ -34,7 +36,11 @@ const Home: React.FC<HomeProps> = ({
       </Head>
       <main>
         <SearchBar all />
-        <TrendingBanner data={trending} type="trending" category="trending" />
+        <TrendingBanner
+          data={trendingSeries}
+          type="series"
+          category="trending series"
+        />
         <MediaCategoryHomePage
           data={popularMovies}
           type="movies"
@@ -44,6 +50,11 @@ const Home: React.FC<HomeProps> = ({
           data={popularShows}
           type="series"
           category="popular shows"
+        />
+        <TrendingBanner
+          data={trendingMovies}
+          type="movies"
+          category="trending movies"
         />
         <MediaCategoryHomePage
           data={upcomingMovies}
@@ -76,22 +87,22 @@ export const getStaticProps: GetStaticProps = async () => {
   ): Media.IMediaItem[] => {
     return arr.slice(0, limit);
   };
-  // trending
-  const trendingEndpoint = `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.API_KEY}`;
-  const trendingResponse = await fetch(trendingEndpoint);
-  const trendingData = await trendingResponse.json();
+  // trending series
+  const trendingSeriesEndpoint = `https://api.themoviedb.org/3/trending/tv/week?api_key=${process.env.API_KEY}`;
+  const trendingSeriesResponse = await fetch(trendingSeriesEndpoint);
+  const trendingSeriesData = await trendingSeriesResponse.json();
 
-  if (!trendingResponse.ok) {
+  if (!trendingSeriesResponse.ok) {
     throw new Error(
-      `Failed to fetch posts, received status ${trendingResponse.status}`
+      `Failed to fetch posts, received status ${trendingSeriesResponse.status}`
     );
   }
 
-  const trendingFiltered = trendingData.results.filter(
+  const trendingSeriesFiltered = trendingSeriesData.results.filter(
     (type: Media.IMediaItem) => type.media_type !== "person"
   );
 
-  const trending = sliceArray(trendingFiltered, 10);
+  const trendingSeries = sliceArray(trendingSeriesFiltered, 10);
 
   //   popular movies
 
@@ -112,6 +123,23 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const popularMovies = sliceArray(popularMoviesFilteredArr, 12);
 
+  // trending movies
+  const trendingMoviesEndpoint = `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.API_KEY}`;
+  const trendingMoviesResponse = await fetch(trendingMoviesEndpoint);
+  const trendingMoviesData = await trendingMoviesResponse.json();
+
+  if (!trendingSeriesResponse.ok) {
+    throw new Error(
+      `Failed to fetch posts, received status ${trendingMoviesResponse.status}`
+    );
+  }
+
+  const trendingMoviesFiltered = trendingMoviesData.results.filter(
+    (type: Media.IMediaItem) => type.media_type !== "person"
+  );
+
+  const trendingMovies = sliceArray(trendingMoviesFiltered, 10);
+
   //   popular shows
 
   const popularShowsEndpoint = `
@@ -126,7 +154,8 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   const popularShowsFilteredArr = popularShowsData.results.filter(
-    (item: Media.IMediaItem) => item.backdrop_path !== null
+    (item: Media.IMediaItem) =>
+      item.backdrop_path !== null && !item.origin_country.includes("IN")
   );
 
   const popularShows = sliceArray(popularShowsFilteredArr, 12);
@@ -188,10 +217,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      trending,
+      trendingSeries,
       popularMovies,
-      popularShows,
       upcomingMovies,
+      trendingMovies,
+      popularShows,
       topRatedShows,
       topRatedMovies,
     },

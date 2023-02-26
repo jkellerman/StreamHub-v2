@@ -7,6 +7,7 @@ export declare namespace Media {
     release_date: string;
     first_air_date: string;
     media_type: string;
+    origin_country: string[];
   }
 
   export interface ICertificationMovie {

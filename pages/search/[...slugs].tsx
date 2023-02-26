@@ -7,15 +7,19 @@ import styles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHo
 
 const Search = () => {
   const {
-    query: { id },
+    query: { slugs },
   } = useRouter();
-  const endpoint = `/api/search/all/${id}`;
+  const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
+
+  const endpoint = `/api/search/${slugsArray.join("/")}`;
   const { cards, isLoading } = useInfiniteScroll(endpoint);
   return (
     <>
       <Head>
-        <title>{`${id?.toString().replace(/-/g, " ")} | Reelgood`}</title>
-        <meta name="description" content={`Where to watch ${id}`} />
+        <title>{`${slugsArray[1]
+          ?.toString()
+          .replace(/-/g, " ")} | Reelgood`}</title>
+        <meta name="description" content={`Where to watch ${slugsArray[1]}`} />
       </Head>
       <main>
         <SearchBar all />
@@ -23,8 +27,12 @@ const Search = () => {
           {!isLoading && (
             <h1 className={styles.heading}>
               {cards.length !== 0
-                ? `Results found for '${id?.toString().replace(/-/g, " ")}'`
-                : `No Results found for '${id?.toString().replace(/-/g, " ")}'`}
+                ? `Results found for '${slugsArray[1]
+                    ?.toString()
+                    .replace(/-/g, " ")}'`
+                : `No Results found for '${slugsArray[1]
+                    ?.toString()
+                    .replace(/-/g, " ")}'`}
             </h1>
           )}
           <CardList cards={cards} isLoading={isLoading} />

@@ -133,7 +133,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     name: title,
   } = data;
 
-  const certification: Media.ICertificationSeries | undefined =
+  const certification: Media.ICertificationSeries | null =
     content_ratings.results.find(
       (country: Media.ICertificationSeries) => country.iso_3166_1 === "GB"
     ) || null;
@@ -146,7 +146,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const cast: Media.ICast = credits.cast.slice(0, 4);
 
-  const getWatchProviders: Media.IProviderList | undefined =
+  const getWatchProviders: Media.IProviderList | null =
     data["watch/providers"].results.GB;
 
   const watch_providers = getWatchProviders ?? [];

@@ -143,7 +143,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const watch_providers = getWatchProviders.GB || [];
 
-  const certification: Media.ICertificationMoviesCountries | undefined =
+  const certification: Media.ICertificationMoviesCountries | null =
     release_dates.results.find(
       (country: Media.ICertificationMoviesCountries) =>
         country.iso_3166_1 === "GB"
@@ -154,10 +154,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     ) ||
     null;
 
-  const age_rating: Media.ICertificationMovie | undefined =
+  const age_rating: Media.ICertificationMovie | null =
     certification?.release_dates.find(
       (item: Media.ICertificationMovie) => item.certification !== ""
-    ) || undefined;
+    ) || null;
 
   return {
     props: {

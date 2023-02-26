@@ -5,6 +5,7 @@ import { Media } from "types";
 interface IMovieData {
   backdrop_path: string;
   known_for_department: string;
+  origin_country?: string[];
 }
 
 const useInfiniteScroll = (endpoint: string) => {
@@ -26,7 +27,9 @@ const useInfiniteScroll = (endpoint: string) => {
         const data = await response.json();
         const filteredArr = data.data.results.filter(
           (item: IMovieData) =>
-            item.backdrop_path !== null && !item.known_for_department
+            item.backdrop_path !== null &&
+            !item.known_for_department &&
+            !item.origin_country?.includes("IN")
         );
         setTotalPages(data.data.total_pages);
         setCards(filteredArr);
