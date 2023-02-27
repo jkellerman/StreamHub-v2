@@ -8,18 +8,19 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const { id, ...queryParams } = req.query;
+    const { slugs, ...queryParams } = req.query;
+    const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
     const queryString = QueryString.stringify(
       {
         ...BASE_TMDB_QUERY_SEARCH_PARAMS,
-        query: id,
+        query: slugsArray[1],
         ...queryParams,
         include_adult: "false",
       },
       { addQueryPrefix: true }
     );
 
-    const url = `${BASE_TMDB_URL}/search/tv${queryString}`;
+    const url = `${BASE_TMDB_URL}/search/${slugsArray[0]}${queryString}`;
     console.info("🚀 Request URL: ", url);
 
     const response = await fetch(url);

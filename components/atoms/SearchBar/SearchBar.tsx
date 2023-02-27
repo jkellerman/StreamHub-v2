@@ -20,11 +20,11 @@ const Search: React.FC<SearchProps> = ({ all, movies, series, hero }) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (all) {
-      router.push(`/search/all/${query.replaceAll(" ", "-")}`);
+      router.push(`/search/multi/${query.replaceAll(" ", "-")}`);
     } else if (movies) {
-      router.push(`/search/movies/${query.replaceAll(" ", "-")}`);
+      router.push(`/search/movie/${query.replaceAll(" ", "-")}`);
     } else if (series) {
-      router.push(`/search/series/${query.replaceAll(" ", "-")}`);
+      router.push(`/search/tv/${query.replaceAll(" ", "-")}`);
     }
   };
   return (
