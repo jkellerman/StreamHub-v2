@@ -27,9 +27,7 @@ const useInfiniteScroll = (endpoint: string) => {
         const data = await response.json();
         const filteredArr = data.data.results.filter(
           (item: IMovieData) =>
-            item.backdrop_path !== null &&
-            !item.known_for_department &&
-            !item.origin_country?.includes("IN")
+            item.backdrop_path !== null && !item.known_for_department
         );
         setTotalPages(data.data.total_pages);
         setCards(filteredArr);

@@ -9,10 +9,9 @@ import { Media } from "types";
 interface HomeProps {
   trendingSeries: Media.IMediaItem[];
   popularMovies: Media.IMediaItem[];
-  popularShows: Media.IMediaItem[];
+  topRatedShows: Media.IMediaItem[];
   trendingMovies: Media.IMediaItem[];
   upcomingMovies: Media.IMediaItem[];
-  topRatedShows: Media.IMediaItem[];
   topRatedMovies: Media.IMediaItem[];
 }
 
@@ -21,7 +20,6 @@ const Home: React.FC<HomeProps> = ({
   popularMovies,
   upcomingMovies,
   trendingMovies,
-  popularShows,
   topRatedShows,
   topRatedMovies,
 }) => {
@@ -47,9 +45,9 @@ const Home: React.FC<HomeProps> = ({
           category="popular movies"
         />
         <MediaCategoryHomePage
-          data={popularShows}
+          data={topRatedShows}
           type="series"
-          category="popular shows"
+          category="top rated shows"
         />
         <TrendingBanner
           data={trendingMovies}
@@ -61,11 +59,7 @@ const Home: React.FC<HomeProps> = ({
           type="movies"
           category="upcoming movies"
         />
-        <MediaCategoryHomePage
-          data={topRatedShows}
-          type="series"
-          category="top rated shows"
-        />
+
         <MediaCategoryHomePage
           data={topRatedMovies}
           type="movies"
@@ -123,6 +117,23 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const popularMovies = sliceArray(popularMoviesFilteredArr, 12);
 
+  // top rated shows
+  const topRatedShowsEndpoint = `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.API_KEY}`;
+  const topRatedShowsResponse = await fetch(topRatedShowsEndpoint);
+  const topRatedShowsData = await topRatedShowsResponse.json();
+
+  if (!topRatedShowsResponse.ok) {
+    throw new Error(
+      `Failed to fetch posts, received status ${topRatedShowsResponse.status}`
+    );
+  }
+
+  const topRatedShowsFilteredArr = topRatedShowsData.results.filter(
+    (item: Media.IMediaItem) => item.backdrop_path !== null
+  );
+
+  const topRatedShows = sliceArray(topRatedShowsFilteredArr, 12);
+
   // trending movies
   const trendingMoviesEndpoint = `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.API_KEY}`;
   const trendingMoviesResponse = await fetch(trendingMoviesEndpoint);
@@ -139,26 +150,6 @@ export const getStaticProps: GetStaticProps = async () => {
   );
 
   const trendingMovies = sliceArray(trendingMoviesFiltered, 10);
-
-  //   popular shows
-
-  const popularShowsEndpoint = `
-    https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}&language=en-GB&page=1`;
-  const popularShowsResponse = await fetch(popularShowsEndpoint);
-  const popularShowsData = await popularShowsResponse.json();
-
-  if (!popularShowsResponse.ok) {
-    throw new Error(
-      `Failed to fetch posts, received status ${popularShowsResponse.status}`
-    );
-  }
-
-  const popularShowsFilteredArr = popularShowsData.results.filter(
-    (item: Media.IMediaItem) =>
-      item.backdrop_path !== null && !item.origin_country.includes("IN")
-  );
-
-  const popularShows = sliceArray(popularShowsFilteredArr, 12);
 
   //   upcoming movies
 
@@ -178,23 +169,6 @@ export const getStaticProps: GetStaticProps = async () => {
   );
 
   const upcomingMovies = sliceArray(upcomingFilteredArr, 12);
-
-  // top rated shows
-  const topRatedShowsEndpoint = `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.API_KEY}`;
-  const topRatedShowsResponse = await fetch(topRatedShowsEndpoint);
-  const topRatedShowsData = await topRatedShowsResponse.json();
-
-  if (!topRatedShowsResponse.ok) {
-    throw new Error(
-      `Failed to fetch posts, received status ${topRatedShowsResponse.status}`
-    );
-  }
-
-  const topRatedShowsFilteredArr = topRatedShowsData.results.filter(
-    (item: Media.IMediaItem) => item.backdrop_path !== null
-  );
-
-  const topRatedShows = sliceArray(topRatedShowsFilteredArr, 12);
 
   //   top rated movies
 
@@ -219,10 +193,9 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       trendingSeries,
       popularMovies,
-      upcomingMovies,
-      trendingMovies,
-      popularShows,
       topRatedShows,
+      trendingMovies,
+      upcomingMovies,
       topRatedMovies,
     },
     revalidate: 1,

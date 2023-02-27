@@ -24,7 +24,7 @@ const Movies: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
   const isDefaultGenre = genre.name === DEFAULT_MOVIES_GENRE.name;
   const endpoint = !isDefaultGenre
     ? `api/movies/genre/${genre.id}`
-    : "api/movies/popular";
+    : "api/trending/movie/day";
   const pageType = pathname.replace(/\//g, "");
   const { cards, isLoading } = useInfiniteScroll(endpoint);
 
