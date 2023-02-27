@@ -3,7 +3,7 @@
   border-radius: var(--border-radius-l);
   border: 1px solid var(--greyish-blue);
   text-transform: capitalize;
-  font-size: var(--body-m);
+  font-size: var(--body-l);
   cursor: pointer;
   transition: var(--transition);
   background-color: var(--greyish-blue);
@@ -23,21 +23,14 @@
 
 .chevron {
   position: relative;
-  top: 0.05rem;
+  top: 0.075rem;
   right: -0.5rem;
-  width: 7px;
-  height: 7px;
+  width: 10px;
+  height: 10px;
 }
 
 @media (min-width: 48em) {
   .button {
     padding: 0.5em 1.75em 0.5em 1.25em;
-  }
-
-  .chevron {
-    top: 0.075rem;
-    right: -0.5rem;
-    width: 10px;
-    height: 10px;
   }
 }

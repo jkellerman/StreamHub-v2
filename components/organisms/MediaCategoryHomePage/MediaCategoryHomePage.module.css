@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   column-gap: 0.5rem;
-} /* for index pages */
+}
 
 .heading {
   font-size: var(--heading-l);
@@ -14,11 +14,11 @@
   text-transform: capitalize;
   display: inline-block;
   margin-bottom: 1.25rem;
-} /* for index pages */
+}
 
 @media (min-width: 48em) {
   .heading {
     margin-top: 1rem;
     margin-bottom: 1.75rem;
-  } /* for index pages */
+  }
 }
