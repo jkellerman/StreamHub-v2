@@ -88,4 +88,4 @@ There is also some room for improving the page load speed in mobile devices acco
 ## Acknowledgements
 
 - [Entertainment web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X) for the homepage and nav design.
-- [Fran](https://github.com/franmsilva) for helping me clean up the api routes.
+- A big shoutout to [Fran](https://github.com/franmsilva) for helping me optimise the API routes. Despite everything working seamlessly, Fran identified and removed some redundant duplication across the directories and introduced me to the Node query-string module, which enabled us to parse and stringify URL query strings in a more concise and efficient manner.
