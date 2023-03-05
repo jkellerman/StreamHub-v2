@@ -12,11 +12,11 @@ import Dropdown from "@/components/molecules/Dropdown/Dropdown";
 import { DEFAULT_MOVIES_GENRE } from "@/constants/app";
 import { Genres } from "types";
 
-interface SeriesIndexPageProps {
+interface MoviesIndexPageProps {
   genreList: Genres.IGenre[];
 }
 
-const Movies: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
+const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
   const { query, pathname } = useRouter();
   const genre =
     genreList.find(({ name }) => name.toLowerCase() === query.genre) ||
@@ -26,7 +26,7 @@ const Movies: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
     ? `api/movies/genre/${genre.id}`
     : "api/trending/movie/day";
   const pageType = pathname.replace(/\//g, "");
-  const { cards, isLoading } = useInfiniteScroll(endpoint);
+  const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
 
   return (
     <>
@@ -49,7 +49,7 @@ const Movies: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
             />
           </div>
 
-          <CardList cards={cards} isLoading={isLoading} />
+          <CardList cards={cards} isLoading={isLoading} isError={isError} />
         </section>
       </main>
     </>

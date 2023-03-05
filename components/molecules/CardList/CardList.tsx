@@ -9,10 +9,18 @@ import { Media } from "types";
 interface CardListProps {
   cards: Media.IMediaItem[];
   isLoading?: boolean;
+  isError?: boolean;
 }
 
-const CardList: React.FC<CardListProps> = ({ cards, isLoading }) => {
+const CardList: React.FC<CardListProps> = ({ cards, isLoading, isError }) => {
   if (isLoading) return <Spinner />;
+  if (isError)
+    return (
+      <div>
+        We&apos;re having trouble load the data at the moment. Please try again
+        later.
+      </div>
+    );
 
   return (
     <div className={styles.container}>

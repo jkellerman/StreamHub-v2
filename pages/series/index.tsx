@@ -29,7 +29,7 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
     ? `api/series/genre/${genre.id}`
     : "api/trending/tv/day";
   const pageType = pathname.replace(/\//g, "");
-  const { cards, isLoading } = useInfiniteScroll(endpoint);
+  const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
 
   return (
     <>
@@ -51,7 +51,7 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
               genre_list={genreList}
             />
           </div>
-          <CardList cards={cards} isLoading={isLoading} />
+          <CardList cards={cards} isLoading={isLoading} isError={isError} />
         </section>
       </main>
     </>
