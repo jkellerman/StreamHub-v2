@@ -12,7 +12,7 @@ const Search = () => {
   const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
 
   const endpoint = `/api/search/${slugsArray.join("/")}`;
-  const { cards, isLoading } = useInfiniteScroll(endpoint);
+  const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
   return (
     <>
       <Head>
@@ -35,7 +35,7 @@ const Search = () => {
                     .replace(/-/g, " ")}'`}
             </h1>
           )}
-          <CardList cards={cards} isLoading={isLoading} />
+          <CardList cards={cards} isLoading={isLoading} isError={isError} />
         </section>
       </main>
     </>

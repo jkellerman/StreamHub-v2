@@ -15,7 +15,7 @@ const MediaCategory: React.FC<MediaCategoryProps> = ({
   category,
   type,
 }) => {
-  const { cards, isLoading } = useInfiniteScroll(endpoint);
+  const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
   if (isLoading) return <Spinner />;
 
   const arr = cards.filter((item) => item.backdrop_path !== null);
@@ -23,7 +23,7 @@ const MediaCategory: React.FC<MediaCategoryProps> = ({
   return (
     <section>
       <CategoryHeading category={category} type={type} />
-      <CardList cards={arr} isLoading={isLoading} />
+      <CardList cards={arr} isLoading={isLoading} isError={isError} />
     </section>
   );
 };
