@@ -35,7 +35,7 @@ const useInfiniteScroll = (endpoint: string) => {
     let fetching = false;
     const handleScroll = () => {
       const scrollThreshold =
-        document.body.scrollHeight - window.innerHeight * 0.075;
+        document.body.scrollHeight - window.innerHeight * 0.2;
       const scrollPosition = window.innerHeight + window.scrollY;
       if (!fetching && scrollPosition >= scrollThreshold) {
         fetching = true;
