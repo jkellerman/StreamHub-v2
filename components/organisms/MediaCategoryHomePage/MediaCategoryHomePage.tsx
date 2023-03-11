@@ -1,26 +1,15 @@
 import React from "react";
-import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
+
 import styles from "../MediaCategoryHomePage/MediaCategoryHomePage.module.css";
-import CardList from "../../molecules/CardList/CardList";
-import { Media } from "types";
 
 interface MediaCategoryHomePageProps {
-  data: Media.IMediaItem[];
-  type: string;
-  category: string;
+  children: React.ReactNode;
 }
 
 const MediaCategoryHomePage: React.FC<MediaCategoryHomePageProps> = ({
-  data,
-  category,
-  type,
+  children,
 }) => {
-  return (
-    <section className={styles.section}>
-      <CategoryHeading category={category} type={type} home />
-      <CardList cards={data} />
-    </section>
-  );
+  return <section className={styles.section}>{children}</section>;
 };
 
 export default MediaCategoryHomePage;

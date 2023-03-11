@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import styles from "../Dropdown/Dropdown.module.css";
 import QueryString from "qs";
@@ -19,9 +19,9 @@ const Dropdown: React.FC<DropdownProps> = ({
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const toggleDropdown = () => {
+  const toggleDropdown = useCallback(() => {
     setIsDropDownOpen(!isDropdownOpen);
-  };
+  }, [isDropdownOpen]);
 
   useEffect(() => {
     // Close dropdown when click outside dropdown box
@@ -34,19 +34,14 @@ const Dropdown: React.FC<DropdownProps> = ({
         toggleDropdown();
       }
     };
-    document.addEventListener("mousedown", checkIfClickedOutside);
+    // Prevent user from scrolling (for when mobile list is open)
+    document.body.classList.toggle("no-scroll", isDropdownOpen);
 
+    document.addEventListener("mousedown", checkIfClickedOutside);
     return () => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDropdownOpen]);
-
-  useEffect(() => {
-    // Prevent user from scrolling (for when mobile list is open)
-    document.body.classList.toggle("no-scroll", isDropdownOpen);
-  }, [isDropdownOpen]);
+  }, [isDropdownOpen, toggleDropdown]);
 
   return (
     <div>

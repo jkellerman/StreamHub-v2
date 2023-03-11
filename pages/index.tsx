@@ -2,7 +2,11 @@ import React from "react";
 import Head from "next/head";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import TrendingBanner from "@/components/organisms/TrendingBanner/TrendingBanner";
+import TrendingCards from "@/components/molecules/TrendingCards/TrendingCards";
 import MediaCategoryHomePage from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage";
+import CardList from "@/components/molecules/CardList/CardList";
+import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
+
 import { GetStaticProps } from "next";
 import { Media } from "types";
 
@@ -34,37 +38,36 @@ const Home: React.FC<HomeProps> = ({
       </Head>
       <main>
         <SearchBar all />
-        <TrendingBanner
-          data={trendingSeries}
-          type="series"
-          category="trending series"
-        />
-        <MediaCategoryHomePage
-          data={popularMovies}
-          type="movies"
-          category="popular movies"
-        />
-        <MediaCategoryHomePage
-          data={topRatedShows}
-          type="series"
-          category="top rated shows"
-        />
-        <TrendingBanner
-          data={trendingMovies}
-          type="movies"
-          category="trending movies"
-        />
-        <MediaCategoryHomePage
-          data={upcomingMovies}
-          type="movies"
-          category="upcoming movies"
-        />
 
-        <MediaCategoryHomePage
-          data={topRatedMovies}
-          type="movies"
-          category="top rated movies"
-        />
+        <TrendingBanner>
+          <CategoryHeading type="series" category="trending series" home />
+          <TrendingCards cards={trendingSeries} />
+        </TrendingBanner>
+
+        <MediaCategoryHomePage>
+          <CategoryHeading category="popular movies" type="movies" home />
+          <CardList cards={popularMovies} />
+        </MediaCategoryHomePage>
+
+        <MediaCategoryHomePage>
+          <CategoryHeading category="top rated shows" type="series" home />
+          <CardList cards={topRatedShows} />
+        </MediaCategoryHomePage>
+
+        <TrendingBanner>
+          <CategoryHeading type="movies" category="trending movies" home />
+          <TrendingCards cards={trendingMovies} />
+        </TrendingBanner>
+
+        <MediaCategoryHomePage>
+          <CategoryHeading category="upcoming movies" type="movies" home />
+          <CardList cards={upcomingMovies} />
+        </MediaCategoryHomePage>
+
+        <MediaCategoryHomePage>
+          <CategoryHeading category="top rated movies" type="movies" home />
+          <CardList cards={topRatedMovies} />
+        </MediaCategoryHomePage>
       </main>
     </>
   );

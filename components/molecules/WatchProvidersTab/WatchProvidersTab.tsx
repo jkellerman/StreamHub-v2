@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "../WatchProvidersTab/WatchProvidersTab.module.css";
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
-import Image from "next/future/image";
-import img from "@/public/assets/justwatch.svg";
-const LOGO_SIZE = 40;
 import { Media } from "types";
+
+import Image from "next/future/image";
+import JustWatchLogo from "@/components/atoms/JustWatchLogo/JustWatchLogo";
+const LOGO_SIZE = 40;
 
 interface WatchProvidersTabProps {
   watch_providers: Media.IProviderList;
@@ -23,17 +24,7 @@ const WatchProvidersTab: React.FC<WatchProvidersTabProps> = ({
           : undefined
       }
     >
-      <div className={styles.justWatchLogoContainer}>
-        <Image
-          src={img}
-          alt="just watch logo"
-          unoptimized={true}
-          width={100}
-          height={50}
-          className={styles.logo}
-          priority={true}
-        />
-      </div>
+      <JustWatchLogo tab />
       <div className={styles.providers}>
         {watch_providers.length === 0 && (
           <span>Not available to watch online</span>

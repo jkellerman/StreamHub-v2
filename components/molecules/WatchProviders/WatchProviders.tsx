@@ -1,10 +1,12 @@
-import styles from "../WatchProviders/WatchProviders.module.css";
-import { LOGO_URL_IMAGE } from "@/constants/tmdb";
-import Image from "next/future/image";
-import img from "@/public/assets/justwatch.svg";
-const LOGO_SIZE = 40;
 import React from "react";
+import Image from "next/future/image";
+import styles from "../WatchProviders/WatchProviders.module.css";
+import img from "@/public/assets/justwatch.svg";
+import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import { Media } from "types";
+import JustWatchLogo from "../../atoms/JustWatchLogo/JustWatchLogo";
+
+const LOGO_SIZE = 40;
 
 interface WatchProvidersProps {
   watch_providers: Media.IProviderList;
@@ -14,16 +16,7 @@ const WatchProviders: React.FC<WatchProvidersProps> = ({ watch_providers }) => {
   return (
     <>
       <section className={styles.container}>
-        <div className={styles.justWatchLogoContainer}>
-          <Image
-            src={img}
-            alt="just watch logo"
-            unoptimized={true}
-            width={100}
-            height={50}
-            priority={true}
-          />
-        </div>
+        <JustWatchLogo />
 
         <div className={styles.providers}>
           {watch_providers.length === 0 && (

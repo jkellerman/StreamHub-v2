@@ -1,19 +1,30 @@
 import React from "react";
-import { GetServerSideProps } from "next";
 import Head from "next/head";
-import styles from "@/components/organisms/Hero/Hero.module.css";
-import SearchBar from "@/components/atoms/SearchBar/SearchBar";
-import Hero from "@/components/organisms/Hero/Hero";
-import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
-import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
-import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
-import Tablist from "@/components/organisms/TabList/TabList";
-import Recommendations from "@/components/molecules/Recommendations/Recommendations";
 import qs from "qs";
+
+import { GetServerSideProps } from "next";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import { Media, Genres } from "types";
 
-interface SeriesProps {
+import styles from "@/components/organisms/Hero/Hero.module.css";
+import SearchBar from "@/components/atoms/SearchBar/SearchBar";
+import Hero from "@/components/organisms/Hero/Hero";
+import HeroContent from "@/components/molecules/HeroContent/HeroContent";
+import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
+import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
+import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
+import Cast from "@/components/atoms/Cast/Cast";
+import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
+import MediaRunTimeOrSeasons from "@/components/atoms/MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
+import StarRating from "@/components/atoms/StarRating/StarRating";
+import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
+import TabList from "@/components/molecules/TabList/TabList";
+import Recommendations from "@/components/molecules/Recommendations/Recommendations";
+import Certification from "@/components/atoms/Certification/Certification";
+import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
+import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
+
+interface MovieProps {
   backdrop: string;
   tagline: string;
   movie_age_rating: Media.ICertificationMovie | undefined;
@@ -30,7 +41,7 @@ interface SeriesProps {
   title: string;
 }
 
-const Movie: React.FC<SeriesProps> = ({
+const Movie: React.FC<MovieProps> = ({
   backdrop,
   tagline,
   movie_age_rating,
@@ -54,31 +65,39 @@ const Movie: React.FC<SeriesProps> = ({
       </Head>
       <main className={styles.main}>
         <SearchBar movies hero />
-        <Hero
-          image={backdrop}
-          tagline={tagline}
-          movie_age_rating={movie_age_rating?.certification}
-          release_date={release_date}
-          star_rating={vote_average}
-          overview={overview}
-          poster={poster}
-          title={title}
-        />
+
+        <Hero backdrop={backdrop} title={title}>
+          <HeroContent
+            tagline={tagline}
+            movie_age_rating={movie_age_rating?.certification}
+            release_date={release_date}
+            star_rating={vote_average}
+            overview={overview}
+            poster={poster}
+            title={title}
+          >
+            <Certification movie_age_rating={movie_age_rating?.certification} />
+            <ReleaseDate release_date={release_date} styled />
+            <StarRating star_rating={vote_average} />
+          </HeroContent>
+        </Hero>
+
         <WatchProviders watch_providers={watch_providers} />
-        <MediaSummary
-          overview={overview}
-          movie_age_rating={movie_age_rating?.certification}
-          release_date={release_date}
-          star_rating={vote_average}
-        />
-        <MediaDetails
-          director={director}
-          cast={cast}
-          genres={genres}
-          runtime={runtime}
-          movies
-        />
-        <Tablist
+
+        <MediaSummary star_rating={vote_average}>
+          <Certification movie_age_rating={movie_age_rating?.certification} />
+          <ReleaseDate release_date={release_date} />
+          <MediaOverview overview={overview} mediaSummary />
+        </MediaSummary>
+
+        <MediaDetails>
+          <MediaDirectorOrNetwork director={director} />
+          <Cast cast={cast} />
+          <MediaGenres genres={genres} movies />
+          <MediaRunTimeOrSeasons runtime={runtime} />
+        </MediaDetails>
+
+        <TabList
           movie_age_rating={movie_age_rating?.certification}
           release_date={release_date}
           runtime={runtime}
@@ -92,6 +111,7 @@ const Movie: React.FC<SeriesProps> = ({
           title={title}
           movies
         />
+
         <Recommendations recommendations={recommendations} movies />
       </main>
     </>

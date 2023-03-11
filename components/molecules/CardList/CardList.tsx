@@ -17,8 +17,8 @@ const CardList: React.FC<CardListProps> = ({ cards, isLoading, isError }) => {
   if (isError)
     return (
       <div>
-        We&apos;re having trouble load the data at the moment. Please try again
-        later.
+        We&apos;re having trouble loading the data at the moment. Please try
+        again later.
       </div>
     );
 

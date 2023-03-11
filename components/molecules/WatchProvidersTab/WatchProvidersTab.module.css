@@ -6,18 +6,6 @@
   animation: fade var(--fade-animation);
 }
 
-.justWatchLogoContainer {
-  margin-top: 1rem;
-  position: relative;
-  width: 130px;
-  height: 80px;
-}
-
-.logo {
-  width: 100%;
-  height: 100%;
-}
-
 .icons {
   display: flex;
   gap: 1rem;

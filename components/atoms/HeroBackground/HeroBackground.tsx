@@ -4,18 +4,18 @@ import { BACKGROUND_URL_IMAGE } from "@/constants/tmdb";
 import styles from "../HeroBackground/HeroBackground.module.css";
 
 interface HeroBackgroundProps {
-  image: string;
+  backdrop: string;
   title: string;
 }
 
-const HeroBackground: React.FC<HeroBackgroundProps> = ({ image, title }) => {
+const HeroBackground: React.FC<HeroBackgroundProps> = ({ backdrop, title }) => {
   return (
     <>
       {" "}
       <div className={styles.overlay}></div>
       <div className={styles.imageContainer}>
         <Image
-          src={`${BACKGROUND_URL_IMAGE}${image}`}
+          src={`${BACKGROUND_URL_IMAGE}${backdrop}`}
           alt={`${title} backdrop`}
           unoptimized={true}
           priority={true}

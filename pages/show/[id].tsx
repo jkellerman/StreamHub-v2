@@ -1,18 +1,28 @@
 import React from "react";
 import Head from "next/head";
+import qs from "qs";
+
+import { GetServerSideProps } from "next";
+import { Genres, Media } from "types";
+import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+
 import styles from "@/components/organisms/Hero/Hero.module.css";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import Hero from "@/components/organisms/Hero/Hero";
+import HeroContent from "@/components/molecules/HeroContent/HeroContent";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
 import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
-import Tablist from "@/components/organisms/TabList/TabList";
+import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
+import Cast from "@/components/atoms/Cast/Cast";
+import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
+import MediaRunTimeOrSeasons from "@/components/atoms/MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
+import Tablist from "@/components/molecules/TabList/TabList";
+import StarRating from "@/components/atoms/StarRating/StarRating";
 import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
 import Recommendations from "@/components/molecules/Recommendations/Recommendations";
-import { GetServerSideProps } from "next";
-import { Genres, Media } from "types";
-
-import qs from "qs";
-import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import Certification from "@/components/atoms/Certification/Certification";
+import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
+import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
 
 interface SeriesProps {
   backdrop: string;
@@ -55,29 +65,38 @@ const Series: React.FC<SeriesProps> = ({
       </Head>
       <main className={styles.main}>
         <SearchBar series hero />
-        <Hero
-          image={backdrop}
-          tagline={tagline}
-          series_age_rating={series_age_rating}
-          air_date={air_date}
-          star_rating={vote_average}
-          overview={overview}
-          poster={poster}
-          title={title}
-        />
+
+        <Hero backdrop={backdrop} title={title}>
+          <HeroContent
+            tagline={tagline}
+            series_age_rating={series_age_rating}
+            air_date={air_date}
+            star_rating={vote_average}
+            overview={overview}
+            poster={poster}
+            title={title}
+          >
+            <Certification series_age_rating={series_age_rating} />
+            <ReleaseDate air_date={air_date} styled />
+            <StarRating star_rating={vote_average} />
+          </HeroContent>
+        </Hero>
+
         <WatchProviders watch_providers={watch_providers} />
-        <MediaSummary
-          overview={overview}
-          series_age_rating={series_age_rating}
-          air_date={air_date}
-          star_rating={vote_average}
-        />
-        <MediaDetails
-          network={network}
-          cast={cast}
-          genres={genres}
-          seasons={seasons}
-        />
+
+        <MediaSummary star_rating={vote_average}>
+          <Certification movie_age_rating={series_age_rating} />
+          <ReleaseDate air_date={air_date} />
+          <MediaOverview overview={overview} mediaSummary />
+        </MediaSummary>
+
+        <MediaDetails>
+          <MediaDirectorOrNetwork network={network} />
+          <Cast cast={cast} />
+          <MediaGenres genres={genres} movies />
+          <MediaRunTimeOrSeasons seasons={seasons} />
+        </MediaDetails>
+
         <Tablist
           series_age_rating={series_age_rating}
           air_date={air_date}
@@ -91,6 +110,7 @@ const Series: React.FC<SeriesProps> = ({
           watch_providers={watch_providers}
           title={title}
         />
+
         <Recommendations recommendations={recommendations} />
       </main>
     </>
