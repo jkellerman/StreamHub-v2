@@ -40,6 +40,7 @@ const useInfiniteScroll = (endpoint: string) => {
       if (!fetching && scrollPosition >= scrollThreshold) {
         fetching = true;
         fetchNextPage().then(() => {
+          // set 'fetching' back to false inside then() block to prevent multiple fetches when scrolling
           fetching = false;
         });
       }
@@ -47,8 +48,7 @@ const useInfiniteScroll = (endpoint: string) => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchNextPage]);
 
   return {
     cards: data?.pages.flatMap((page) => page.data) || [],

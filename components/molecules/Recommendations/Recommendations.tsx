@@ -33,17 +33,15 @@ const Recommendations: React.FC<RecommendationsProps> = ({
   );
 
   const router = useRouter();
-  // Set scroll availability everytime component mounts otherwise nav buttons may not update between page renders.
 
+  // Set scroll availability when component mounts otherwise nav buttons won't update between route changes.
   useEffect(() => {
     if (sliderRef.current) {
       if (sliderRef.current.scrollWidth > sliderRef.current.offsetWidth) {
         setIsScrollAvailable(true);
       }
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setIsScrollAvailable, sliderRef]);
 
   // When route changees, set slider to default position & set availability for nav buttons
   useEffect(() => {
@@ -63,18 +61,14 @@ const Recommendations: React.FC<RecommendationsProps> = ({
     return () => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.events]);
+  }, [router.events, setIsScrollAtEnd, setIsScrollAvailable, sliderRef]);
 
   return (
     <section className={styles.container}>
-      {/* heading */}
       {recommendationsArr.length === 0 ? null : (
         <h3 className={styles.heading}>people also liked</h3>
       )}
 
-      {/* banner */}
       <div className={styles.outerContainer}>
         <div
           className={styles.recommendations}
@@ -102,7 +96,6 @@ const Recommendations: React.FC<RecommendationsProps> = ({
           })}
         </div>
 
-        {/* Arrows */}
         {!isScrollAvailable ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}
