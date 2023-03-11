@@ -48,8 +48,6 @@ const MediaDetailsTab: React.FC<MediaDetailsTabProps> = ({
   title,
   movies,
 }) => {
-  // TODO: improve class naming and add dd
-
   return (
     <>
       <div

@@ -25,7 +25,6 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({
   seasons,
   movies,
 }) => {
-  // TODO: improve class naming
   return (
     <>
       <section className={styles.details}>

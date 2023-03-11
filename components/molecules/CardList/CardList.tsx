@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "@/components/atoms/Card/Card";
-import CardDetails from "@/components/molecules/CardDetails/CardDetails";
+import CardDetails from "@/components/atoms/CardDetails/CardDetails";
 import styles from "../CardList/CardList.module.css";
 
 import Spinner from "@/components/atoms/Spinner/Spinner";
