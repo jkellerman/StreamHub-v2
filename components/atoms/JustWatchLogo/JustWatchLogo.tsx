@@ -9,7 +9,7 @@ interface JustWatchLogoProps {
 const JustWatchLogo: React.FC<JustWatchLogoProps> = ({ tab }) => {
   return (
     <>
-      <div className={styles.justWatchLogoContainer}>
+      <div className={tab ? styles.justWatchLogoContainer : undefined}>
         <Image
           src={img}
           alt="just watch logo"

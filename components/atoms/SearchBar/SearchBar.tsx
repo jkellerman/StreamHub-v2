@@ -26,6 +26,7 @@ const Search: React.FC<SearchProps> = ({ all, movies, series, hero }) => {
     } else if (series) {
       router.push(`/search/tv/${query.replaceAll(" ", "-")}`);
     }
+    setQuery("");
   };
   return (
     <form
