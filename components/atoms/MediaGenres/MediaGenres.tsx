@@ -12,13 +12,12 @@ interface MediaGenresProps {
 const MediaGenres: React.FC<MediaGenresProps> = ({ genres, movies }) => {
   return (
     <div className={styles.detailItem}>
-      <div>
-        <dt className={styles.heading}>genres</dt>
-      </div>
-      <div className={styles.group}>
+      <dt className={styles.heading}>genres</dt>
+
+      <dd className={styles.group}>
         {genres.map((genre) => {
           return (
-            <dd className={styles.name} key={genre.id}>
+            <div className={styles.name} key={genre.id}>
               <Link
                 href={
                   movies
@@ -32,10 +31,10 @@ const MediaGenres: React.FC<MediaGenresProps> = ({ genres, movies }) => {
               >
                 <a className={`${styles.genre} `}>{genre.name}</a>
               </Link>
-            </dd>
+            </div>
           );
         })}
-      </div>
+      </dd>
     </div>
   );
 };

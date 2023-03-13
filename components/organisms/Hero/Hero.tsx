@@ -11,9 +11,9 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ backdrop, title, children }) => {
   return (
     <>
-      <section className={styles.hero}>
+      <div className={styles.hero}>
         <HeroBackground backdrop={backdrop} title={title} />
-      </section>
+      </div>
       {children}
     </>
   );

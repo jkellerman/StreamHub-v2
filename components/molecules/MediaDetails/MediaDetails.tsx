@@ -10,9 +10,9 @@ interface MediaDetailsProps {
 const MediaDetails: React.FC<MediaDetailsProps> = ({ children }) => {
   return (
     <>
-      <section className={styles.details}>
+      <div className={styles.details}>
         <dl>{children}</dl>
-      </section>
+      </div>
       <hr />
     </>
   );

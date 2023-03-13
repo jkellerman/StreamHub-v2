@@ -86,7 +86,7 @@ const Movie: React.FC<MovieProps> = ({
 
         <MediaSummary star_rating={vote_average}>
           <Certification movie_age_rating={movie_age_rating?.certification} />
-          <ReleaseDate release_date={release_date} />
+          <ReleaseDate release_date={release_date} styled />
           <MediaOverview overview={overview} mediaSummary />
         </MediaSummary>
 

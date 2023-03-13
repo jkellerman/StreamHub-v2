@@ -13,7 +13,7 @@ const MediaSummary: React.FC<MediaSummaryProps> = ({
 }) => {
   return (
     <>
-      <section className={styles.container}>{children}</section>
+      <div className={styles.container}>{children}</div>
       <hr />
       {star_rating > 0 && (
         <>

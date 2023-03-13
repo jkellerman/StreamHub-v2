@@ -31,7 +31,6 @@ const TrendingCards: React.FC<TrendingCardsProps> = ({ cards }) => {
           className={styles.banner}
           ref={sliderRef}
           onScroll={getScrollPosition}
-          id="trending"
         >
           {cards.map((item) => {
             return (

@@ -1,15 +1,8 @@
-.listContainer {
+.list {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 6rem 0;
-}
-
-.listContainer:hover > .listItemCurrent {
-  background: var(--dark-blue);
-}
-
-.list {
   position: absolute;
   top: 0;
   left: 0;
@@ -21,6 +14,10 @@
   height: 0;
   overflow-y: scroll;
   transition: height 250ms ease-in-out;
+}
+
+.list:hover > .listItemCurrent {
+  background: var(--dark-blue);
 }
 
 .open {
@@ -67,13 +64,6 @@
 }
 
 @media (min-width: 48em) {
-  .listContainer {
-    display: unset;
-  }
-
-  .listContainer:hover > .listItemCurrent {
-    background: var(--semi-dark-blue);
-  }
   .list {
     background: var(--semi-dark-blue);
     border-radius: var(--border-radius-s);
@@ -84,6 +74,10 @@
     display: unset;
     justify-content: unset;
     transition: height 100ms ease-in-out;
+  }
+
+  .list:hover > .listItemCurrent {
+    background: var(--semi-dark-blue);
   }
 
   .open {

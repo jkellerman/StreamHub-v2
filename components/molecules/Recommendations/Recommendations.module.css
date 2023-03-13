@@ -51,6 +51,7 @@
   font-size: var(--heading-xs);
   font-weight: var(--fw-light);
   max-width: 95%;
+  margin: 0;
 }
 
 .navigation {

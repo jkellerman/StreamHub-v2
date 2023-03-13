@@ -47,7 +47,7 @@
   .tabs {
     border-bottom: var(--input-active);
     padding-bottom: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     display: flex;
     gap: 1.5rem;
   }

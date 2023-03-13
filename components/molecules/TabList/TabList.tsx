@@ -66,7 +66,7 @@ const TabList: React.FC<TabListProps> = ({
   };
 
   return (
-    <section className={styles.container} ref={tab}>
+    <div className={styles.container} ref={tab}>
       <div className={styles.tabs}>
         <TabButton
           activeTab={activeTab}
@@ -81,7 +81,7 @@ const TabList: React.FC<TabListProps> = ({
           handleScroll={handleScroll}
         />
       </div>
-      <article>
+      <div>
         <div>
           {activeTab === "watch" && (
             <WatchProvidersTab
@@ -156,8 +156,8 @@ const TabList: React.FC<TabListProps> = ({
             </>
           )}
         </div>
-      </article>
-    </section>
+      </div>
+    </div>
   );
 };
 

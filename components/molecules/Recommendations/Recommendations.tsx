@@ -66,7 +66,7 @@ const Recommendations: React.FC<RecommendationsProps> = ({
   return (
     <section className={styles.container}>
       {recommendationsArr.length === 0 ? null : (
-        <h3 className={styles.heading}>people also liked</h3>
+        <h2 className={styles.heading}>people also liked</h2>
       )}
 
       <div className={styles.outerContainer}>
@@ -87,9 +87,9 @@ const Recommendations: React.FC<RecommendationsProps> = ({
                   name={name}
                 />
                 {movies ? (
-                  <div className={styles.name}>{title}</div>
+                  <h3 className={styles.name}>{title}</h3>
                 ) : (
-                  <div className={styles.name}>{name}</div>
+                  <h3 className={styles.name}>{name}</h3>
                 )}
               </article>
             );

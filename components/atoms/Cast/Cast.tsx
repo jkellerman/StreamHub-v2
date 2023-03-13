@@ -9,19 +9,18 @@ interface CastProps {
 const Cast: React.FC<CastProps> = ({ cast }) => {
   return (
     <div className={styles.detailItem}>
-      <div>
-        <dt className={styles.heading}>cast</dt>
-      </div>
-      <div className={styles.group}>
+      <dt className={styles.heading}>cast</dt>
+
+      <dd className={styles.group}>
         {cast.map((member, index) => {
           return (
-            <dd className={styles.name} key={member.id}>
+            <span className={styles.name} key={member.id}>
               {index === cast.length - 1 ? member.name : `${member.name},`}
               &nbsp;
-            </dd>
+            </span>
           );
         })}
-      </div>
+      </dd>
     </div>
   );
 };

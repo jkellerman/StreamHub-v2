@@ -17,7 +17,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   genre_list,
 }) => {
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLUListElement>(null);
 
   const toggleDropdown = useCallback(() => {
     setIsDropDownOpen(!isDropdownOpen);
@@ -55,31 +55,30 @@ const Dropdown: React.FC<DropdownProps> = ({
         className={
           isDropdownOpen ? `${styles.list} ${styles.open}` : `${styles.list}`
         }
+        ref={dropdownRef}
       >
-        <div className={styles.listContainer} ref={dropdownRef}>
-          {genre_list.map(({ id, name }) => {
-            return (
-              <li
-                key={id}
-                className={
-                  selected_genre.name === name
-                    ? styles.listItemCurrent
-                    : styles.listItem
-                }
+        {genre_list.map(({ id, name }) => {
+          return (
+            <li
+              key={id}
+              className={
+                selected_genre.name === name
+                  ? styles.listItemCurrent
+                  : styles.listItem
+              }
+            >
+              <Link
+                href={`/${type}?${QueryString.stringify({
+                  genre: name.toLowerCase(),
+                })}`}
               >
-                <Link
-                  href={`/${type}?${QueryString.stringify({
-                    genre: name.toLowerCase(),
-                  })}`}
-                >
-                  <a className={styles.link} onClick={toggleDropdown}>
-                    {name}
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
-        </div>
+                <a className={styles.link} onClick={toggleDropdown}>
+                  {name}
+                </a>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
