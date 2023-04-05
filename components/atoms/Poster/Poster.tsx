@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../Poster/Poster.module.css";
-import { shimmer, toBase64 } from "@/utils/utils";
+import { shimmer, toBase64 } from "@/utils/placeholder";
 import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 
 interface PosterProps {
@@ -65,7 +65,6 @@ const Poster: React.FC<PosterProps> = ({
             )}`}
             unoptimized={true}
             layout="fill"
-            priority={hero ? true : false}
           />
         </div>
       )}

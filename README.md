@@ -78,11 +78,13 @@ The useInfiniteScroll custom hook has now been updated to use the `useInfiniteQu
 
 #### Image Optimisation
 
-Although I'm a fan of Next.js, I encountered some challenges with the Next/image component during implementation. However, I made sure to use best practices wherever possible, such as `lazy loading` images below the fold and prioritising images with the `largest contentful paint (LCP)`.
+I encountered some challenges with the Next/Image component and have learned a lot about image optimisation and how it can drastically affect the performance of your app.
 
-One of the main benefits of using Next/Image is the out-of-box conversion of images to WebP formats. Next-gen formats such as WebP offer better compression and quality than traditional formats like JPEG and PNG, without sacrificing image quality. This can lead to smaller file sizes and faster page load times, which can improve overall performance. Unfortunately, due to the optimised image limit on Vercel Hobby accounts, I wasn't able to optimise the images across my app in next-gen formats.
+One of the benefits of using Next.js is the out-of-box image optimisation when using the Next/Image component. Next.js will optimise your images by automatically converting them to next-gen formats such as WebP which offer better compression and quality than traditional formats like JPEG and PNG, without sacrificing image quality, leading to much smaller file sizes. The Next/Image component also offers on-demand image resizing so the original aspect ratios of images are never served larger than the version that's rendered on the user's screen. Next.js also automatically uses the width and height of images to prevent `Cumulative Layout Shift` which measure your overall layout stability which is important as unexpected shifts in your sites layout can lead to accidental user errors and distraction.
 
-There is also some room for improving the page load speed in mobile devices according to Chrome Lighthouse report. This is because the original aspect ratios of the images are rendering across all breakpoints, and ideally pages should serve images that are not larger than the version that's rendered on the user's screen. I may explore using a custom loader in the future to address this issue and further optimise the images.
+Unfortunately, due to the image optimisation limit on Vercel Hobby accounts I opted out of image optimisation in this app to prevent my account from potentially being suspended, so there are some performance hits in mobile devices as the aspect ratios are larger than they need to be for smaller screens.
+
+However, I made sure to use best practices wherever possible, such as prioritising images with the `largest contentful paint (LCP)` & `lazy loading` images are that not currently in view. The latter makes sure that images are only fetched when they are in view which prevents unnecessary network requests. I also delved into the TMDB API documentation and set up some variables for the image urls so that images are fetched at width sizes that are large enough to maintain the quality of the images but not too large so that I am fetching images in their original sizes. You can find the different image sizes the API offers [here](https://www.themoviedb.org/talk/53c11d4ec3a3684cf4006400).
 
 ### 👨‍💻&nbsp;Continued development
 

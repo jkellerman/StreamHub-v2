@@ -14,7 +14,6 @@ const TmdbLogo = () => {
             unoptimized={true}
             width={72}
             height={16}
-            priority={true}
           />
         </div>
       </div>

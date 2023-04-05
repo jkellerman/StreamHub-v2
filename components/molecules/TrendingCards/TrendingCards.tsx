@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/future/image";
 import Link from "next/link";
 import styles from "@/components/molecules/TrendingCards/TrendingCards.module.css";
-import { shimmer, toBase64 } from "@/utils/utils";
-import { TRENDING_BACKDROP_URL_IMAGE } from "@/constants/tmdb";
+import { shimmer, toBase64 } from "@/utils/placeholder";
+import { BACKDROP_URL_IMAGE } from "@/constants/tmdb";
 import TrendingCardDetails from "@/components/molecules/TrendingCardDetails/TrendingCardDetails";
 import chevronLeft from "@/public/assets/chevron-left-solid.svg";
 import chevronRight from "@/public/assets/chevron-right-solid.svg";
@@ -44,7 +44,7 @@ const TrendingCards: React.FC<TrendingCardsProps> = ({ cards }) => {
                 >
                   <a className={styles.link}>
                     <Image
-                      src={`${TRENDING_BACKDROP_URL_IMAGE}${item.backdrop_path}`}
+                      src={`${BACKDROP_URL_IMAGE}${item.backdrop_path}`}
                       alt={item.title ? `${item.title}` : `${item.name}`}
                       placeholder="blur"
                       unoptimized={true}
@@ -53,7 +53,7 @@ const TrendingCards: React.FC<TrendingCardsProps> = ({ cards }) => {
                       )}`}
                       width={220}
                       height={120}
-                      priority={true}
+                      priority
                       className={styles.trendingCard}
                     />
                   </a>

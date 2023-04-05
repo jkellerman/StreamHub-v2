@@ -39,7 +39,6 @@ const Search: React.FC<SearchProps> = ({ all, movies, series, hero }) => {
         alt="icon-search"
         unoptimized={true}
         className={styles.searchIcon}
-        priority={true}
       />
       <input
         type="text"

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/future/image";
 import styles from "../Card/Card.module.css";
-import { shimmer, toBase64 } from "@/utils/utils";
+import { shimmer, toBase64 } from "@/utils/placeholder";
 import { BACKDROP_URL_IMAGE } from "@/constants/tmdb";
 
 interface CardProps {
@@ -30,10 +30,9 @@ const Card: React.FC<CardProps> = ({ id, image, series_name, title }) => {
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
             shimmer(240, 140)
           )}`}
-          width={164}
-          height={110}
+          width={780}
+          height={439}
           className={styles.card}
-          priority={true}
         />
       </a>
     </Link>

@@ -14,7 +14,6 @@ const Nav = () => {
           alt="logo"
           unoptimized={true}
           className={styles.logo}
-          priority={true}
         />
 
         <div className={styles.navLinksContainer}>
@@ -28,7 +27,6 @@ const Nav = () => {
           alt="user avatar"
           unoptimized={true}
           className={styles.avatar}
-          priority={true}
         />
       </nav>
     </header>

@@ -17,7 +17,6 @@ const JustWatchLogo: React.FC<JustWatchLogoProps> = ({ tab }) => {
           width={100}
           height={50}
           className={tab ? styles.logo : undefined}
-          priority={true}
         />
       </div>
     </>
