@@ -33,6 +33,7 @@ const Card: React.FC<CardProps> = ({ id, image, series_name, title }) => {
           width={780}
           height={439}
           className={styles.card}
+          priority
         />
       </a>
     </Link>

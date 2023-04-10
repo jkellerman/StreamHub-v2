@@ -1,11 +1,10 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
   height: 100vh;
-  position: relative;
-  top: -7.75rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -7rem;
 }
 
 .loader {
@@ -32,18 +31,6 @@
   animation: ball2 1s infinite;
   background-color: hsl(85, 100%, 55%);
   box-shadow: 30px 0 0 hsl(85, 100%, 55%);
-}
-
-@media (min-width: 48em) {
-  .container {
-    top: -10rem;
-  }
-}
-
-@media (min-width: 64em) {
-  .container {
-    top: -7.5rem;
-  }
 }
 
 @keyframes rotate {

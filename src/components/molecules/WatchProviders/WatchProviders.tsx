@@ -40,6 +40,7 @@ const WatchProviders: React.FC<WatchProvidersProps> = ({ watch_providers }) => {
                         className={styles.icon}
                         width={LOGO_SIZE}
                         height={LOGO_SIZE}
+                        priority
                       />
                     </a>
                   );

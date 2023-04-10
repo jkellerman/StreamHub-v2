@@ -96,9 +96,9 @@ hr {
 
 /* Safari 15+ displays a gray border while loading. Solution at https://nextjs.org/docs/api-reference/next/future/image */
 
-@media not all and (min-resolution: 0.001dpcm) {
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
   img[loading="lazy"] {
-    clip-path: inset(0.5px);
+    clip-path: inset(0.6px);
   }
 }
 
