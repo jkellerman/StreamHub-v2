@@ -1,14 +1,12 @@
 .list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 6rem 0;
   position: absolute;
   top: 0;
   left: 0;
   background: var(--dark-blue);
   z-index: 5;
-  padding: 0;
+  padding: 8rem 0;
   margin: 0;
   width: 0;
   height: 0;
@@ -22,7 +20,7 @@
 
 .open {
   width: 100vw;
-  height: 100vh;
+  height: 102vh;
 }
 
 .listItem,
@@ -74,6 +72,7 @@
     display: unset;
     justify-content: unset;
     transition: height 100ms ease-in-out;
+    padding: 0;
   }
 
   .list:hover > .listItemCurrent {
