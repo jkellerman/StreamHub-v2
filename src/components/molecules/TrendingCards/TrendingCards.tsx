@@ -27,14 +27,14 @@ const TrendingCards: React.FC<TrendingCardsProps> = ({ cards }) => {
   return (
     <>
       <div className={styles.outerBanner}>
-        <div
+        <ul
           className={styles.banner}
           ref={sliderRef}
           onScroll={getScrollPosition}
         >
           {cards.map((item) => {
             return (
-              <article className={styles.container} key={item.id} ref={cardRef}>
+              <li className={styles.container} key={item.id} ref={cardRef}>
                 <Link
                   href={
                     item.title
@@ -65,10 +65,10 @@ const TrendingCards: React.FC<TrendingCardsProps> = ({ cards }) => {
                   type={item.media_type}
                   air_date={item.first_air_date}
                 />
-              </article>
+              </li>
             );
           })}
-        </div>
+        </ul>
         {isScrollAtStart ? null : (
           <button
             className={`${styles.navigation} ${styles.navigationPrev}`}

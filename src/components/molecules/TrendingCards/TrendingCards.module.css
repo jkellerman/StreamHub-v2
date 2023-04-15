@@ -10,6 +10,7 @@
   scroll-behavior: smooth;
   scrollbar-width: none;
   animation: fade var(--fade-animation);
+  padding: 0;
 }
 
 .banner::-webkit-scrollbar,
@@ -21,6 +22,7 @@
   position: relative;
   min-width: 75%;
   overflow: hidden;
+  list-style: none;
 }
 
 .link {

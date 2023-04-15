@@ -70,14 +70,14 @@ const Recommendations: React.FC<RecommendationsProps> = ({
       )}
 
       <div className={styles.outerContainer}>
-        <div
+        <ul
           className={styles.recommendations}
           ref={sliderRef}
           onScroll={getScrollPosition}
         >
           {recommendationsArr.map(({ id, poster_path, title, name }) => {
             return (
-              <article key={id} className={styles.linkContainer} ref={cardRef}>
+              <li key={id} className={styles.linkContainer} ref={cardRef}>
                 <Poster
                   poster={poster_path}
                   title={title}
@@ -91,10 +91,10 @@ const Recommendations: React.FC<RecommendationsProps> = ({
                 ) : (
                   <h3 className={styles.name}>{name}</h3>
                 )}
-              </article>
+              </li>
             );
           })}
-        </div>
+        </ul>
 
         {!isScrollAvailable ? null : (
           <button

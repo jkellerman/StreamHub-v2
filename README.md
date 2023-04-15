@@ -9,6 +9,7 @@ This web app is a resource for discovering new movies and TV shows, and finding 
   - [Links](#links)
   - [Built with](#built-with)
 - [My process](#my-process)
+  - [Server-side Rendering](#server-side-rendering)
   - [Challenges](#challenges)
   - [Continued Development](#continued-development)
 - [Acknowledgements](#acknowledgements)
@@ -52,21 +53,30 @@ Users should be able to:
 
 ## 💭&nbsp;My process
 
-This app is designed to help you quickly discover what films and TV series are trending and available to watch on popular streaming platforms. I chose to use the TMDB API due to its extensive collection of data points and unlike some other APIs, doesn't have any request limitations. Originally conceived as a personal project to be completed in a month, I have been continuously improving and deploying the app beyond my initial deadline, as I found it quite a useful project to focus on some performance optimisation, user experience and just a playground for adding any new skills I've picked up. I've learned a lot during the process and I plan to further enhance the app's functionality by adding a back-end soon.
+I have designed this app so that users easily discover trending films and TV series available for streaming on popular platforms. After evaluating various APIs, I decided to utilise the TMDB API due to its extensive collection of data points and lack of request limitations.
 
-There were a few decisions I made with performance in mind. The first was utilising Next.JS to take advantage of different rendering techniques. When creating the home page, I opted to use `Incremental Static Regeneration (ISR)` to dynamically generate and update the page. This decision was based on ISR's ability to serve dynamic content statically, resulting in faster load times and reduced server load. Since the content of the home page relies on data from a third-party API and the content doesn't change too frequently, I needed a solution that could ensure the content is up-to-date without any delay in rendering. ISR helped me to achieve this by generating pages with the latest data at request time and caching them as static files for future requests.
+Originally conceived as a personal project to be completed within a month, I have been continuously improving and deploying the app beyond my initial deadline as I've found it to be a valuable project for enhancing my coding skills, incorporating new techniques and focusing on performance optimisation. As part of my improvements, I have also refactored the entire app to TypeScript and implemented the atomic design methodology to better organise my code. I have gained valuable knowledge throughout the process and have plans to further enhance the app's functionality by adding a back-end at a later date.
 
-For the other pages in the app, I used different rendering methods, mainly just for experimentation. However, I ultimately decided to use server-side rendering for the individual movie/series pages. These provide crucial information about the film/series and where to find them online, and SSR would provide benefits in terms of SEO in a real-case scenario.
+### Server-side Rendering
+
+The home page of the app utilises server-side rendering with `stale-while-revalidate` `cache-control headers` in combination with `getServerSideProps`. This ensures that the data for trending movies/series is always fresh while also improving app performance by reducing network requests (see below). Additionally, server-side rendering delivers pre-rendered content to search engines, which improves the app's `search engine optimisation (SEO)` by making the content more accessible and indexable by search engines. Similarly, the individual movie/series pages also utilise server-side rendering as they provide crucial information about the films/series and their availability on streaming platforms.
+
+#### SSR Caching
+
+The Cache-Control header is applied to the API requests for home page data. If a request is repeated within 1 second to 86400 seconds (24 hours), the cached value will be used to fulfill the request, while a revalidation request is made in the background to update the cache with fresh data for future use. Requests repeated after 24 hours will no longer use the stale response and will fetch fresh data.
+
+```js
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=1, stale-while-revalidate=86400"
+  );
+
+  ...
+}
+```
 
 ### Challenges
-
-#### Slider
-
-The homepage design is from [Frontend Mentor](https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X) and it featured a trending section that exceeded the viewport width. Initially, I tried to implement a solution using various slider libraries, but they presented some UI issues, so I decided to create my own.
-
-To enhance the user experience, I wanted to allow users to click through the slider instead of relying on horizontal scrolling with a mouse, which can be inconvenient. However, I also wanted to cater to mobile device and Mac trackpad users who might prefer touch-based scrolling. Therefore, I created a hybrid solution that includes both buttons and scrolling capabilities.
-
-Also, clicking the navigation buttons will cause the slider to scroll by the number of cards that are fully visible in the viewport, ensuring consistency and smooth navigation across all screen sizes.
 
 #### Infinite Scroll
 
@@ -74,7 +84,9 @@ For the interior pages, I implemented an infinite scroll to enable users to easi
 
 Update:
 
-The useInfiniteScroll custom hook has now been updated to use the `useInfiniteQuery` hook from the [React Query](https://tanstack.com/query/latest) library. The conversion reduces the amount code needed and improves performance by handling data caching and background re-fetching.
+The useInfiniteScroll custom hook has now been updated to use the `useInfiniteQuery` hook from the [React Query](https://tanstack.com/query/latest) library. The conversion reduces the amount code needed and improves performance by handling data `caching` and background re-fetching. [See custom hook](https://github.com/jkellerman/Reelgood/blob/develop/src/hooks/useInfiniteScroll.ts)
+
+I will also be looking into using the `Intersection Observer` to see if this offers any benefits in performance compared to the scroll listener for this app.
 
 #### Image Optimisation
 
@@ -85,6 +97,14 @@ One of the benefits of using Next.js is the out-of-box image optimisation when u
 Unfortunately, due to the image optimisation limit on Vercel Hobby accounts I opted out of image optimisation in this app to prevent my account from potentially being suspended, so there are some performance hits in mobile devices as the aspect ratios are larger than they need to be for smaller screens.
 
 However, I made sure to use best practices wherever possible, such as prioritising images with the `largest contentful paint (LCP)` & `lazy loading` images are that not currently in view. The latter makes sure that images are only fetched when they are in view which prevents unnecessary network requests. I also delved into the TMDB API documentation and set up some variables for the image urls so that images are fetched at width sizes that are large enough to maintain the quality of the images but not too large so that I am fetching images in their original sizes. You can find the different image sizes the API offers [here](https://www.themoviedb.org/talk/53c11d4ec3a3684cf4006400).
+
+#### Slider
+
+The homepage design is from [Frontend Mentor](https://www.frontendmentor.io/challenges/entertainment-web-app-J-UhgAW1X) and it featured a trending section that exceeded the viewport width. Initially, I tried to implement a solution using various slider libraries, but they presented some UI issues, so I decided to create my own.
+
+To enhance the user experience, I wanted to allow users to click through the slider instead of relying on horizontal scrolling with a mouse, which can be inconvenient. However, I also wanted to cater to mobile device and Mac trackpad users who might prefer touch-based scrolling. Therefore, I created a hybrid solution that includes both buttons and scrolling capabilities.
+
+Also, clicking the navigation buttons will cause the slider to scroll by the number of cards that are fully visible in the viewport, ensuring consistency and smooth navigation across all screen sizes.
 
 ### 👨‍💻&nbsp;Continued development
 

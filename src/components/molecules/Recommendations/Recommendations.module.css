@@ -22,6 +22,7 @@
   width: 90%;
   margin: 1.25rem auto 2rem;
   scrollbar-width: none;
+  padding: 0;
 }
 
 .recommendations::-webkit-scrollbar {
@@ -39,6 +40,7 @@
   max-width: 130px;
   height: 227px;
   overflow: hidden;
+  list-style: none;
 }
 
 @media (hover: hover) {

@@ -120,8 +120,13 @@ const Series: React.FC<SeriesProps> = ({
 export default Series;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { query } = context;
+  const { query, res } = context;
   const { id } = query;
+
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=1, stale-while-revalidate=86400"
+  );
 
   const queryString = qs.stringify(
     {
