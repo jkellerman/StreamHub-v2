@@ -9,16 +9,16 @@ interface SliderProps {
   getScrollPosition: () => void;
   handleClickNext: () => void;
   handleClickPrev: () => void;
-  sliderRef: MutableRefObject<HTMLDivElement | null>;
-  cardRef: MutableRefObject<HTMLDivElement | null>;
+  sliderRef: MutableRefObject<HTMLUListElement | null>;
+  cardRef: MutableRefObject<HTMLLIElement | null>;
 }
 
 const useSlider = (): SliderProps => {
   const [isScrollAtStart, setIsScrollAtStart] = useState(true);
   const [isScrollAtEnd, setIsScrollAtEnd] = useState(false);
   const [isScrollAvailable, setIsScrollAvailable] = useState(false);
-  const sliderRef = useRef<HTMLDivElement | null>(null);
-  const cardRef = useRef<HTMLDivElement | null>(null);
+  const sliderRef = useRef<HTMLUListElement | null>(null);
+  const cardRef = useRef<HTMLLIElement | null>(null);
 
   const getScrollPosition = () => {
     if (sliderRef.current) {

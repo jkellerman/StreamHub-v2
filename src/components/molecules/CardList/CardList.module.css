@@ -2,11 +2,13 @@
   display: flex;
   flex-flow: row wrap;
   margin: 0 0 0 -20px;
+  padding: 0;
 }
 
 .linkContainer {
   margin: 0 0 20px 20px;
   width: calc(50% - 20px);
+  list-style: none;
 }
 
 @media (min-width: 30em) {

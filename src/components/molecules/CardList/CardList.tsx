@@ -23,10 +23,10 @@ const CardList: React.FC<CardListProps> = ({ cards, isLoading, isError }) => {
     );
 
   return (
-    <div className={styles.container}>
+    <ul className={styles.container}>
       {cards.map((item) => {
         return (
-          <article key={item.id} className={styles.linkContainer}>
+          <li key={item.id} className={styles.linkContainer}>
             <Card
               id={item.id}
               image={item.backdrop_path}
@@ -39,10 +39,10 @@ const CardList: React.FC<CardListProps> = ({ cards, isLoading, isError }) => {
               air_date={item.first_air_date}
               series_name={item.name}
             />
-          </article>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 };
 
