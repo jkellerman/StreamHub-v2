@@ -22,7 +22,7 @@ const CategoryHeading: React.FC<CategoryHeadingProps> = ({
 
       {home && (
         <Link href={`/${type}/${category.replace(/\s/g, "")}`}>
-          <a className={styles.categoryLink}>see more</a>
+          <a className={styles.categoryLink}>more {type}</a>
         </Link>
       )}
     </div>

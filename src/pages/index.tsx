@@ -7,7 +7,7 @@ import MediaCategoryHomePage from "@/components/organisms/MediaCategoryHomePage/
 import CardList from "@/components/molecules/CardList/CardList";
 import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
 
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import { Media } from "@/src/types";
 
 interface HomeProps {
@@ -75,11 +75,7 @@ const Home: React.FC<HomeProps> = ({
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=1, stale-while-revalidate=86400"
-  );
+export const getStaticProps: GetStaticProps = async () => {
   // Slice array
 
   const sliceArray = (
@@ -205,5 +201,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       upcomingMovies,
       topRatedMovies,
     },
+    revalidate: 1,
   };
 };
