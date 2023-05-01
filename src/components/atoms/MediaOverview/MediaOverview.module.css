@@ -27,7 +27,7 @@
 
 .readMoreToggle {
   background: transparent;
-  color: var(--red);
+  color: var(--primary);
   border: none;
   text-transform: capitalize;
   font-size: var(--body-l);

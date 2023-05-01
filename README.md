@@ -59,11 +59,11 @@ Originally conceived as a personal project to be completed within a month, I hav
 
 ### Server-side Rendering
 
-The home page of the app utilises server-side rendering with `stale-while-revalidate` `cache-control headers` in combination with `getServerSideProps`. This ensures that the data for trending movies/series is always fresh while also improving app performance by reducing network requests (see below). Additionally, server-side rendering delivers pre-rendered content to search engines, which improves the app's `search engine optimisation (SEO)` by making the content more accessible and indexable by search engines. Similarly, the individual movie/series pages also utilise server-side rendering as they provide crucial information about the films/series and their availability on streaming platforms.
+The individual movie/series pages utilise server-side rendering with `stale-while-revalidate` `cache-control headers` in combination with `getServerSideProps`. This ensures that the data for trending movies/series is always fresh while also improving app performance by reducing network requests (see below). Additionally, server-side rendering delivers pre-rendered content to search engines, which improves the app's `search engine optimisation (SEO)` by making the content more accessible and indexable by search engines.
 
 #### SSR Caching
 
-The Cache-Control header is applied to the API requests for home page data. If a request is repeated within 1 second to 86400 seconds (24 hours), the cached value will be used to fulfill the request, while a revalidation request is made in the background to update the cache with fresh data for future use. Requests repeated after 24 hours will no longer use the stale response and will fetch fresh data.
+The Cache-Control header is applied to the API requests for the individual movie/series pages. If a request is repeated within 1 second to 86400 seconds (24 hours), the cached value will be used to fulfill the request, while a revalidation request is made in the background to update the cache with fresh data for future use. Requests repeated after 24 hours will no longer use the stale response and will fetch fresh data.
 
 ```js
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {

@@ -3,7 +3,7 @@
 }
 
 .inactive:hover {
-  fill: var(--red);
+  fill: var(--primary);
   transition: all 0.2s;
 }
 

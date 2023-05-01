@@ -37,7 +37,7 @@ interface MovieProps {
   watch_providers: Media.IProviderList;
   recommendations: Media.IRecommendationsList;
   runtime: number;
-  director: Media.IDirectorOrNetwork;
+  director: Media.IDirector;
   title: string;
 }
 
@@ -157,7 +157,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     title,
   } = data;
 
-  const getDirector: Media.IDirectorOrNetwork = credits.crew.find(
+  const getDirector: Media.IDirector = credits.crew.find(
     (crew: Media.ICast) => crew.department === "Directing"
   );
   const director = getDirector.name;

@@ -37,7 +37,7 @@ interface SeriesProps {
   watch_providers: Media.IProviderList;
   recommendations: Media.IRecommendationsList;
   seasons: number;
-  network: Media.IDirectorOrNetwork;
+  network: string[];
   title: string;
 }
 
@@ -165,7 +165,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const age_rating: string = certification?.rating ?? "";
 
-  const network: string = networks.map((item: Media.IDirectorOrNetwork) => {
+  const network: string = networks.map((item: Media.INetwork) => {
     return item.name;
   });
 

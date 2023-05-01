@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   height: auto;
+  animation: fade 300ms ease-in;
 }
 
 .backgroundImage {
@@ -47,5 +48,14 @@
 
   .overlay {
     height: 102vh;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

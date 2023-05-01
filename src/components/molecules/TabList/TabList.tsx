@@ -23,12 +23,12 @@ interface TabListProps {
   overview: string;
   series_age_rating?: string;
   poster: string;
-  director?: Media.IDirectorOrNetwork;
+  director?: Media.IDirector;
   cast: Media.ICastMember[];
   genres: Genres.IGenre[];
   watch_providers: Media.IProviderList;
   seasons?: number;
-  network?: Media.IDirectorOrNetwork;
+  network?: string[];
   title: string;
   movies?: boolean;
 }

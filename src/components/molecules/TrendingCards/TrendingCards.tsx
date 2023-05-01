@@ -51,8 +51,8 @@ const TrendingCards: React.FC<TrendingCardsProps> = ({ cards }) => {
                       blurDataURL={`data:image/svg+xml;base64,${toBase64(
                         shimmer(240, 140)
                       )}`}
-                      width={220}
-                      height={120}
+                      width={591}
+                      height={333}
                       priority
                       className={styles.trendingCard}
                     />

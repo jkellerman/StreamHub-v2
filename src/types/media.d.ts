@@ -24,11 +24,14 @@ export declare namespace Media {
     rating: string;
   }
 
-  export interface IDirectorOrNetwork {
+  export interface IDirector {
     name: string;
   }
+  export interface INetwork {
+    name: IDirector[];
+  }
 
-  export interface ICastMember extends IDirectorOrNetwork {
+  export interface ICastMember extends IDirector {
     id: number;
   }
 

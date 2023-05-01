@@ -1,6 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Image from "next/future/image";
-import { BACKGROUND_URL_IMAGE } from "@/constants/tmdb";
+import {
+  BACKGROUND_URL_IMAGE_S,
+  BACKGROUND_URL_IMAGE_M,
+  BACKGROUND_URL_IMAGE_L,
+  BACKGROUND_URL_IMAGE_XL,
+} from "@/constants/tmdb";
 import styles from "../HeroBackground/HeroBackground.module.css";
 
 interface HeroBackgroundProps {
@@ -14,15 +19,28 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ backdrop, title }) => {
       {" "}
       <div className={styles.overlay}></div>
       <div className={styles.imageContainer}>
-        <Image
-          src={`${BACKGROUND_URL_IMAGE}${backdrop}`}
-          alt={`${title} backdrop`}
-          unoptimized
-          priority
-          width={3840}
-          height={2160}
-          className={styles.backgroundImage}
-        />
+        <picture>
+          <source
+            media="(min-width:1200px)"
+            srcSet={`${BACKGROUND_URL_IMAGE_XL}${backdrop}`}
+          />
+          <source
+            media="(min-width:700px)"
+            srcSet={`${BACKGROUND_URL_IMAGE_L}${backdrop}`}
+          />
+          <source
+            media="(max-width:300px)"
+            srcSet={`${BACKGROUND_URL_IMAGE_S}${backdrop}`}
+          />
+          <img
+            src={`${BACKGROUND_URL_IMAGE_M}${backdrop}`}
+            alt={`${title} backdrop`}
+            className={styles.backgroundImage}
+            loading="eager"
+            width={1280}
+            height={720}
+          />
+        </picture>
       </div>
     </>
   );

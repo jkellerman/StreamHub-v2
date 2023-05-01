@@ -1,9 +1,9 @@
 :root {
-  --dark-blue: hsl(223, 30%, 9%);
-  --greyish-blue: hsl(223, 23%, 46%);
-  --pure-white: hsl(0, 0%, 100%);
-  --red: hsl(0, 97%, 63%);
-  --semi-dark-blue: hsl(223, 36%, 14%);
+  --dark-blue: #10141e;
+  --greyish-blue: #5a6a90;
+  --pure-white: #ffffff;
+  --primary: #d65bdb;
+  --semi-dark-blue: #171e31;
   --gold: hsl(50, 100%, 50%);
 
   --border-radius-l: 20px;
@@ -85,7 +85,7 @@ hr {
 }
 
 #nprogress .bar {
-  background: var(--red);
+  background: var(--primary);
   position: fixed;
   z-index: 1031;
   top: 0;

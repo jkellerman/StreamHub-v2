@@ -20,7 +20,7 @@
 
 .categoryLink {
   font-size: var(--body-l);
-  color: var(--red);
+  color: var(--primary);
 }
 
 .categoryLink:hover {
