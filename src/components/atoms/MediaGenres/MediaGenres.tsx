@@ -1,8 +1,10 @@
-import React from "react";
 import Link from "next/link";
-import styles from "../MediaGenres/MediaGenres.module.css";
 import QueryString from "qs";
+import React from "react";
+
 import { Genres } from "@/src/types";
+
+import styles from "../MediaGenres/MediaGenres.module.css";
 
 interface MediaGenresProps {
   genres: Genres.IGenre[];

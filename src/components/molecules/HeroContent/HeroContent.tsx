@@ -1,7 +1,9 @@
 import React from "react";
-import styles from "../HeroContent/HeroContent.module.css";
-import Poster from "@/components/atoms/Poster/Poster";
+
 import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
+import Poster from "@/components/atoms/Poster/Poster";
+
+import styles from "../HeroContent/HeroContent.module.css";
 
 interface HeroContentProps {
   title: string;

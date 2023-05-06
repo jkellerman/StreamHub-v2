@@ -1,14 +1,13 @@
-import React from "react";
-import Head from "next/head";
-import QueryString from "qs";
-import { useRouter } from "next/router";
-import styles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.css";
 import { GetStaticProps } from "next";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import QueryString from "qs";
+import React from "react";
 
-import Dropdown from "@/components/molecules/Dropdown/Dropdown";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import CardList from "@/components/molecules/CardList/CardList";
-
+import Dropdown from "@/components/molecules/Dropdown/Dropdown";
+import styles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.css";
 import { DEFAULT_SERIES_GENRE } from "@/constants/app";
 import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";

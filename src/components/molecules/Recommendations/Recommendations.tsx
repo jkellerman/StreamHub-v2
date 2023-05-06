@@ -1,9 +1,10 @@
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+
+import Poster from "@/components/atoms/Poster/Poster";
 import styles from "@/components/molecules/Recommendations/Recommendations.module.css";
 import useSlider from "@/hooks/useSlider";
-import { useRouter } from "next/router";
 import { Media } from "@/src/types";
-import Poster from "@/components/atoms/Poster/Poster";
 
 interface RecommendationsProps {
   movies?: boolean;

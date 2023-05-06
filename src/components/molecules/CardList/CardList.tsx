@@ -1,10 +1,11 @@
 import React from "react";
+
 import Card from "@/components/atoms/Card/Card";
 import CardDetails from "@/components/atoms/CardDetails/CardDetails";
-import styles from "../CardList/CardList.module.css";
-
 import Spinner from "@/components/atoms/Spinner/Spinner";
 import { Media } from "@/src/types";
+
+import styles from "../CardList/CardList.module.css";
 
 interface CardListProps {
   cards: Media.IMediaItem[];

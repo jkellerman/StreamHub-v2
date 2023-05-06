@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
+
+import buttonStyles from "@/components/atoms/Button/Button.module.css";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import headingStyles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.css";
-import buttonStyles from "@/components/atoms/Button/Button.module.css";
 
 const Custom404 = () => {
   return (

@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+
 import {
   BACKGROUND_URL_IMAGE_S,
   BACKGROUND_URL_IMAGE_M,
   BACKGROUND_URL_IMAGE_L,
   BACKGROUND_URL_IMAGE_XL,
 } from "@/constants/tmdb";
+
 import styles from "../HeroBackground/HeroBackground.module.css";
 
 interface HeroBackgroundProps {

@@ -1,8 +1,9 @@
 import React from "react";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+
+import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
 import Spinner from "@/components/atoms/Spinner/Spinner";
 import CardList from "@/components/molecules/CardList/CardList";
-import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 
 interface MediaCategoryProps {
   endpoint: string;

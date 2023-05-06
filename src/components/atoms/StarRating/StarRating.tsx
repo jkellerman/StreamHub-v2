@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { Rating } from "react-simple-star-rating";
+
 import styles from "../StarRating/StarRating.module.css";
 
 interface StarRatingProps {

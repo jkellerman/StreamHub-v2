@@ -1,10 +1,11 @@
+import Image from "next/future/image";
 import React from "react";
-import styles from "../WatchProvidersTab/WatchProvidersTab.module.css";
+
+import JustWatchLogo from "@/components/atoms/JustWatchLogo/JustWatchLogo";
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import { Media } from "@/src/types";
 
-import Image from "next/future/image";
-import JustWatchLogo from "@/components/atoms/JustWatchLogo/JustWatchLogo";
+import styles from "../WatchProvidersTab/WatchProvidersTab.module.css";
 const LOGO_SIZE = 40;
 
 interface WatchProvidersTabProps {

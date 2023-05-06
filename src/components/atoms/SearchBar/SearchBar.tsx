@@ -1,9 +1,10 @@
-import React, { FormEvent } from "react";
-import styles from "../SearchBar/SearchBar.module.css";
 import Image from "next/future/image";
-import img from "@/public/assets/icon-search.svg";
-import { useState } from "react";
 import { useRouter } from "next/router";
+import React, { FormEvent, useState } from "react";
+
+import img from "@/public/assets/icon-search.svg";
+
+import styles from "../SearchBar/SearchBar.module.css";
 
 interface SearchProps {
   all?: boolean;

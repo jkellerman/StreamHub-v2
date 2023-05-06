@@ -1,18 +1,20 @@
-import styles from "../TabList/TabList.module.css";
-import React, { useState, useRef } from "react";
-import WatchProvidersTab from "@/components/molecules/WatchProvidersTab/WatchProvidersTab";
-import TabButton from "@/components/atoms/TabButton/TabButton";
-import StarRating from "@/components/atoms/StarRating/StarRating";
-import Poster from "@/components/atoms/Poster/Poster";
-import Certification from "@/components/atoms/Certification/Certification";
-import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
-import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
-import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
-import Cast from "@/components/atoms/Cast/Cast";
-import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
-import MediaRunTimeOrSeasons from "@/components/atoms/MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
 import Router from "next/router";
+import React, { useState, useRef } from "react";
+
+import Cast from "@/components/atoms/Cast/Cast";
+import Certification from "@/components/atoms/Certification/Certification";
+import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
+import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
+import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
+import MediaRunTimeOrSeasons from "@/components/atoms/MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
+import Poster from "@/components/atoms/Poster/Poster";
+import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
+import StarRating from "@/components/atoms/StarRating/StarRating";
+import TabButton from "@/components/atoms/TabButton/TabButton";
+import WatchProvidersTab from "@/components/molecules/WatchProvidersTab/WatchProvidersTab";
 import { Media, Genres } from "@/src/types";
+
+import styles from "../TabList/TabList.module.css";
 
 interface TabListProps {
   movie_age_rating?: string;

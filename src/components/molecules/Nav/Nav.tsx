@@ -1,9 +1,10 @@
-import styles from "../Nav/Nav.module.css";
-
 import Image from "next/future/image";
-import logo from "@/public/assets/logo.svg";
+
 import avatar from "@/public/assets/image-avatar.png";
+import logo from "@/public/assets/logo.svg";
+
 import NavIconButton from "../../atoms/NavIconButton/NavIconButton";
+import styles from "../Nav/Nav.module.css";
 
 const Nav = () => {
   return (

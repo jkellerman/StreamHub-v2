@@ -1,9 +1,11 @@
-import React from "react";
-import styles from "../CardDetails/CardDetails.module.css";
-import ReleaseDate from "../ReleaseDate/ReleaseDate";
 import Image from "next/future/image";
+import React from "react";
+
 import movie from "@/public/assets/icon-category-movie.svg";
 import tv from "@/public/assets/icon-category-tv.svg";
+
+import styles from "../CardDetails/CardDetails.module.css";
+import ReleaseDate from "../ReleaseDate/ReleaseDate";
 
 interface CardDetailsProps {
   air_date?: string;

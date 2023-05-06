@@ -1,6 +1,7 @@
 import React from "react";
-import styles from "../Hero/Hero.module.css";
+
 import HeroBackground from "../../atoms/HeroBackground/HeroBackground";
+import styles from "../Hero/Hero.module.css";
 
 interface HeroProps {
   backdrop: string;

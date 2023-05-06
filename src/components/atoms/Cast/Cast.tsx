@@ -1,5 +1,7 @@
 import React from "react";
+
 import { Media } from "@/src/types";
+
 import styles from "../Cast/Cast.module.css";
 
 interface CastProps {

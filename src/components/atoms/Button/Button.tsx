@@ -1,7 +1,9 @@
-import React from "react";
-import styles from "../Button/Button.module.css";
-import img from "@/public/assets/chevron-down.svg";
 import Image from "next/future/image";
+import React from "react";
+
+import img from "@/public/assets/chevron-down.svg";
+
+import styles from "../Button/Button.module.css";
 
 interface ButtonProps {
   toggleDropdown: () => void;

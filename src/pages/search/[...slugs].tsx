@@ -1,9 +1,10 @@
 import Head from "next/head";
-import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import { useRouter } from "next/router";
+
+import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import CardList from "@/components/molecules/CardList/CardList";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import styles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.css";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 
 const Search = () => {
   const {

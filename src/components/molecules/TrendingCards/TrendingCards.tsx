@@ -1,14 +1,15 @@
-import React from "react";
 import Image from "next/future/image";
 import Link from "next/link";
-import styles from "@/components/molecules/TrendingCards/TrendingCards.module.css";
-import { shimmer, toBase64 } from "@/utils/placeholder";
-import { BACKDROP_URL_IMAGE } from "@/constants/tmdb";
+import React from "react";
+
 import TrendingCardDetails from "@/components/molecules/TrendingCardDetails/TrendingCardDetails";
+import styles from "@/components/molecules/TrendingCards/TrendingCards.module.css";
+import { BACKDROP_URL_IMAGE } from "@/constants/tmdb";
+import useSlider from "@/hooks/useSlider";
 import chevronLeft from "@/public/assets/chevron-left-solid.svg";
 import chevronRight from "@/public/assets/chevron-right-solid.svg";
-import useSlider from "@/hooks/useSlider";
 import { Media } from "@/src/types";
+import { shimmer, toBase64 } from "@/utils/placeholder";
 
 interface TrendingCardsProps {
   cards: Media.IMediaItem[];

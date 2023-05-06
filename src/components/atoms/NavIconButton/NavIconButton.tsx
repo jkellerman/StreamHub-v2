@@ -1,7 +1,8 @@
-import React from "react";
-import styles from "../NavIconButton/NavIconButton.module.css";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
+
+import styles from "../NavIconButton/NavIconButton.module.css";
 
 interface NavIconButtonProps {
   home?: boolean;

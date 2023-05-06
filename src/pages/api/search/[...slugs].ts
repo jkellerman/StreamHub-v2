@@ -1,7 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import QueryString from "qs";
 
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
-import QueryString from "qs";
+
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
   req: NextApiRequest,

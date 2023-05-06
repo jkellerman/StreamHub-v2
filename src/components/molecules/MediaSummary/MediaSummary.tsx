@@ -1,6 +1,7 @@
 import React from "react";
-import styles from "../MediaSummary/MediaSummary.module.css";
+
 import StarRating from "../../atoms/StarRating/StarRating";
+import styles from "../MediaSummary/MediaSummary.module.css";
 
 interface MediaSummaryProps {
   children: React.ReactNode;

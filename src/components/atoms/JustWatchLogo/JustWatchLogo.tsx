@@ -1,5 +1,7 @@
 import Image from "next/future/image";
+
 import img from "@/public/assets/justwatch.svg";
+
 import styles from "../../atoms/JustWatchLogo/JustWatchLogo.module.css";
 
 interface JustWatchLogoProps {

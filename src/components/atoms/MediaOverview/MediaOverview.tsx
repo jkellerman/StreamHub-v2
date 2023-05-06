@@ -1,6 +1,7 @@
-import styles from "../MediaOverview/MediaOverview.module.css";
-import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
+import React, { useState, useRef, useEffect } from "react";
+
+import styles from "../MediaOverview/MediaOverview.module.css";
 
 interface MediaOverviewProps {
   hero?: boolean;

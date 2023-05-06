@@ -1,9 +1,11 @@
-import React from "react";
 import Image from "next/future/image";
-import styles from "../WatchProviders/WatchProviders.module.css";
+import React from "react";
+
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import { Media } from "@/src/types";
+
 import JustWatchLogo from "../../atoms/JustWatchLogo/JustWatchLogo";
+import styles from "../WatchProviders/WatchProviders.module.css";
 
 const LOGO_SIZE = 40;
 

@@ -1,4 +1,5 @@
 import Head from "next/head";
+
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import MediaCategory from "@/components/organisms/MediaCategory/MediaCategory";
 

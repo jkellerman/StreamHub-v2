@@ -1,9 +1,11 @@
-import React from "react";
-import Link from "next/link";
 import Image from "next/future/image";
-import styles from "../Card/Card.module.css";
-import { shimmer, toBase64 } from "@/utils/placeholder";
+import Link from "next/link";
+import React from "react";
+
 import { BACKDROP_URL_IMAGE } from "@/constants/tmdb";
+import { shimmer, toBase64 } from "@/utils/placeholder";
+
+import styles from "../Card/Card.module.css";
 
 interface CardProps {
   id: number;

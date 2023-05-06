@@ -1,11 +1,12 @@
-import React from "react";
-import "@/styles/globals.css";
-import Nav from "@/components/molecules/Nav/Nav";
-import Footer from "@/components/molecules/Footer/Footer";
-import NProgress from "nprogress";
-import Router from "next/router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Router from "next/router";
+import NProgress from "nprogress";
+import React from "react";
+
+import "@/styles/globals.css";
+import Footer from "@/components/molecules/Footer/Footer";
+import Nav from "@/components/molecules/Nav/Nav";
 
 import type { AppProps } from "next/app";
 

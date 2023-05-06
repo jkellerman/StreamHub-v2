@@ -1,5 +1,7 @@
 import Image from "next/future/image";
+
 import attribution from "@/public/assets/attribution.svg";
+
 import styles from "../TmdbLogo/TmdbLogo.module.css";
 
 const TmdbLogo = () => {

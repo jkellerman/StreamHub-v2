@@ -1,9 +1,11 @@
-import React from "react";
-import styles from "@/components/molecules/TrendingCardDetails/TrendingCardDetails.module.css";
-import ReleaseDate from "../../atoms/ReleaseDate/ReleaseDate";
 import Image from "next/future/image";
+import React from "react";
+
+import styles from "@/components/molecules/TrendingCardDetails/TrendingCardDetails.module.css";
 import movie from "@/public/assets/icon-category-movie.svg";
 import tv from "@/public/assets/icon-category-tv.svg";
+
+import ReleaseDate from "../../atoms/ReleaseDate/ReleaseDate";
 
 interface TrendingCardDetailsProps {
   movie_title?: string;

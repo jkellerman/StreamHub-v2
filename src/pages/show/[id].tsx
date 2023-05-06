@@ -1,28 +1,27 @@
-import React from "react";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import qs from "qs";
+import React from "react";
 
-import { GetServerSideProps } from "next";
-import { Genres, Media } from "@/src/types";
-import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
-
-import styles from "@/components/organisms/Hero/Hero.module.css";
+import Cast from "@/components/atoms/Cast/Cast";
+import Certification from "@/components/atoms/Certification/Certification";
+import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
+import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
+import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
+import MediaRunTimeOrSeasons from "@/components/atoms/MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
+import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
-import Hero from "@/components/organisms/Hero/Hero";
+import StarRating from "@/components/atoms/StarRating/StarRating";
 import HeroContent from "@/components/molecules/HeroContent/HeroContent";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
 import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
-import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
-import Cast from "@/components/atoms/Cast/Cast";
-import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
-import MediaRunTimeOrSeasons from "@/components/atoms/MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
-import Tablist from "@/components/molecules/TabList/TabList";
-import StarRating from "@/components/atoms/StarRating/StarRating";
-import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
 import Recommendations from "@/components/molecules/Recommendations/Recommendations";
-import Certification from "@/components/atoms/Certification/Certification";
-import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
-import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
+import Tablist from "@/components/molecules/TabList/TabList";
+import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
+import Hero from "@/components/organisms/Hero/Hero";
+import styles from "@/components/organisms/Hero/Hero.module.css";
+import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import { Genres, Media } from "@/src/types";
 
 interface SeriesProps {
   backdrop: string;

@@ -1,13 +1,13 @@
-import React from "react";
+import { GetStaticProps } from "next";
 import Head from "next/head";
+import React from "react";
+
+import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
-import TrendingBanner from "@/components/organisms/TrendingBanner/TrendingBanner";
+import CardList from "@/components/molecules/CardList/CardList";
 import TrendingCards from "@/components/molecules/TrendingCards/TrendingCards";
 import MediaCategoryHomePage from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage";
-import CardList from "@/components/molecules/CardList/CardList";
-import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
-
-import { GetStaticProps } from "next";
+import TrendingBanner from "@/components/organisms/TrendingBanner/TrendingBanner";
 import { Media } from "@/src/types";
 
 interface HomeProps {
