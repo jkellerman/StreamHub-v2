@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../TabButton/TabButton.module.css";
+import styles from "../TabButton/TabButton.module.scss";
 
 interface TabButtonProps {
   activeTab: string;

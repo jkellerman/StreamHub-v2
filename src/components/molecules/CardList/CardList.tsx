@@ -5,7 +5,7 @@ import CardDetails from "@/components/atoms/CardDetails/CardDetails";
 import Spinner from "@/components/atoms/Spinner/Spinner";
 import { Media } from "@/src/types";
 
-import styles from "../CardList/CardList.module.css";
+import styles from "../CardList/CardList.module.scss";
 
 interface CardListProps {
   cards: Media.IMediaItem[];

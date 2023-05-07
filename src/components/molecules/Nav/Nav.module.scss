@@ -1,0 +1,82 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.header {
+  width: 100%;
+  background-color: $secondary-light;
+  @include tablet() {
+    background-color: transparent;
+  }
+}
+
+.nav {
+  background: $secondary-light;
+  width: 90%;
+  margin: 0 auto;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  @include tablet() {
+    height: 72px;
+    padding: 0 1.5rem;
+    width: 93.75%;
+    margin: 1.5rem auto 0;
+    border-radius: 10px;
+  }
+  @include laptop() {
+    padding: 2rem 0;
+    width: 96px;
+    height: 90vh;
+    flex-direction: column;
+    position: fixed;
+    top: 1rem;
+    left: 2rem;
+    border-radius: $border-radius-l;
+  }
+}
+
+.logo {
+  width: 25px;
+  height: 20px;
+  @include tablet() {
+    width: 32px;
+    height: 25.6px;
+  }
+}
+
+.navLinksContainer {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  @include tablet() {
+    gap: 2rem;
+  }
+
+  @include laptop {
+    height: 200px;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 5rem;
+  }
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border: 1px solid $primary-text;
+  border-radius: 50%;
+  @include tablet() {
+    width: 32px;
+    height: 32px;
+  }
+  @include laptop {
+    width: 40px;
+    height: 40px;
+  }
+}

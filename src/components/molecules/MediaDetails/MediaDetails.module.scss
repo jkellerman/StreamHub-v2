@@ -1,0 +1,11 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.details {
+  margin: 0 auto 2rem;
+  width: 90%;
+  font-size: $body-l-m;
+  @include tablet() {
+    display: none;
+  }
+}

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import CardList from "@/components/molecules/CardList/CardList";
-import styles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.css";
+import styles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.scss";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 
 const Search = () => {

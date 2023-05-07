@@ -4,7 +4,7 @@ import React, { FormEvent, useState } from "react";
 
 import img from "@/public/assets/icon-search.svg";
 
-import styles from "../SearchBar/SearchBar.module.css";
+import styles from "../SearchBar/SearchBar.module.scss";
 
 interface SearchProps {
   all?: boolean;

@@ -2,7 +2,7 @@ import React from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { Rating } from "react-simple-star-rating";
 
-import styles from "../StarRating/StarRating.module.css";
+import styles from "../StarRating/StarRating.module.scss";
 
 interface StarRatingProps {
   star_rating: number;

@@ -1,0 +1,105 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.container {
+  display: none;
+  @include tablet() {
+    display: block;
+    width: 93.75%;
+    margin: 1rem auto 3rem;
+  }
+  @include laptop() {
+    margin: 0 2.25rem 3rem 11rem;
+    width: unset;
+    position: relative;
+    z-index: 5;
+  }
+}
+
+.tabs {
+  @include tablet() {
+    border-bottom: $input-active;
+    padding-bottom: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1.5rem;
+  }
+  @include laptop() {
+    .tabs {
+      gap: 2.5rem;
+    }
+  }
+}
+
+.detailsContainer {
+  @include tablet() {
+    display: flex;
+    gap: 2rem;
+  }
+}
+
+.overviewContainer {
+  margin-bottom: 2rem;
+  @include laptop() {
+    margin-bottom: none;
+  }
+}
+
+.mediaDetails {
+  @include laptop() {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 90%;
+    justify-content: flex-end;
+  }
+}
+
+.mediaDetails.active {
+  animation: fade $fade-animation;
+}
+
+.list {
+  @include laptop() {
+    margin-top: 0;
+  }
+}
+
+.list,
+.attributesList {
+  padding-left: 0;
+  display: flex;
+}
+
+.attributesList {
+  flex-wrap: wrap;
+  row-gap: 2rem;
+  @include laptop() {
+    display: flex;
+  }
+}
+
+.listItem {
+  list-style: none;
+  width: 160px;
+  margin-right: 0.5rem;
+}
+
+.heading {
+  text-transform: uppercase;
+  font-weight: $fw-med;
+  margin-bottom: 0.5rem;
+}
+
+.releaseDate,
+.certification {
+  width: 165px;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

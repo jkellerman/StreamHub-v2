@@ -5,7 +5,7 @@ import React from "react";
 import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 import { shimmer, toBase64 } from "@/utils/placeholder";
 
-import styles from "../Poster/Poster.module.css";
+import styles from "../Poster/Poster.module.scss";
 
 interface PosterProps {
   poster: string;

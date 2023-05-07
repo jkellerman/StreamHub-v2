@@ -7,7 +7,7 @@ import React from "react";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import CardList from "@/components/molecules/CardList/CardList";
 import Dropdown from "@/components/molecules/Dropdown/Dropdown";
-import styles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.css";
+import styles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.scss";
 import { DEFAULT_MOVIES_GENRE } from "@/constants/app";
 import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";

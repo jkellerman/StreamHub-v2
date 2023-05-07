@@ -1,0 +1,30 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.heading {
+  font-weight: var(--fw-med);
+  text-transform: capitalize;
+  min-width: 75px;
+  @include tablet() {
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    min-width: none;
+  }
+}
+
+.description {
+  margin-left: 0;
+  white-space: nowrap;
+  list-style: none;
+}
+
+.detailItem {
+  display: flex;
+  margin-bottom: 2rem;
+  @include tablet() {
+    width: 160px;
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+    flex-direction: column;
+  }
+}

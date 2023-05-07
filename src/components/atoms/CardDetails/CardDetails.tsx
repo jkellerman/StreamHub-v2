@@ -4,7 +4,7 @@ import React from "react";
 import movie from "@/public/assets/icon-category-movie.svg";
 import tv from "@/public/assets/icon-category-tv.svg";
 
-import styles from "../CardDetails/CardDetails.module.css";
+import styles from "../CardDetails/CardDetails.module.scss";
 import ReleaseDate from "../ReleaseDate/ReleaseDate";
 
 interface CardDetailsProps {

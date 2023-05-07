@@ -1,0 +1,9 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.ageRating {
+  border: 1px solid $primary-text;
+  padding: 0.15rem 0.5rem;
+  font-weight: $fw-med;
+  margin-right: 0.75rem;
+}

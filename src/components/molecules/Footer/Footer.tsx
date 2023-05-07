@@ -1,6 +1,6 @@
 import TmdbLogo from "@/components/atoms/TmdbLogo/TmdbLogo";
 
-import styles from "../Footer/Footer.module.css";
+import styles from "../Footer/Footer.module.scss";
 
 const Footer = () => {
   return (

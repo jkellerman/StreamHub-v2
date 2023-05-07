@@ -1,0 +1,166 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.heading {
+  width: 90%;
+  margin: 1.25rem auto 0;
+  font-size: $heading-xs-m;
+  font-weight: $fw-light;
+  text-transform: capitalize;
+  @include tablet() {
+    font-size: $heading-xs;
+    margin: 1.65rem 0 2rem;
+  }
+  @include laptop() {
+    margin: 0 2.25rem 2rem 11rem;
+    text-transform: capitalize;
+    padding: 0;
+    width: unset;
+  }
+}
+
+.outerContainer {
+  position: relative;
+  margin-left: -1.5rem;
+  @include laptop() {
+    margin: 0 2.25rem 2rem 9.5rem;
+    width: unset;
+  }
+}
+
+.container {
+  @include tablet() {
+    margin: 2rem auto 0;
+    border-top: 2px solid $secondary-light;
+    width: 93.75%;
+    z-index: 10;
+  }
+  @include laptop() {
+    border-top: unset;
+    margin: 0;
+    width: 100%;
+    position: relative;
+  }
+}
+
+.message {
+  @include tablet() {
+    width: 100%;
+    font-size: 1rem;
+  }
+  @include laptop() {
+    padding: unset;
+  }
+}
+
+.recommendations {
+  display: flex;
+  overflow-x: scroll;
+  overscroll-behavior-inline: contain;
+  scroll-behavior: smooth;
+  width: 90%;
+  margin: 1.25rem auto 2rem;
+  scrollbar-width: none;
+  padding: 0;
+  @include tablet() {
+    margin-top: 2.5rem;
+    width: 100%;
+  }
+}
+
+.recommendations::-webkit-scrollbar {
+  display: none;
+}
+
+.recommendations::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.linkContainer {
+  position: relative;
+  margin-left: 1.5rem;
+  min-width: 130px;
+  max-width: 130px;
+  height: 227px;
+  overflow: hidden;
+  list-style: none;
+  @include tablet() {
+    min-width: 160px;
+    max-width: 160px;
+    height: 282px;
+  }
+}
+
+@media (hover: hover) {
+  .linkContainer:hover {
+    opacity: 0.7;
+    transition: $transition;
+  }
+}
+.name {
+  font-size: $heading-xs-m;
+  font-weight: $fw-light;
+  max-width: 95%;
+  margin: 0;
+  @include tablet() {
+    font-size: $heading-xs;
+    max-width: 100%;
+  }
+}
+
+.navigation {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  transform: translateY(-50%);
+  margin: auto;
+  height: 35px;
+  width: 35px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: none;
+  animation: fadeArrow $fade-animation;
+  @include mobileS() {
+    position: absolute;
+    top: -1.75rem;
+    right: 0;
+    bottom: unset;
+    transform: translateY(-50%);
+    display: block;
+  }
+  @include tablet() {
+    top: -3rem;
+  }
+}
+
+.navigationPrev {
+  left: 0;
+  @include mobileS() {
+    left: unset;
+    margin-right: 1.75rem;
+    right: 1.5rem;
+  }
+  @include tablet() {
+    right: 0;
+  }
+}
+.navigationNext {
+  right: 0;
+  @include mobileS() {
+    right: 1.5rem;
+  }
+  @include tablet() {
+    right: 0;
+  }
+}
+
+@keyframes fadeArrow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

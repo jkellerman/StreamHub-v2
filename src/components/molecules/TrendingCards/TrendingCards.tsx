@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 import TrendingCardDetails from "@/components/molecules/TrendingCardDetails/TrendingCardDetails";
-import styles from "@/components/molecules/TrendingCards/TrendingCards.module.css";
+import styles from "@/components/molecules/TrendingCards/TrendingCards.module.scss";
 import { BACKDROP_URL_IMAGE } from "@/constants/tmdb";
 import useSlider from "@/hooks/useSlider";
 import chevronLeft from "@/public/assets/chevron-left-solid.svg";

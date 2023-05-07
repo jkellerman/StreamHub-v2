@@ -3,7 +3,7 @@ import React from "react";
 import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
 import Poster from "@/components/atoms/Poster/Poster";
 
-import styles from "../HeroContent/HeroContent.module.css";
+import styles from "../HeroContent/HeroContent.module.scss";
 
 interface HeroContentProps {
   title: string;

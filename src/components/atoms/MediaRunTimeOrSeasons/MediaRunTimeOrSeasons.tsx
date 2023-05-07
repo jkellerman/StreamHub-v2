@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../MediaRunTimeOrSeasons/MediaRunTimeOrSeasons.module.css";
+import styles from "../MediaRunTimeOrSeasons/MediaRunTimeOrSeasons.module.scss";
 
 interface MediaRunTimeOrSeasonsProps {
   runtime?: number;

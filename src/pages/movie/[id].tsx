@@ -19,7 +19,7 @@ import Recommendations from "@/components/molecules/Recommendations/Recommendati
 import TabList from "@/components/molecules/TabList/TabList";
 import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
 import Hero from "@/components/organisms/Hero/Hero";
-import styles from "@/components/organisms/Hero/Hero.module.css";
+import styles from "@/components/organisms/Hero/Hero.module.scss";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import { Media, Genres } from "@/src/types";
 

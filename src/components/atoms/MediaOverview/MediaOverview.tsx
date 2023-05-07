@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState, useRef, useEffect } from "react";
 
-import styles from "../MediaOverview/MediaOverview.module.css";
+import styles from "../MediaOverview/MediaOverview.module.scss";
 
 interface MediaOverviewProps {
   hero?: boolean;

@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import buttonStyles from "@/components/atoms/Button/Button.module.css";
+import buttonStyles from "@/components/atoms/Button/Button.module.scss";
 import SearchBar from "@/components/atoms/SearchBar/SearchBar";
-import headingStyles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.css";
+import headingStyles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.scss";
 
 const Custom500 = () => {
   const router = useRouter();

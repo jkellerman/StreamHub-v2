@@ -1,0 +1,46 @@
+@import "@/styles/variables.scss";
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin mobileS {
+  @media (max-width: $mobile-s) {
+    @content;
+  }
+}
+@mixin mobileL {
+  @media (min-width: $mobile-l) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+@mixin tabletL {
+  @media (min-width: $tablet-l) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media (min-width: $laptop) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../MediaCategoryHomePage/MediaCategoryHomePage.module.css";
+import styles from "../MediaCategoryHomePage/MediaCategoryHomePage.module.scss";
 
 interface MediaCategoryHomePageProps {
   children: React.ReactNode;

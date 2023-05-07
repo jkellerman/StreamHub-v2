@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../ReleaseDate/ReleaseDate.module.css";
+import styles from "../ReleaseDate/ReleaseDate.module.scss";
 
 const DATE_SLICE = 4;
 

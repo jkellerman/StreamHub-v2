@@ -1,0 +1,21 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.main {
+  width: 100%;
+  margin: 0;
+}
+
+.hero {
+  position: relative;
+  margin-bottom: -2rem;
+  @include tablet() {
+    margin-bottom: -4rem;
+  }
+  @include laptop() {
+    margin-bottom: -34rem;
+  }
+  @include desktop() {
+    margin-bottom: -37rem;
+  }
+}

@@ -4,7 +4,7 @@ import Router from "next/router";
 import NProgress from "nprogress";
 import React from "react";
 
-import "@/styles/globals.css";
+import "@/styles/globals.scss";
 import Footer from "@/components/molecules/Footer/Footer";
 import Nav from "@/components/molecules/Nav/Nav";
 

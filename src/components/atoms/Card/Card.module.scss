@@ -1,0 +1,31 @@
+@import "@/styles/variables.scss";
+
+.container {
+  position: relative;
+  border-radius: $border-radius-s;
+  overflow: hidden;
+  animation: fade $fade-animation;
+}
+
+.card {
+  border-radius: $border-radius-s;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (hover: hover) {
+  .container:hover {
+    opacity: 0.6;
+    transition: $transition;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

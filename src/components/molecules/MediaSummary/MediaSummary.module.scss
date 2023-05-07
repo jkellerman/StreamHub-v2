@@ -1,0 +1,17 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.container {
+  margin: 0 auto 2rem;
+  width: 90%;
+  @include tablet() {
+    display: none;
+  }
+}
+
+.ratingContainer {
+  margin-bottom: 2rem;
+  @include tablet() {
+    display: none;
+  }
+}

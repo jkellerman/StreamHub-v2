@@ -2,7 +2,7 @@ import React from "react";
 
 import { Media } from "@/src/types";
 
-import styles from "../Cast/Cast.module.css";
+import styles from "../Cast/Cast.module.scss";
 
 interface CastProps {
   cast: Media.ICastMember[];

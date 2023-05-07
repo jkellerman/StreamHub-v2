@@ -1,0 +1,15 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.inactive {
+  fill: $tertiary;
+}
+
+.inactive:hover {
+  fill: $primary;
+  transition: all 0.2s;
+}
+
+.active {
+  fill: $primary-text;
+}

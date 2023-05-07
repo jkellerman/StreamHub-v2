@@ -5,7 +5,7 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import Button from "@/components/atoms/Button/Button";
 import { Genres } from "@/src/types";
 
-import styles from "../Dropdown/Dropdown.module.css";
+import styles from "../Dropdown/Dropdown.module.scss";
 
 interface DropdownProps {
   type: string;

@@ -1,0 +1,103 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.list {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: $secondary;
+  z-index: 5;
+  padding: 8rem 0;
+  margin: 0;
+  width: 0;
+  height: 0;
+  overflow-y: scroll;
+  transition: height 250ms ease-in-out;
+  @include tablet() {
+    background: $secondary-light;
+    border-radius: $border-radius-s;
+    position: absolute;
+    top: 16.5rem;
+    left: 8.5rem;
+    overflow-y: scroll;
+    display: unset;
+    justify-content: unset;
+    transition: height 100ms ease-in-out;
+    padding: 0;
+  }
+  @include laptop() {
+    top: 12.5rem;
+    left: 18rem;
+  }
+}
+
+.list:hover > .listItemCurrent {
+  background: $secondary;
+  @include tablet() {
+    background: $secondary-light;
+  }
+}
+
+.open {
+  width: 100vw;
+  height: 102vh;
+  @include tablet() {
+    width: 200px;
+    height: 375px;
+    padding: 1rem 0;
+    border: 1px solid $tertiary;
+  }
+}
+
+.listItem,
+.listItemCurrent {
+  list-style: none;
+  padding: 1rem 2rem;
+  @include tablet() {
+    padding: 0.5rem 0;
+  }
+}
+
+.listItemCurrent {
+  position: relative;
+  @include tablet() {
+    background: $tertiary;
+  }
+}
+
+.listItemCurrent::before {
+  content: "";
+  background: $primary-text;
+  width: 0.5px;
+  height: 10px;
+  border: 1px solid $primary-text;
+  border-top-right-radius: $border-radius-s;
+  border-bottom-right-radius: $border-radius-s;
+  position: absolute;
+  left: 2rem;
+  top: 1.25rem;
+  @include tablet() {
+    left: 0.75rem;
+    top: 0.75rem;
+  }
+}
+
+.link {
+  padding-left: 1.5rem;
+  display: block;
+  width: 100%;
+  height: 100%;
+  @include tablet() {
+    padding-left: 1.5rem;
+  }
+}
+
+@media (hover: hover) {
+  .listItem:hover,
+  .listItemCurrent:hover {
+    background: $tertiary;
+    transition: $transition;
+  }
+}

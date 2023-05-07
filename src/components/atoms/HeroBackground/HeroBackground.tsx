@@ -8,7 +8,7 @@ import {
   BACKGROUND_URL_IMAGE_XL,
 } from "@/constants/tmdb";
 
-import styles from "../HeroBackground/HeroBackground.module.css";
+import styles from "../HeroBackground/HeroBackground.module.scss";
 
 interface HeroBackgroundProps {
   backdrop: string;

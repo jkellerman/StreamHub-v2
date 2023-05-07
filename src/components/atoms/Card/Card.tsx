@@ -5,7 +5,7 @@ import React from "react";
 import { BACKDROP_URL_IMAGE } from "@/constants/tmdb";
 import { shimmer, toBase64 } from "@/utils/placeholder";
 
-import styles from "../Card/Card.module.css";
+import styles from "../Card/Card.module.scss";
 
 interface CardProps {
   id: number;

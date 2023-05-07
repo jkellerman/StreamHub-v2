@@ -5,7 +5,7 @@ import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import { Media } from "@/src/types";
 
 import JustWatchLogo from "../../atoms/JustWatchLogo/JustWatchLogo";
-import styles from "../WatchProviders/WatchProviders.module.css";
+import styles from "../WatchProviders/WatchProviders.module.scss";
 
 const LOGO_SIZE = 40;
 

@@ -1,0 +1,49 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.headingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headingAndIconWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  @include tablet() {
+    gap: 0.75rem;
+  }
+}
+
+.heading {
+  font-size: $heading-l-m;
+  font-weight: $fw-light;
+  text-transform: capitalize;
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  @include tablet() {
+    font-size: $heading-l;
+    margin-top: 1rem;
+  }
+}
+
+.categoryLink {
+  font-size: $body-l-m;
+  color: $primary;
+}
+
+.categoryLink:hover {
+  color: $tertiary;
+  transition: $transition;
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+  @include tablet() {
+    width: 20px;
+    height: 20px;
+    transform: translateY(5%);
+  }
+}

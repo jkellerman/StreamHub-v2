@@ -1,0 +1,47 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.tabContainer {
+  position: relative;
+}
+
+.tab {
+  text-transform: uppercase;
+  font-weight: $fw-med;
+  font-size: $heading-xs-m;
+  font-family: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: $primary-text;
+  padding: 0;
+  @include tablet() {
+    font-size: $heading-xs;
+  }
+}
+
+.tab:hover {
+  color: $primary;
+  transition: $transition;
+}
+
+.tab.active {
+  color: $primary;
+  transition: $transition;
+}
+
+.tab::after {
+  content: "";
+  background: $primary;
+  opacity: 0;
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  bottom: -2.0625rem;
+  transition: opacity 200ms ease-in;
+}
+
+.tab.active::after {
+  opacity: 1;
+}

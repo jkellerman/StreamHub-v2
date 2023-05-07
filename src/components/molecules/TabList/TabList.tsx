@@ -14,7 +14,7 @@ import TabButton from "@/components/atoms/TabButton/TabButton";
 import WatchProvidersTab from "@/components/molecules/WatchProvidersTab/WatchProvidersTab";
 import { Media, Genres } from "@/src/types";
 
-import styles from "../TabList/TabList.module.css";
+import styles from "../TabList/TabList.module.scss";
 
 interface TabListProps {
   movie_age_rating?: string;

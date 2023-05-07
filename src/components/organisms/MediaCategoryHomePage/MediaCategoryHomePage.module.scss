@@ -1,0 +1,25 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.section {
+  margin-top: 1.5rem;
+}
+
+.headingAndDropdownButtonWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.heading {
+  font-size: $heading-l-m;
+  font-weight: $fw-light;
+  text-transform: capitalize;
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  @include tablet() {
+    font-size: $heading-l;
+    margin-top: 1rem;
+    margin-bottom: 1.75rem;
+  }
+}

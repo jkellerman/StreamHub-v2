@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
 import Poster from "@/components/atoms/Poster/Poster";
-import styles from "@/components/molecules/Recommendations/Recommendations.module.css";
+import styles from "@/components/molecules/Recommendations/Recommendations.module.scss";
 import useSlider from "@/hooks/useSlider";
 import { Media } from "@/src/types";
 

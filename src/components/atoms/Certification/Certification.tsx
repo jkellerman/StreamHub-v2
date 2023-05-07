@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../Certification/Certification.module.css";
+import styles from "../Certification/Certification.module.scss";
 
 interface CertificationProps {
   mediaDetailsTab?: boolean;

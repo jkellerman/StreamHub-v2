@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-import styles from "../CategoryHeading/CategoryHeading.module.css";
+import styles from "../CategoryHeading/CategoryHeading.module.scss";
 
 interface CategoryHeadingProps {
   trending?: boolean;

@@ -3,7 +3,7 @@ import React from "react";
 
 import img from "@/public/assets/chevron-down.svg";
 
-import styles from "../Button/Button.module.css";
+import styles from "../Button/Button.module.scss";
 
 interface ButtonProps {
   toggleDropdown: () => void;
