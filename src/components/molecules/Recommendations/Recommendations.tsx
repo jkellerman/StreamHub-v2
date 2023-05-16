@@ -11,10 +11,7 @@ interface RecommendationsProps {
   recommendations: Media.IRecommendationsList;
 }
 
-const Recommendations: React.FC<RecommendationsProps> = ({
-  recommendations,
-  movies,
-}) => {
+const Recommendations: React.FC<RecommendationsProps> = ({ recommendations, movies }) => {
   const {
     isScrollAvailable,
     isScrollAtStart,
@@ -29,8 +26,7 @@ const Recommendations: React.FC<RecommendationsProps> = ({
   } = useSlider();
 
   const recommendationsArr = recommendations.results?.filter(
-    (recommendations: Media.IRecommendations) =>
-      recommendations.backdrop_path !== null
+    (recommendations: Media.IRecommendations) => recommendations.backdrop_path !== null
   );
 
   const router = useRouter();
@@ -71,11 +67,7 @@ const Recommendations: React.FC<RecommendationsProps> = ({
       )}
 
       <div className={styles.outerContainer}>
-        <ul
-          className={styles.recommendations}
-          ref={sliderRef}
-          onScroll={getScrollPosition}
-        >
+        <ul className={styles.recommendations} ref={sliderRef} onScroll={getScrollPosition}>
           {recommendationsArr.map(({ id, poster_path, title, name }) => {
             return (
               <li key={id} className={styles.linkContainer} ref={cardRef}>

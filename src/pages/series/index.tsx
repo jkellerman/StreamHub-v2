@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import QueryString from "qs";
 import React from "react";
 
-import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import CardList from "@/components/molecules/CardList/CardList";
 import Dropdown from "@/components/molecules/Dropdown/Dropdown";
 import styles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.scss";
@@ -20,13 +19,10 @@ interface SeriesIndexPageProps {
 const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
   const { query, pathname } = useRouter();
   const genre =
-    genreList.find(
-      (item: Genres.IGenre) => item.name.toLowerCase() === query.genre
-    ) || DEFAULT_SERIES_GENRE;
+    genreList.find((item: Genres.IGenre) => item.name.toLowerCase() === query.genre) ||
+    DEFAULT_SERIES_GENRE;
   const isDefaultGenre = genre.name === DEFAULT_SERIES_GENRE.name;
-  const endpoint = !isDefaultGenre
-    ? `api/series/genre/${genre.id}`
-    : "api/trending/tv/day";
+  const endpoint = !isDefaultGenre ? `api/series/genre/${genre.id}` : "api/trending/tv/day";
   const pageType = pathname.replace(/\//g, "");
   const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
 
@@ -40,15 +36,10 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
         />
       </Head>
       <main>
-        <SearchBar series />
         <section>
           <div className={styles.headingAndDropdownButtonWrapper}>
             <h1 className={styles.heading}>{pageType}</h1>
-            <Dropdown
-              type={pageType}
-              selected_genre={genre}
-              genre_list={genreList}
-            />
+            <Dropdown type={pageType} selected_genre={genre} genre_list={genreList} />
           </div>
           <CardList cards={cards} isLoading={isLoading} isError={isError} />
         </section>
@@ -61,9 +52,7 @@ export default Series;
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(
-    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(
-      BASE_TMDB_QUERY_PARAMS
-    )}`
+    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
   );
   const genreList = await response.json();
 

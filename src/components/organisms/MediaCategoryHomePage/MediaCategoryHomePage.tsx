@@ -6,9 +6,7 @@ interface MediaCategoryHomePageProps {
   children: React.ReactNode;
 }
 
-const MediaCategoryHomePage: React.FC<MediaCategoryHomePageProps> = ({
-  children,
-}) => {
+const MediaCategoryHomePage: React.FC<MediaCategoryHomePageProps> = ({ children }) => {
   return <section className={styles.section}>{children}</section>;
 };
 

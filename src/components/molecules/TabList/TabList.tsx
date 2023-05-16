@@ -86,10 +86,7 @@ const TabList: React.FC<TabListProps> = ({
       <div>
         <div>
           {activeTab === "watch" && (
-            <WatchProvidersTab
-              watch_providers={watch_providers}
-              activeTab={activeTab}
-            />
+            <WatchProvidersTab watch_providers={watch_providers} activeTab={activeTab} />
           )}
         </div>
         <div className={styles.detailsContainer}>
@@ -113,10 +110,7 @@ const TabList: React.FC<TabListProps> = ({
                   <dl className={styles.list}>
                     <MediaGenres genres={genres} movies={movies} />
                     <Cast cast={cast} />
-                    <MediaDirectorOrNetwork
-                      director={director}
-                      network={network}
-                    />
+                    <MediaDirectorOrNetwork director={director} network={network} />
                   </dl>
 
                   <dl className={styles.attributesList}>
@@ -129,9 +123,7 @@ const TabList: React.FC<TabListProps> = ({
                       />
                     </div>
 
-                    <div
-                      className={`${styles.listItem} ${styles.certification}`}
-                    >
+                    <div className={`${styles.listItem} ${styles.certification}`}>
                       <dt className={styles.heading}>certification</dt>
                       <Certification
                         movie_age_rating={movie_age_rating}
@@ -140,10 +132,7 @@ const TabList: React.FC<TabListProps> = ({
                       />
                     </div>
 
-                    <MediaRunTimeOrSeasons
-                      runtime={runtime}
-                      seasons={seasons}
-                    />
+                    <MediaRunTimeOrSeasons runtime={runtime} seasons={seasons} />
 
                     {star_rating > 0 && (
                       <div className={styles.listItem}>

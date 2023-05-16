@@ -8,10 +8,7 @@ interface MediaSummaryProps {
   star_rating: number;
 }
 
-const MediaSummary: React.FC<MediaSummaryProps> = ({
-  children,
-  star_rating,
-}) => {
+const MediaSummary: React.FC<MediaSummaryProps> = ({ children, star_rating }) => {
   return (
     <>
       <div className={styles.container}>{children}</div>

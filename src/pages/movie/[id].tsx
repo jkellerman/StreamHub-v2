@@ -10,7 +10,6 @@ import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
 import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
 import MediaRunTimeOrSeasons from "@/components/atoms/MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
 import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
-import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import StarRating from "@/components/atoms/StarRating/StarRating";
 import HeroContent from "@/components/molecules/HeroContent/HeroContent";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
@@ -19,7 +18,6 @@ import Recommendations from "@/components/molecules/Recommendations/Recommendati
 import TabList from "@/components/molecules/TabList/TabList";
 import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
 import Hero from "@/components/organisms/Hero/Hero";
-import styles from "@/components/organisms/Hero/Hero.module.scss";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import { Media, Genres } from "@/src/types";
 
@@ -56,30 +54,38 @@ const Movie: React.FC<MovieProps> = ({
   recommendations,
   title,
 }) => {
+  // useEffect(() => {
+  //   const fetchVideo = async () => {
+  //     const res = await fetch(
+  //       "https://api.themoviedb.org/3/movie/76600/videos?api_key=f0bc4ef2821d0b3d1fa993f8b3c9c6df&language=en-GB"
+  //     );
+  //     const data = await res.json();
+  //     console.log(data);
+  //   };
+  //   fetchVideo();
+  // }, []);
   return (
     <>
       <Head>
         <title>{`Watch ${title} Online | Reelgood`}</title>
         <meta name="description" content={`Where to watch ${title}`} />
       </Head>
-      <main className={styles.main}>
-        <SearchBar movies hero />
 
-        <Hero backdrop={backdrop} title={title}>
-          <HeroContent
-            tagline={tagline}
-            movie_age_rating={movie_age_rating?.certification}
-            release_date={release_date}
-            star_rating={vote_average}
-            overview={overview}
-            poster={poster}
-            title={title}
-          >
-            <Certification movie_age_rating={movie_age_rating?.certification} />
-            <ReleaseDate release_date={release_date} styled />
-            <StarRating star_rating={vote_average} />
-          </HeroContent>
-        </Hero>
+      <main>
+        <Hero backdrop={backdrop} title={title} />
+        <HeroContent
+          tagline={tagline}
+          movie_age_rating={movie_age_rating?.certification}
+          release_date={release_date}
+          star_rating={vote_average}
+          overview={overview}
+          poster={poster}
+          title={title}
+        >
+          <Certification movie_age_rating={movie_age_rating?.certification} />
+          <ReleaseDate release_date={release_date} styled />
+          <StarRating star_rating={vote_average} />
+        </HeroContent>
 
         <WatchProviders watch_providers={watch_providers} />
 
@@ -123,10 +129,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { query, res } = context;
   const { id } = query;
 
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=1, stale-while-revalidate=86400"
-  );
+  res.setHeader("Cache-Control", "public, s-maxage=1, stale-while-revalidate=86400");
 
   const queryString = qs.stringify(
     {
@@ -169,12 +172,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const certification: Media.ICertificationMoviesCountries | null =
     release_dates.results.find(
-      (country: Media.ICertificationMoviesCountries) =>
-        country.iso_3166_1 === "GB"
+      (country: Media.ICertificationMoviesCountries) => country.iso_3166_1 === "GB"
     ) ||
     release_dates.results.find(
-      (country: Media.ICertificationMoviesCountries) =>
-        country.iso_3166_1 === "US"
+      (country: Media.ICertificationMoviesCountries) => country.iso_3166_1 === "US"
     ) ||
     null;
 

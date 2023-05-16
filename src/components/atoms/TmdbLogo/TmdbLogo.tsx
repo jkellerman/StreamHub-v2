@@ -10,13 +10,7 @@ const TmdbLogo = () => {
       {" "}
       <div>
         <div className={styles.imageContainer}>
-          <Image
-            src={attribution}
-            alt="MovieDB Logo"
-            unoptimized={true}
-            width={72}
-            height={16}
-          />
+          <Image src={attribution} alt="MovieDB Logo" unoptimized={true} width={72} height={16} />
         </div>
       </div>
     </>

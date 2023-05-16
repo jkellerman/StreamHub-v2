@@ -5,11 +5,7 @@ import styles from "../Footer/Footer.module.scss";
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <a
-        href="https://www.themoviedb.org/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">
         <span className={styles.span}>Powered by</span>
         <TmdbLogo />
       </a>

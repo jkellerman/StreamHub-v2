@@ -5,25 +5,20 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Outfit", sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-    sans-serif;
+  font-family: "Outfit", sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background: $secondary;
   color: $primary-text;
   font-weight: $fw-light;
 }
 
+header {
+  width: 100%;
+}
+
 main {
-  width: 90%;
-  margin: 0 auto;
-  @include tablet() {
-    width: 93.75%;
-  }
-  @include laptop() {
-    width: 93.75%;
-    margin: 4rem 2.25rem 0 11rem;
-    width: unset;
-  }
+  width: 100%;
+  padding-top: 8rem;
 }
 
 a {
@@ -33,6 +28,8 @@ a {
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 h1 {
@@ -41,7 +38,7 @@ h1 {
 }
 
 hr {
-  border: 0.5px solid var(--semi-dark-blue);
+  border: 0.5px solid $secondary-light;
   margin: 0 0 2rem;
   @include tablet() {
     display: none;
@@ -60,13 +57,13 @@ hr {
 }
 
 #nprogress .bar {
-  background: var(--primary);
+  background: $primary;
   position: fixed;
   z-index: 1031;
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 2px;
 }
 
 /* Safari 15+ displays a gray border while loading. Solution at https://nextjs.org/docs/api-reference/next/future/image */

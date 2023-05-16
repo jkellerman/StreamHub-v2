@@ -4,10 +4,7 @@ import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { slugs, ...queryParams } = req.query;
     const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
@@ -19,9 +16,7 @@ export default async function handler(
       { addQueryPrefix: true }
     );
 
-    const url = `${BASE_TMDB_URL}/trending/${slugsArray.join(
-      "/"
-    )}${queryString}`;
+    const url = `${BASE_TMDB_URL}/trending/${slugsArray.join("/")}${queryString}`;
     console.info("🚀 Request URL: ", url);
 
     const response = await fetch(url);

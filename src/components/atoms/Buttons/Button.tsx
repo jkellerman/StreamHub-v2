@@ -3,7 +3,7 @@ import React from "react";
 
 import img from "@/public/assets/chevron-down.svg";
 
-import styles from "../Button/Button.module.scss";
+import styles from "../Buttons/Button.module.scss";
 
 interface ButtonProps {
   toggleDropdown: () => void;
@@ -13,16 +13,11 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ toggleDropdown, name, dropdown }) => {
   return (
-    <button className={styles.button} onClick={toggleDropdown}>
+    <button type="button" className={styles.button} onClick={toggleDropdown}>
       <>
         {name}
         {dropdown && (
-          <Image
-            src={img}
-            alt="down-arrow"
-            unoptimized={true}
-            className={styles.chevron}
-          />
+          <Image src={img} alt="down-arrow" unoptimized={true} className={styles.chevron} />
         )}
       </>
     </button>

@@ -14,8 +14,7 @@ const useInfiniteScroll = (endpoint: string) => {
     }
     const data = await res.json();
     const filteredArr = data.data.results.filter(
-      (item: IMovieData) =>
-        item.backdrop_path !== null && !item.known_for_department
+      (item: IMovieData) => item.backdrop_path !== null && !item.known_for_department
     );
     return {
       data: filteredArr,
@@ -34,8 +33,7 @@ const useInfiniteScroll = (endpoint: string) => {
   useEffect(() => {
     let fetching = false;
     const handleScroll = () => {
-      const scrollThreshold =
-        document.body.scrollHeight - window.innerHeight * 0.2;
+      const scrollThreshold = document.body.scrollHeight - window.innerHeight * 0.2;
       const scrollPosition = window.innerHeight + window.scrollY;
       if (!fetching && scrollPosition >= scrollThreshold) {
         fetching = true;

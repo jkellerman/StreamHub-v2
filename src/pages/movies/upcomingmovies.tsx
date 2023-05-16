@@ -1,6 +1,5 @@
 import Head from "next/head";
 
-import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import MediaCategory from "@/components/organisms/MediaCategory/MediaCategory";
 
 const UpcomingMovies = () => {
@@ -14,12 +13,7 @@ const UpcomingMovies = () => {
         />
       </Head>
       <main>
-        <SearchBar movies />
-        <MediaCategory
-          endpoint="/api/movies/upcoming"
-          category="upcoming movies"
-          type="movies"
-        />
+        <MediaCategory endpoint="/api/movies/upcoming" category="upcoming movies" type="movies" />
       </main>
     </>
   );

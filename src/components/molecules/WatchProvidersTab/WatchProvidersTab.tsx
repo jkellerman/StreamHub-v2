@@ -13,23 +13,12 @@ interface WatchProvidersTabProps {
   activeTab: string;
 }
 
-const WatchProvidersTab: React.FC<WatchProvidersTabProps> = ({
-  watch_providers,
-  activeTab,
-}) => {
+const WatchProvidersTab: React.FC<WatchProvidersTabProps> = ({ watch_providers, activeTab }) => {
   return (
-    <div
-      className={
-        activeTab === "watch"
-          ? `${styles.container} ${styles.active}`
-          : undefined
-      }
-    >
+    <div className={activeTab === "watch" ? `${styles.container} ${styles.active}` : undefined}>
       <JustWatchLogo tab />
       <div className={styles.providers}>
-        {watch_providers.length === 0 && (
-          <span>Not available to watch online</span>
-        )}
+        {watch_providers.length === 0 && <span>Not available to watch online</span>}
         {watch_providers.flatrate && (
           <div>
             <h2 className={styles.headingMethod}>Stream</h2>

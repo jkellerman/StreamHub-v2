@@ -43,9 +43,7 @@ const Poster: React.FC<PosterProps> = ({
               alt={`${title} poster`}
               unoptimized={true}
               placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                shimmer(240, 140)
-              )}`}
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
               layout="fill"
               objectFit="cover"
             />
@@ -53,18 +51,12 @@ const Poster: React.FC<PosterProps> = ({
         </Link>
       )}
       {!recommendation && (
-        <div
-          className={
-            hero ? `${styles.heroPoster}` : `${styles.mediaDetailsTabPoster}`
-          }
-        >
+        <div className={hero ? `${styles.heroPoster}` : `${styles.mediaDetailsTabPoster}`}>
           <Image
             src={`${POSTER_URL_IMAGE}${poster}`}
             alt={`${title} poster`}
             placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(
-              shimmer(240, 140)
-            )}`}
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
             unoptimized={true}
             layout="fill"
           />

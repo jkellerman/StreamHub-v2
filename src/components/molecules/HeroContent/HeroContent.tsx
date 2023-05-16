@@ -31,9 +31,7 @@ const HeroContent: React.FC<HeroContentProps> = ({
 
       <div className={styles.content}>
         <h1 className={styles.title}>{title}</h1>
-        <div className={styles.tagline}>
-          {tagline !== "" ? `"${tagline}"` : null}
-        </div>
+        <div className={styles.tagline}>{tagline !== "" ? `"${tagline}"` : null}</div>
 
         <div className={styles.list}>{children}</div>
         <MediaOverview overview={overview} hero />

@@ -3,7 +3,6 @@ import Head from "next/head";
 import React from "react";
 
 import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
-import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import CardList from "@/components/molecules/CardList/CardList";
 import TrendingCards from "@/components/molecules/TrendingCards/TrendingCards";
 import MediaCategoryHomePage from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage";
@@ -36,9 +35,8 @@ const Home: React.FC<HomeProps> = ({
           content="Reelgood allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other providers in one place."
         />
       </Head>
-      <main>
-        <SearchBar all />
 
+      <main>
         <TrendingBanner>
           <CategoryHeading type="series" category="trending series" home />
           <TrendingCards cards={trendingSeries} />
@@ -78,10 +76,7 @@ export default Home;
 export const getStaticProps: GetStaticProps = async () => {
   // Slice array
 
-  const sliceArray = (
-    arr: Media.IMediaItem[],
-    limit: number
-  ): Media.IMediaItem[] => {
+  const sliceArray = (arr: Media.IMediaItem[], limit: number): Media.IMediaItem[] => {
     return arr.slice(0, limit);
   };
   // trending series
@@ -90,9 +85,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const trendingSeriesData = await trendingSeriesResponse.json();
 
   if (!trendingSeriesResponse.ok) {
-    throw new Error(
-      `Failed to fetch posts, received status ${trendingSeriesResponse.status}`
-    );
+    throw new Error(`Failed to fetch posts, received status ${trendingSeriesResponse.status}`);
   }
 
   const trendingSeriesFiltered = trendingSeriesData.results.filter(
@@ -109,9 +102,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const popularMoviesData = await popularMoviesResponse.json();
 
   if (!popularMoviesResponse.ok) {
-    throw new Error(
-      `Failed to fetch posts, received status ${popularMoviesResponse.status}`
-    );
+    throw new Error(`Failed to fetch posts, received status ${popularMoviesResponse.status}`);
   }
 
   const popularMoviesFilteredArr = popularMoviesData.results.filter(
@@ -126,9 +117,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const topRatedShowsData = await topRatedShowsResponse.json();
 
   if (!topRatedShowsResponse.ok) {
-    throw new Error(
-      `Failed to fetch posts, received status ${topRatedShowsResponse.status}`
-    );
+    throw new Error(`Failed to fetch posts, received status ${topRatedShowsResponse.status}`);
   }
 
   const topRatedShowsFilteredArr = topRatedShowsData.results.filter(
@@ -143,9 +132,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const trendingMoviesData = await trendingMoviesResponse.json();
 
   if (!trendingSeriesResponse.ok) {
-    throw new Error(
-      `Failed to fetch posts, received status ${trendingMoviesResponse.status}`
-    );
+    throw new Error(`Failed to fetch posts, received status ${trendingMoviesResponse.status}`);
   }
 
   const trendingMoviesFiltered = trendingMoviesData.results.filter(
@@ -162,9 +149,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const upcomingData = await upcomingResponse.json();
 
   if (!upcomingResponse.ok) {
-    throw new Error(
-      `Failed to fetch posts, received status ${upcomingResponse.status}`
-    );
+    throw new Error(`Failed to fetch posts, received status ${upcomingResponse.status}`);
   }
 
   const upcomingFilteredArr = upcomingData.results.filter(
@@ -181,9 +166,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const topRatedMoviesData = await topRatedMoviesResponse.json();
 
   if (!topRatedMoviesResponse.ok) {
-    throw new Error(
-      `Failed to fetch posts, received status ${topRatedMoviesResponse.status}`
-    );
+    throw new Error(`Failed to fetch posts, received status ${topRatedMoviesResponse.status}`);
   }
 
   const topRatedMoviesFilteredArr = topRatedMoviesData.results.filter(

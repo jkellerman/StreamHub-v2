@@ -8,6 +8,7 @@
       "@/constants/*": ["src/constants/*"],
       "@/hooks/*": ["src/hooks/*"],
       "@/types/*": ["src/types/*"],
+      "@/layouts/*": ["src/layouts/*"],
       "@/styles/*": ["src/styles/*"],
       "@/src/*": ["src/*"]
     },

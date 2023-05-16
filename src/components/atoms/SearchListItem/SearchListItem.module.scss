@@ -1,0 +1,36 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.listItemWrapper {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+
+.listItemWrapper:hover,
+.isActive {
+  background-color: $secondary;
+  transition: $transition;
+}
+
+.listItem {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.posterContainer {
+  width: 27px;
+  height: 40px;
+  margin-right: 1rem;
+  background: linear-gradient(90deg, #1c4b6f, #112c40);
+}
+
+.tv {
+  background-color: black;
+  padding: 0 0.2em;
+  font-size: $body-s-m;
+  margin-left: 0.5rem;
+}

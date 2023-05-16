@@ -10,11 +10,7 @@ interface CategoryHeadingProps {
   home?: boolean;
 }
 
-const CategoryHeading: React.FC<CategoryHeadingProps> = ({
-  type,
-  category,
-  home,
-}) => {
+const CategoryHeading: React.FC<CategoryHeadingProps> = ({ type, category, home }) => {
   return (
     <div className={styles.headingContainer}>
       <div className={styles.headingAndIconWrapper}>

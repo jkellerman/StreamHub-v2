@@ -1,0 +1,41 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5em 0.875em;
+  width: 100%;
+}
+
+.searchIcon {
+  position: relative;
+  width: 0.9375rem;
+  height: 0.9375rem;
+
+  @include tablet() {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.input {
+  font-size: $body-m;
+  font-family: inherit;
+  color: $primary-text;
+  font-weight: $fw-light;
+  border: none;
+  background: transparent;
+  padding: 0.25em 0;
+  width: 100%;
+  outline: none;
+  @include tablet() {
+    height: unset;
+  }
+}
+
+.input::placeholder {
+  color: $primary-text;
+  text-overflow: ellipsis;
+}

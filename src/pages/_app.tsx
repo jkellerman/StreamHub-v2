@@ -5,8 +5,8 @@ import NProgress from "nprogress";
 import React from "react";
 
 import "@/styles/globals.scss";
-import Footer from "@/components/molecules/Footer/Footer";
-import Nav from "@/components/molecules/Nav/Nav";
+
+import CoreLayout from "../layouts/core";
 
 import type { AppProps } from "next/app";
 
@@ -23,9 +23,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Nav />
-        <Component {...pageProps} />
-        <Footer />
+        <CoreLayout>
+          <Component {...pageProps} />
+        </CoreLayout>
         <ReactQueryDevtools />
       </QueryClientProvider>
     </>

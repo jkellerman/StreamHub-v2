@@ -9,11 +9,7 @@ interface MediaOverviewProps {
   mediaSummary?: boolean;
 }
 
-const MediaOverview: React.FC<MediaOverviewProps> = ({
-  hero,
-  overview,
-  mediaSummary,
-}) => {
+const MediaOverview: React.FC<MediaOverviewProps> = ({ hero, overview, mediaSummary }) => {
   const [showToggle, setShowToggle] = useState<boolean>(false);
   const [readMore, setReadMore] = useState<boolean>(false);
   const paragraphRef = useRef<HTMLParagraphElement>(null);
@@ -21,9 +17,7 @@ const MediaOverview: React.FC<MediaOverviewProps> = ({
 
   const handleShowToggle = () => {
     if (paragraphRef.current) {
-      if (
-        paragraphRef.current.scrollHeight > paragraphRef.current.offsetHeight
-      ) {
+      if (paragraphRef.current.scrollHeight > paragraphRef.current.offsetHeight) {
         setShowToggle(true);
       } else {
         setShowToggle(false);
@@ -58,10 +52,7 @@ const MediaOverview: React.FC<MediaOverviewProps> = ({
             {overview}
           </p>
           {showToggle && (
-            <button
-              className={styles.readMoreToggle}
-              onClick={() => handleToggle()}
-            >
+            <button className={styles.readMoreToggle} onClick={() => handleToggle()}>
               {!readMore ? "Read more" : "Show Less"}
             </button>
           )}

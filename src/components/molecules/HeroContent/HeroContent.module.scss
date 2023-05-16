@@ -4,22 +4,23 @@
 .container {
   z-index: 5;
   position: relative;
-  width: 90%;
-  margin: 0 auto;
+  // width: 90%;
+  // margin: 0 auto;
   margin-bottom: 2rem;
   @include tablet() {
-    width: 93.75%;
-    padding: 0;
+    // width: 93.75%;
+    // padding: 0;
     margin-bottom: 4rem;
   }
   @include laptop() {
     position: relative;
     display: flex;
+    justify-content: center;
     flex-direction: row;
     align-items: flex-start;
     gap: 2rem;
-    margin: 4.15rem 2.25rem 2rem 11rem;
-    width: unset;
+    margin: 4.15rem auto 2rem auto;
+    // width: unset;
     left: 0;
     padding: 0;
   }

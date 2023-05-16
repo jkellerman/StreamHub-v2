@@ -1,0 +1,32 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.nav {
+  @include center;
+  margin-bottom: 0.75rem;
+
+  @include tablet {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.navList {
+  display: flex;
+  @include tabletL {
+    margin-left: 125px;
+  }
+}
+
+.navListItem {
+  list-style: none;
+  margin-right: 1rem;
+  font-size: $heading-m-m;
+  @include tablet {
+    font-size: $heading-xs;
+  }
+}
+
+.separator {
+  margin: 0 1.5rem 0 0.5rem;
+  font-size: 18px;
+}

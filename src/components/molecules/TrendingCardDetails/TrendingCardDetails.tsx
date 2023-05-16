@@ -32,19 +32,9 @@ const TrendingCardDetails: React.FC<TrendingCardDetailsProps> = ({
         <ReleaseDate release_date={release_date} air_date={air_date} />
         &nbsp;&nbsp;•&nbsp;
         {type === "movie" ? (
-          <Image
-            src={movie}
-            alt="movie-icon"
-            unoptimized={true}
-            className={styles.iconMovies}
-          />
+          <Image src={movie} alt="movie-icon" unoptimized={true} className={styles.iconMovies} />
         ) : (
-          <Image
-            src={tv}
-            alt="tv-icon"
-            unoptimized={true}
-            className={styles.iconSeries}
-          />
+          <Image src={tv} alt="tv-icon" unoptimized={true} className={styles.iconSeries} />
         )}
         <span>&nbsp;{type === "tv" ? "series" : type}</span>
       </div>

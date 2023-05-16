@@ -7,10 +7,7 @@ interface MediaRunTimeOrSeasonsProps {
   seasons?: number;
 }
 
-const MediaRunTimeOrSeasons: React.FC<MediaRunTimeOrSeasonsProps> = ({
-  runtime,
-  seasons,
-}) => {
+const MediaRunTimeOrSeasons: React.FC<MediaRunTimeOrSeasonsProps> = ({ runtime, seasons }) => {
   const toHoursAndMinutes = (totalMinutes: number): string => {
     const minutes = totalMinutes % 60;
     const hours = Math.floor(totalMinutes / 60);
@@ -20,9 +17,7 @@ const MediaRunTimeOrSeasons: React.FC<MediaRunTimeOrSeasonsProps> = ({
   return (
     <>
       <div className={styles.detailItem}>
-        <dt className={styles.heading}>
-          {runtime && runtime >= 0 ? "runtime" : "seasons"}
-        </dt>
+        <dt className={styles.heading}>{runtime && runtime >= 0 ? "runtime" : "seasons"}</dt>
         {runtime && runtime >= 0 && (
           <dd className={styles.description}>
             {runtime > 0 ? `${toHoursAndMinutes(runtime)}` : null}

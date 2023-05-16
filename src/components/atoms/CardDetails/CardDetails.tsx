@@ -26,23 +26,11 @@ const CardDetails: React.FC<CardDetailsProps> = ({
         <ReleaseDate release_date={release_date} air_date={air_date} />
         &nbsp;&nbsp;•&nbsp;
         {title ? (
-          <Image
-            src={movie}
-            alt="movie-icon"
-            unoptimized={true}
-            className={styles.iconMovies}
-          />
+          <Image src={movie} alt="movie-icon" unoptimized={true} className={styles.iconMovies} />
         ) : (
-          <Image
-            src={tv}
-            alt="tv-icon"
-            unoptimized={true}
-            className={styles.iconSeries}
-          />
+          <Image src={tv} alt="tv-icon" unoptimized={true} className={styles.iconSeries} />
         )}
-        <span className={styles.type}>
-          &nbsp; {series_name ? "series" : "movie"}
-        </span>
+        <span className={styles.type}>&nbsp; {series_name ? "series" : "movie"}</span>
       </div>
       <h2 className={styles.title}>{series_name || title}</h2>
     </div>

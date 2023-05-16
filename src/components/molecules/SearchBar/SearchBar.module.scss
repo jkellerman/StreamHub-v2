@@ -1,0 +1,125 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.container {
+  flex-grow: 1;
+  position: relative;
+  z-index: 10;
+  border: 1px solid $slate;
+  border-radius: $border-radius-s;
+  background: linear-gradient(90deg, $secondary-med-light, $primary-dark);
+  align-self: baseline;
+  height: 2.75rem;
+  transition: height 250ms ease-in-out;
+  overflow: hidden;
+}
+
+.container:hover {
+  border: 1px solid $primary;
+  transition: $transition;
+}
+
+.container:focus-within {
+  border: 1px solid $primary;
+  position: absolute;
+  @include center;
+
+  @include tablet {
+    position: relative;
+  }
+}
+
+.formWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5em 0.875em;
+  width: 100%;
+}
+
+.searchIcon {
+  position: relative;
+  width: 0.9375rem;
+  height: 0.9375rem;
+
+  @include tablet() {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.input {
+  font-size: $body-m;
+  font-family: inherit;
+  color: $primary-text;
+  font-weight: $fw-light;
+  border: none;
+  background: transparent;
+  padding: 0.25em 0;
+  width: 100%;
+  outline: none;
+  @include tablet() {
+    height: unset;
+  }
+}
+
+.input::placeholder {
+  color: $primary-text;
+  text-overflow: ellipsis;
+}
+
+.listContainer {
+  position: relative;
+}
+
+.list::before {
+  display: block;
+  content: "";
+  margin: 0.25rem 1rem 0.5rem;
+  height: 1px;
+  background-color: $slate;
+}
+
+.allResultsLinkWrapper {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+
+.allResultsLinkWrapper {
+  justify-content: center;
+}
+
+.isActive,
+.allResultsLinkWrapper:hover {
+  background-color: $secondary;
+  transition: $transition;
+}
+
+.noResultsContainer,
+.loading,
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 8rem;
+  gap: 4rem;
+}
+
+.noResultsContainer::before,
+.loading::before {
+  display: block;
+  content: "";
+  margin: 0.25rem 1rem 0.5rem;
+  height: 1px;
+  width: calc(100% - 2rem);
+  background-color: $slate;
+}

@@ -1,0 +1,19 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.closeButton {
+  background-color: transparent;
+  border: none;
+  width: 0.625rem;
+  height: 0.625rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: $transition;
+  position: absolute;
+  top: 0.75rem;
+  right: 3rem;
+
+  @include tablet {
+    right: 3.5rem;
+  }
+}

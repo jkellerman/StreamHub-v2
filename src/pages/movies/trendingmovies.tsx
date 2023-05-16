@@ -1,6 +1,5 @@
 import Head from "next/head";
 
-import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import MediaCategory from "@/components/organisms/MediaCategory/MediaCategory";
 
 const TrendingMovies = () => {
@@ -14,7 +13,6 @@ const TrendingMovies = () => {
         />
       </Head>
       <main>
-        <SearchBar movies />
         <MediaCategory
           endpoint="/api/trending/movie/week"
           category="trending movies"

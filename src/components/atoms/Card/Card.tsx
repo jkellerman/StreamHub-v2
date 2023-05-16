@@ -29,9 +29,7 @@ const Card: React.FC<CardProps> = ({ id, image, series_name, title }) => {
           alt={`${series_name || title}`}
           unoptimized={true}
           placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            shimmer(240, 140)
-          )}`}
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
           width={780}
           height={439}
           className={styles.card}

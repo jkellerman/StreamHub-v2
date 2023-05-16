@@ -11,11 +11,7 @@ interface MediaCategoryProps {
   type: string;
 }
 
-const MediaCategory: React.FC<MediaCategoryProps> = ({
-  endpoint,
-  category,
-  type,
-}) => {
+const MediaCategory: React.FC<MediaCategoryProps> = ({ endpoint, category, type }) => {
   const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
   if (isLoading) return <Spinner />;
 

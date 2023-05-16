@@ -1,5 +1,16 @@
 @import "@/styles/variables.scss";
 
+@mixin center {
+  width: 90%;
+  margin: 0 auto;
+  @include tablet {
+    width: 95%;
+  }
+  @include laptop {
+    width: 90%;
+  }
+}
+
 @mixin flex-row {
   display: flex;
   flex-direction: row;

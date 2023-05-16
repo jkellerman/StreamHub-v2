@@ -20,9 +20,7 @@ const WatchProviders: React.FC<WatchProvidersProps> = ({ watch_providers }) => {
         <JustWatchLogo />
 
         <div className={styles.providers}>
-          {watch_providers.length === 0 && (
-            <span>Not available to watch online</span>
-          )}
+          {watch_providers.length === 0 && <span>Not available to watch online</span>}
           {watch_providers.flatrate && (
             <div>
               <h2 className={styles.headingMethod}>Stream</h2>

@@ -28,11 +28,7 @@ const TrendingCards: React.FC<TrendingCardsProps> = ({ cards }) => {
   return (
     <>
       <div className={styles.outerBanner}>
-        <ul
-          className={styles.banner}
-          ref={sliderRef}
-          onScroll={getScrollPosition}
-        >
+        <ul className={styles.banner} ref={sliderRef} onScroll={getScrollPosition}>
           {cards.map((item) => {
             return (
               <li className={styles.container} key={item.id} ref={cardRef}>
@@ -49,9 +45,7 @@ const TrendingCards: React.FC<TrendingCardsProps> = ({ cards }) => {
                       alt={item.title ? `${item.title}` : `${item.name}`}
                       placeholder="blur"
                       unoptimized={true}
-                      blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                        shimmer(240, 140)
-                      )}`}
+                      blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
                       width={591}
                       height={333}
                       priority
@@ -76,12 +70,7 @@ const TrendingCards: React.FC<TrendingCardsProps> = ({ cards }) => {
             onClick={() => handleClickPrev()}
             aria-label="click for previous trending"
           >
-            <Image
-              src={chevronLeft}
-              alt="arrow left"
-              unoptimized={true}
-              className={styles.arrow}
-            />
+            <Image src={chevronLeft} alt="arrow left" unoptimized={true} className={styles.arrow} />
           </button>
         )}
         {isScrollAtEnd ? null : (

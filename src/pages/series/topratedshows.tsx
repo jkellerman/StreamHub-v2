@@ -1,6 +1,5 @@
 import Head from "next/head";
 
-import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import MediaCategory from "@/components/organisms/MediaCategory/MediaCategory";
 
 const TopRatedShows = () => {
@@ -14,12 +13,7 @@ const TopRatedShows = () => {
         />
       </Head>
       <main>
-        <SearchBar series />
-        <MediaCategory
-          endpoint="/api/series/top_rated"
-          category="top rated shows"
-          type="series"
-        />
+        <MediaCategory endpoint="/api/series/top_rated" category="top rated shows" type="series" />
       </main>
     </>
   );
