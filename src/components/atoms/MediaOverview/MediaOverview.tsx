@@ -10,8 +10,8 @@ interface MediaOverviewProps {
 }
 
 const MediaOverview: React.FC<MediaOverviewProps> = ({ hero, overview, mediaSummary }) => {
-  const [showToggle, setShowToggle] = useState<boolean>(false);
-  const [readMore, setReadMore] = useState<boolean>(false);
+  const [showToggle, setShowToggle] = useState(false);
+  const [readMore, setReadMore] = useState(false);
   const paragraphRef = useRef<HTMLParagraphElement>(null);
   const router = useRouter();
 

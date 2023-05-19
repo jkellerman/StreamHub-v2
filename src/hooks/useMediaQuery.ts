@@ -1,25 +1,17 @@
 import { useEffect, useState } from "react";
 
-const getMatches = (query: string): boolean => {
-  // Prevents SSR issues
-  if (typeof window !== "undefined") {
-    return window.matchMedia(query).matches;
-  }
-  return false;
-};
-
 export const useMediaQuery = (query: string) => {
-  const [matches, setMatches] = useState(getMatches(query));
+  const [matches, setMatches] = useState(false);
 
-  function handleChange() {
-    setMatches(getMatches(query));
+  function handleChange(event: MediaQueryListEvent | MediaQueryList) {
+    setMatches(event.matches);
   }
 
   useEffect(() => {
     const matchMedia = window.matchMedia(query);
 
     // Triggered at the first client-side load and if query changes
-    handleChange();
+    handleChange(matchMedia);
 
     matchMedia.addEventListener("change", handleChange);
 

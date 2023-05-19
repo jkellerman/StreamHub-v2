@@ -2,7 +2,7 @@ import Image from "next/future/image";
 
 import attribution from "@/public/assets/attribution.svg";
 
-import styles from "../TmdbLogo/TmdbLogo.module.scss";
+import styles from "./TmdbLogo.module.scss";
 
 const TmdbLogo = () => {
   return (

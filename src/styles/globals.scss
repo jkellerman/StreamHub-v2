@@ -33,16 +33,12 @@ a {
 }
 
 h1 {
-  text-transform: capitalize;
   display: inline-block;
 }
 
 hr {
   border: 0.5px solid $secondary-light;
   margin: 0 0 2rem;
-  @include tablet() {
-    display: none;
-  }
 }
 
 .no-scroll {

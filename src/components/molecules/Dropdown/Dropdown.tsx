@@ -2,7 +2,7 @@ import Link from "next/link";
 import QueryString from "qs";
 import React, { useState, useEffect, useCallback } from "react";
 
-import Button from "@/components/atoms/Buttons/Button";
+import Button from "@/components/atoms/Buttons/Dropdown/Button";
 import useClickOutside from "@/hooks/useClickOutside";
 import { Genres } from "@/src/types";
 

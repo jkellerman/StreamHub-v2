@@ -4,6 +4,7 @@ import React from "react";
 
 import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
 import CardList from "@/components/molecules/CardList/CardList";
+import Hero from "@/components/molecules/Hero/Hero";
 import TrendingCards from "@/components/molecules/TrendingCards/TrendingCards";
 import MediaCategoryHomePage from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage";
 import TrendingBanner from "@/components/organisms/TrendingBanner/TrendingBanner";
@@ -37,6 +38,8 @@ const Home: React.FC<HomeProps> = ({
       </Head>
 
       <main>
+        <Hero />
+        {/* <CountrySelection /> */}
         <TrendingBanner>
           <CategoryHeading type="series" category="trending series" home />
           <TrendingCards cards={trendingSeries} />

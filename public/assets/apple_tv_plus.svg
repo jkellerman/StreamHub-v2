@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="Layer_2"
+   data-name="Layer 2"
+   viewBox="0 0 110 55"
+   version="1.1"
+   sodipodi:docname="apple_tv_plus.svg"
+   width="110"
+   height="55"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata26">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview24"
+     showgrid="false"
+     inkscape:zoom="2.6090909"
+     inkscape:cx="55"
+     inkscape:cy="27.5"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Layer_2" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title
+     id="title6">AppleTVplus</title>
+  <rect
+     width="110"
+     height="55"
+     id="rect8"
+     x="0"
+     y="0" />
+  <g
+     id="Light">
+    <path
+       class="cls-1"
+       d="m 31.6,18.28 a 6.07,6.07 0 0 0 1.4,-4.39 6.13,6.13 0 0 0 -4,2.08 5.69,5.69 0 0 0 -1.44,4.17 5.06,5.06 0 0 0 4.1,-1.86"
+       id="path10"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff" />
+    <path
+       class="cls-1"
+       d="m 31.6,18.18 a 6.16,6.16 0 0 0 1.4,-4.3 6.12,6.12 0 0 0 -4,2.07 5.69,5.69 0 0 0 -1.44,4.17 5,5 0 0 0 4.1,-1.94"
+       id="path12"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff" />
+    <path
+       class="cls-1"
+       d="m 32.92,20.39 c -2.23,-0.14 -4.13,1.27 -5.15,1.27 -1.02,0 -2.69,-1.21 -4.47,-1.18 a 6.58,6.58 0 0 0 -5.6,3.43 c -2.41,4.15 -0.63,10.33 1.72,13.64 1.13,1.72 2.49,3.43 4.3,3.43 1.81,0 2.36,-1.1 4.43,-1.1 2.07,0 2.66,1.12 4.47,1.12 1.81,0 3,-1.72 4.16,-3.34 a 14.61,14.61 0 0 0 1.86,-3.83 6,6 0 0 1 -3.59,-5.55 6.13,6.13 0 0 1 2.95,-5.2 6.33,6.33 0 0 0 -5,-2.69"
+       id="path14"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff" />
+    <path
+       class="cls-1"
+       d="m 50.5,18.19 v 4.28 h 3.43 v 3 H 50.5 v 10 c 0,1.56 0.68,2.29 2.21,2.29 a 7.29,7.29 0 0 0 1.23,-0.1 v 2.94 a 10.21,10.21 0 0 1 -2.07,0.17 c -3.69,0 -5.15,-1.39 -5.15,-4.92 V 25.47 h -2.59 v -3 h 2.64 v -4.28 z"
+       id="path16"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff" />
+    <path
+       class="cls-1"
+       d="m 66.5,40.73 h -4 L 55.92,22.47 h 4 L 64.49,37 v 0 L 69.13,22.43 H 73 Z"
+       id="path18"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff" />
+    <polygon
+       class="cls-1"
+       points="86.18,22.51 82.72,22.51 82.72,29.79 75.48,29.79 75.48,33.2 82.72,33.2 82.72,40.53 86.18,40.53 86.18,33.2 93.45,33.2 93.45,29.79 86.18,29.79 "
+       id="polygon20"
+       style="fill:#ffffff" />
+  </g>
+</svg>

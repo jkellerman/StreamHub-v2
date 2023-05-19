@@ -1,38 +1,13 @@
 @import "@/styles/variables.scss";
 
 .button {
-  color: $primary-text;
-  border-radius: $border-radius-l;
-  border: 1px solid $tertiary;
-  text-transform: capitalize;
-  font-size: $body-l-m;
-  cursor: pointer;
-  transition: $transition;
-  background-color: $tertiary;
-  padding: 0.35em 1.5em 0.35em 1em;
-  white-space: nowrap;
-}
-
-.button:focus {
-  background: $secondary-light;
-}
-
-@media (hover: hover) {
-  .button:hover {
-    background: $secondary-light;
-  }
-}
-
-.chevron {
-  position: relative;
-  top: 0.075rem;
-  right: -0.5rem;
-  width: 10px;
-  height: 10px;
-}
-
-@media (min-width: 48em) {
-  .button {
-    padding: 0.5em 1.75em 0.5em 1.25em;
-  }
+  background: linear-gradient(90deg, $primary-med, $primary);
+  padding: 0.9em 2.25em;
+  border: none;
+  border-radius: $border-radius-xl;
+  font-family: inherit;
+  font-size: $body-l;
+  font-weight: $fw-bold;
+  color: $secondary;
+  letter-spacing: 1px;
 }

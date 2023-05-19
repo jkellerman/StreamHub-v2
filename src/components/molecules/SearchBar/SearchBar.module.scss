@@ -7,7 +7,7 @@
   z-index: 10;
   border: 1px solid $slate;
   border-radius: $border-radius-s;
-  background: linear-gradient(90deg, $secondary-med-light, $primary-dark);
+  background: linear-gradient(90deg, $secondary-med-light, $primary-med);
   align-self: baseline;
   height: 2.75rem;
   transition: height 250ms ease-in-out;
@@ -25,7 +25,7 @@
   @include center;
 
   @include tablet {
-    position: relative;
+    position: unset;
   }
 }
 

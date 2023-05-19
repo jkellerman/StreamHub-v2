@@ -1,0 +1,88 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.container {
+  @include flex-center;
+  @include center;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem 0;
+  @include tablet {
+    max-width: 60%;
+  }
+  @include laptop {
+    max-width: 50%;
+  }
+  @include desktop {
+    max-width: 42.5%;
+  }
+}
+
+.subheading {
+  margin-bottom: 1rem;
+  @include tablet {
+    font-size: $body-l-m;
+  }
+}
+
+.logosContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.logo {
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 5px;
+  object-fit: contain;
+  @include tablet {
+    font-size: $body-l-m;
+    width: 4rem;
+    height: 2rem;
+  }
+}
+
+.heading {
+  margin-bottom: 1rem;
+  font-weight: $fw-bold;
+  font-size: $heading-m;
+  @include tablet {
+    font-size: $heading-xl;
+  }
+}
+
+.description {
+  color: $slate;
+  line-height: 1.5rem;
+  font-size: $body-l-m;
+  margin-bottom: 2rem;
+  @include tablet {
+    font-size: $body-l;
+  }
+  @include laptop {
+    width: 90%;
+  }
+}
+
+.button {
+  margin: 2rem 0;
+  padding: 0.75em 1.25em;
+  background-color: transparent;
+  border: 1px solid $primary;
+  color: white;
+  border-radius: 5px;
+}
+
+.hr {
+  border: 2px solid $primary-dark;
+  margin: 0;
+}
+
+.more {
+  font-size: $body-m;
+  @include tablet {
+    font-size: $body-l;
+  }
+}

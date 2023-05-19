@@ -59,11 +59,13 @@ const SearchListItem: React.FC<SearchListItemProps> = ({
           ) : (
             <div className={styles.posterContainer}></div>
           )}
-          <span>
-            {name || title}&nbsp;&nbsp;(
-            {release_date?.substring(0, 4) || first_air_date?.substring(0, 4)})
-          </span>
-          {name && <span className={styles.tv}>TV</span>}
+          <div>
+            <span>
+              {name || title}&nbsp;&nbsp;(
+              {release_date?.substring(0, 4) || first_air_date?.substring(0, 4)})
+            </span>
+            {name && <span className={styles.tv}>TV</span>}
+          </div>
         </a>
       </Link>
     </li>

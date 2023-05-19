@@ -39,11 +39,12 @@
 
 .genre {
   margin-right: 0.5rem;
-  background-color: $secondary-light;
+  background-color: $primary-dark;
   padding: 0.25rem 0.75rem;
-  border: 1px solid $secondary-light;
+  border: 1px solid $primary-dark;
   border-radius: $border-radius-l;
   white-space: nowrap;
+  color: $primary;
 }
 
 @media (hover: hover) {

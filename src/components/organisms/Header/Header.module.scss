@@ -17,7 +17,7 @@
   position: fixed;
   top: 0px;
   z-index: 10;
-  border-bottom: 3px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 3px solid $primary-dark;
   transition: top 250ms ease-in-out, border-bottom 250ms ease-in-out;
 }
 
@@ -48,8 +48,10 @@
 }
 
 .logo {
-  color: white;
+  color: $primary;
   font-size: $heading-l-m;
+  font-weight: $fw-med;
+  font-family: "Wix Madefor Display", sans-serif;
   width: auto;
   flex-shrink: 0;
   flex-basis: 0;

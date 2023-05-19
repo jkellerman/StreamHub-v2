@@ -1,4 +1,4 @@
-import TmdbLogo from "@/components/atoms/TmdbLogo/TmdbLogo";
+import TmdbLogo from "@/components/atoms/Logo/Tmdb/TmdbLogo";
 
 import styles from "../Footer/Footer.module.scss";
 
