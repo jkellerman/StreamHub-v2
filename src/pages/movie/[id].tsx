@@ -14,7 +14,7 @@ import StarRating from "@/components/atoms/StarRating/StarRating";
 import HeroContent from "@/components/molecules/HeroContent/HeroContent";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
 import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
-import Recommendations from "@/components/molecules/Recommendations/Recommendations";
+// import Recommendations from "@/components/molecules/Recommendations/Recommendations";
 import TabList from "@/components/molecules/TabList/TabList";
 import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
 import Hero from "@/components/organisms/Hero/Hero";
@@ -51,7 +51,7 @@ const Movie: React.FC<MovieProps> = ({
   cast,
   genres,
   watch_providers,
-  recommendations,
+  // recommendations,
   title,
 }) => {
   // useEffect(() => {
@@ -117,7 +117,7 @@ const Movie: React.FC<MovieProps> = ({
           movies
         />
 
-        <Recommendations recommendations={recommendations} movies />
+        {/* <Recommendations recommendations={recommendations} movies /> */}
       </main>
     </>
   );

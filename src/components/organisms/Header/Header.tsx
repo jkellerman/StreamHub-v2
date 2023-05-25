@@ -35,7 +35,7 @@ const Header: React.FC = () => {
       <div className={styles.container}>
         <Link href={"/"}>
           <a aria-label="Go to home page" className={styles.logo}>
-            ReelRoulette
+            ReelBuddy
           </a>
         </Link>
 

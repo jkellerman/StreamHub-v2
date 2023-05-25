@@ -32,16 +32,19 @@
   margin-bottom: 1.5rem;
 }
 
-.logo {
-  width: 3rem;
-  height: 1.5rem;
-  border-radius: 5px;
-  object-fit: contain;
+.logoWrapper {
+  width: 48px;
+  height: 24px;
   @include tablet {
-    font-size: $body-l-m;
-    width: 4rem;
-    height: 2rem;
+    width: 64px;
+    height: 32px;
   }
+}
+
+.logo {
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
 }
 
 .heading {
@@ -66,18 +69,20 @@
   }
 }
 
-.button {
+.exploreLink {
   margin: 2rem 0;
   padding: 0.75em 1.25em;
   background-color: transparent;
   border: 1px solid $primary;
   color: white;
   border-radius: 5px;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .hr {
   border: 2px solid $primary-dark;
-  margin: 0;
+  margin-bottom: 2rem;
 }
 
 .more {

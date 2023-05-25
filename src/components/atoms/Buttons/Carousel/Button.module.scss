@@ -1,0 +1,10 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.button {
+  background-color: transparent;
+  border: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import styles from "./Button.module.scss";
 
 interface ButtonProps {
@@ -5,7 +7,11 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ text }) => {
-  return <button className={styles.button}>{text}</button>;
+  return (
+    <Link href="/">
+      <a className={styles.button}>{text}</a>
+    </Link>
+  );
 };
 
 export default Button;

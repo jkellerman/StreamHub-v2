@@ -22,24 +22,21 @@ const CardList: React.FC<CardListProps> = ({ cards, isLoading, isError }) => {
 
   return (
     <ul className={styles.container}>
-      {cards.map((item) => {
-        return (
-          <li key={item.id} className={styles.linkContainer}>
-            <Card
-              id={item.id}
-              image={item.backdrop_path}
-              title={item.title}
-              series_name={item.name}
-            />
-            <CardDetails
-              release_date={item.release_date}
-              title={item.title}
-              air_date={item.first_air_date}
-              series_name={item.name}
-            />
-          </li>
-        );
-      })}
+      {cards.map(
+        ({ id, poster_path, title, name, release_date, first_air_date }: Media.IMediaItem) => {
+          return (
+            <li key={id} className={styles.linkContainer}>
+              <Card id={id} poster={poster_path} movieTitle={title} seriesName={name} />
+              <CardDetails
+                movieYear={release_date}
+                movieTitle={title}
+                seriesYear={first_air_date}
+                seriesName={name}
+              />
+            </li>
+          );
+        }
+      )}
     </ul>
   );
 };

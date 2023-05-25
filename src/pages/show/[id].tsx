@@ -14,7 +14,7 @@ import StarRating from "@/components/atoms/StarRating/StarRating";
 import HeroContent from "@/components/molecules/HeroContent/HeroContent";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
 import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
-import Recommendations from "@/components/molecules/Recommendations/Recommendations";
+// import Recommendations from "@/components/molecules/Recommendations/Recommendations";
 import Tablist from "@/components/molecules/TabList/TabList";
 import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
 import Hero from "@/components/organisms/Hero/Hero";
@@ -49,7 +49,7 @@ const Series: React.FC<SeriesProps> = ({
   cast,
   genres,
   watch_providers,
-  recommendations,
+  // recommendations,
   seasons,
   network,
   title,
@@ -106,7 +106,7 @@ const Series: React.FC<SeriesProps> = ({
           title={title}
         />
 
-        <Recommendations recommendations={recommendations} />
+        {/* <Recommendations recommendations={recommendations} /> */}
       </main>
     </>
   );

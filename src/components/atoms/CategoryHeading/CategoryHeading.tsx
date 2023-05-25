@@ -1,27 +1,32 @@
+import Image from "next/future/image";
 import Link from "next/link";
 import React from "react";
+
+import chevron from "@/public/assets/right-chevron.svg";
 
 import styles from "../CategoryHeading/CategoryHeading.module.scss";
 
 interface CategoryHeadingProps {
-  trending?: boolean;
   type: string;
   category: string;
-  home?: boolean;
 }
 
-const CategoryHeading: React.FC<CategoryHeadingProps> = ({ type, category, home }) => {
+const CategoryHeading: React.FC<CategoryHeadingProps> = ({ type, category }) => {
   return (
     <div className={styles.headingContainer}>
-      <div className={styles.headingAndIconWrapper}>
-        <h1 className={styles.heading}>{category}</h1>
-      </div>
+      <Link href={`/${type}/${category.replace(/\s/g, "")}`}>
+        <a className={styles.heading}>
+          {category}
 
-      {home && (
-        <Link href={`/${type}/${category.replace(/\s/g, "")}`}>
-          <a className={styles.categoryLink}>more {type}</a>
-        </Link>
-      )}
+          <Image
+            src={chevron}
+            alt="chevron-right"
+            width={14}
+            height={14}
+            className={styles.chevron}
+          />
+        </a>
+      </Link>
     </div>
   );
 };

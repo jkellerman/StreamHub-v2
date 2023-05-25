@@ -2,38 +2,39 @@ import Image from "next/future/image";
 import Link from "next/link";
 import React from "react";
 
-import { BACKDROP_URL_IMAGE } from "@/constants/tmdb";
+import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 import { shimmer, toBase64 } from "@/utils/placeholder";
 
 import styles from "../Card/Card.module.scss";
 
 interface CardProps {
   id: number;
-  image: string;
-  series_name?: string;
-  title?: string;
+  poster: string;
+  seriesName?: string;
+  movieTitle?: string;
+  allMedia?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ id, image, series_name, title }) => {
+const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle, allMedia }) => {
   return (
     <Link
       href={
-        title
-          ? `/movie/${id}?${title.replace(/ /g, "")}`
-          : `/show/${id}?${series_name?.replace(/ /g, "")}`
+        movieTitle
+          ? `/movie/${id}?${movieTitle.replace(/ /g, "")}`
+          : `/show/${id}?${seriesName?.replace(/ /g, "")}`
       }
     >
       <a className={styles.container}>
+        {allMedia && seriesName && <span className={styles.mediaType}>TV</span>}
         <Image
-          src={`${BACKDROP_URL_IMAGE}${image}`}
-          alt={`${series_name || title}`}
+          src={`${POSTER_URL_IMAGE}${poster}`}
+          alt={`${seriesName || movieTitle}`}
           unoptimized={true}
           placeholder="blur"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
-          width={780}
-          height={439}
+          width={110}
+          height={165}
           className={styles.card}
-          priority
         />
       </a>
     </Link>

@@ -1,7 +1,7 @@
 export declare namespace Media {
   export interface IMediaItem {
     id: number;
-    backdrop_path: string;
+    poster_path: string;
     title: string;
     name: string;
     release_date: string;

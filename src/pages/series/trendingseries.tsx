@@ -13,7 +13,7 @@ const TrendingSeries = () => {
         />
       </Head>
       <main>
-        <MediaCategory endpoint="/api/trending/tv/week" category="trending series" type="series" />
+        <MediaCategory endpoint="/api/trending/all/week" category="trending series" type="series" />
       </main>
     </>
   );

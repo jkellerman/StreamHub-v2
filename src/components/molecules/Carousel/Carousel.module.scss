@@ -1,0 +1,51 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.container {
+  position: relative;
+  margin-bottom: 4rem;
+}
+
+.carouselWrapper {
+  overflow-x: scroll;
+  overscroll-behavior-inline: contain;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.carouselWrapper::-webkit-scrollbar,
+.carouselWrapper::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.navContainer {
+  display: none;
+  @include tablet {
+    display: inline-flex;
+    gap: 1.5rem;
+    position: absolute;
+    top: -2.75rem;
+    right: 2rem;
+    z-index: 5;
+  }
+}
+
+.carousel {
+  @include center;
+}
+
+.list {
+  display: flex;
+  transition: transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.listItem {
+  list-style: none;
+  min-width: 134px;
+  min-height: 180px;
+  height: auto;
+  @include tablet {
+    min-width: 184px;
+    min-height: 250px;
+  }
+}
