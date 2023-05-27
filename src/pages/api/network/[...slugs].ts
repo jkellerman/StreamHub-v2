@@ -6,15 +6,18 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { id } = req.query;
+    const { slugs } = req.query;
+    const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
     const queryString = QueryString.stringify(
       {
         ...BASE_TMDB_QUERY_PARAMS,
+        watch_region: "GB",
+        with_watch_providers: slugsArray[1],
       },
       { addQueryPrefix: true }
     );
 
-    const url = `${BASE_TMDB_URL}/movie/${id}${queryString}`;
+    const url = `${BASE_TMDB_URL}/discover/${slugsArray[0]}${queryString}`;
     console.info("🚀 Request URL: ", url);
 
     const response = await fetch(url);

@@ -9,9 +9,10 @@ import styles from "../CategoryHeading/CategoryHeading.module.scss";
 interface CategoryHeadingProps {
   type: string;
   category: string;
+  services?: string;
 }
 
-const CategoryHeading: React.FC<CategoryHeadingProps> = ({ type, category }) => {
+const CategoryHeading: React.FC<CategoryHeadingProps> = ({ type, category, services }) => {
   return (
     <div className={styles.headingContainer}>
       <Link href={`/${type}/${category.replace(/\s/g, "")}`}>
@@ -27,6 +28,9 @@ const CategoryHeading: React.FC<CategoryHeadingProps> = ({ type, category }) => 
           />
         </a>
       </Link>
+      {services === "all" && (
+        <div className={styles.subheading}>The most popular on all streaming services.</div>
+      )}
     </div>
   );
 };

@@ -10,11 +10,9 @@ import CoreLayout from "../layouts/core";
 
 import type { AppProps } from "next/app";
 
-// Page loader, progress bar from nprogress
-
 const queryClient = new QueryClient();
 
-NProgress.configure({ showSpinner: false });
+NProgress.configure({ showSpinner: false }); // Page loader, progress bar from nprogress
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());

@@ -34,9 +34,21 @@
   @include center;
 }
 
+.list,
+.error {
+  min-height: 215px;
+  @include tablet {
+    min-height: 307px;
+  }
+}
+
 .list {
   display: flex;
   transition: transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.error {
+  @include center;
 }
 
 .listItem {

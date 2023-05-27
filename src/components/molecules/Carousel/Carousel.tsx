@@ -61,7 +61,10 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint, allMedia }) => {
     }
   };
 
-  if (isError) return <div>...Oops we are having issues, please reload the page.</div>;
+  if (isError)
+    return (
+      <div className={styles.error}>...Oops we are having some issues, please reload the page.</div>
+    );
   return (
     <div className={styles.container}>
       <span className={styles.navContainer}>

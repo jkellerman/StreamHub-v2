@@ -14,7 +14,6 @@ import StarRating from "@/components/atoms/StarRating/StarRating";
 import HeroContent from "@/components/molecules/HeroContent/HeroContent";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
 import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
-// import Recommendations from "@/components/molecules/Recommendations/Recommendations";
 import Tablist from "@/components/molecules/TabList/TabList";
 import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
 import Hero from "@/components/organisms/Hero/Hero";
@@ -123,11 +122,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const queryString = qs.stringify(
     {
       ...BASE_TMDB_QUERY_SEARCH_PARAMS,
+      append_to_response: "credits,recommendations,watch/providers,content_ratings,videos",
     },
     { addQueryPrefix: true }
   );
 
-  const url = `${BASE_TMDB_URL}/tv/${id}${queryString}&append_to_response=credits,recommendations,watch%2Fproviders,content_ratings`;
+  const url = `${BASE_TMDB_URL}/tv/${id}${queryString}`;
   console.info("🚀 Request URL: ", url);
 
   const response = await fetch(url);

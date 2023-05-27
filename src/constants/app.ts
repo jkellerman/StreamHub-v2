@@ -9,3 +9,12 @@ export const DEFAULT_SERIES_GENRE: Genres.IGenre = {
   id: 1,
   name: "Popular",
 };
+
+// Dates
+
+export const formattedDate = (year: number, month: string, day: number): string => {
+  return year + "-" + month + "-" + day;
+};
+export const formattedDateOneYearAgo = (year: number, month: number, day: number): string => {
+  return year + "-" + month + "-" + day;
+};

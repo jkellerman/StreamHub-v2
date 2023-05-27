@@ -19,4 +19,11 @@ export const BASE_TMDB_QUERY_PARAMS = {
 export const BASE_TMDB_QUERY_SEARCH_PARAMS = {
   api_key: process.env.API_KEY,
   language: "en-GB",
+  include_adult: "false",
+  include_video: "false",
+};
+
+export const BASE_TMDB_QUERY_DISCOVER_PARAMS = {
+  api_key: process.env.API_KEY,
+  language: "en-GB",
 };

@@ -28,16 +28,22 @@ const Home: React.FC<HomeProps> = () => {
 
       <main>
         <Hero />
-        <CategoryHeading type="series" category="trending this week" />
+        <CategoryHeading type="all" category="trending this week" services="all" />
         <Carousel endpoint="/api/trending/all/week" allMedia />
-        <CategoryHeading type="series" category="popular TV series" />
-        <Carousel endpoint="/api/trending/tv/day" />
-        <CategoryHeading type="movies" category="popular movies" />
+        <CategoryHeading type="movies" category="top films of the past year" />
+        <Carousel endpoint="/api/year/pastYear/movie/2500" />
+        <CategoryHeading type="series" category="popular netflix series" />
+        <Carousel endpoint="/api/network/tv/8" />
+        <CategoryHeading type="series" category="popular movies on Disney+" />
+        <Carousel endpoint="/api/network/movie/337" />
+        <CategoryHeading type="movies" category="best movies of 2023" />
+        <Carousel endpoint="/api/year/current/movie/2023" />
+        <CategoryHeading type="series" category="popular TV series" services="all" />
         <Carousel endpoint="/api/trending/movie/day" />
+        <CategoryHeading type="movies" category="Hidden gems of the past year" />
+        <Carousel endpoint="/api/year/pastYear/movie/200" />
         <CategoryHeading type="movies" category="upcoming movies" />
         <Carousel endpoint="/api/movies/upcoming" />
-        <CategoryHeading type="movies" category="top rated movies" />
-        <Carousel endpoint="/api/movies/top_rated" />
       </main>
     </>
   );

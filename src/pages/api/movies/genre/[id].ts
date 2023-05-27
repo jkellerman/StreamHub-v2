@@ -6,11 +6,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { id, ...queryParams } = req.query;
+    const { id } = req.query;
     const queryString = QueryString.stringify(
       {
         ...BASE_TMDB_QUERY_PARAMS,
-        ...queryParams,
         with_genres: id,
       },
       { addQueryPrefix: true }
