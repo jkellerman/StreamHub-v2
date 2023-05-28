@@ -30,7 +30,7 @@ const Search: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [searchResults, setSearchResults] = useState<SearchResults[]>([]);
-  const [activeIndex, setActiveIndex] = useState(-1);
+  const [activeResultIndex, setActiveResultIndex] = useState(-1);
   const searchResultsRef = useRef<HTMLUListElement>(null);
   const searchResultsItems = searchResultsRef.current?.children;
   const containerRef = useClickOutside<HTMLDivElement>(() => setSearchQuery(""));
@@ -41,9 +41,9 @@ const Search: React.FC = () => {
   };
 
   useEffect(() => {
+    // fetch search results
     try {
       if (searchQuery.length >= 2) {
-        setIsLoading(true);
         const fetchSearchResults = async () => {
           const endpoint = `/api/search/multi/${searchQuery}`;
           const res = await fetch(endpoint);
@@ -52,6 +52,7 @@ const Search: React.FC = () => {
             (item: IMovieData) => !item.known_for_department
           );
           const slicedArr = filteredArray.slice(0, 5);
+          setIsLoading(true);
           setSearchResults(slicedArr);
           setTimeout(() => {
             setIsLoading(false);
@@ -61,7 +62,7 @@ const Search: React.FC = () => {
         fetchSearchResults();
       } else if (searchQuery.length <= 1) {
         setSearchResults([]);
-        setActiveIndex(-1);
+        setActiveResultIndex(-1);
         setIsLoading(false);
         setIsError(false);
       }
@@ -71,7 +72,7 @@ const Search: React.FC = () => {
   }, [searchQuery]);
 
   useEffect(() => {
-    // Used for smooth transition of search results height and adjusts height based on search results
+    // Used for smooth transition of search results height and adjusts height based on the number of items in search results
     const calculateContainerHeight = () => {
       if (searchResultsRef.current) {
         const containerHeight = searchResultsRef.current.getBoundingClientRect().height;
@@ -96,7 +97,7 @@ const Search: React.FC = () => {
 
   const handleInputSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (searchQuery.length > 0 && activeIndex === -1) {
+    if (searchQuery.length > 0 && activeResultIndex === -1) {
       router.push(`/search/multi/${searchQuery.replace(/ /g, "-")}`);
       setSearchQuery("");
     }
@@ -107,38 +108,37 @@ const Search: React.FC = () => {
     const handleKeydown = (e: KeyboardEvent) => {
       switch (e.key) {
         case "ArrowDown":
-          if (searchResults?.length > 0 && activeIndex < searchResults.length) {
-            setActiveIndex(activeIndex + 1);
+          if (searchResults?.length > 0 && activeResultIndex < searchResults.length) {
+            setActiveResultIndex(activeResultIndex + 1);
             searchResultsItems !== undefined &&
-              searchResultsItems[activeIndex + 1].classList.add("isActive");
+              searchResultsItems[activeResultIndex + 1].classList.add("isActive");
           }
           break;
         case "ArrowUp":
-          if (searchResultsItems?.length !== undefined && activeIndex > 0) {
-            setActiveIndex(activeIndex - 1);
-            searchResultsItems[activeIndex - 1];
+          if (searchResultsItems?.length !== undefined && activeResultIndex > 0) {
+            setActiveResultIndex(activeResultIndex - 1);
+            searchResultsItems[activeResultIndex - 1];
           }
           break;
         case "Enter":
-          if (activeIndex === searchResults.length) {
+          if (activeResultIndex === searchResults.length) {
             router.push(`/search/multi/${searchQuery.replace(/ /g, "-")}`);
             setSearchQuery("");
           }
-          if (searchResultsItems?.length !== undefined && activeIndex > -1) {
-            if (searchResults[activeIndex] && searchResults[activeIndex].title) {
+          if (searchResultsItems?.length !== undefined && activeResultIndex > -1) {
+            if (searchResults[activeResultIndex] && searchResults[activeResultIndex].title) {
               router.push(
-                `/movie/${searchResults[activeIndex].id}?${searchResults[
-                  activeIndex
+                `/movie/${searchResults[activeResultIndex].id}?${searchResults[
+                  activeResultIndex
                 ].title?.replace(/ /g, "-")}`
               );
               setSearchQuery("");
             }
-            if (searchResults[activeIndex] && searchResults[activeIndex].name) {
+            if (searchResults[activeResultIndex] && searchResults[activeResultIndex].name) {
               router.push(
-                `/show/${searchResults[activeIndex].id}?${searchResults[activeIndex].name?.replace(
-                  / /g,
-                  "-"
-                )}`
+                `/show/${searchResults[activeResultIndex].id}?${searchResults[
+                  activeResultIndex
+                ].name?.replace(/ /g, "-")}`
               );
               setSearchQuery("");
             }
@@ -153,7 +153,7 @@ const Search: React.FC = () => {
     return () => {
       document.removeEventListener("keydown", handleKeydown);
     };
-  }, [searchResultsItems, activeIndex, searchResults, router, searchQuery, containerRef]);
+  }, [searchResultsItems, activeResultIndex, searchResults, router, searchQuery, containerRef]);
 
   return (
     <div className={styles.container} ref={containerRef}>
@@ -192,7 +192,7 @@ const Search: React.FC = () => {
                       first_air_date={first_air_date}
                       poster_path={poster_path}
                       index={index}
-                      activeIndex={activeIndex}
+                      activeIndex={activeResultIndex}
                       setSearchQuery={setSearchQuery}
                     />
                   );
@@ -201,7 +201,7 @@ const Search: React.FC = () => {
               {searchResults.length > 1 && (
                 <li
                   className={
-                    activeIndex === searchResults.length
+                    activeResultIndex === searchResults.length
                       ? `${styles.allResultsLinkWrapper} ${styles.isActive}`
                       : styles.allResultsLinkWrapper
                   }
