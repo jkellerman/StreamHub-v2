@@ -6,7 +6,7 @@
   @include tablet {
     width: 95%;
   }
-  @include laptop {
+  @include tabletL() {
     width: 90%;
   }
 }

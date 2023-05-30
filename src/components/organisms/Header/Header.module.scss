@@ -58,6 +58,9 @@
   @include tablet() {
     font-size: $heading-l-m;
   }
+  @include laptop() {
+    font-size: $heading-s;
+  }
 }
 
 .loginContainer {

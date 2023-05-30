@@ -12,12 +12,6 @@
   }
 }
 
-.name {
-  white-space: nowrap;
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .detailItem {
   display: flex;
   flex-direction: row;
@@ -31,25 +25,8 @@
 }
 
 .group {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   row-gap: 0.5rem;
-  margin: 0;
-}
-
-.genre {
-  margin-right: 0.5rem;
-  background-color: $primary-dark;
-  padding: 0.25rem 0.75rem;
-  border: 1px solid $primary-dark;
-  border-radius: $border-radius-l;
-  white-space: nowrap;
-  color: $primary;
-}
-
-@media (hover: hover) {
-  .genre:hover {
-    background-color: $secondary-light;
-    transition: $transition;
-  }
+  margin: 1rem 0;
 }

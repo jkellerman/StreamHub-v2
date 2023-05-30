@@ -2,31 +2,28 @@
 @import "@/styles/mixins.scss";
 
 .container {
-  display: none;
-  @include tablet() {
-    display: block;
-    width: 93.75%;
-    margin: 1rem auto 3rem;
-  }
+  @include center;
+  margin: 2rem auto;
+  max-width: 900px;
+
   @include laptop() {
-    margin: 0 2.25rem 3rem 11rem;
-    width: unset;
+    // margin: 0 2.25rem 3rem 11rem;
+
     position: relative;
     z-index: 5;
   }
 }
 
 .tabs {
+  display: flex;
+  border-bottom: 1px solid $slate;
+  // margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  gap: 1.5rem;
   @include tablet() {
-    border-bottom: 1px solid $slate;
-    padding-bottom: 2rem;
-    margin-bottom: 1rem;
-    display: flex;
-    gap: 1.5rem;
-  }
-  @include laptop() {
     .tabs {
       gap: 2.5rem;
+      padding-bottom: 2rem;
     }
   }
 }

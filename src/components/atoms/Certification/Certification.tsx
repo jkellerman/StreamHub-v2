@@ -17,7 +17,7 @@ const Certification: React.FC<CertificationProps> = ({
     <>
       {movie_age_rating && (
         <span className={mediaDetailsTab ? undefined : `${styles.ageRating}`}>
-          {movie_age_rating}
+          Rated &nbsp; {movie_age_rating}+
         </span>
       )}
 

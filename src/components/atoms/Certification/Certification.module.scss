@@ -2,8 +2,13 @@
 @import "@/styles/mixins.scss";
 
 .ageRating {
-  border: 1px solid $primary-text;
-  padding: 0.15rem 0.5rem;
+  margin-right: 0.5rem;
+  background: $primary-dark;
+  padding: 0.25em 0.75em;
+  border: 1px solid $primary-dark;
+  border-radius: $border-radius-l;
+  white-space: nowrap;
+  color: $primary;
+  font-size: $body-m;
   font-weight: $fw-med;
-  margin-right: 0.75rem;
 }

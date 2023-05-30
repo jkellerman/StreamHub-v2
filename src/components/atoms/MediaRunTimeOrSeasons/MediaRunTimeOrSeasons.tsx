@@ -16,15 +16,14 @@ const MediaRunTimeOrSeasons: React.FC<MediaRunTimeOrSeasonsProps> = ({ runtime, 
   };
   return (
     <>
-      <div className={styles.detailItem}>
-        <dt className={styles.heading}>{runtime && runtime >= 0 ? "runtime" : "seasons"}</dt>
-        {runtime && runtime >= 0 && (
-          <dd className={styles.description}>
-            {runtime > 0 ? `${toHoursAndMinutes(runtime)}` : null}
-          </dd>
-        )}
-        {seasons && <dd className={styles.description}>{seasons}</dd>}
-      </div>
+      {runtime && runtime >= 0 && (
+        <span className={styles.stat}>{runtime > 0 ? `${toHoursAndMinutes(runtime)}` : null}</span>
+      )}
+      {seasons && (
+        <span className={styles.stat}>
+          {seasons > 1 ? `${seasons} seasons` : `${seasons} season`}
+        </span>
+      )}
     </>
   );
 };

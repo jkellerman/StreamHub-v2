@@ -2,27 +2,22 @@
 @import "@/styles/mixins.scss";
 
 .container {
+  display: none;
   z-index: 5;
   position: relative;
-  // width: 90%;
-  // margin: 0 auto;
+  justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  @include center;
+  max-width: 900px;
   margin-bottom: 2rem;
   @include tablet() {
-    // width: 93.75%;
-    // padding: 0;
     margin-bottom: 4rem;
   }
   @include laptop() {
-    position: relative;
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 2rem;
-    margin: 4.15rem auto 2rem auto;
-    // width: unset;
-    left: 0;
-    padding: 0;
+    margin: 10rem auto 2rem auto;
   }
 }
 

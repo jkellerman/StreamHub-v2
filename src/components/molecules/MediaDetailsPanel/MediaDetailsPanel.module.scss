@@ -1,0 +1,17 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.container {
+  z-index: 5;
+  position: relative;
+  @include center;
+  max-width: 900px;
+}
+
+.title {
+  font-weight: $fw-med;
+  font-size: $heading-l;
+  @include tablet() {
+    font-size: $heading-xl;
+  }
+}

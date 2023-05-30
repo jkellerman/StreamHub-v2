@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import Button from "@/components/atoms/Buttons/Carousel/Button";
 import Card from "@/components/atoms/Card/Card";
 import CardDetails from "@/components/atoms/CardDetails/CardDetails";
-import useFetch from "@/hooks/useFetch";
+import useFetchCards from "@/hooks/useFetchCards";
 import { Media } from "@/types/media";
 
 import styles from "./Carousel.module.scss";
@@ -14,7 +14,7 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ endpoint, allMedia }) => {
-  const { cards, isError } = useFetch(endpoint);
+  const { cards, isError } = useFetchCards(endpoint);
   const carouselRef = useRef<HTMLUListElement | null>(null);
   const cardRef = useRef<HTMLLIElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);

@@ -7,26 +7,20 @@ const DATE_SLICE = 4;
 interface ReleaseDateProps {
   release_date?: string;
   air_date?: string;
-  styled?: boolean;
   mediaDetailsTab?: boolean;
 }
 
-const ReleaseDate: React.FC<ReleaseDateProps> = ({
-  release_date,
-  air_date,
-  styled,
-  mediaDetailsTab,
-}) => {
+const ReleaseDate: React.FC<ReleaseDateProps> = ({ release_date, air_date, mediaDetailsTab }) => {
   return (
     <>
       {release_date && (
-        <span className={styled ? styles.date : undefined}>
+        <span className={styles.date}>
           {mediaDetailsTab ? release_date : release_date.slice(0, DATE_SLICE)}
         </span>
       )}
 
       {air_date && (
-        <span className={styled ? styles.date : undefined}>
+        <span className={styles.date}>
           {mediaDetailsTab ? air_date : air_date.slice(0, DATE_SLICE)}
         </span>
       )}

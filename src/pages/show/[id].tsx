@@ -3,20 +3,14 @@ import Head from "next/head";
 import qs from "qs";
 import React from "react";
 
-import Cast from "@/components/atoms/Cast/Cast";
+import BackgroundImage from "@/components/atoms/BackgroundImage/BackgroundImage";
 import Certification from "@/components/atoms/Certification/Certification";
-import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
-import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
-import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
-import MediaRunTimeOrSeasons from "@/components/atoms/MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
 import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
 import StarRating from "@/components/atoms/StarRating/StarRating";
 import HeroContent from "@/components/molecules/HeroContent/HeroContent";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
-import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
+import MediaDetailsPanel from "@/components/molecules/MediaDetailsPanel/MediaDetailsPanel";
 import Tablist from "@/components/molecules/TabList/TabList";
-import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
-import Hero from "@/components/organisms/Hero/Hero";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import { Genres, Media } from "@/src/types";
 
@@ -35,11 +29,10 @@ interface SeriesProps {
   seasons: number;
   network: string[];
   title: string;
+  id: number;
 }
 
 const Series: React.FC<SeriesProps> = ({
-  backdrop,
-  tagline,
   series_age_rating,
   air_date,
   vote_average,
@@ -52,6 +45,7 @@ const Series: React.FC<SeriesProps> = ({
   seasons,
   network,
   title,
+  id,
 }) => {
   return (
     <>
@@ -61,9 +55,16 @@ const Series: React.FC<SeriesProps> = ({
       </Head>
 
       <main>
-        <Hero backdrop={backdrop} title={title} />
+        <BackgroundImage title={title} endpoint={`/api/details/tv/${id}`} />
+        <MediaDetailsPanel title={title} id={id} type="tv">
+          <MediaDetails
+            genres={genres}
+            series_age_rating={series_age_rating}
+            air_date={air_date}
+            seasons={seasons}
+          />
+        </MediaDetailsPanel>
         <HeroContent
-          tagline={tagline}
           series_age_rating={series_age_rating}
           air_date={air_date}
           star_rating={vote_average}
@@ -72,24 +73,9 @@ const Series: React.FC<SeriesProps> = ({
           title={title}
         >
           <Certification series_age_rating={series_age_rating} />
-          <ReleaseDate air_date={air_date} styled />
+          <ReleaseDate air_date={air_date} />
           <StarRating star_rating={vote_average} />
         </HeroContent>
-
-        <WatchProviders watch_providers={watch_providers} />
-
-        <MediaSummary star_rating={vote_average}>
-          <Certification movie_age_rating={series_age_rating} />
-          <ReleaseDate air_date={air_date} styled />
-          <MediaOverview overview={overview} mediaSummary />
-        </MediaSummary>
-
-        <MediaDetails>
-          <MediaDirectorOrNetwork network={network} />
-          <Cast cast={cast} />
-          <MediaGenres genres={genres} movies />
-          <MediaRunTimeOrSeasons seasons={seasons} />
-        </MediaDetails>
 
         <Tablist
           series_age_rating={series_age_rating}
@@ -103,6 +89,7 @@ const Series: React.FC<SeriesProps> = ({
           genres={genres}
           watch_providers={watch_providers}
           title={title}
+          id={id}
         />
 
         {/* <Recommendations recommendations={recommendations} /> */}
@@ -184,6 +171,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       network,
       title,
       data,
+      id,
     },
   };
 };

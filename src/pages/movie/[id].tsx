@@ -3,20 +3,14 @@ import Head from "next/head";
 import qs from "qs";
 import React from "react";
 
-import Cast from "@/components/atoms/Cast/Cast";
+import BackgroundImage from "@/components/atoms/BackgroundImage/BackgroundImage";
 import Certification from "@/components/atoms/Certification/Certification";
-import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
-import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
-import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
-import MediaRunTimeOrSeasons from "@/components/atoms/MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
 import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
 import StarRating from "@/components/atoms/StarRating/StarRating";
 import HeroContent from "@/components/molecules/HeroContent/HeroContent";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
-import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
+import MediaDetailsPanel from "@/components/molecules/MediaDetailsPanel/MediaDetailsPanel";
 import TabList from "@/components/molecules/TabList/TabList";
-import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
-import Hero from "@/components/organisms/Hero/Hero";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import { Media, Genres } from "@/src/types";
 
@@ -35,11 +29,10 @@ interface MovieProps {
   runtime: number;
   director: Media.IDirector;
   title: string;
+  id: number;
 }
 
 const Movie: React.FC<MovieProps> = ({
-  backdrop,
-  tagline,
   movie_age_rating,
   release_date,
   runtime,
@@ -52,29 +45,26 @@ const Movie: React.FC<MovieProps> = ({
   watch_providers,
   // recommendations,
   title,
+  id,
 }) => {
-  // useEffect(() => {
-  //   const fetchVideo = async () => {
-  //     const res = await fetch(
-  //       "https://api.themoviedb.org/3/movie/76600/videos?api_key=f0bc4ef2821d0b3d1fa993f8b3c9c6df&language=en-GB"
-  //     );
-  //     const data = await res.json();
-  //     console.log(data);
-  //   };
-  //   fetchVideo();
-  // }, []);
-
   return (
     <>
       <Head>
-        <title>{`Watch ${title} Online | Reelgood`}</title>
+        <title>{`Watch ${title} Online | ReelBuddy`}</title>
         <meta name="description" content={`Where to watch ${title}`} />
       </Head>
 
       <main>
-        <Hero backdrop={backdrop} title={title} />
+        <BackgroundImage title={title} endpoint={`/api/details/movie/${id}`} />
+        <MediaDetailsPanel title={title} id={id} type="movie">
+          <MediaDetails
+            genres={genres}
+            movie_age_rating={movie_age_rating?.certification}
+            runtime={runtime}
+            release_date={release_date}
+          />
+        </MediaDetailsPanel>
         <HeroContent
-          tagline={tagline}
           movie_age_rating={movie_age_rating?.certification}
           release_date={release_date}
           star_rating={vote_average}
@@ -83,24 +73,9 @@ const Movie: React.FC<MovieProps> = ({
           title={title}
         >
           <Certification movie_age_rating={movie_age_rating?.certification} />
-          <ReleaseDate release_date={release_date} styled />
+          <ReleaseDate release_date={release_date} />
           <StarRating star_rating={vote_average} />
         </HeroContent>
-
-        <WatchProviders watch_providers={watch_providers} />
-
-        <MediaSummary star_rating={vote_average}>
-          <Certification movie_age_rating={movie_age_rating?.certification} />
-          <ReleaseDate release_date={release_date} styled />
-          <MediaOverview overview={overview} mediaSummary />
-        </MediaSummary>
-
-        <MediaDetails>
-          <MediaDirectorOrNetwork director={director} />
-          <Cast cast={cast} />
-          <MediaGenres genres={genres} movies />
-          <MediaRunTimeOrSeasons runtime={runtime} />
-        </MediaDetails>
 
         <TabList
           movie_age_rating={movie_age_rating?.certification}
@@ -115,6 +90,7 @@ const Movie: React.FC<MovieProps> = ({
           watch_providers={watch_providers}
           title={title}
           movies
+          id={id}
         />
       </main>
     </>
@@ -124,10 +100,8 @@ const Movie: React.FC<MovieProps> = ({
 export default Movie;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { query, res } = context;
+  const { query } = context;
   const { id } = query;
-
-  res.setHeader("Cache-Control", "public, s-maxage=1, stale-while-revalidate=86400");
 
   const queryString = qs.stringify(
     {
@@ -144,8 +118,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const data = await response.json();
 
   const {
-    backdrop_path,
-    tagline,
     release_dates,
     release_date,
     runtime,
@@ -185,8 +157,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      backdrop: backdrop_path,
-      tagline,
       movie_age_rating: age_rating,
       release_date,
       runtime,
@@ -199,6 +169,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       watch_providers,
       recommendations,
       title,
+      id,
     },
   };
 };

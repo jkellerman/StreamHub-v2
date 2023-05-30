@@ -1,7 +1,12 @@
 @import "@/styles/variables.scss";
 @import "@/styles/mixins.scss";
 
-.stat {
+.name {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.genre {
   margin-right: 0.5rem;
   background: $primary-dark;
   padding: 0.25em 0.75em;
@@ -11,4 +16,11 @@
   color: $primary;
   font-size: $body-m;
   font-weight: $fw-med;
+}
+
+@media (hover: hover) {
+  .genre:hover {
+    background-color: $secondary-light;
+    transition: $transition;
+  }
 }

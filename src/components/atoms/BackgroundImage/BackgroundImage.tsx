@@ -3,38 +3,53 @@ import React from "react";
 
 import {
   BACKGROUND_URL_IMAGE_L,
-  BACKGROUND_URL_IMAGE_XL,
   BACKGROUND_URL_IMAGE_M,
+  BACKGROUND_URL_IMAGE_S,
+  BACKGROUND_URL_IMAGE_XL,
 } from "@/constants/tmdb";
+import useFetchDetails from "@/hooks/useFetchDetails";
 
 import styles from "./BackgroundImage.module.scss";
 
-interface HeroBackgroundProps {
-  backdrop: string;
+interface BackgroundImageProps {
+  endpoint: string;
   title: string;
 }
 
-const HeroBackground: React.FC<HeroBackgroundProps> = ({ backdrop, title }) => {
+const BackgroundImage: React.FC<BackgroundImageProps> = ({ endpoint, title }) => {
+  const { data } = useFetchDetails(endpoint);
   return (
-    <>
+    <div className={styles.container}>
       {" "}
       <div className={styles.overlay}></div>
       <div className={styles.imageContainer}>
-        <picture>
-          <source media="(min-width:1200px)" srcSet={`${BACKGROUND_URL_IMAGE_XL}${backdrop}`} />
-          <source media="(min-width:700px)" srcSet={`${BACKGROUND_URL_IMAGE_L}${backdrop}`} />
-          <img
-            src={`${BACKGROUND_URL_IMAGE_M}${backdrop}`}
-            alt={`${title} backdrop`}
-            className={styles.backgroundImage}
-            loading="eager"
-            width={780}
-            height={439}
-          />
-        </picture>
+        {data && (
+          <picture>
+            <source
+              media="(min-width:1200px)"
+              srcSet={`${BACKGROUND_URL_IMAGE_XL}${data.backdrop_path}`}
+            />
+            <source
+              media="(min-width:700px)"
+              srcSet={`${BACKGROUND_URL_IMAGE_L}${data.backdrop_path}`}
+            />
+            <source
+              media="(max-width:300px)"
+              srcSet={`${BACKGROUND_URL_IMAGE_S}${data.backdrop_path}`}
+            />
+            <img
+              src={`${BACKGROUND_URL_IMAGE_M}${data.backdrop_path}`}
+              alt={`${title} backdrop`}
+              className={styles.backgroundImage}
+              loading="eager"
+              width={780}
+              height={439}
+            />
+          </picture>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
-export default HeroBackground;
+export default BackgroundImage;

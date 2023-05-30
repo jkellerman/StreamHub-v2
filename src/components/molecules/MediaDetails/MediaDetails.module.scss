@@ -1,11 +1,9 @@
 @import "@/styles/variables.scss";
 @import "@/styles/mixins.scss";
 
-.details {
-  margin: 0 auto 2rem;
-  width: 90%;
-  font-size: $body-l-m;
-  @include tablet() {
-    display: none;
-  }
+.detailsContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
