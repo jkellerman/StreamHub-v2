@@ -1,51 +1,25 @@
 import Router from "next/router";
 import React, { useState, useRef } from "react";
 
-import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
-import Poster from "@/components/atoms/Poster/Poster";
 import TabButton from "@/components/atoms/TabButton/TabButton";
 import WatchProvidersTab from "@/components/molecules/WatchProvidersTab/WatchProvidersTab";
-import { Media, Genres } from "@/src/types";
+import { Media } from "@/src/types";
 
-import MediaDetails from "../MediaDetails/MediaDetails";
-import MediaSummary from "../MediaSummary/MediaSummary";
 import styles from "../TabList/TabList.module.scss";
 
 interface TabListProps {
-  movie_age_rating?: string;
+  watch_providers: Media.IProviderList;
+  title: string;
   release_date?: string;
   air_date?: string;
-  runtime?: number;
-  star_rating: number;
-  overview: string;
-  series_age_rating?: string;
-  poster: string;
-  director?: Media.IDirector;
-  cast: Media.ICastMember[];
-  genres: Genres.IGenre[];
-  watch_providers: Media.IProviderList;
-  seasons?: number;
-  network?: string[];
-  title: string;
-  movies?: boolean;
-  id: number;
 }
 
-const TabList: React.FC<TabListProps> = ({
-  movie_age_rating,
-  release_date,
-  runtime,
-  overview,
-  poster,
-  genres,
-  watch_providers,
-  title,
-}) => {
-  const [activeTab, setActiveTab] = useState("watch");
+const TabList: React.FC<TabListProps> = ({ watch_providers, title, release_date, air_date }) => {
+  const [activeTab, setActiveTab] = useState("stream");
   const tab = useRef<HTMLDivElement>(null);
 
-  Router.events.on("routeChangeComplete", () => setActiveTab("watch"));
-  Router.events.on("routeChangeError", () => setActiveTab("watch"));
+  Router.events.on("routeChangeComplete", () => setActiveTab("stream"));
+  Router.events.on("routeChangeError", () => setActiveTab("stream"));
 
   const handleClick = (tab: string) => {
     setActiveTab(tab);
@@ -56,53 +30,63 @@ const TabList: React.FC<TabListProps> = ({
   };
 
   return (
-    <div className={styles.container} ref={tab}>
-      <div className={styles.tabs}>
-        <TabButton
-          activeTab={activeTab}
-          handleClick={handleClick}
-          tab="watch"
-          handleScroll={handleScroll}
-        />
-        <TabButton
-          activeTab={activeTab}
-          handleClick={handleClick}
-          tab="details"
-          handleScroll={handleScroll}
-        />
-      </div>
-      <div>
-        <div>
-          {activeTab === "watch" && (
-            <WatchProvidersTab watch_providers={watch_providers} activeTab={activeTab} />
+    <>
+      <h3 className={styles.title}>
+        Where to watch {title} ({release_date?.slice(0, 4) || air_date?.slice(0, 4)}) online
+      </h3>
+      <div className={styles.container} ref={tab}>
+        <div className={styles.tabs}>
+          <TabButton
+            activeTab={activeTab}
+            handleClick={handleClick}
+            tab="stream"
+            handleScroll={handleScroll}
+          />
+          <TabButton
+            activeTab={activeTab}
+            handleClick={handleClick}
+            tab="rent"
+            handleScroll={handleScroll}
+          />
+          <TabButton
+            activeTab={activeTab}
+            handleClick={handleClick}
+            tab="buy"
+            handleScroll={handleScroll}
+          />
+        </div>
+
+        <div className={styles.providerContainer}>
+          {activeTab === "stream" && (
+            <div
+              className={
+                activeTab === "stream" ? `${styles.providers} ${styles.active}` : styles.providers
+              }
+            >
+              <WatchProvidersTab watch_providers={watch_providers} activeTab={activeTab} stream />
+            </div>
+          )}
+          {activeTab === "rent" && (
+            <div
+              className={
+                activeTab === "rent" ? `${styles.providers} ${styles.active}` : styles.providers
+              }
+            >
+              <WatchProvidersTab watch_providers={watch_providers} activeTab={activeTab} rent />
+            </div>
+          )}
+          {activeTab === "buy" && (
+            <div
+              className={
+                activeTab === "buy" ? `${styles.providers} ${styles.active}` : styles.providers
+              }
+            >
+              <WatchProvidersTab watch_providers={watch_providers} activeTab={activeTab} buy />
+            </div>
           )}
         </div>
-        <div className={styles.detailsContainer}>
-          {activeTab === "details" && (
-            <>
-              <div
-                className={
-                  activeTab === "details"
-                    ? `${styles.mediaDetails} ${styles.active}`
-                    : styles.mediaDetails
-                }
-              >
-                <MediaSummary>
-                  <MediaDetails
-                    genres={genres}
-                    movie_age_rating={movie_age_rating}
-                    release_date={release_date}
-                    runtime={runtime}
-                  />
-                  <MediaOverview overview={overview} mediaSummary />
-                </MediaSummary>
-              </div>
-              <Poster poster={poster} title={title} />
-            </>
-          )}
-        </div>
       </div>
-    </div>
+    </>
   );
 };
 

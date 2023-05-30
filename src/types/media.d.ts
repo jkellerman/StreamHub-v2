@@ -48,7 +48,6 @@ export declare namespace Media {
   export interface IProviderList {
     length: number;
     flatrate: IProvider[];
-    link: string;
     buy: IProvider[];
     rent: IProvider[];
   }

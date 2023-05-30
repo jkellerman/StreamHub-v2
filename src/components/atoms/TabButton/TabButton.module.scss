@@ -3,20 +3,22 @@
 
 .tabContainer {
   position: relative;
+  min-width: 55px;
+  text-align: center;
 }
 
 .tab {
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: $fw-med;
-  font-size: $heading-xs-m;
+  font-size: $body-l-m;
   font-family: inherit;
   cursor: pointer;
   background: none;
   border: none;
   color: $primary-text;
   @include tablet() {
-    font-size: $heading-xs;
-    padding-bottom: 1rem;
+    font-size: $body-l;
+    padding-bottom: 0.5rem;
   }
 }
 

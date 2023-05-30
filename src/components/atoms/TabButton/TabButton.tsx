@@ -12,31 +12,42 @@ interface TabButtonProps {
 const TabButton: React.FC<TabButtonProps> = ({ activeTab, tab, handleClick, handleScroll }) => {
   return (
     <>
-      {tab === "watch" && (
+      {tab === "stream" && (
         <div className={styles.tabContainer}>
           <button
-            className={activeTab === "watch" ? `${styles.tab} ${styles.active}` : `${styles.tab} `}
+            className={activeTab === "stream" ? `${styles.tab} ${styles.active}` : `${styles.tab} `}
             onClick={() => {
-              handleClick("watch");
+              handleClick("stream");
               handleScroll();
             }}
           >
-            Where to watch
+            Stream
           </button>
         </div>
       )}
-      {tab === "details" && (
+      {tab === "rent" && (
         <div className={styles.tabContainer}>
           <button
-            className={
-              activeTab === "details" ? `${styles.tab} ${styles.active}` : `${styles.tab} `
-            }
+            className={activeTab === "rent" ? `${styles.tab} ${styles.active}` : `${styles.tab} `}
             onClick={() => {
-              handleClick("details");
+              handleClick("rent");
               handleScroll();
             }}
           >
-            Details
+            Rent
+          </button>
+        </div>
+      )}
+      {tab === "buy" && (
+        <div className={styles.tabContainer}>
+          <button
+            className={activeTab === "buy" ? `${styles.tab} ${styles.active}` : `${styles.tab} `}
+            onClick={() => {
+              handleClick("buy");
+              handleScroll();
+            }}
+          >
+            Buy
           </button>
         </div>
       )}

@@ -1,24 +1,17 @@
 @import "@/styles/variables.scss";
 @import "@/styles/mixins.scss";
 
+.container {
+  margin-bottom: 2rem;
+}
+
 .overview {
   line-height: 25px;
   font-size: $body-l-m;
   font-weight: $fw-light;
+  margin-bottom: 1rem;
   @include tablet() {
-    margin-bottom: 0;
     font-size: $body-l;
-  }
-}
-
-.heroOverview {
-  display: none;
-  @include laptop() {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    text-overflow: ellipsis;
   }
 }
 
@@ -28,7 +21,7 @@
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 5;
   text-overflow: ellipsis;
 }
 
@@ -47,10 +40,4 @@
   font-size: $body-l-m;
   padding: 0;
   cursor: pointer;
-}
-
-@include tablet() {
-  .mediaDetailsTabOverview {
-    margin-top: 0.5rem;
-  }
 }

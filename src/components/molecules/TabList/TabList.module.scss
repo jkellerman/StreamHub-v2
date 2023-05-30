@@ -1,23 +1,19 @@
 @import "@/styles/variables.scss";
 @import "@/styles/mixins.scss";
 
+.title {
+  font-weight: $fw-med;
+  font-size: $heading-xs;
+}
+
 .container {
-  @include center;
   margin: 2rem auto;
   max-width: 900px;
-
-  @include laptop() {
-    // margin: 0 2.25rem 3rem 11rem;
-
-    position: relative;
-    z-index: 5;
-  }
 }
 
 .tabs {
   display: flex;
   border-bottom: 1px solid $slate;
-  // margin-bottom: 1rem;
   padding-bottom: 1rem;
   gap: 1.5rem;
   @include tablet() {
@@ -28,68 +24,19 @@
   }
 }
 
-.detailsContainer {
+.providerContainer {
   @include tablet() {
     display: flex;
     gap: 2rem;
   }
 }
 
-.overviewContainer {
-  margin-bottom: 2rem;
-  @include laptop() {
-    margin-bottom: none;
-  }
+.providers {
+  min-width: 100%;
 }
 
-.mediaDetails {
-  @include laptop() {
-    display: flex;
-    flex-direction: row-reverse;
-    width: 90%;
-    justify-content: flex-end;
-  }
-}
-
-.mediaDetails.active {
+.providers.active {
   animation: fade $fade-animation;
-}
-
-.list {
-  @include laptop() {
-    margin-top: 0;
-  }
-}
-
-.list,
-.attributesList {
-  padding-left: 0;
-  display: flex;
-}
-
-.attributesList {
-  flex-wrap: wrap;
-  row-gap: 2rem;
-  @include laptop() {
-    display: flex;
-  }
-}
-
-.listItem {
-  list-style: none;
-  width: 160px;
-  margin-right: 0.5rem;
-}
-
-.heading {
-  text-transform: uppercase;
-  font-weight: $fw-med;
-  margin-bottom: 0.5rem;
-}
-
-.releaseDate,
-.certification {
-  width: 165px;
 }
 
 @keyframes fade {

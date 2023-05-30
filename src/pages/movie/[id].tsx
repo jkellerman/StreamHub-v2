@@ -4,13 +4,9 @@ import qs from "qs";
 import React from "react";
 
 import BackgroundImage from "@/components/atoms/BackgroundImage/BackgroundImage";
-import Certification from "@/components/atoms/Certification/Certification";
-import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
-import StarRating from "@/components/atoms/StarRating/StarRating";
-import HeroContent from "@/components/molecules/HeroContent/HeroContent";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
-import MediaDetailsPanel from "@/components/molecules/MediaDetailsPanel/MediaDetailsPanel";
-import TabList from "@/components/molecules/TabList/TabList";
+import MediaDetailsPanel from "@/components/organisms/MediaDetailsPanel/MediaDetailsPanel";
+import MediaInfoBox from "@/components/organisms/MediaInfoBox/MediaInfoBox";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import { Media, Genres } from "@/src/types";
 
@@ -25,7 +21,6 @@ interface MovieProps {
   cast: Media.ICastMember[];
   genres: Genres.IGenre[];
   watch_providers: Media.IProviderList;
-  recommendations: Media.IRecommendationsList;
   runtime: number;
   director: Media.IDirector;
   title: string;
@@ -36,14 +31,11 @@ const Movie: React.FC<MovieProps> = ({
   movie_age_rating,
   release_date,
   runtime,
-  vote_average,
+  // vote_average,
   overview,
   poster,
-  director,
-  cast,
   genres,
   watch_providers,
-  // recommendations,
   title,
   id,
 }) => {
@@ -64,34 +56,20 @@ const Movie: React.FC<MovieProps> = ({
             release_date={release_date}
           />
         </MediaDetailsPanel>
-        <HeroContent
-          movie_age_rating={movie_age_rating?.certification}
-          release_date={release_date}
-          star_rating={vote_average}
+        <MediaInfoBox
           overview={overview}
           poster={poster}
           title={title}
-        >
-          <Certification movie_age_rating={movie_age_rating?.certification} />
-          <ReleaseDate release_date={release_date} />
-          <StarRating star_rating={vote_average} />
-        </HeroContent>
-
-        <TabList
-          movie_age_rating={movie_age_rating?.certification}
-          release_date={release_date}
-          runtime={runtime}
-          star_rating={vote_average}
-          overview={overview}
-          poster={poster}
-          director={director}
-          cast={cast}
-          genres={genres}
           watch_providers={watch_providers}
-          title={title}
-          movies
-          id={id}
-        />
+          release_date={release_date}
+        >
+          <MediaDetails
+            genres={genres}
+            movie_age_rating={movie_age_rating?.certification}
+            runtime={runtime}
+            release_date={release_date}
+          />
+        </MediaInfoBox>
       </main>
     </>
   );
@@ -126,7 +104,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     poster_path,
     credits,
     genres,
-    recommendations,
     title,
   } = data;
 
@@ -167,7 +144,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       cast,
       genres,
       watch_providers,
-      recommendations,
       title,
       id,
     },

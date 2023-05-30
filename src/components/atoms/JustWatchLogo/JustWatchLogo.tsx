@@ -16,8 +16,8 @@ const JustWatchLogo: React.FC<JustWatchLogoProps> = ({ tab }) => {
           src={img}
           alt="just watch logo"
           unoptimized={true}
-          width={100}
-          height={50}
+          width={20}
+          height={20}
           className={tab ? styles.logo : undefined}
         />
       </div>

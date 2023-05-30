@@ -4,13 +4,9 @@ import qs from "qs";
 import React from "react";
 
 import BackgroundImage from "@/components/atoms/BackgroundImage/BackgroundImage";
-import Certification from "@/components/atoms/Certification/Certification";
-import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
-import StarRating from "@/components/atoms/StarRating/StarRating";
-import HeroContent from "@/components/molecules/HeroContent/HeroContent";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
-import MediaDetailsPanel from "@/components/molecules/MediaDetailsPanel/MediaDetailsPanel";
-import Tablist from "@/components/molecules/TabList/TabList";
+import MediaDetailsPanel from "@/components/organisms/MediaDetailsPanel/MediaDetailsPanel";
+import MediaInfoBox from "@/components/organisms/MediaInfoBox/MediaInfoBox";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import { Genres, Media } from "@/src/types";
 
@@ -35,15 +31,15 @@ interface SeriesProps {
 const Series: React.FC<SeriesProps> = ({
   series_age_rating,
   air_date,
-  vote_average,
+  // vote_average,
   overview,
   poster,
-  cast,
+  // cast,
   genres,
   watch_providers,
   // recommendations,
   seasons,
-  network,
+  // network,
   title,
   id,
 }) => {
@@ -64,35 +60,20 @@ const Series: React.FC<SeriesProps> = ({
             seasons={seasons}
           />
         </MediaDetailsPanel>
-        <HeroContent
-          series_age_rating={series_age_rating}
-          air_date={air_date}
-          star_rating={vote_average}
+        <MediaInfoBox
           overview={overview}
           poster={poster}
           title={title}
-        >
-          <Certification series_age_rating={series_age_rating} />
-          <ReleaseDate air_date={air_date} />
-          <StarRating star_rating={vote_average} />
-        </HeroContent>
-
-        <Tablist
-          series_age_rating={series_age_rating}
-          air_date={air_date}
-          seasons={seasons}
-          star_rating={vote_average}
-          overview={overview}
-          poster={poster}
-          network={network}
-          cast={cast}
-          genres={genres}
           watch_providers={watch_providers}
-          title={title}
-          id={id}
-        />
-
-        {/* <Recommendations recommendations={recommendations} /> */}
+          air_date={air_date}
+        >
+          <MediaDetails
+            genres={genres}
+            series_age_rating={series_age_rating}
+            air_date={air_date}
+            seasons={seasons}
+          />
+        </MediaInfoBox>
       </main>
     </>
   );
