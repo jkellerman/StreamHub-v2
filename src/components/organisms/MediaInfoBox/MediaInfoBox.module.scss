@@ -13,12 +13,11 @@
   max-width: 900px;
   margin-bottom: 2rem;
   @include tablet() {
-    flex-direction: column;
+    flex-direction: row;
     margin-bottom: 4rem;
     align-items: flex-start;
   }
   @include laptop() {
-    flex-direction: row;
     margin: 10rem auto 2rem auto;
   }
 }

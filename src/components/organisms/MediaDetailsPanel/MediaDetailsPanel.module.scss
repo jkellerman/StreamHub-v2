@@ -6,6 +6,12 @@
   position: relative;
   @include center;
   max-width: 900px;
+  @include tablet {
+    margin-bottom: 7rem;
+  }
+  @include laptop {
+    margin-bottom: 0;
+  }
 }
 
 .title {

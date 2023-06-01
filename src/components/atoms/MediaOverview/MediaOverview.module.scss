@@ -24,7 +24,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   text-overflow: ellipsis;
-  @include tablet {
+  @include laptop {
     -webkit-line-clamp: 5;
   }
 }
