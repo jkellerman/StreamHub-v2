@@ -2,14 +2,14 @@
 @import "@/styles/mixins.scss";
 
 .heroPoster {
-  display: none;
-  @include laptop() {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    object-fit: cover;
-    border-radius: $border-radius-s;
-    min-width: 160px;
+  position: relative;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: $border-radius-s;
+  width: 110px;
+  height: 165px;
+  @include tablet {
+    width: 160px;
     height: 240px;
   }
 }

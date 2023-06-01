@@ -1,7 +1,7 @@
 import React from "react";
 
 import Button from "@/components/atoms/Buttons/Trailer/Button";
-import MediaRating from "@/components/atoms/MediaRating/MediaRating";
+import MediaRating from "@/components/molecules/MediaRating/MediaRating";
 
 import styles from "./MediaDetailsPanel.module.scss";
 

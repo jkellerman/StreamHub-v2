@@ -2,9 +2,14 @@
 @import "@/styles/mixins.scss";
 
 .container {
-  display: flex;
+  @include flex-column;
   align-items: center;
   gap: 1rem;
+  margin-bottom: 2.5rem;
+  @include tablet {
+    @include flex-row;
+    margin-bottom: unset;
+  }
 }
 
 .rating {

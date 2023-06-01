@@ -4,18 +4,21 @@
 .container {
   z-index: 5;
   position: relative;
+  display: flex;
   justify-content: center;
-  flex-direction: row;
-  align-items: flex-start;
+  flex-direction: column-reverse;
+  align-items: center;
   gap: 2rem;
   @include center;
   max-width: 900px;
   margin-bottom: 2rem;
   @include tablet() {
+    flex-direction: column;
     margin-bottom: 4rem;
+    align-items: flex-start;
   }
   @include laptop() {
-    display: flex;
+    flex-direction: row;
     margin: 10rem auto 2rem auto;
   }
 }
@@ -35,11 +38,12 @@
 }
 
 .title {
-  margin: 0;
+  margin-bottom: 1rem;
   font-weight: $fw-med;
   font-size: $heading-l-m;
   @include tablet() {
     font-size: $heading-l;
+    margin-bottom: 0;
   }
 }
 
