@@ -30,13 +30,20 @@ const MediaRating: React.FC<MediaRatingProps> = ({ id, type }) => {
   }
 
   return (
-    <div className={styles.container}>
-      <ProgressRating vote_average={voteAverage} progress={progress} />
-      <span className={styles.logoContainer}>
-        <TmdbLogo />
-        user rating
-      </span>
-    </div>
+    <>
+      {data.vote_count !== 0 && data.vote_average !== 0 && (
+        <div className={styles.container}>
+          <ProgressRating vote_average={voteAverage} progress={progress} />
+          <div className={styles.logoContainer}>
+            <div className={styles.statsContainer}>
+              <TmdbLogo />
+              total user votes: {data ? data.vote_count : null}
+            </div>
+          </div>
+          <span></span>
+        </div>
+      )}
+    </>
   );
 };
 

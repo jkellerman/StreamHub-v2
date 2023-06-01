@@ -27,11 +27,11 @@ const ProgressRating: React.FC<MediaRatingProps> = ({ vote_average, progress }) 
         <linearGradient id={gradientId}>
           <stop
             offset="0%"
-            stopColor={progress < 50 ? "#ab1c1c" : progress < 75 ? "#93a51c" : "#1ca586"}
+            stopColor={progress < 50 ? "#ab1c1c" : progress < 75 ? "#f0df40" : "#1ca586"}
           />
           <stop
             offset="100%"
-            stopColor={progress < 50 ? "#ab6b1c" : progress < 75 ? "#61a51c" : "  #5eead4"}
+            stopColor={progress < 50 ? "#ab6b1c" : progress < 75 ? "#8ea51c" : "  #5eead4"}
           />
         </linearGradient>
       </defs>
@@ -56,7 +56,9 @@ const ProgressRating: React.FC<MediaRatingProps> = ({ vote_average, progress }) 
         style={{ transition: "all 0.5s ease-in-out" }}
       />
       <text x="50%" y="45%" dominantBaseline="middle" textAnchor="middle">
-        <tspan className={styles.rating}>{rating(vote_average / 10)}</tspan>
+        <tspan className={styles.rating}>
+          {vote_average !== 100 ? rating(vote_average / 10).toFixed(1) : rating(vote_average / 10)}
+        </tspan>
       </text>
       <text x="50%" y="65%" dominantBaseline="middle" textAnchor="middle">
         <tspan className={styles.totalValue}>/10</tspan>

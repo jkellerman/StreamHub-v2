@@ -32,3 +32,12 @@
   align-items: center;
   gap: 1rem;
 }
+
+.statsContainer {
+  @include flex-column;
+  align-items: center;
+  gap: 1rem;
+  @include tablet {
+    @include flex-row;
+  }
+}

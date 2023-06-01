@@ -14,7 +14,7 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ endpoint, allMedia }) => {
-  const { cards, isError } = useFetchCards(endpoint);
+  const { cards, isLoading, isError } = useFetchCards(endpoint);
   const carouselRef = useRef<HTMLUListElement | null>(null);
   const cardRef = useRef<HTMLLIElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -60,6 +60,16 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint, allMedia }) => {
       accumulatedTranslation = 0; // set slider to beginning
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className={styles.carouselWrapper} ref={scrollRef}>
+        <div className={styles.carousel}>
+          <ul className={styles.list} ref={carouselRef}></ul>
+        </div>
+      </div>
+    );
+  }
 
   if (isError)
     return (
