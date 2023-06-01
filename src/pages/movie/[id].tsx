@@ -4,6 +4,8 @@ import qs from "qs";
 import React from "react";
 
 import BackgroundImage from "@/components/atoms/BackgroundImage/BackgroundImage";
+import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
+import Carousel from "@/components/molecules/Carousel/Carousel";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
 import MediaDetailsPanel from "@/components/organisms/MediaDetailsPanel/MediaDetailsPanel";
 import MediaInfoBox from "@/components/organisms/MediaInfoBox/MediaInfoBox";
@@ -73,6 +75,9 @@ const Movie: React.FC<MovieProps> = ({
             release_date={release_date}
           />
         </MediaInfoBox>
+
+        <CategoryHeading type="movies" category="People also liked" />
+        <Carousel endpoint="/api/year/pastYear/movie/200" />
       </main>
     </>
   );

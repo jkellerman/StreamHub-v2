@@ -35,7 +35,7 @@ const Home: React.FC<HomeProps> = () => {
         <CategoryHeading type="series" category="popular netflix series" />
         <Carousel endpoint="/api/network/tv/8" />
         <CategoryHeading type="movies" category="upcoming movies" />
-        <Carousel endpoint="/api/movies/upcoming" />
+        <Carousel endpoint="/api/media/movie/upcoming" />
         <CategoryHeading type="series" category="popular movies on Disney+" />
         <Carousel endpoint="/api/network/movie/337" />
         <CategoryHeading type="movies" category="best movies of 2023" />
