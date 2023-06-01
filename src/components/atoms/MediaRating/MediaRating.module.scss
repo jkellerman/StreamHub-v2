@@ -1,0 +1,29 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rating {
+  fill: white;
+  font-weight: $fw-bold;
+  font-size: $heading-xs;
+  font-family: "Wix Madefor Display", sans-serif;
+}
+
+.totalValue {
+  fill: $slate;
+  font-size: $body-xs;
+  font-weight: $fw-bold;
+  font-family: "Wix Madefor Display", sans-serif;
+}
+
+.logoContainer {
+  color: $slate;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

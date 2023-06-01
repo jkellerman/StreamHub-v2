@@ -12,11 +12,13 @@ import useFetchDetails from "@/hooks/useFetchDetails";
 import styles from "./BackgroundImage.module.scss";
 
 interface BackgroundImageProps {
-  endpoint: string;
   title: string;
+  id: number;
+  type: string;
 }
 
-const BackgroundImage: React.FC<BackgroundImageProps> = ({ endpoint, title }) => {
+const BackgroundImage: React.FC<BackgroundImageProps> = ({ type, title, id }) => {
+  const endpoint = `/api/details/${type}/${id}`;
   const { data } = useFetchDetails(endpoint);
   return (
     <div className={styles.container}>

@@ -20,6 +20,7 @@
   align-items: center;
   gap: 0.5em;
   white-space: nowrap;
+  margin-bottom: 1rem;
   @include tablet {
     max-width: 300px;
     font-size: $heading-xs;

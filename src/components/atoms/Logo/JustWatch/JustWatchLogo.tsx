@@ -2,7 +2,7 @@ import Image from "next/future/image";
 
 import img from "@/public/assets/justwatch.svg";
 
-import styles from "../../atoms/JustWatchLogo/JustWatchLogo.module.scss";
+import styles from "./JustWatchLogo.module.scss";
 
 interface JustWatchLogoProps {
   tab?: boolean;

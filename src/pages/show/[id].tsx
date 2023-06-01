@@ -51,7 +51,7 @@ const Series: React.FC<SeriesProps> = ({
       </Head>
 
       <main>
-        <BackgroundImage title={title} endpoint={`/api/details/tv/${id}`} />
+        <BackgroundImage title={title} type="tv" id={id} />
         <MediaDetailsPanel title={title} id={id} type="tv">
           <MediaDetails
             genres={genres}

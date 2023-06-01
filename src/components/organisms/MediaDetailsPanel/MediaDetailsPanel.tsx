@@ -1,6 +1,7 @@
 import React from "react";
 
 import Button from "@/components/atoms/Buttons/Trailer/Button";
+import MediaRating from "@/components/atoms/MediaRating/MediaRating";
 
 import styles from "./MediaDetailsPanel.module.scss";
 
@@ -17,6 +18,7 @@ const MediaDetailsPanel: React.FC<MediaDetailsPanel> = ({ title, children, id, t
       <h1 className={styles.title}>{title}</h1>
       <>{children}</>
       <Button endpoint={`/api/details/${type}/${id}`} />
+      <MediaRating id={id} type={type} />
     </div>
   );
 };

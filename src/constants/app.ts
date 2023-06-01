@@ -12,9 +12,9 @@ export const DEFAULT_SERIES_GENRE: Genres.IGenre = {
 
 // Dates
 
-export const formattedDate = (year: number, month: string, day: number): string => {
+export const formattedDate = (year: number, month: string, day: string): string => {
   return year + "-" + month + "-" + day;
 };
-export const formattedDateOneYearAgo = (year: number, month: number, day: number): string => {
+export const formattedDateOneYearAgo = (year: number, month: number, day: string): string => {
   return year + "-" + month + "-" + day;
 };

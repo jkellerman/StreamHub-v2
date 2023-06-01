@@ -8,7 +8,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 const today = new Date();
 const year = today.getFullYear();
 const month = (today.getMonth() + 1).toString().padStart(2, "0");
-const day = today.getDate();
+const day = today.getDate().toString().padStart(2, "0");
 
 const todaysDate = formattedDate(year, month, day);
 const oneYearAgo = formattedDate(year - 1, month, day);

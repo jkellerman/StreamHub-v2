@@ -47,7 +47,7 @@ const Movie: React.FC<MovieProps> = ({
       </Head>
 
       <main>
-        <BackgroundImage title={title} endpoint={`/api/details/movie/${id}`} />
+        <BackgroundImage title={title} id={id} type="movie" />
         <MediaDetailsPanel title={title} id={id} type="movie">
           <MediaDetails
             genres={genres}

@@ -1,7 +1,7 @@
 import Image from "next/future/image";
-import React, { useEffect } from "react";
+import React from "react";
 
-import JustWatchLogo from "@/components/atoms/JustWatchLogo/JustWatchLogo";
+import JustWatchLogo from "@/components/atoms/Logo/JustWatch/JustWatchLogo";
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import { Media } from "@/src/types";
 
@@ -23,9 +23,6 @@ const WatchProvidersTab: React.FC<WatchProvidersTabProps> = ({
   rent,
   buy,
 }) => {
-  useEffect(() => {
-    console.log(watch_providers);
-  }, [watch_providers]);
   return (
     <>
       {stream && (

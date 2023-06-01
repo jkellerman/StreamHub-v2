@@ -23,7 +23,7 @@ const Certification: React.FC<CertificationProps> = ({
 
       {series_age_rating && series_age_rating.length !== 0 && (
         <span className={mediaDetailsTab ? undefined : `${styles.ageRating}`}>
-          {series_age_rating}
+          {`Rated (${series_age_rating})`}
         </span>
       )}
     </>
