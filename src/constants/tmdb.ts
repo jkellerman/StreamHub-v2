@@ -6,6 +6,7 @@ export const BACKGROUND_URL_IMAGE_S = `${BASE_URL_IMAGE}w300`;
 export const BACKDROP_URL_IMAGE = `${BASE_URL_IMAGE}w780`;
 export const LOGO_URL_IMAGE = `${BASE_URL_IMAGE}w92`;
 export const POSTER_URL_IMAGE = `${BASE_URL_IMAGE}w342`;
+export const POSTER_URL_IMAGE_S = `${BASE_URL_IMAGE}w185`;
 export const POSTER_URL_IMAGE_XS = `${BASE_URL_IMAGE}w92`;
 
 export const BASE_TMDB_URL = "https://api.themoviedb.org/3";

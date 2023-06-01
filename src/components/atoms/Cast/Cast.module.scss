@@ -6,7 +6,6 @@
   text-transform: capitalize;
   min-width: 75px;
   @include tablet() {
-    text-transform: uppercase;
     margin-bottom: 0.75rem;
     min-width: none;
   }
@@ -14,21 +13,23 @@
 
 .name {
   white-space: nowrap;
+  color: $slate;
 }
 
 .detailItem {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 2rem;
+  text-align: center;
   @include tablet() {
     width: 165px;
     margin-right: 0.5rem;
-    flex-direction: column;
   }
 }
 
 .group {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   margin: 0;
 }

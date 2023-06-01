@@ -40,7 +40,6 @@ const MediaRating: React.FC<MediaRatingProps> = ({ id, type }) => {
               total user votes: {data ? data.vote_count : null}
             </div>
           </div>
-          <span></span>
         </div>
       )}
     </>

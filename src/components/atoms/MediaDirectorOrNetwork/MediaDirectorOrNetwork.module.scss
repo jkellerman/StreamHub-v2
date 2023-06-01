@@ -4,11 +4,12 @@
 .detailItem {
   display: flex;
   margin-bottom: 2rem;
+  flex-direction: column;
+  text-align: center;
   @include tablet() {
     width: 160px;
     margin-right: 0.5rem;
-    margin-bottom: 0;
-    flex-direction: column;
+    margin-bottom: 1rem;
   }
 }
 
@@ -17,7 +18,6 @@
   text-transform: capitalize;
   min-width: 75px;
   @include tablet() {
-    text-transform: uppercase;
     margin-bottom: 0.75rem;
     min-width: none;
   }
@@ -26,4 +26,6 @@
 .name {
   margin: 0;
   display: flex;
+  justify-content: center;
+  color: $slate;
 }

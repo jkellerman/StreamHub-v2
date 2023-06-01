@@ -53,7 +53,7 @@ const ProgressRating: React.FC<MediaRatingProps> = ({ vote_average, progress }) 
         transform={`rotate(-90 ${size / 2} ${size / 2})`}
         strokeDasharray={[dash, circumference - dash] as unknown as number}
         strokeLinecap="round"
-        style={{ transition: "all 0.5s ease-in-out" }}
+        style={{ transition: "all 0.5s ease-in-out", transitionDelay: "250ms" }}
       />
       <text x="50%" y="45%" dominantBaseline="middle" textAnchor="middle">
         <tspan className={styles.rating}>

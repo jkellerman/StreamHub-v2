@@ -11,7 +11,7 @@ interface CastProps {
 const Cast: React.FC<CastProps> = ({ cast }) => {
   return (
     <div className={styles.detailItem}>
-      <dt className={styles.heading}>cast</dt>
+      <dt className={styles.heading}>starring</dt>
 
       <dd className={styles.group}>
         {cast.map((member, index) => {

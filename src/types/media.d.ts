@@ -51,16 +51,4 @@ export declare namespace Media {
     buy: IProvider[];
     rent: IProvider[];
   }
-
-  export interface IRecommendations {
-    id: number;
-    title: string;
-    name: string;
-    poster_path: string;
-    backdrop_path: string;
-  }
-
-  export interface IRecommendationsList {
-    results: IRecommendations[];
-  }
 }

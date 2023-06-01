@@ -23,6 +23,12 @@
   }
 }
 
+.details {
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+}
+
 .list {
   display: none;
   padding-left: 0;

@@ -51,6 +51,13 @@
   object-fit: cover;
 }
 
+.placeholder {
+  font-size: $body-m;
+  color: $slate;
+  @include tablet {
+  }
+}
+
 @keyframes fade {
   from {
     opacity: 0;

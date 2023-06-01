@@ -17,6 +17,8 @@
   font-weight: $fw-med;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
+  white-space: nowrap;
+  max-width: 10%;
 
   @include tablet() {
     font-size: $heading-xs;

@@ -31,7 +31,9 @@ const WatchProvidersTab: React.FC<WatchProvidersTabProps> = ({
         >
           <JustWatchLogo tab />
           <div className={styles.providers}>
-            {watch_providers.flatrate === undefined && <span>Not available to stream online</span>}
+            {watch_providers.flatrate === undefined && (
+              <span className={styles.placeholder}>Not available to stream online</span>
+            )}
             {watch_providers.flatrate && (
               <div className={styles.icons}>
                 {watch_providers.flatrate.map((provider) => {
@@ -65,7 +67,9 @@ const WatchProvidersTab: React.FC<WatchProvidersTabProps> = ({
         >
           <JustWatchLogo tab />
           <div className={styles.providers}>
-            {watch_providers.rent === undefined && <span>Not available to rent online</span>}
+            {watch_providers.rent === undefined && (
+              <span className={styles.placeholder}>Not available to rent online</span>
+            )}
             {watch_providers.rent && (
               <div className={styles.icons}>
                 {watch_providers.rent.map((provider) => {
@@ -99,7 +103,9 @@ const WatchProvidersTab: React.FC<WatchProvidersTabProps> = ({
         >
           <JustWatchLogo tab />
           <div className={styles.providers}>
-            {watch_providers.buy === undefined && <span>Not available to buy online</span>}
+            {watch_providers.buy === undefined && (
+              <span className={styles.placeholder}>Not available to buy online</span>
+            )}
             {watch_providers.buy && (
               <div className={styles.icons}>
                 {watch_providers.buy.map((provider) => {

@@ -31,13 +31,14 @@ const Movie: React.FC<MovieProps> = ({
   movie_age_rating,
   release_date,
   runtime,
-  // vote_average,
   overview,
   poster,
   genres,
   watch_providers,
   title,
   id,
+  cast,
+  director,
 }) => {
   return (
     <>
@@ -62,6 +63,8 @@ const Movie: React.FC<MovieProps> = ({
           title={title}
           watch_providers={watch_providers}
           release_date={release_date}
+          cast={cast}
+          director={director}
         >
           <MediaDetails
             genres={genres}
@@ -95,17 +98,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const response = await fetch(url);
   const data = await response.json();
 
-  const {
-    release_dates,
-    release_date,
-    runtime,
-    vote_average,
-    overview,
-    poster_path,
-    credits,
-    genres,
-    title,
-  } = data;
+  const { release_dates, release_date, runtime, overview, poster_path, credits, genres, title } =
+    data;
 
   const getDirector: Media.IDirector = credits.crew.find(
     (crew: Media.ICast) => crew.department === "Directing"
@@ -137,7 +131,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       movie_age_rating: age_rating,
       release_date,
       runtime,
-      vote_average,
       overview,
       poster: poster_path,
       director,

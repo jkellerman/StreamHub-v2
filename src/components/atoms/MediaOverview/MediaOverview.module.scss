@@ -3,6 +3,7 @@
 
 .container {
   margin-bottom: 2rem;
+  color: $slate;
 }
 
 .overview {
@@ -21,8 +22,11 @@
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   text-overflow: ellipsis;
+  @include tablet {
+    -webkit-line-clamp: 5;
+  }
 }
 
 .expand {
