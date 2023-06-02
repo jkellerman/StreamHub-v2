@@ -4,19 +4,19 @@ import qs from "qs";
 import React from "react";
 
 import BackgroundImage from "@/components/atoms/BackgroundImage/BackgroundImage";
+import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
+import Recommendations from "@/components/molecules/Recommendations/Recommendations";
 import MediaDetailsPanel from "@/components/organisms/MediaDetailsPanel/MediaDetailsPanel";
 import MediaInfoBox from "@/components/organisms/MediaInfoBox/MediaInfoBox";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import useFetchDetails from "@/hooks/useFetchDetails";
 import { Genres, Media } from "@/src/types";
 
 interface SeriesProps {
-  backdrop: string;
-  tagline: string;
   series_age_rating: string;
   air_date: string;
   overview: string;
-  poster: string;
   cast: Media.ICastMember[];
   genres: Genres.IGenre[];
   watch_providers: Media.IProviderList;
@@ -30,7 +30,6 @@ const Series: React.FC<SeriesProps> = ({
   series_age_rating,
   air_date,
   overview,
-  poster,
   cast,
   genres,
   watch_providers,
@@ -39,15 +38,20 @@ const Series: React.FC<SeriesProps> = ({
   title,
   id,
 }) => {
+  const endpoint = `/api/details/tv/${id}`;
+  const { data, isError, isLoading } = useFetchDetails(endpoint);
+  const backdrop = data && data.backdrop_path;
+  const recommendations = data && data.recommendations;
+  const poster = data && data.poster_path;
   return (
     <>
       <Head>
-        <title>{`Watch ${title} Online | Reelgood`}</title>
+        <title>{`Where to watch ${title} Online | Reelbuddy`}</title>
         <meta name="description" content={`Where to watch ${title}`} />
       </Head>
 
       <main>
-        <BackgroundImage title={title} type="tv" id={id} />
+        <BackgroundImage title={title} backdrop={backdrop} />
         <MediaDetailsPanel title={title} id={id} type="tv">
           <MediaDetails
             genres={genres}
@@ -72,6 +76,12 @@ const Series: React.FC<SeriesProps> = ({
             seasons={seasons}
           />
         </MediaInfoBox>
+        <CategoryHeading type="series" category="People also liked" />
+        <Recommendations
+          recommendations={recommendations}
+          isLoading={isLoading}
+          isError={isError}
+        />
       </main>
     </>
   );
@@ -80,10 +90,8 @@ const Series: React.FC<SeriesProps> = ({
 export default Series;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { query, res } = context;
+  const { query } = context;
   const { id } = query;
-
-  res.setHeader("Cache-Control", "public, s-maxage=1, stale-while-revalidate=86400");
 
   const queryString = qs.stringify(
     {
@@ -101,12 +109,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const data = await response.json();
 
   const {
-    backdrop_path,
-    tagline,
     content_ratings,
     first_air_date,
     overview,
-    poster_path,
     credits,
     genres,
     number_of_seasons,
@@ -133,12 +138,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      backdrop: backdrop_path,
-      tagline,
       series_age_rating: age_rating,
       air_date: first_air_date,
       overview,
-      poster: poster_path,
       cast,
       genres,
       watch_providers,

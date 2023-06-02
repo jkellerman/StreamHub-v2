@@ -16,15 +16,17 @@ interface PosterProps {
 
 const Poster: React.FC<PosterProps> = ({ poster, title }) => {
   return (
-    <div className={styles.poster}>
-      <Image
-        src={`${POSTER_URL_IMAGE}${poster}`}
-        alt={`${title} poster`}
-        placeholder="blur"
-        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
-        unoptimized={true}
-        layout="fill"
-      />
+    <div className={styles.posterWrapper}>
+      {poster && (
+        <Image
+          src={`${POSTER_URL_IMAGE}${poster}`}
+          alt={`${title} poster`}
+          placeholder="blur"
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
+          unoptimized={true}
+          layout="fill"
+        />
+      )}
     </div>
   );
 };

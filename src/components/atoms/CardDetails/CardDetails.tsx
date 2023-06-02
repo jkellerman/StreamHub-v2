@@ -19,9 +19,9 @@ const CardDetails: React.FC<CardDetailsProps> = ({
 }) => {
   return (
     <figcaption className={styles.title}>
-      {`${seriesName || movieTitle} (${
-        movieYear?.slice(0, DATE_SLICE) || seriesYear?.slice(0, DATE_SLICE)
-      })`}
+      <span>{seriesName || movieTitle}&nbsp;</span>
+      {movieYear && <span>({movieYear?.slice(0, DATE_SLICE)})</span>}
+      {seriesYear && <span>({seriesYear?.slice(0, DATE_SLICE)})</span>}
     </figcaption>
   );
 };

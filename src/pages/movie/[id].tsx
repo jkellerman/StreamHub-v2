@@ -5,21 +5,18 @@ import React from "react";
 
 import BackgroundImage from "@/components/atoms/BackgroundImage/BackgroundImage";
 import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
-import Carousel from "@/components/molecules/Carousel/Carousel";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
+import Recommendations from "@/components/molecules/Recommendations/Recommendations";
 import MediaDetailsPanel from "@/components/organisms/MediaDetailsPanel/MediaDetailsPanel";
 import MediaInfoBox from "@/components/organisms/MediaInfoBox/MediaInfoBox";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import useFetchDetails from "@/hooks/useFetchDetails";
 import { Media, Genres } from "@/src/types";
 
 interface MovieProps {
-  backdrop: string;
-  tagline: string;
   movie_age_rating: Media.ICertificationMovie | undefined;
   release_date: string;
-  vote_average: number;
   overview: string;
-  poster: string;
   cast: Media.ICastMember[];
   genres: Genres.IGenre[];
   watch_providers: Media.IProviderList;
@@ -34,7 +31,6 @@ const Movie: React.FC<MovieProps> = ({
   release_date,
   runtime,
   overview,
-  poster,
   genres,
   watch_providers,
   title,
@@ -42,6 +38,12 @@ const Movie: React.FC<MovieProps> = ({
   cast,
   director,
 }) => {
+  const endpoint = `/api/details/movie/${id}`;
+  const { data, isError, isLoading } = useFetchDetails(endpoint);
+  const backdrop = data && data.backdrop_path;
+  const recommendations = data && data.recommendations;
+  const poster = data && data.poster_path;
+
   return (
     <>
       <Head>
@@ -50,7 +52,7 @@ const Movie: React.FC<MovieProps> = ({
       </Head>
 
       <main>
-        <BackgroundImage title={title} id={id} type="movie" />
+        <BackgroundImage title={title} backdrop={backdrop} />
         <MediaDetailsPanel title={title} id={id} type="movie">
           <MediaDetails
             genres={genres}
@@ -77,7 +79,11 @@ const Movie: React.FC<MovieProps> = ({
         </MediaInfoBox>
 
         <CategoryHeading type="movies" category="People also liked" />
-        <Carousel endpoint="/api/year/pastYear/movie/200" />
+        <Recommendations
+          recommendations={recommendations}
+          isLoading={isLoading}
+          isError={isError}
+        />
       </main>
     </>
   );
@@ -103,8 +109,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const response = await fetch(url);
   const data = await response.json();
 
-  const { release_dates, release_date, runtime, overview, poster_path, credits, genres, title } =
-    data;
+  const { release_dates, release_date, runtime, overview, credits, genres, title } = data;
 
   const getDirector: Media.IDirector = credits.crew.find(
     (crew: Media.ICast) => crew.department === "Directing"
@@ -137,7 +142,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       release_date,
       runtime,
       overview,
-      poster: poster_path,
       director,
       cast,
       genres,

@@ -1,23 +1,34 @@
 @import "@/styles/variables.scss";
 @import "@/styles/mixins.scss";
 
-.container {
+.container,
+.noCard {
   position: relative;
+  display: block;
   border-radius: $border-radius-s;
   animation: fade $fade-animation;
   width: 110px;
   height: 165px;
+
   @include tablet {
     width: 160px;
     height: 240px;
   }
 }
 
+.noCard {
+  background: linear-gradient(90deg, #1c4b6f, #112c40);
+}
+
 .card {
   border-radius: $border-radius-s;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+
+  font-size: 0;
+
   @include tablet {
-    width: 160px;
-    height: 240px;
   }
 }
 

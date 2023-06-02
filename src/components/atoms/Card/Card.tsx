@@ -17,27 +17,42 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle, allMedia }) => {
   return (
-    <Link
-      href={
-        movieTitle
-          ? `/movie/${id}?${movieTitle.replace(/ /g, "")}`
-          : `/show/${id}?${seriesName?.replace(/ /g, "")}`
-      }
-    >
-      <a className={styles.container}>
-        {allMedia && seriesName && <span className={styles.mediaType}>TV</span>}
-        <Image
-          src={`${POSTER_URL_IMAGE}${poster}`}
-          alt={`${seriesName || movieTitle}`}
-          unoptimized={true}
-          placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
-          width={110}
-          height={165}
-          className={styles.card}
-        />
-      </a>
-    </Link>
+    <>
+      {poster && (
+        <Link
+          href={
+            movieTitle
+              ? `/movie/${id}?${movieTitle.replace(/ /g, "")}`
+              : `/show/${id}?${seriesName?.replace(/ /g, "")}`
+          }
+        >
+          <a className={styles.container}>
+            {allMedia && seriesName && <span className={styles.mediaType}>TV</span>}
+            <Image
+              src={`${POSTER_URL_IMAGE}${poster}`}
+              alt={`${seriesName || movieTitle}`}
+              unoptimized={true}
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
+              width={110}
+              height={165}
+              className={styles.card}
+            />
+          </a>
+        </Link>
+      )}
+      {!poster && (
+        <Link
+          href={
+            movieTitle
+              ? `/movie/${id}?${movieTitle.replace(/ /g, "")}`
+              : `/show/${id}?${seriesName?.replace(/ /g, "")}`
+          }
+        >
+          <a className={styles.noCard}></a>
+        </Link>
+      )}
+    </>
   );
 };
 

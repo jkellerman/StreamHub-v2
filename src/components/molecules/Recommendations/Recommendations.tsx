@@ -3,20 +3,23 @@ import React from "react";
 import Button from "@/components/atoms/Buttons/Carousel/Button";
 import Card from "@/components/atoms/Card/Card";
 import CardDetails from "@/components/atoms/CardDetails/CardDetails";
-import useFetchCards from "@/hooks/useFetchCards";
 import useSlider from "@/hooks/useSlider";
-import { Media } from "@/types/media";
+import { Media } from "@/src/types";
 
-import styles from "./Carousel.module.scss";
+import styles from "./Recommendations.module.scss";
 
-interface CarouselProps {
-  endpoint: string;
-  allMedia?: boolean;
+interface RecommendationsProps {
+  recommendations: Media.IRecommendationsList;
+  isLoading: boolean;
+  isError: boolean;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ endpoint, allMedia }) => {
+const Recommendations: React.FC<RecommendationsProps> = ({
+  recommendations,
+  isLoading,
+  isError,
+}) => {
   const { cardRef, scrollRef, carouselRef, handleClickNext, handleClickPrev } = useSlider();
-  const { cards, isLoading, isError } = useFetchCards(endpoint);
 
   if (isLoading) {
     return (
@@ -32,6 +35,7 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint, allMedia }) => {
     return (
       <div className={styles.error}>...Oops we are having some issues, please reload the page.</div>
     );
+
   return (
     <div className={styles.container}>
       <span className={styles.navContainer}>
@@ -41,7 +45,7 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint, allMedia }) => {
       <div className={styles.carouselWrapper} ref={scrollRef}>
         <div className={styles.carousel}>
           <ul className={styles.list} ref={carouselRef}>
-            {cards?.data.map(
+            {recommendations.results.map(
               ({
                 id,
                 title,
@@ -49,17 +53,11 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint, allMedia }) => {
                 poster_path,
                 first_air_date,
                 release_date,
-              }: Media.IMediaItem) => {
+              }: Media.IRecommendations) => {
                 return (
                   <li key={id} className={styles.listItem} ref={cardRef}>
                     <figure>
-                      <Card
-                        id={id}
-                        poster={poster_path}
-                        movieTitle={title}
-                        seriesName={name}
-                        allMedia={allMedia}
-                      />
+                      <Card id={id} poster={poster_path} movieTitle={title} seriesName={name} />
                       <CardDetails
                         movieTitle={title}
                         seriesName={name}
@@ -78,4 +76,4 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint, allMedia }) => {
   );
 };
 
-export default Carousel;
+export default Recommendations;
