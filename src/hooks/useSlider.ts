@@ -1,11 +1,22 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const useSlider = () => {
+  const [isScrollAvailable, setIsScrollAvailable] = useState(false);
   const carouselRef = useRef<HTMLUListElement | null>(null);
   const cardRef = useRef<HTMLLIElement | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   let accumulatedTranslation = 0;
   let numCardsRemaining: number;
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      if (scrollRef.current.scrollWidth > scrollRef.current.clientWidth) {
+        // if slider overflows viewport remove navigation buttons
+        setIsScrollAvailable(true);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scrollRef.current]); // needs .current otherwise won't update scrollWidth on first render
 
   const handleClickNext = () => {
     if (carouselRef.current && cardRef.current) {
@@ -52,6 +63,7 @@ const useSlider = () => {
     scrollRef,
     handleClickNext,
     handleClickPrev,
+    isScrollAvailable,
   };
 };
 

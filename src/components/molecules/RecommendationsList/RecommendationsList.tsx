@@ -6,7 +6,7 @@ import CardDetails from "@/components/atoms/CardDetails/CardDetails";
 import useSlider from "@/hooks/useSlider";
 import { Media } from "@/src/types";
 
-import styles from "./Recommendations.module.scss";
+import styles from "./RecommendationsList.module.scss";
 
 interface RecommendationsProps {
   recommendations: Media.IRecommendationsList;
@@ -19,7 +19,8 @@ const Recommendations: React.FC<RecommendationsProps> = ({
   isLoading,
   isError,
 }) => {
-  const { cardRef, scrollRef, carouselRef, handleClickNext, handleClickPrev } = useSlider();
+  const { cardRef, scrollRef, carouselRef, handleClickNext, handleClickPrev, isScrollAvailable } =
+    useSlider();
 
   if (isLoading) {
     return (
@@ -38,10 +39,12 @@ const Recommendations: React.FC<RecommendationsProps> = ({
 
   return (
     <div className={styles.container}>
-      <span className={styles.navContainer}>
-        <Button left handleClickPrev={handleClickPrev} />
-        <Button right handleClickNext={handleClickNext} />
-      </span>
+      {isScrollAvailable && (
+        <span className={styles.navContainer}>
+          <Button left handleClickPrev={handleClickPrev} />
+          <Button right handleClickNext={handleClickNext} />
+        </span>
+      )}
       <div className={styles.carouselWrapper} ref={scrollRef}>
         <div className={styles.carousel}>
           <ul className={styles.list} ref={carouselRef}>

@@ -6,7 +6,7 @@ import React from "react";
 import BackgroundImage from "@/components/atoms/BackgroundImage/BackgroundImage";
 import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
 import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
-import Recommendations from "@/components/molecules/Recommendations/Recommendations";
+import Recommendations from "@/components/molecules/RecommendationsList/RecommendationsList";
 import MediaDetailsPanel from "@/components/organisms/MediaDetailsPanel/MediaDetailsPanel";
 import MediaInfoBox from "@/components/organisms/MediaInfoBox/MediaInfoBox";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
