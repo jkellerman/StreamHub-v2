@@ -3,10 +3,13 @@
 
 .container {
   position: relative;
-  margin-bottom: -8rem;
+  margin-bottom: -15rem;
 
   @include laptop() {
     margin-bottom: -45rem;
+  }
+  @include desktopL() {
+    margin-bottom: -57rem;
   }
 }
 
@@ -14,10 +17,10 @@
   position: relative;
   background: linear-gradient(90deg, $secondary-med-light, $primary-med);
   width: 100%;
-  height: auto;
+  height: 50vh;
   animation: fade 300ms ease-in;
   @include tablet() {
-    height: auto;
+    height: 50vh;
   }
   @include laptop() {
     height: 100vh;

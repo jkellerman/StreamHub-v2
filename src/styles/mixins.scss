@@ -49,3 +49,8 @@
     @content;
   }
 }
+@mixin desktopL {
+  @media (min-width: $desktop-l) {
+    @content;
+  }
+}
