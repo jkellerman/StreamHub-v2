@@ -16,16 +16,16 @@ const Hero = () => {
         <div className={styles.subheading}>Get recommendations for:</div>
         <div className={styles.logosContainer}>
           <div className={styles.logoWrapper}>
-            <Image src={netflix} alt="logo" className={styles.logo} priority />
+            <Image src={netflix} alt="logo" className={styles.logo} priority unoptimized />
           </div>
           <div className={styles.logoWrapper}>
-            <Image src={primevideo} alt="logo" className={styles.logo} priority />
+            <Image src={primevideo} alt="logo" className={styles.logo} priority unoptimized />
           </div>
           <div className={styles.logoWrapper}>
-            <Image src={disney} alt="logo" className={styles.logo} priority />
+            <Image src={disney} alt="logo" className={styles.logo} priority unoptimized />
           </div>
           <div className={styles.logoWrapper}>
-            <Image src={now} alt="logo" className={styles.logo} priority />
+            <Image src={now} alt="logo" className={styles.logo} priority unoptimized />
           </div>
           <span className={styles.more}>& more</span>
         </div>

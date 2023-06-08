@@ -76,12 +76,16 @@ const Series: React.FC<SeriesProps> = ({
             seasons={seasons}
           />
         </MediaInfoBox>
-        <CategoryHeading type="series" category="People also liked" />
-        <Recommendations
-          recommendations={recommendations}
-          isLoading={isLoading}
-          isError={isError}
-        />
+        {data && data.recommendations.results.length > 0 && (
+          <CategoryHeading type="movies" category="People also liked" />
+        )}
+        {data && data.recommendations.results.length > 0 && (
+          <Recommendations
+            recommendations={recommendations}
+            isLoading={isLoading}
+            isError={isError}
+          />
+        )}
       </main>
     </>
   );
