@@ -10,7 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const queryString = QueryString.stringify(
       {
         ...BASE_TMDB_QUERY_PARAMS,
-        ...queryParams,
+        ...queryParams, // for infinite scroll page numbers
         with_genres: id,
       },
       { addQueryPrefix: true }

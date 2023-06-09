@@ -6,7 +6,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { slugs } = req.query;
+    const { slugs, ...queryParams } = req.query;
     const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
     const queryString = QueryString.stringify(
       {
@@ -15,6 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         watch_region: "GB",
         "vote_count.gte": "400",
         primary_release_year: slugsArray[1],
+        ...queryParams, // for infinite scroll page numbers
       },
       { addQueryPrefix: true }
     );

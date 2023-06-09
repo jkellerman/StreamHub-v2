@@ -6,7 +6,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { slugs } = req.query;
+    const { slugs, ...queryParams } = req.query;
     const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
     const queryString = QueryString.stringify(
       {
@@ -14,6 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         append_to_response: `credits,recommendations,watch/providers,${
           slugsArray[0] === "movie" ? "release_dates" : "content_ratings"
         },videos`,
+        ...queryParams, // for infinite scroll page numbers
       },
       { addQueryPrefix: true }
     );

@@ -15,7 +15,7 @@ const oneYearAgo = formattedDate(year - 1, month, day);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { slugs } = req.query;
+    const { slugs, ...queryParams } = req.query;
     const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
 
     const queryString = QueryString.stringify(
@@ -26,6 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         "vote_count.gte": `${slugsArray[1]}`,
         "primary_release_date.gte": oneYearAgo,
         "primary_release_date.lte": todaysDate,
+        ...queryParams, // for infinite scroll page numbers
       },
       { addQueryPrefix: true }
     );
