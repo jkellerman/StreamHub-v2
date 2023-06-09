@@ -2,36 +2,22 @@
 @import "@/styles/mixins.scss";
 
 .container {
+  @include center;
   display: flex;
   flex-flow: row wrap;
-  margin: 0 0 0 -20px;
-  padding: 0;
+  column-gap: 1rem;
+  row-gap: 1rem;
+  justify-content: space-evenly;
+  @include tablet {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 160px);
+    justify-content: space-between;
+    row-gap: 2rem;
+  }
 }
 
 .linkContainer {
-  margin: 0 0 20px 20px;
-  width: calc(50% - 20px);
+  @include flex-column;
+  align-items: center;
   list-style: none;
-  @include mobileL() {
-    width: calc(33.333% - 20px);
-  }
-}
-
-@media (min-width: 56.25em) {
-  .linkContainer {
-    width: calc(25% - 20px);
-    margin-bottom: 35px;
-  }
-}
-
-@media (min-width: 96em) {
-  .linkContainer {
-    width: calc(20% - 20px);
-  }
-}
-
-@media (min-width: 118.75em) {
-  .linkContainer {
-    width: calc(16.666667% - 20px);
-  }
 }
