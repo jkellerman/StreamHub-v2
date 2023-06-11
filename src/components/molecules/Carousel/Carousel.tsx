@@ -11,10 +11,9 @@ import styles from "./Carousel.module.scss";
 
 interface CarouselProps {
   endpoint: string;
-  allMedia?: boolean;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ endpoint, allMedia }) => {
+const Carousel: React.FC<CarouselProps> = ({ endpoint }) => {
   const { cardRef, scrollRef, carouselRef, handleClickNext, handleClickPrev, isScrollAvailable } =
     useSlider();
   const { cards, isLoading, isError } = useFetchCards(endpoint);
@@ -58,13 +57,7 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint, allMedia }) => {
                     return (
                       <li key={id} className={styles.listItem} ref={cardRef}>
                         <figure>
-                          <Card
-                            id={id}
-                            poster={poster_path}
-                            movieTitle={title}
-                            seriesName={name}
-                            allMedia={allMedia}
-                          />
+                          <Card id={id} poster={poster_path} movieTitle={title} seriesName={name} />
                           <CardDetails
                             movieTitle={title}
                             seriesName={name}

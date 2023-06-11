@@ -9,6 +9,10 @@
   display: flex;
   align-items: center;
   column-gap: 0.5rem;
+  @include center;
+  @include tablet {
+    margin-top: 2rem;
+  }
 }
 
 .heading {
@@ -22,4 +26,13 @@
     margin-top: 1rem;
     margin-bottom: 1.75rem;
   }
+}
+
+.descriptionWrapper {
+  @include center;
+  margin-bottom: 2rem;
+}
+
+.description {
+  max-width: 700px;
 }

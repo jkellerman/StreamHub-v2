@@ -41,6 +41,13 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
             <h1 className={styles.heading}>{pageType}</h1>
             <Dropdown type={pageType} selected_genre={genre} genre_list={genreList} />
           </div>
+          <div className={styles.descriptionWrapper}>
+            <p className={styles.description}>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus quaerat, quidem,
+              incidunt sit illo excepturi quisquam iusto neque vel sequi dolores ut consequatur
+              corrupti magni soluta, voluptatum commodi aspernatur. Laboriosam?
+            </p>
+          </div>
           <CardList cards={cards} isLoading={isLoading} isError={isError} />
         </section>
       </main>

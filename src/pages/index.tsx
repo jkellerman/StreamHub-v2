@@ -29,7 +29,7 @@ const Home: React.FC<HomeProps> = () => {
       <main>
         <Hero />
         <CategoryHeading type="all" category="trending this week" services="all" />
-        <Carousel endpoint="/api/trending/all/week" allMedia />
+        <Carousel endpoint="/api/trending/all/week" />
         <CategoryHeading type="movies" category="top films of the past year" />
         <Carousel endpoint="/api/year/pastYear/movie/2500" />
         <CategoryHeading type="series" category="popular netflix series" />

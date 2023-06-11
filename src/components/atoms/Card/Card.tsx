@@ -12,10 +12,9 @@ interface CardProps {
   poster: string;
   seriesName?: string;
   movieTitle?: string;
-  allMedia?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle, allMedia }) => {
+const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle }) => {
   return (
     <>
       {poster && (
@@ -27,7 +26,7 @@ const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle, allMedi
           }
         >
           <a className={styles.container}>
-            {allMedia && seriesName && <span className={styles.mediaType}>TV</span>}
+            {seriesName && <span className={styles.mediaType}>TV</span>}
             <Image
               src={`${POSTER_URL_IMAGE}${poster}`}
               alt={`${seriesName || movieTitle}`}

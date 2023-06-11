@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import qs from "qs";
-import React, { useEffect } from "react";
+import React from "react";
 
 import BackgroundImage from "@/components/atoms/BackgroundImage/BackgroundImage";
 import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
@@ -43,10 +43,6 @@ const Movie: React.FC<MovieProps> = ({
   const backdrop = data && data.backdrop_path;
   const recommendations = data && data.recommendations;
   const poster = data && data.poster_path;
-
-  useEffect(() => {
-    console.log(watch_providers);
-  }, [watch_providers]);
 
   return (
     <>

@@ -50,7 +50,7 @@ const WatchProvidersTab: React.FC<WatchProvidersTabProps> = ({
                         />
                       </div>
                       <div className={styles.providerDetails}>
-                        <span>{provider.provider_name}</span>
+                        <span className={styles.name}>{provider.provider_name}</span>
                         <span className={styles.subscription}>subscription</span>
                       </div>
                     </div>

@@ -25,7 +25,7 @@
   -webkit-line-clamp: 3;
   text-overflow: ellipsis;
   @include laptop {
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 4;
   }
 }
 

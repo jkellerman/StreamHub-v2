@@ -5,14 +5,18 @@
   @include center;
   display: flex;
   flex-flow: row wrap;
-  column-gap: 1rem;
-  row-gap: 1rem;
+  gap: 1rem;
   justify-content: space-evenly;
   @include tablet {
     display: grid;
     grid-template-columns: repeat(auto-fill, 160px);
+    justify-content: space-evenly;
+    gap: 2rem;
+  }
+
+  @include tabletL {
     justify-content: space-between;
-    row-gap: 2rem;
+    gap: 1rem;
   }
 }
 
