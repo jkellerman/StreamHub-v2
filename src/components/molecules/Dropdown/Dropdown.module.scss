@@ -2,45 +2,40 @@
 @import "@/styles/mixins.scss";
 
 .list {
+  @include center;
   display: flex;
   flex-direction: column;
+
   position: absolute;
-  top: 0;
-  left: 0;
-  background: $secondary;
+  background: $primary-dark;
   z-index: 11;
-  padding: 8rem 0;
-  margin: 0;
-
+  max-height: 400px;
+  border-radius: $border-radius-s;
+  top: 16rem;
+  justify-content: unset;
   overflow-y: scroll;
-
-  @include tablet() {
-    background: $secondary-light;
-    border-radius: $border-radius-s;
-    position: absolute;
-    top: 16.5rem;
-    left: 8.5rem;
-    justify-content: unset;
-    transition: height 100ms ease-in-out;
-    padding: 0;
-  }
-  @include laptop() {
-    top: 12.5rem;
-    left: 18rem;
+  padding: 1rem;
+  @include tablet {
+    top: 14rem;
+    max-width: 600px;
+    max-height: 400px;
+    flex-wrap: wrap;
+    padding: 2rem;
+    overflow-y: unset;
   }
 }
 
 .list:hover > .listItemCurrent {
-  background: $secondary;
-  @include tablet() {
-    background: $secondary-light;
-  }
+  background: transparent;
+  border-radius: $border-radius-s;
 }
 
 .listItem,
 .listItemCurrent {
   list-style: none;
-  padding: 1rem 2rem;
+  padding: 1rem 0.5rem;
+  font-size: $body-m;
+  color: $primary;
   @include tablet() {
     padding: 0.5rem 0;
   }
@@ -48,9 +43,8 @@
 
 .listItemCurrent {
   position: relative;
-  @include tablet() {
-    background: $tertiary;
-  }
+  background: $tertiary;
+  border-radius: $border-radius-s;
 }
 
 .listItemCurrent::before {
@@ -62,9 +56,9 @@
   border-top-right-radius: $border-radius-s;
   border-bottom-right-radius: $border-radius-s;
   position: absolute;
-  left: 2rem;
-  top: 1.25rem;
+  display: none;
   @include tablet() {
+    display: inline-block;
     left: 0.75rem;
     top: 0.75rem;
   }
@@ -85,5 +79,6 @@
   .listItemCurrent:hover {
     background: $tertiary;
     transition: $transition;
+    border-radius: $border-radius-s;
   }
 }

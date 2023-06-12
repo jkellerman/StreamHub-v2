@@ -2,7 +2,7 @@
 @import "@/styles/mixins.scss";
 
 .button {
-  color: white;
+  color: $primary;
   border-radius: $border-radius-s;
   border: 1px solid $primary-dark;
   text-transform: capitalize;
@@ -10,7 +10,7 @@
   font-weight: $fw-bold;
   cursor: pointer;
   transition: $transition;
-  background-color: $tertiary;
+  background-color: $primary-dark;
   padding: 0.5em 1em 0.5em 0.75em;
   white-space: nowrap;
   @include tablet {

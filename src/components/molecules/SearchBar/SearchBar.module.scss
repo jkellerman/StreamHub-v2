@@ -20,7 +20,7 @@
 }
 
 .container:focus-within {
-  border: 2px solid $primary;
+  border: 1px solid $primary;
   position: absolute;
   @include center;
 
