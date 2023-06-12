@@ -28,7 +28,7 @@ const Dropdown: React.FC<DropdownProps> = ({ type, selected_genre, genre_list })
   }, [isDropdownOpen]);
 
   return (
-    <div>
+    <>
       <Button toggleDropdown={toggleDropdown} name={selected_genre.name} dropdown />
 
       <ul
@@ -54,7 +54,7 @@ const Dropdown: React.FC<DropdownProps> = ({ type, selected_genre, genre_list })
           );
         })}
       </ul>
-    </div>
+    </>
   );
 };
 

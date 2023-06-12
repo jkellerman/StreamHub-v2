@@ -21,8 +21,8 @@ const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle }) => {
         <Link
           href={
             movieTitle
-              ? `/movie/${id}?${movieTitle.replace(/ /g, "")}`
-              : `/show/${id}?${seriesName?.replace(/ /g, "")}`
+              ? `/movie/${id}?${movieTitle.replace(/ /g, "-")}`
+              : `/show/${id}?${seriesName?.replace(/ /g, "-")}`
           }
         >
           <a className={styles.container}>

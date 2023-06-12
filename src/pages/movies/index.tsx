@@ -4,9 +4,11 @@ import { useRouter } from "next/router";
 import QueryString from "qs";
 import React from "react";
 
+import Description from "@/components/atoms/MediaPageDescription/MediaPageDescription";
 import CardList from "@/components/molecules/CardList/CardList";
 import Dropdown from "@/components/molecules/Dropdown/Dropdown";
-import styles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.scss";
+import DropdownsContainer from "@/components/organisms/DropdownsContainer/DropdownContainers";
+import styles from "@/components/organisms/DropdownsContainer/DropdownsContainer.module.scss";
 import { DEFAULT_MOVIES_GENRE } from "@/constants/app";
 import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
@@ -35,20 +37,14 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
         />
       </Head>
       <main>
-        <section>
-          <div className={styles.headingAndDropdownButtonWrapper}>
-            <h1 className={styles.heading}>{pageType}</h1>
-            <Dropdown type={pageType} selected_genre={genre} genre_list={genreList} />
-          </div>
-          <div className={styles.descriptionWrapper}>
-            <p className={styles.description}>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus quaerat, quidem,
-              incidunt sit illo excepturi quisquam iusto neque vel sequi dolores ut consequatur
-              corrupti magni soluta, voluptatum commodi aspernatur. Laboriosam?
-            </p>
-          </div>
-          <CardList cards={cards} isLoading={isLoading} isError={isError} />
-        </section>
+        <DropdownsContainer>
+          <Dropdown type={pageType} selected_genre={genre} genre_list={genreList} />
+          <Dropdown type={pageType} selected_genre={genre} genre_list={genreList} />
+          <span className={styles.span}>On</span>
+          <Dropdown type={pageType} selected_genre={genre} genre_list={genreList} />
+        </DropdownsContainer>
+        <Description />
+        <CardList cards={cards} isLoading={isLoading} isError={isError} />
       </main>
     </>
   );

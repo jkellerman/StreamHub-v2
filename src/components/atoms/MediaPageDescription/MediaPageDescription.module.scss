@@ -1,0 +1,11 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.descriptionWrapper {
+  @include center;
+  margin-bottom: 2rem;
+}
+
+.description {
+  max-width: 700px;
+}
