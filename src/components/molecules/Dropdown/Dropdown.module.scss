@@ -11,18 +11,15 @@
   z-index: 11;
   padding: 8rem 0;
   margin: 0;
-  width: 0;
-  height: 0;
+
   overflow-y: scroll;
-  transition: height 250ms ease-in-out;
+
   @include tablet() {
     background: $secondary-light;
     border-radius: $border-radius-s;
     position: absolute;
     top: 16.5rem;
     left: 8.5rem;
-    overflow-y: scroll;
-    display: unset;
     justify-content: unset;
     transition: height 100ms ease-in-out;
     padding: 0;
@@ -37,17 +34,6 @@
   background: $secondary;
   @include tablet() {
     background: $secondary-light;
-  }
-}
-
-.open {
-  width: 100vw;
-  height: 102vh;
-  @include tablet() {
-    width: 200px;
-    height: 375px;
-    padding: 1rem 0;
-    border: 1px solid $tertiary;
   }
 }
 

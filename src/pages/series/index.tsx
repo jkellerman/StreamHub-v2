@@ -7,7 +7,7 @@ import React from "react";
 import Description from "@/components/atoms/MediaPageDescription/MediaPageDescription";
 import CardList from "@/components/molecules/CardList/CardList";
 import Dropdown from "@/components/molecules/Dropdown/Dropdown";
-import DropdownsContainer from "@/components/organisms/DropdownsContainer/DropdownContainers";
+import DropdownsContainer from "@/components/organisms/DropdownsContainer/DropdownsContainer";
 import styles from "@/components/organisms/DropdownsContainer/DropdownsContainer.module.scss";
 import { DEFAULT_SERIES_GENRE } from "@/constants/app";
 import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";

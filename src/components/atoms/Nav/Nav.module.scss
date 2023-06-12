@@ -21,6 +21,8 @@
   list-style: none;
   margin-right: 1rem;
   font-size: $heading-m-m;
+  font-weight: $fw-med;
+  letter-spacing: 0.05rem;
   @include tablet {
     font-size: $heading-xs;
   }

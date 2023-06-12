@@ -1,38 +1,53 @@
 @import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
 
 .button {
   color: white;
-  border-radius: $border-radius-l;
+  border-radius: $border-radius-s;
   border: 1px solid $primary-dark;
   text-transform: capitalize;
-  font-size: $body-l-m;
+  font-size: $heading-l-m;
+  font-weight: $fw-bold;
   cursor: pointer;
   transition: $transition;
-  background-color: $primary-med;
-  padding: 0.35em 1.5em 0.35em 1em;
+  background-color: $tertiary;
+  padding: 0.5em 1em 0.5em 0.75em;
   white-space: nowrap;
-}
-
-.button:focus {
-  background: $secondary-light;
-}
-
-@media (hover: hover) {
-  .button:hover {
-    background: $secondary-light;
+  @include tablet {
+    font-size: $heading-s;
   }
 }
 
 .chevron {
   position: relative;
-  top: 0.075rem;
+  margin-left: 0.25rem;
+  top: 0.15rem;
   right: -0.5rem;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
+  @include tablet {
+    top: 0.25rem;
+    width: 20px;
+    height: 20px;
+  }
 }
 
-@media (min-width: 48em) {
-  .button {
-    padding: 0.5em 1.75em 0.5em 1.25em;
+.open {
+  transform: rotate(180deg);
+  transition: transform 100ms ease-in-out;
+}
+
+.closed {
+  transform: rotate(0deg);
+  transition: transform 100ms ease-in-out;
+}
+
+.button:focus {
+  background: $tertiary-light;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background: $tertiary-light;
   }
 }

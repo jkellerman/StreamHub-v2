@@ -1,6 +1,6 @@
 import Link from "next/link";
 import QueryString from "qs";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 
 import Button from "@/components/atoms/Buttons/Dropdown/Button";
 import useClickOutside from "@/hooks/useClickOutside";
@@ -19,41 +19,39 @@ const Dropdown: React.FC<DropdownProps> = ({ type, selected_genre, genre_list })
   const dropdownRef = useClickOutside<HTMLUListElement>(() => setIsDropDownOpen(false));
 
   const toggleDropdown = useCallback(() => {
-    setIsDropDownOpen(!isDropdownOpen);
-  }, [isDropdownOpen]);
-
-  useEffect(() => {
-    // Prevent user from scrolling (for when mobile list is open)
-    document.body.classList.toggle("no-scroll", isDropdownOpen);
-  }, [isDropdownOpen]);
+    setIsDropDownOpen((prev) => !prev);
+  }, []);
 
   return (
     <>
-      <Button toggleDropdown={toggleDropdown} name={selected_genre.name} dropdown />
+      <Button
+        toggleDropdown={toggleDropdown}
+        name={selected_genre.name}
+        isDropdownOpen={isDropdownOpen}
+      />
 
-      <ul
-        className={isDropdownOpen ? `${styles.list} ${styles.open}` : `${styles.list}`}
-        ref={dropdownRef}
-      >
-        {genre_list.map(({ id, name }) => {
-          return (
-            <li
-              key={id}
-              className={selected_genre.name === name ? styles.listItemCurrent : styles.listItem}
-            >
-              <Link
-                href={`/${type}?${QueryString.stringify({
-                  genre: name.toLowerCase(),
-                })}`}
+      {isDropdownOpen && (
+        <ul className={styles.list} ref={dropdownRef}>
+          {genre_list.map(({ id, name }) => {
+            return (
+              <li
+                key={id}
+                className={selected_genre.name === name ? styles.listItemCurrent : styles.listItem}
               >
-                <a className={styles.link} onClick={toggleDropdown}>
-                  {name}
-                </a>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+                <Link
+                  href={`/${type}?${QueryString.stringify({
+                    genre: name.toLowerCase(),
+                  })}`}
+                >
+                  <a className={styles.link} onClick={toggleDropdown}>
+                    {name}
+                  </a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </>
   );
 };
