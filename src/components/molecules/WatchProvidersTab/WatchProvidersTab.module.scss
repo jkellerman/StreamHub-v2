@@ -44,13 +44,13 @@
   border-radius: $border-radius-s;
   display: inline-block;
   position: relative;
-  overflow: hidden;
   min-width: 35px;
   min-height: 35px;
 }
 
 .icon {
-  object-fit: cover;
+  object-fit: contain;
+  border-radius: $border-radius-s;
 }
 
 .name {

@@ -6,10 +6,9 @@ interface TabButtonProps {
   activeTab: string;
   tab: string;
   handleClick: (tab: string) => void;
-  handleScroll: () => void;
 }
 
-const TabButton: React.FC<TabButtonProps> = ({ activeTab, tab, handleClick, handleScroll }) => {
+const TabButton: React.FC<TabButtonProps> = ({ activeTab, tab, handleClick }) => {
   return (
     <>
       {tab === "stream" && (
@@ -18,7 +17,6 @@ const TabButton: React.FC<TabButtonProps> = ({ activeTab, tab, handleClick, hand
             className={activeTab === "stream" ? `${styles.tab} ${styles.active}` : `${styles.tab} `}
             onClick={() => {
               handleClick("stream");
-              handleScroll();
             }}
           >
             Stream
@@ -31,7 +29,6 @@ const TabButton: React.FC<TabButtonProps> = ({ activeTab, tab, handleClick, hand
             className={activeTab === "rent" ? `${styles.tab} ${styles.active}` : `${styles.tab} `}
             onClick={() => {
               handleClick("rent");
-              handleScroll();
             }}
           >
             Rent
@@ -44,7 +41,6 @@ const TabButton: React.FC<TabButtonProps> = ({ activeTab, tab, handleClick, hand
             className={activeTab === "buy" ? `${styles.tab} ${styles.active}` : `${styles.tab} `}
             onClick={() => {
               handleClick("buy");
-              handleScroll();
             }}
           >
             Buy

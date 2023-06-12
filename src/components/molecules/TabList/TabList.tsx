@@ -25,10 +25,6 @@ const TabList: React.FC<TabListProps> = ({ watch_providers, title, release_date,
     setActiveTab(tab);
   };
 
-  const handleScroll = () => {
-    tab.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <>
       <h3 className={styles.title}>
@@ -36,24 +32,9 @@ const TabList: React.FC<TabListProps> = ({ watch_providers, title, release_date,
       </h3>
       <div className={styles.container} ref={tab}>
         <div className={styles.tabs}>
-          <TabButton
-            activeTab={activeTab}
-            handleClick={handleClick}
-            tab="stream"
-            handleScroll={handleScroll}
-          />
-          <TabButton
-            activeTab={activeTab}
-            handleClick={handleClick}
-            tab="rent"
-            handleScroll={handleScroll}
-          />
-          <TabButton
-            activeTab={activeTab}
-            handleClick={handleClick}
-            tab="buy"
-            handleScroll={handleScroll}
-          />
+          <TabButton activeTab={activeTab} handleClick={handleClick} tab="stream" />
+          <TabButton activeTab={activeTab} handleClick={handleClick} tab="rent" />
+          <TabButton activeTab={activeTab} handleClick={handleClick} tab="buy" />
         </div>
 
         <div className={styles.providerContainer}>
