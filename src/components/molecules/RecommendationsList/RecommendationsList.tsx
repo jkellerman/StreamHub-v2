@@ -14,6 +14,8 @@ interface RecommendationsProps {
   isError: boolean;
 }
 
+// TODO: remove this component as it is a duplicate of the carousel component
+
 const Recommendations: React.FC<RecommendationsProps> = ({
   recommendations,
   isLoading,
