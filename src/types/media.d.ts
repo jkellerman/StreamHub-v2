@@ -65,4 +65,9 @@ export declare namespace Media {
   export interface IRecommendationsList {
     results: IRecommendations[];
   }
+
+  export interface IServices {
+    provider_id: number;
+    provider_name: string;
+  }
 }

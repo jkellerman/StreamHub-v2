@@ -28,3 +28,38 @@ export const BASE_TMDB_QUERY_DISCOVER_PARAMS = {
   api_key: process.env.API_KEY,
   language: "en-GB",
 };
+
+export const servicesList = [
+  {
+    provider_id: 0,
+    provider_name: "All services",
+  },
+  {
+    provider_id: 9,
+    provider_name: "Amazon Prime Video",
+  },
+  {
+    provider_id: 350,
+    provider_name: "Apple TV Plus",
+  },
+  {
+    provider_id: 337,
+    provider_name: "Disney Plus",
+  },
+  {
+    provider_id: 8,
+    provider_name: "Netflix",
+  },
+  {
+    provider_id: 591,
+    provider_name: "Now TV cinema",
+  },
+  {
+    provider_id: 531,
+    provider_name: "Paramount Plus",
+  },
+  {
+    provider_id: 29,
+    provider_name: "Sky Go",
+  },
+];

@@ -1,11 +1,12 @@
 @import "@/styles/variables.scss";
 @import "@/styles/mixins.scss";
 
-.list {
+.list,
+.mediaList,
+.servicesList {
   @include center;
   display: flex;
   flex-direction: column;
-
   position: absolute;
   background: $primary-dark;
   z-index: 11;
@@ -25,7 +26,23 @@
   }
 }
 
+.mediaList {
+  max-height: 100px;
+}
+
+.servicesList {
+  max-height: 200px;
+}
+
 .list:hover > .listItemCurrent {
+  background: transparent;
+  border-radius: $border-radius-s;
+}
+.mediaList:hover > .listItemCurrent {
+  background: transparent;
+  border-radius: $border-radius-s;
+}
+.servicesList:hover > .listItemCurrent {
   background: transparent;
   border-radius: $border-radius-s;
 }
@@ -34,7 +51,7 @@
 .listItemCurrent {
   list-style: none;
   padding: 1rem 0.5rem;
-  font-size: $body-m;
+  font-size: $body-l;
   color: $primary;
   @include tablet() {
     padding: 0.5rem 0;

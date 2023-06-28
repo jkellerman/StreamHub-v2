@@ -9,8 +9,8 @@ import CardList from "@/components/molecules/CardList/CardList";
 import Dropdown from "@/components/molecules/Dropdown/Dropdown";
 import DropdownsContainer from "@/components/organisms/DropdownsContainer/DropdownsContainer";
 import styles from "@/components/organisms/DropdownsContainer/DropdownsContainer.module.scss";
-import { DEFAULT_SERIES_GENRE } from "@/constants/app";
-import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import { DEFAULT_SERIES_GENRE, DEFAULT_SERVICES } from "@/constants/app";
+import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL, servicesList } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { Genres } from "@/src/types";
 
@@ -27,6 +27,9 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
   const endpoint = !isDefaultGenre ? `api/series/genre/${genre.id}` : "api/trending/tv/day";
   const pageType = pathname.replace(/\//g, "");
   const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
+  const service =
+    servicesList.find(({ provider_name }) => provider_name.toLowerCase() === query.genre) ||
+    DEFAULT_SERVICES;
 
   return (
     <>
@@ -40,9 +43,9 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
       <main>
         <DropdownsContainer>
           <Dropdown type={pageType} selected_genre={genre} genre_list={genreList} />
-          <Dropdown type={pageType} selected_genre={genre} genre_list={genreList} />
+          <Dropdown type={pageType} media={pageType} />
           <span className={styles.span}>On</span>
-          <Dropdown type={pageType} selected_genre={genre} genre_list={genreList} />
+          <Dropdown type={pageType} selected_service={service} services_list={servicesList} />
         </DropdownsContainer>
         <Description />
         <CardList cards={cards} isLoading={isLoading} isError={isError} />
