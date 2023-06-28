@@ -43,6 +43,10 @@ export const servicesList = [
     provider_name: "Apple TV Plus",
   },
   {
+    provider_id: 38,
+    provider_name: "BBC iPlayer",
+  },
+  {
     provider_id: 337,
     provider_name: "Disney Plus",
   },

@@ -2,14 +2,15 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/utils/*": ["src/utils/*"],
-      "@/public/*": ["public/*"],
       "@/components/*": ["src/components/*"],
       "@/constants/*": ["src/constants/*"],
       "@/hooks/*": ["src/hooks/*"],
-      "@/types/*": ["src/types/*"],
       "@/layouts/*": ["src/layouts/*"],
+      "@/pages/*": ["src/pages/*"],
       "@/styles/*": ["src/styles/*"],
+      "@/types/*": ["src/types/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/public/*": ["public/*"],
       "@/src/*": ["src/*"]
     },
     "target": "ES6",
