@@ -9,29 +9,42 @@ import styles from "../CategoryHeading/CategoryHeading.module.scss";
 interface CategoryHeadingProps {
   type: string;
   category: string;
-  services?: string;
+  subheading?: string;
+  recommendations?: boolean;
 }
 
-const CategoryHeading: React.FC<CategoryHeadingProps> = ({ type, category, services }) => {
+const CategoryHeading: React.FC<CategoryHeadingProps> = ({
+  type,
+  category,
+  subheading,
+  recommendations,
+}) => {
   return (
-    <div className={styles.headingContainer}>
-      <Link href={`/${type}/${category.replace(/\s/g, "")}`}>
-        <a className={styles.heading}>
-          {category}
+    <>
+      {!recommendations && (
+        <div className={styles.headingContainer}>
+          <Link href={`/${type}/${category.replace(/\s/g, "")}`}>
+            <a className={styles.heading}>
+              {category}
 
-          <Image
-            src={chevron}
-            alt="chevron-right"
-            width={14}
-            height={14}
-            className={styles.chevron}
-          />
-        </a>
-      </Link>
-      {services === "all" && (
-        <div className={styles.subheading}>The most popular on all streaming services.</div>
+              <Image
+                src={chevron}
+                alt="chevron-right"
+                width={14}
+                height={14}
+                className={styles.chevron}
+              />
+            </a>
+          </Link>
+          {subheading && <div className={styles.subheading}>{subheading}</div>}
+        </div>
       )}
-    </div>
+      {recommendations && (
+        <h3 className={styles.headingContainer}>
+          <span className={styles.heading}>{category}</span>
+        </h3>
+      )}
+    </>
   );
 };
 

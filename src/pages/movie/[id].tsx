@@ -79,7 +79,7 @@ const Movie: React.FC<MovieProps> = ({
         </MediaInfoBox>
 
         {data && data.recommendations.results.length > 0 && (
-          <CategoryHeading type="movies" category="People also liked" />
+          <CategoryHeading type="movies" category="People also liked" recommendations />
         )}
         {data && data.recommendations.results.length > 0 && (
           <Recommendations
