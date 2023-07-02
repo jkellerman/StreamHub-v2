@@ -23,7 +23,7 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
   const genre =
     genreList.find(({ name }) => name.toLowerCase() === query.genre) || DEFAULT_MOVIES_GENRE;
   const isDefaultGenre = genre.name === DEFAULT_MOVIES_GENRE.name;
-  const endpoint = !isDefaultGenre ? `api/media/genre/${genre.id}` : "api/trending/movie/day";
+  const endpoint = !isDefaultGenre ? `api/media/genre/movie/${genre.id}` : "api/trending/movie/day";
   const pageType = pathname.replace(/\//g, "");
   const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
   const service =

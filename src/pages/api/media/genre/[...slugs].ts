@@ -6,17 +6,19 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { id, ...queryParams } = req.query;
+    const { slugs, ...queryParams } = req.query;
+    const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
+
     const queryString = QueryString.stringify(
       {
         ...BASE_TMDB_QUERY_PARAMS,
         ...queryParams, // for infinite scroll page numbers
-        with_genres: id,
+        with_genres: slugsArray[1],
       },
       { addQueryPrefix: true }
     );
 
-    const url = `${BASE_TMDB_URL}/discover/tv${queryString}`;
+    const url = `${BASE_TMDB_URL}/discover/${slugsArray[0]}${queryString}`;
     console.info("🚀 Request URL: ", url);
 
     const response = await fetch(url);
