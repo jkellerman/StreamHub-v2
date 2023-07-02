@@ -31,7 +31,7 @@ const Home: React.FC<HomeProps> = () => {
         <CategoryHeading
           type="all"
           category="trending this week"
-          subheading="What's hot in cinema and on all services."
+          subheading="Trending in cinema and on all streaming services."
         />
         <Carousel endpoint="/api/trending/all/week" />
         <CategoryHeading type="movies" category="top films of the past year" />
