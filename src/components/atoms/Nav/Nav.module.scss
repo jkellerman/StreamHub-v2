@@ -12,7 +12,7 @@
 
 .navList {
   display: flex;
-  @include tabletL {
+  @include laptop {
     margin-left: 9.25rem;
   }
 }
