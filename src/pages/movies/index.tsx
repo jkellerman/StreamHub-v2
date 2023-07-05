@@ -23,13 +23,14 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
   const genre =
     genreList.find(({ name }) => name.toLowerCase() === query.genre) || DEFAULT_MOVIES_GENRE;
   const isDefaultGenre = genre.name === DEFAULT_MOVIES_GENRE.name;
-  const endpoint = !isDefaultGenre ? `api/media/genre/movie/${genre.id}` : "api/trending/movie/day";
+  const endpoint = !isDefaultGenre
+    ? `api/media/genre/movie/${genre.id}`
+    : `/api/network/movie/8|337|9|531|350`;
   const pageType = pathname.replace(/\//g, "");
   const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
   const service =
     servicesList.find(({ provider_name }) => provider_name.toLowerCase() === query.genre) ||
     DEFAULT_SERVICES;
-
   return (
     <>
       <Head>
