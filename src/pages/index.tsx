@@ -38,18 +38,18 @@ const Home: React.FC<HomeProps> = () => {
         <Carousel endpoint="/api/year/pastYear/movie/2500" />
         <CategoryHeading type="series" category="popular netflix series" />
         <Carousel endpoint="/api/network/tv/8" />
-        <CategoryHeading type="movies" category="upcoming movies" />
-        <Carousel endpoint="/api/media/movie/upcoming" />
-        <CategoryHeading type="series" category="popular movies on Disney+" />
-        <Carousel endpoint="/api/network/movie/337" />
         <CategoryHeading type="movies" category="best films of 2023" />
         <Carousel endpoint="/api/year/current/movie/2023" />
+        <CategoryHeading type="series" category="popular movies on Disney+" />
+        <Carousel endpoint="/api/network/movie/337" />
         <CategoryHeading
           type="series"
           category="popular TV series"
           subheading="The most popular on all streaming services."
         />
         <Carousel endpoint="/api/trending/tv/day" />
+        <CategoryHeading type="movies" category="upcoming movies" />
+        <Carousel endpoint="/api/media/movie/upcoming" />
         <CategoryHeading type="movies" category="Hidden gems of the past year" />
         <Carousel endpoint="/api/year/pastYear/movie/10" />
       </main>
