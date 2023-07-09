@@ -1,7 +1,7 @@
 import QueryString from "qs";
 
-import { formattedDate } from "@/constants/dates";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import { formattedDate } from "@/utils/dates";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
