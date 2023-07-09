@@ -47,7 +47,7 @@ const Home: React.FC<HomeProps> = () => {
           category="popular TV series"
           subheading="The most popular on all streaming services."
         />
-        <Carousel endpoint="/api/trending/tv/day" />
+        <Carousel endpoint="/api/trending/tv/week" />
         <CategoryHeading type="movies" category="upcoming movies" />
         <Carousel endpoint="/api/media/movie/upcoming" />
         <CategoryHeading type="movies" category="Hidden gems of the past year" />
