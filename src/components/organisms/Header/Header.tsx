@@ -8,7 +8,9 @@ import styles from "../Header/Header.module.scss";
 
 const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean | null>(null);
+
   const [prevScrollY, setPrevScrollY] = useState(0);
+  const scrollThreshold = 250;
 
   useEffect(() => {
     const handleScrollEvent = () => {
@@ -16,7 +18,10 @@ const Header: React.FC = () => {
       setPrevScrollY(currentScrollYPosition);
       if (currentScrollYPosition === 0) {
         setIsVisible(null);
-      } else if (currentScrollYPosition > prevScrollY) {
+      } else if (
+        currentScrollYPosition > prevScrollY &&
+        currentScrollYPosition >= scrollThreshold
+      ) {
         setIsVisible(false);
       } else if (currentScrollYPosition < prevScrollY) {
         setIsVisible(true);
