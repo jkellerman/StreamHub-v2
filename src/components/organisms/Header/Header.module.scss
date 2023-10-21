@@ -1,37 +1,38 @@
 @import "@/styles/variables.scss";
 @import "@/styles/mixins.scss";
 
-.header {
+@mixin header-styles {
   @include flex-column;
   background-color: $secondary;
   position: fixed;
-  top: 0px;
   z-index: 10;
   border-bottom: 0px solid $secondary;
-  transition: border-bottom 250ms ease-in-out;
 }
 
-.visible {
+.header {
   @include flex-column;
-  background-color: $secondary;
-  position: fixed;
+  @include header-styles();
   top: 0px;
-  z-index: 10;
-  border-bottom: 3px solid $primary-dark;
-  transition: top 250ms ease-in-out, border-bottom 250ms ease-in-out;
+  transition: border-bottom 250ms ease-in-out;
+  border-bottom: 0px solid $secondary;
 }
 
 .hidden {
   @include flex-column;
-  background-color: $secondary;
-  position: fixed;
-  z-index: 10;
-  border-bottom: 0px solid $secondary;
+  @include header-styles();
   transition: top 150ms ease-in-out 0.2s;
   top: -116px;
   @include tablet {
     top: -136px;
   }
+}
+
+.visible {
+  @include flex-column;
+  @include header-styles();
+  top: 0px;
+  border-bottom: 3px solid $primary-dark;
+  transition: top 250ms ease-in-out, border-bottom 250ms ease-in-out;
 }
 
 .container {
