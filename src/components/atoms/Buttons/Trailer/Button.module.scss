@@ -5,7 +5,7 @@
 }
 
 .button {
-  background: linear-gradient(90deg, $primary-med, $primary);
+  background: $primary-light;
   padding: 1em 2.25em;
   border: none;
   border-radius: $border-radius-s;
@@ -21,9 +21,16 @@
   gap: 0.5em;
   white-space: nowrap;
   margin-bottom: 2.5rem;
+  width: 100%;
+  cursor: pointer;
   @include tablet {
     max-width: 300px;
     font-size: $heading-xs;
     margin-bottom: 1rem;
+  }
+  &:hover,
+  &:focus {
+    background: $primary;
+    transition: $transition;
   }
 }

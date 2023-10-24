@@ -1,9 +1,12 @@
 import Image from "next/future/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import useClickOutside from "@/hooks/useClickOutside";
 import useFetchDetails from "@/hooks/useFetchDetails";
 import playbutton from "@/public/assets/play-button-arrowhead.svg";
+
+import Overlay from "../../Overlay/Overlay";
+import VideoPlayer from "../../VideoPlayer/VideoPlayer";
 
 import styles from "./Button.module.scss";
 
@@ -19,6 +22,11 @@ interface IVideoData {
 const Button: React.FC<ButtonProps> = ({ endpoint }) => {
   const { data, isLoading, isError } = useFetchDetails(endpoint);
   const [link, setLink] = useState<string | null>(null);
+  const [openPlayer, setOpenPlayer] = useState(false);
+  const videoPlayerRef = useClickOutside<HTMLDivElement>(() => setOpenPlayer(false));
+  const openVideoPlayer = () => {
+    setOpenPlayer(true);
+  };
 
   useEffect(() => {
     if (data && data.videos.results.length !== 0) {
@@ -46,24 +54,27 @@ const Button: React.FC<ButtonProps> = ({ endpoint }) => {
   }, [data]);
 
   if (isLoading || isError) {
-    return (
-      <button className={styles.button}>
-        <Image src={playbutton} alt="play-button-arrowhead" width={17} height={17} />
-        Watch trailer
-      </button>
-    );
-  }
-
-  if (data.videos.results.length === 0) {
     return <div className={styles.noTrailer}></div>;
   }
+
+  if (data.videos.results.length === 0 || !link) {
+    return <div className={styles.noTrailer}></div>;
+  }
+
   return (
-    <Link href={link ? `https://www.youtube.com/watch?v=${link}` : "#"}>
-      <a className={styles.button} target="_blank" rel="noopener noreferrer">
-        <Image src={playbutton} alt="play-button-arrowhead" width={17} height={17} />
-        watch trailer
-      </a>
-    </Link>
+    <>
+      {link && (
+        <button className={styles.button} onClick={openVideoPlayer}>
+          <Image src={playbutton} alt="play-button-arrowhead" width={17} height={17} />
+          watch trailer
+        </button>
+      )}
+      {openPlayer && (
+        <Overlay>
+          <VideoPlayer link={link} videoPlayerRef={videoPlayerRef} />
+        </Overlay>
+      )}
+    </>
   );
 };
 
