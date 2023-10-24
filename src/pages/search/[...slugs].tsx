@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import CardList from "@/components/molecules/CardList/CardList";
+import styles from "@/components/molecules/CardList/CardList.module.scss";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 
 const Search = () => {
@@ -21,7 +22,7 @@ const Search = () => {
       <main>
         <section>
           {!isLoading && (
-            <h1>
+            <h1 className={styles.header}>
               {cards.length !== 0
                 ? `Results found for '${slugsArray[1]?.toString().replace(/-/g, " ")}'`
                 : `No Results found for '${slugsArray[1]?.toString().replace(/-/g, " ")}'`}

@@ -1,8 +1,12 @@
 @import "@/styles/variables.scss";
 @import "@/styles/mixins.scss";
 
-.container {
+.container,
+.header {
   @include center;
+}
+
+.container {
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
@@ -17,6 +21,17 @@
   @include tabletL {
     justify-content: space-between;
     gap: 1rem;
+  }
+}
+
+.header {
+  display: block;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-weight: $fw-med;
+
+  @include laptop {
+    margin-top: 4rem;
   }
 }
 
