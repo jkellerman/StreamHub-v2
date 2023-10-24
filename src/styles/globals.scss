@@ -41,13 +41,6 @@ hr {
   margin: 0 0 2rem;
 }
 
-.no-scroll {
-  overflow: hidden;
-  @include tablet() {
-    overflow: visible;
-  }
-}
-
 #nprogress {
   pointer-events: none;
 }
