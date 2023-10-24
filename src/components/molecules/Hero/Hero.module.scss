@@ -7,15 +7,7 @@
   flex-direction: column;
   text-align: center;
   padding: 2rem 0;
-  @include tablet {
-    max-width: 60%;
-  }
-  @include laptop {
-    max-width: 50%;
-  }
-  @include desktop {
-    max-width: 42.5%;
-  }
+  max-width: 515px;
 }
 
 .subheading {
