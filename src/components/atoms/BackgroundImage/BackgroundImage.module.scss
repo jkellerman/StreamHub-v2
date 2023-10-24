@@ -23,7 +23,7 @@
     height: 50vh;
   }
   @include laptop() {
-    height: 100vh;
+    height: unset;
   }
 }
 

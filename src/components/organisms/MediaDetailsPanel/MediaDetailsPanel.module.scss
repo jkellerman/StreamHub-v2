@@ -10,7 +10,11 @@
     margin-bottom: 7rem;
   }
   @include laptop {
+    margin-top: 7rem;
     margin-bottom: 0;
+  }
+  @include desktop {
+    margin-top: 0;
   }
 }
 
