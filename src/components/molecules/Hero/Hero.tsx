@@ -1,5 +1,4 @@
 import Image from "next/future/image";
-import Link from "next/link";
 
 import Button from "@/components/atoms/Buttons/Button";
 import primevideo from "@/public/assets/amazon_prime.jpg";
@@ -10,6 +9,13 @@ import now from "@/public/assets/now.webp";
 import styles from "./Hero.module.scss";
 
 const Hero = () => {
+  const handleScroll = () => {
+    const hrElement = document.querySelector<HTMLElement>("#hr");
+    if (hrElement) {
+      hrElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -35,11 +41,11 @@ const Hero = () => {
           tonight. Simple!
         </p>
         <Button text="What to watch tonight?" />
-        <Link href="/">
-          <a className={styles.exploreLink}>Explore</a>
-        </Link>
+        <button className={styles.exploreLink} onClick={handleScroll}>
+          Explore
+        </button>
       </div>
-      <hr className={styles.hr} />
+      <hr className={styles.hr} id="hr" />
     </>
   );
 };

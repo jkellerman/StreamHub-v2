@@ -78,6 +78,10 @@
   border-radius: 5px;
   font-family: inherit;
   font-size: inherit;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .hr {
