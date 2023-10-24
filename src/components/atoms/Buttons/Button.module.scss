@@ -2,7 +2,7 @@
 
 .button {
   background: linear-gradient(90deg, $primary-med, $primary);
-  padding: 0.9em 2.25em;
+  padding: 1em 2.25em;
   border: none;
   border-radius: $border-radius-xl;
   font-family: inherit;
@@ -10,4 +10,9 @@
   font-weight: $fw-bold;
   color: $secondary;
   letter-spacing: 1px;
+  transition: transform 0.15s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
