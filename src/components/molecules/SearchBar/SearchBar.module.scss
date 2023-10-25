@@ -5,28 +5,26 @@
   flex-grow: 1;
   position: relative;
   z-index: 10;
-  border: 1px solid $slate;
+  border: 1px solid #4f5c7c;
   border-radius: $border-radius-s;
-  background: linear-gradient(90deg, $secondary-med-light, $primary-med);
+  background: linear-gradient(90deg, $primary-med, $secondary-med-light);
+  transition: height 250ms cubic-bezier(0.6, -0.28, 0.42, 0.3), box-shadow 150ms ease-in;
   align-self: baseline;
-  height: 2.75rem;
-  transition: height 250ms ease-in-out;
   overflow: hidden;
 }
 
-.container:hover {
-  border: 1px solid $primary;
-  transition: $transition;
-}
-
-.container:focus-within {
-  border: 1px solid $primary;
+.container.active {
   position: absolute;
   @include center;
 
   @include tablet {
     position: unset;
   }
+}
+.container:hover,
+.container:focus-within {
+  box-shadow: $slate 0px 0px 0px 2px;
+  // border: 1px solid $primary-med;
 }
 
 .formWrapper {

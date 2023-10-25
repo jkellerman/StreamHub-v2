@@ -10,12 +10,14 @@ interface SearchInputProps {
   handleInputSubmit: (e: FormEvent) => void;
   searchQuery: string;
   handleInputChange: (e: FormEvent<HTMLInputElement>) => void;
+  handleIsSearchBoxActive: () => void;
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
   handleInputSubmit,
   searchQuery,
   handleInputChange,
+  handleIsSearchBoxActive,
 }) => {
   const isMobile = useMediaQuery(`(max-width: 504px)`);
 
@@ -30,6 +32,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         value={searchQuery}
         onChange={handleInputChange}
         maxLength={20}
+        onBlur={handleIsSearchBoxActive}
       />
       <Image src={img} alt="icon-search" unoptimized={true} className={styles.searchIcon} />
     </form>

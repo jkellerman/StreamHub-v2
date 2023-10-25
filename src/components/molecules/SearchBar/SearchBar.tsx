@@ -7,7 +7,6 @@ import CloseButton from "@/components/atoms/Buttons/SearchBar/Close";
 import SearchInput from "@/components/atoms/SearchInput/SearchInput";
 import SearchListItem from "@/components/atoms/SearchListItem/SearchListItem";
 import Spinner from "@/components/atoms/Spinner/SearchBar/Spinner";
-import useClickOutside from "@/hooks/useClickOutside";
 
 import styles from "../SearchBar/SearchBar.module.scss";
 
@@ -33,11 +32,17 @@ const Search: React.FC = () => {
   const [activeResultIndex, setActiveResultIndex] = useState(-1);
   const searchResultsRef = useRef<HTMLUListElement>(null);
   const searchResultsItems = searchResultsRef.current?.children;
-  const containerRef = useClickOutside<HTMLDivElement>(() => setSearchQuery(""));
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [searchIsActive, setSearchIsActive] = useState(false);
 
   const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearchQuery(e.currentTarget.value);
+  };
+
+  const handleIsSearchBoxActive = () => {
+    setSearchQuery("");
+    setSearchIsActive(false);
   };
 
   useEffect(() => {
@@ -156,7 +161,11 @@ const Search: React.FC = () => {
   }, [searchResultsItems, activeResultIndex, searchResults, router, searchQuery, containerRef]);
 
   return (
-    <div className={styles.container} ref={containerRef}>
+    <div
+      className={searchIsActive ? `${styles.container} ${styles.active}` : styles.container}
+      ref={containerRef}
+      onClick={() => setSearchIsActive(true)}
+    >
       <div className={styles.formWrapper}>
         {searchQuery.length >= 1 && <ArrowButton setQuery={setSearchQuery} />}
 
@@ -164,6 +173,7 @@ const Search: React.FC = () => {
           handleInputSubmit={handleInputSubmit}
           searchQuery={searchQuery}
           handleInputChange={handleInputChange}
+          handleIsSearchBoxActive={handleIsSearchBoxActive}
         />
         {searchQuery.length >= 1 && <CloseButton setQuery={setSearchQuery} />}
       </div>
