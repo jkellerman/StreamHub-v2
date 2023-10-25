@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import Nav from "@/components/atoms/Nav/Nav";
-import SearchBar from "@/components/molecules/SearchBar/SearchBar";
+import Search from "@/components/molecules/Search/Search";
 
 import styles from "../Header/Header.module.scss";
 
@@ -44,7 +44,7 @@ const Header: React.FC = () => {
           </a>
         </Link>
 
-        <SearchBar />
+        <Search />
         <div className={styles.loginContainer}>
           <span className={styles.loginButton}>Login</span>
           <span className={styles.separator}> | </span>

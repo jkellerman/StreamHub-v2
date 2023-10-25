@@ -11,7 +11,7 @@ import useClickOutside from "@/hooks/useClickOutside";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import img from "@/public/assets/icon-search.svg";
 
-import styles from "../SearchBar/SearchBar.module.scss";
+import styles from "../Search/Search.module.scss";
 
 interface IMovieData {
   known_for_department: string;
