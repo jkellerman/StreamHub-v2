@@ -7,6 +7,7 @@ import CloseButton from "@/components/atoms/Buttons/SearchBar/Close";
 import SearchInput from "@/components/atoms/SearchInput/SearchInput";
 import SearchListItem from "@/components/atoms/SearchListItem/SearchListItem";
 import Spinner from "@/components/atoms/Spinner/SearchBar/Spinner";
+import useClickOutside from "@/hooks/useClickOutside";
 
 import styles from "../SearchBar/SearchBar.module.scss";
 
@@ -32,7 +33,7 @@ const Search: React.FC = () => {
   const [activeResultIndex, setActiveResultIndex] = useState(-1);
   const searchResultsRef = useRef<HTMLUListElement>(null);
   const searchResultsItems = searchResultsRef.current?.children;
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useClickOutside<HTMLDivElement>(() => handleIsSearchBoxActive());
   const [searchIsActive, setSearchIsActive] = useState(false);
 
   const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
@@ -173,7 +174,6 @@ const Search: React.FC = () => {
           handleInputSubmit={handleInputSubmit}
           searchQuery={searchQuery}
           handleInputChange={handleInputChange}
-          handleIsSearchBoxActive={handleIsSearchBoxActive}
         />
         {searchQuery.length >= 1 && <CloseButton setQuery={setSearchQuery} />}
       </div>
