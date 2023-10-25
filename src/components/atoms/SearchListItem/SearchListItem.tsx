@@ -28,37 +28,27 @@ const SearchListItem: React.FC<SearchListItemProps> = ({
   poster_path,
   setSearchQuery,
 }) => {
+  const isMovie = !!title;
+  const slug = isMovie ? title?.replace(/ /g, "-") : name?.replace(/ /g, "-");
+  const itemType = isMovie ? "movie" : "show";
+
   return (
-    <li
-      key={id}
-      className={
-        index === activeIndex
-          ? `${styles.listItemWrapper} ${styles.isActive}`
-          : styles.listItemWrapper
-      }
-    >
-      <Link
-        href={
-          title
-            ? `/movie/${id}?${title?.replace(/ /g, "-")}`
-            : `/show/${id}?${name?.replace(/ /g, "-")}`
-        }
-      >
+    <li className={`${styles.listItemWrapper} ${index === activeIndex && styles.isActive}`}>
+      <Link href={`/${itemType}/${id}?${slug}`}>
         <a className={styles.listItem} onClick={() => setSearchQuery("")}>
-          {poster_path ? (
-            <div className={styles.posterContainer}>
+          <div className={styles.posterContainer}>
+            {poster_path ? (
               <Image
                 src={`${POSTER_URL_IMAGE_XS}/${poster_path}`}
                 alt=""
                 unoptimized={true}
                 width={27}
                 height={40}
-                className={styles.poster}
               />
-            </div>
-          ) : (
-            <div className={styles.posterContainer}></div>
-          )}
+            ) : (
+              <div className={styles.noImage}></div>
+            )}
+          </div>
           <div>
             <span>
               {name || title}&nbsp;&nbsp;(

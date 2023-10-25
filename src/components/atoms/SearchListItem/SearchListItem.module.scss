@@ -6,12 +6,12 @@
   align-items: center;
   padding: 0.5rem 1.5rem;
   cursor: pointer;
+  transition: $transition;
 }
 
 .listItemWrapper:hover,
 .isActive {
   background-color: $secondary;
-  transition: $transition;
 }
 
 .listItem {
@@ -25,6 +25,10 @@
   width: 27px;
   height: 40px;
   margin-right: 1rem;
+}
+
+.noImage {
+  @extend .posterContainer;
   background: linear-gradient(90deg, $primary-med, $primary);
 }
 
