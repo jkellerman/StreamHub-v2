@@ -2,18 +2,19 @@
 @import "@/styles/mixins.scss";
 
 .closeButton {
-  background-color: transparent;
+  display: none;
+  background: transparent;
   border: none;
-  width: 0.625rem;
-  height: 0.625rem;
   cursor: pointer;
   margin-left: 1rem;
   transition: $transition;
   position: absolute;
-  top: 0.75rem;
-  right: 3rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  right: 3.5rem;
+  top: 0.8rem;
 
   @include tablet {
-    right: 3.5rem;
+    display: block;
   }
 }
