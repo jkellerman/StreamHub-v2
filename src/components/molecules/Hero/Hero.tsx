@@ -1,6 +1,7 @@
 import Image from "next/future/image";
+import Link from "next/link";
 
-import Button from "@/components/atoms/Buttons/Button";
+import Button from "@/components/atoms/Buttons/Buttons";
 import primevideo from "@/public/assets/amazon_prime.jpg";
 import disney from "@/public/assets/disney_plus.svg";
 import netflix from "@/public/assets/netflix.svg";
@@ -40,10 +41,15 @@ const Hero = () => {
           Browse, search or use a randomized generator to get the perfect movie or series to watch
           tonight. Simple!
         </p>
-        <Button text="What to watch tonight?" />
-        <button className={styles.exploreLink} onClick={handleScroll}>
+        <Link href="/">
+          <Button variant="primary" asLink>
+            What to watch tonight?
+          </Button>
+        </Link>
+
+        <Button type="button" variant="tertiary" onClick={handleScroll}>
           Explore
-        </button>
+        </Button>
       </div>
       <hr className={styles.hr} id="hr" />
     </>
