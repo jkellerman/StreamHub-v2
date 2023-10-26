@@ -47,7 +47,7 @@ const Hero = () => {
           </Button>
         </Link>
 
-        <Button type="button" variant="tertiary" onClick={handleScroll}>
+        <Button variant="tertiary" onClick={handleScroll}>
           Explore
         </Button>
       </div>
