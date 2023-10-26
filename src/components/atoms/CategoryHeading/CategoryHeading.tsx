@@ -1,10 +1,10 @@
-import Image from "next/future/image";
 import Link from "next/link";
 import React from "react";
 
-import chevron from "@/public/assets/right-chevron.svg";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 import styles from "../CategoryHeading/CategoryHeading.module.scss";
+import Icon from "../Icon/Icon";
 
 interface CategoryHeadingProps {
   type: string;
@@ -19,6 +19,12 @@ const CategoryHeading: React.FC<CategoryHeadingProps> = ({
   subheading,
   recommendations,
 }) => {
+  const isMobile = useMediaQuery(`(max-width: 504px)`);
+  const sm = "14";
+  const lg = "18";
+
+  const iconHeight = isMobile ? sm : lg;
+  const iconWidth = isMobile ? sm : lg;
   return (
     <>
       {!recommendations && (
@@ -26,14 +32,9 @@ const CategoryHeading: React.FC<CategoryHeadingProps> = ({
           <Link href={`/${type}/${category.replace(/\s/g, "")}`}>
             <a className={styles.heading}>
               {category}
-
-              <Image
-                src={chevron}
-                alt="chevron-right"
-                width={14}
-                height={14}
-                className={styles.chevron}
-              />
+              <span className={styles.chevron}>
+                <Icon icon="chevronRight" width={iconWidth} height={iconHeight} />
+              </span>
             </a>
           </Link>
           {subheading && <div className={styles.subheading}>{subheading}</div>}

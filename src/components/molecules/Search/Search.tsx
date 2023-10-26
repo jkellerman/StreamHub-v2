@@ -3,13 +3,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEvent, useState, useEffect, useRef } from "react";
 
-import ArrowButton from "@/components/atoms/Buttons/SearchBar/Arrow";
-import CloseButton from "@/components/atoms/Buttons/SearchBar/Close";
+import Icon from "@/components/atoms/Icon/Icon";
 import Spinner from "@/components/atoms/Spinner/SearchBar/Spinner";
 import { POSTER_URL_IMAGE_XS } from "@/constants/tmdb";
 import useClickOutside from "@/hooks/useClickOutside";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import img from "@/public/assets/icon-search.svg";
 
 import styles from "../Search/Search.module.scss";
 
@@ -189,7 +187,11 @@ const Search: React.FC = () => {
         setSearchQuery={setSearchQuery}
         handleSubmit={handleSubmit}
       >
-        <SearchInput searchQuery={searchQuery} handleInputChange={handleInputChange} />
+        <SearchInput
+          searchQuery={searchQuery}
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
+        />
       </SearchForm>
 
       <SearchResultsList
@@ -253,9 +255,21 @@ const SearchForm: React.FC<SearchFormProps> = ({
   return (
     <div className={styles.formWrapper}>
       <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
-        {searchQuery.length >= 1 && <ArrowButton setQuery={setSearchQuery} />}
+        {searchQuery.length >= 1 && (
+          <button
+            type="button"
+            className={styles.closeButtonArrow}
+            onClick={() => setSearchQuery("")}
+          >
+            <Icon icon="arrowLeft" />
+          </button>
+        )}
         {children}
-        {searchQuery.length >= 1 && <CloseButton setQuery={setSearchQuery} />}
+        {searchQuery.length >= 1 && (
+          <button type="button" className={styles.closeButton} onClick={() => setSearchQuery("")}>
+            <Icon icon="close" />
+          </button>
+        )}
       </form>
     </div>
   );
@@ -268,9 +282,14 @@ const SearchForm: React.FC<SearchFormProps> = ({
 interface SearchInputProps {
   searchQuery: string;
   handleInputChange: (e: FormEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: FormEvent) => void;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ searchQuery, handleInputChange }) => {
+const SearchInput: React.FC<SearchInputProps> = ({
+  searchQuery,
+  handleInputChange,
+  handleSubmit,
+}) => {
   const isMobile = useMediaQuery(`(max-width: 504px)`);
 
   return (
@@ -285,7 +304,12 @@ const SearchInput: React.FC<SearchInputProps> = ({ searchQuery, handleInputChang
         onChange={handleInputChange}
         maxLength={20}
       />
-      <Image src={img} alt="icon-search" unoptimized={true} className={styles.searchIcon} />
+
+      <button type="submit" className={styles.searchIcon} onClick={handleSubmit}>
+        <Icon icon="search" />
+      </button>
+
+      {/* <Image src={img} alt="icon-search" unoptimized={true} className={styles.searchIcon} /> */}
     </>
   );
 };
@@ -362,6 +386,10 @@ const SearchResultsList: React.FC<SearchResultsListProps> = ({
 
   return null;
 };
+
+// ====================
+// Search List Item
+// ====================
 
 interface SearchListItemProps {
   id: number;

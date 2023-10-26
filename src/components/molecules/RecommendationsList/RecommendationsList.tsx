@@ -1,8 +1,8 @@
 import React from "react";
 
-import Button from "@/components/atoms/Buttons/Carousel/Button";
 import Card from "@/components/atoms/Card/Card";
 import CardDetails from "@/components/atoms/CardDetails/CardDetails";
+import Icon from "@/components/atoms/Icon/Icon";
 import useSlider from "@/hooks/useSlider";
 import { Media } from "@/src/types";
 
@@ -43,8 +43,12 @@ const Recommendations: React.FC<RecommendationsProps> = ({
     <div className={styles.container}>
       {isScrollAvailable && (
         <span className={styles.navContainer}>
-          <Button left handleClickPrev={handleClickPrev} />
-          <Button right handleClickNext={handleClickNext} />
+          <button type="button" className={styles.button} onClick={handleClickPrev}>
+            <Icon icon="chevronLeft" />
+          </button>
+          <button type="button" className={styles.button} onClick={handleClickNext}>
+            <Icon icon="chevronRight" />
+          </button>
         </span>
       )}
       <div className={styles.carouselWrapper} ref={scrollRef}>

@@ -2,6 +2,8 @@
 @import "@/styles/mixins.scss";
 
 .button {
+  display: flex;
+  align-items: center;
   color: $primary;
   border-radius: $border-radius-s;
   border: 1px solid $primary-dark;
@@ -22,14 +24,14 @@
 .chevron {
   position: relative;
   margin-left: 0.25rem;
-  top: 0.15rem;
   right: -0.5rem;
-  width: 15px;
-  height: 15px;
   @include tablet {
-    top: 0.25rem;
-    width: 20px;
-    height: 20px;
+  }
+}
+
+.icon > svg {
+  @include tablet {
+    transform: translateY(10%);
   }
 }
 

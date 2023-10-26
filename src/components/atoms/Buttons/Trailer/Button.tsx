@@ -1,10 +1,9 @@
-import Image from "next/future/image";
 import { useEffect, useState } from "react";
 
 import useClickOutside from "@/hooks/useClickOutside";
 import useFetchDetails from "@/hooks/useFetchDetails";
-import playbutton from "@/public/assets/play-button-arrowhead.svg";
 
+import Icon from "../../Icon/Icon";
 import Overlay from "../../Overlay/Overlay";
 import VideoPlayer from "../../VideoPlayer/VideoPlayer";
 
@@ -65,7 +64,7 @@ const Button: React.FC<ButtonProps> = ({ endpoint }) => {
     <>
       {link && (
         <button className={styles.button} onClick={openVideoPlayer}>
-          <Image src={playbutton} alt="play-button-arrowhead" width={17} height={17} />
+          <Icon icon="play" />
           watch trailer
         </button>
       )}

@@ -1,7 +1,8 @@
-import Image from "next/future/image";
 import React from "react";
 
-import img from "@/public/assets/chevron-down.svg";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+
+import Icon from "../../Icon/Icon";
 
 import styles from "./Button.module.scss";
 
@@ -12,20 +13,27 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ toggleDropdown, name, isDropdownOpen }) => {
+  const isMobile = useMediaQuery(`(max-width: 504px)`);
+  const sm = "15";
+  const lg = "20";
+
+  const iconHeight = isMobile ? sm : lg;
+  const iconWidth = isMobile ? sm : lg;
   return (
     <button type="button" className={styles.button} onClick={toggleDropdown}>
       <>
         {name}
-        <Image
-          src={img}
-          alt="down-arrow"
-          unoptimized={true}
+        <div
           className={
             isDropdownOpen
               ? `${styles.chevron} ${styles.open}`
               : `${styles.chevron} ${styles.closed}`
           }
-        />
+        >
+          <span className={styles.icon}>
+            <Icon icon="chevronDown" width={iconWidth} height={iconHeight} />
+          </span>
+        </div>
       </>
     </button>
   );

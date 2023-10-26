@@ -40,35 +40,39 @@
   width: 100%;
 }
 
-.searchIcon {
-  position: relative;
-  width: 0.9375rem;
-  height: 0.9375rem;
-
-  @include tablet() {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-}
-
-.input {
-  font-size: $body-m;
-  font-family: inherit;
-  color: $primary-text;
-  font-weight: $fw-light;
-  border: none;
+.closeButton {
+  display: none;
   background: transparent;
-  padding: 0.25em 0;
-  width: 100%;
-  outline: none;
-  @include tablet() {
-    height: unset;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: $transition;
+  position: absolute;
+  width: 0.625rem;
+  height: 0.625rem;
+  right: 3.5rem;
+  top: 0.8rem;
+
+  @include tablet {
+    display: block;
   }
 }
 
-.input::placeholder {
-  color: $primary-text;
-  text-overflow: ellipsis;
+.closeButtonArrow {
+  background-color: transparent;
+  border: none;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  transition: $transition;
+}
+
+.searchIcon {
+  background-color: transparent;
+  border: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
 }
 
 .listContainer {
@@ -127,17 +131,6 @@
   gap: 1rem;
   padding: 0.5em 0.875em;
   width: 100%;
-}
-
-.searchIcon {
-  position: relative;
-  width: 0.9375rem;
-  height: 0.9375rem;
-
-  @include tablet() {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
 }
 
 .input {
