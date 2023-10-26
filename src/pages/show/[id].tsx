@@ -10,8 +10,8 @@ import MediaDetailsPanel from "@/components/MediaDetailsPanel/MediaDetailsPanel"
 import MediaInfoBox from "@/components/MediaInfoBox/MediaInfoBox";
 import Recommendations from "@/components/RecommendationsList/RecommendationsList";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
-import useFetchDetails from "@/hooks/useFetchDetails";
 import { Genres, Media } from "@/src/types";
+import { FetchDetails } from "@/utils/tmdbDataHelpers";
 
 interface SeriesProps {
   series_age_rating: string;
@@ -39,7 +39,7 @@ const Series: React.FC<SeriesProps> = ({
   id,
 }) => {
   const endpoint = `/api/details/tv/${id}`;
-  const { data, isError, isLoading } = useFetchDetails(endpoint);
+  const { data, isError, isLoading } = FetchDetails(endpoint);
   const backdrop = data && data.backdrop_path;
   const recommendations = data && data.recommendations;
   const poster = data && data.poster_path;

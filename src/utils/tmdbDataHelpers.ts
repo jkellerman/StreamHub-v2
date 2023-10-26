@@ -4,8 +4,8 @@ interface IMovieData {
   known_for_department: string;
 }
 
-const useFetchCards = (endpoint: string) => {
-  const fetchCards = async () => {
+export const FetchCards = (endpoint: string) => {
+  const fetchData = async () => {
     const res = await fetch(endpoint);
     if (!res.ok) {
       throw new Error("Network response was not ok");
@@ -19,7 +19,7 @@ const useFetchCards = (endpoint: string) => {
 
   const { data, isError, isLoading } = useQuery({
     queryKey: ["movies/series", endpoint],
-    queryFn: fetchCards,
+    queryFn: fetchData,
   });
 
   return {
@@ -29,4 +29,24 @@ const useFetchCards = (endpoint: string) => {
   };
 };
 
-export default useFetchCards;
+export const FetchDetails = (endpoint: string) => {
+  const fetchData = async () => {
+    const res = await fetch(endpoint);
+    if (!res.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await res.json();
+    return data.data;
+  };
+
+  const { data, isError, isLoading } = useQuery({
+    queryKey: ["details", endpoint],
+    queryFn: fetchData,
+  });
+
+  return {
+    data: data || undefined,
+    isError,
+    isLoading,
+  };
+};

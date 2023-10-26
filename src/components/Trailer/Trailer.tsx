@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import Button from "@/components/Buttons/Buttons";
 import useClickOutside from "@/hooks/useClickOutside";
-import useFetchDetails from "@/hooks/useFetchDetails";
+import { FetchDetails } from "@/utils/tmdbDataHelpers";
 
 import Icon from "../Icon/Icon";
 import Overlay from "../Overlay/Overlay";
@@ -20,7 +20,7 @@ interface IVideoData {
 }
 
 const Trailer: React.FC<ButtonProps> = ({ endpoint }) => {
-  const { data, isLoading, isError } = useFetchDetails(endpoint);
+  const { data, isLoading, isError } = FetchDetails(endpoint);
   const [link, setLink] = useState<string | null>(null);
   const [openPlayer, setOpenPlayer] = useState(false);
   const videoPlayerRef = useClickOutside<HTMLDivElement>(() => setOpenPlayer(false));

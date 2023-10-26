@@ -3,9 +3,9 @@ import React from "react";
 import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import Icon from "@/components/Icon/Icon";
-import useFetchCards from "@/hooks/useFetchCards";
 import useSlider from "@/hooks/useSlider";
 import { Media } from "@/types/media";
+import { FetchCards } from "@/utils/tmdbDataHelpers";
 
 import styles from "./Carousel.module.scss";
 
@@ -16,7 +16,7 @@ interface CarouselProps {
 const Carousel: React.FC<CarouselProps> = ({ endpoint }) => {
   const { cardRef, scrollRef, carouselRef, handleClickNext, handleClickPrev, isScrollAvailable } =
     useSlider();
-  const { cards, isLoading, isError } = useFetchCards(endpoint);
+  const { cards, isLoading, isError } = FetchCards(endpoint);
 
   if (isLoading) {
     return (

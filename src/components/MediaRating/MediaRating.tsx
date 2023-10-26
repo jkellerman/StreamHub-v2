@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import ProgressRating from "@/components/ProgressRating/ProgressRating";
-import useFetchDetails from "@/hooks/useFetchDetails";
+import { FetchDetails } from "@/utils/tmdbDataHelpers";
 
 import TmdbLogo from "../Logo/Tmdb/TmdbLogo";
 
@@ -14,7 +14,7 @@ interface MediaRatingProps {
 
 const MediaRating: React.FC<MediaRatingProps> = ({ id, type }) => {
   const endpoint = `/api/details/${type}/${id}`;
-  const { data } = useFetchDetails(endpoint);
+  const { data } = FetchDetails(endpoint);
   const [progress, setProgress] = useState(0);
 
   const voteAverage: number = data && data.vote_average * 10;
