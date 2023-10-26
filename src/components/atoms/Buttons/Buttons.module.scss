@@ -1,0 +1,69 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.scss";
+
+%button-base {
+  padding: 1em 2.25em;
+  border: none;
+  font-family: inherit;
+  font-size: $body-l;
+  font-weight: $fw-bold;
+  color: $secondary;
+  letter-spacing: 1px;
+  transition: transform 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.primary {
+  background: linear-gradient(90deg, $primary-med, $primary);
+  border-radius: $border-radius-xl;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.secondary {
+  background: $primary-light;
+  border-radius: $border-radius-s;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  white-space: nowrap;
+  margin-bottom: 2.5rem;
+  width: 100%;
+
+  @include tablet {
+    max-width: 300px;
+    font-size: $heading-xs;
+    margin-bottom: 1rem;
+  }
+
+  &:hover,
+  &:focus {
+    background: $primary;
+    transition: $transition;
+  }
+}
+
+.tertiary {
+  margin: 2rem 0;
+  padding: 0.75em 1.25em;
+  background-color: transparent;
+  border: 1px solid $primary;
+  color: white;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.button {
+  @extend %button-base;
+}
+
+/* Use the styles in your component */
