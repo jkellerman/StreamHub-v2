@@ -1,0 +1,56 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.heading {
+  font-weight: $fw-med;
+  text-transform: capitalize;
+  min-width: 75px;
+  @include tablet {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    min-width: none;
+  }
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+  @include tablet {
+    width: 165px;
+    margin-right: 0.5rem;
+    flex-direction: column;
+    margin-bottom: none;
+  }
+}
+
+.group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.name {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.genre {
+  margin-right: 0.5rem;
+  background: $primary-dark;
+  padding: 0.25em 0.75em;
+  border: 1px solid $primary-dark;
+  border-radius: $border-radius-l;
+  white-space: nowrap;
+  color: $primary;
+  font-size: $body-m;
+  font-weight: $fw-med;
+}
+
+@media (hover: hover) {
+  .genre:hover {
+    background-color: $secondary-light;
+    transition: $transition;
+  }
+}

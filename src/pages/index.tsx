@@ -1,9 +1,9 @@
 import Head from "next/head";
 import React from "react";
 
-import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
-import Carousel from "@/components/molecules/Carousel/Carousel";
-import Hero from "@/components/molecules/Hero/Hero";
+import Carousel from "@/components/Carousel/Carousel";
+import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
+import Hero from "@/components/Hero/Hero";
 import { Media } from "@/src/types";
 
 interface HomeProps {

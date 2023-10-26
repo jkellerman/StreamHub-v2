@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import CardList from "@/components/molecules/CardList/CardList";
-import styles from "@/components/molecules/CardList/CardList.module.scss";
+import CardList from "@/components/CardList/CardList";
+import styles from "@/components/CardList/CardList.module.scss";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 
 const Search = () => {

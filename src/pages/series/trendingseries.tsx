@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import MediaCategory from "@/components/organisms/MediaCategory/MediaCategory";
+import MediaCategory from "@/components/MediaCategory/MediaCategory";
 
 const TrendingSeries = () => {
   return (

@@ -3,12 +3,12 @@ import Head from "next/head";
 import qs from "qs";
 import React from "react";
 
-import BackgroundImage from "@/components/atoms/BackgroundImage/BackgroundImage";
-import CategoryHeading from "@/components/atoms/CategoryHeading/CategoryHeading";
-import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
-import Recommendations from "@/components/molecules/RecommendationsList/RecommendationsList";
-import MediaDetailsPanel from "@/components/organisms/MediaDetailsPanel/MediaDetailsPanel";
-import MediaInfoBox from "@/components/organisms/MediaInfoBox/MediaInfoBox";
+import BackgroundImage from "@/components/BackgroundImage/BackgroundImage";
+import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
+import MediaDetails from "@/components/MediaDetails/MediaDetails";
+import MediaDetailsPanel from "@/components/MediaDetailsPanel/MediaDetailsPanel";
+import MediaInfoBox from "@/components/MediaInfoBox/MediaInfoBox";
+import Recommendations from "@/components/RecommendationsList/RecommendationsList";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import useFetchDetails from "@/hooks/useFetchDetails";
 import { Media, Genres } from "@/src/types";

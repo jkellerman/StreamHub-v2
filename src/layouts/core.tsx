@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 
-import Footer from "@/components/molecules/Footer/Footer";
-import Header from "@/components/organisms/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import Header from "@/components/Header/Header";
 
 interface CoreLayoutProps {
   children: ReactNode;

@@ -4,11 +4,10 @@ import { useRouter } from "next/router";
 import QueryString from "qs";
 import React from "react";
 
-import Description from "@/components/atoms/MediaPageDescription/MediaPageDescription";
-import CardList from "@/components/molecules/CardList/CardList";
-import Dropdown from "@/components/molecules/Dropdown/Dropdown";
-import DropdownsContainer from "@/components/organisms/DropdownsContainer/DropdownsContainer";
-import styles from "@/components/organisms/DropdownsContainer/DropdownsContainer.module.scss";
+import CardList from "@/components/CardList/CardList";
+import Dropdown, { DropdownsContainer } from "@/components/Dropdown/Dropdown";
+import styles from "@/components/Dropdown/Dropdown.module.scss";
+import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_MOVIES_GENRE, DEFAULT_SERVICES } from "@/constants/app";
 import { servicesList, BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";

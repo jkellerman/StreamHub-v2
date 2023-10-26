@@ -1,0 +1,166 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.title {
+  font-weight: $fw-med;
+  font-size: $heading-xs;
+}
+
+.triggerContainer {
+  position: relative;
+  min-width: 55px;
+  text-align: center;
+}
+
+.trigger {
+  text-transform: capitalize;
+  font-weight: $fw-med;
+  font-size: $body-l-m;
+  font-family: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: $primary-text;
+  @include tablet() {
+    font-size: $body-l;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.trigger:hover {
+  color: $primary;
+  transition: $transition;
+}
+
+.trigger.active {
+  color: $primary;
+  transition: $transition;
+}
+
+.trigger::after {
+  content: "";
+  background: $primary;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  transition: opacity 200ms ease-in;
+  height: 2px;
+  bottom: -1.05rem;
+  @include tablet {
+    height: 4px;
+    // bottom: -2.0625rem;
+  }
+}
+
+.trigger.active::after {
+  opacity: 1;
+}
+
+.tabsContainer {
+  margin: 2rem auto 1rem;
+  max-width: 900px;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid $slate;
+  padding-bottom: 1rem;
+  gap: 1.5rem;
+  @include tablet() {
+    .tabs {
+      gap: 2.5rem;
+      padding-bottom: 2rem;
+    }
+  }
+}
+
+.providerContainer {
+  @include tablet() {
+    display: flex;
+    gap: 2rem;
+  }
+}
+
+.providers {
+  min-width: 100%;
+}
+
+.providers.active {
+  animation: fade $fade-animation;
+}
+
+.headingMethod {
+  font-size: $heading-xs-m;
+  @include tablet() {
+    font-size: $heading-xs;
+  }
+}
+
+.container.active {
+  animation: fade $fade-animation;
+}
+
+.icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.provider {
+  display: flex;
+  gap: 0.5rem;
+  font-size: $body-m;
+  align-items: center;
+  background-color: $primary-dark;
+  padding: 0.5em 0.5em;
+  border-radius: $border-radius-s;
+  min-width: 100%;
+}
+
+.providerDetails {
+  @include flex-column;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subscription {
+  color: $slate;
+}
+
+.iconWrapper {
+  border-radius: $border-radius-s;
+  display: inline-block;
+  position: relative;
+  min-width: 35px;
+  min-height: 35px;
+}
+
+.icon {
+  object-fit: contain;
+  border-radius: $border-radius-s;
+}
+
+.name {
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+  text-overflow: ellipsis;
+}
+
+.placeholder {
+  font-size: $body-m;
+  color: $slate;
+  @include tablet {
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

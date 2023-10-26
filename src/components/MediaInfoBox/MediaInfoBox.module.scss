@@ -1,0 +1,79 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.container {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 2rem;
+  @include center;
+  max-width: 900px;
+  margin-bottom: 2rem;
+  @include tablet() {
+    flex-direction: row;
+    margin-bottom: 4rem;
+    align-items: flex-start;
+  }
+  @include laptop() {
+    margin: 10rem auto 8rem auto;
+  }
+}
+
+.mediaInfoCard {
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+}
+
+.details {
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+}
+
+.list {
+  display: none;
+  padding-left: 0;
+  align-items: center;
+  font-size: $heading-xs-m;
+  font-weight: $fw-med;
+  @include tablet() {
+    font-size: $heading-xs;
+  }
+  @include laptop() {
+    display: flex;
+  }
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-weight: $fw-med;
+  font-size: $heading-l-m;
+  @include tablet() {
+    font-size: $heading-l;
+    margin-bottom: 0;
+  }
+}
+
+.tagline {
+  opacity: 0.7;
+  font-style: italic;
+  margin-top: 0.5rem;
+  font-size: $body-l-m;
+  @include tablet() {
+    font-size: $body-l;
+  }
+  @include laptop() {
+    margin-bottom: 1rem;
+  }
+}
+
+@include laptop() {
+  .content {
+    max-width: 80%;
+    margin: 0;
+  }
+}
