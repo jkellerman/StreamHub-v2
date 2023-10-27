@@ -41,14 +41,17 @@ $fade-animation: 250ms ease-in;
 $transition: all 100ms ease-in;
 
 $fw-light: 300;
+$fw-reg: 400;
 $fw-med: 500;
 $fw-bold: 600;
 $fw-extraBold: 800;
 
-$mobile-s: 20em;
-$mobile-l: 30em;
-$tablet: 48em;
-$tablet-l: 64em;
-$laptop: 75em;
-$desktop: 90em;
-$desktop-l: 108em;
+$base-font-size: 16px;
+
+$mobile-s: calc((320px / $base-font-size) * 1em);
+$mobile-l: calc((480px / $base-font-size) * 1em);
+$tablet: calc((768px / $base-font-size) * 1em);
+$tablet-l: calc((1024px / $base-font-size) * 1em);
+$laptop: calc((1200px / $base-font-size) * 1em);
+$desktop: calc((1440px / $base-font-size) * 1em);
+$desktop-l: calc((1728px / $base-font-size) * 1em);
