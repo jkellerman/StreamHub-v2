@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@use "variables" as variable;
 
 @mixin center {
   width: 90%;
@@ -20,7 +20,7 @@
 }
 
 @mixin mobileS {
-  @media (max-width: $mobile-s) {
+  @media (max-width: $mobile-l) {
     @content;
   }
 }
