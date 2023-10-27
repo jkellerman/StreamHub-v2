@@ -1,15 +1,70 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "variables" as variable;
 
+@font-face {
+  font-display: swap;
+  font-family: Outfit;
+  font-style: normal;
+  font-weight: 300;
+  src: url("/fonts/Outfit-Light.woff2") format("woff2"),
+    url("/fonts/Outfit-Light.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Outfit;
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/Outfit-Medium.woff2") format("woff2"),
+    url("/fonts/Outfit-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/Outfit-SemiBold.woff2") format("woff2"),
+    url("/fonts/Outfit-SemiBold.woff") format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Wix Madefor Display";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/WixMadeforDisplay-Regular.woff2") format("woff2"),
+    url("/fonts/WixMadeforDisplay-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Wix Madefor Display";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/WixMadeforDisplay-Medium.woff2") format("woff2"),
+    url("/fonts/WixMadeforDisplay-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Wix Madefor Display";
+  font-style: normal;
+  font-weight: 800;
+  src: url("/fonts/WixMadeforDisplay-ExtraBold.woff2") format("woff2"),
+    url("/fonts/WixMadeforDisplay-ExtraBold.woff") format("woff");
+}
+
+html,
+body {
+  font-family: "Outfit", sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Outfit", sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: $secondary;
-  color: $primary-text;
-  font-weight: $fw-light;
+  background: variable.$secondary;
+  color: variable.$primary-text;
+  font-weight: variable.$fw-light;
 }
 
 header {
@@ -17,7 +72,6 @@ header {
 }
 
 main {
-  width: 100%;
   padding-top: 8rem;
 }
 
@@ -37,8 +91,16 @@ h1 {
 }
 
 hr {
-  border: 0.5px solid $secondary-light;
+  border: 0.5px solid variable.$secondary;
   margin: 0 0 2rem;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
 }
 
 #nprogress {
@@ -46,7 +108,7 @@ hr {
 }
 
 #nprogress .bar {
-  background: $primary;
+  background: variable.$primary;
   position: fixed;
   z-index: 1031;
   top: 0;
