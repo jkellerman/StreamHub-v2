@@ -1,14 +1,14 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .title {
-  font-size: $body-s;
-  font-weight: $fw-light;
+  font-size: variable.$body-s;
+  font-weight: variable.$fw-light;
   margin: 0.25rem 0 0;
   width: 110px;
-  color: $slate;
-  @include tablet() {
-    font-size: $body-m;
+  color: variable.$slate;
+  @include mixins.tablet() {
+    font-size: variable.$body-m;
     left: 2rem;
     margin: 0.375rem 0 0;
     width: 160px;

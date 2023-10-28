@@ -1,11 +1,11 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .heading {
-  font-weight: $fw-med;
+  font-weight: variable.$fw-med;
   text-transform: capitalize;
   min-width: 75px;
-  @include tablet {
+  @include mixins.tablet {
     text-transform: uppercase;
     margin-bottom: 1rem;
     min-width: none;
@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 2rem;
-  @include tablet {
+  @include mixins.tablet {
     width: 165px;
     margin-right: 0.5rem;
     flex-direction: column;
@@ -38,19 +38,19 @@
 
 .genre {
   margin-right: 0.5rem;
-  background: $primary-dark;
+  background: variable.$primary-dark;
   padding: 0.25em 0.75em;
-  border: 1px solid $primary-dark;
-  border-radius: $border-radius-l;
+  border: 1px solid variable.$primary-dark;
+  border-radius: variable.$border-radius-l;
   white-space: nowrap;
-  color: $primary;
-  font-size: $body-m;
-  font-weight: $fw-med;
+  color: variable.$primary;
+  font-size: variable.$body-m;
+  font-weight: variable.$fw-med;
 }
 
 @media (hover: hover) {
   .genre:hover {
-    background-color: $secondary-light;
-    transition: $transition;
+    background-color: variable.$secondary-light;
+    transition: variable.$transition;
   }
 }

@@ -1,16 +1,15 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
 
 .rating {
   fill: white;
-  font-weight: $fw-bold;
-  font-size: $heading-xs;
+  font-weight: variable.$fw-bold;
+  font-size: variable.$heading-xs;
   font-family: "Wix Madefor Display", sans-serif;
 }
 
 .totalValue {
-  fill: $slate;
-  font-size: $body-xs;
-  font-weight: $fw-bold;
+  fill: variable.$slate;
+  font-size: variable.$body-xs;
+  font-weight: variable.$fw-bold;
   font-family: "Wix Madefor Display", sans-serif;
 }

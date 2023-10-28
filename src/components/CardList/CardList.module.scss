@@ -1,9 +1,8 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
-
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 .container,
 .header {
-  @include center;
+  @include mixins.center;
 }
 
 .container {
@@ -11,14 +10,14 @@
   flex-flow: row wrap;
   gap: 1rem;
   justify-content: space-evenly;
-  @include tablet {
+  @include mixins.tablet {
     display: grid;
     grid-template-columns: repeat(auto-fill, 160px);
     justify-content: space-evenly;
     gap: 2rem;
   }
 
-  @include tabletL {
+  @include mixins.tabletL {
     justify-content: space-between;
     gap: 1rem;
   }
@@ -28,15 +27,15 @@
   display: block;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  font-weight: $fw-med;
+  font-weight: variable.$fw-med;
 
-  @include laptop {
+  @include mixins.laptop {
     margin-top: 4rem;
   }
 }
 
 .linkContainer {
-  @include flex-column;
+  @include mixins.flex-column;
   align-items: center;
   list-style: none;
 }

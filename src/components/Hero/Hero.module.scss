@@ -1,9 +1,9 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .container {
-  @include flex-center;
-  @include center;
+  @include mixins.flex-center;
+  @include mixins.center;
   flex-direction: column;
   text-align: center;
   padding: 2rem 0;
@@ -12,8 +12,8 @@
 
 .subheading {
   margin-bottom: 1rem;
-  @include tablet {
-    font-size: $body-l-m;
+  @include mixins.tablet {
+    font-size: variable.$body-l-m;
   }
 }
 
@@ -27,7 +27,7 @@
 .logoWrapper {
   width: 48px;
   height: 24px;
-  @include tablet {
+  @include mixins.tablet {
     width: 64px;
     height: 32px;
   }
@@ -41,22 +41,22 @@
 
 .heading {
   margin-bottom: 1rem;
-  font-weight: $fw-bold;
-  font-size: $heading-m;
-  @include tablet {
-    font-size: $heading-xl-m;
+  font-weight: variable.$fw-bold;
+  font-size: variable.$heading-m;
+  @include mixins.tablet {
+    font-size: variable.$heading-xl-m;
   }
 }
 
 .description {
-  color: $slate;
+  color: variable.$slate;
   line-height: 1.5rem;
-  font-size: $body-l-m;
+  font-size: variable.$body-l-m;
   margin-bottom: 2rem;
-  @include tablet {
-    font-size: $body-l;
+  @include mixins.tablet {
+    font-size: variable.$body-l;
   }
-  @include laptop {
+  @include mixins.laptop {
     width: 90%;
   }
 }
@@ -65,7 +65,7 @@
   margin: 2rem 0;
   padding: 0.75em 1.25em;
   background-color: transparent;
-  border: 1px solid $primary;
+  border: 1px solid variable.$primary;
   color: white;
   border-radius: 5px;
   font-family: inherit;
@@ -77,13 +77,13 @@
 }
 
 .hr {
-  border: 2px solid $primary-dark;
+  border: 2px solid variable.$primary-dark;
   margin-bottom: 2rem;
 }
 
 .more {
-  font-size: $body-m;
-  @include tablet {
-    font-size: $body-l;
+  font-size: variable.$body-m;
+  @include mixins.tablet {
+    font-size: variable.$body-l;
   }
 }

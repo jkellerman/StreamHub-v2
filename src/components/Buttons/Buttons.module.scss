@@ -1,21 +1,21 @@
-@import "@/styles/mixins.scss";
-@import "@/styles/variables.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 %button-base {
   padding: 1em 2.25em;
   border: none;
   font-family: inherit;
-  font-size: $body-l;
-  font-weight: $fw-bold;
-  color: $secondary;
+  font-size: variable.$body-l;
+  font-weight: variable.$fw-bold;
+  color: variable.$secondary;
   letter-spacing: 1px;
   transition: transform 0.15s ease-in-out;
   cursor: pointer;
 }
 
 .primary {
-  background: linear-gradient(90deg, $primary-med, $primary);
-  border-radius: $border-radius-xl;
+  background: linear-gradient(90deg, variable.$primary-gradient);
+  border-radius: variable.$border-radius-xl;
 
   &:hover {
     transform: scale(1.1);
@@ -23,8 +23,8 @@
 }
 
 .secondary {
-  background: $primary-light;
-  border-radius: $border-radius-s;
+  background: variable.$primary-light;
+  border-radius: variable.$border-radius-s;
   text-transform: capitalize;
   display: flex;
   justify-content: center;
@@ -34,16 +34,16 @@
   margin-bottom: 2.5rem;
   width: 100%;
 
-  @include tablet {
+  @include mixins.tablet {
     max-width: 300px;
-    font-size: $heading-xs;
+    font-size: variable.$heading-xs;
     margin-bottom: 1rem;
   }
 
   &:hover,
   &:focus {
-    background: $primary;
-    transition: $transition;
+    background: variable.$primary;
+    transition: variable.$transition;
   }
 }
 
@@ -51,7 +51,7 @@
   margin: 2rem 0;
   padding: 0.75em 1.25em;
   background-color: transparent;
-  border: 1px solid $primary;
+  border: 1px solid variable.$primary;
   color: white;
   border-radius: 5px;
   font-family: inherit;
@@ -65,5 +65,3 @@
 .button {
   @extend %button-base;
 }
-
-/* Use the styles in your component */

@@ -1,18 +1,18 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .container {
   margin-bottom: 2rem;
-  color: $slate;
+  color: variable.$slate;
 }
 
 .overview {
   line-height: 25px;
-  font-size: $body-l-m;
-  font-weight: $fw-light;
+  font-size: variable.$body-l-m;
+  font-weight: variable.$fw-light;
   margin-bottom: 1rem;
-  @include tablet() {
-    font-size: $body-l;
+  @include mixins.tablet() {
+    font-size: variable.$body-l;
   }
 }
 
@@ -35,10 +35,10 @@
 
 .readMoreToggle {
   background: transparent;
-  color: $primary;
+  color: variable.$primary;
   border: none;
   text-transform: capitalize;
-  font-size: $body-l-m;
+  font-size: variable.$body-l-m;
   padding: 0;
   cursor: pointer;
 }

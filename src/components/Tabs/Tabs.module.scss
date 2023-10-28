@@ -1,9 +1,9 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .title {
-  font-weight: $fw-med;
-  font-size: $heading-xs;
+  font-weight: variable.$fw-med;
+  font-size: variable.$heading-xs;
 }
 
 .triggerContainer {
@@ -14,32 +14,32 @@
 
 .trigger {
   text-transform: capitalize;
-  font-weight: $fw-med;
-  font-size: $body-l-m;
+  font-weight: variable.$fw-med;
+  font-size: variable.$body-l-m;
   font-family: inherit;
   cursor: pointer;
   background: none;
   border: none;
-  color: $primary-text;
-  @include tablet() {
-    font-size: $body-l;
+  color: variable.$primary-text;
+  @include mixins.tablet() {
+    font-size: variable.$body-l;
     padding-bottom: 0.5rem;
   }
 }
 
 .trigger:hover {
-  color: $primary;
-  transition: $transition;
+  color: variable.$primary;
+  transition: variable.$transition;
 }
 
 .trigger.active {
-  color: $primary;
-  transition: $transition;
+  color: variable.$primary;
+  transition: variable.$transition;
 }
 
 .trigger::after {
   content: "";
-  background: $primary;
+  background: variable.$primary;
   opacity: 0;
   width: 100%;
   position: absolute;
@@ -47,7 +47,7 @@
   transition: opacity 200ms ease-in;
   height: 2px;
   bottom: -1.05rem;
-  @include tablet {
+  @include mixins.tablet {
     height: 4px;
     // bottom: -2.0625rem;
   }
@@ -64,10 +64,10 @@
 
 .tabs {
   display: flex;
-  border-bottom: 1px solid $slate;
+  border-bottom: 1px solid variable.$slate;
   padding-bottom: 1rem;
   gap: 1.5rem;
-  @include tablet() {
+  @include mixins.tablet() {
     .tabs {
       gap: 2.5rem;
       padding-bottom: 2rem;
@@ -76,7 +76,7 @@
 }
 
 .providerContainer {
-  @include tablet() {
+  @include mixins.tablet() {
     display: flex;
     gap: 2rem;
   }
@@ -87,18 +87,18 @@
 }
 
 .providers.active {
-  animation: fade $fade-animation;
+  animation: fade variable.$fade-animation;
 }
 
 .headingMethod {
-  font-size: $heading-xs-m;
-  @include tablet() {
-    font-size: $heading-xs;
+  font-size: variable.$heading-xs-m;
+  @include mixins.tablet() {
+    font-size: variable.$heading-xs;
   }
 }
 
 .container.active {
-  animation: fade $fade-animation;
+  animation: fade variable.$fade-animation;
 }
 
 .icons {
@@ -111,26 +111,26 @@
 .provider {
   display: flex;
   gap: 0.5rem;
-  font-size: $body-m;
+  font-size: variable.$body-m;
   align-items: center;
-  background-color: $primary-dark;
+  background-color: variable.$primary-dark;
   padding: 0.5em 0.5em;
-  border-radius: $border-radius-s;
+  border-radius: variable.$border-radius-s;
   min-width: 100%;
 }
 
 .providerDetails {
-  @include flex-column;
+  @include mixins.flex-column;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .subscription {
-  color: $slate;
+  color: variable.$slate;
 }
 
 .iconWrapper {
-  border-radius: $border-radius-s;
+  border-radius: variable.$border-radius-s;
   display: inline-block;
   position: relative;
   min-width: 35px;
@@ -139,7 +139,7 @@
 
 .icon {
   object-fit: contain;
-  border-radius: $border-radius-s;
+  border-radius: variable.$border-radius-s;
 }
 
 .name {
@@ -150,10 +150,8 @@
 }
 
 .placeholder {
-  font-size: $body-m;
-  color: $slate;
-  @include tablet {
-  }
+  font-size: variable.$body-m;
+  color: variable.$slate;
 }
 
 @keyframes fade {

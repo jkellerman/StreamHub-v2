@@ -1,17 +1,17 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .footer {
   text-align: center;
-  font-size: $heading-xs-m;
-  font-weight: $fw-light;
-  @include tablet() {
-    font-size: $heading-xs;
+  font-size: variable.$heading-xs-m;
+  font-weight: variable.$fw-light;
+  @include mixins.tablet() {
+    font-size: variable.$heading-xs;
   }
-  @include laptop() {
+  @include mixins.laptop() {
     margin: 0rem 2.25rem 0 9.75rem;
   }
-  @include desktop() {
+  @include mixins.desktop() {
     margin: 0rem 2.25rem 0 11rem;
   }
 }

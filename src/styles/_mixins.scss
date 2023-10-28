@@ -20,37 +20,37 @@
 }
 
 @mixin mobileS {
-  @media (max-width: $mobile-l) {
+  @media (max-width: variable.$mobile-l) {
     @content;
   }
 }
 @mixin mobileL {
-  @media (min-width: $mobile-l) {
+  @media (min-width: variable.$mobile-l) {
     @content;
   }
 }
 @mixin tablet {
-  @media (min-width: $tablet) {
+  @media (min-width: variable.$tablet) {
     @content;
   }
 }
 @mixin tabletL {
-  @media (min-width: $tablet-l) {
+  @media (min-width: variable.$tablet-l) {
     @content;
   }
 }
 @mixin laptop {
-  @media (min-width: $laptop) {
+  @media (min-width: variable.$laptop) {
     @content;
   }
 }
 @mixin desktop {
-  @media (min-width: $desktop) {
+  @media (min-width: variable.$desktop) {
     @content;
   }
 }
 @mixin desktopL {
-  @media (min-width: $desktop-l) {
+  @media (min-width: variable.$desktop-l) {
     @content;
   }
 }

@@ -1,28 +1,28 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .headingContainer {
-  @include flex-column;
-  @include center;
+  @include mixins.flex-column;
+  @include mixins.center;
   margin-bottom: 1.25rem;
   position: relative;
   gap: 0.25rem;
-  z-index: 3;
+  z-index: variable.$z-index-3;
 }
 
 .heading {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: $heading-xs-m;
-  font-weight: $fw-med;
+  font-size: variable.$heading-xs-m;
+  font-weight: variable.$fw-med;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   white-space: nowrap;
   max-width: 10%;
 
-  @include tablet() {
-    font-size: $heading-xs;
+  @include mixins.tablet() {
+    font-size: variable.$heading-xs;
     gap: 0.75rem;
   }
 }
@@ -30,12 +30,12 @@
 .chevron {
   width: 0.875rem;
   height: 0.875rem;
-  @include tablet {
+  @include mixins.tablet {
     width: 1.1rem;
     height: 1.1rem;
   }
 }
 
 .subheading {
-  color: $slate;
+  color: variable.$slate;
 }

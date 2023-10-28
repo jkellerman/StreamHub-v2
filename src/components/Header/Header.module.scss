@@ -1,66 +1,66 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 @mixin header-styles {
-  @include flex-column;
-  background-color: $secondary;
+  @include mixins.flex-column;
+  background-color: variable.$secondary;
   position: fixed;
-  z-index: 10;
-  border-bottom: 0px solid $secondary;
+  z-index: variable.$z-index-5;
+  border-bottom: 0px solid variable.$secondary;
 }
 
 .header {
-  @include flex-column;
+  @include mixins.flex-column;
   @include header-styles();
   top: 0px;
   transition: border-bottom 250ms ease-in-out;
-  border-bottom: 0px solid $secondary;
+  border-bottom: 0px solid variable.$secondary;
 }
 
 .hidden {
-  @include flex-column;
+  @include mixins.flex-column;
   @include header-styles();
   transition: top 150ms ease-in-out 0.2s;
   top: -116px;
-  @include tablet {
+  @include mixins.tablet {
     top: -136px;
   }
 }
 
 .visible {
-  @include flex-column;
+  @include mixins.flex-column;
   @include header-styles();
   top: 0px;
-  border-bottom: 3px solid $primary-dark;
+  border-bottom: 3px solid variable.$primary-dark;
   transition: top 250ms ease-in-out, border-bottom 250ms ease-in-out;
 }
 
 .container {
-  @include center;
+  @include mixins.center;
   display: flex;
   align-items: center;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
   gap: 1rem;
   height: 44px;
-  @include tablet() {
+  @include mixins.tablet() {
     margin-bottom: 1.5rem;
   }
 }
 
 .logo {
-  color: $primary;
-  font-size: $heading-l-m;
-  font-weight: $fw-extraBold;
+  color: variable.$primary;
+  font-size: variable.$heading-l-m;
+  font-weight: variable.$fw-extraBold;
   font-family: "Wix Madefor Display", sans-serif;
   width: auto;
   flex-shrink: 0;
   flex-basis: 0;
-  @include tablet() {
-    font-size: $heading-l-m;
+  @include mixins.tablet() {
+    font-size: variable.$heading-l-m;
   }
-  @include laptop() {
-    font-size: $heading-s;
+  @include mixins.laptop() {
+    font-size: variable.$heading-s;
   }
 }
 
@@ -76,7 +76,7 @@
   flex-shrink: 0;
   flex-basis: 0;
 
-  @include tablet {
+  @include mixins.tablet {
     display: inline;
   }
 }

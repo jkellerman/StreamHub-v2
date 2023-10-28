@@ -1,48 +1,44 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .container,
 .noCard {
   position: relative;
   display: block;
-  border-radius: $border-radius-s;
-  animation: fade $fade-animation;
+  border-radius: variable.$border-radius-s;
+  animation: fade variable.$fade-animation;
   width: 110px;
   height: 165px;
 
-  @include tablet {
+  @include mixins.tablet {
     width: 160px;
     height: 240px;
   }
 }
 
 .noCard {
-  background: linear-gradient(90deg, #1c4b6f, #112c40);
+  background: linear-gradient(90deg, variable.$secondary-gradient);
 }
 
 .card {
-  border-radius: $border-radius-s;
+  border-radius: variable.$border-radius-s;
   object-fit: cover;
   width: 100%;
   height: 100%;
   font-size: 0;
   position: relative;
-
-  @include tablet {
-  }
 }
 
 .mediaType {
   background-color: rgba(0, 0, 0, 0.697);
   position: absolute;
-  font-size: $body-s-m;
-  font-weight: $fw-bold;
+  font-size: variable.$body-s-m;
+  font-weight: variable.$fw-bold;
   padding: 0.1em 0.3em;
   top: 0.5rem;
   right: 0.5rem;
-  z-index: 1;
-  @include tablet {
-    // top: -13.5rem;
+  z-index: variable.$z-index-1;
+  @include mixins.tablet {
     right: 0.75rem;
   }
 }
@@ -50,7 +46,7 @@
 @media (hover: hover) {
   .container:hover {
     opacity: 0.6;
-    transition: $transition;
+    transition: variable.$transition;
   }
 }
 

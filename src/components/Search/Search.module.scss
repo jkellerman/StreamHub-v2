@@ -1,13 +1,13 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .container {
   flex-grow: 1;
   position: relative;
-  z-index: 10;
+  z-index: variable.$z-index-5;
   border: 1px solid #4f5c7c;
-  border-radius: $border-radius-s;
-  background: linear-gradient(90deg, $primary-med, $secondary-med-light);
+  border-radius: variable.$border-radius-s;
+  background: linear-gradient(90deg, variable.$secondary-gradient);
   transition: height 250ms cubic-bezier(0.6, -0.28, 0.42, 0.3), box-shadow 150ms ease-in;
   align-self: baseline;
   overflow: hidden;
@@ -15,15 +15,15 @@
 
 .container.active {
   position: absolute;
-  @include center;
+  @include mixins.center;
 
-  @include tablet {
+  @include mixins.tablet {
     position: unset;
   }
 }
 .container:hover,
 .container:focus-within {
-  box-shadow: $slate 0px 0px 0px 2px;
+  box-shadow: variable.$slate 0px 0px 0px 2px;
 }
 
 .formWrapper {
@@ -46,14 +46,14 @@
   border: none;
   cursor: pointer;
   margin-left: 1rem;
-  transition: $transition;
+  transition: variable.$transition;
   position: absolute;
   width: 0.625rem;
   height: 0.625rem;
   right: 3.5rem;
   top: 0.8rem;
 
-  @include tablet {
+  @include mixins.tablet {
     display: block;
   }
 }
@@ -64,7 +64,7 @@
   width: 10px;
   height: 10px;
   cursor: pointer;
-  transition: $transition;
+  transition: variable.$transition;
 }
 
 .searchIcon {
@@ -83,7 +83,7 @@
   display: block;
   content: "";
   height: 1px;
-  background-color: $slate;
+  background-color: variable.$slate;
 }
 
 .allResultsLinkWrapper {
@@ -100,7 +100,7 @@
 .isActive,
 .allResultsLinkWrapper:hover {
   background-color: rgba(0, 0, 0, 0.3);
-  transition: $transition;
+  transition: variable.$transition;
 }
 
 .noResultsContainer,
@@ -121,7 +121,7 @@
   margin: 0.25rem 1rem 0.5rem;
   height: 1px;
   width: calc(100% - 2rem);
-  background-color: $slate;
+  background-color: variable.$slate;
 }
 
 .form {
@@ -133,31 +133,31 @@
 }
 
 .input {
-  font-size: $body-l;
+  font-size: variable.$body-l;
   font-family: inherit;
-  color: $primary-text;
-  font-weight: $fw-light;
+  color: variable.$primary-text;
+  font-weight: variable.$fw-light;
   border: none;
   background: transparent;
   padding: 0.25em 0;
   width: 100%;
   outline: none;
-  @include tablet() {
+  @include mixins.tablet() {
     height: unset;
   }
 }
 
 .input::placeholder {
-  color: $primary-text;
+  color: variable.$primary-text;
   text-overflow: ellipsis;
 }
 
 .listItemWrapper {
   display: flex;
   align-items: center;
-  padding: 0.5rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   cursor: pointer;
-  transition: $transition;
+  transition: variable.$transition;
 }
 
 .listItemWrapper:hover {
@@ -179,12 +179,12 @@
 
 .noImage {
   @extend .posterContainer;
-  background: linear-gradient(90deg, $primary-med, $primary);
+  background: linear-gradient(270deg, variable.$tertiary-gradient);
 }
 
 .tv {
   background-color: black;
   padding: 0 0.2em;
-  font-size: $body-s-m;
+  font-size: variable.$body-s-m;
   margin-left: 0.5rem;
 }

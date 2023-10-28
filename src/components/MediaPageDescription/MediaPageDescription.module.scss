@@ -1,10 +1,10 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .descriptionWrapper {
-  @include center;
+  @include mixins.center;
   margin-bottom: 2rem;
-  color: $slate;
+  color: variable.$slate;
 }
 
 .description {

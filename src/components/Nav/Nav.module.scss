@@ -1,18 +1,18 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .nav {
-  @include center;
+  @include mixins.center;
   margin-bottom: 0.75rem;
 
-  @include tablet {
+  @include mixins.tablet {
     margin-bottom: 1.5rem;
   }
 }
 
 .navList {
   display: flex;
-  @include laptop {
+  @include mixins.laptop {
     margin-left: 9.25rem;
   }
 }
@@ -20,11 +20,11 @@
 .navListItem {
   list-style: none;
   margin-right: 1rem;
-  font-size: $heading-m-m;
-  font-weight: $fw-med;
+  font-size: variable.$heading-m-m;
+  font-weight: variable.$fw-med;
   letter-spacing: 0.05rem;
-  @include tablet {
-    font-size: $heading-xs;
+  @include mixins.tablet {
+    font-size: variable.$heading-xs;
   }
 }
 

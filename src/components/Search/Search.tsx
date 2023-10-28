@@ -8,6 +8,7 @@ import Spinner from "@/components/Spinner/SearchBar/Spinner";
 import { POSTER_URL_IMAGE_XS } from "@/constants/tmdb";
 import useClickOutside from "@/hooks/useClickOutside";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { shimmer, toBase64 } from "@/utils/placeholder";
 
 import styles from "../Search/Search.module.scss";
 
@@ -311,8 +312,6 @@ const SearchInput: React.FC<SearchInputProps> = ({
       <button type="submit" className={styles.searchIcon} onClick={handleSubmit}>
         <Icon icon="search" />
       </button>
-
-      {/* <Image src={img} alt="icon-search" unoptimized={true} className={styles.searchIcon} /> */}
     </>
   );
 };
@@ -433,6 +432,8 @@ const SearchListItem: React.FC<SearchListItemProps> = ({
                 unoptimized={true}
                 width={27}
                 height={40}
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
               />
             ) : (
               <div className={styles.noImage}></div>

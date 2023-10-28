@@ -1,34 +1,33 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .container {
-  z-index: 1;
+  z-index: variable.$z-index-1;
   position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column-reverse;
   align-items: center;
   gap: 2rem;
-  @include center;
+  @include mixins.center;
   max-width: 900px;
   margin: 4rem auto;
-  @include tablet() {
+  @include mixins.tablet() {
     flex-direction: row;
     align-items: flex-start;
-    margin: 8rem auto;
   }
-  @include laptop() {
+  @include mixins.laptop() {
   }
 }
 
 .mediaInfoCard {
-  @include flex-column;
+  @include mixins.flex-column;
   justify-content: center;
   align-items: center;
 }
 
 .details {
-  @include flex-column;
+  @include mixins.flex-column;
   justify-content: center;
   align-items: center;
 }
@@ -37,22 +36,22 @@
   display: none;
   padding-left: 0;
   align-items: center;
-  font-size: $heading-xs-m;
-  font-weight: $fw-med;
-  @include tablet() {
-    font-size: $heading-xs;
+  font-size: variable.$heading-xs-m;
+  font-weight: variable.$fw-med;
+  @include mixins.tablet() {
+    font-size: variable.$heading-xs;
   }
-  @include laptop() {
+  @include mixins.laptop() {
     display: flex;
   }
 }
 
 .title {
   margin-bottom: 1rem;
-  font-weight: $fw-med;
-  font-size: $heading-l-m;
-  @include tablet() {
-    font-size: $heading-l;
+  font-weight: variable.$fw-med;
+  font-size: variable.$heading-l-m;
+  @include mixins.tablet() {
+    font-size: variable.$heading-l;
     margin-bottom: 0;
   }
 }
@@ -61,16 +60,16 @@
   opacity: 0.7;
   font-style: italic;
   margin-top: 0.5rem;
-  font-size: $body-l-m;
-  @include tablet() {
-    font-size: $body-l;
+  font-size: variable.$body-l-m;
+  @include mixins.tablet() {
+    font-size: variable.$body-l;
   }
-  @include laptop() {
+  @include mixins.laptop() {
     margin-bottom: 1rem;
   }
 }
 
-@include laptop() {
+@include mixins.laptop() {
   .content {
     max-width: 80%;
     margin: 0;

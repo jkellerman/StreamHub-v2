@@ -1,10 +1,10 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .container {
   position: relative;
   margin-bottom: 4rem;
-  z-index: 3;
+  z-index: variable.$z-index-3;
 }
 
 .carouselWrapper {
@@ -21,13 +21,13 @@
 
 .navContainer {
   display: none;
-  @include tablet {
+  @include mixins.tablet {
     display: inline-flex;
     gap: 1.5rem;
     position: absolute;
     top: -2.75rem;
     right: 2rem;
-    z-index: 2;
+    z-index: variable.$z-index-2;
   }
 }
 
@@ -40,13 +40,13 @@
 }
 
 .carousel {
-  @include center;
+  @include mixins.center;
 }
 
 .list,
 .error {
   min-height: 215px;
-  @include tablet {
+  @include mixins.tablet {
     min-height: 307px;
   }
 }
@@ -57,7 +57,7 @@
 }
 
 .error {
-  @include center;
+  @include mixins.center;
 }
 
 .listItem {
@@ -65,7 +65,7 @@
   min-width: 134px;
   min-height: 180px;
   height: auto;
-  @include tablet {
+  @include mixins.tablet {
     min-width: 184px;
     min-height: 250px;
   }

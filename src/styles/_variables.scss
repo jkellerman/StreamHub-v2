@@ -1,3 +1,5 @@
+// Themes
+
 $primary: #5eead4;
 $primary-light: #1ca586;
 $primary-med: #1c4b6f;
@@ -10,7 +12,13 @@ $tertiary-light: #778bbc;
 $primary-text: #ffffff;
 $secondary-text: #ffffff;
 $slate: #94a4b8;
+$primary-gradient: $primary-med, $primary;
+$secondary-gradient: $secondary-med-light, $primary-med;
+$tertiary-gradient: $primary-light, $tertiary;
 
+// Font sizes
+
+$base-font-size: 16px;
 $heading-l-m: 1.25rem;
 $heading-m-m: 1rem;
 $heading-s-m: 0.9375rem;
@@ -29,16 +37,7 @@ $body-m: 0.9375rem;
 $body-s: 0.8125rem;
 $body-xs: 0.625rem;
 
-$border-radius-xl: 24px;
-$border-radius-l: 20px;
-$border-radius-s: 8px;
-
-$card-hover: 0.6;
-
-$input-active: 1px solid $tertiary;
-
-$fade-animation: 250ms ease-in;
-$transition: all 100ms ease-in;
+// Font weights
 
 $fw-light: 300;
 $fw-reg: 400;
@@ -46,7 +45,26 @@ $fw-med: 500;
 $fw-bold: 600;
 $fw-extraBold: 800;
 
-$base-font-size: 16px;
+// Borders
+
+$border-radius-xl: 24px;
+$border-radius-l: 20px;
+$border-radius-s: 8px;
+$input-active: 1px solid $tertiary;
+
+// Hover states
+
+$card-hover: 0.6;
+
+// z-index
+
+$z-index-5: 5;
+$z-index-4: 4;
+$z-index-3: 3;
+$z-index-2: 2;
+$z-index-1: 1;
+
+// Media queries
 
 $mobile-s: calc((320px / $base-font-size) * 1em);
 $mobile-l: calc((480px / $base-font-size) * 1em);
@@ -55,3 +73,7 @@ $tablet-l: calc((1024px / $base-font-size) * 1em);
 $laptop: calc((1200px / $base-font-size) * 1em);
 $desktop: calc((1440px / $base-font-size) * 1em);
 $desktop-l: calc((1728px / $base-font-size) * 1em);
+
+// Animations/Transitions
+$fade-animation: 250ms ease-in;
+$transition: all 100ms ease-in;

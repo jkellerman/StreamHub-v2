@@ -1,11 +1,11 @@
-@import "@/styles/variables.scss";
-@import "@/styles/mixins.scss";
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .heading {
-  font-weight: $fw-med;
+  font-weight: variable.$fw-med;
   text-transform: capitalize;
   min-width: 75px;
-  @include tablet() {
+  @include mixins.tablet() {
     margin-bottom: 0.75rem;
     min-width: none;
   }
@@ -13,7 +13,7 @@
 
 .name {
   white-space: nowrap;
-  color: $slate;
+  color: variable.$slate;
 }
 
 .detailItem {
@@ -21,7 +21,7 @@
   flex-direction: column;
   margin-bottom: 2rem;
   text-align: center;
-  @include tablet() {
+  @include mixins.tablet() {
     width: 165px;
     margin-right: 0.5rem;
   }
