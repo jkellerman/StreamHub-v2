@@ -1,7 +1,7 @@
 import styles from "./ProgressRating.module.scss";
 
 interface MediaRatingProps {
-  vote_average: number;
+  vote_average: number | null;
   progress: number;
 }
 
@@ -56,9 +56,13 @@ const ProgressRating: React.FC<MediaRatingProps> = ({ vote_average, progress }) 
         style={{ transition: "all 0.5s ease-in-out", transitionDelay: "250ms" }}
       />
       <text x="50%" y="45%" dominantBaseline="middle" textAnchor="middle">
-        <tspan className={styles.rating}>
-          {vote_average !== 100 ? rating(vote_average / 10).toFixed(1) : rating(vote_average / 10)}
-        </tspan>
+        {vote_average && (
+          <tspan className={styles.rating}>
+            {vote_average !== 100
+              ? rating(vote_average / 10).toFixed(1)
+              : rating(vote_average / 10)}
+          </tspan>
+        )}
       </text>
       <text x="50%" y="65%" dominantBaseline="middle" textAnchor="middle">
         <tspan className={styles.totalValue}>/10</tspan>

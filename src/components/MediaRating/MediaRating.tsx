@@ -25,23 +25,21 @@ const MediaRating: React.FC<MediaRatingProps> = ({ id, type }) => {
     }
   }, [voteAverage, data]);
 
-  if (!data) {
-    return null; // or render a loading state, or fallback content
-  }
+  // if (!data) {
+  //   return <div className={styles.container}></div>; // or render a loading state, or fallback content
+  // }
 
   return (
     <>
-      {data.vote_count !== 0 && data.vote_average !== 0 && (
-        <div className={styles.container}>
-          <ProgressRating vote_average={voteAverage} progress={progress} />
-          <div className={styles.logoContainer}>
-            <div className={styles.statsContainer}>
-              <TmdbLogo />
-              total user votes: {data ? data.vote_count : null}
-            </div>
+      <div className={styles.container}>
+        <ProgressRating vote_average={voteAverage ? voteAverage : null} progress={progress} />
+        <div className={styles.logoContainer}>
+          <div className={styles.statsContainer}>
+            <TmdbLogo />
+            total user votes: {data ? data.vote_count : null}
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };

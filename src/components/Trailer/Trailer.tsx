@@ -8,8 +8,6 @@ import Icon from "../Icon/Icon";
 import Overlay from "../Overlay/Overlay";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
-import styles from "./Trailer.module.scss";
-
 interface ButtonProps {
   endpoint: string;
 }
@@ -20,7 +18,7 @@ interface IVideoData {
 }
 
 const Trailer: React.FC<ButtonProps> = ({ endpoint }) => {
-  const { data, isLoading, isError } = FetchDetails(endpoint);
+  const { data } = FetchDetails(endpoint);
   const [link, setLink] = useState<string | null>(null);
   const [openPlayer, setOpenPlayer] = useState(false);
   const videoPlayerRef = useClickOutside<HTMLDivElement>(() => setOpenPlayer(false));
@@ -47,22 +45,13 @@ const Trailer: React.FC<ButtonProps> = ({ endpoint }) => {
     }
   }, [data]);
 
-  if (isLoading || isError) {
-    return <div className={styles.noTrailer}></div>;
-  }
-
-  if (data.videos.results.length === 0 || !link) {
-    return <div className={styles.noTrailer}></div>;
-  }
-
   return (
     <>
-      {link && (
-        <Button variant="secondary" onClick={openVideoPlayer}>
-          <Icon icon="play" />
-          watch trailer
-        </Button>
-      )}
+      <Button variant="secondary" onClick={openVideoPlayer}>
+        <Icon icon="play" />
+        watch trailer
+      </Button>
+
       {openPlayer && (
         <Overlay>
           <VideoPlayer link={link} videoPlayerRef={videoPlayerRef} />

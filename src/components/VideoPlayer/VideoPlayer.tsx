@@ -5,7 +5,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import styles from "./VideoPlayer.module.scss";
 
 interface VideoPlayerProps {
-  link: string;
+  link: string | null;
   videoPlayerRef: React.RefObject<HTMLDivElement>;
 }
 
@@ -19,7 +19,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ link, videoPlayerRef }) => {
   };
   return (
     <div className={styles.videoPlayer} ref={videoPlayerRef}>
-      <YouTube videoId={link} opts={opts} />
+      <YouTube videoId={link as string} opts={opts} />
     </div>
   );
 };
