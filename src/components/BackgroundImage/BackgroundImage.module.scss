@@ -23,7 +23,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  font-size: 0; // hide alt text
+  opacity: 0;
 }
 
 .overlay {
@@ -38,6 +38,19 @@
     rgba(16, 20, 30, 0.75) 30%,
     rgba(16, 20, 30, 1) 80%
   );
+}
+
+.blurredPlaceholder {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: center center;
+  filter: blur(20px);
+  z-index: 1;
+}
+
+.backgroundImage.loaded {
+  opacity: 1;
 }
 
 @keyframes fade {
