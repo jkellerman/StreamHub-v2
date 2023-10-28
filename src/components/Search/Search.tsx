@@ -160,14 +160,17 @@ const Search: React.FC = () => {
         const rootFontSize = 16;
         const containerHeightInRems = containerHeight / rootFontSize;
         const margin = 2.75;
+        // Set the size of container when there are results in the list
         if (searchResults.length > 0 && !isLoading) {
           (containerRef.current as HTMLDivElement).style.height = `${
             containerHeightInRems + margin
           }rem`;
         }
+        // Set height of container when there are no results in the list
       } else if (searchResults.length === 0 && searchQuery.length <= 2) {
         const baseHeight = 2.75;
         (containerRef.current as HTMLDivElement).style.height = `${baseHeight}rem`;
+        // Set the height of container when the user searches for movie/series but there are no suggestions.
       } else {
         const noSuggestionsHeight = 14;
         (containerRef.current as HTMLDivElement).style.height = `${noSuggestionsHeight}rem`;
