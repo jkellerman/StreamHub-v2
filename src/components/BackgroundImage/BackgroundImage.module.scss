@@ -2,14 +2,13 @@
 @import "@/styles/mixins.scss";
 
 .container {
-  position: relative;
-  margin-bottom: -15rem;
+  position: absolute;
+  width: 100%;
+  height: 50vh;
+  animation: fade 300ms ease-in;
 
-  @include laptop() {
-    margin-bottom: -45rem;
-  }
-  @include desktopL() {
-    margin-bottom: -57rem;
+  @include tablet() {
+    height: 100%;
   }
 }
 
@@ -17,14 +16,7 @@
   position: relative;
   background: linear-gradient(90deg, $secondary-med-light, $primary-med);
   width: 100%;
-  height: 50vh;
-  animation: fade 300ms ease-in;
-  @include tablet() {
-    height: 50vh;
-  }
-  @include laptop() {
-    height: unset;
-  }
+  height: 100%;
 }
 
 .backgroundImage {
@@ -40,6 +32,7 @@
   height: 102%;
   z-index: 1;
   left: 0;
+  top: 0;
   background-image: linear-gradient(
     rgba(16, 20, 30, 0.75) 0%,
     rgba(16, 20, 30, 0.75) 30%,

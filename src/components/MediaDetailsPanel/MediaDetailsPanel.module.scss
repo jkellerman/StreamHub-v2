@@ -6,15 +6,12 @@
   position: relative;
   @include center;
   max-width: 900px;
+  @include flex-column;
+  justify-content: center;
+  margin: 8rem auto 0;
+
   @include tablet {
-    margin-bottom: 7rem;
-  }
-  @include laptop {
-    margin-top: 7rem;
-    margin-bottom: 0;
-  }
-  @include desktop {
-    margin-top: 0;
+    margin-top: 14rem;
   }
 }
 

@@ -18,8 +18,6 @@ interface BackgroundImageProps {
 const BackgroundImage: React.FC<BackgroundImageProps> = ({ backdrop, title }) => {
   return (
     <div className={styles.container}>
-      {" "}
-      <div className={styles.overlay}></div>
       <div className={styles.imageContainer}>
         {backdrop && (
           <picture>
@@ -36,6 +34,7 @@ const BackgroundImage: React.FC<BackgroundImageProps> = ({ backdrop, title }) =>
           </picture>
         )}
       </div>
+      <div className={styles.overlay}></div>
     </div>
   );
 };

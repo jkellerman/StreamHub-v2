@@ -11,14 +11,13 @@
   gap: 2rem;
   @include center;
   max-width: 900px;
-  margin-bottom: 2rem;
+  margin: 4rem auto;
   @include tablet() {
     flex-direction: row;
-    margin-bottom: 4rem;
     align-items: flex-start;
+    margin: 8rem auto;
   }
   @include laptop() {
-    margin: 10rem auto 8rem auto;
   }
 }
 
