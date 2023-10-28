@@ -2,10 +2,11 @@ import Image from "next/image";
 import Router from "next/router";
 import React, { useState, useRef } from "react";
 
-import JustWatchLogo from "@/components/Logo/JustWatch/JustWatchLogo";
+import Logo from "@/components/Logo/Logo";
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import { Media } from "@/src/types";
 
+// import Logo from "../Logo/Logo";
 import styles from "../Tabs/Tabs.module.scss";
 
 interface TabListProps {
@@ -131,7 +132,9 @@ export const Provider: React.FC<ProviderProps> = ({ watch_providers, activeTab, 
   return (
     <>
       <div className={activeTab === "stream" ? `${styles.container} ${styles.active}` : undefined}>
-        <JustWatchLogo tab />
+        <div className={styles.logoWrapper}>
+          <Logo logo="justWatch" />
+        </div>
         <div className={styles.providers}>
           {providerOption === undefined && (
             <span className={styles.placeholder}>

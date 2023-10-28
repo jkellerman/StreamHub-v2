@@ -49,7 +49,6 @@
   bottom: -1.05rem;
   @include mixins.tablet {
     height: 4px;
-    // bottom: -2.0625rem;
   }
 }
 
@@ -73,6 +72,10 @@
       padding-bottom: 2rem;
     }
   }
+}
+
+.logoWrapper {
+  margin: 1rem 0 0.75rem;
 }
 
 .providerContainer {
