@@ -159,7 +159,7 @@ const Search: React.FC = () => {
         const containerHeight = searchResultsRef.current.getBoundingClientRect().height;
         const rootFontSize = 16;
         const containerHeightInRems = containerHeight / rootFontSize;
-        const margin = 4;
+        const margin = 2.75;
         if (searchResults.length > 0 && !isLoading) {
           (containerRef.current as HTMLDivElement).style.height = `${
             containerHeightInRems + margin

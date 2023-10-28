@@ -82,7 +82,6 @@
 .list::before {
   display: block;
   content: "";
-  margin: 0.25rem 1rem 0.5rem;
   height: 1px;
   background-color: $slate;
 }
@@ -100,7 +99,7 @@
 
 .isActive,
 .allResultsLinkWrapper:hover {
-  background-color: $secondary;
+  background-color: rgba(0, 0, 0, 0.3);
   transition: $transition;
 }
 
@@ -161,9 +160,8 @@
   transition: $transition;
 }
 
-.listItemWrapper:hover,
-.isActive {
-  background-color: $secondary;
+.listItemWrapper:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .listItem {
