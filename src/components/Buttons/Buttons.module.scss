@@ -62,6 +62,29 @@
   }
 }
 
+.quaternary {
+  background-color: variable.$quaternary;
+  border: 1px solid variable.$quaternary;
+  color: white;
+  font-size: variable.$body-s;
+  padding: 0.75em 1.5em;
+  border-radius: variable.$border-radius-xl;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  &:hover {
+    background-color: variable.$quaternary-light;
+    transition: variable.$transition;
+  }
+}
+
+.quaternary.loading {
+  background-color: transparent;
+  color: variable.$tertiary;
+  border-color: variable.$tertiary;
+}
+
 .button {
   @extend %button-base;
 }
