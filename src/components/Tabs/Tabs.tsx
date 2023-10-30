@@ -6,7 +6,6 @@ import Logo from "@/components/Logo/Logo";
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import { Media } from "@/src/types";
 
-// import Logo from "../Logo/Logo";
 import styles from "../Tabs/Tabs.module.scss";
 
 interface TabListProps {
@@ -15,6 +14,8 @@ interface TabListProps {
   release_date?: string;
   air_date?: string;
 }
+
+const tabNames: ("flatrate" | "rent" | "buy")[] = ["flatrate", "rent", "buy"];
 
 const Tabs: React.FC<TabListProps> = ({ watch_providers, title, release_date, air_date }) => {
   const [activeTab, setActiveTab] = useState("flatrate");
@@ -34,20 +35,22 @@ const Tabs: React.FC<TabListProps> = ({ watch_providers, title, release_date, ai
       </h3>
       <div className={styles.tabsContainer} ref={tab}>
         <div className={styles.tabs}>
-          <TabTrigger activeTab={activeTab} handleClick={handleClick} tab="flatrate" />
-          <TabTrigger activeTab={activeTab} handleClick={handleClick} tab="rent" />
-          <TabTrigger activeTab={activeTab} handleClick={handleClick} tab="buy" />
+          {tabNames.map((item, i) => (
+            <TabTrigger key={i} activeTab={activeTab} handleClick={handleClick} tab={`${item}`} />
+          ))}
         </div>
 
         <div className={styles.providerContainer}>
-          {activeTab === "flatrate" && (
-            <TabContent watch_providers={watch_providers} activeTab={activeTab} option="flatrate" />
-          )}
-          {activeTab === "rent" && (
-            <TabContent watch_providers={watch_providers} activeTab={activeTab} option="rent" />
-          )}
-          {activeTab === "buy" && (
-            <TabContent watch_providers={watch_providers} activeTab={activeTab} option="buy" />
+          {tabNames.map(
+            (item, i) =>
+              activeTab === item && (
+                <TabContent
+                  key={i}
+                  watch_providers={watch_providers}
+                  activeTab={activeTab}
+                  option={item}
+                />
+              )
           )}
         </div>
       </div>
@@ -123,7 +126,7 @@ const TabContent: React.FC<TabContentProps> = ({ watch_providers, activeTab, opt
 interface ProviderProps {
   watch_providers: Media.IProviderList;
   activeTab: string;
-  option: "flatrate" | "buy" | "rent";
+  option: "flatrate" | "rent" | "buy";
 }
 
 export const Provider: React.FC<ProviderProps> = ({ watch_providers, activeTab, option }) => {
@@ -131,12 +134,14 @@ export const Provider: React.FC<ProviderProps> = ({ watch_providers, activeTab, 
 
   return (
     <>
-      <div className={activeTab === "stream" ? `${styles.container} ${styles.active}` : undefined}>
+      <div
+        className={activeTab === "flatrate" ? `${styles.container} ${styles.active}` : undefined}
+      >
         <div className={styles.logoWrapper}>
           <Logo logo="justWatch" />
         </div>
         <div className={styles.providers}>
-          {providerOption === undefined && (
+          {!providerOption && (
             <span className={styles.placeholder}>
               Not available to {option === "flatrate" ? "stream" : option} online
             </span>
