@@ -2,17 +2,20 @@
 @use "@/styles/mixins" as mixins;
 
 .footer {
+  width: 100vw;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+  border-top: 2px solid variable.$secondary-light;
   text-align: center;
   font-size: variable.$heading-xs-m;
   font-weight: variable.$fw-light;
+
   @include mixins.tablet() {
     font-size: variable.$heading-xs;
-  }
-  @include mixins.laptop() {
-    margin: 0rem 2.25rem 0 9.75rem;
-  }
-  @include mixins.desktop() {
-    margin: 0rem 2.25rem 0 11rem;
   }
 }
 
