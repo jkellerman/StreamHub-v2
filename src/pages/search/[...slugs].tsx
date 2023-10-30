@@ -12,7 +12,8 @@ const Search = () => {
   const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
 
   const endpoint = `/api/search/${slugsArray.join("/")}`;
-  const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
+  const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
+    useInfiniteScroll(endpoint);
   return (
     <>
       <Head>
@@ -28,7 +29,14 @@ const Search = () => {
                 : `No Results found for '${slugsArray[1]?.toString().replace(/-/g, " ")}'`}
             </h1>
           )}
-          <CardList cards={cards} isLoading={isLoading} isError={isError} />
+          <CardList
+            cards={cards}
+            isLoading={isLoading}
+            isError={isError}
+            fetchNextPage={fetchNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+            hasNextPage={hasNextPage}
+          />
         </section>
       </main>
     </>

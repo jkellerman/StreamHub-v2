@@ -1,5 +1,4 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
 
 interface IMovieData {
   backdrop_path: string;
@@ -23,36 +22,21 @@ const useInfiniteScroll = (endpoint: string) => {
     };
   };
 
-  const { data, isError, fetchNextPage, isLoading } = useInfiniteQuery({
-    queryKey: ["movies/series", endpoint],
-    queryFn: fetchMovies,
-    getNextPageParam: (lastPage, pages) =>
-      lastPage.totalPages === pages.length ? undefined : pages.length + 1,
-  });
-
-  // FetchNextPage when scrolled to bottom
-  useEffect(() => {
-    let fetching = false;
-    const handleScroll = () => {
-      const scrollThreshold = document.body.scrollHeight - window.innerHeight * 0.2;
-      const scrollPosition = window.innerHeight + window.scrollY;
-      if (!fetching && scrollPosition >= scrollThreshold) {
-        fetching = true;
-        fetchNextPage().then(() => {
-          // set 'fetching' back to false inside then() block to prevent multiple fetches when scrolling
-          fetching = false;
-        });
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [fetchNextPage]);
+  const { data, isError, fetchNextPage, isLoading, isFetchingNextPage, hasNextPage } =
+    useInfiniteQuery({
+      queryKey: ["movies/series", endpoint],
+      queryFn: fetchMovies,
+      getNextPageParam: (lastPage, pages) =>
+        lastPage.totalPages === pages.length ? undefined : pages.length + 1,
+    });
 
   return {
     cards: data?.pages.flatMap((page) => page.data) || [],
     isLoading,
     isError,
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
   };
 };
 

@@ -12,7 +12,8 @@ interface MediaCategoryProps {
 }
 
 const MediaCategory: React.FC<MediaCategoryProps> = ({ endpoint, category, type }) => {
-  const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
+  const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
+    useInfiniteScroll(endpoint);
   if (isLoading) return <Spinner />;
 
   const arr = cards.filter((item) => item.backdrop_path !== null);
@@ -20,7 +21,14 @@ const MediaCategory: React.FC<MediaCategoryProps> = ({ endpoint, category, type 
   return (
     <section>
       <CategoryHeading category={category} type={type} />
-      <CardList cards={arr} isLoading={isLoading} isError={isError} />
+      <CardList
+        cards={arr}
+        isLoading={isLoading}
+        isError={isError}
+        fetchNextPage={fetchNextPage}
+        isFetchingNextPage={isFetchingNextPage}
+        hasNextPage={hasNextPage}
+      />
     </section>
   );
 };

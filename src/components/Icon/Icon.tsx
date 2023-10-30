@@ -2,9 +2,10 @@ interface IconProps {
   icon: string | null;
   width?: string;
   height?: string;
+  fill?: string;
 }
 
-const Icon: React.FC<IconProps> = ({ icon, width, height }) => {
+const Icon: React.FC<IconProps> = ({ icon, width, height, fill = "#FFF" }) => {
   const arrowLeft = (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
       <path
@@ -22,7 +23,7 @@ const Icon: React.FC<IconProps> = ({ icon, width, height }) => {
     >
       <path
         d="m441.667969 0-185.667969 185.667969-185.667969-185.667969-70.332031 70.332031 256 256 256-256zm0 0"
-        fill="#FFF"
+        fill={fill}
       />
     </svg>
   );

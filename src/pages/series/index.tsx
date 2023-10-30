@@ -25,7 +25,8 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
   const isDefaultGenre = genre.name === DEFAULT_SERIES_GENRE.name;
   const endpoint = !isDefaultGenre ? `api/media/genre/tv/${genre.id}` : "api/trending/tv/day";
   const pageType = pathname.replace(/\//g, "");
-  const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
+  const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
+    useInfiniteScroll(endpoint);
   const service =
     servicesList.find(({ provider_name }) => provider_name.toLowerCase() === query.genre) ||
     DEFAULT_SERVICES;
@@ -47,7 +48,14 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
           <Dropdown type={pageType} selected_service={service} services_list={servicesList} />
         </DropdownsContainer>
         <Description />
-        <CardList cards={cards} isLoading={isLoading} isError={isError} />
+        <CardList
+          cards={cards}
+          isLoading={isLoading}
+          isError={isError}
+          fetchNextPage={fetchNextPage}
+          isFetchingNextPage={isFetchingNextPage}
+          hasNextPage={hasNextPage}
+        />
       </main>
     </>
   );

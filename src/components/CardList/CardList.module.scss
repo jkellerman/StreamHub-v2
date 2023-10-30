@@ -6,6 +6,11 @@
 }
 
 .container {
+  @include mixins.flex-column;
+  justify-content: center;
+}
+
+.list {
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
@@ -38,4 +43,9 @@
   @include mixins.flex-column;
   align-items: center;
   list-style: none;
+}
+
+.buttonContainer {
+  margin: 6rem 0;
+  align-self: center;
 }
