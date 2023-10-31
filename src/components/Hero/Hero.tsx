@@ -36,7 +36,9 @@ const Hero = () => {
           </div>
           <span className={styles.more}>& more</span>
         </div>
-        <h1 className={styles.heading}>Your Ultimate Entertainment Companion</h1>
+        <h1 className={styles.heading}>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        </h1>
         <p className={styles.description}>
           Browse, search or use a randomized generator to get the perfect movie or series to watch
           tonight. Simple!

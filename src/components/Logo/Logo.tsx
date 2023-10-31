@@ -17,11 +17,11 @@ const Logo: React.FC<LogoProps> = ({ logo }) => {
       <desc>Created with sketchtool.</desc>
       <defs>
         <linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="linearGradient-1">
-          <stop stop-color="#FBD446" offset="0%"></stop>
-          <stop stop-color="#E2B512" offset="100%"></stop>
+          <stop stopColor="#FBD446" offset="0%"></stop>
+          <stop stopColor="#E2B512" offset="100%"></stop>
         </linearGradient>
       </defs>
-      <g id="Asset-Artboard-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Asset-Artboard-Page" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g
           id="Other/Logo-Triangle/Color-Foundations/Logos/Triangle/Color"
           transform="translate(0.367831, 0.000000)"
