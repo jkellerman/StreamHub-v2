@@ -334,8 +334,6 @@ const SearchResultsList: React.FC<SearchResultsListProps> = ({
   setSearchQuery,
   searchQuery,
 }) => {
-  console.log("isLoading", isLoading);
-
   // When isLoading is true, hasLoaded state to true
   // Only render no suggestions found if hasLoaded is true and searchResults === 0
   if (isError) {
