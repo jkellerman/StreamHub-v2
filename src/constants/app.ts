@@ -11,5 +11,5 @@ export const DEFAULT_SERIES_GENRE: Genres.IGenre = {
 };
 export const DEFAULT_SERVICES: Media.IServices = {
   provider_id: 1,
-  provider_name: "All services",
+  provider_name: "All Services",
 };

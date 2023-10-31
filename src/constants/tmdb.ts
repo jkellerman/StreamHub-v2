@@ -32,7 +32,7 @@ export const BASE_TMDB_QUERY_DISCOVER_PARAMS = {
 export const servicesList = [
   {
     provider_id: 0,
-    provider_name: "All services",
+    provider_name: "All Services",
   },
   {
     provider_id: 9,
