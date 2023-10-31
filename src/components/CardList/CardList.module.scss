@@ -33,6 +33,7 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
   font-weight: variable.$fw-med;
+  font-size: variable.$heading-xs;
 
   @include mixins.laptop {
     margin-top: 4rem;
@@ -48,4 +49,9 @@
 .buttonContainer {
   margin: 6rem 0;
   align-self: center;
+}
+
+.error {
+  @include mixins.center;
+  margin-bottom: 4rem;
 }

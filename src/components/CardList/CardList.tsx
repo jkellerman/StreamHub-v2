@@ -32,7 +32,9 @@ const CardList: React.FC<CardListProps> = ({
   if (isLoading) return <Spinner />;
   if (isError)
     return (
-      <div>We&apos;re having trouble loading the data at the moment. Please try again later.</div>
+      <div className={styles.error}>
+        We&apos;re having trouble loading the data at the moment. Please try again later.
+      </div>
     );
 
   return (
