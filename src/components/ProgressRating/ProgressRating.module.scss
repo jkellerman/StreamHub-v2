@@ -1,10 +1,15 @@
 @use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 .rating {
   fill: white;
   font-weight: variable.$fw-bold;
-  font-size: variable.$heading-xs;
+  font-size: variable.$heading-s-m;
   font-family: "Wix Madefor Display", sans-serif;
+
+  @include mixins.tablet {
+    font-size: variable.$heading-xs;
+  }
 }
 
 .totalValue {
