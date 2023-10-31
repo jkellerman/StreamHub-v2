@@ -33,7 +33,7 @@ interface SearchQuery {
 const Search: React.FC = () => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
   const [isError, setIsError] = useState(false);
   const [searchResults, setSearchResults] = useState<SearchResults[]>([]);
   const [activeResultIndex, setActiveResultIndex] = useState(-1);
@@ -145,7 +145,7 @@ const Search: React.FC = () => {
       } else if (searchQuery.length <= 1) {
         setSearchResults([]);
         setActiveResultIndex(-1);
-        setIsLoading(false);
+        setIsLoading(null);
         setIsError(false);
       }
     } catch (error) {
@@ -320,7 +320,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 // ====================
 interface SearchResultsListProps extends SearchQuery {
   isError: boolean;
-  isLoading: boolean;
+  isLoading: boolean | null;
   searchResults: SearchResults[];
   activeResultIndex: number;
   searchResultsRef: React.RefObject<HTMLUListElement>;
@@ -334,6 +334,10 @@ const SearchResultsList: React.FC<SearchResultsListProps> = ({
   setSearchQuery,
   searchQuery,
 }) => {
+  console.log("isLoading", isLoading);
+
+  // When isLoading is true, hasLoaded state to true
+  // Only render no suggestions found if hasLoaded is true and searchResults === 0
   if (isError) {
     return <div className={styles.error}>Network Error</div>;
   }
@@ -382,11 +386,11 @@ const SearchResultsList: React.FC<SearchResultsListProps> = ({
     );
   }
 
-  if (!isLoading && searchQuery.length > 2 && searchResults.length === 0) {
+  if (isLoading === false && searchQuery.length > 2 && searchResults.length === 0) {
     return <div className={styles.noResultsContainer}>no suggestions found</div>;
   }
 
-  return null;
+  return <div className={styles.loading}></div>;
 };
 
 // ====================
