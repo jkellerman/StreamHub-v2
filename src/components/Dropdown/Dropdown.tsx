@@ -26,39 +26,27 @@ const Dropdown: React.FC<DropdownProps> = ({
   services_list,
   selected_service,
 }) => {
-  const [isDropdownOpen, setIsDropDownOpen] = useState(false);
-  const dropdownRef = useClickOutside<HTMLUListElement>(() => setIsDropDownOpen(false));
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const dropdownRef = useClickOutside<HTMLDivElement>(() => closeDropdown());
 
   const toggleDropdown = useCallback(() => {
-    setIsDropDownOpen((prev) => !prev);
+    setIsDropdownOpen((prev) => !prev);
   }, []);
 
-  return (
-    <>
-      {selected_genre && (
-        <DropdownTrigger
-          toggleDropdown={toggleDropdown}
-          name={selected_genre.name}
-          isDropdownOpen={isDropdownOpen}
-        />
-      )}
-      {media && (
-        <DropdownTrigger
-          toggleDropdown={toggleDropdown}
-          name={type}
-          isDropdownOpen={isDropdownOpen}
-        />
-      )}
-      {selected_service && (
-        <DropdownTrigger
-          toggleDropdown={toggleDropdown}
-          name={selected_service.provider_name}
-          isDropdownOpen={isDropdownOpen}
-        />
-      )}
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
+  };
 
-      {isDropdownOpen && selected_genre && (
-        <ul className={styles.list} ref={dropdownRef}>
+  return (
+    <div ref={dropdownRef}>
+      <DropdownTrigger
+        toggleDropdown={toggleDropdown}
+        name={selected_genre?.name || media || selected_service?.provider_name || type}
+        isDropdownOpen={isDropdownOpen}
+      />
+      {isDropdownOpen && genre_list && (
+        <ul className={styles.list}>
           {genre_list?.map(({ id, name }) => {
             return (
               <li
@@ -70,7 +58,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                     genre: name.toLowerCase(),
                   })}`}
                 >
-                  <a className={styles.link} onClick={toggleDropdown}>
+                  <a className={styles.link} onClick={closeDropdown}>
                     {name}
                   </a>
                 </Link>
@@ -80,26 +68,25 @@ const Dropdown: React.FC<DropdownProps> = ({
         </ul>
       )}
       {isDropdownOpen && media && (
-        <ul className={styles.mediaList} ref={dropdownRef}>
+        <ul className={styles.list}>
           <li className={media === "movies" ? styles.listItemCurrent : styles.listItem}>
             <Link href={"/movies"}>
-              <a className={styles.link} onClick={toggleDropdown}>
+              <a className={styles.link} onClick={closeDropdown}>
                 Movies
               </a>
             </Link>
           </li>
           <li className={media === "series" ? styles.listItemCurrent : styles.listItem}>
             <Link href={"/series"}>
-              <a className={styles.link} onClick={toggleDropdown}>
+              <a className={styles.link} onClick={closeDropdown}>
                 TV series
               </a>
             </Link>
           </li>
         </ul>
       )}
-
       {isDropdownOpen && selected_service && (
-        <ul className={styles.servicesList} ref={dropdownRef}>
+        <ul className={styles.list}>
           {services_list?.map(({ provider_id, provider_name }) => {
             return (
               <li
@@ -115,7 +102,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                     genre: provider_name.toLowerCase(),
                   })}`}
                 >
-                  <a className={styles.link} onClick={toggleDropdown}>
+                  <a className={styles.link} onClick={closeDropdown}>
                     {provider_name}
                   </a>
                 </Link>
@@ -124,7 +111,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           })}
         </ul>
       )}
-    </>
+    </div>
   );
 };
 

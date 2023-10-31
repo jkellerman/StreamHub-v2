@@ -3,6 +3,7 @@
 
 .container {
   @include mixins.center;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -22,48 +23,34 @@
   font-weight: inherit;
 }
 
-.list,
-.mediaList,
-.servicesList {
+.list {
   @include mixins.center;
   display: flex;
   flex-direction: column;
   position: absolute;
   background: variable.$primary-dark;
   z-index: variable.$z-index-5;
-  max-height: 400px;
+  max-height: 320px;
+  width: 100%;
   border-radius: variable.$border-radius-s;
-  top: 17rem;
+  top: 7rem;
+  left: 0;
+  right: 0;
   justify-content: unset;
   overflow-y: scroll;
   padding: 1rem;
+
   @include mixins.tablet {
-    top: 16rem;
+    top: 4rem;
+    right: unset;
     max-width: 600px;
-    max-height: 400px;
     flex-wrap: wrap;
     padding: 2rem;
     overflow-y: unset;
   }
 }
 
-.mediaList {
-  max-height: 100px;
-}
-
-.servicesList {
-  max-height: 200px;
-}
-
 .list:hover > .listItemCurrent {
-  background: transparent;
-  border-radius: variable.$border-radius-s;
-}
-.mediaList:hover > .listItemCurrent {
-  background: transparent;
-  border-radius: variable.$border-radius-s;
-}
-.servicesList:hover > .listItemCurrent {
   background: transparent;
   border-radius: variable.$border-radius-s;
 }
@@ -74,6 +61,8 @@
   padding: 1rem 0.5rem;
   font-size: variable.$body-l;
   color: variable.$primary;
+  transition: variable.$transition;
+
   @include mixins.tablet() {
     padding: 0.5rem 0;
   }
@@ -141,28 +130,29 @@
   }
 }
 
-.chevron {
-  position: relative;
-  margin-left: 0.25rem;
-  right: -0.5rem;
-  @include mixins.tablet {
-  }
-}
-
 .icon > svg {
   @include mixins.tablet {
     transform: translateY(10%);
   }
 }
 
-.open {
-  transform: rotate(180deg);
+.chevron {
+  position: relative;
+  margin-left: 0.25rem;
+  right: -0.5rem;
+}
+
+.chevron.open,
+.chevron.closed {
   transition: transform 100ms ease-in-out;
 }
 
-.closed {
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.chevron.closed {
   transform: rotate(0deg);
-  transition: transform 100ms ease-in-out;
 }
 
 .button:focus {
