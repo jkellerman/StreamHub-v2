@@ -1,9 +1,12 @@
+import Link from "next/link";
+
 import styles from "./Buttons.module.scss";
 
 interface ButtonProps {
   type?: "button" | "submit";
   variant: "primary" | "secondary" | "tertiary" | "quaternary";
   asLink?: boolean;
+  link?: unknown;
   children: React.ReactNode;
   onClick?: () => void;
   isLoading?: boolean;
@@ -16,6 +19,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
   isLoading,
+  link,
 }) => {
   const buttonClasses = [styles.button, styles[variant]];
 
@@ -26,7 +30,9 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <>
       {asLink ? (
-        <a className={buttonClasses.join(" ")}>{children}</a>
+        <Link href={link as URL}>
+          <a className={buttonClasses.join(" ")}>{children}</a>
+        </Link>
       ) : (
         <button type={type} className={buttonClasses.join(" ")} onClick={onClick}>
           {children}

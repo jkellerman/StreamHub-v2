@@ -1,5 +1,4 @@
 import Image from "next/future/image";
-import Link from "next/link";
 
 import Button from "@/components/Buttons/Buttons";
 import primevideo from "@/public/assets/amazon_prime.jpg";
@@ -43,11 +42,10 @@ const Hero = () => {
           Browse, search or use a randomized generator to get the perfect movie or series to watch
           tonight. Simple!
         </p>
-        <Link href="/">
-          <Button variant="primary" asLink>
-            What to watch tonight?
-          </Button>
-        </Link>
+
+        <Button variant="primary" asLink link="/">
+          What to watch tonight?
+        </Button>
 
         <Button variant="tertiary" onClick={handleScroll}>
           Explore
