@@ -25,8 +25,10 @@ const Search = () => {
           {!isLoading && (
             <h1 className={styles.header}>
               {cards.length !== 0
-                ? `Results found for '${slugsArray[1]?.toString().replace(/-/g, " ")}'`
-                : `No Results found for '${slugsArray[1]?.toString().replace(/-/g, " ")}'`}
+                ? `Movies and TV series with '${slugsArray[1]?.toString().replace(/-/g, " ")}'`
+                : `Oops...nothing found for '${slugsArray[1]
+                    ?.toString()
+                    .replace(/-/g, " ")}', try something else.`}
             </h1>
           )}
           <CardList
