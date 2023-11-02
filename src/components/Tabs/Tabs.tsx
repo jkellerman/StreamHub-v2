@@ -15,7 +15,7 @@ interface TabListProps {
   air_date?: string;
 }
 
-const tabNames: ("flatrate" | "rent" | "buy")[] = ["flatrate", "rent", "buy"];
+const tabNames: ("flatrate" | "rent" | "buy" | "free")[] = ["flatrate", "rent", "buy", "free"];
 
 const Tabs: React.FC<TabListProps> = ({ watch_providers, title, release_date, air_date }) => {
   const [activeTab, setActiveTab] = useState("flatrate");
@@ -100,7 +100,7 @@ const LOGO_SIZE = 35;
 interface TabContentProps {
   watch_providers: Media.IProviderList;
   activeTab: string;
-  option: "flatrate" | "rent" | "buy";
+  option: "flatrate" | "rent" | "buy" | "free";
 }
 
 const TabContent: React.FC<TabContentProps> = ({ watch_providers, activeTab, option }) => {
@@ -126,7 +126,7 @@ const TabContent: React.FC<TabContentProps> = ({ watch_providers, activeTab, opt
 interface ProviderProps {
   watch_providers: Media.IProviderList;
   activeTab: string;
-  option: "flatrate" | "rent" | "buy";
+  option: "flatrate" | "rent" | "buy" | "free";
 }
 
 export const Provider: React.FC<ProviderProps> = ({ watch_providers, activeTab, option }) => {
@@ -143,7 +143,8 @@ export const Provider: React.FC<ProviderProps> = ({ watch_providers, activeTab, 
         <div className={styles.providers}>
           {!providerOption && (
             <span className={styles.placeholder}>
-              Not available to {option === "flatrate" ? "stream" : option} online
+              Not available to {option === "free" ? "watch for " : ""}
+              {option === "flatrate" ? "stream" : option} online
             </span>
           )}
           {providerOption && (

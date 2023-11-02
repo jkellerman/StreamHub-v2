@@ -50,6 +50,7 @@ export declare namespace Media {
     flatrate: IProvider[];
     buy: IProvider[];
     rent: IProvider[];
+    free: IProvider[];
   }
 
   export interface IRecommendations {
