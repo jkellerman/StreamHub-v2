@@ -4,7 +4,7 @@ import styles from "./Buttons.module.scss";
 
 interface ButtonProps {
   type?: "button" | "submit";
-  variant: "primary" | "secondary" | "tertiary" | "quaternary";
+  variant: "primary" | "secondary" | "tertiary";
   asLink?: boolean;
   link?: unknown;
   children: React.ReactNode;

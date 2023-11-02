@@ -79,7 +79,7 @@ export const PaginationButton: React.FC<InfiniteQueryProps> = ({
       }
     >
       {hasNextPage && (
-        <Button variant="quaternary" onClick={() => fetchNextPage()} isLoading={isFetchingNextPage}>
+        <Button variant="secondary" onClick={() => fetchNextPage()} isLoading={isFetchingNextPage}>
           <Icon
             icon="chevronDown"
             width="17"

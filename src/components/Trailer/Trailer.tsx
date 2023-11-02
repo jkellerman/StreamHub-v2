@@ -8,6 +8,8 @@ import Icon from "../Icon/Icon";
 import Overlay from "../Overlay/Overlay";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
+import styles from "./Trailer.module.scss";
+
 interface ButtonProps {
   endpoint: string;
 }
@@ -47,11 +49,12 @@ const Trailer: React.FC<ButtonProps> = ({ endpoint }) => {
 
   return (
     <>
-      <Button variant="secondary" onClick={openVideoPlayer}>
-        <Icon icon="play" />
-        watch trailer
-      </Button>
-
+      <div className={styles.buttonWrapper}>
+        <Button variant="tertiary" onClick={openVideoPlayer}>
+          <Icon icon="play" />
+          watch trailer
+        </Button>
+      </div>
       {openPlayer && (
         <Overlay>
           <VideoPlayer link={link} videoPlayerRef={videoPlayerRef} />

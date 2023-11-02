@@ -23,46 +23,6 @@
 }
 
 .secondary {
-  background: variable.$primary-light;
-  border-radius: variable.$border-radius-s;
-  text-transform: capitalize;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5em;
-  white-space: nowrap;
-  margin-bottom: 2.5rem;
-  width: 100%;
-
-  @include mixins.tablet {
-    max-width: 300px;
-    font-size: variable.$heading-xs;
-    margin-bottom: 1rem;
-  }
-
-  &:hover,
-  &:focus {
-    background: variable.$primary;
-    transition: variable.$transition;
-  }
-}
-
-.tertiary {
-  margin: 2rem 0;
-  padding: 0.75em 1.25em;
-  background-color: transparent;
-  border: 1px solid variable.$primary;
-  color: white;
-  border-radius: 5px;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
-.quaternary {
   background-color: variable.$quaternary;
   border: 1px solid variable.$quaternary;
   color: white;
@@ -79,10 +39,33 @@
   }
 }
 
-.quaternary.loading {
+.secondary.loading {
   background-color: transparent;
   color: variable.$tertiary;
   border-color: variable.$tertiary;
+}
+
+.tertiary {
+  background: variable.$primary-light;
+  border-radius: variable.$border-radius-s;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  white-space: nowrap;
+  width: 100%;
+
+  @include mixins.tablet {
+    max-width: 300px;
+    font-size: variable.$heading-xs;
+  }
+
+  &:hover,
+  &:focus {
+    background: variable.$primary;
+    transition: variable.$transition;
+  }
 }
 
 .button {

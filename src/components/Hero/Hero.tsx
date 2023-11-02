@@ -6,6 +6,8 @@ import disney from "@/public/assets/disney_plus.svg";
 import netflix from "@/public/assets/netflix.svg";
 import now from "@/public/assets/now.webp";
 
+import Icon from "../Icon/Icon";
+
 import styles from "./Hero.module.scss";
 
 const Hero = () => {
@@ -47,9 +49,12 @@ const Hero = () => {
           What to watch tonight?
         </Button>
 
-        <Button variant="tertiary" onClick={handleScroll}>
-          Explore
-        </Button>
+        <div className={styles.buttonWrapper}>
+          <Button variant="secondary" onClick={handleScroll}>
+            <Icon icon="chevronDown" width="17" height="17" />
+            Explore
+          </Button>
+        </div>
       </div>
       <hr className={styles.hr} id="hr" />
     </>
