@@ -110,7 +110,7 @@
   }
 }
 
-.button {
+.trigger {
   display: flex;
   align-items: center;
   color: variable.$primary;
@@ -155,12 +155,12 @@
   transform: rotate(0deg);
 }
 
-.button:focus {
+.trigger:focus {
   background: variable.$tertiary-light;
 }
 
 @media (hover: hover) {
-  .button:hover {
+  .trigger:hover {
     background: variable.$tertiary-light;
   }
 }

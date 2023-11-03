@@ -29,7 +29,7 @@ export const BASE_TMDB_QUERY_DISCOVER_PARAMS = {
   language: "en-GB",
 };
 
-export const servicesList = [
+export const movieNetworkList = [
   {
     provider_id: 0,
     provider_name: "All Services",
@@ -47,6 +47,14 @@ export const servicesList = [
     provider_name: "BBC iPlayer",
   },
   {
+    provider_id: 380,
+    provider_name: "BritBox",
+  },
+  {
+    provider_id: 103,
+    provider_name: "Channel 4",
+  },
+  {
     provider_id: 337,
     provider_name: "Disney Plus",
   },
@@ -57,6 +65,52 @@ export const servicesList = [
   {
     provider_id: 591,
     provider_name: "Now TV cinema",
+  },
+  {
+    provider_id: 531,
+    provider_name: "Paramount Plus",
+  },
+  {
+    provider_id: 29,
+    provider_name: "Sky Go",
+  },
+];
+export const seriesNetworkList = [
+  {
+    provider_id: 0,
+    provider_name: "All Services",
+  },
+  {
+    provider_id: 9,
+    provider_name: "Amazon Prime Video",
+  },
+  {
+    provider_id: 350,
+    provider_name: "Apple TV Plus",
+  },
+  {
+    provider_id: 38,
+    provider_name: "BBC iPlayer",
+  },
+  {
+    provider_id: 380,
+    provider_name: "BritBox",
+  },
+  {
+    provider_id: 103,
+    provider_name: "Channel 4",
+  },
+  {
+    provider_id: 283,
+    provider_name: "Crunchyroll",
+  },
+  {
+    provider_id: 337,
+    provider_name: "Disney Plus",
+  },
+  {
+    provider_id: 8,
+    provider_name: "Netflix",
   },
   {
     provider_id: 531,

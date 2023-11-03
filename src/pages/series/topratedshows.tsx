@@ -13,7 +13,11 @@ const TopRatedShows = () => {
         />
       </Head>
       <main>
-        <MediaCategory endpoint="/api/series/top_rated" category="top rated shows" type="series" />
+        <MediaCategory
+          endpoint="/api/media/movie/upcoming"
+          category="top rated shows"
+          type="series"
+        />
       </main>
     </>
   );

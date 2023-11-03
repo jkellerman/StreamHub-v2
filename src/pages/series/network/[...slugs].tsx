@@ -2,35 +2,37 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import QueryString from "qs";
-import React from "react";
 
 import CardList from "@/components/CardList/CardList";
 import Dropdown, { DropdownsContainer } from "@/components/Dropdown/Dropdown";
 import styles from "@/components/Dropdown/Dropdown.module.scss";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
-import { movieNetworkList, BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS, seriesNetworkList } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { Genres } from "@/src/types";
+import { Genres } from "@/types/genres";
 
-interface MoviesIndexPageProps {
+interface GenreSeriesProps {
   genreList: Genres.IGenre[];
 }
 
-const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
-  const { query, pathname } = useRouter();
+const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
+  const { query } = useRouter();
+
+  const slug = query.slugs;
 
   const genre =
-    (genreList && genreList.find(({ name }) => name.toLowerCase() === query.genre)) ||
+    (genreList && genreList.find((genre) => slug?.includes(genre.name.toLowerCase()))) ||
     DEFAULT_GENRE;
 
   const network =
-    movieNetworkList.find(({ provider_name }) => provider_name.toLowerCase() === query.genre) ||
+    seriesNetworkList.find(({ provider_name }) => slug?.includes(provider_name.toLowerCase())) ??
     DEFAULT_NETWORK;
 
-  const pageType = pathname.replace(/\//g, "");
-
-  const endpoint = `api/network/movie/8|337|9|531|350`;
+  const isDefaultNetwork = network.provider_name === DEFAULT_NETWORK.provider_name;
+  const endpoint = !isDefaultNetwork
+    ? `/api/network/tv/${network.provider_id}`
+    : `/api/network/tv/8|337|9|531|29|350|38|103|380`;
 
   const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useInfiniteScroll(endpoint);
@@ -38,21 +40,28 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
   return (
     <>
       <Head>
-        <title>{`Watch ${genre.name} Movies Online | Reelgood`}</title>
+        <title>{`What's on ${network.provider_name} | Reelgood`}</title>
         <meta
           name="description"
-          content="Find out where to watch movies from Netflix, Amazon Prime, Disney+ and many more services"
+          content="Find out where to watch series from Netflix, Amazon Prime, Disney+ and many more services"
         />
       </Head>
       <main>
         <DropdownsContainer>
-          <Dropdown type={pageType} selected_genre={genre} genre_list={genreList} variant="genre" />
-          <Dropdown type={pageType} media={pageType} variant="media" />
+          <Dropdown
+            type="series"
+            selected_genre={genre}
+            genre_list={genreList}
+            variant="genre"
+            selected_network={network}
+          />
+          <Dropdown type="series" media="series" variant="media" />
           <span className={styles.span}>On</span>
           <Dropdown
-            type={pageType}
+            type="series"
             selected_network={network}
-            network_list={movieNetworkList}
+            network_list={seriesNetworkList}
+            selected_genre={genre}
             variant="service"
           />
         </DropdownsContainer>
@@ -70,11 +79,22 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
   );
 };
 
-export default Movies;
+export default GenreSeries;
+
+export async function getStaticPaths() {
+  const paths = seriesNetworkList.map((slug) => ({
+    params: { slugs: [slug.provider_name] },
+  }));
+
+  return {
+    paths,
+    fallback: true,
+  };
+}
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(
-    `${BASE_TMDB_URL}/genre/movie/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
+    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
   );
   const genreList = await response.json();
 

@@ -1,8 +1,9 @@
 import Link from "next/link";
-import QueryString from "qs";
+import { useRouter } from "next/router";
 import React, { useState, useCallback } from "react";
 
 import Icon from "@/components/Icon/Icon";
+import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import useClickOutside from "@/hooks/useClickOutside";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Genres, Media } from "@/src/types";
@@ -14,8 +15,9 @@ interface DropdownProps {
   selected_genre?: Genres.IGenre;
   genre_list?: Genres.IGenre[];
   media?: string;
-  services_list?: Media.IServices[] | undefined;
-  selected_service?: Media.IServices;
+  network_list?: Media.IServices[] | undefined;
+  selected_network?: Media.IServices;
+  variant?: string;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -23,11 +25,12 @@ const Dropdown: React.FC<DropdownProps> = ({
   selected_genre,
   genre_list,
   media,
-  services_list,
-  selected_service,
+  network_list,
+  selected_network,
+  variant,
 }) => {
+  const { query } = useRouter();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
   const dropdownRef = useClickOutside<HTMLDivElement>(() => closeDropdown());
 
   const toggleDropdown = useCallback(() => {
@@ -42,10 +45,16 @@ const Dropdown: React.FC<DropdownProps> = ({
     <div ref={dropdownRef}>
       <DropdownTrigger
         toggleDropdown={toggleDropdown}
-        name={selected_genre?.name || media || selected_service?.provider_name || type}
+        name={
+          variant === "genre"
+            ? selected_genre?.name
+            : variant === "media"
+            ? media
+            : selected_network?.provider_name
+        }
         isDropdownOpen={isDropdownOpen}
       />
-      {isDropdownOpen && genre_list && (
+      {isDropdownOpen && variant === "genre" && (
         <ul className={styles.list}>
           {genre_list?.map(({ id, name }) => {
             return (
@@ -54,9 +63,17 @@ const Dropdown: React.FC<DropdownProps> = ({
                 className={selected_genre?.name === name ? styles.listItemCurrent : styles.listItem}
               >
                 <Link
-                  href={`/${type}?${QueryString.stringify({
-                    genre: name.toLowerCase(),
-                  })}`}
+                  href={
+                    name === DEFAULT_GENRE.name &&
+                    !query.slugs?.includes(`${selected_network?.provider_name.toLowerCase()}`)
+                      ? `/${type}`
+                      : name === DEFAULT_GENRE.name &&
+                        query.slugs?.includes(`${selected_network?.provider_name.toLowerCase()}`)
+                      ? `/${type}/network/${selected_network?.provider_name.toLowerCase()}`
+                      : !query.slugs?.includes(`${selected_network?.provider_name.toLowerCase()}`)
+                      ? `/${type}/genre/${name.toLowerCase()}`
+                      : `/${type}/genre/${name.toLowerCase()}/${selected_network?.provider_name.toLowerCase()}`
+                  }
                 >
                   <a className={styles.link} onClick={closeDropdown}>
                     {name}
@@ -67,7 +84,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           })}
         </ul>
       )}
-      {isDropdownOpen && media && (
+      {isDropdownOpen && variant === "media" && (
         <ul className={styles.list}>
           <li className={media === "movies" ? styles.listItemCurrent : styles.listItem}>
             <Link href={"/movies"}>
@@ -85,22 +102,30 @@ const Dropdown: React.FC<DropdownProps> = ({
           </li>
         </ul>
       )}
-      {isDropdownOpen && selected_service && (
+      {isDropdownOpen && variant === "service" && (
         <ul className={styles.list}>
-          {services_list?.map(({ provider_id, provider_name }) => {
+          {network_list?.map(({ provider_id, provider_name }) => {
             return (
               <li
                 key={provider_id}
                 className={
-                  selected_service?.provider_name === provider_name
+                  selected_network?.provider_name === provider_name
                     ? styles.listItemCurrent
                     : styles.listItem
                 }
               >
                 <Link
-                  href={`/${type}?${QueryString.stringify({
-                    genre: provider_name.toLowerCase(),
-                  })}`}
+                  href={
+                    provider_name === DEFAULT_NETWORK.provider_name &&
+                    !query.slugs?.includes(`${selected_genre?.name?.toLowerCase()}`)
+                      ? `/${type}`
+                      : provider_name === DEFAULT_NETWORK.provider_name &&
+                        query.slugs?.includes(`${selected_genre?.name.toLowerCase()}`)
+                      ? `/${type}/genre/${selected_genre?.name.toLowerCase()}`
+                      : !query.slugs?.includes(`${selected_genre?.name.toLowerCase()}`)
+                      ? `/${type}/network/${provider_name.toLowerCase().toLowerCase()}`
+                      : `/${type}/genre/${selected_genre?.name.toLowerCase()}/${provider_name.toLowerCase()}`
+                  }
                 >
                   <a className={styles.link} onClick={closeDropdown}>
                     {provider_name}
@@ -134,7 +159,7 @@ export const DropdownsContainer: React.FC<DropdownsContainerProps> = ({ children
 
 interface DropdownTriggerProps {
   toggleDropdown: () => void;
-  name: string;
+  name?: string;
   isDropdownOpen: boolean;
 }
 
@@ -150,7 +175,7 @@ const DropdownTrigger: React.FC<DropdownTriggerProps> = ({
   const iconHeight = isMobile ? sm : lg;
   const iconWidth = isMobile ? sm : lg;
   return (
-    <button type="button" className={styles.button} onClick={toggleDropdown}>
+    <button type="button" className={styles.trigger} onClick={toggleDropdown}>
       <>
         {name}
         <div
