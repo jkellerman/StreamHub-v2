@@ -13,7 +13,7 @@ interface MediaInfoBoxProps {
   title: string;
   overview: string;
   poster: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   watch_providers: Media.IProviderList;
   release_date?: string;
   air_date?: string;

@@ -47,12 +47,11 @@
 }
 
 .title {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-weight: variable.$fw-med;
   font-size: variable.$heading-l-m;
   @include mixins.tablet() {
     font-size: variable.$heading-l;
-    margin-bottom: 0;
   }
 }
 

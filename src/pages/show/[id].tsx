@@ -68,14 +68,8 @@ const Series: React.FC<SeriesProps> = ({
           air_date={air_date}
           cast={cast}
           network={network}
-        >
-          <MediaDetails
-            genres={genres}
-            series_age_rating={series_age_rating}
-            air_date={air_date}
-            seasons={seasons}
-          />
-        </MediaInfoBox>
+        />
+
         {data && data.recommendations.results.length > 0 && (
           <CategoryHeading type="movies" category="People also liked" />
         )}

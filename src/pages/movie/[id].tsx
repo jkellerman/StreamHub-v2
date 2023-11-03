@@ -69,14 +69,7 @@ const Movie: React.FC<MovieProps> = ({
           release_date={release_date}
           cast={cast}
           director={director}
-        >
-          <MediaDetails
-            genres={genres}
-            movie_age_rating={movie_age_rating?.certification}
-            runtime={runtime}
-            release_date={release_date}
-          />
-        </MediaInfoBox>
+        />
 
         {data && data.recommendations.results.length > 0 && (
           <CategoryHeading type="movies" category="People also liked" recommendations />
