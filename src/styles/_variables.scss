@@ -77,5 +77,5 @@ $desktop: calc((1440px / $base-font-size) * 1em);
 $desktop-l: calc((1728px / $base-font-size) * 1em);
 
 // Animations/Transitions
-$fade-animation: 250ms ease-in;
-$transition: all 100ms ease-in;
+$fade-animation: 250ms ease;
+$transition: all 100ms ease;
