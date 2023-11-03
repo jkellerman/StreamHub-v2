@@ -34,7 +34,7 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint }) => {
     );
   return (
     <>
-      {cards?.data.length > 0 && (
+      {cards?.data?.length > 0 && (
         <div className={styles.container}>
           {isScrollAvailable && (
             <span className={styles.navContainer}>

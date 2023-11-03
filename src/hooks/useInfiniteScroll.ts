@@ -31,7 +31,7 @@ const useInfiniteScroll = (endpoint: string) => {
     });
 
   return {
-    cards: data?.pages.flatMap((page) => page.data) || [],
+    cards: data?.pages?.flatMap((page) => page.data) ?? [],
     isLoading,
     isError,
     fetchNextPage,
