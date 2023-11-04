@@ -22,14 +22,18 @@ const GenreMovies: React.FC<GenreMoviesProps> = ({ genreList }) => {
   const slug = query.slugs;
 
   const genre =
-    (genreList && genreList.find((genre) => slug?.includes(genre.name.toLowerCase()))) ||
+    (genreList &&
+      genreList.find((genre) => slug?.includes(genre.name.toLowerCase().replaceAll(" ", "-")))) ??
     DEFAULT_GENRE;
 
   const network =
-    movieNetworkList.find(({ provider_name }) => slug?.includes(provider_name.toLowerCase())) ??
-    DEFAULT_NETWORK;
+    movieNetworkList.find(({ provider_name }) =>
+      slug?.includes(provider_name.toLowerCase().replaceAll(" ", "-"))
+    ) ?? DEFAULT_NETWORK;
 
-  const isNetworkSelected = slug?.includes(network.provider_name.toLowerCase());
+  const isNetworkSelected = slug?.includes(
+    network.provider_name.toLowerCase().replaceAll(" ", "-")
+  );
 
   const endpoint = isNetworkSelected
     ? `/api/network/movie/${network.provider_id}/${genre.id}`

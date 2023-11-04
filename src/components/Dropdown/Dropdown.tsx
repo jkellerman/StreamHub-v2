@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState, useCallback } from "react";
+import slugify from "slugify";
 
 import Icon from "@/components/Icon/Icon";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
@@ -54,6 +55,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         }
         isDropdownOpen={isDropdownOpen}
       />
+
       {isDropdownOpen && variant === "genre" && (
         <ul className={styles.list}>
           {genre_list?.map(({ id, name }) => {
@@ -65,14 +67,27 @@ const Dropdown: React.FC<DropdownProps> = ({
                 <Link
                   href={
                     name === DEFAULT_GENRE.name &&
-                    !query.slugs?.includes(`${selected_network?.provider_name.toLowerCase()}`)
+                    !query.slugs?.includes(
+                      `${selected_network?.provider_name.toLowerCase().replaceAll(" ", "-")}`
+                    )
                       ? `/${type}`
                       : name === DEFAULT_GENRE.name &&
-                        query.slugs?.includes(`${selected_network?.provider_name.toLowerCase()}`)
-                      ? `/${type}/network/${selected_network?.provider_name.toLowerCase()}`
-                      : !query.slugs?.includes(`${selected_network?.provider_name.toLowerCase()}`)
-                      ? `/${type}/genre/${name.toLowerCase()}`
-                      : `/${type}/genre/${name.toLowerCase()}/${selected_network?.provider_name.toLowerCase()}`
+                        query.slugs?.includes(
+                          `${selected_network?.provider_name.toLowerCase().replaceAll(" ", "-")}`
+                        )
+                      ? `/${type}/network/${slugify(selected_network?.provider_name as string, {
+                          lower: true,
+                        }).replace(/and/g, "&")}`
+                      : !query.slugs?.includes(
+                          `${selected_network?.provider_name.toLowerCase().replaceAll(" ", "-")}`
+                        )
+                      ? `/${type}/genre/${slugify(name, { lower: true }).replace(/and/g, "&")}`
+                      : `/${type}/genre/${slugify(name, { lower: true }).replace(
+                          /and/g,
+                          "&"
+                        )}/${slugify(selected_network?.provider_name as string, {
+                          lower: true,
+                        }).replace(/and/g, "&")}`
                   }
                 >
                   <a className={styles.link} onClick={closeDropdown}>
@@ -117,14 +132,30 @@ const Dropdown: React.FC<DropdownProps> = ({
                 <Link
                   href={
                     provider_name === DEFAULT_NETWORK.provider_name &&
-                    !query.slugs?.includes(`${selected_genre?.name?.toLowerCase()}`)
+                    !query.slugs?.includes(
+                      `${selected_genre?.name?.toLowerCase().replaceAll(" ", "-")}`
+                    )
                       ? `/${type}`
                       : provider_name === DEFAULT_NETWORK.provider_name &&
-                        query.slugs?.includes(`${selected_genre?.name.toLowerCase()}`)
-                      ? `/${type}/genre/${selected_genre?.name.toLowerCase()}`
-                      : !query.slugs?.includes(`${selected_genre?.name.toLowerCase()}`)
-                      ? `/${type}/network/${provider_name.toLowerCase().toLowerCase()}`
-                      : `/${type}/genre/${selected_genre?.name.toLowerCase()}/${provider_name.toLowerCase()}`
+                        query.slugs?.includes(
+                          `${selected_genre?.name.toLowerCase().replaceAll(" ", "-")}`
+                        )
+                      ? `/${type}/genre/${slugify(selected_genre?.name as string, {
+                          lower: true,
+                        }).replace(/and/g, "&")}`
+                      : !query.slugs?.includes(
+                          `${selected_genre?.name.toLowerCase().replaceAll(" ", "-")}`
+                        )
+                      ? `/${type}/network/${slugify(provider_name, { lower: true }).replace(
+                          /and/g,
+                          "&"
+                        )}`
+                      : `/${type}/genre/${slugify(selected_genre?.name as string, {
+                          lower: true,
+                        }).replace(/and/g, "&")}/${slugify(provider_name, { lower: true }).replace(
+                          /and/g,
+                          "&"
+                        )}`
                   }
                 >
                   <a className={styles.link} onClick={closeDropdown}>

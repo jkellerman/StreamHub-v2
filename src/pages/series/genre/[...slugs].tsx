@@ -20,16 +20,23 @@ const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
   const { query } = useRouter();
 
   const slug = query.slugs;
+  console.log(">>slugSeries", slug);
 
   const genre =
-    (genreList && genreList.find((genre) => slug?.includes(genre.name.toLowerCase()))) ||
+    (genreList &&
+      genreList.find((genre) => slug?.includes(genre.name.toLowerCase().replaceAll(" ", "-")))) ||
     DEFAULT_GENRE;
 
-  const network =
-    seriesNetworkList.find(({ provider_name }) => slug?.includes(provider_name.toLowerCase())) ??
-    DEFAULT_NETWORK;
+  // console.log(">>>genreSeries", genre);
 
-  const isNetworkSelected = slug?.includes(network.provider_name.toLowerCase());
+  const network =
+    seriesNetworkList.find(({ provider_name }) =>
+      slug?.includes(provider_name.toLowerCase().replaceAll(" ", "-"))
+    ) ?? DEFAULT_NETWORK;
+
+  const isNetworkSelected = slug?.includes(
+    network.provider_name.toLowerCase().replaceAll(" ", "-")
+  );
 
   const endpoint = isNetworkSelected
     ? `/api/network/tv/${network.provider_id}/${genre.id}`

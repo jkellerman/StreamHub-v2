@@ -1,6 +1,7 @@
 import Image from "next/future/image";
 import Link from "next/link";
 import React from "react";
+import slugify from "slugify";
 
 import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 import { shimmer, toBase64 } from "@/utils/placeholder";
@@ -21,8 +22,8 @@ const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle }) => {
         <Link
           href={
             movieTitle
-              ? `/movie/${id}?${movieTitle?.replace(/ /g, "-")}`
-              : `/show/${id}?${seriesName?.replace(/ /g, "-")}`
+              ? `/movie/${id}?${slugify(movieTitle, { lower: true })}`
+              : `/show/${id}?${slugify(seriesName as string, { lower: true })}`
           }
         >
           <a className={styles.container}>
@@ -44,8 +45,8 @@ const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle }) => {
         <Link
           href={
             movieTitle
-              ? `/movie/${id}?${movieTitle.replace(/ /g, "")}`
-              : `/show/${id}?${seriesName?.replace(/ /g, "")}`
+              ? `/movie/${id}?${slugify(movieTitle, { lower: true })}`
+              : `/show/${id}?${slugify(seriesName as string, { lower: true })}`
           }
         >
           <a className={styles.noCard}></a>
