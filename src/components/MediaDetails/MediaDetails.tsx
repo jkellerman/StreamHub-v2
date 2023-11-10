@@ -3,7 +3,7 @@ import React from "react";
 import Certification from "@/components/Certification/Certification";
 import MediaRunTimeOrSeasons from "@/components/MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
 import ReleaseDate from "@/components/ReleaseDate/ReleaseDate";
-import { Genres } from "@/types/genres";
+import { Media } from "@/types/media";
 
 import MediaGenres from "../MediaGenres/MediaGenres";
 
@@ -12,7 +12,7 @@ import styles from "./MediaDetails.module.scss";
 interface MediaDetailsProps {
   movie_age_rating?: string;
   series_age_rating?: string;
-  genres: Genres.IGenre[];
+  genres: Media.IGenre[];
   runtime?: number;
   seasons?: number;
   release_date?: string;

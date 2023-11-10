@@ -7,14 +7,14 @@ import Icon from "@/components/Icon/Icon";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import useClickOutside from "@/hooks/useClickOutside";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { Genres, Media } from "@/src/types";
+import { Media } from "@/src/types";
 
 import styles from "../Dropdown/Dropdown.module.scss";
 
 interface DropdownProps {
   type: string;
-  selected_genre?: Genres.IGenre;
-  genre_list?: Genres.IGenre[];
+  selected_genre?: Media.IGenre;
+  genre_list?: Media.IGenre[];
   media?: string;
   network_list?: Media.IServices[] | undefined;
   selected_network?: Media.IServices;
@@ -174,11 +174,15 @@ const Dropdown: React.FC<DropdownProps> = ({
 export default Dropdown;
 
 // ==============
-// Dropdown Container
+// Dropdown Containers
 // ==============
 interface DropdownsContainerProps {
   children: React.ReactNode;
 }
+
+export const DropdownsOuterContainer: React.FC<DropdownsContainerProps> = ({ children }) => {
+  return <div className={styles.outerContainer}>{children}</div>;
+};
 
 export const DropdownsContainer: React.FC<DropdownsContainerProps> = ({ children }) => {
   return <div className={styles.container}>{children}</div>;

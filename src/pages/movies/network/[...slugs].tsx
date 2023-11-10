@@ -4,16 +4,19 @@ import { useRouter } from "next/router";
 import QueryString from "qs";
 
 import CardList from "@/components/CardList/CardList";
-import Dropdown, { DropdownsContainer } from "@/components/Dropdown/Dropdown";
+import Dropdown, {
+  DropdownsContainer,
+  DropdownsOuterContainer,
+} from "@/components/Dropdown/Dropdown";
 import styles from "@/components/Dropdown/Dropdown.module.scss";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS, movieNetworkList } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { Genres } from "@/types/genres";
+import { Media } from "@/types/media";
 
 interface GenreMoviesProps {
-  genreList: Genres.IGenre[];
+  genreList: Media.IGenre[];
 }
 
 const GenreMovies: React.FC<GenreMoviesProps> = ({ genreList }) => {
@@ -49,24 +52,27 @@ const GenreMovies: React.FC<GenreMoviesProps> = ({ genreList }) => {
         />
       </Head>
       <main>
-        <DropdownsContainer>
-          <Dropdown
-            type="movies"
-            selected_genre={genre}
-            genre_list={genreList}
-            variant="genre"
-            selected_network={network}
-          />
-          <Dropdown type="movies" media="movies" variant="media" />
-          <span className={styles.span}>On</span>
-          <Dropdown
-            type="movies"
-            selected_network={network}
-            network_list={movieNetworkList}
-            selected_genre={genre}
-            variant="service"
-          />
-        </DropdownsContainer>
+        <DropdownsOuterContainer>
+          <DropdownsContainer>
+            <Dropdown
+              type="movies"
+              selected_genre={genre}
+              genre_list={genreList}
+              variant="genre"
+              selected_network={network}
+            />
+            <Dropdown type="movies" media="movies" variant="media" />
+            <span className={styles.span}>On</span>
+            <Dropdown
+              type="movies"
+              selected_network={network}
+              network_list={movieNetworkList}
+              selected_genre={genre}
+              variant="service"
+            />
+          </DropdownsContainer>
+        </DropdownsOuterContainer>
+
         <Description />
         <CardList
           cards={cards}

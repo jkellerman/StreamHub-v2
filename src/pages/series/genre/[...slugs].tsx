@@ -4,16 +4,19 @@ import { useRouter } from "next/router";
 import QueryString from "qs";
 
 import CardList from "@/components/CardList/CardList";
-import Dropdown, { DropdownsContainer } from "@/components/Dropdown/Dropdown";
+import Dropdown, {
+  DropdownsContainer,
+  DropdownsOuterContainer,
+} from "@/components/Dropdown/Dropdown";
 import styles from "@/components/Dropdown/Dropdown.module.scss";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS, seriesNetworkList } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { Genres } from "@/types/genres";
+import { Media } from "@/types/media";
 
 interface GenreSeriesProps {
-  genreList: Genres.IGenre[];
+  genreList: Media.IGenre[];
 }
 
 const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
@@ -55,24 +58,27 @@ const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
         />
       </Head>
       <main>
-        <DropdownsContainer>
-          <Dropdown
-            type="series"
-            selected_genre={genre}
-            genre_list={genreList}
-            variant="genre"
-            selected_network={network}
-          />
-          <Dropdown type="series" media="series" variant="media" />
-          <span className={styles.span}>On</span>
-          <Dropdown
-            type="series"
-            selected_network={network}
-            network_list={seriesNetworkList}
-            selected_genre={genre}
-            variant="service"
-          />
-        </DropdownsContainer>
+        <DropdownsOuterContainer>
+          <DropdownsContainer>
+            <Dropdown
+              type="series"
+              selected_genre={genre}
+              genre_list={genreList}
+              variant="genre"
+              selected_network={network}
+            />
+            <Dropdown type="series" media="series" variant="media" />
+            <span className={styles.span}>On</span>
+            <Dropdown
+              type="series"
+              selected_network={network}
+              network_list={seriesNetworkList}
+              selected_genre={genre}
+              variant="service"
+            />
+          </DropdownsContainer>
+        </DropdownsOuterContainer>
+
         <Description />
         <CardList
           cards={cards}
@@ -95,7 +101,7 @@ export async function getStaticPaths() {
   );
   const genreList = await response.json();
 
-  const paths = genreList.genres.map((slug: Genres.IGenre) => ({
+  const paths = genreList.genres.map((slug: Media.IGenre) => ({
     params: { slugs: [slug.name] },
   }));
   return {

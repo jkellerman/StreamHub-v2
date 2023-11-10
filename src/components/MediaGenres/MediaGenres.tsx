@@ -2,12 +2,12 @@ import Link from "next/link";
 import QueryString from "qs";
 import React from "react";
 
-import { Genres } from "@/src/types";
+import { Media } from "@/src/types";
 
 import styles from "../MediaGenres/MediaGenres.module.scss";
 
 interface MediaGenresProps {
-  genres: Genres.IGenre[];
+  genres: Media.IGenre[];
   movies?: boolean;
 }
 

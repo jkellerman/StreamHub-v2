@@ -1,6 +1,6 @@
-import { Genres, Media } from "@/src/types";
+import { Media } from "@/src/types";
 
-export const DEFAULT_GENRE: Genres.IGenre = {
+export const DEFAULT_GENRE: Media.IGenre = {
   id: 1,
   name: "Popular",
 };

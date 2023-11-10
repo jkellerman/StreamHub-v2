@@ -27,6 +27,12 @@ export declare namespace Media {
   export interface IDirector {
     name: string;
   }
+
+  export interface IGenre {
+    id: number;
+    name: string;
+  }
+
   export interface INetwork {
     name: IDirector[];
   }

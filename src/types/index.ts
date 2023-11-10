@@ -1,2 +1,2 @@
 export type { Media } from "./media";
-export type { Genres } from "./genres";
+export type { Types } from "./types";

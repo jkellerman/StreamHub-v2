@@ -5,16 +5,19 @@ import QueryString from "qs";
 import React from "react";
 
 import CardList from "@/components/CardList/CardList";
-import Dropdown, { DropdownsContainer } from "@/components/Dropdown/Dropdown";
+import Dropdown, {
+  DropdownsContainer,
+  DropdownsOuterContainer,
+} from "@/components/Dropdown/Dropdown";
 import styles from "@/components/Dropdown/Dropdown.module.scss";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL, seriesNetworkList } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { Genres } from "@/src/types";
+import { Media } from "@/src/types";
 
 interface SeriesIndexPageProps {
-  genreList: Genres.IGenre[];
+  genreList: Media.IGenre[];
 }
 
 const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
@@ -22,7 +25,7 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
 
   const genre =
     (genreList &&
-      genreList.find((item: Genres.IGenre) => item.name.toLowerCase() === query.genre)) ||
+      genreList.find((item: Media.IGenre) => item.name.toLowerCase() === query.genre)) ||
     DEFAULT_GENRE;
 
   const network =
@@ -46,17 +49,25 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
         />
       </Head>
       <main>
-        <DropdownsContainer>
-          <Dropdown type={pageType} selected_genre={genre} genre_list={genreList} variant="genre" />
-          <Dropdown type={pageType} media={pageType} variant="media" />
-          <span className={styles.span}>On</span>
-          <Dropdown
-            type={pageType}
-            selected_network={network}
-            network_list={seriesNetworkList}
-            variant="service"
-          />
-        </DropdownsContainer>
+        <DropdownsOuterContainer>
+          <DropdownsContainer>
+            <Dropdown
+              type={pageType}
+              selected_genre={genre}
+              genre_list={genreList}
+              variant="genre"
+            />
+            <Dropdown type={pageType} media={pageType} variant="media" />
+            <span className={styles.span}>On</span>
+            <Dropdown
+              type={pageType}
+              selected_network={network}
+              network_list={seriesNetworkList}
+              variant="service"
+            />
+          </DropdownsContainer>
+        </DropdownsOuterContainer>
+
         <Description />
         <CardList
           cards={cards}

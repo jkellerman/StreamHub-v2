@@ -1,20 +1,25 @@
 @use "@/styles/variables" as variable;
 @use "@/styles/mixins" as mixins;
 
-.container {
+.outerContainer {
   @include mixins.center;
+  margin-top: 2rem;
+  @include mixins.tablet {
+    margin-top: 4rem;
+  }
+}
+
+.container {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 2rem;
   margin-bottom: 1rem;
   gap: 0.5rem;
   font-size: variable.$heading-s;
   font-weight: variable.$fw-med;
   @include mixins.tablet {
     font-size: variable.$heading-l;
-    margin-top: 4rem;
   }
 }
 

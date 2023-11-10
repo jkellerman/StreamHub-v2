@@ -10,7 +10,7 @@ import MediaDetailsPanel from "@/components/MediaDetailsPanel/MediaDetailsPanel"
 import MediaInfoBox from "@/components/MediaInfoBox/MediaInfoBox";
 import Recommendations from "@/components/RecommendationsList/RecommendationsList";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
-import { Media, Genres } from "@/src/types";
+import { Media } from "@/src/types";
 import { FetchDetails } from "@/utils/tmdbDataHelpers";
 
 interface MovieProps {
@@ -18,7 +18,7 @@ interface MovieProps {
   release_date: string;
   overview: string;
   cast: Media.ICastMember[];
-  genres: Genres.IGenre[];
+  genres: Media.IGenre[];
   watch_providers: Media.IProviderList;
   runtime: number;
   director: Media.IDirector;
