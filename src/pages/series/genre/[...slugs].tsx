@@ -23,14 +23,11 @@ const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
   const { query } = useRouter();
 
   const slug = query.slugs;
-  console.log(">>slugSeries", slug);
 
   const genre =
     (genreList &&
       genreList.find((genre) => slug?.includes(genre.name.toLowerCase().replaceAll(" ", "-")))) ||
     DEFAULT_GENRE;
-
-  // console.log(">>>genreSeries", genre);
 
   const network =
     seriesNetworkList.find(({ provider_name }) =>

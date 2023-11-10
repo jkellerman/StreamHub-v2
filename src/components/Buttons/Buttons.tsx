@@ -1,13 +1,14 @@
 import Link from "next/link";
 
+import { Types } from "@/types/types";
+
 import styles from "./Buttons.module.scss";
 
-interface ButtonProps {
+interface ButtonProps extends Types.Children {
   type?: "button" | "submit";
   variant: "primary" | "secondary" | "tertiary";
   asLink?: boolean;
   link?: unknown;
-  children: React.ReactNode;
   onClick?: () => void;
   isLoading?: boolean;
   isFull?: boolean;
