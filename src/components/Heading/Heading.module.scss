@@ -1,0 +1,24 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+%heading-base {
+  margin-bottom: 1rem;
+  font-weight: variable.$fw-med;
+  letter-spacing: variable.$ls;
+}
+
+.xs {
+}
+.sm {
+}
+.m {
+  font-size: variable.$heading-m;
+}
+.lg {
+}
+.xl {
+}
+
+.heading {
+  @extend %heading-base;
+}

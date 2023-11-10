@@ -1,0 +1,9 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.paragraph {
+  max-width: 575px;
+  line-height: 1.75rem;
+  color: variable.$slate;
+  margin-bottom: 1rem;
+}
