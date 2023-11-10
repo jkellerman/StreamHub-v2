@@ -15,6 +15,8 @@ interface HomeProps {
   topRatedMovies: Media.IMediaItem[];
 }
 
+const year = "2023";
+
 const Home: React.FC<HomeProps> = () => {
   return (
     <>
@@ -38,8 +40,8 @@ const Home: React.FC<HomeProps> = () => {
         <Carousel endpoint="/api/year/pastYear/movie/2500" />
         <CategoryHeading type="series" category="popular netflix series" />
         <Carousel endpoint="/api/network/tv/8" />
-        <CategoryHeading type="movies" category="best films of 2023" />
-        <Carousel endpoint="/api/year/current/movie/2023" />
+        <CategoryHeading type="movies" category={`best films of ${year}`} />
+        <Carousel endpoint={`/api/year/current/movie/${year}`} />
         <CategoryHeading type="series" category="popular movies on Disney+" />
         <Carousel endpoint="/api/network/movie/337" />
         <CategoryHeading
