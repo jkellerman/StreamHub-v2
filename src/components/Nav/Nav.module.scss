@@ -22,7 +22,7 @@
   margin-right: 1rem;
   font-size: variable.$heading-m-m;
   font-weight: variable.$fw-med;
-  letter-spacing: 0.05rem;
+  letter-spacing: variable.$ls;
   @include mixins.tablet {
     font-size: variable.$heading-xs;
   }

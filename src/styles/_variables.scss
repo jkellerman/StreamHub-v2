@@ -66,6 +66,11 @@ $z-index-3: 3;
 $z-index-2: 2;
 $z-index-1: 1;
 
+// Letter spacing
+
+$ls-s: 0.75px;
+$ls: 1.5px;
+
 // Media queries
 
 $mobile-s: calc((320px / $base-font-size) * 1em);

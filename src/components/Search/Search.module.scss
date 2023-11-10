@@ -143,6 +143,8 @@
   padding: 0.25em 0;
   width: 100%;
   outline: none;
+  letter-spacing: variable.$ls-s;
+
   @include mixins.tablet() {
     height: unset;
   }
