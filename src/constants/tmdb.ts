@@ -1,3 +1,7 @@
+import { Media } from "../types";
+
+import { defaultNetworkName, defaultWatchNetworkName } from "./app";
+
 export const BASE_URL_IMAGE = "https://image.tmdb.org/t/p/";
 export const BACKGROUND_URL_IMAGE_XL = `${BASE_URL_IMAGE}original`;
 export const BACKGROUND_URL_IMAGE_L = `${BASE_URL_IMAGE}w1280`;
@@ -32,7 +36,7 @@ export const BASE_TMDB_QUERY_DISCOVER_PARAMS = {
 export const movieNetworkList = [
   {
     provider_id: 0,
-    provider_name: "All Services",
+    provider_name: defaultNetworkName,
   },
   {
     provider_id: 9,
@@ -75,10 +79,11 @@ export const movieNetworkList = [
     provider_name: "Sky Go",
   },
 ];
+
 export const seriesNetworkList = [
   {
     provider_id: 0,
-    provider_name: "All Services",
+    provider_name: defaultNetworkName,
   },
   {
     provider_id: 9,
@@ -121,3 +126,10 @@ export const seriesNetworkList = [
     provider_name: "Sky Go",
   },
 ];
+
+const updateDefaultName = (list: Media.IServices[], newName: string) => {
+  return list.map((item, index) => (index === 0 ? { ...item, provider_name: newName } : item));
+};
+
+export const watchMovieNetworkList = updateDefaultName(movieNetworkList, defaultWatchNetworkName);
+export const watchSeriesNetworkList = updateDefaultName(seriesNetworkList, defaultWatchNetworkName);
