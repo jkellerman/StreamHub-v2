@@ -45,7 +45,7 @@ const Hero = () => {
           tonight. Simple!
         </p>
 
-        <Button variant="primary" asLink link="/">
+        <Button variant="primary" asLink link="/watch/movies">
           What to watch tonight?
         </Button>
 

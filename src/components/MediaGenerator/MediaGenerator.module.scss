@@ -1,0 +1,13 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.resultsContainer {
+  @include mixins.flex-center;
+  width: 100%;
+}
+
+.noResults {
+  @include mixins.center;
+  text-align: center;
+  letter-spacing: variable.$ls;
+}

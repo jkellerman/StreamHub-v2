@@ -20,8 +20,8 @@ const Nav = () => {
           </li>
           <span className={styles.separator}>|</span>
           <li className={styles.navListItem}>
-            <Link href={"/"}>
-              <a aria-label="go to movies page">Roulette</a>
+            <Link href={"/watch/movies"}>
+              <a aria-label="go to movies page">What to watch</a>
             </Link>
           </li>
         </ul>
