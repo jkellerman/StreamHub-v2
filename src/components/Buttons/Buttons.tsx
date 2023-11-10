@@ -10,6 +10,7 @@ interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   isLoading?: boolean;
+  isFull?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -20,6 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   isLoading,
   link,
+  isFull,
 }) => {
   const buttonClasses = [styles.button, styles[variant]];
 
@@ -31,10 +33,14 @@ const Button: React.FC<ButtonProps> = ({
     <>
       {asLink ? (
         <Link href={link as URL}>
-          <a className={buttonClasses.join(" ")}>{children}</a>
+          <a className={`${buttonClasses.join(" ")} ${isFull ? styles.isFull : ""}`}>{children}</a>
         </Link>
       ) : (
-        <button type={type} className={buttonClasses.join(" ")} onClick={onClick}>
+        <button
+          type={type}
+          className={`${buttonClasses.join(" ")} ${isFull ? styles.isFull : ""}`}
+          onClick={onClick}
+        >
           {children}
         </button>
       )}
