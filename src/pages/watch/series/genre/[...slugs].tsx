@@ -88,11 +88,11 @@ const Genre: React.FC<WatchProps> = ({ genreList }) => {
           <Panel>
             <div>
               <Heading as="h2" size="m">
-                Suggest a show
+                Suggest a series
               </Heading>
               <Content>
                 Select your tv series preferences using the dropdowns above, have a spin and find
-                the perfect film to watch to tonight. Simple!
+                the perfect show to watch to tonight. Simple!
               </Content>
 
               <Button variant="primary" isFull onClick={fetchCards} disabled={isLoading}>
