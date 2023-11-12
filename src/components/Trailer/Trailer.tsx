@@ -8,8 +8,6 @@ import Icon from "../Icon/Icon";
 import Overlay from "../Overlay/Overlay";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
-import styles from "./Trailer.module.scss";
-
 interface ButtonProps {
   endpoint: string;
   variant: "primary" | "secondary" | "tertiary" | "quaternary";
@@ -50,7 +48,7 @@ const Trailer: React.FC<ButtonProps> = ({ endpoint, variant }) => {
 
   return (
     <>
-      <div className={styles.buttonWrapper}>
+      <div>
         <Button variant={variant} onClick={openVideoPlayer} isFull>
           {variant !== "quaternary" && <Icon icon="play" />}
           watch trailer
