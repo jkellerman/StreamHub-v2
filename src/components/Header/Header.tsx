@@ -5,6 +5,7 @@ import Nav from "@/components/Nav/Nav";
 import Search from "@/components/Search/Search";
 
 import styles from "../Header/Header.module.scss";
+import Icon from "../Icon/Icon";
 
 const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean | null>(null);
@@ -46,9 +47,7 @@ const Header: React.FC = () => {
 
         <Search />
         <div className={styles.loginContainer}>
-          <span className={styles.loginButton}>Login</span>
-          <span className={styles.separator}> | </span>
-          <span className={styles.signupButton}>Signup</span>
+          <Icon icon="user" />
         </div>
       </div>
       <Nav />

@@ -11,6 +11,7 @@
   transition: height 160ms ease 0s, box-shadow 150ms ease-in;
   align-self: baseline;
   overflow: hidden;
+  max-width: 1200px;
 }
 
 .container.active {
@@ -19,6 +20,8 @@
 
   @include mixins.tablet {
     position: unset;
+    width: unset;
+    margin: unset;
   }
 }
 .container:hover,
