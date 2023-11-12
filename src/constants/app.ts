@@ -23,3 +23,10 @@ export const DEFAULT_WATCH_NETWORK: Media.IServices = {
   provider_id: 1,
   provider_name: defaultWatchNetworkName,
 };
+
+export const randomPageNumberMovie = 10;
+export const randomPageNumberSeries = 5;
+
+export const DATE_SLICE = 4;
+
+export const year = "2023";

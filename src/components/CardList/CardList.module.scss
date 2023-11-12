@@ -8,6 +8,7 @@
 .container {
   @include mixins.flex-column;
   justify-content: center;
+  animation: fade variable.$fade-animation;
 }
 
 .list {
@@ -54,4 +55,13 @@
 .error {
   @include mixins.center;
   margin-bottom: 4rem;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

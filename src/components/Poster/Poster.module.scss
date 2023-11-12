@@ -8,7 +8,7 @@
   border-radius: variable.$border-radius-s;
   width: 110px;
   height: 165px;
-  margin-bottom: 1rem;
+
   background: linear-gradient(90deg, variable.$secondary-gradient);
   @include mixins.tablet {
     width: 160px;

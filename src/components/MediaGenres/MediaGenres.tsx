@@ -12,7 +12,7 @@ interface MediaGenresProps {
 }
 
 const MediaGenres: React.FC<MediaGenresProps> = ({ genres, movies }) => {
-  const sliceArray = genres.slice(0, 2);
+  const sliceArray = genres.slice(0, 3);
   return (
     <span className={styles.group}>
       {sliceArray.map((genre) => {

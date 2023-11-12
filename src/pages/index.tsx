@@ -4,6 +4,7 @@ import React from "react";
 import Carousel from "@/components/Carousel/Carousel";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
 import Hero from "@/components/Hero/Hero";
+import { year } from "@/constants/app";
 import { Media } from "@/src/types";
 
 interface HomeProps {
@@ -14,8 +15,6 @@ interface HomeProps {
   upcomingMovies: Media.IMediaItem[];
   topRatedMovies: Media.IMediaItem[];
 }
-
-const year = "2023";
 
 const Home: React.FC<HomeProps> = () => {
   return (

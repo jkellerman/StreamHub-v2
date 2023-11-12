@@ -11,9 +11,15 @@ import Heading from "@/components/Heading/Heading";
 import MediaGenerator from "@/components/MediaGenerator/MediaGenerator";
 import { Panel } from "@/components/Panel/Panel";
 import styles from "@/components/Panel/Panel.module.scss";
-import { DEFAULT_WATCH_GENRE, DEFAULT_WATCH_NETWORK } from "@/constants/app";
+import {
+  DEFAULT_WATCH_GENRE,
+  DEFAULT_WATCH_NETWORK,
+  randomPageNumberSeries,
+} from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS, watchSeriesNetworkList } from "@/constants/tmdb";
+import useGenerator from "@/hooks/useGenerator";
 import { Media } from "@/types/media";
+import { randomNumber } from "@/utils/utils";
 
 interface WatchProps {
   genreList: Media.IGenre[];
@@ -33,6 +39,14 @@ const Genre: React.FC<WatchProps> = ({ genreList }) => {
     watchSeriesNetworkList.find(({ provider_name }) =>
       slug?.includes(provider_name.toLowerCase().replaceAll(" ", "-"))
     ) ?? DEFAULT_WATCH_NETWORK;
+
+  const { data, isLoading, isError, fetchCards } = useGenerator(
+    `/api/random/tv/${network.provider_id === 1 ? "8|337|9|531|350" : network.provider_id}/${
+      genre.id
+    }`,
+    randomNumber(randomPageNumberSeries),
+    "tv"
+  );
 
   return (
     <>
@@ -73,19 +87,19 @@ const Genre: React.FC<WatchProps> = ({ genreList }) => {
           <Panel>
             <div>
               <Heading as="h2" size="m">
-                How it works
+                Suggest a show
               </Heading>
               <Content>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque consectetur ullam
-                vitae architecto accusamus. Sit, cumque non! Dignissimos, soluta unde.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt tempore odio error
+                esse quae laborum, doloribus praesentium rerum harum nam adipisci
               </Content>
 
-              <Button variant="primary" isFull>
-                GET RECOMMENDATION
+              <Button variant="primary" isFull onClick={fetchCards} disabled={isLoading}>
+                {data ? "SPIN AGAIN" : "SPIN"}
               </Button>
             </div>
 
-            <MediaGenerator />
+            <MediaGenerator data={data} isLoading={isLoading} isError={isError} type="tv" />
           </Panel>
         </div>
       </main>

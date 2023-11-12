@@ -5,6 +5,7 @@
   @include mixins.flex-column;
   align-items: center;
   gap: 1rem;
+  margin-top: 2rem;
   margin-bottom: 2.5rem;
   @include mixins.tablet {
     @include mixins.flex-row;

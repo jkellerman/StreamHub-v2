@@ -3,12 +3,12 @@ import styles from "./ProgressRating.module.scss";
 interface MediaRatingProps {
   vote_average: number | null;
   progress: number;
+  size?: number;
 }
 
-const ProgressRating: React.FC<MediaRatingProps> = ({ vote_average, progress }) => {
+const ProgressRating: React.FC<MediaRatingProps> = ({ vote_average, progress, size = 75 }) => {
   const gradientId = `progress-bar-gradient-${vote_average}`;
 
-  const size = 75;
   const strokeWidth = 6;
 
   const viewBox = `0 0 ${size} ${size}`;

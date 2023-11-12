@@ -4,15 +4,26 @@ import { Types } from "@/types/types";
 
 import styles from "./Buttons.module.scss";
 
-interface ButtonProps extends Types.Children {
+interface ButtonPropsBase extends Types.Children {
   type?: "button" | "submit";
-  variant: "primary" | "secondary" | "tertiary";
-  asLink?: boolean;
-  link?: unknown;
+  variant: "primary" | "secondary" | "tertiary" | "quaternary";
   onClick?: () => void;
   isLoading?: boolean;
   isFull?: boolean;
+  disabled?: boolean;
 }
+
+interface ButtonAsLinkProps extends ButtonPropsBase {
+  asLink: true;
+  link: unknown;
+}
+
+interface ButtonAsButtonProps extends ButtonPropsBase {
+  asLink?: false;
+  link?: never;
+}
+
+type ButtonProps = ButtonAsLinkProps | ButtonAsButtonProps;
 
 const Button: React.FC<ButtonProps> = ({
   type = "button",
@@ -23,6 +34,7 @@ const Button: React.FC<ButtonProps> = ({
   isLoading,
   link,
   isFull,
+  disabled,
 }) => {
   const buttonClasses = [styles.button, styles[variant]];
 
@@ -41,6 +53,7 @@ const Button: React.FC<ButtonProps> = ({
           type={type}
           className={`${buttonClasses.join(" ")} ${isFull ? styles.isFull : ""}`}
           onClick={onClick}
+          disabled={disabled}
         >
           {children}
         </button>

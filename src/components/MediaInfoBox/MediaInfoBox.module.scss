@@ -28,6 +28,7 @@
 
 .details {
   @include mixins.flex-column;
+  margin-top: 1rem;
   justify-content: center;
   align-items: center;
 }

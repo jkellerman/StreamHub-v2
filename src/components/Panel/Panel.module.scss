@@ -12,18 +12,21 @@
 
 .container {
   @include mixins.center;
-  margin-top: 5rem;
+  margin-top: 2rem;
+  @include mixins.tabletL {
+    margin-top: 5rem;
+  }
 }
 
 .panelContainer {
   margin-top: 2rem;
   width: 100%;
   @include mixins.flex-column;
-  gap: 1rem;
+  gap: 2.5rem;
   background: linear-gradient(90deg, variable.$secondary-gradient);
   border-radius: variable.$border-radius-s;
   padding: 2rem;
-  @include mixins.tablet {
+  @include mixins.tabletL {
     @include mixins.flex-row;
   }
 }

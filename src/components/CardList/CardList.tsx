@@ -29,7 +29,7 @@ const CardList: React.FC<CardListProps> = ({
   isFetchingNextPage,
   hasNextPage,
 }) => {
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <Spinner forList />;
   if (isError)
     return (
       <div className={styles.error}>

@@ -1,8 +1,12 @@
 import styles from "../Spinner/Spinner.module.scss";
 
-const Spinner = () => {
+interface SpinnerProps {
+  forList?: boolean; // Spinner is for list of items
+}
+
+const Spinner: React.FC<SpinnerProps> = ({ forList }) => {
   return (
-    <div className={styles.container}>
+    <div className={forList ? styles.listContainer : styles.container}>
       <span className={styles.loader}></span>
     </div>
   );

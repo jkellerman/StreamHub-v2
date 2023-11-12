@@ -12,6 +12,7 @@ import styles from "./Trailer.module.scss";
 
 interface ButtonProps {
   endpoint: string;
+  variant: "primary" | "secondary" | "tertiary" | "quaternary";
 }
 
 interface IVideoData {
@@ -19,7 +20,7 @@ interface IVideoData {
   key: string | null;
 }
 
-const Trailer: React.FC<ButtonProps> = ({ endpoint }) => {
+const Trailer: React.FC<ButtonProps> = ({ endpoint, variant }) => {
   const { data } = FetchDetails(endpoint);
   const [link, setLink] = useState<string | null>(null);
   const [openPlayer, setOpenPlayer] = useState(false);
@@ -50,8 +51,8 @@ const Trailer: React.FC<ButtonProps> = ({ endpoint }) => {
   return (
     <>
       <div className={styles.buttonWrapper}>
-        <Button variant="tertiary" onClick={openVideoPlayer}>
-          <Icon icon="play" />
+        <Button variant={variant} onClick={openVideoPlayer} isFull>
+          {variant !== "quaternary" && <Icon icon="play" />}
           watch trailer
         </Button>
       </div>

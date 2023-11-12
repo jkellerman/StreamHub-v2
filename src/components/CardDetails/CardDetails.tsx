@@ -1,8 +1,8 @@
 import React from "react";
 
-import styles from "../CardDetails/CardDetails.module.scss";
+import { DATE_SLICE } from "@/constants/app";
 
-const DATE_SLICE = 4;
+import styles from "../CardDetails/CardDetails.module.scss";
 
 interface CardDetailsProps {
   movieTitle?: string;

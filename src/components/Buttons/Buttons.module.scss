@@ -17,7 +17,13 @@
   background: linear-gradient(90deg, variable.$primary-gradient);
   border-radius: variable.$border-radius-xl;
 
-  &:hover {
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &:active {
     transform: scale(1.1);
   }
 }
@@ -65,6 +71,17 @@
   &:focus {
     background: variable.$primary;
     transition: variable.$transition;
+  }
+}
+
+.quaternary {
+  @extend .secondary;
+  color: variable.$secondary;
+  background: variable.$primary-light;
+  border-color: variable.$primary-light;
+  &:hover {
+    background: variable.$primary;
+    border-color: variable.$primary;
   }
 }
 

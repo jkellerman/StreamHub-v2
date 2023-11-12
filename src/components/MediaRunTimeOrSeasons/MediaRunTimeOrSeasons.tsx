@@ -1,19 +1,14 @@
 import React from "react";
 
+import { Media } from "@/types/media";
+import { toHoursAndMinutes } from "@/utils/utils";
+
 import styles from "../MediaRunTimeOrSeasons/MediaRunTimeOrSeasons.module.scss";
 
-interface MediaRunTimeOrSeasonsProps {
-  runtime?: number;
-  seasons?: number;
-}
-
-const MediaRunTimeOrSeasons: React.FC<MediaRunTimeOrSeasonsProps> = ({ runtime, seasons }) => {
-  const toHoursAndMinutes = (totalMinutes: number): string => {
-    const minutes = totalMinutes % 60;
-    const hours = Math.floor(totalMinutes / 60);
-
-    return `${hours} hr ${minutes} mins`;
-  };
+const MediaRunTimeOrSeasons: React.FC<Media.MediaRunTimeOrSeasonsProps> = ({
+  runtime,
+  seasons,
+}) => {
   return (
     <>
       {runtime && runtime >= 0 && (

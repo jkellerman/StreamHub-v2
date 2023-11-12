@@ -5,11 +5,22 @@
   margin-bottom: 1rem;
   font-weight: variable.$fw-med;
   letter-spacing: variable.$ls;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
 }
 
 .xs {
+  font-size: variable.$heading-xs;
 }
 .sm {
+  font-size: variable.$heading-s-m;
+
+  @include mixins.tablet {
+    font-size: variable.$heading-s;
+  }
 }
 .m {
   font-size: variable.$heading-m;

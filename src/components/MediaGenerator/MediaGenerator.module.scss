@@ -2,7 +2,22 @@
 @use "@/styles/mixins" as mixins;
 
 .resultsContainer {
+  @include mixins.flex-column;
+
+  justify-content: center;
+  gap: 1rem;
+  animation: fade variable.$fade-animation;
+  @include mixins.tablet {
+    @include mixins.flex-row;
+  }
+}
+
+.container {
   @include mixins.flex-center;
+}
+
+.container,
+.resultsContainer {
   width: 100%;
 }
 
@@ -10,4 +25,86 @@
   @include mixins.center;
   text-align: center;
   letter-spacing: variable.$ls;
+}
+
+.overview {
+  font-size: variable.$body-s;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  margin-bottom: 1rem;
+  min-height: 48px;
+  line-height: 1.5em;
+}
+
+.posterWrapper {
+  @include mixins.flex-row;
+  gap: 0.5rem;
+}
+
+.posterWrapperDetails {
+  max-width: 205px;
+  @include mixins.tablet {
+    display: none;
+    max-width: unset;
+  }
+}
+
+.posterDetailsWrapper {
+  @include mixins.flex-column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.headingWrapper {
+  display: none;
+  max-width: 160px;
+  @include mixins.tablet {
+    display: block;
+    max-width: unset;
+  }
+}
+
+.detailsWrapper {
+  display: none;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  @include mixins.tablet {
+    @include mixins.flex-row;
+  }
+}
+
+.ctaWrapper {
+  @include mixins.flex-column;
+  gap: 0.5rem;
+
+  @include mixins.tablet {
+    min-width: 200px;
+  }
+}
+
+.results {
+  @include mixins.tablet {
+    width: 340px;
+  }
+}
+
+.ratingContainer {
+  @include mixins.flex-center;
+  gap: 0.5rem;
+}
+
+.subText {
+  font-size: variable.$body-xs;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

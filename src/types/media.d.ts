@@ -8,6 +8,10 @@ export declare namespace Media {
     first_air_date: string;
     media_type: string;
     origin_country: string[];
+    vote_average: number;
+    overview: string;
+    runtime?: number;
+    number_of_seasons?: number;
   }
 
   export interface ICertificationMovie {
@@ -43,6 +47,11 @@ export declare namespace Media {
 
   export interface ICast {
     department: string;
+  }
+
+  export interface MediaRunTimeOrSeasonsProps {
+    runtime?: number;
+    seasons?: number;
   }
 
   export interface IProvider {
