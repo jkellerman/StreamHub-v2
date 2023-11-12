@@ -47,7 +47,7 @@ const Movie: React.FC<MovieProps> = ({
   return (
     <>
       <Head>
-        <title>{`Watch ${title} Online | ReelBuddy`}</title>
+        <title>{`Watch ${title} Online | ReelHub`}</title>
         <meta name="description" content={`Where to watch ${title}`} />
       </Head>
 

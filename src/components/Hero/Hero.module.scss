@@ -9,12 +9,17 @@
   padding: 2rem 0;
   max-width: 515px;
   margin-bottom: 2rem;
+  @include mixins.tablet {
+    margin-top: 2rem;
+  }
 }
 
 .subheading {
   margin-bottom: 1rem;
+  font-size: variable.$body-l-m;
+
   @include mixins.tablet {
-    font-size: variable.$body-l-m;
+    font-size: variable.$heading-xs;
   }
 }
 

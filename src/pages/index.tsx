@@ -20,10 +20,10 @@ const Home: React.FC<HomeProps> = () => {
   return (
     <>
       <Head>
-        <title>Reelbuddy | Streaming Movies and TV series recommendations</title>
+        <title>ReelHub | Streaming Movies and TV series recommendations</title>
         <meta
           name="description"
-          content="Reelbuddy allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other providers in one place, whilst providing recommendations on what to watch tonight."
+          content="ReelHub allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other providers in one place, whilst providing recommendations on what to watch tonight."
         />
       </Head>
 

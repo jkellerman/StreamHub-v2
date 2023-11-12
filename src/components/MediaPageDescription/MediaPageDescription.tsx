@@ -1,12 +1,16 @@
 import styles from "./MediaPageDescription.module.scss";
 
-const Description = () => {
+interface DescriptionProps {
+  type: "movie" | "series";
+}
+
+const Description: React.FC<DescriptionProps> = ({ type }) => {
   return (
     <div className={styles.descriptionWrapper}>
       <p className={styles.description}>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus quaerat, quidem, incidunt
-        sit illo excepturi quisquam iusto neque vel sequi dolores ut consequatur corrupti magni
-        soluta, voluptatum commodi aspernatur. Laboriosam?
+        Below is a list of all {type === "movie" ? "movies" : "TV series"} you can stream online .
+        The default view is sorted by popularity, and you can easily filter by genre and streaming
+        service using the dropdowns above.
       </p>
     </div>
   );

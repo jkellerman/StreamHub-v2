@@ -48,7 +48,7 @@ const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
   return (
     <>
       <Head>
-        <title>{`Watch ${genre?.name} Series Online | Reelgood`}</title>
+        <title>{`Watch ${genre?.name} Series Online | ReelHub`}</title>
         <meta
           name="description"
           content="Find out where to watch series from Netflix, Amazon Prime, Disney+ and many more services"
@@ -76,7 +76,7 @@ const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
           </DropdownsContainer>
         </DropdownsOuterContainer>
 
-        <Description />
+        <Description type="series" />
         <CardList
           cards={cards}
           isLoading={isLoading}

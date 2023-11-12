@@ -13,7 +13,7 @@
 .navList {
   display: flex;
   @include mixins.laptop {
-    margin-left: 9.25rem;
+    margin-left: 7.5rem;
   }
 }
 

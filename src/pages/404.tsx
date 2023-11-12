@@ -5,7 +5,7 @@ const Custom404 = () => {
   return (
     <>
       <Head>
-        <title>404 - Not Found | Reelgood</title>
+        <title>404 - Not Found | ReelHub</title>
       </Head>
       <main>
         <h1>404 - Page Not Found</h1>

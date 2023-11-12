@@ -17,7 +17,7 @@ const Search = () => {
   return (
     <>
       <Head>
-        <title>{`${slugsArray[1]?.toString().replace(/-/g, " ")} | Reelgood`}</title>
+        <title>{`${slugsArray[1]?.toString().replace(/-/g, " ")} | ReelHub`}</title>
         <meta name="description" content={`Where to watch ${slugsArray[1]}`} />
       </Head>
       <main>

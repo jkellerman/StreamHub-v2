@@ -49,7 +49,7 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
         <title>ReelHub | What to watch tonight?</title>
         <meta
           name="description"
-          content="Reelbuddy allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other providers in one place, whilst providing recommendations on what to watch tonight."
+          content="ReelHub allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other providers in one place, whilst providing recommendations on what to watch tonight."
         />
       </Head>
 
@@ -58,7 +58,7 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
           <Heading as="h1" size="m">
             What to watch tonight?
           </Heading>
-          <Content>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</Content>
+          <Content>Take a chance on something new...</Content>
           <DropdownsContainer>
             <Dropdown
               watch
@@ -83,8 +83,8 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
                 Suggest a movie
               </Heading>
               <Content>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt tempore odio error
-                esse quae laborum, doloribus praesentium rerum harum nam adipisci
+                Select your movie preferences using the dropdowns above, have a spin and find the
+                perfect film to watch to tonight. Simple!
               </Content>
 
               <Button variant="primary" isFull onClick={fetchCards} disabled={isLoading}>

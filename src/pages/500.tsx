@@ -6,7 +6,7 @@ const Custom500 = () => {
   return (
     <>
       <Head>
-        <title>500 - Server-side error occurred | Reelgood</title>
+        <title>500 - Server-side error occurred | ReelHub</title>
       </Head>
       <main>
         <h1>Currently unavailable</h1>
