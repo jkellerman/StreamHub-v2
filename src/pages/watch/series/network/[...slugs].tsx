@@ -61,7 +61,8 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
           <Heading as="h1" size="m">
             What to watch tonight?
           </Heading>
-          <Content>Take a chance on something new...</Content>
+          <Content>Select your prefences:</Content>
+
           <DropdownsContainer>
             <Dropdown
               watch
