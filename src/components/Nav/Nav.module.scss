@@ -12,19 +12,40 @@
 
 .navList {
   display: flex;
+  overflow-x: scroll;
+  align-items: center;
+  margin-left: -0.5rem;
+
   @include mixins.laptop {
-    margin-left: 7.5rem;
+    margin-left: 6.9rem;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
 .navListItem {
   list-style: none;
   margin-right: 1rem;
-  font-size: variable.$heading-m-m;
+  font-size: variable.$heading-xs-m;
   font-weight: variable.$fw-med;
   letter-spacing: variable.$ls;
+  white-space: nowrap;
+  padding: 0.5rem;
+  border-radius: variable.$border-radius-s;
+
   @include mixins.tablet {
     font-size: variable.$heading-xs;
+  }
+}
+
+@media (hover: hover) {
+  .navListItem:hover {
+    background-color: variable.$tertiary;
+    transition: variable.$transition;
+    color: variable.$primary;
+    padding: 0.5rem;
   }
 }
 
