@@ -2,27 +2,121 @@
 @use "@/styles/mixins" as mixins;
 
 .footer {
-  width: 100vw;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  position: relative;
   border-top: 2px solid variable.$secondary-light;
-  text-align: center;
-  font-size: variable.$heading-xs-m;
-  font-weight: variable.$fw-light;
-
-  @include mixins.tablet() {
-    font-size: variable.$heading-xs;
+  padding-bottom: 2rem;
+  @include mixins.tablet {
+    padding: 2rem 0 4rem;
   }
 }
 
-.span {
-  color: inherit;
-  text-decoration: none;
+.btt {
+  position: absolute;
+  right: 0;
+  top: -53px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, variable.$primary-gradient);
+  color: variable.$secondary;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-size: variable.$body-l;
+  font-family: inherit;
+  font-weight: variable.$fw-bold;
+  letter-spacing: variable.$ls;
+  transition: 0.5s;
+
+  &:hover {
+    background-color: variable.$quaternary-light;
+  }
+  & > span {
+    display: none;
+    margin-right: 0.5rem;
+    @include mixins.tablet {
+      display: block;
+    }
+  }
+}
+
+.footerContainer {
+  @include mixins.center;
+}
+
+.footerInnerContainer {
+  @include mixins.flex-column;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  @include mixins.laptop {
+    @include mixins.flex-row;
+  }
+}
+
+.navContainer {
+  margin-bottom: 2rem;
+  @include mixins.tablet {
+    @include mixins.flex-row;
+  }
+}
+
+.groupTitle {
+  font-size: variable.$body-m;
+  color: variable.$slate;
+  text-transform: uppercase;
+  letter-spacing: variable.$ls;
+  font-weight: variable.$fw-med;
+  margin-bottom: 1rem;
+  @include mixins.tablet {
+    margin-bottom: 2rem;
+  }
+}
+
+.group {
+  margin-bottom: 2rem;
+  @include mixins.tablet {
+    margin-right: 5rem;
+    margin-bottom: 0;
+  }
+}
+
+.listItem {
+  list-style: none;
+  font-size: variable.$body-l;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+}
+
+.attributionContainer {
+  @include mixins.flex-column;
 }
 
 .attribution {
-  visibility: hidden;
+  max-width: 350px;
+  line-height: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: variable.$body-l-m;
+  color: variable.$slate;
+
+  @include mixins.tablet {
+    font-size: variable.$body-l;
+  }
+}
+
+.footerBottomContainer {
+  @include mixins.flex-column;
+
+  gap: 0.75rem;
+  @include mixins.tablet {
+    @include mixins.flex-row;
+    align-items: center;
+  }
+}
+
+.disclaimer {
+  font-size: variable.$body-m-m;
+  color: variable.$slate;
+  @include mixins.tablet {
+    font-size: variable.$body-m;
+  }
 }

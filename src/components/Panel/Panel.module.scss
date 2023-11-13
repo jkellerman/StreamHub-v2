@@ -13,13 +13,14 @@
 .container {
   @include mixins.center;
   margin-top: 2rem;
-  @include mixins.tabletL {
-    margin-top: 5rem;
+
+  @include mixins.tablet {
+    margin-top: 6rem;
   }
 }
 
 .panelContainer {
-  margin-top: 2rem;
+  margin: 2rem 0 4rem;
   width: 100%;
   @include mixins.flex-column;
   gap: 2.5rem;

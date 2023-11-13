@@ -1,0 +1,18 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.logo {
+  color: variable.$primary;
+  font-size: variable.$heading-l-m;
+  font-weight: variable.$fw-extraBold;
+  font-family: "Wix Madefor Display", sans-serif;
+  width: auto;
+  flex-shrink: 0;
+  flex-basis: 0;
+  @include mixins.tablet() {
+    font-size: variable.$heading-l-m;
+  }
+  @include mixins.laptop() {
+    font-size: variable.$heading-s;
+  }
+}
