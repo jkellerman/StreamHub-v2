@@ -16,7 +16,6 @@ interface BackgroundImageProps {
 }
 
 const BackgroundImage: React.FC<BackgroundImageProps> = ({ backdrop, title }) => {
-  console.log("backdrop", backdrop);
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>

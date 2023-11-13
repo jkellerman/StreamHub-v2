@@ -78,6 +78,10 @@ export const movieNetworkList = [
     provider_id: 29,
     provider_name: "Sky Go",
   },
+  {
+    provider_id: 194,
+    provider_name: "Starz Play Amazon Channel",
+  },
 ];
 
 export const seriesNetworkList = [
@@ -124,6 +128,10 @@ export const seriesNetworkList = [
   {
     provider_id: 29,
     provider_name: "Sky Go",
+  },
+  {
+    provider_id: 194,
+    provider_name: "Starz Play Amazon Channel",
   },
 ];
 

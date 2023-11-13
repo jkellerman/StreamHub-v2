@@ -31,11 +31,6 @@
   margin: 1rem 0;
 }
 
-.name {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .genre {
   margin-right: 0.5rem;
   background: variable.$primary-dark;
@@ -46,11 +41,4 @@
   color: variable.$primary;
   font-size: variable.$body-m;
   font-weight: variable.$fw-med;
-}
-
-@media (hover: hover) {
-  .genre:hover {
-    background-color: variable.$secondary-light;
-    transition: variable.$transition;
-  }
 }
