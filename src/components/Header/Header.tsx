@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean | null>(null);
 
   const [prevScrollY, setPrevScrollY] = useState(0);
-  const scrollThreshold = 250;
+  const scrollThreshold = 50;
 
   useEffect(() => {
     const handleScrollEvent = () => {
@@ -39,14 +39,18 @@ const Header: React.FC = () => {
       className={isVisible === null ? styles.header : isVisible ? styles.visible : styles.hidden}
     >
       <div className={styles.container}>
-        <MainLogo />
-
-        <Search />
-        <div className={styles.loginContainer}>
+        <div className={styles.logoContainer}>
+          <MainLogo />
           <Icon icon="user" />
         </div>
+        <Search />
+        <div className={styles.loginContainer}>
+          <Nav />
+          <div className={styles.userIconWrapper}>
+            <Icon icon="user" />
+          </div>
+        </div>
       </div>
-      <Nav />
     </header>
   );
 };

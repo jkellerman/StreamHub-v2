@@ -6,7 +6,7 @@ const MainLogo = () => {
     <>
       <Link href={"/"}>
         <a aria-label="Go to home page" className={styles.logo}>
-          ReelHub
+          StreamHub
         </a>
       </Link>
     </>

@@ -2,12 +2,7 @@
 @use "@/styles/mixins" as mixins;
 
 .nav {
-  @include mixins.center;
-  margin-bottom: 0.75rem;
-
-  @include mixins.tablet {
-    margin-bottom: 0.5rem;
-  }
+  width: 90%;
 }
 
 .navList {
@@ -16,8 +11,8 @@
   align-items: center;
   margin-left: -0.75rem;
 
-  @include mixins.laptop {
-    margin-left: 8.75rem;
+  @include mixins.tabletL {
+    margin-left: unset;
   }
 
   &::-webkit-scrollbar,
@@ -28,15 +23,15 @@
 
 .navListItem {
   list-style: none;
-  font-size: variable.$heading-xs-m;
+  font-size: variable.$heading-xs;
   font-weight: variable.$fw-med;
   letter-spacing: variable.$ls;
   white-space: nowrap;
   padding: 0.5em 0.75em;
   border-radius: variable.$border-radius-s;
 
-  @include mixins.tablet {
-    font-size: variable.$heading-xs;
+  &:last-of-type {
+    margin-left: 1rem;
   }
 }
 

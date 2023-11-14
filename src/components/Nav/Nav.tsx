@@ -10,18 +10,18 @@ const Nav = () => {
         <ul className={styles.navList}>
           <li className={styles.navListItem}>
             <Link href={"/series"}>
-              <a aria-label="Go to TV shows page">TV Series</a>
+              <a aria-label="series">Series</a>
             </Link>
           </li>
           <li className={styles.navListItem}>
             <Link href={"/movies"}>
-              <a aria-label="go to movies page">Movies</a>
+              <a aria-label="movies">Movies</a>
             </Link>
           </li>
-          <span className={styles.separator}>|</span>
+
           <li className={styles.navListItem}>
             <Link href={"/watch/movies"}>
-              <a aria-label="go to movies page">What to watch</a>
+              <a aria-label="what to watch">What to watch</a>
             </Link>
           </li>
         </ul>

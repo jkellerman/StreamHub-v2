@@ -8,10 +8,10 @@
   max-width: 900px;
   @include mixins.flex-column;
   justify-content: center;
-  margin: 8rem auto 0;
+  padding-top: 8rem;
 
   @include mixins.tablet {
-    margin-top: 14rem;
+    padding-top: 14rem;
   }
 }
 

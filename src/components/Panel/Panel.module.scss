@@ -13,10 +13,10 @@
 
 .container {
   @include mixins.center;
-  margin-top: 2rem;
+  padding-top: 8rem;
 
   @include mixins.tablet {
-    margin-top: 6rem;
+    padding-top: 6rem;
   }
 }
 

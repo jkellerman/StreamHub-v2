@@ -4,7 +4,7 @@
 @mixin header-styles {
   @include mixins.flex-column;
   background-color: var(--secondary-dark);
-  position: fixed;
+  position: sticky;
   z-index: variable.$z-index-5;
   border-bottom: 0px solid var(--secondary-dark);
 }
@@ -15,13 +15,14 @@
   top: 0px;
   transition: border-bottom 250ms ease-in-out;
   border-bottom: 0px solid var(--secondary-dark);
+  width: 100%;
 }
 
 .hidden {
   @include mixins.flex-column;
   @include header-styles();
   transition: top 150ms ease-in-out 0.2s;
-  top: -130px;
+  top: -170px;
   @include mixins.tablet {
     top: -146px;
   }
@@ -37,31 +38,45 @@
 
 .container {
   @include mixins.center;
-  display: flex;
-  align-items: center;
+  @include mixins.flex-column;
+  position: relative;
+
   margin-top: 1.5rem;
   margin-bottom: 1rem;
-  gap: 1rem;
-  height: 44px;
-  @include mixins.tablet() {
+  gap: 4rem;
+  @include mixins.tabletL() {
+    max-height: 44px;
+
     margin-bottom: 1.5rem;
+    gap: 1rem;
+    @include mixins.flex-row;
+    align-items: center;
+  }
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > svg {
+    @include mixins.tabletL {
+      display: none;
+    }
   }
 }
 
 .loginContainer {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
   font-weight: variable.$fw-med;
+  width: 100%;
 }
 
-.separator,
-.signupButton {
+.userIconWrapper {
   display: none;
-  width: auto;
-  flex-shrink: 0;
-  flex-basis: 0;
-
-  @include mixins.tablet {
-    display: inline;
+  @include mixins.tabletL() {
+    display: inline-block;
   }
 }

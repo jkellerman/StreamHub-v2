@@ -3,7 +3,7 @@
 
 .container {
   flex-grow: 1;
-  position: relative;
+  position: absolute;
   z-index: variable.$z-index-5;
   border: 1px solid #4f5c7c;
   border-radius: variable.$border-radius-s;
@@ -11,19 +11,16 @@
   transition: height 160ms ease 0s, box-shadow 150ms ease-in;
   align-self: baseline;
   overflow: hidden;
-  max-width: 1200px;
-}
+  width: 100%;
+  top: 2.5rem;
 
-.container.active {
-  position: absolute;
-  @include mixins.center;
-
-  @include mixins.tablet {
-    position: unset;
-    width: unset;
-    margin: unset;
+  @include mixins.tabletL {
+    max-width: 700px;
+    top: unset;
+    position: relative;
   }
 }
+
 .container:hover,
 .container:focus-within {
   box-shadow: var(--tertiary-light) 0px 0px 0px 2px;
