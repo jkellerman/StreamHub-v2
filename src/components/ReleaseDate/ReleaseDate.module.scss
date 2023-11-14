@@ -3,12 +3,12 @@
 
 .date {
   margin-right: 0.5rem;
-  background: variable.$primary-dark;
+  background: var(--primary-dark);
   padding: 0.25em 0.75em;
-  border: 1px solid variable.$primary-dark;
+  border: 1px solid var(--primary-dark);
   border-radius: variable.$border-radius-l;
   white-space: nowrap;
-  color: variable.$primary;
+  color: var(--primary-light);
   font-size: variable.$body-m;
   font-weight: variable.$fw-med;
 }

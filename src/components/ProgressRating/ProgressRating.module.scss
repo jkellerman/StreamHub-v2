@@ -13,7 +13,7 @@
 }
 
 .totalValue {
-  fill: variable.$slate;
+  fill: var(--tertiary-light);
   font-size: variable.$body-xs;
   font-weight: variable.$fw-bold;
   font-family: "Wix Madefor Display", sans-serif;

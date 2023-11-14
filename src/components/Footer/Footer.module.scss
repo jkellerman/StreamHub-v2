@@ -3,7 +3,7 @@
 
 .footer {
   position: relative;
-  border-top: 2px solid variable.$secondary-light;
+  border-top: 2px solid var(--secondary);
   padding-bottom: 2rem;
   @include mixins.tablet {
     padding: 2rem 0 4rem;
@@ -13,11 +13,11 @@
 .btt {
   position: absolute;
   right: 0;
-  top: -53px;
+  top: -54px;
   display: flex;
   align-items: center;
-  background: linear-gradient(90deg, variable.$primary-gradient);
-  color: variable.$secondary;
+  background-color: var(--primary-light);
+  color: var(--secondary-dark);
   padding: 1rem 2rem;
   text-transform: uppercase;
   border: none;
@@ -26,17 +26,14 @@
   font-family: inherit;
   font-weight: variable.$fw-bold;
   letter-spacing: variable.$ls;
-  transition: 0.5s;
+  transition: variable.$transition;
 
   &:hover {
-    background-color: variable.$quaternary-light;
+    background: var(--primary);
   }
   & > span {
     display: none;
     margin-right: 0.5rem;
-    @include mixins.tablet {
-      display: block;
-    }
   }
 }
 
@@ -62,7 +59,7 @@
 
 .groupTitle {
   font-size: variable.$body-m;
-  color: variable.$slate;
+  color: var(--tertiary-light);
   text-transform: uppercase;
   letter-spacing: variable.$ls;
   font-weight: variable.$fw-med;
@@ -96,7 +93,7 @@
   line-height: 1.5rem;
   margin-bottom: 1rem;
   font-size: variable.$body-l-m;
-  color: variable.$slate;
+  color: var(--tertiary-light);
 
   @include mixins.tablet {
     font-size: variable.$body-l;
@@ -115,7 +112,7 @@
 
 .disclaimer {
   font-size: variable.$body-m-m;
-  color: variable.$slate;
+  color: var(--tertiary-light);
   @include mixins.tablet {
     font-size: variable.$body-m;
   }

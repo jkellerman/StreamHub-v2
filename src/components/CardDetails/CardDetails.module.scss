@@ -6,7 +6,7 @@
   font-weight: variable.$fw-light;
   margin: 0.25rem 0 0;
   width: 110px;
-  color: variable.$slate;
+  color: var(--tertiary-light);
   @include mixins.tablet() {
     font-size: variable.$body-m;
     left: 2rem;

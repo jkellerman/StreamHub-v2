@@ -6,7 +6,7 @@
   margin-bottom: 0.75rem;
 
   @include mixins.tablet {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -17,7 +17,7 @@
   margin-left: -0.75rem;
 
   @include mixins.laptop {
-    margin-left: 6.5rem;
+    margin-left: 8.75rem;
   }
 
   &::-webkit-scrollbar,
@@ -42,13 +42,8 @@
 
 @media (hover: hover) {
   .navListItem:hover {
-    background-color: variable.$tertiary-light;
+    background-color: var(--tertiary);
     transition: variable.$transition;
-    color: variable.$primary;
+    color: var(--primary-light);
   }
-}
-
-.separator {
-  margin: 0 0.5rem 0 0.5rem;
-  font-size: 18px;
 }

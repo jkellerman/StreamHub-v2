@@ -3,6 +3,7 @@
 
 .main {
   padding-bottom: 4rem;
+  background: linear-gradient(90deg, var(--quaternary-gradient));
 }
 
 .container,
@@ -24,7 +25,7 @@
   width: 100%;
   @include mixins.flex-column;
   gap: 2.5rem;
-  background: linear-gradient(90deg, variable.$secondary-gradient);
+  background-color: var(--tertiary-dark);
   border-radius: variable.$border-radius-s;
   padding: 2rem;
   @include mixins.tabletL {

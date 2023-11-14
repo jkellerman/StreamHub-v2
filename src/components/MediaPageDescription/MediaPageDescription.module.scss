@@ -4,7 +4,7 @@
 .descriptionWrapper {
   @include mixins.center;
   margin-bottom: 2rem;
-  color: variable.$slate;
+  color: var(--tertiary-light);
 }
 
 .description {

@@ -2,7 +2,7 @@
 @use "@/styles/mixins" as mixins;
 
 .logo {
-  color: variable.$primary;
+  color: var(--primary-light);
   font-size: variable.$heading-l-m;
   font-weight: variable.$fw-extraBold;
   font-family: "Wix Madefor Display", sans-serif;

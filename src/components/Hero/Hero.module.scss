@@ -55,7 +55,7 @@
 }
 
 .description {
-  color: variable.$slate;
+  color: var(--tertiary-light);
   line-height: 1.5rem;
   font-size: variable.$body-l-m;
   margin-bottom: 2rem;
@@ -71,7 +71,7 @@
   margin: 2rem 0;
   padding: 0.75em 1.25em;
   background-color: transparent;
-  border: 1px solid variable.$primary;
+  border: 1px solid var(--primary-light);
   color: white;
   border-radius: 5px;
   font-family: inherit;
@@ -83,7 +83,7 @@
 }
 
 .hr {
-  border: 2px solid variable.$primary-dark;
+  border: 2px solid var(--primary-dark);
   margin-bottom: 2rem;
 }
 

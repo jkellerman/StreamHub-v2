@@ -3,10 +3,10 @@
 
 @mixin header-styles {
   @include mixins.flex-column;
-  background-color: variable.$secondary;
+  background-color: var(--secondary-dark);
   position: fixed;
   z-index: variable.$z-index-5;
-  border-bottom: 0px solid variable.$secondary;
+  border-bottom: 0px solid var(--secondary-dark);
 }
 
 .header {
@@ -14,16 +14,16 @@
   @include header-styles();
   top: 0px;
   transition: border-bottom 250ms ease-in-out;
-  border-bottom: 0px solid variable.$secondary;
+  border-bottom: 0px solid var(--secondary-dark);
 }
 
 .hidden {
   @include mixins.flex-column;
   @include header-styles();
   transition: top 150ms ease-in-out 0.2s;
-  top: -116px;
+  top: -130px;
   @include mixins.tablet {
-    top: -136px;
+    top: -146px;
   }
 }
 
@@ -31,7 +31,7 @@
   @include mixins.flex-column;
   @include header-styles();
   top: 0px;
-  border-bottom: 3px solid variable.$primary-dark;
+  border-bottom: 3px solid var(--primary-dark);
   transition: top 250ms ease-in-out, border-bottom 250ms ease-in-out;
 }
 

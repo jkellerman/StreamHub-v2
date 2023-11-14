@@ -3,7 +3,7 @@
 
 .container {
   margin-bottom: 2rem;
-  color: variable.$slate;
+  color: var(--tertiary-light);
 }
 
 .overview {
@@ -35,7 +35,7 @@
 
 .readMoreToggle {
   background: transparent;
-  color: variable.$primary;
+  color: var(--primary-light);
   border: none;
   text-transform: capitalize;
   font-size: variable.$body-l-m;

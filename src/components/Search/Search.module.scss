@@ -7,7 +7,7 @@
   z-index: variable.$z-index-5;
   border: 1px solid #4f5c7c;
   border-radius: variable.$border-radius-s;
-  background: linear-gradient(90deg, variable.$secondary-gradient);
+  background: linear-gradient(90deg, var(--secondary-gradient));
   transition: height 160ms ease 0s, box-shadow 150ms ease-in;
   align-self: baseline;
   overflow: hidden;
@@ -26,7 +26,7 @@
 }
 .container:hover,
 .container:focus-within {
-  box-shadow: variable.$slate 0px 0px 0px 2px;
+  box-shadow: var(--tertiary-light) 0px 0px 0px 2px;
 }
 
 .formWrapper {
@@ -86,7 +86,7 @@
   display: block;
   content: "";
   height: 1px;
-  background-color: variable.$slate;
+  background-color: var(--tertiary-light);
   margin-top: 0.25rem;
 }
 
@@ -125,7 +125,7 @@
   margin: 0.25rem 1rem 0.5rem;
   height: 1px;
   width: 100%;
-  background-color: variable.$slate;
+  background-color: var(--tertiary-light);
 }
 
 .form {
@@ -139,7 +139,7 @@
 .input {
   font-size: variable.$body-l;
   font-family: inherit;
-  color: variable.$primary-text;
+  color: var(--quinary);
   font-weight: variable.$fw-light;
   border: none;
   background: transparent;
@@ -154,7 +154,7 @@
 }
 
 .input::placeholder {
-  color: variable.$primary-text;
+  color: var(--quinary);
   text-overflow: ellipsis;
 }
 
@@ -185,7 +185,7 @@
 
 .noImage {
   @extend .posterContainer;
-  background: linear-gradient(270deg, variable.$tertiary-gradient);
+  background: linear-gradient(270deg, var(--tertiary-gradient));
 }
 
 .tv {

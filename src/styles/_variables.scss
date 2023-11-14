@@ -1,23 +1,3 @@
-// Themes
-
-$primary: #5eead4;
-$primary-light: #1ca586;
-$primary-med: #1c4b6f;
-$primary-dark: #152b39;
-$secondary: #10141e;
-$secondary-light: #112240;
-$secondary-med-light: #112c40;
-$tertiary: #5a6a90;
-$tertiary-light: #778bbc;
-$quaternary: #4200dd;
-$quaternary-light: #5100dd;
-$primary-text: #ffffff;
-$secondary-text: #ffffff;
-$slate: #94a4b8;
-$primary-gradient: $primary-med, $primary;
-$secondary-gradient: $secondary-med-light, $primary-med;
-$tertiary-gradient: $primary-light, $tertiary;
-
 // Font sizes
 
 $base-font-size: 16px;
@@ -52,7 +32,7 @@ $fw-extraBold: 800;
 $border-radius-xl: 24px;
 $border-radius-l: 20px;
 $border-radius-s: 8px;
-$input-active: 1px solid $tertiary;
+$input-active: 1px solid var(--tertiary-dark);
 
 // Hover states
 

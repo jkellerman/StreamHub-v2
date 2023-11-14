@@ -1,5 +1,25 @@
 @use "variables" as variable;
 
+:root {
+  --primary: #02aab0;
+  --primary-light: #00cdac;
+  --primary-med: #1c4b6f;
+  --primary-dark: #152b39;
+  --secondary: #112240;
+  --secondary-light: #112c40;
+  --secondary-dark: #10141e;
+  --tertiary: #778bbc;
+  --tertiary-light: #94a4b8;
+  --tertiary-dark: #5a6a90;
+  --quaternary: #4200dd;
+  --quaternary-light: #5100dd;
+  --quinary: #fff;
+  --primary-gradient: var(--primary), var(--primary-light);
+  --secondary-gradient: var(--secondary-light), var(--primary-med);
+  --tertiary-gradient: var(--primary-light), var(--tertiary);
+  --quaternary-gradient: #2b5876, #4e4376;
+}
+
 @font-face {
   font-display: swap;
   font-family: Outfit;
@@ -62,8 +82,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background: variable.$secondary;
-  color: variable.$primary-text;
+  background: var(--secondary-dark);
+  color: var(--quinary);
   font-weight: variable.$fw-light;
 }
 
@@ -91,7 +111,7 @@ h1 {
 }
 
 hr {
-  border: 0.5px solid variable.$secondary;
+  border: 0.5px solid var(--secondary-dark);
   margin: 0 0 2rem;
 }
 
@@ -108,7 +128,7 @@ select {
 }
 
 #nprogress .bar {
-  background: variable.$primary;
+  background: var(--primary-light);
   position: fixed;
   z-index: variable.$z-index-5;
   top: 0;

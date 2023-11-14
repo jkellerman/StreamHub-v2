@@ -4,6 +4,6 @@
 .paragraph {
   max-width: 475px;
   line-height: 1.75rem;
-  color: variable.$slate;
+  color: var(--tertiary-light);
   margin-bottom: 1rem;
 }

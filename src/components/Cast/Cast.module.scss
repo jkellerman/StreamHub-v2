@@ -13,7 +13,7 @@
 
 .name {
   white-space: nowrap;
-  color: variable.$slate;
+  color: var(--tertiary-light);
 }
 
 .detailItem {
