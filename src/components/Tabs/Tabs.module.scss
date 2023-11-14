@@ -20,7 +20,7 @@
   cursor: pointer;
   background: none;
   border: none;
-  color: variable.$primary-text;
+  color: var(--quinary);
   @include mixins.tablet() {
     font-size: variable.$body-l;
     padding-bottom: 0.5rem;
@@ -28,18 +28,18 @@
 }
 
 .trigger:hover {
-  color: variable.$primary;
+  color: var(--primary-light);
   transition: variable.$transition;
 }
 
 .trigger.active {
-  color: variable.$primary;
+  color: var(--primary-light);
   transition: variable.$transition;
 }
 
 .trigger::after {
   content: "";
-  background: variable.$primary;
+  background: var(--primary-light);
   opacity: 0;
   width: 100%;
   position: absolute;
@@ -63,7 +63,7 @@
 
 .tabs {
   display: flex;
-  border-bottom: 1px solid variable.$slate;
+  border-bottom: 1px solid var(--tertiary-light);
   padding-bottom: 1rem;
   gap: 1.5rem;
   @include mixins.tablet() {
@@ -116,7 +116,7 @@
   gap: 0.5rem;
   font-size: variable.$body-m;
   align-items: center;
-  background-color: variable.$primary-dark;
+  background-color: var(--primary-dark);
   padding: 0.5em 0.5em;
   border-radius: variable.$border-radius-s;
   min-width: 100%;
@@ -129,7 +129,7 @@
 }
 
 .subscription {
-  color: variable.$slate;
+  color: var(--tertiary-light);
 }
 
 .iconWrapper {
@@ -154,7 +154,7 @@
 
 .placeholder {
   font-size: variable.$body-m;
-  color: variable.$slate;
+  color: var(--tertiary-light);
 }
 
 @keyframes fade {
