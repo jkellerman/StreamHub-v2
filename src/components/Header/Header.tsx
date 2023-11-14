@@ -43,9 +43,10 @@ const Header: React.FC = () => {
           <MainLogo />
           <Icon icon="user" />
         </div>
+        <Nav />
+
         <Search />
         <div className={styles.loginContainer}>
-          <Nav />
           <div className={styles.userIconWrapper}>
             <Icon icon="user" />
           </div>

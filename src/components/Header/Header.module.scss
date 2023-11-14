@@ -43,7 +43,6 @@
 
   margin-top: 1.5rem;
   margin-bottom: 1rem;
-  gap: 4rem;
   @include mixins.tabletL() {
     max-height: 44px;
 
@@ -58,11 +57,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 4rem;
 
   & > svg {
     @include mixins.tabletL {
       display: none;
     }
+  }
+
+  @include mixins.tabletL {
+    margin-bottom: unset;
   }
 }
 
@@ -71,7 +75,10 @@
   align-items: center;
   gap: 0.5rem;
   font-weight: variable.$fw-med;
-  width: 100%;
+  margin-left: 1rem;
+  @include mixins.tabletL() {
+    justify-content: end;
+  }
 }
 
 .userIconWrapper {

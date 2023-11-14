@@ -42,7 +42,7 @@ const Search: React.FC = () => {
   const containerRef = useClickOutside<HTMLDivElement>(() => handleIsSearchBoxActive());
   const [searchIsActive, setSearchIsActive] = useState(false);
 
-  // Handle when the search box is deactivated
+  // Handle when the search input is active
   const handleIsSearchBoxActive = () => {
     setSearchQuery("");
     setSearchIsActive(false);
@@ -302,7 +302,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         type="text"
         name="search"
         aria-label="Search"
-        placeholder={isMobile ? "Search..." : "Where can I watch..."}
+        placeholder={isMobile ? "Search..." : "Search for movies or TV series..."}
         className={styles.input}
         value={searchQuery}
         onChange={handleInputChange}

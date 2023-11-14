@@ -13,6 +13,7 @@
 
   @include mixins.tabletL {
     margin-left: unset;
+    justify-content: end;
   }
 
   &::-webkit-scrollbar,
