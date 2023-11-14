@@ -33,7 +33,7 @@ const footerData = [
   },
 ];
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -42,8 +42,7 @@ const Footer = () => {
   };
   return (
     <footer className={styles.footer}>
-      <button className={styles.btt} onClick={scrollToTop}>
-        <span>Back to top</span>
+      <button className={styles.btt} onClick={scrollToTop} aria-label="back-to-top">
         <Icon icon="arrowUp" />
       </button>
       <div className={styles.footerContainer}>
@@ -59,7 +58,7 @@ const Footer = () => {
 
 export default Footer;
 
-const Nav = () => {
+const Nav: React.FC = () => {
   return (
     <div className={styles.navContainer}>
       {footerData.map((group, index) => (
@@ -80,7 +79,7 @@ const Nav = () => {
   );
 };
 
-const Attribution = () => {
+const Attribution: React.FC = () => {
   return (
     <div className={styles.attributionContainer}>
       <div className={styles.groupTitle}>TMDB</div>
@@ -96,7 +95,7 @@ const Attribution = () => {
   );
 };
 
-const FooterBottom = () => {
+const FooterBottom: React.FC = () => {
   return (
     <div className={styles.footerBottomContainer}>
       <MainLogo />
