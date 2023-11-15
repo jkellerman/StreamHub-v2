@@ -1,0 +1,16 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.section {
+  @include mixins.flex-center;
+  flex-direction: column;
+  background: linear-gradient(90deg, var(--quaternary-gradient));
+  height: 300px;
+  width: 100vw;
+  gap: 1rem;
+  text-align: center;
+}
+
+.headingWrapper {
+  max-width: 600px;
+}

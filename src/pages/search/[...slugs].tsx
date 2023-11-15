@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
+import CTA from "@/components/CallToActionSection/CallToActionSection";
 import CardList from "@/components/CardList/CardList";
 import styles from "@/components/CardList/CardList.module.scss";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
@@ -40,6 +41,7 @@ const Search = () => {
             hasNextPage={hasNextPage}
           />
         </section>
+        <CTA />
       </main>
     </>
   );

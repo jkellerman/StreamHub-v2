@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
 
+import CTA from "@/components/CallToActionSection/CallToActionSection";
 import Carousel from "@/components/Carousel/Carousel";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
 import Hero from "@/components/Hero/Hero";
@@ -53,6 +54,7 @@ const Home: React.FC<HomeProps> = () => {
         <Carousel endpoint="/api/media/movie/upcoming" />
         <CategoryHeading type="movies" category="Hidden gems of the past year" />
         <Carousel endpoint="/api/year/pastYear/movie/10" />
+        <CTA />
       </main>
     </>
   );

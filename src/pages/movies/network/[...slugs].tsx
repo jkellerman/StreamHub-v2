@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import QueryString from "qs";
 
+import CTA from "@/components/CallToActionSection/CallToActionSection";
 import CardList from "@/components/CardList/CardList";
 import Dropdown, {
   DropdownsContainer,
@@ -74,14 +75,17 @@ const GenreMovies: React.FC<GenreMoviesProps> = ({ genreList }) => {
         </DropdownsOuterContainer>
 
         <Description type="movie" />
-        <CardList
-          cards={cards}
-          isLoading={isLoading}
-          isError={isError}
-          fetchNextPage={fetchNextPage}
-          isFetchingNextPage={isFetchingNextPage}
-          hasNextPage={hasNextPage}
-        />
+        <section>
+          <CardList
+            cards={cards}
+            isLoading={isLoading}
+            isError={isError}
+            fetchNextPage={fetchNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+            hasNextPage={hasNextPage}
+          />
+        </section>
+        <CTA />
       </main>
     </>
   );
