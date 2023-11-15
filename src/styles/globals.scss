@@ -1,23 +1,22 @@
 @use "variables" as variable;
 
 :root {
-  --primary: #02aab0;
-  --primary-light: #00cdac;
-  --primary-med: #1c4b6f;
-  --primary-dark: #152b39;
-  --secondary: #112240;
-  --secondary-light: #112c40;
-  --secondary-dark: #10141e;
-  --tertiary: #778bbc;
-  --tertiary-light: #94a4b8;
-  --tertiary-dark: #5a6a90;
-  --quaternary: #4200dd;
-  --quaternary-light: #5100dd;
-  --quinary: #fff;
+  --primary: hsl(182, 98%, 35%);
+  --primary-light: hsl(170, 100%, 40%);
+  --primary-dark: hsl(203, 46%, 15%);
+  --secondary: hsl(218, 58%, 16%);
+  --secondary-light: hsl(206, 58%, 16%);
+  --secondary-dark: hsl(223, 30%, 9%);
+  --tertiary: hsl(223, 34%, 60%);
+  --tertiary-light: hsl(213, 20%, 65%);
+  --tertiary-dark: hsl(222, 23%, 46%);
+  --quaternary: hsl(258, 100%, 43%);
+  --quaternary-light: hsl(262, 100%, 43%);
+  --quinary: hsl(0, 0%, 100%);
   --primary-gradient: var(--primary), var(--primary-light);
-  --secondary-gradient: var(--secondary-light), var(--primary-med);
+  --secondary-gradient: hsl(219, 41%, 13%), hsl(212, 40%, 24%);
   --tertiary-gradient: var(--primary-light), var(--tertiary);
-  --quaternary-gradient: #2b5876, #4e4376;
+  --quaternary-gradient: hsl(204, 47%, 32%), hsl(253, 28%, 36%);
 }
 
 @font-face {
