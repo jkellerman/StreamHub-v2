@@ -28,7 +28,7 @@
 }
 
 .overview {
-  font-size: variable.$body-s;
+  font-size: variable.$body-m;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -65,12 +65,18 @@
     display: block;
     max-width: unset;
   }
+
+  & > h3 {
+    margin-bottom: 0.5rem;
+  }
 }
 
 .detailsWrapper {
   display: none;
   align-items: center;
   margin-bottom: 0.5rem;
+  font-weight: variable.$fw-med;
+  gap: 1rem;
   @include mixins.tablet {
     @include mixins.flex-row;
   }

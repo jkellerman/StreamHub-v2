@@ -18,6 +18,14 @@
   @include mixins.tablet {
     padding-top: 6rem;
   }
+
+  & > h1 {
+    @include mixins.removeHeadingEllipses;
+  }
+
+  & > p {
+    margin-top: 1rem;
+  }
 }
 
 .panelContainer {
@@ -30,5 +38,10 @@
   padding: 2rem;
   @include mixins.tabletL {
     @include mixins.flex-row;
+    padding: 2.5rem;
+  }
+
+  & .panelInner p {
+    color: var(--quinary);
   }
 }

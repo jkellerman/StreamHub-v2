@@ -21,6 +21,26 @@
   @include mixins.tablet {
     font-size: variable.$heading-l;
   }
+
+  & > h2 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  @include mixins.tabletL {
+    flex-wrap: nowrap;
+  }
+}
+
+.innerContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  @include mixins.tabletL {
+    flex-wrap: nowrap;
+  }
 }
 
 .span {
@@ -28,111 +48,37 @@
   font-weight: inherit;
 }
 
-.list {
-  @include mixins.center;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  background: var(--primary-dark);
-  z-index: variable.$z-index-5;
-  max-height: 320px;
-  width: 100%;
-  border-radius: variable.$border-radius-s;
-  top: 7rem;
-  left: 0;
-  right: 0;
-  justify-content: unset;
-  overflow-y: scroll;
-  padding: 1rem;
-
-  @include mixins.tablet {
-    top: 4rem;
-    right: unset;
-    max-width: 600px;
-    flex-wrap: wrap;
-    padding: 2rem;
-    overflow-y: unset;
-  }
-}
-
-.list:hover > .listItemCurrent {
-  background: transparent;
-  border-radius: variable.$border-radius-s;
-}
-
-.listItem,
-.listItemCurrent {
-  list-style: none;
-  padding: 1rem 0.5rem;
-  font-size: variable.$body-l;
-  color: var(--primary-light);
-  transition: variable.$transition;
-
-  @include mixins.tablet() {
-    padding: 0.5rem 0;
-  }
-}
-
-.listItemCurrent {
-  position: relative;
-  background: var(--tertiary);
-  border-radius: variable.$border-radius-s;
-}
-
-.listItemCurrent::before {
-  content: "";
-  background: var(--quinary);
-  width: 0.5px;
-  height: 10px;
-  border: 1px solid var(--quinary);
-  border-top-right-radius: variable.$border-radius-s;
-  border-bottom-right-radius: variable.$border-radius-s;
-  position: absolute;
-  display: none;
-  @include mixins.tablet() {
-    display: inline-block;
-    left: 0.75rem;
-    top: 0.75rem;
-  }
-}
-
-.link {
-  padding-left: 1.5rem;
-  display: block;
-  width: 100%;
-  height: 100%;
-  @include mixins.tablet() {
-    padding-left: 1.5rem;
-  }
-}
-
-@media (hover: hover) {
-  .listItem:hover,
-  .listItemCurrent:hover {
-    background: var(--tertiary-dark);
-    transition: variable.$transition;
-    border-radius: variable.$border-radius-s;
-  }
-}
-
-.trigger {
+%trigger-base {
   display: flex;
   align-items: center;
-  color: var(--primary-light);
   border-radius: variable.$border-radius-s;
-  border: 1px solid var(--primary-dark);
   text-transform: capitalize;
   font-size: variable.$heading-l-m;
   font-weight: variable.$fw-extraBold;
   cursor: pointer;
   transition: variable.$transition;
-  background-color: var(--primary-dark);
-  padding: 0.5em 1em 0.5em 0.75em;
+  padding: 0.25em 1em 0.25em 0.75em;
   white-space: nowrap;
   letter-spacing: 0.05rem;
   @include mixins.tablet {
-    font-size: variable.$heading-s;
+    font-size: variable.$heading-xs;
   }
+}
+
+.trigger {
+  @extend %trigger-base;
+}
+
+.primary {
+  color: var(--primary-light);
+  background-color: var(--primary-dark);
+  border: 1px solid var(--primary-dark);
+}
+
+.secondary {
+  color: var(--quinary);
+  background-color: var(--tertiary-dark);
+  border: 1px solid var(--tertiary-dark);
 }
 
 .icon > svg {
@@ -168,4 +114,145 @@
   .trigger:hover {
     background: var(--tertiary);
   }
+}
+
+%list-base {
+  @include mixins.center;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: variable.$z-index-5;
+  max-height: 320px;
+  width: 100%;
+  border-radius: variable.$border-radius-s;
+  top: 7rem;
+  left: 0;
+  right: 0;
+  justify-content: unset;
+  overflow-y: scroll;
+  padding: 1rem;
+
+  @include mixins.tablet {
+    top: 4rem;
+    right: unset;
+    max-width: 600px;
+    flex-wrap: wrap;
+    padding: 2rem;
+  }
+}
+
+.list {
+  @extend %list-base;
+}
+
+.list:hover > .listItemCurrent {
+  background: transparent;
+  border-radius: variable.$border-radius-s;
+}
+
+.primary-list {
+  background: var(--primary-dark);
+  .listItem,
+  .listItemCurrent {
+    list-style: none;
+    padding: 1rem 0.5rem;
+    font-size: variable.$body-l;
+    color: var(--primary-light);
+    transition: variable.$transition;
+    border-radius: variable.$border-radius-s;
+
+    @include mixins.tablet() {
+      padding: 0.5rem 0;
+    }
+  }
+
+  .listItemCurrent {
+    position: relative;
+    background: var(--tertiary);
+    border-radius: variable.$border-radius-s;
+  }
+
+  .listItemCurrent::before {
+    content: "";
+    background: var(--quinary);
+    width: 0.5px;
+    height: 10px;
+    border: 1px solid var(--quinary);
+    border-top-right-radius: variable.$border-radius-s;
+    border-bottom-right-radius: variable.$border-radius-s;
+    position: absolute;
+    display: none;
+    @include mixins.tablet() {
+      display: inline-block;
+      left: 0.75rem;
+      top: 0.75rem;
+    }
+  }
+  @media (hover: hover) {
+    .listItem:hover,
+    .listItemCurrent:hover {
+      background: var(--tertiary);
+      transition: variable.$transition;
+      border-radius: variable.$border-radius-s;
+    }
+  }
+}
+
+.secondary-list {
+  background-color: var(--tertiary);
+
+  .listItem,
+  .listItemCurrent {
+    list-style: none;
+    padding: 1rem 0.5rem;
+    font-size: variable.$body-l;
+    color: var(--quinary);
+    transition: variable.$transition;
+    border-radius: variable.$border-radius-s;
+
+    @include mixins.tablet() {
+      padding: 0.5rem 0;
+    }
+  }
+
+  .listItemCurrent {
+    position: relative;
+    background: linear-gradient(270deg, var(--quaternary-gradient));
+    border-radius: variable.$border-radius-s;
+  }
+
+  .listItemCurrent::before {
+    content: "";
+    background: var(--quinary);
+    width: 0.5px;
+    height: 10px;
+    border: 1px solid var(--quinary);
+    border-top-right-radius: variable.$border-radius-s;
+    border-bottom-right-radius: variable.$border-radius-s;
+    position: absolute;
+    display: none;
+    @include mixins.tablet() {
+      display: inline-block;
+      left: 0.75rem;
+      top: 0.75rem;
+    }
+  }
+
+  @media (hover: hover) {
+    .listItem:hover,
+    .listItemCurrent:hover {
+      background: linear-gradient(270deg, var(--quaternary-gradient));
+      transition: variable.$transition;
+      border-radius: variable.$border-radius-s;
+    }
+  }
+}
+
+.link {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-transform: capitalize;
 }

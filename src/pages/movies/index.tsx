@@ -8,6 +8,7 @@ import CTA from "@/components/CallToActionSection/CallToActionSection";
 import CardList from "@/components/CardList/CardList";
 import Dropdown, {
   DropdownsContainer,
+  DropdownsInnerContainer,
   DropdownsOuterContainer,
 } from "@/components/Dropdown/Dropdown";
 import styles from "@/components/Dropdown/Dropdown.module.scss";
@@ -51,20 +52,24 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
       <main>
         <DropdownsOuterContainer>
           <DropdownsContainer>
-            <Dropdown
-              type={pageType}
-              selected_genre={genre}
-              genre_list={genreList}
-              variant="genre"
-            />
-            <Dropdown type={pageType} media={pageType} variant="media" />
-            <span className={styles.span}>On</span>
-            <Dropdown
-              type={pageType}
-              selected_network={network}
-              network_list={movieNetworkList}
-              variant="service"
-            />
+            <DropdownsInnerContainer>
+              <Dropdown
+                type={pageType}
+                selected_genre={genre}
+                genre_list={genreList}
+                variant="genre"
+                style="primary"
+              />
+              <Dropdown type={pageType} media={pageType} variant="media" style="primary" />
+              <span className={styles.span}>On</span>
+              <Dropdown
+                type={pageType}
+                selected_network={network}
+                network_list={movieNetworkList}
+                variant="service"
+                style="primary"
+              />
+            </DropdownsInnerContainer>
           </DropdownsContainer>
         </DropdownsOuterContainer>
 

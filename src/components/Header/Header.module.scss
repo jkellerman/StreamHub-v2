@@ -22,7 +22,7 @@
   @include mixins.flex-column;
   @include header-styles();
   transition: top 150ms ease-in-out 0.2s;
-  top: -170px;
+  top: -194px;
   @include mixins.tablet {
     top: -146px;
   }
@@ -42,10 +42,8 @@
   position: relative;
 
   margin-top: 1.5rem;
-  margin-bottom: 1rem;
   @include mixins.tabletL() {
     max-height: 44px;
-
     margin-bottom: 1.5rem;
     gap: 1rem;
     @include mixins.flex-row;

@@ -7,6 +7,7 @@ import CTA from "@/components/CallToActionSection/CallToActionSection";
 import CardList from "@/components/CardList/CardList";
 import Dropdown, {
   DropdownsContainer,
+  DropdownsInnerContainer,
   DropdownsOuterContainer,
 } from "@/components/Dropdown/Dropdown";
 import styles from "@/components/Dropdown/Dropdown.module.scss";
@@ -58,22 +59,26 @@ const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
       <main>
         <DropdownsOuterContainer>
           <DropdownsContainer>
-            <Dropdown
-              type="series"
-              selected_genre={genre}
-              genre_list={genreList}
-              variant="genre"
-              selected_network={network}
-            />
-            <Dropdown type="series" media="series" variant="media" />
-            <span className={styles.span}>On</span>
-            <Dropdown
-              type="series"
-              selected_network={network}
-              network_list={seriesNetworkList}
-              selected_genre={genre}
-              variant="service"
-            />
+            <DropdownsInnerContainer>
+              <Dropdown
+                type="series"
+                selected_genre={genre}
+                genre_list={genreList}
+                variant="genre"
+                selected_network={network}
+                style="primary"
+              />
+              <Dropdown type="series" media="series" variant="media" style="primary" />
+              <span className={styles.span}>On</span>
+              <Dropdown
+                type="series"
+                selected_network={network}
+                network_list={seriesNetworkList}
+                selected_genre={genre}
+                variant="service"
+                style="primary"
+              />
+            </DropdownsInnerContainer>
           </DropdownsContainer>
         </DropdownsOuterContainer>
 

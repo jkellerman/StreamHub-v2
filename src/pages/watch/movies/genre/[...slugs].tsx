@@ -6,10 +6,13 @@ import React from "react";
 
 import Button from "@/components/Buttons/Buttons";
 import Content from "@/components/Content/Content";
-import Dropdown, { DropdownsContainer } from "@/components/Dropdown/Dropdown";
+import Dropdown, {
+  DropdownsContainer,
+  DropdownsInnerContainer,
+} from "@/components/Dropdown/Dropdown";
 import Heading from "@/components/Heading/Heading";
 import MediaGenerator from "@/components/MediaGenerator/MediaGenerator";
-import { Panel } from "@/components/Panel/Panel";
+import { Panel, PanelInner } from "@/components/Panel/Panel";
 import styles from "@/components/Panel/Panel.module.scss";
 import {
   DEFAULT_WATCH_GENRE,
@@ -60,33 +63,42 @@ const Genre: React.FC<WatchProps> = ({ genreList }) => {
 
       <main className={styles.main}>
         <div className={styles.container}>
-          <Heading as="h1" size="m">
+          <Heading as="h1" size="xl">
             What to watch tonight?
           </Heading>
-          <Content>Select your prefences:</Content>
+          <Content>
+            Cut through streaming indecision! Use the generator below to simplify choices, so you
+            can dive into content faster.
+          </Content>
 
           <DropdownsContainer>
-            <Dropdown
-              watch
-              type="movies"
-              selected_genre={genre}
-              genre_list={genreList}
-              variant="genre"
-              selected_network={network}
-            />
-            <Dropdown watch type="movies" media="movies" variant="media" />
-            <span>On</span>
-            <Dropdown
-              watch
-              type="movies"
-              selected_network={network}
-              network_list={watchMovieNetworkList}
-              selected_genre={genre}
-              variant="service"
-            />
+            <Heading as="h2" size="s">
+              Select your preferences:
+            </Heading>
+            <DropdownsInnerContainer>
+              <Dropdown watch type="movies" media="movies" variant="media" style="secondary" />
+              <Dropdown
+                watch
+                type="movies"
+                selected_genre={genre}
+                genre_list={genreList}
+                variant="genre"
+                selected_network={network}
+                style="secondary"
+              />
+              <Dropdown
+                watch
+                type="movies"
+                selected_network={network}
+                network_list={watchMovieNetworkList}
+                selected_genre={genre}
+                variant="service"
+                style="secondary"
+              />
+            </DropdownsInnerContainer>
           </DropdownsContainer>
           <Panel>
-            <div>
+            <PanelInner>
               <Heading as="h2" size="m">
                 Suggest a movie
               </Heading>
@@ -98,7 +110,7 @@ const Genre: React.FC<WatchProps> = ({ genreList }) => {
               <Button variant="primary" isFull onClick={fetchCards} disabled={isLoading}>
                 {data ? "SPIN AGAIN" : "SPIN"}
               </Button>
-            </div>
+            </PanelInner>
 
             <MediaGenerator data={data} isLoading={isLoading} isError={isError} type="movie" />
           </Panel>

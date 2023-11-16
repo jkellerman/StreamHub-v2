@@ -54,3 +54,11 @@
     @content;
   }
 }
+
+@mixin removeHeadingEllipses {
+  overflow: unset;
+  display: unset;
+  -webkit-box-orient: unset;
+  -webkit-line-clamp: unset;
+  text-overflow: unset;
+}

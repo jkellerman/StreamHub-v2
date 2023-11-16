@@ -4,7 +4,7 @@ import styles from "./Heading.module.scss";
 
 interface HeadingProps extends Types.Children {
   as: string;
-  size: "xs" | "sm" | "m" | "lg" | "xl";
+  size: "xs" | "s" | "m" | "lg" | "xl";
 }
 
 const Heading: React.FC<HeadingProps> = ({ as, children, size = "lg" }) => {

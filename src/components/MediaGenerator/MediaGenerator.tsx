@@ -55,7 +55,7 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({ data, isLoading, isError
           <div className={styles.posterWrapper}>
             <Poster poster={data.poster_path} title={type === "movie" ? data.title : data.name} />
             <div className={styles.posterWrapperDetails}>
-              <Heading as="h3" size="sm">
+              <Heading as="h3" size="s">
                 {type === "movie" ? data.title : data.name}
               </Heading>
 
@@ -67,7 +67,7 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({ data, isLoading, isError
           </div>
           <div className={styles.results}>
             <div className={styles.headingWrapper}>
-              <Heading as="h3" size="sm">
+              <Heading as="h3" size="s">
                 {type === "movie" ? data.title : data.name}
               </Heading>
             </div>

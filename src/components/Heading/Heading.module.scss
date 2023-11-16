@@ -15,7 +15,7 @@
 .xs {
   font-size: variable.$heading-xs;
 }
-.sm {
+.s {
   font-size: variable.$heading-s-m;
 
   @include mixins.tablet {
@@ -23,11 +23,22 @@
   }
 }
 .m {
-  font-size: variable.$heading-m;
+  font-size: variable.$heading-m-m;
+  @include mixins.tablet {
+    font-size: variable.$heading-m;
+  }
 }
 .lg {
+  font-size: variable.$heading-l-m;
+  @include mixins.tablet {
+    font-size: variable.$heading-l;
+  }
 }
 .xl {
+  font-size: variable.$heading-l-m;
+  @include mixins.tablet {
+    font-size: variable.$heading-l;
+  }
 }
 
 .heading {
