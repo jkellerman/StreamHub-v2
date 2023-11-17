@@ -5,11 +5,6 @@
   margin-bottom: 1rem;
   font-weight: variable.$fw-med;
   letter-spacing: variable.$ls;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  text-overflow: ellipsis;
 }
 
 .xs {

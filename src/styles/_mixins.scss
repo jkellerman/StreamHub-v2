@@ -55,10 +55,10 @@
   }
 }
 
-@mixin removeHeadingEllipses {
-  overflow: unset;
-  display: unset;
-  -webkit-box-orient: unset;
-  -webkit-line-clamp: unset;
-  text-overflow: unset;
+@mixin addHeadingEllipses {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
 }
