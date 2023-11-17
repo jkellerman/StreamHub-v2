@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import slugify from "slugify";
 
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Media } from "@/types/media";
 
 import Button from "../Buttons/Buttons";
@@ -25,7 +26,7 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({ data, isLoading, isError
   const [progress, setProgress] = useState(0);
 
   const voteAverage = data && data.vote_average * 10;
-
+  const isMobile = useMediaQuery(`(max-width: 504px)`); // Needed otherwise progress rating will not load properly in larger screens
   useEffect(() => {
     if (data) {
       setProgress(voteAverage as number);
@@ -62,6 +63,16 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({ data, isLoading, isError
               <div className={styles.posterDetailsWrapper}>
                 <ReleaseDate release_date={data.release_date} air_date={data.first_air_date} />
                 <MediaRunTimeOrSeasons runtime={data.runtime} seasons={data?.number_of_seasons} />
+                <div className={styles.ratingContainerPost}>
+                  {isMobile && (
+                    <ProgressRating
+                      vote_average={voteAverage ? voteAverage : null}
+                      progress={progress}
+                      size={55}
+                    />
+                  )}
+                  <span className={styles.subText}>user rating</span>
+                </div>
               </div>
             </div>
           </div>

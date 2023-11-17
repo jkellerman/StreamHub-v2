@@ -46,6 +46,9 @@
 
 .posterWrapperDetails {
   max-width: 205px;
+  & > h3 {
+    @include mixins.addHeadingEllipses;
+  }
   @include mixins.tablet {
     display: none;
     max-width: unset;
@@ -68,6 +71,7 @@
 
   & > h3 {
     margin-bottom: 0.5rem;
+    @include mixins.addHeadingEllipses;
   }
 }
 
@@ -97,9 +101,18 @@
   }
 }
 
-.ratingContainer {
+.ratingContainerPost {
   @include mixins.flex-center;
   gap: 0.5rem;
+}
+
+.ratingContainer {
+  display: none;
+
+  gap: 0.5rem;
+  @include mixins.tablet {
+    @include mixins.flex-center;
+  }
 }
 
 .subText {
