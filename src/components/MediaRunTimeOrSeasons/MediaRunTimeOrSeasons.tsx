@@ -3,8 +3,6 @@ import React from "react";
 import { Media } from "@/types/media";
 import { toHoursAndMinutes } from "@/utils/utils";
 
-import styles from "../MediaRunTimeOrSeasons/MediaRunTimeOrSeasons.module.scss";
-
 const MediaRunTimeOrSeasons: React.FC<Media.MediaRunTimeOrSeasonsProps> = ({
   runtime,
   seasons,
@@ -12,13 +10,9 @@ const MediaRunTimeOrSeasons: React.FC<Media.MediaRunTimeOrSeasonsProps> = ({
   return (
     <>
       {runtime && runtime >= 0 && (
-        <span className={styles.stat}>{runtime > 0 ? `${toHoursAndMinutes(runtime)}` : null}</span>
+        <span>{runtime > 0 ? `${toHoursAndMinutes(runtime)}` : null}</span>
       )}
-      {seasons && (
-        <span className={styles.stat}>
-          {seasons > 1 ? `${seasons} seasons` : `${seasons} season`}
-        </span>
-      )}
+      {seasons && <span>{seasons > 1 ? `${seasons} seasons` : `${seasons} season`}</span>}
     </>
   );
 };

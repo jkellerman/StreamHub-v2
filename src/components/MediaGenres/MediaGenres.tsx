@@ -3,6 +3,7 @@ import React from "react";
 import { Media } from "@/src/types";
 
 import styles from "../MediaGenres/MediaGenres.module.scss";
+import Pill from "../Pill/Pill";
 
 interface MediaGenresProps {
   genres: Media.IGenre[];
@@ -13,7 +14,13 @@ const MediaGenres: React.FC<MediaGenresProps> = ({ genres }) => {
   return (
     <span className={styles.group}>
       {sliceArray.map((genre) => {
-        return <Genre key={genre.id} name={genre.name} />;
+        return (
+          <>
+            <Pill>
+              <Genre key={genre.id} name={genre.name} />
+            </Pill>
+          </>
+        );
       })}
     </span>
   );
@@ -30,5 +37,5 @@ interface GenreProps {
 }
 
 const Genre: React.FC<GenreProps> = ({ name }) => {
-  return <span className={styles.genre}>{name}</span>;
+  return <span>{name}</span>;
 };
