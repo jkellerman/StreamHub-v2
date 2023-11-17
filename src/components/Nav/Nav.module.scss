@@ -10,10 +10,12 @@
   overflow-x: scroll;
   align-items: center;
   margin-left: -0.75rem;
+  margin-bottom: 1rem;
 
   @include mixins.tabletL {
     margin-left: unset;
     justify-content: end;
+    margin-bottom: unset;
   }
 
   &::-webkit-scrollbar,
