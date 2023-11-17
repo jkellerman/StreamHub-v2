@@ -4,36 +4,45 @@
 @mixin header-styles {
   @include mixins.flex-column;
   background-color: var(--secondary-dark);
-  position: sticky;
   z-index: variable.$z-index-5;
   border-bottom: 0px solid var(--secondary-dark);
+  @include mixins.tablet {
+    position: sticky;
+  }
 }
 
 .header {
   @include mixins.flex-column;
   @include header-styles();
-  top: 0px;
-  transition: border-bottom 250ms ease-in-out;
-  border-bottom: 0px solid var(--secondary-dark);
-  width: 100%;
+
+  @include mixins.tablet {
+    top: 0px;
+    transition: border-bottom 250ms ease-in-out;
+    border-bottom: 0px solid var(--secondary-dark);
+    width: 100%;
+  }
 }
 
 .hidden {
   @include mixins.flex-column;
   @include header-styles();
-  transition: top 150ms ease-in-out 0.2s;
-  top: -194px;
+
   @include mixins.tablet {
     top: -146px;
+    transition: top 150ms ease-in-out 0.2s;
+    top: -194px;
   }
 }
 
 .visible {
   @include mixins.flex-column;
   @include header-styles();
-  top: 0px;
-  border-bottom: 3px solid var(--primary-dark);
-  transition: top 250ms ease-in-out, border-bottom 250ms ease-in-out;
+
+  @include mixins.tablet {
+    top: 0px;
+    border-bottom: 3px solid var(--primary-dark);
+    transition: top 250ms ease-in-out, border-bottom 250ms ease-in-out;
+  }
 }
 
 .container {
