@@ -35,7 +35,7 @@
   font-size: variable.$body-s-m;
   font-weight: variable.$fw-bold;
   padding: 0.1em 0.3em;
-  top: 0.5rem;
+  bottom: 0.5rem;
   right: 0.5rem;
   z-index: variable.$z-index-1;
   @include mixins.tablet {

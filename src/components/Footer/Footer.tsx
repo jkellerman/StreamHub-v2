@@ -7,7 +7,7 @@ import TmdbLogo from "../Logo/Tmdb/TmdbLogo";
 
 const footerData = [
   {
-    title: "What to watch",
+    title: "Viewing Options",
     links: [
       { name: "What to watch tonight", link: "/watch/movies" },
       { name: "Browse TV series", link: "/series" },
@@ -84,13 +84,18 @@ const Attribution: React.FC = () => {
     <div className={styles.attributionContainer}>
       <div className={styles.groupTitle}>TMDB</div>
 
-      <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer"></a>
       <div className={styles.attribution}>
         This product uses the TMDB API but is not endorsed or certified by TMDB.
       </div>
-      <div>
+
+      <a
+        href="https://www.themoviedb.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="tmdb"
+      >
         <TmdbLogo />
-      </div>
+      </a>
     </div>
   );
 };
