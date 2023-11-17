@@ -42,7 +42,7 @@ const Search: React.FC = () => {
   const containerRef = useClickOutside<HTMLDivElement>(() => handleIsSearchBoxActive());
   const [searchIsActive, setSearchIsActive] = useState(false);
 
-  // Handle when the search input is active
+  // Handle whether searchbar is active
   const handleIsSearchBoxActive = () => {
     setSearchQuery("");
     setSearchIsActive(false);
@@ -89,7 +89,7 @@ const Search: React.FC = () => {
       const result = searchResults[activeResultIndex];
       if (result) {
         const { id, title, name } = result;
-        const slug = title || name;
+        const slug = title ?? name;
         const route = title ? `/movie/${id}` : `/show/${id}`;
         router.push(`${route}?${slug?.replace(/ /g, "-")}`);
         setSearchQuery("");
@@ -122,7 +122,6 @@ const Search: React.FC = () => {
   }, [searchResultsItems, activeResultIndex, searchResults, router, searchQuery]);
 
   // Fetch search results when searchQuery changes
-
   useEffect(() => {
     try {
       if (searchQuery.length >= 2) {
@@ -145,7 +144,7 @@ const Search: React.FC = () => {
       } else if (searchQuery.length <= 1) {
         setSearchResults([]);
         setActiveResultIndex(-1);
-        setIsLoading(null);
+        setIsLoading(null); // Reset to null is in place to prevent 'no suggestions' from rendering in between when the user types into search input and when the data is being fetched
         setIsError(false);
       }
     } catch (error) {
@@ -161,17 +160,17 @@ const Search: React.FC = () => {
         const rootFontSize = 16;
         const containerHeightInRems = containerHeight / rootFontSize;
         const margin = 3;
-        // Set the size of container when there are results in the list
+        // Sets the size of container when there are results in the list
         if (searchResults.length > 0 && !isLoading) {
           (containerRef.current as HTMLDivElement).style.height = `${
             containerHeightInRems + margin
           }rem`;
         }
-        // Set height of container when there are no results in the list
+        // Sets height of container when there are no results in the list
       } else if (searchResults.length === 0 && searchQuery.length <= 2) {
         const baseHeight = 2.75;
         (containerRef.current as HTMLDivElement).style.height = `${baseHeight}rem`;
-        // Set the height of container when the user searches for movie/series but there are no suggestions.
+        // Sets the height of container when the user searches for movie/series but there are no suggestions.
       } else {
         const noSuggestionsHeight = 14;
         (containerRef.current as HTMLDivElement).style.height = `${noSuggestionsHeight}rem`;
@@ -191,11 +190,7 @@ const Search: React.FC = () => {
         setSearchQuery={setSearchQuery}
         handleSubmit={handleSubmit}
       >
-        <SearchInput
-          searchQuery={searchQuery}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-        />
+        <SearchInput searchQuery={searchQuery} handleInputChange={handleInputChange} />
       </SearchForm>
 
       <SearchResultsList
@@ -259,15 +254,9 @@ const SearchForm: React.FC<SearchFormProps> = ({
   return (
     <div className={styles.formWrapper}>
       <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
-        {searchQuery.length >= 1 && (
-          <button
-            type="button"
-            className={styles.closeButtonArrow}
-            onClick={() => setSearchQuery("")}
-          >
-            <Icon icon="arrowLeft" />
-          </button>
-        )}
+        <button type="submit" className={styles.searchIcon} onClick={handleSubmit}>
+          <Icon icon="search" />
+        </button>
         {children}
         {searchQuery.length >= 1 && (
           <button type="button" className={styles.closeButton} onClick={() => setSearchQuery("")}>
@@ -286,14 +275,9 @@ const SearchForm: React.FC<SearchFormProps> = ({
 interface SearchInputProps {
   searchQuery: string;
   handleInputChange: (e: FormEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: FormEvent) => void;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({
-  searchQuery,
-  handleInputChange,
-  handleSubmit,
-}) => {
+const SearchInput: React.FC<SearchInputProps> = ({ searchQuery, handleInputChange }) => {
   const isMobile = useMediaQuery(`(max-width: 504px)`);
 
   return (
@@ -302,16 +286,12 @@ const SearchInput: React.FC<SearchInputProps> = ({
         type="text"
         name="search"
         aria-label="Search"
-        placeholder={isMobile ? "Search..." : "Search for movies or TV series..."}
+        placeholder={isMobile ? "Search..." : "Search for movies or tv series..."}
         className={styles.input}
         value={searchQuery}
         onChange={handleInputChange}
         maxLength={20}
       />
-
-      <button type="submit" className={styles.searchIcon} onClick={handleSubmit}>
-        <Icon icon="search" />
-      </button>
     </>
   );
 };

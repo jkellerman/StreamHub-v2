@@ -6,8 +6,7 @@
   position: absolute;
   z-index: variable.$z-index-5;
   border: 1px solid #4f5c7c;
-  border-radius: variable.$border-radius-s;
-  background: linear-gradient(90deg, var(--secondary-gradient));
+  background-color: var(--secondary-dark);
   transition: height 160ms ease 0s, box-shadow 150ms ease-in;
   align-self: baseline;
   overflow: hidden;
@@ -49,7 +48,7 @@
   position: absolute;
   width: 0.625rem;
   height: 0.625rem;
-  right: 3.5rem;
+  right: 1.5rem;
   top: 0.8rem;
 
   @include mixins.tablet {
@@ -97,12 +96,6 @@
   justify-content: center;
 }
 
-.isActive,
-.allResultsLinkWrapper:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-  transition: variable.$transition;
-}
-
 .noResultsContainer,
 .loading,
 .error {
@@ -143,7 +136,7 @@
   width: 100%;
   outline: none;
   letter-spacing: variable.$ls-s;
-
+  caret-color: var(--primary);
   @include mixins.tablet() {
     height: unset;
   }
@@ -162,8 +155,11 @@
   transition: variable.$transition;
 }
 
+.isActive,
+.allResultsLinkWrapper:hover,
 .listItemWrapper:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  background: linear-gradient(270deg, var(--secondary-gradient));
+  transition: variable.$transition;
 }
 
 .listItem {
