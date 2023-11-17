@@ -38,13 +38,10 @@ export const movieNetworkList = [
     provider_id: 0,
     provider_name: defaultNetworkName,
   },
-  {
-    provider_id: 9,
-    provider_name: "Amazon Prime Video",
-  },
+
   {
     provider_id: 350,
-    provider_name: "Apple TV Plus",
+    provider_name: "Apple TV+",
   },
   {
     provider_id: 38,
@@ -60,7 +57,7 @@ export const movieNetworkList = [
   },
   {
     provider_id: 337,
-    provider_name: "Disney Plus",
+    provider_name: "Disney+",
   },
   {
     provider_id: 8,
@@ -72,7 +69,11 @@ export const movieNetworkList = [
   },
   {
     provider_id: 531,
-    provider_name: "Paramount Plus",
+    provider_name: "Paramount+",
+  },
+  {
+    provider_id: 9,
+    provider_name: "Prime Video",
   },
   {
     provider_id: 29,
@@ -80,7 +81,7 @@ export const movieNetworkList = [
   },
   {
     provider_id: 194,
-    provider_name: "Starz Play Amazon Channel",
+    provider_name: "Starz Play",
   },
 ];
 
@@ -90,12 +91,8 @@ export const seriesNetworkList = [
     provider_name: defaultNetworkName,
   },
   {
-    provider_id: 9,
-    provider_name: "Amazon Prime Video",
-  },
-  {
     provider_id: 350,
-    provider_name: "Apple TV Plus",
+    provider_name: "Apple TV+",
   },
   {
     provider_id: 38,
@@ -115,7 +112,7 @@ export const seriesNetworkList = [
   },
   {
     provider_id: 337,
-    provider_name: "Disney Plus",
+    provider_name: "Disney+",
   },
   {
     provider_id: 8,
@@ -123,7 +120,11 @@ export const seriesNetworkList = [
   },
   {
     provider_id: 531,
-    provider_name: "Paramount Plus",
+    provider_name: "Paramount+",
+  },
+  {
+    provider_id: 9,
+    provider_name: "Prime Video",
   },
   {
     provider_id: 29,
@@ -131,7 +132,7 @@ export const seriesNetworkList = [
   },
   {
     provider_id: 194,
-    provider_name: "Starz Play Amazon Channel",
+    provider_name: "Starz Play",
   },
 ];
 
