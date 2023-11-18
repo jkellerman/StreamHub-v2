@@ -164,9 +164,6 @@ export const Provider: React.FC<ProviderProps> = ({ watch_providers, activeTab, 
                     </div>
                     <div className={styles.providerDetails}>
                       <span className={styles.name}>{provider.provider_name}</span>
-                      {option === "flatrate" && (
-                        <span className={styles.subscription}>subscription</span>
-                      )}
                     </div>
                   </div>
                 );

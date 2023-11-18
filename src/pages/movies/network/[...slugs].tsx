@@ -79,7 +79,6 @@ const GenreMovies: React.FC<GenreMoviesProps> = ({ genreList }) => {
                 style="primary"
               />
             </DropdownsContainer>
-            X
           </DropdownsInnerContainer>
         </DropdownsOuterContainer>
 

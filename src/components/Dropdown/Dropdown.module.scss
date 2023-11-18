@@ -85,6 +85,10 @@
   &:hover {
     background: linear-gradient(90deg, var(--quaternary-gradient));
   }
+
+  &:focus {
+    background: linear-gradient(90deg, var(--quaternary-gradient));
+  }
 }
 
 .secondary {
@@ -92,6 +96,11 @@
   background-color: var(--tertiary-dark);
   border: 1px solid var(--tertiary-dark);
   &:hover {
+    background: var(--tertiary);
+    border: 1px solid var(--tertiary);
+  }
+
+  &:focus {
     background: var(--tertiary);
     border: 1px solid var(--tertiary);
   }

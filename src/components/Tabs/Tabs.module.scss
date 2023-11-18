@@ -124,12 +124,6 @@
 
 .providerDetails {
   @include mixins.flex-column;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.subscription {
-  color: var(--tertiary-light);
 }
 
 .iconWrapper {
@@ -146,10 +140,9 @@
 }
 
 .name {
-  white-space: nowrap;
+  // white-space: nowrap;
   width: 100%;
-  height: 100%;
-  text-overflow: ellipsis;
+  @include mixins.addHeadingEllipses;
 }
 
 .placeholder {
