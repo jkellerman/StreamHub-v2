@@ -11,7 +11,7 @@ import Dropdown, {
   DropdownsInnerContainer,
   DropdownsOuterContainer,
 } from "@/components/Dropdown/Dropdown";
-import styles from "@/components/Dropdown/Dropdown.module.scss";
+import Heading from "@/components/Heading/Heading";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import { movieNetworkList, BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
@@ -26,7 +26,8 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
   const { query, pathname } = useRouter();
 
   const genre =
-    (genreList && genreList.find(({ name }) => name.toLowerCase() === query.genre)) ||
+    (genreList &&
+      genreList.find((genreItem) => genreItem && genreItem.name.toLowerCase() === query.genre)) ??
     DEFAULT_GENRE;
 
   const network =
@@ -51,8 +52,11 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
       </Head>
       <main>
         <DropdownsOuterContainer>
-          <DropdownsContainer>
-            <DropdownsInnerContainer>
+          <Heading as="h1" size="s">
+            Movies:
+          </Heading>
+          <DropdownsInnerContainer>
+            <DropdownsContainer>
               <Dropdown
                 type={pageType}
                 selected_genre={genre}
@@ -60,8 +64,8 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
                 variant="genre"
                 style="primary"
               />
-              <Dropdown type={pageType} media={pageType} variant="media" style="primary" />
-              <span className={styles.span}>On</span>
+            </DropdownsContainer>
+            <DropdownsContainer>
               <Dropdown
                 type={pageType}
                 selected_network={network}
@@ -69,8 +73,8 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
                 variant="service"
                 style="primary"
               />
-            </DropdownsInnerContainer>
-          </DropdownsContainer>
+            </DropdownsContainer>
+          </DropdownsInnerContainer>
         </DropdownsOuterContainer>
 
         <Description type="movie" />

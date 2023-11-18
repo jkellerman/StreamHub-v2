@@ -32,16 +32,19 @@
   white-space: nowrap;
   padding: 0.5em 0.75em;
   border-radius: variable.$border-radius-s;
+  transition: variable.$transition;
 
   &:last-of-type {
     margin-left: 1rem;
+  }
+  &:active {
+    background: linear-gradient(90deg, var(--quaternary-gradient));
   }
 }
 
 @media (hover: hover) {
   .navListItem:hover {
-    background-color: var(--tertiary);
+    background: linear-gradient(90deg, var(--quaternary-gradient));
     transition: variable.$transition;
-    color: var(--primary-light);
   }
 }

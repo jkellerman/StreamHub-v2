@@ -10,7 +10,7 @@ import Dropdown, {
   DropdownsInnerContainer,
   DropdownsOuterContainer,
 } from "@/components/Dropdown/Dropdown";
-import styles from "@/components/Dropdown/Dropdown.module.scss";
+import Heading from "@/components/Heading/Heading";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS, movieNetworkList } from "@/constants/tmdb";
@@ -55,8 +55,11 @@ const GenreMovies: React.FC<GenreMoviesProps> = ({ genreList }) => {
       </Head>
       <main>
         <DropdownsOuterContainer>
-          <DropdownsContainer>
-            <DropdownsInnerContainer>
+          <Heading as="h1" size="s">
+            Movies:
+          </Heading>
+          <DropdownsInnerContainer>
+            <DropdownsContainer>
               <Dropdown
                 type="movies"
                 selected_genre={genre}
@@ -65,8 +68,8 @@ const GenreMovies: React.FC<GenreMoviesProps> = ({ genreList }) => {
                 selected_network={network}
                 style="primary"
               />
-              <Dropdown type="movies" media="movies" variant="media" style="primary" />
-              <span className={styles.span}>On</span>
+            </DropdownsContainer>
+            <DropdownsContainer>
               <Dropdown
                 type="movies"
                 selected_network={network}
@@ -75,8 +78,8 @@ const GenreMovies: React.FC<GenreMoviesProps> = ({ genreList }) => {
                 variant="service"
                 style="primary"
               />
-            </DropdownsInnerContainer>
-          </DropdownsContainer>
+            </DropdownsContainer>
+          </DropdownsInnerContainer>
         </DropdownsOuterContainer>
 
         <Description type="movie" />

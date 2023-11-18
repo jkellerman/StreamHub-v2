@@ -11,7 +11,7 @@ import Dropdown, {
   DropdownsInnerContainer,
   DropdownsOuterContainer,
 } from "@/components/Dropdown/Dropdown";
-import styles from "@/components/Dropdown/Dropdown.module.scss";
+import Heading from "@/components/Heading/Heading";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL, seriesNetworkList } from "@/constants/tmdb";
@@ -52,8 +52,11 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
       </Head>
       <main>
         <DropdownsOuterContainer>
-          <DropdownsContainer>
-            <DropdownsInnerContainer>
+          <Heading as="h1" size="s">
+            Series:
+          </Heading>
+          <DropdownsInnerContainer>
+            <DropdownsContainer>
               <Dropdown
                 type={pageType}
                 selected_genre={genre}
@@ -61,8 +64,8 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
                 variant="genre"
                 style="primary"
               />
-              <Dropdown type={pageType} media={pageType} variant="media" style="primary" />
-              <span className={styles.span}>On</span>
+            </DropdownsContainer>
+            <DropdownsContainer>
               <Dropdown
                 type={pageType}
                 selected_network={network}
@@ -70,8 +73,8 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
                 variant="service"
                 style="primary"
               />
-            </DropdownsInnerContainer>
-          </DropdownsContainer>
+            </DropdownsContainer>
+          </DropdownsInnerContainer>
         </DropdownsOuterContainer>
 
         <Description type="series" />

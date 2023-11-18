@@ -3,8 +3,6 @@
 
 .resultsContainer {
   @include mixins.flex-column;
-
-  justify-content: center;
   gap: 1rem;
   animation: fade variable.$fade-animation;
   @include mixins.tablet {
@@ -104,6 +102,10 @@
 .ratingContainerPost {
   @include mixins.flex-center;
   gap: 0.5rem;
+  margin-top: 1rem;
+  @include mixins.tablet {
+    margin-top: 0;
+  }
 }
 
 .ratingContainer {

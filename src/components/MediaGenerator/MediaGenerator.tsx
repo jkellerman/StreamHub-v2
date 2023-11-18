@@ -71,7 +71,7 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({ data, isLoading, isError
                       size={55}
                     />
                   )}
-                  <span className={styles.subText}>user rating</span>
+                  <span className={styles.subText}>User Rating</span>
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({ data, isLoading, isError
                   progress={progress}
                   size={60}
                 />
-                <span className={styles.subText}>user rating</span>
+                <span className={styles.subText}>User Rating</span>
               </div>
             </div>
           </div>

@@ -10,7 +10,7 @@ const Description: React.FC<DescriptionProps> = ({ type }) => {
       <p className={styles.description}>
         Below is a list of all {type === "movie" ? "movies" : "TV series"} you can stream online .
         The default view is sorted by popularity, and you can easily filter by genre and streaming
-        service using the dropdowns above.
+        service using the options above.
       </p>
     </div>
   );

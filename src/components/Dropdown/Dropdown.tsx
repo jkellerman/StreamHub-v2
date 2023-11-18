@@ -6,9 +6,8 @@ import React, { useState, useCallback } from "react";
 import slugify from "slugify";
 
 import Icon from "@/components/Icon/Icon";
-import { DEFAULT_WATCH_GENRE, DEFAULT_WATCH_NETWORK } from "@/constants/app";
+import { DEFAULT_GENRE, DEFAULT_WATCH_NETWORK } from "@/constants/app";
 import useClickOutside from "@/hooks/useClickOutside";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Media } from "@/src/types";
 
 import styles from "../Dropdown/Dropdown.module.scss";
@@ -145,12 +144,7 @@ const DropdownTrigger: React.FC<DropdownTriggerProps> = ({
   isDropdownOpen,
   style,
 }) => {
-  const isMobile = useMediaQuery(`(max-width: 504px)`);
-  const sm = "15";
-  const lg = "15";
-
-  const iconHeight = isMobile ? sm : lg;
-  const iconWidth = isMobile ? sm : lg;
+  const iconSize = "15";
 
   const triggerClasses = [styles.trigger, styles[style]];
 
@@ -166,7 +160,7 @@ const DropdownTrigger: React.FC<DropdownTriggerProps> = ({
           }
         >
           <span className={styles.icon}>
-            <Icon icon="chevronDown" width={iconWidth} height={iconHeight} />
+            <Icon icon="chevronDown" width={iconSize} height={iconSize} />
           </span>
         </div>
       </>
@@ -214,12 +208,12 @@ const DropdownGenre: React.FC<DropdownGenreProps> = ({
           >
             <Link
               href={
-                name === DEFAULT_WATCH_GENRE.name &&
+                name === DEFAULT_GENRE.name &&
                 !query.slugs?.includes(
                   `${selected_network?.provider_name.toLowerCase().replaceAll(" ", "-")}`
                 )
                   ? `${rootPath}${type}`
-                  : name === DEFAULT_WATCH_GENRE.name &&
+                  : name === DEFAULT_GENRE.name &&
                     query.slugs?.includes(
                       `${selected_network?.provider_name.toLowerCase().replaceAll(" ", "-")}`
                     )
@@ -392,6 +386,7 @@ const DropdownService: React.FC<DropdownServiceProps> = ({
                       lower: true,
                     }).replace(/and/g, "&")}`
               }
+              scroll={false}
             >
               <a className={styles.link} onClick={closeDropdown}>
                 {provider_name}

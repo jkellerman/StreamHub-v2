@@ -14,11 +14,7 @@ import Heading from "@/components/Heading/Heading";
 import MediaGenerator from "@/components/MediaGenerator/MediaGenerator";
 import { Panel, PanelInner } from "@/components/Panel/Panel";
 import styles from "@/components/Panel/Panel.module.scss";
-import {
-  DEFAULT_WATCH_GENRE,
-  DEFAULT_WATCH_NETWORK,
-  randomPageNumberSeries,
-} from "@/constants/app";
+import { DEFAULT_GENRE, DEFAULT_WATCH_NETWORK, randomPageNumberSeries } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS, watchMovieNetworkList } from "@/constants/tmdb";
 import useGenerator from "@/hooks/useGenerator";
 import { Media } from "@/types/media";
@@ -32,8 +28,9 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
   const { query } = useRouter();
 
   const genre =
-    (genreList && genreList.find(({ name }) => name.toLowerCase() === query.genre)) ??
-    DEFAULT_WATCH_GENRE;
+    (genreList &&
+      genreList.find((genreItem) => genreItem && genreItem.name.toLowerCase() === query.genre)) ??
+    DEFAULT_GENRE;
 
   const network =
     watchMovieNetworkList.find(
@@ -65,13 +62,15 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
             Cut through streaming indecision! Use the generator below to simplify choices, so you
             can dive into content faster.
           </Content>
-          <DropdownsContainer>
+          <DropdownsInnerContainer>
             <Heading as="h2" size="s">
-              Select your preferences:
+              Select preferences:
             </Heading>
-            <DropdownsInnerContainer>
+            <DropdownsContainer>
               <Dropdown watch type="movies" media="movies" variant="media" style="secondary" />
+            </DropdownsContainer>
 
+            <DropdownsContainer>
               <Dropdown
                 watch
                 type="movies"
@@ -80,7 +79,9 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
                 variant="genre"
                 style="secondary"
               />
+            </DropdownsContainer>
 
+            <DropdownsContainer>
               <Dropdown
                 watch
                 type="movies"
@@ -89,15 +90,16 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
                 variant="service"
                 style="secondary"
               />
-            </DropdownsInnerContainer>
-          </DropdownsContainer>
+            </DropdownsContainer>
+          </DropdownsInnerContainer>
+
           <Panel>
             <PanelInner>
               <Heading as="h2" size="m">
                 Suggest a movie
               </Heading>
               <Content>
-                Select your movie preferences using the dropdowns above, have a spin and find the
+                Select your movie preferences using the options above, have a spin and find the
                 perfect film to watch to tonight. Simple!
               </Content>
 
@@ -124,7 +126,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      genreList: [DEFAULT_WATCH_GENRE, ...genreList.genres],
+      genreList: [DEFAULT_GENRE, ...genreList.genres],
     },
   };
 };

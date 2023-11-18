@@ -13,32 +13,41 @@
 
 .container {
   @include mixins.center;
-  padding-top: 8rem;
+  padding-top: 4rem;
 
   @include mixins.tablet {
     padding-top: 6rem;
   }
 
-  & > h1 {
-    @include mixins.removeHeadingEllipses;
-  }
-
   & > p {
     margin-top: 1rem;
+  }
+
+  & div h2 {
+    white-space: nowrap;
   }
 }
 
 .panelContainer {
-  margin: 2rem 0 4rem;
+  margin: 0 0 4rem;
   width: 100%;
   @include mixins.flex-column;
   gap: 2.5rem;
   background-color: var(--tertiary-dark);
   border-radius: variable.$border-radius-s;
   padding: 2rem;
+  @include mixins.tablet {
+    padding: 2rem 6rem;
+  }
+
   @include mixins.tabletL {
     @include mixins.flex-row;
     padding: 2.5rem;
+  }
+
+  .panelInner {
+    @include mixins.flex-column;
+    justify-content: center;
   }
 
   & .panelInner p {
