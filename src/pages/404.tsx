@@ -6,7 +6,7 @@ const Custom404 = () => {
   return (
     <>
       <Head>
-        <title>404 - Not Found | ReelHub</title>
+        <title>404 - Not Found | StreamHub</title>
       </Head>
       <main
         style={{

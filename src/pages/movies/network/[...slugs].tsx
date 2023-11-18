@@ -47,7 +47,7 @@ const GenreMovies: React.FC<GenreMoviesProps> = ({ genreList }) => {
   return (
     <>
       <Head>
-        <title>{`What's on ${network.provider_name} | ReelHub`}</title>
+        <title>{`What's on ${network.provider_name} | StreamHub`}</title>
         <meta
           name="description"
           content="Find out where to watch movies from Netflix, Amazon Prime, Disney+ and many more services"
@@ -79,6 +79,7 @@ const GenreMovies: React.FC<GenreMoviesProps> = ({ genreList }) => {
                 style="primary"
               />
             </DropdownsContainer>
+            X
           </DropdownsInnerContainer>
         </DropdownsOuterContainer>
 

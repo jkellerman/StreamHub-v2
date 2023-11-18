@@ -48,10 +48,10 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
   return (
     <>
       <Head>
-        <title>ReelHub | What to watch tonight?</title>
+        <title>StreamHub | What to watch tonight?</title>
         <meta
           name="description"
-          content="ReelHub allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other providers in one place, whilst providing recommendations on what to watch tonight."
+          content="StreamHub allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other providers in one place, whilst providing recommendations on what to watch tonight."
         />
       </Head>
 

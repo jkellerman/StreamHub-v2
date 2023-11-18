@@ -21,10 +21,10 @@ const Home: React.FC<HomeProps> = () => {
   return (
     <>
       <Head>
-        <title>ReelHub | Streaming Movies and TV series recommendations</title>
+        <title>StreamHub | Streaming Movies and TV series recommendations</title>
         <meta
           name="description"
-          content="ReelHub allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other providers in one place, whilst providing recommendations on what to watch tonight."
+          content="StreamHub allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other providers in one place, whilst providing recommendations on what to watch tonight."
         />
       </Head>
 
@@ -46,14 +46,14 @@ const Home: React.FC<HomeProps> = () => {
         <Carousel endpoint={`/api/year/current/movie/${year}`} />
         <CategoryHeading
           type="series"
-          category="popular TV series"
+          category="popular series"
           subheading="The most popular on all streaming services."
         />
         <Carousel endpoint="/api/trending/tv/week" />
         <CategoryHeading type="movies" category="upcoming movies" />
         <Carousel endpoint="/api/media/movie/upcoming" />
-        <CategoryHeading type="movies" category="Hidden gems of the past year" />
-        <Carousel endpoint="/api/year/pastYear/movie/10" />
+        <CategoryHeading type="movies" category="Hidden gems" />
+        <Carousel endpoint="/api/year/pastYear/movie/50" />
         <CTA />
       </main>
     </>

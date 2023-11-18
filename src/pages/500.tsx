@@ -12,7 +12,7 @@ const Custom500 = () => {
   return (
     <>
       <Head>
-        <title>500 - Server Error | ReelHub</title>
+        <title>500 - Server Error | StreamHub</title>
       </Head>
       <main
         style={{

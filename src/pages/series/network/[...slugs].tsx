@@ -47,7 +47,7 @@ const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
   return (
     <>
       <Head>
-        <title>{`What's on ${network.provider_name} | ReelHub`}</title>
+        <title>{`What's on ${network.provider_name} | StreamHub`}</title>
         <meta
           name="description"
           content="Find out where to watch series from Netflix, Amazon Prime, Disney+ and many more services"
