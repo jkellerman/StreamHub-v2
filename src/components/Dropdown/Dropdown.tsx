@@ -6,7 +6,7 @@ import React, { useState, useCallback } from "react";
 import slugify from "slugify";
 
 import Icon from "@/components/Icon/Icon";
-import { DEFAULT_GENRE, DEFAULT_WATCH_NETWORK } from "@/constants/app";
+import { DEFAULT_GENRE, DEFAULT_NETWORK, DEFAULT_WATCH_NETWORK } from "@/constants/app";
 import useClickOutside from "@/hooks/useClickOutside";
 import { Media } from "@/src/types";
 
@@ -100,6 +100,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             closeDropdown={closeDropdown}
             rootPath={watch ? "/watch/" : "/"}
             style={style}
+            watch={watch}
           />
         )}
       </div>
@@ -328,6 +329,7 @@ interface DropdownServiceProps extends Omit<Omit<DropdownProps, "genre_list">, "
   closeDropdown: () => void;
   rootPath: string;
   style: "primary" | "secondary";
+  watch?: boolean;
 }
 
 const DropdownService: React.FC<DropdownServiceProps> = ({
@@ -339,7 +341,9 @@ const DropdownService: React.FC<DropdownServiceProps> = ({
   closeDropdown,
   rootPath,
   style,
+  watch,
 }) => {
+  const defaultServiceOption = watch ? DEFAULT_WATCH_NETWORK : DEFAULT_NETWORK;
   const listClasses = [
     styles.list,
     style === "primary"
@@ -362,12 +366,12 @@ const DropdownService: React.FC<DropdownServiceProps> = ({
           >
             <Link
               href={
-                provider_name === DEFAULT_WATCH_NETWORK.provider_name &&
+                provider_name === defaultServiceOption.provider_name &&
                 !query.slugs?.includes(
                   `${selected_genre?.name?.toLowerCase().replaceAll(" ", "-")}`
                 )
                   ? `${rootPath}${type}`
-                  : provider_name === DEFAULT_WATCH_NETWORK.provider_name &&
+                  : provider_name === defaultServiceOption.provider_name &&
                     query.slugs?.includes(
                       `${selected_genre?.name.toLowerCase().replaceAll(" ", "-")}`
                     )
