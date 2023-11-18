@@ -1,0 +1,8 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.certification {
+  border: 1px solid var(--quinary);
+  padding: 0.25rem 0.5rem;
+  font-weight: variable.$fw-bold;
+}

@@ -28,5 +28,22 @@
   display: inline-flex;
   flex-wrap: wrap;
   row-gap: 0.5rem;
-  margin: 1rem 0;
+  margin-block: 0.75rem;
+}
+
+.genre {
+  margin-right: 0.25rem;
+  color: var(--tertiary-light);
+  font-weight: variable.$fw-light;
+  font-size: variable.$heading-xs;
+
+  &::after {
+    content: ",";
+  }
+
+  &:last-of-type {
+    &::after {
+      content: unset;
+    }
+  }
 }

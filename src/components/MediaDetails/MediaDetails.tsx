@@ -31,10 +31,18 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({
   return (
     <>
       <div className={styles.detailsContainer}>
-        <MediaGenres genres={genres} />
-        <Certification movie_age_rating={movie_age_rating} series_age_rating={series_age_rating} />
-        <ReleaseDate release_date={release_date} air_date={air_date} />
-        <MediaRunTimeOrSeasons runtime={runtime} seasons={seasons} />
+        <div className={styles.detailsContainerInner}>
+          <Certification
+            movie_age_rating={movie_age_rating}
+            series_age_rating={series_age_rating}
+          />
+          <ReleaseDate release_date={release_date} air_date={air_date} />
+          <MediaRunTimeOrSeasons runtime={runtime} seasons={seasons} />
+        </div>
+
+        <div>
+          <MediaGenres genres={genres} />
+        </div>
       </div>
     </>
   );

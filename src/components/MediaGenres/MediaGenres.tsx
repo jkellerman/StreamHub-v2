@@ -13,11 +13,7 @@ const MediaGenres: React.FC<MediaGenresProps> = ({ genres }) => {
   return (
     <span className={styles.group}>
       {sliceArray.map((genre) => {
-        return (
-          <>
-            <Genre key={genre.id} name={genre.name} />
-          </>
-        );
+        return <Genre key={genre.id} name={genre.name} />;
       })}
     </span>
   );
@@ -34,5 +30,5 @@ interface GenreProps {
 }
 
 const Genre: React.FC<GenreProps> = ({ name }) => {
-  return <span>{name}</span>;
+  return <span className={styles.genre}>{name}</span>;
 };

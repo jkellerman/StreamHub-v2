@@ -1,11 +1,21 @@
 @use "@/styles/mixins" as mixins;
+@use "@/styles/variables" as variable;
 
 .detailsContainer {
-  display: flex;
-  align-items: center;
+  @include mixins.flex-column;
+  align-items: flex-start;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-block-start: 0.5rem;
+  font-size: variable.$heading-l;
+
   @include mixins.tablet {
     margin-bottom: 0;
+  }
+
+  .detailsContainerInner {
+    @include mixins.flex-row;
+    align-items: center;
+    gap: 1rem;
+    font-size: variable.$heading-xs;
   }
 }
