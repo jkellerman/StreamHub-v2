@@ -33,7 +33,7 @@
   -webkit-line-clamp: 3;
   text-overflow: ellipsis;
   margin-bottom: 1rem;
-  min-height: 48px;
+  min-height: 67.5px;
   line-height: 1.5em;
 }
 
@@ -118,7 +118,7 @@
 }
 
 .subText {
-  font-size: variable.$body-xs;
+  font-size: variable.$body-s;
 }
 
 @keyframes fade {
