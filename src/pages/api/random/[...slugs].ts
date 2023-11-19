@@ -17,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               watch_region: "GB",
               with_watch_providers: slugsArray[1],
               with_genres: slugsArray[2],
-              page: slugsArray[3], // for infinite scroll page numbers
+              page: slugsArray[3],
             },
             { addQueryPrefix: true }
           )
@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               ...BASE_TMDB_QUERY_PARAMS,
               watch_region: "GB",
               with_watch_providers: slugsArray[1],
-              page: slugsArray[2], // for infinite scroll page numbers
+              page: slugsArray[2],
             },
             { addQueryPrefix: true }
           );

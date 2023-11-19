@@ -42,7 +42,8 @@
 
   @include mixins.tabletL {
     @include mixins.flex-row;
-    padding: 2.5rem;
+    padding: 1.5rem 2.5rem;
+    min-height: 292.5px;
   }
 
   .panelInner {

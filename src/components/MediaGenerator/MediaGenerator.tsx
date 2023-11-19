@@ -19,10 +19,17 @@ interface MediaGeneratorProp {
   data: Media.IMediaItem | null;
   isLoading: boolean;
   isError: boolean;
+  noResults: boolean;
   type: "movie" | "tv";
 }
 
-const MediaGenerator: React.FC<MediaGeneratorProp> = ({ data, isLoading, isError, type }) => {
+const MediaGenerator: React.FC<MediaGeneratorProp> = ({
+  data,
+  isLoading,
+  isError,
+  type,
+  noResults,
+}) => {
   const [progress, setProgress] = useState(0);
 
   const voteAverage = data && data.vote_average * 10;
@@ -45,9 +52,17 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({ data, isLoading, isError
   if (isError)
     return (
       <div className={styles.container}>
-        <div className={styles.noResults}>Oops nothing here, try again...</div>
+        <div className={styles.noResults}>try again...</div>
       </div>
     );
+
+  if (noResults) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.noResults}>there are no results, try something else...</div>
+      </div>
+    );
+  }
 
   if (data) {
     return (

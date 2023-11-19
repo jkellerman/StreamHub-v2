@@ -1,19 +1,4 @@
 export declare namespace Media {
-  export interface IMediaItem {
-    id: number;
-    poster_path: string;
-    title: string;
-    name: string;
-    release_date: string;
-    first_air_date: string;
-    media_type: string;
-    origin_country: string[];
-    vote_average: number;
-    overview: string;
-    runtime?: number;
-    number_of_seasons?: number;
-  }
-
   export interface ICertificationMovie {
     certification: string;
   }
@@ -49,9 +34,29 @@ export declare namespace Media {
     department: string;
   }
 
+  export interface IMediaItem {
+    id: number;
+    poster_path: string;
+    title: string;
+    name: string;
+    release_date: string;
+    first_air_date: string;
+    media_type: string;
+    origin_country: string[];
+    vote_average: number;
+    overview: string;
+    runtime?: number;
+    number_of_seasons?: number;
+  }
+
   export interface MediaRunTimeOrSeasonsProps {
     runtime?: number;
     seasons?: number;
+  }
+
+  export interface IMovieData {
+    backdrop_path: string;
+    known_for_department: string;
   }
 
   export interface IProvider {

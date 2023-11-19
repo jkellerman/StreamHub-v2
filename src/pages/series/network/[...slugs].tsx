@@ -36,10 +36,7 @@ const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
       slug?.includes(provider_name.toLowerCase().replaceAll(" ", "-"))
     ) ?? DEFAULT_NETWORK;
 
-  const isDefaultNetwork = network.provider_name === DEFAULT_NETWORK.provider_name;
-  const endpoint = !isDefaultNetwork
-    ? `/api/network/tv/${network.provider_id}`
-    : `/api/network/tv/8|337|9|531|29|350|38|103|380`;
+  const endpoint = `/api/network/tv/${network.provider_id}`;
 
   const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useInfiniteScroll(endpoint);

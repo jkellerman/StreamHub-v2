@@ -14,11 +14,10 @@ import Heading from "@/components/Heading/Heading";
 import MediaGenerator from "@/components/MediaGenerator/MediaGenerator";
 import { Panel, PanelInner } from "@/components/Panel/Panel";
 import styles from "@/components/Panel/Panel.module.scss";
-import { DEFAULT_GENRE, DEFAULT_WATCH_NETWORK, randomPageNumberSeries } from "@/constants/app";
+import { DEFAULT_GENRE, DEFAULT_WATCH_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS, watchMovieNetworkList } from "@/constants/tmdb";
 import useGenerator from "@/hooks/useGenerator";
 import { Media } from "@/types/media";
-import { randomNumber } from "@/utils/utils";
 
 interface WatchProps {
   genreList: Media.IGenre[];
@@ -39,11 +38,12 @@ const Genre: React.FC<WatchProps> = ({ genreList }) => {
       slug?.includes(provider_name.toLowerCase().replaceAll(" ", "-"))
     ) ?? DEFAULT_WATCH_NETWORK;
 
-  const { data, isLoading, isError, fetchCards } = useGenerator(
-    `/api/random/movie/${network.provider_id === 1 ? "8|337|9|531|350" : network.provider_id}/${
-      genre.id
-    }`,
-    randomNumber(randomPageNumberSeries),
+  const isNetworkSelected = slug?.includes(
+    network.provider_name.toLowerCase().replaceAll(" ", "-")
+  );
+
+  const { data, isLoading, isError, noResults, fetchRecommendation } = useGenerator(
+    `/api/network/movie/${isNetworkSelected ? network.provider_id : "8|337|9|531|350"}/${genre.id}`,
     "movie"
   );
 
@@ -107,12 +107,18 @@ const Genre: React.FC<WatchProps> = ({ genreList }) => {
                 perfect film to watch to tonight. Simple!
               </Content>
 
-              <Button variant="primary" isFull onClick={fetchCards} disabled={isLoading}>
+              <Button variant="primary" isFull onClick={fetchRecommendation} disabled={isLoading}>
                 {data ? "SPIN AGAIN" : "SPIN"}
               </Button>
             </PanelInner>
 
-            <MediaGenerator data={data} isLoading={isLoading} isError={isError} type="movie" />
+            <MediaGenerator
+              data={data}
+              isLoading={isLoading}
+              isError={isError}
+              type="movie"
+              noResults={noResults}
+            />
           </Panel>
         </div>
       </main>
