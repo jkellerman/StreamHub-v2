@@ -13,6 +13,10 @@
   cursor: pointer;
 }
 
+.button {
+  @extend %button-base;
+}
+
 .primary {
   background: linear-gradient(90deg, var(--primary-gradient));
   border-radius: variable.$border-radius-xl;
@@ -29,24 +33,28 @@
 }
 
 .secondary {
-  background-color: var(--quaternary);
-  border: 1px solid var(--quaternary);
+  background-color: var(--secondary-dark);
+  border: 1px solid var(--tertiary);
   color: var(--quinary);
-  font-size: variable.$body-s;
-  padding: 0.75em 1.5em;
+  font-size: variable.$body-m;
+  padding: 1em 1.5em;
   border-radius: variable.$border-radius-xl;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5em;
+  transition: variable.$transition;
   &:hover {
-    background-color: var(--quaternary-light);
-    transition: variable.$transition;
+    background: linear-gradient(90deg, var(--quaternary-gradient));
+  }
+
+  @include mixins.tablet {
+    padding: 0.75em 1.5em;
   }
 }
 
 .secondary.loading {
-  background-color: transparent;
+  background: var(--secondary-dark);
   color: var(--tertiary-dark);
   border-color: var(--tertiary-dark);
 }
@@ -81,13 +89,9 @@
   background: var(--primary-light);
   border-color: var(--primary-light);
   &:hover {
-    background: var(--primary-light);
-    border-color: var(--primary-light);
+    background: var(--primary);
+    border-color: var(--primary);
   }
-}
-
-.button {
-  @extend %button-base;
 }
 
 .isFull {
