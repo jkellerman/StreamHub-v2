@@ -7,16 +7,16 @@ import TmdbLogo from "../Logo/Tmdb/TmdbLogo";
 
 const footerData = [
   {
-    title: "Viewing Options",
+    title: "What to watch",
     links: [
       { name: "What to watch tonight", link: "/watch/movies" },
-      { name: "Browse TV series", link: "/series" },
+      { name: "Browse Series", link: "/series" },
       { name: "Browse Movies", link: "/movies" },
     ],
   },
 
   {
-    title: "TV Series",
+    title: "Series",
     links: [
       { name: "Shows on Netflix", link: "/series/network/netflix" },
       { name: "Shows on Disney+", link: "/series/network/disney-plus" },
@@ -104,7 +104,7 @@ const FooterBottom: React.FC = () => {
   return (
     <div className={styles.footerBottomContainer}>
       <MainLogo />
-      <span className={styles.disclaimer}>personal project developed by Josh Kellerman, 2023</span>
+      <span className={styles.disclaimer}>Designed & Developed by Josh Kellerman</span>
     </div>
   );
 };

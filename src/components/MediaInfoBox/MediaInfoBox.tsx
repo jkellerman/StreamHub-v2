@@ -6,7 +6,6 @@ import MediaOverview from "@/components/MediaOverview/MediaOverview";
 import Poster from "@/components/Poster/Poster";
 import { Media } from "@/types/media";
 
-import Heading from "../Heading/Heading";
 import styles from "../MediaInfoBox/MediaInfoBox.module.scss";
 import Tabs from "../Tabs/Tabs";
 
@@ -47,12 +46,6 @@ const MediaInfoBox: React.FC<MediaInfoBoxProps> = ({
         </div>
 
         <div className={styles.content}>
-          <div className={styles.title}>
-            <Heading as="h2" size="m">
-              {title}
-            </Heading>
-          </div>
-
           <MediaOverview overview={overview} />
           <Tabs
             watch_providers={watch_providers}

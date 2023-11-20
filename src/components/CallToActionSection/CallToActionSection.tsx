@@ -8,7 +8,7 @@ const CTA: React.FC = () => {
     <section className={styles.section}>
       <div className={styles.headingWrapper}>
         <Heading as="h1" size="m">
-          Need some help deciding what to watch?
+          Need help deciding what to watch?
         </Heading>
       </div>
 

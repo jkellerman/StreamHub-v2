@@ -22,8 +22,7 @@ const Hero = () => {
           Movies and series on all streaming services
         </Heading>
         <p className={styles.description}>
-          Browse, search or use a randomised generator to get the perfect movie or series to watch
-          tonight. Simple!
+          Browse, search or let StreamHub recommend the perfect movie or series to watch tonight.
         </p>
 
         <Button variant="primary" asLink link="/watch/movies">

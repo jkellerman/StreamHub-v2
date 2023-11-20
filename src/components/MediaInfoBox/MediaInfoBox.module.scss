@@ -33,13 +33,6 @@
   align-items: center;
 }
 
-.title {
-  margin-bottom: 0.5rem;
-  & > h2 {
-    font-weight: variable.$fw-med;
-  }
-}
-
 @include mixins.laptop() {
   .content {
     max-width: 80%;

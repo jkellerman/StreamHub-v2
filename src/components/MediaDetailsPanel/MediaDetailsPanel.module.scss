@@ -13,4 +13,7 @@
   @include mixins.tablet {
     padding-top: 14rem;
   }
+  & > h1 {
+    margin-bottom: 0;
+  }
 }
