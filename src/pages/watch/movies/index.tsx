@@ -53,7 +53,7 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
 
       <main className={styles.main}>
         <div className={styles.container}>
-          <Heading as="h1" size="lg">
+          <Heading as="h1" size="m">
             What to watch tonight?
           </Heading>
           <Content>
