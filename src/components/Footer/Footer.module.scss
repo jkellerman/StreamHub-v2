@@ -16,7 +16,7 @@
   top: -54px;
   display: flex;
   align-items: center;
-  background-color: var(--primary-light);
+  background-color: var(--primary);
   color: var(--secondary-dark);
   padding: 1rem 1.5rem;
   text-transform: uppercase;
@@ -32,7 +32,7 @@
   }
 
   &:hover {
-    background: var(--primary);
+    background: var(--primary-light);
   }
   & > span {
     display: none;

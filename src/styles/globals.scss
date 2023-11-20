@@ -1,8 +1,9 @@
 @use "variables" as variable;
 
 :root {
-  --primary: hsl(182, 98%, 35%);
-  --primary-light: hsl(170, 100%, 40%);
+  // Theme
+  --primary: hsl(170, 100%, 40%);
+  --primary-light: hsl(170, 100%, 50%);
   --primary-dark: hsl(203, 46%, 15%);
   --secondary: hsl(218, 58%, 16%);
   --secondary-light: hsl(206, 58%, 16%);
@@ -10,8 +11,9 @@
   --tertiary: hsl(223, 34%, 60%);
   --tertiary-light: hsl(213, 20%, 65%);
   --tertiary-dark: hsl(222, 23%, 46%);
+  --quaternary: hsl(258, 100%, 43%);
   --quinary: hsl(0, 0%, 100%);
-  --primary-gradient: var(--primary), var(--primary-light);
+  --primary-gradient: hsl(182, 98%, 35%), var(--primary-light);
   --secondary-gradient: hsl(219, 41%, 13%), hsl(212, 40%, 24%);
   --tertiary-gradient: var(--primary-light), var(--tertiary);
   --quaternary-gradient: hsl(204, 47%, 32%), hsl(253, 28%, 36%);

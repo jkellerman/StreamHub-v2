@@ -5,7 +5,7 @@
   padding: 1em 2.25em;
   border: none;
   font-family: inherit;
-  font-size: variable.$body-l;
+  font-size: inherit;
   font-weight: variable.$fw-bold;
   color: var(--secondary-dark);
   letter-spacing: 1px;
@@ -16,10 +16,11 @@
 .button {
   @extend %button-base;
 }
-
+// TODO: update border radius variables
 .primary {
   background: linear-gradient(90deg, var(--primary-gradient));
   border-radius: variable.$border-radius-xl;
+  border-radius: 30px;
 
   @media (hover: hover) {
     &:hover {
@@ -33,19 +34,20 @@
 }
 
 .secondary {
-  background-color: var(--secondary-dark);
-  border: 1px solid var(--tertiary);
+  background: var(--quaternary);
+  border: 1px solid var(--quaternary);
   color: var(--quinary);
-  font-size: variable.$body-m;
+  font-size: var(--step--1);
   padding: 1em 1.5em;
   border-radius: variable.$border-radius-xl;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5em;
-  transition: variable.$transition;
+
   &:hover {
-    background: linear-gradient(90deg, var(--quaternary-gradient));
+    background: var(--secondary-dark);
+    border: 1px solid var(--tertiary);
   }
 
   @include mixins.tablet {
@@ -60,8 +62,7 @@
 }
 
 .tertiary {
-  background-color: var(--primary-light);
-  background-size: 200% auto;
+  background-color: var(--primary);
   border-radius: variable.$border-radius-s;
   text-transform: capitalize;
   display: flex;
@@ -71,26 +72,30 @@
   white-space: nowrap;
   width: 100%;
   transition: variable.$transition;
+  font-size: var(--step-1);
+  padding: 1em 2.25em;
 
   @include mixins.tablet {
     max-width: 300px;
-    font-size: variable.$heading-xs;
+    font-size: var(--step-0);
+    padding-block: 1.25rem;
+    padding: 0.9em 2.25em;
   }
 
   &:hover,
   &:focus {
-    background-color: var(--primary);
+    background-color: var(--primary-light);
   }
 }
 
 .quaternary {
   @extend .secondary;
   color: var(--secondary-dark);
-  background: var(--primary-light);
-  border-color: var(--primary-light);
+  background: var(--primary);
+  border-color: var(--primary);
   &:hover {
-    background: var(--primary);
-    border-color: var(--primary);
+    background: var(--primary-light);
+    border-color: var(--primary-light);
   }
 }
 

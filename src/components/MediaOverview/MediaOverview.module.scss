@@ -31,10 +31,13 @@
 
 .readMoreToggle {
   background: transparent;
-  color: var(--primary-light);
+  color: var(--primary);
   border: none;
   text-transform: capitalize;
   font-size: inherit;
   padding: 0;
   cursor: pointer;
+  &:hover {
+    color: var(--primary-light);
+  }
 }
