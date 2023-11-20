@@ -5,7 +5,6 @@ import CTA from "@/components/CallToActionSection/CallToActionSection";
 import Carousel from "@/components/Carousel/Carousel";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
 import Hero from "@/components/Hero/Hero";
-import { year } from "@/constants/app";
 import { Media } from "@/src/types";
 
 interface HomeProps {
@@ -30,31 +29,57 @@ const Home: React.FC<HomeProps> = () => {
 
       <main>
         <Hero />
-        <CategoryHeading
-          type="all"
-          category="trending this week"
-          subheading="Trending in cinema and on all streaming services."
-        />
-        <Carousel endpoint="/api/trending/all/week" />
-        <CategoryHeading type="movies" category="top films of the past year" />
-        <Carousel endpoint="/api/year/pastYear/movie/2500" />
-        <CategoryHeading type="series" category="popular netflix series" />
-        <Carousel endpoint="/api/network/tv/8" />
-        <CategoryHeading type="series" category="popular movies on Disney+" />
-        <Carousel endpoint="/api/network/movie/337" />
-        <CategoryHeading type="movies" category={`best films of ${year}`} />
-        <Carousel endpoint={`/api/year/current/movie/${year}`} />
-        <CategoryHeading
-          type="series"
-          category="popular series"
-          subheading="The most popular on all streaming services."
-        />
-        <Carousel endpoint="/api/trending/tv/week" />
-        <CategoryHeading type="movies" category="upcoming movies" />
-        <Carousel endpoint="/api/media/movie/upcoming" />
-        <CategoryHeading type="movies" category="Hidden gems" />
-        <Carousel endpoint="/api/year/pastYear/movie/50" />
-        <CTA />
+        <section>
+          <CategoryHeading
+            category="trending this week"
+            subheading="Trending in cinema and on all streaming services."
+          />
+          <Carousel endpoint="/api/trending/all/week" />
+        </section>
+        <section>
+          <CategoryHeading
+            category="popular movies"
+            subheading="The most popular on all streaming services."
+          />
+          <Carousel endpoint="/api/network/movie/8|337|9|531|350" />
+        </section>
+
+        <section>
+          <CategoryHeading category="popular netflix series" />
+          <Carousel endpoint="/api/network/tv/8" />
+        </section>
+        <section>
+          <CategoryHeading category="popular movies on Disney+" />
+          <Carousel endpoint="/api/network/movie/337" />
+        </section>
+        {/* TODO: add back in for 2024 */}
+        {/* <section>
+          <CategoryHeading category={`best films of ${year}`} />
+          <Carousel endpoint={`/api/year/current/movie/${year}`} />
+        </section> */}
+        <section>
+          <CategoryHeading category="top films of the past year" />
+          <Carousel endpoint="/api/year/pastYear/movie/2500" />
+        </section>
+        <section>
+          <CategoryHeading
+            category="popular series"
+            subheading="The most popular on all streaming services."
+          />
+          <Carousel endpoint="/api/trending/tv/week" />
+        </section>
+        <section>
+          <CategoryHeading category="upcoming movies" />
+          <Carousel endpoint="/api/media/movie/upcoming" />
+        </section>
+        <section>
+          <CategoryHeading category="Hidden gems" />
+          <Carousel endpoint="/api/year/pastYear/movie/10" />
+        </section>
+
+        <section>
+          <CTA />
+        </section>
       </main>
     </>
   );
