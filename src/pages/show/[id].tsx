@@ -60,7 +60,7 @@ const Series: React.FC<SeriesProps> = ({
   return (
     <>
       <Head>
-        <title>{`Watch ${title} Online | Reelgood`}</title>
+        <title>{`Watch ${title} Online | StreamHub`}</title>
         <meta name="description" content={`Where to watch ${title}`} />
       </Head>
       <main className={styles.main}>

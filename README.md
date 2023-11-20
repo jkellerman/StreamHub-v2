@@ -1,4 +1,4 @@
-# Reelgood web app
+# StreamHub web app
 
 This web app is a resource for discovering new movies and TV shows, and finding where to stream them online.
 
@@ -41,8 +41,8 @@ Users should be able to:
 
 ### 🔗&nbsp;Links
 
-- Solution: [Solution](https://github.com/jkellerman/reelgood)
-- Live Site: [Live](https://reelgood.vercel.app/)
+- Solution: [Solution](https://github.com/jkellerman/StreamHub)
+- Live Site: [Live](https://streamhubtv.vercel.app/)
 
 ### 🧰&nbsp;Built with
 
@@ -84,7 +84,7 @@ For the interior pages, I implemented an infinite scroll to enable users to easi
 
 Update:
 
-The useInfiniteScroll custom hook has now been updated to use the `useInfiniteQuery` hook from the [React Query](https://tanstack.com/query/latest) library. The conversion reduces the amount code needed and improves performance by handling data `caching` and background re-fetching. [See custom hook](https://github.com/jkellerman/Reelgood/blob/develop/src/hooks/useInfiniteScroll.ts)
+The useInfiniteScroll custom hook has now been updated to use the `useInfiniteQuery` hook from the [React Query](https://tanstack.com/query/latest) library. The conversion reduces the amount code needed and improves performance by handling data `caching` and background re-fetching. [See custom hook](https://github.com/jkellerman/StreamHub/blob/develop/src/hooks/useInfiniteScroll.ts)
 
 I will also be looking into using the `Intersection Observer` to see if this offers any benefits in performance compared to the scroll listener for this app.
 

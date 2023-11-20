@@ -34,7 +34,7 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
   return (
     <>
       <Head>
-        <title>Watch TV series Online | Reelgood</title>
+        <title>Watch TV series Online | StreamHub</title>
         <meta
           name="description"
           content="Find out where to watch TV shows from Netflix, Amazon Prime, Disney+ and many more services."

@@ -9,7 +9,7 @@ const Custom500 = () => {
   return (
     <>
       <Head>
-        <title>500 - Server-side error occurred | Reelgood</title>
+        <title>500 - Server-side error occurred | StreamHub</title>
       </Head>
       <main>
         <SearchBar all />
