@@ -8,7 +8,7 @@ const Custom404 = () => {
   return (
     <>
       <Head>
-        <title>404 - Not Found | Reelgood</title>
+        <title>404 - Not Found | StreamHub</title>
       </Head>
       <main>
         <SearchBar all />

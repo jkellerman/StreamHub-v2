@@ -31,7 +31,7 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
   return (
     <>
       <Head>
-        <title>{`Watch ${genre.name} Movies Online | Reelgood`}</title>
+        <title>{`Watch ${genre.name} Movies Online | StreamHub`}</title>
         <meta
           name="description"
           content="Find out where to watch movies from Netflix, Amazon Prime, Disney+ and many more services"

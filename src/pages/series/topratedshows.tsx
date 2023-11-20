@@ -9,7 +9,7 @@ const TopRatedShows = () => {
         <title>Top Rated Shows | Streaming Movies and TV series guide</title>
         <meta
           name="description"
-          content="Reelgood allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other other providers in one place."
+          content="StreamHub allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other other providers in one place."
         />
       </Head>
       <main>
