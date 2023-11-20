@@ -12,6 +12,9 @@
   @include mixins.tablet {
     margin-top: 2rem;
   }
+  & > h1 {
+    font-weight: variable.$fw-bold;
+  }
 }
 
 .subheading {
@@ -42,10 +45,6 @@
   border-radius: 5px;
   width: 100%;
   height: auto;
-}
-
-.heading {
-  margin-bottom: 1rem;
 }
 
 .description {

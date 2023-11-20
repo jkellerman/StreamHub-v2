@@ -31,7 +31,7 @@ const Tabs: React.FC<TabListProps> = ({ watch_providers, title, release_date, ai
 
   return (
     <>
-      <Heading as="h3" size="xs">
+      <Heading as="h2" size="xs">
         Where to watch {title} ({release_date?.slice(0, 4) || air_date?.slice(0, 4)}) online
       </Heading>
       <div className={styles.tabsContainer} ref={tab}>

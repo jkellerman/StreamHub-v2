@@ -37,4 +37,9 @@
 
 .subheading {
   color: var(--tertiary-light);
+  font-size: var(--step--1);
+
+  @include mixins.tablet {
+    font-size: inherit;
+  }
 }

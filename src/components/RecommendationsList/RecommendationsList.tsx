@@ -43,10 +43,20 @@ const Recommendations: React.FC<RecommendationsProps> = ({
     <div className={styles.container}>
       {isScrollAvailable && (
         <span className={styles.navContainer}>
-          <button type="button" className={styles.button} onClick={handleClickPrev}>
+          <button
+            type="button"
+            className={styles.button}
+            onClick={handleClickPrev}
+            aria-label="previous"
+          >
             <Icon icon="chevronLeft" />
           </button>
-          <button type="button" className={styles.button} onClick={handleClickNext}>
+          <button
+            type="button"
+            className={styles.button}
+            onClick={handleClickNext}
+            aria-label="next"
+          >
             <Icon icon="chevronRight" />
           </button>
         </span>

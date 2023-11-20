@@ -254,7 +254,12 @@ const SearchForm: React.FC<SearchFormProps> = ({
   return (
     <div className={styles.formWrapper}>
       <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
-        <button type="submit" className={styles.searchIcon} onClick={handleSubmit}>
+        <button
+          type="submit"
+          className={styles.searchIcon}
+          onClick={handleSubmit}
+          aria-label="search"
+        >
           <Icon icon="search" />
         </button>
         {children}

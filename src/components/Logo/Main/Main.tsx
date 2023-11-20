@@ -5,9 +5,7 @@ const MainLogo = () => {
   return (
     <>
       <Link href={"/"}>
-        <a aria-label="Go to home page" className={styles.logo}>
-          StreamHub
-        </a>
+        <a aria-label="home" className={styles.logo}></a>
       </Link>
     </>
   );
