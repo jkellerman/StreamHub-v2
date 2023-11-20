@@ -19,11 +19,6 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
-  font-size: variable.$heading-s;
-  font-weight: variable.$fw-med;
-  @include mixins.tablet {
-    font-size: variable.$heading-l;
-  }
 
   & > h2 {
     margin-bottom: 0;
@@ -62,7 +57,7 @@
   align-items: center;
   border-radius: variable.$border-radius-s;
   text-transform: capitalize;
-  font-size: variable.$heading-l-m;
+  font-size: var(--step-1);
   font-weight: variable.$fw-extraBold;
   cursor: pointer;
   transition: variable.$transition;
@@ -70,7 +65,7 @@
   white-space: nowrap;
   letter-spacing: 0.05rem;
   @include mixins.tablet {
-    font-size: variable.$heading-xs;
+    font-size: var(--step-0);
   }
 }
 
@@ -167,7 +162,7 @@
     min-width: 550px;
     max-width: 600px;
     flex-wrap: wrap;
-    padding: 2rem;
+    padding: 1.5rem;
   }
 }
 
@@ -186,7 +181,6 @@
   .listItemCurrent {
     list-style: none;
     padding: 1rem 0.5rem;
-    font-size: variable.$body-l;
     color: var(--primary-light);
     transition: variable.$transition;
     border-radius: variable.$border-radius-s;
@@ -239,7 +233,6 @@
   .listItemCurrent {
     list-style: none;
     padding: 1rem 0.5rem;
-    font-size: variable.$body-l;
     color: var(--quinary);
     transition: variable.$transition;
     border-radius: variable.$border-radius-s;

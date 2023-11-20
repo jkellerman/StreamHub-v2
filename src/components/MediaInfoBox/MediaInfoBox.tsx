@@ -14,7 +14,7 @@ interface MediaInfoBoxProps {
   title: string;
   overview: string;
   poster: string;
-  children?: React.ReactNode;
+
   watch_providers: Media.IProviderList;
   release_date?: string;
   air_date?: string;
@@ -27,7 +27,7 @@ const MediaInfoBox: React.FC<MediaInfoBoxProps> = ({
   title,
   overview,
   poster,
-  children,
+
   watch_providers,
   release_date,
   air_date,
@@ -52,7 +52,7 @@ const MediaInfoBox: React.FC<MediaInfoBoxProps> = ({
               {title}
             </Heading>
           </div>
-          <div className={styles.list}>{children}</div>
+
           <MediaOverview overview={overview} />
           <Tabs
             watch_providers={watch_providers}

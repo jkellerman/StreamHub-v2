@@ -6,6 +6,7 @@ import Logo from "@/components/Logo/Logo";
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import { Media } from "@/src/types";
 
+import Heading from "../Heading/Heading";
 import styles from "../Tabs/Tabs.module.scss";
 
 interface TabListProps {
@@ -30,9 +31,9 @@ const Tabs: React.FC<TabListProps> = ({ watch_providers, title, release_date, ai
 
   return (
     <>
-      <h3 className={styles.title}>
+      <Heading as="h3" size="xs">
         Where to watch {title} ({release_date?.slice(0, 4) || air_date?.slice(0, 4)}) online
-      </h3>
+      </Heading>
       <div className={styles.tabsContainer} ref={tab}>
         <div className={styles.tabs}>
           {tabNames.map((item, i) => (

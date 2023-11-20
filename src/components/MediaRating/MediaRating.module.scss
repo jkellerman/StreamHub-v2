@@ -13,23 +13,8 @@
   }
 }
 
-.rating {
-  fill: white;
-  font-weight: variable.$fw-bold;
-  font-size: variable.$heading-xs;
-  font-family: "Wix Madefor Display", sans-serif;
-}
-
-.totalValue {
-  fill: var(--tertiary-light);
-  font-size: variable.$body-xs;
-  font-weight: variable.$fw-bold;
-  font-family: "Wix Madefor Display", sans-serif;
-}
-
 .logoContainer {
   color: var(--tertiary-light);
-
   display: flex;
   align-items: center;
   gap: 1rem;

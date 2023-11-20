@@ -33,37 +33,10 @@
   align-items: center;
 }
 
-.list {
-  display: none;
-  padding-left: 0;
-  align-items: center;
-  font-size: variable.$heading-xs-m;
-  font-weight: variable.$fw-med;
-  @include mixins.tablet() {
-    font-size: variable.$heading-xs;
-  }
-  @include mixins.laptop() {
-    display: flex;
-  }
-}
-
 .title {
   margin-bottom: 0.5rem;
   & > h2 {
     font-weight: variable.$fw-med;
-  }
-}
-
-.tagline {
-  opacity: 0.7;
-  font-style: italic;
-  margin-top: 0.5rem;
-  font-size: variable.$body-l-m;
-  @include mixins.tablet() {
-    font-size: variable.$body-l;
-  }
-  @include mixins.laptop() {
-    margin-bottom: 1rem;
   }
 }
 

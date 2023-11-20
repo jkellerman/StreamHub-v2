@@ -16,10 +16,9 @@
 
 .subheading {
   margin-bottom: 1rem;
-  font-size: variable.$body-l-m;
 
   @include mixins.tablet {
-    font-size: variable.$heading-xs;
+    font-size: var(--step-0);
   }
 }
 
@@ -47,21 +46,12 @@
 
 .heading {
   margin-bottom: 1rem;
-  font-weight: variable.$fw-bold;
-  font-size: variable.$heading-m;
-  @include mixins.tablet {
-    font-size: variable.$heading-xl-m;
-  }
 }
 
 .description {
   color: var(--tertiary-light);
   line-height: 1.5rem;
-  font-size: variable.$body-l-m;
   margin-bottom: 2rem;
-  @include mixins.tablet {
-    font-size: variable.$body-l;
-  }
   @include mixins.laptop {
     width: 90%;
   }
@@ -85,13 +75,6 @@
 .hr {
   border: 2px solid var(--secondary-dark);
   margin-bottom: 2rem;
-}
-
-.more {
-  font-size: variable.$body-m;
-  @include mixins.tablet {
-    font-size: variable.$body-l;
-  }
 }
 
 .buttonWrapper {

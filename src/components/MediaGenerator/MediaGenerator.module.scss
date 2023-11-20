@@ -26,7 +26,7 @@
 }
 
 .overview {
-  font-size: variable.$body-m;
+  font-size: var(--step--1);
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -118,7 +118,7 @@
 }
 
 .subText {
-  font-size: variable.$body-s;
+  font-size: var(--step--1);
 }
 
 @keyframes fade {

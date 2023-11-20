@@ -18,15 +18,18 @@
   align-items: center;
   background-color: var(--primary-light);
   color: var(--secondary-dark);
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   text-transform: uppercase;
   border: none;
   cursor: pointer;
-  font-size: variable.$body-l;
   font-family: inherit;
   font-weight: variable.$fw-bold;
   letter-spacing: variable.$ls;
   transition: variable.$transition;
+
+  @include mixins.laptop {
+    padding: 1rem 2rem;
+  }
 
   &:hover {
     background: var(--primary);
@@ -58,7 +61,6 @@
 }
 
 .groupTitle {
-  font-size: variable.$body-m;
   color: var(--tertiary-light);
   text-transform: uppercase;
   letter-spacing: variable.$ls;
@@ -79,7 +81,7 @@
 
 .listItem {
   list-style: none;
-  font-size: variable.$body-l;
+
   margin-bottom: 1rem;
   white-space: nowrap;
 }
@@ -92,12 +94,7 @@
   max-width: 350px;
   line-height: 1.5rem;
   margin-bottom: 1rem;
-  font-size: variable.$body-l-m;
   color: var(--tertiary-light);
-
-  @include mixins.tablet {
-    font-size: variable.$body-l;
-  }
 }
 
 .footerBottomContainer {
@@ -111,9 +108,9 @@
 }
 
 .disclaimer {
-  font-size: variable.$body-m-m;
+  font-size: var(--step--1);
   color: var(--tertiary-light);
   @include mixins.tablet {
-    font-size: variable.$body-m;
+    font-size: unset;
   }
 }

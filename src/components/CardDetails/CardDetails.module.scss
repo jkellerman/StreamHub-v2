@@ -2,13 +2,14 @@
 @use "@/styles/mixins" as mixins;
 
 .title {
-  font-size: variable.$body-s;
+  font-size: var(--step--1);
   font-weight: variable.$fw-light;
   margin: 0.25rem 0 0;
   width: 110px;
   color: var(--tertiary-light);
   @include mixins.tablet() {
-    font-size: variable.$body-m;
+    font-size: unset;
+
     left: 2rem;
     margin: 0.375rem 0 0;
     width: 160px;

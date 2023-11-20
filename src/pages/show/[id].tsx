@@ -71,7 +71,7 @@ const Series: React.FC<SeriesProps> = ({
         />
 
         {data && data.recommendations.results.length > 0 && (
-          <CategoryHeading type="movies" category="People also liked" />
+          <CategoryHeading category="People also liked" recommendations />
         )}
         {data && data.recommendations.results.length > 0 && (
           <Recommendations

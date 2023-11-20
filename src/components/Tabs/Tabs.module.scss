@@ -1,11 +1,6 @@
 @use "@/styles/variables" as variable;
 @use "@/styles/mixins" as mixins;
 
-.title {
-  font-weight: variable.$fw-med;
-  font-size: variable.$heading-xs;
-}
-
 .triggerContainer {
   position: relative;
   min-width: 55px;
@@ -15,14 +10,14 @@
 .trigger {
   text-transform: capitalize;
   font-weight: variable.$fw-med;
-  font-size: variable.$body-l-m;
+  font-size: var(--step-0);
   font-family: inherit;
   cursor: pointer;
   background: none;
   border: none;
   color: var(--quinary);
   @include mixins.tablet() {
-    font-size: variable.$body-l;
+    font-size: inherit;
     padding-bottom: 0.5rem;
   }
 }
@@ -93,13 +88,6 @@
   animation: fade variable.$fade-animation;
 }
 
-.headingMethod {
-  font-size: variable.$heading-xs-m;
-  @include mixins.tablet() {
-    font-size: variable.$heading-xs;
-  }
-}
-
 .container.active {
   animation: fade variable.$fade-animation;
 }
@@ -114,12 +102,15 @@
 .provider {
   display: flex;
   gap: 0.5rem;
-  font-size: variable.$body-m;
+  font-size: var(--step--1);
   align-items: center;
   background-color: var(--primary-dark);
   padding: 0.5em 0.5em;
   border-radius: variable.$border-radius-s;
   min-width: 100%;
+  @include mixins.tablet {
+    font-size: inherit;
+  }
 }
 
 .providerDetails {
@@ -146,8 +137,11 @@
 }
 
 .placeholder {
-  font-size: variable.$body-m;
+  font-size: var(--step--1);
   color: var(--tertiary-light);
+  @include mixins.tablet {
+    font-size: inherit;
+  }
 }
 
 @keyframes fade {

@@ -3,17 +3,11 @@
 
 .logo {
   color: var(--primary-light);
-  font-size: variable.$heading-l-m;
+  font-size: var(--step-1);
   font-weight: variable.$fw-extraBold;
   font-family: "Wix Madefor Display", sans-serif;
   width: auto;
   flex-shrink: 0;
   flex-basis: 0;
   margin-right: 1.25rem;
-  @include mixins.tablet() {
-    font-size: variable.$heading-l-m;
-  }
-  @include mixins.laptop() {
-    font-size: variable.$heading-s;
-  }
 }

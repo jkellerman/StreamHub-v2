@@ -6,7 +6,9 @@
   position: absolute;
   z-index: variable.$z-index-5;
   border: 1px solid #4f5c7c;
+  border-radius: 5px;
   background-color: var(--secondary-dark);
+  // background: linear-gradient(90deg, var(--secondary-gradient));
   transition: height 160ms ease 0s, box-shadow 150ms ease-in;
   align-self: baseline;
   overflow: hidden;
@@ -126,7 +128,7 @@
 }
 
 .input {
-  font-size: variable.$body-l;
+  font-size: inherit;
   font-family: inherit;
   color: var(--quinary);
   font-weight: variable.$fw-light;
@@ -181,8 +183,9 @@
 }
 
 .tv {
-  background-color: black;
+  background: linear-gradient(90deg, var(--quaternary-gradient));
   padding: 0 0.2em;
-  font-size: variable.$body-s-m;
+  font-size: var(--step--1);
+  font-weight: variable.$fw-bold;
   margin-left: 0.5rem;
 }

@@ -72,7 +72,7 @@ const Movie: React.FC<MovieProps> = ({
         />
 
         {data && data.recommendations.results.length > 0 && (
-          <CategoryHeading type="movies" category="People also liked" recommendations />
+          <CategoryHeading category="People also liked" recommendations />
         )}
         {data && data.recommendations.results.length > 0 && (
           <Recommendations
@@ -108,10 +108,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const { release_dates, release_date, runtime, overview, credits, genres, title } = data;
 
-  const getDirector: Media.IDirector = credits.crew.find(
+  const getDirector: Media.IDirector | undefined = credits.crew.find(
     (crew: Media.ICast) => crew.department === "Directing"
   );
-  const director = getDirector.name;
+
+  const director = getDirector?.name || null;
 
   const cast = credits.cast.slice(0, 4);
 

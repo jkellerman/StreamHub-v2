@@ -8,12 +8,8 @@
 
 .overview {
   line-height: 25px;
-  font-size: variable.$body-l-m;
   font-weight: variable.$fw-light;
   margin-bottom: 1rem;
-  @include mixins.tablet() {
-    font-size: variable.$body-l;
-  }
 }
 
 .mediaSummaryOverview {
@@ -38,7 +34,7 @@
   color: var(--primary-light);
   border: none;
   text-transform: capitalize;
-  font-size: variable.$body-l-m;
+  font-size: inherit;
   padding: 0;
   cursor: pointer;
 }
