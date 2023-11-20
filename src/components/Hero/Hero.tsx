@@ -1,5 +1,6 @@
 import Button from "@/components/Buttons/Buttons";
 
+import Heading from "../Heading/Heading";
 import Icon from "../Icon/Icon";
 
 import styles from "./Hero.module.scss";
@@ -17,7 +18,9 @@ const Hero = () => {
       <div className={styles.container}>
         <div className={styles.subheading}>Get recommendations for:</div>
 
-        <h1 className={styles.heading}>Movies and series on all streaming services</h1>
+        <Heading as="h1" size="lg">
+          Movies and series on all streaming services
+        </Heading>
         <p className={styles.description}>
           Browse, search or use a randomised generator to get the perfect movie or series to watch
           tonight. Simple!

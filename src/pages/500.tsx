@@ -2,6 +2,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import Button from "@/components/Buttons/Buttons";
+import Content from "@/components/Content/Content";
+import Heading from "@/components/Heading/Heading";
 
 const Custom500 = () => {
   const router = useRouter();
@@ -24,12 +26,10 @@ const Custom500 = () => {
           background: "linear-gradient(90deg, var(--quaternary-gradient))",
         }}
       >
-        <h1 style={{ fontSize: "6rem", color: "var(--tertiary-light)", marginBottom: "2rem" }}>
+        <Heading as="h1" size="xxl">
           500
-        </h1>
-        <p style={{ marginBottom: "2rem", fontSize: "1.25rem" }}>
-          500: Server&apos;s having a moment. 😅 Our bad, we&apos;re on it!
-        </p>
+        </Heading>
+        <Content>500: Server&apos;s having a moment. 😅 Our bad, we&apos;re on it!</Content>
         <Button variant="primary" onClick={handleReload}>
           Try again
         </Button>

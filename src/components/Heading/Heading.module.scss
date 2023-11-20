@@ -7,33 +7,29 @@
   letter-spacing: variable.$ls;
 }
 
+.xxs {
+  font-size: var(--step--1);
+}
+
 .xs {
-  font-size: variable.$heading-xs;
+  font-size: var(--step-0);
 }
 .s {
-  font-size: variable.$heading-s-m;
-
-  @include mixins.tablet {
-    font-size: variable.$heading-s;
-  }
+  font-size: var(--step-1);
 }
 .m {
-  font-size: variable.$heading-m-m;
-  @include mixins.tablet {
-    font-size: variable.$heading-m;
-  }
+  font-size: var(--step-2);
 }
 .lg {
-  font-size: variable.$heading-l-m;
-  @include mixins.tablet {
-    font-size: variable.$heading-l;
-  }
+  font-size: var(--step-3);
+  font-weight: variable.$fw-bold;
 }
 .xl {
-  font-size: variable.$heading-l-m;
-  @include mixins.tablet {
-    font-size: variable.$heading-l;
-  }
+  font-size: var(--step-4);
+}
+
+.xxl {
+  font-size: var(--step-5);
 }
 
 .heading {

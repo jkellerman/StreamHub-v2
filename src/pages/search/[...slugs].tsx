@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import CTA from "@/components/CallToActionSection/CallToActionSection";
 import CardList from "@/components/CardList/CardList";
 import styles from "@/components/CardList/CardList.module.scss";
+import Heading from "@/components/Heading/Heading";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 
 const Search = () => {
@@ -24,13 +25,15 @@ const Search = () => {
       <main>
         <section>
           {!isLoading && (
-            <h1 className={styles.header}>
-              {cards.length !== 0
-                ? `Movies and TV series with '${slugsArray[1]?.toString().replace(/-/g, " ")}'`
-                : `Oops...nothing found for '${slugsArray[1]
-                    ?.toString()
-                    .replace(/-/g, " ")}', try something else.`}
-            </h1>
+            <div className={styles.header}>
+              <Heading as="h1" size="xs">
+                {cards.length !== 0
+                  ? `Movies and TV series with '${slugsArray[1]?.toString().replace(/-/g, " ")}'`
+                  : `Oops...nothing found for '${slugsArray[1]
+                      ?.toString()
+                      .replace(/-/g, " ")}', try something else.`}
+              </Heading>
+            </div>
           )}
           <CardList
             cards={cards}

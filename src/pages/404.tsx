@@ -1,6 +1,8 @@
 import Head from "next/head";
 
 import Button from "@/components/Buttons/Buttons";
+import Content from "@/components/Content/Content";
+import Heading from "@/components/Heading/Heading";
 
 const Custom404 = () => {
   return (
@@ -18,12 +20,10 @@ const Custom404 = () => {
           background: "linear-gradient(90deg, var(--quaternary-gradient))",
         }}
       >
-        <h1 style={{ fontSize: "6rem", color: "var(--tertiary-light)", marginBottom: "2rem" }}>
+        <Heading as="h1" size="xxl">
           404
-        </h1>
-        <p style={{ marginBottom: "2rem", fontSize: "1.25rem" }}>
-          Oops...looks like you&apos;ve taken a wrong turn.
-        </p>
+        </Heading>
+        <Content>Oops...looks like you&apos;ve taken a wrong turn.</Content>
         <Button variant="primary" asLink link="/">
           Take me home
         </Button>

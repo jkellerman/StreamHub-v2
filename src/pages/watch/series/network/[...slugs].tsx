@@ -55,7 +55,7 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
 
       <main className={styles.main}>
         <div className={styles.container}>
-          <Heading as="h1" size="xl">
+          <Heading as="h1" size="lg">
             What to watch tonight?
           </Heading>
           <Content>
@@ -97,7 +97,7 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
 
           <Panel>
             <PanelInner>
-              <Heading as="h2" size="m">
+              <Heading as="h2" size="s">
                 Suggest a series
               </Heading>
               <Content>

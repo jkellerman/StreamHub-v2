@@ -13,4 +13,6 @@
 
 .headingWrapper {
   max-width: 600px;
+  @include mixins.flex-center;
+  width: 90%;
 }
