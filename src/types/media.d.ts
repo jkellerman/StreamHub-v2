@@ -1,15 +1,4 @@
 export declare namespace Media {
-  export interface IMediaItem {
-    id: number;
-    backdrop_path: string;
-    title: string;
-    name: string;
-    release_date: string;
-    first_air_date: string;
-    media_type: string;
-    origin_country: string[];
-  }
-
   export interface ICertificationMovie {
     certification: string;
   }
@@ -27,6 +16,12 @@ export declare namespace Media {
   export interface IDirector {
     name: string;
   }
+
+  export interface IGenre {
+    id: number;
+    name: string;
+  }
+
   export interface INetwork {
     name: IDirector[];
   }
@@ -39,6 +34,31 @@ export declare namespace Media {
     department: string;
   }
 
+  export interface IMediaItem {
+    id: number;
+    poster_path: string;
+    title: string;
+    name: string;
+    release_date: string;
+    first_air_date: string;
+    media_type: string;
+    origin_country: string[];
+    vote_average: number;
+    overview: string;
+    runtime?: number;
+    number_of_seasons?: number;
+  }
+
+  export interface MediaRunTimeOrSeasonsProps {
+    runtime?: number;
+    seasons?: number;
+  }
+
+  export interface IMovieData {
+    backdrop_path: string;
+    known_for_department: string;
+  }
+
   export interface IProvider {
     provider_id: number;
     logo_path: string;
@@ -48,9 +68,9 @@ export declare namespace Media {
   export interface IProviderList {
     length: number;
     flatrate: IProvider[];
-    link: string;
     buy: IProvider[];
     rent: IProvider[];
+    free: IProvider[];
   }
 
   export interface IRecommendations {
@@ -59,9 +79,16 @@ export declare namespace Media {
     name: string;
     poster_path: string;
     backdrop_path: string;
+    first_air_date: string;
+    release_date: string;
   }
 
   export interface IRecommendationsList {
     results: IRecommendations[];
+  }
+
+  export interface IServices {
+    provider_id: number;
+    provider_name: string;
   }
 }

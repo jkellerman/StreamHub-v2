@@ -1,0 +1,64 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+.container,
+.header {
+  @include mixins.center;
+}
+
+.container {
+  @include mixins.flex-column;
+  justify-content: center;
+  animation: fade variable.$fade-animation;
+  margin-bottom: 2rem;
+}
+
+.list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  justify-content: space-evenly;
+  @include mixins.tablet {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 160px);
+    justify-content: space-evenly;
+    gap: 2rem;
+  }
+
+  @include mixins.tabletL {
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
+
+.header {
+  margin-block: 2rem;
+
+  @include mixins.laptop {
+    margin-top: 4rem;
+  }
+}
+
+.linkContainer {
+  @include mixins.flex-column;
+  align-items: center;
+  list-style: none;
+}
+
+.buttonContainer {
+  margin: 6rem 0;
+  align-self: center;
+}
+
+.error {
+  @include mixins.center;
+  margin-bottom: 4rem;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

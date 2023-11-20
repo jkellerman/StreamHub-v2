@@ -1,0 +1,19 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.container {
+  z-index: variable.$z-index-4;
+  position: relative;
+  @include mixins.center;
+  max-width: 900px;
+  @include mixins.flex-column;
+  justify-content: center;
+  padding-top: 8rem;
+
+  @include mixins.tablet {
+    padding-top: 14rem;
+  }
+  & > h1 {
+    margin-bottom: 0;
+  }
+}

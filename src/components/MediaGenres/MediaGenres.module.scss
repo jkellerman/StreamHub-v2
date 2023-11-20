@@ -1,0 +1,48 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.heading {
+  font-weight: variable.$fw-med;
+  text-transform: capitalize;
+  min-width: 75px;
+  @include mixins.tablet {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    min-width: none;
+  }
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+  @include mixins.tablet {
+    width: 165px;
+    margin-right: 0.5rem;
+    flex-direction: column;
+    margin-bottom: none;
+  }
+}
+
+.group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+  margin-block: 0.75rem;
+}
+
+.genre {
+  margin-right: 0.25rem;
+  color: var(--tertiary-light);
+  font-weight: variable.$fw-light;
+
+  &::after {
+    content: ",";
+  }
+
+  &:last-of-type {
+    &::after {
+      content: unset;
+    }
+  }
+}

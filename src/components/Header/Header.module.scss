@@ -1,0 +1,96 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+@mixin header-styles {
+  @include mixins.flex-column;
+  background-color: var(--secondary-dark);
+  z-index: variable.$z-index-5;
+  border-bottom: 0px solid var(--secondary-dark);
+  @include mixins.tablet {
+    position: sticky;
+  }
+}
+
+.header {
+  @include mixins.flex-column;
+  @include header-styles();
+
+  @include mixins.tablet {
+    top: 0px;
+    transition: border-bottom 250ms ease-in-out;
+    border-bottom: 0px solid var(--secondary-dark);
+    width: 100%;
+  }
+}
+
+.hidden {
+  @include mixins.flex-column;
+  @include header-styles();
+
+  @include mixins.tablet {
+    top: -146px;
+    transition: top 150ms ease-in-out 0.2s;
+    top: -194px;
+  }
+}
+
+.visible {
+  @include mixins.flex-column;
+  @include header-styles();
+
+  @include mixins.tablet {
+    top: 0px;
+    border-bottom: 3px solid var(--primary-dark);
+    transition: top 250ms ease-in-out, border-bottom 250ms ease-in-out;
+  }
+}
+
+.container {
+  @include mixins.center;
+  @include mixins.flex-column;
+  position: relative;
+
+  margin-top: 1.5rem;
+  @include mixins.tabletL() {
+    max-height: 44px;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    @include mixins.flex-row;
+    align-items: center;
+  }
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+
+  & > svg {
+    @include mixins.tabletL {
+      display: none;
+    }
+  }
+
+  @include mixins.tabletL {
+    margin-bottom: unset;
+  }
+}
+
+.loginContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: variable.$fw-med;
+  margin-left: 1rem;
+  @include mixins.tabletL() {
+    justify-content: end;
+  }
+}
+
+.userIconWrapper {
+  display: none;
+  @include mixins.tabletL() {
+    display: inline-block;
+  }
+}

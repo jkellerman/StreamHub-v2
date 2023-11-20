@@ -1,0 +1,49 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.container {
+  position: absolute;
+  width: 100%;
+  height: 50vh;
+
+  @include mixins.tablet() {
+    height: 100%;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  background: linear-gradient(90deg, var(--secondary-gradient));
+  width: 100%;
+  height: 100%;
+  animation: fade variable.$fade-animation;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fade variable.$fade-animation;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 102%;
+  z-index: variable.$z-index-1;
+  left: 0;
+  top: 0;
+  background-image: linear-gradient(
+    rgba(16, 20, 30, 0.75) 0%,
+    rgba(16, 20, 30, 0.75) 30%,
+    rgba(16, 20, 30, 1) 80%
+  );
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

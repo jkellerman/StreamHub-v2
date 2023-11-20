@@ -1,0 +1,19 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.posterWrapper {
+  position: relative;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: variable.$border-radius-s;
+  min-width: 110px;
+  min-height: 165px;
+  min-height: 165px;
+
+  background: linear-gradient(90deg, var(--secondary-gradient));
+  @include mixins.tablet {
+    min-width: 160px;
+    min-height: 240px;
+    max-height: 240px;
+  }
+}

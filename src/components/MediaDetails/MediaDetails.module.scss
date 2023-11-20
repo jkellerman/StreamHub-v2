@@ -1,0 +1,21 @@
+@use "@/styles/mixins" as mixins;
+@use "@/styles/variables" as variable;
+
+.detailsContainer {
+  @include mixins.flex-column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-block-start: 0.5rem;
+
+  @include mixins.tablet {
+    margin-bottom: 0;
+  }
+
+  .detailsContainerInner {
+    @include mixins.flex-row;
+    align-items: center;
+    gap: 1rem;
+    font-size: var(--step-0);
+    font-weight: variable.$fw-med;
+  }
+}

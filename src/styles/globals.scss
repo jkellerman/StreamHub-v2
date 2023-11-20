@@ -1,0 +1,149 @@
+@use "variables" as variable;
+
+:root {
+  // Theme
+  --primary: hsl(170, 100%, 40%);
+  --primary-light: hsl(170, 100%, 50%);
+  --primary-dark: hsl(203, 46%, 15%);
+  --secondary: hsl(218, 58%, 16%);
+  --secondary-light: hsl(206, 58%, 16%);
+  --secondary-dark: hsl(223, 30%, 9%);
+  --tertiary: hsl(223, 34%, 60%);
+  --tertiary-light: hsl(213, 20%, 65%);
+  --tertiary-dark: hsl(222, 23%, 46%);
+  --quaternary: hsl(258, 100%, 43%);
+  --quinary: hsl(0, 0%, 100%);
+  --primary-gradient: hsl(182, 98%, 35%), var(--primary-light);
+  --secondary-gradient: hsl(219, 41%, 13%), hsl(212, 40%, 24%);
+  --tertiary-gradient: var(--primary-light), var(--tertiary);
+  --quaternary-gradient: hsl(204, 47%, 32%), hsl(253, 28%, 36%);
+
+  // Typography
+
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1140,18,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --step--2: clamp(0.6331rem, 0.7183rem + -0.1195vw, 0.6944rem);
+  --step--1: clamp(0.8331rem, 0.829rem + 0.0207vw, 0.8438rem);
+  --step-0: clamp(1rem, 0.9512rem + 0.2439vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.0832rem + 0.5841vw, 1.4994rem);
+  --step-2: clamp(1.44rem, 1.222rem + 1.0902vw, 1.9988rem);
+  --step-3: clamp(1.7281rem, 1.3628rem + 1.8268vw, 2.6644rem);
+  --step-4: clamp(2.0738rem, 1.4969rem + 2.8841vw, 3.5519rem);
+  --step-5: clamp(2.4881rem, 1.6113rem + 4.3841vw, 4.735rem);
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Outfit;
+  font-style: normal;
+  font-weight: 300;
+  src: url("/fonts/Outfit-Light.woff2") format("woff2"),
+    url("/fonts/Outfit-Light.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Outfit;
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/Outfit-Medium.woff2") format("woff2"),
+    url("/fonts/Outfit-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/Outfit-SemiBold.woff2") format("woff2"),
+    url("/fonts/Outfit-SemiBold.woff") format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Wix Madefor Display";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/WixMadeforDisplay-Regular.woff2") format("woff2"),
+    url("/fonts/WixMadeforDisplay-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Wix Madefor Display";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/WixMadeforDisplay-Medium.woff2") format("woff2"),
+    url("/fonts/WixMadeforDisplay-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Wix Madefor Display";
+  font-style: normal;
+  font-weight: 800;
+  src: url("/fonts/WixMadeforDisplay-ExtraBold.woff2") format("woff2"),
+    url("/fonts/WixMadeforDisplay-ExtraBold.woff") format("woff");
+}
+
+html,
+body {
+  font-family: "Outfit", sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--secondary-dark);
+  color: var(--quinary);
+  font-weight: variable.$fw-light;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  display: inline-block;
+}
+
+hr {
+  border: 0.5px solid var(--secondary-dark);
+  margin: 0 0 2rem;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+}
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: var(--primary-light);
+  position: fixed;
+  z-index: variable.$z-index-5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+
+/* Safari 15+ displays a gray border while loading. Solution at https://nextjs.org/docs/api-reference/next/future/image */
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  img[loading="lazy"] {
+    clip-path: inset(0.6px);
+  }
+}

@@ -1,12 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-
-import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import QueryString from "qs";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+
+import type { NextApiRequest, NextApiResponse } from "next";
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { slugs, ...queryParams } = req.query;
     const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
@@ -14,8 +12,7 @@ export default async function handler(
       {
         ...BASE_TMDB_QUERY_SEARCH_PARAMS,
         query: slugsArray[1],
-        ...queryParams,
-        include_adult: "false",
+        ...queryParams, // for infinite scroll page numbers
       },
       { addQueryPrefix: true }
     );

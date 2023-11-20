@@ -1,0 +1,30 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.container {
+  @include mixins.flex-column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+  @include mixins.tablet {
+    @include mixins.flex-row;
+    margin-bottom: unset;
+  }
+}
+
+.logoContainer {
+  color: var(--tertiary-light);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.statsContainer {
+  @include mixins.flex-column;
+  align-items: center;
+  gap: 1rem;
+  @include mixins.tablet {
+    @include mixins.flex-row;
+  }
+}

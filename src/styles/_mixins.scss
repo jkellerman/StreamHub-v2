@@ -1,0 +1,64 @@
+@use "variables" as variable;
+
+@mixin center {
+  width: 90%;
+  margin: 0 auto;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin mobileS {
+  @media (max-width: variable.$mobile-l) {
+    @content;
+  }
+}
+@mixin mobileL {
+  @media (min-width: variable.$mobile-l) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: variable.$tablet) {
+    @content;
+  }
+}
+@mixin tabletL {
+  @media (min-width: variable.$tablet-l) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media (min-width: variable.$laptop) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: variable.$desktop) {
+    @content;
+  }
+}
+@mixin desktopL {
+  @media (min-width: variable.$desktop-l) {
+    @content;
+  }
+}
+
+@mixin addHeadingEllipses {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+}

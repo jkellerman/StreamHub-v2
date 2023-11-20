@@ -1,0 +1,59 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.container,
+.noCard {
+  position: relative;
+  display: block;
+  border-radius: variable.$border-radius-s;
+  animation: fade variable.$fade-animation;
+  width: 110px;
+  height: 165px;
+
+  @include mixins.tablet {
+    width: 160px;
+    height: 240px;
+  }
+}
+
+.noCard {
+  background: linear-gradient(90deg, var(--quaternary-gradient));
+}
+
+.card {
+  border-radius: variable.$border-radius-s;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.mediaType {
+  background-color: rgba(0, 0, 0, 0.697);
+  position: absolute;
+  font-size: var(--step--2);
+  font-weight: variable.$fw-bold;
+  padding: 0.1em 0.3em;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  z-index: variable.$z-index-1;
+  @include mixins.tablet {
+    right: 0.75rem;
+  }
+}
+
+@media (hover: hover) {
+  .container:hover {
+    opacity: 0.6;
+    transition: variable.$transition;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

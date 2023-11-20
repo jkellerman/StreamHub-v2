@@ -1,89 +1,69 @@
-import { useState, useRef, MutableRefObject } from "react";
+import { useRef, useState, useEffect } from "react";
 
-interface SliderProps {
-  isScrollAtStart: boolean;
-  isScrollAtEnd: boolean;
-  isScrollAvailable: boolean;
-  setIsScrollAvailable: (value: boolean) => void;
-  setIsScrollAtEnd: (value: boolean) => void;
-  getScrollPosition: () => void;
-  handleClickNext: () => void;
-  handleClickPrev: () => void;
-  sliderRef: MutableRefObject<HTMLUListElement | null>;
-  cardRef: MutableRefObject<HTMLLIElement | null>;
-}
-
-const useSlider = (): SliderProps => {
-  const [isScrollAtStart, setIsScrollAtStart] = useState(true);
-  const [isScrollAtEnd, setIsScrollAtEnd] = useState(false);
+const useSlider = () => {
   const [isScrollAvailable, setIsScrollAvailable] = useState(false);
-  const sliderRef = useRef<HTMLUListElement | null>(null);
+  const carouselRef = useRef<HTMLUListElement | null>(null);
   const cardRef = useRef<HTMLLIElement | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  let accumulatedTranslation = 0;
+  let numCardsRemaining: number;
 
-  const getScrollPosition = () => {
-    if (sliderRef.current) {
-      if (sliderRef.current.scrollLeft > 0) {
-        setIsScrollAtStart(false);
-      }
-
-      if (sliderRef.current.scrollLeft === 0) {
-        setIsScrollAtStart(true);
-      }
-
-      if (
-        sliderRef.current.scrollLeft + sliderRef.current?.offsetWidth + 1 >=
-        sliderRef.current?.scrollWidth
-      ) {
-        setIsScrollAtEnd(true);
-      } else {
-        setIsScrollAtEnd(false);
+  useEffect(() => {
+    if (scrollRef.current) {
+      if (scrollRef.current.scrollWidth > scrollRef.current.clientWidth) {
+        // if slider overflows viewport remove navigation buttons
+        setIsScrollAvailable(true);
       }
     }
-  };
-
-  // When clicked, scroll by the number of cards fully visible in viewport.
-
-  const handleClickPrev = () => {
-    if (sliderRef.current && cardRef.current) {
-      const cardMargin = window
-        .getComputedStyle(cardRef.current)
-        .getPropertyValue("margin-left");
-      const cardWidth = cardRef.current.getBoundingClientRect().width;
-      const cardWidthPlusMargin = parseInt(cardMargin) + cardWidth;
-      const numOfFullyVisibleCards = Math.floor(
-        sliderRef.current?.offsetWidth / cardWidthPlusMargin
-      );
-      sliderRef.current.scrollLeft -=
-        cardWidthPlusMargin * numOfFullyVisibleCards;
-    }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scrollRef.current]); // needs .current otherwise won't update scrollWidth on first render
 
   const handleClickNext = () => {
-    if (sliderRef.current && cardRef.current) {
-      const cardMargin = window
-        .getComputedStyle(cardRef.current)
-        .getPropertyValue("margin-left");
+    if (carouselRef.current && cardRef.current) {
+      const totalNumOfCards = carouselRef.current.children.length;
+      const sliderMargin = 1; // prevents the carousel from sliding too far when it has reached the end.
       const cardWidth = cardRef.current.getBoundingClientRect().width;
-      const cardWidthPlusMargin = parseInt(cardMargin) + cardWidth;
-      const numOfFullyVisibleCards = Math.floor(
-        sliderRef.current?.offsetWidth / cardWidthPlusMargin
-      );
-      sliderRef.current.scrollLeft +=
-        cardWidthPlusMargin * numOfFullyVisibleCards;
+      const numOfFullyVisibleCards = Math.round(carouselRef.current?.offsetWidth / cardWidth);
+
+      if (!numCardsRemaining) {
+        numCardsRemaining = totalNumOfCards;
+      }
+      if (
+        Math.abs(accumulatedTranslation) + cardWidth * numOfFullyVisibleCards + sliderMargin >
+        carouselRef.current.scrollWidth
+      )
+        return; // Prevent sliding when carousel has reached the end
+
+      numCardsRemaining -= numOfFullyVisibleCards; // number of cards in viewport so that it sliding remains consistent across all breakpoints.
+      if (numCardsRemaining < numOfFullyVisibleCards) {
+        // If the number of cards remaining is less than the number of cards that are currently in the viewport, slide only the number of card that are remaining
+        accumulatedTranslation -= cardWidth * numCardsRemaining;
+        carouselRef.current.style.transform = `translateX(${accumulatedTranslation}px)`;
+        numCardsRemaining -= numOfFullyVisibleCards;
+      } else {
+        // Slide across the number of cards that are in the viewport
+        accumulatedTranslation -= cardWidth * numOfFullyVisibleCards;
+        carouselRef.current.style.transform = `translateX(${accumulatedTranslation}px)`;
+      }
     }
   };
 
+  const handleClickPrev = () => {
+    if (carouselRef.current && cardRef.current) {
+      const totalNumOfCards = carouselRef.current.children.length;
+      if (accumulatedTranslation >= 0) return; // prevent slider from sliding if at the start
+      carouselRef.current.style.transform = `translateX(0px)`;
+      numCardsRemaining = totalNumOfCards;
+      accumulatedTranslation = 0; // set slider to beginning
+    }
+  };
   return {
-    isScrollAtStart,
-    isScrollAtEnd,
-    isScrollAvailable,
-    getScrollPosition,
+    carouselRef,
+    cardRef,
+    scrollRef,
     handleClickNext,
     handleClickPrev,
-    setIsScrollAvailable,
-    setIsScrollAtEnd,
-    sliderRef,
-    cardRef,
+    isScrollAvailable,
   };
 };
 

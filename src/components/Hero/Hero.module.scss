@@ -1,0 +1,81 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.container {
+  @include mixins.flex-center;
+  @include mixins.center;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem 0;
+  max-width: 515px;
+  margin-bottom: 2rem;
+  @include mixins.tablet {
+    margin-top: 2rem;
+  }
+  & > h1 {
+    font-weight: variable.$fw-bold;
+  }
+}
+
+.subheading {
+  margin-bottom: 1rem;
+
+  @include mixins.tablet {
+    font-size: var(--step-0);
+  }
+}
+
+.logosContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.logoWrapper {
+  width: 48px;
+  height: 24px;
+  @include mixins.tablet {
+    width: 64px;
+    height: 32px;
+  }
+}
+
+.logo {
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+}
+
+.description {
+  color: var(--tertiary-light);
+  line-height: 1.5rem;
+  margin-bottom: 2rem;
+  @include mixins.laptop {
+    width: 90%;
+  }
+}
+
+.exploreLink {
+  margin: 2rem 0;
+  padding: 0.75em 1.25em;
+  background-color: transparent;
+  border: 1px solid var(--primary-light);
+  color: white;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.hr {
+  border: 2px solid var(--secondary-dark);
+  margin-bottom: 2rem;
+}
+
+.buttonWrapper {
+  margin-top: 2.5rem;
+}

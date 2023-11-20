@@ -1,0 +1,191 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.container {
+  flex-grow: 1;
+  position: absolute;
+  z-index: variable.$z-index-5;
+  border: 1px solid #4f5c7c;
+  border-radius: 5px;
+  background-color: var(--secondary-dark);
+  // background: linear-gradient(90deg, var(--secondary-gradient));
+  transition: height 160ms ease 0s, box-shadow 150ms ease-in;
+  align-self: baseline;
+  overflow: hidden;
+  width: 100%;
+  top: 2.5rem;
+
+  @include mixins.tabletL {
+    max-width: 700px;
+    top: unset;
+    position: relative;
+  }
+}
+.container:hover,
+.container:focus-within {
+  box-shadow: var(--tertiary-light) 0px 0px 0px 2px;
+}
+
+.formWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5em 0.875em;
+  width: 100%;
+}
+
+.closeButton {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: variable.$transition;
+  position: absolute;
+  width: 0.625rem;
+  height: 0.625rem;
+  right: 1.5rem;
+  top: 0.8rem;
+
+  @include mixins.tablet {
+    display: block;
+  }
+}
+
+.closeButtonArrow {
+  background-color: transparent;
+  border: none;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  transition: variable.$transition;
+}
+
+.searchIcon {
+  background-color: transparent;
+  border: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.listContainer {
+  position: relative;
+}
+
+.list::before {
+  display: block;
+  content: "";
+  height: 1px;
+  background-color: var(--tertiary-light);
+  margin-top: 0.25rem;
+}
+
+.allResultsLinkWrapper {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+
+.allResultsLinkWrapper {
+  justify-content: center;
+}
+
+.noResultsContainer,
+.loading,
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 8rem;
+  gap: 4rem;
+}
+
+.noResultsContainer::before,
+.loading::before {
+  display: block;
+  content: "";
+  margin: 0.25rem 1rem 0.5rem;
+  height: 1px;
+  width: 100%;
+  background-color: var(--tertiary-light);
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5em 0.875em;
+  width: 100%;
+}
+
+.input {
+  font-size: inherit;
+  font-family: inherit;
+  color: var(--quinary);
+  font-weight: variable.$fw-light;
+  border: none;
+  background: transparent;
+  padding: 0.25em 0;
+  width: 100%;
+  outline: none;
+  letter-spacing: variable.$ls-s;
+  caret-color: var(--primary);
+  @include mixins.tablet() {
+    height: unset;
+  }
+}
+
+.input::placeholder {
+  color: var(--quinary);
+  text-overflow: ellipsis;
+}
+
+.listItemWrapper {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: variable.$transition;
+}
+
+.isActive,
+.allResultsLinkWrapper:hover,
+.listItemWrapper:hover {
+  background: linear-gradient(270deg, var(--secondary-gradient));
+  transition: variable.$transition;
+}
+
+.listItem {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.posterContainer {
+  width: 27px;
+  height: 40px;
+  margin-right: 1rem;
+}
+
+.noImage {
+  @extend .posterContainer;
+  background: linear-gradient(270deg, var(--tertiary-gradient));
+}
+
+.tv {
+  background: linear-gradient(90deg, var(--quaternary-gradient));
+  padding: 0 0.2em;
+  font-size: var(--step--2);
+  font-weight: variable.$fw-med;
+  margin-left: 0.5rem;
+}

@@ -2,22 +2,28 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/utils/*": ["src/utils/*"],
-      "@/public/*": ["public/*"],
       "@/components/*": ["src/components/*"],
       "@/constants/*": ["src/constants/*"],
       "@/hooks/*": ["src/hooks/*"],
-      "@/types/*": ["src/types/*"],
+      "@/layouts/*": ["src/layouts/*"],
+      "@/pages/*": ["src/pages/*"],
       "@/styles/*": ["src/styles/*"],
+      "@/types/*": ["src/types/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/public/*": ["public/*"],
       "@/src/*": ["src/*"]
     },
-    "target": "es5",
+    "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "pretty": true,
+    "sourceMap": true,
     "incremental": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -26,6 +32,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/styles/fonts.js"],
   "exclude": ["node_modules"]
 }

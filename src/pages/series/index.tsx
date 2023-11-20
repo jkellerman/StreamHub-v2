@@ -1,35 +1,45 @@
-import React from "react";
-import Head from "next/head";
-import QueryString from "qs";
-import { useRouter } from "next/router";
-import styles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.css";
 import { GetStaticProps } from "next";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import QueryString from "qs";
+import React from "react";
 
-import Dropdown from "@/components/molecules/Dropdown/Dropdown";
-import SearchBar from "@/components/atoms/SearchBar/SearchBar";
-import CardList from "@/components/molecules/CardList/CardList";
-
-import { DEFAULT_SERIES_GENRE } from "@/constants/app";
-import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import CTA from "@/components/CallToActionSection/CallToActionSection";
+import CardList from "@/components/CardList/CardList";
+import Dropdown, {
+  DropdownsContainer,
+  DropdownsInnerContainer,
+  DropdownsOuterContainer,
+} from "@/components/Dropdown/Dropdown";
+import Heading from "@/components/Heading/Heading";
+import Description from "@/components/MediaPageDescription/MediaPageDescription";
+import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
+import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL, seriesNetworkList } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { Genres } from "@/src/types";
+import { Media } from "@/src/types";
 
 interface SeriesIndexPageProps {
-  genreList: Genres.IGenre[];
+  genreList: Media.IGenre[];
 }
 
 const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
   const { query, pathname } = useRouter();
+
   const genre =
-    genreList.find(
-      (item: Genres.IGenre) => item.name.toLowerCase() === query.genre
-    ) || DEFAULT_SERIES_GENRE;
-  const isDefaultGenre = genre.name === DEFAULT_SERIES_GENRE.name;
-  const endpoint = !isDefaultGenre
-    ? `api/series/genre/${genre.id}`
-    : "api/trending/tv/day";
+    (genreList &&
+      genreList.find((item: Media.IGenre) => item.name.toLowerCase() === query.genre)) ||
+    DEFAULT_GENRE;
+
+  const network =
+    seriesNetworkList.find(({ provider_name }) => provider_name.toLowerCase() === query.genre) ||
+    DEFAULT_NETWORK;
+
   const pageType = pathname.replace(/\//g, "");
-  const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
+
+  const endpoint = `api/network/tv/8|337|9|531|350`;
+
+  const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
+    useInfiniteScroll(endpoint);
 
   return (
     <>
@@ -41,18 +51,44 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
         />
       </Head>
       <main>
-        <SearchBar series />
+        <DropdownsOuterContainer>
+          <Heading as="h1" size="s">
+            Series:
+          </Heading>
+          <DropdownsInnerContainer>
+            <DropdownsContainer>
+              <Dropdown
+                type={pageType}
+                selected_genre={genre}
+                genre_list={genreList}
+                variant="genre"
+                style="primary"
+              />
+            </DropdownsContainer>
+            <DropdownsContainer>
+              <Dropdown
+                type={pageType}
+                selected_network={network}
+                network_list={seriesNetworkList}
+                variant="service"
+                style="primary"
+              />
+            </DropdownsContainer>
+          </DropdownsInnerContainer>
+        </DropdownsOuterContainer>
+
+        <Description type="series" />
         <section>
-          <div className={styles.headingAndDropdownButtonWrapper}>
-            <h1 className={styles.heading}>{pageType}</h1>
-            <Dropdown
-              type={pageType}
-              selected_genre={genre}
-              genre_list={genreList}
-            />
-          </div>
-          <CardList cards={cards} isLoading={isLoading} isError={isError} />
+          <CardList
+            cards={cards}
+            isLoading={isLoading}
+            isError={isError}
+            fetchNextPage={fetchNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+            hasNextPage={hasNextPage}
+          />
         </section>
+        <CTA />
       </main>
     </>
   );
@@ -62,15 +98,13 @@ export default Series;
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(
-    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(
-      BASE_TMDB_QUERY_PARAMS
-    )}`
+    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
   );
   const genreList = await response.json();
 
   return {
     props: {
-      genreList: [DEFAULT_SERIES_GENRE, ...genreList.genres],
+      genreList: [DEFAULT_GENRE, ...genreList.genres],
     },
   };
 };

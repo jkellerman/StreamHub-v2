@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Link from "next/link";
-import SearchBar from "@/components/atoms/SearchBar/SearchBar";
-import headingStyles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.css";
-import buttonStyles from "@/components/atoms/Button/Button.module.css";
+
+import Button from "@/components/Buttons/Buttons";
+import Content from "@/components/Content/Content";
+import Heading from "@/components/Heading/Heading";
 
 const Custom404 = () => {
   return (
@@ -10,14 +10,23 @@ const Custom404 = () => {
       <Head>
         <title>404 - Not Found | StreamHub</title>
       </Head>
-      <main>
-        <SearchBar all />
-        <h1 className={headingStyles.heading}>404 - Page Not Found</h1>
-        <Link href="/" passHref>
-          <a className={buttonStyles.button} style={{ marginLeft: "1rem" }}>
-            Go home
-          </a>
-        </Link>
+      <main
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          background: "linear-gradient(90deg, var(--quaternary-gradient))",
+        }}
+      >
+        <Heading as="h1" size="xxl">
+          404
+        </Heading>
+        <Content>Oops...looks like you&apos;ve taken a wrong turn.</Content>
+        <Button variant="primary" asLink link="/">
+          Take me home
+        </Button>
       </main>
     </>
   );

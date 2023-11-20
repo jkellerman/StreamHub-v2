@@ -1,0 +1,104 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+%button-base {
+  padding: 1em 2.25em;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: variable.$fw-bold;
+  color: var(--secondary-dark);
+  letter-spacing: 1px;
+  transition: transform 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.button {
+  @extend %button-base;
+}
+// TODO: update border radius variables
+.primary {
+  background: linear-gradient(90deg, var(--primary-gradient));
+  border-radius: variable.$border-radius-xl;
+  border-radius: 30px;
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &:active {
+    transform: scale(1.1);
+  }
+}
+
+.secondary {
+  background: var(--quaternary);
+  border: 1px solid var(--quaternary);
+  color: var(--quinary);
+  font-size: var(--step--1);
+  padding: 1em 1.5em;
+  border-radius: variable.$border-radius-xl;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+
+  &:hover {
+    background: var(--secondary-dark);
+    border: 1px solid var(--tertiary);
+  }
+
+  @include mixins.tablet {
+    padding: 0.75em 1.5em;
+  }
+}
+
+.secondary.loading {
+  background: var(--secondary-dark);
+  color: var(--tertiary-dark);
+  border-color: var(--tertiary-dark);
+}
+
+.tertiary {
+  background-color: var(--primary);
+  border-radius: variable.$border-radius-s;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  white-space: nowrap;
+  width: 100%;
+  transition: variable.$transition;
+  font-size: var(--step-1);
+  padding: 1em 2.25em;
+
+  @include mixins.tablet {
+    max-width: 300px;
+    font-size: var(--step-0);
+    padding-block: 1.25rem;
+    padding: 0.9em 2.25em;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--primary-light);
+  }
+}
+
+.quaternary {
+  @extend .secondary;
+  color: var(--secondary-dark);
+  background: var(--primary);
+  border-color: var(--primary);
+  &:hover {
+    background: var(--primary-light);
+    border-color: var(--primary-light);
+  }
+}
+
+.isFull {
+  width: 100%;
+}

@@ -1,118 +1,86 @@
-import React from "react";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import qs from "qs";
+import React from "react";
 
-import { GetServerSideProps } from "next";
+import BackgroundImage from "@/components/BackgroundImage/BackgroundImage";
+import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
+import MediaDetails from "@/components/MediaDetails/MediaDetails";
+import MediaDetailsPanel from "@/components/MediaDetailsPanel/MediaDetailsPanel";
+import MediaInfoBox from "@/components/MediaInfoBox/MediaInfoBox";
+import Recommendations from "@/components/RecommendationsList/RecommendationsList";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
-import { Media, Genres } from "@/src/types";
-
-import styles from "@/components/organisms/Hero/Hero.module.css";
-import SearchBar from "@/components/atoms/SearchBar/SearchBar";
-import Hero from "@/components/organisms/Hero/Hero";
-import HeroContent from "@/components/molecules/HeroContent/HeroContent";
-import MediaDetails from "@/components/molecules/MediaDetails/MediaDetails";
-import MediaSummary from "@/components/molecules/MediaSummary/MediaSummary";
-import MediaDirectorOrNetwork from "@/components/atoms/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
-import Cast from "@/components/atoms/Cast/Cast";
-import MediaGenres from "@/components/atoms/MediaGenres/MediaGenres";
-import MediaRunTimeOrSeasons from "@/components/atoms/MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
-import StarRating from "@/components/atoms/StarRating/StarRating";
-import WatchProviders from "@/components/molecules/WatchProviders/WatchProviders";
-import TabList from "@/components/molecules/TabList/TabList";
-import Recommendations from "@/components/molecules/Recommendations/Recommendations";
-import Certification from "@/components/atoms/Certification/Certification";
-import ReleaseDate from "@/components/atoms/ReleaseDate/ReleaseDate";
-import MediaOverview from "@/components/atoms/MediaOverview/MediaOverview";
+import { Media } from "@/src/types";
+import { FetchDetails } from "@/utils/tmdbDataHelpers";
 
 interface MovieProps {
-  backdrop: string;
-  tagline: string;
   movie_age_rating: Media.ICertificationMovie | undefined;
   release_date: string;
-  vote_average: number;
   overview: string;
-  poster: string;
   cast: Media.ICastMember[];
-  genres: Genres.IGenre[];
+  genres: Media.IGenre[];
   watch_providers: Media.IProviderList;
-  recommendations: Media.IRecommendationsList;
   runtime: number;
   director: Media.IDirector;
   title: string;
+  id: number;
 }
 
 const Movie: React.FC<MovieProps> = ({
-  backdrop,
-  tagline,
   movie_age_rating,
   release_date,
   runtime,
-  vote_average,
   overview,
-  poster,
-  director,
-  cast,
   genres,
   watch_providers,
-  recommendations,
   title,
+  id,
+  cast,
+  director,
 }) => {
+  const endpoint = `/api/details/movie/${id}`;
+  const { data, isError, isLoading } = FetchDetails(endpoint);
+  const backdrop = data && data.backdrop_path;
+  const recommendations = data && data.recommendations;
+  const poster = data && data.poster_path;
+
   return (
     <>
       <Head>
         <title>{`Watch ${title} Online | StreamHub`}</title>
         <meta name="description" content={`Where to watch ${title}`} />
       </Head>
-      <main className={styles.main}>
-        <SearchBar movies hero />
 
-        <Hero backdrop={backdrop} title={title}>
-          <HeroContent
-            tagline={tagline}
+      <main>
+        <BackgroundImage title={title} backdrop={backdrop} />
+        <MediaDetailsPanel title={title} id={id} type="movie">
+          <MediaDetails
+            genres={genres}
             movie_age_rating={movie_age_rating?.certification}
+            runtime={runtime}
             release_date={release_date}
-            star_rating={vote_average}
-            overview={overview}
-            poster={poster}
-            title={title}
-          >
-            <Certification movie_age_rating={movie_age_rating?.certification} />
-            <ReleaseDate release_date={release_date} styled />
-            <StarRating star_rating={vote_average} />
-          </HeroContent>
-        </Hero>
-
-        <WatchProviders watch_providers={watch_providers} />
-
-        <MediaSummary star_rating={vote_average}>
-          <Certification movie_age_rating={movie_age_rating?.certification} />
-          <ReleaseDate release_date={release_date} styled />
-          <MediaOverview overview={overview} mediaSummary />
-        </MediaSummary>
-
-        <MediaDetails>
-          <MediaDirectorOrNetwork director={director} />
-          <Cast cast={cast} />
-          <MediaGenres genres={genres} movies />
-          <MediaRunTimeOrSeasons runtime={runtime} />
-        </MediaDetails>
-
-        <TabList
-          movie_age_rating={movie_age_rating?.certification}
-          release_date={release_date}
-          runtime={runtime}
-          star_rating={vote_average}
+          />
+        </MediaDetailsPanel>
+        <MediaInfoBox
           overview={overview}
           poster={poster}
-          director={director}
-          cast={cast}
-          genres={genres}
-          watch_providers={watch_providers}
           title={title}
-          movies
+          watch_providers={watch_providers}
+          release_date={release_date}
+          cast={cast}
+          director={director}
         />
 
-        <Recommendations recommendations={recommendations} movies />
+        {data && data.recommendations.results.length > 0 && (
+          <CategoryHeading category="Suggested" recommendations />
+        )}
+        {data && data.recommendations.results.length > 0 && (
+          <Recommendations
+            recommendations={recommendations}
+            isLoading={isLoading}
+            isError={isError}
+          />
+        )}
       </main>
     </>
   );
@@ -121,46 +89,30 @@ const Movie: React.FC<MovieProps> = ({
 export default Movie;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { query, res } = context;
+  const { query } = context;
   const { id } = query;
-
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=1, stale-while-revalidate=86400"
-  );
 
   const queryString = qs.stringify(
     {
       ...BASE_TMDB_QUERY_SEARCH_PARAMS,
+      append_to_response: "credits,recommendations,watch/providers,release_dates,videos",
     },
     { addQueryPrefix: true }
   );
 
-  const url = `${BASE_TMDB_URL}/movie/${id}${queryString}&append_to_response=credits,recommendations,watch%2Fproviders,release_dates`;
+  const url = `${BASE_TMDB_URL}/movie/${id}${queryString}`;
   console.info("🚀 Request URL: ", url);
 
   const response = await fetch(url);
   const data = await response.json();
 
-  const {
-    backdrop_path,
-    tagline,
-    release_dates,
-    release_date,
-    runtime,
-    vote_average,
-    overview,
-    poster_path,
-    credits,
-    genres,
-    recommendations,
-    title,
-  } = data;
+  const { release_dates, release_date, runtime, overview, credits, genres, title } = data;
 
-  const getDirector: Media.IDirector = credits.crew.find(
+  const getDirector: Media.IDirector | undefined = credits.crew.find(
     (crew: Media.ICast) => crew.department === "Directing"
   );
-  const director = getDirector.name;
+
+  const director = getDirector?.name || null;
 
   const cast = credits.cast.slice(0, 4);
 
@@ -170,12 +122,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const certification: Media.ICertificationMoviesCountries | null =
     release_dates.results.find(
-      (country: Media.ICertificationMoviesCountries) =>
-        country.iso_3166_1 === "GB"
+      (country: Media.ICertificationMoviesCountries) => country.iso_3166_1 === "GB"
     ) ||
     release_dates.results.find(
-      (country: Media.ICertificationMoviesCountries) =>
-        country.iso_3166_1 === "US"
+      (country: Media.ICertificationMoviesCountries) => country.iso_3166_1 === "US"
     ) ||
     null;
 
@@ -186,20 +136,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      backdrop: backdrop_path,
-      tagline,
       movie_age_rating: age_rating,
       release_date,
       runtime,
-      vote_average,
       overview,
-      poster: poster_path,
       director,
       cast,
       genres,
       watch_providers,
-      recommendations,
       title,
+      id,
     },
   };
 };

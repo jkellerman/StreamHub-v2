@@ -1,0 +1,57 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.main {
+  padding-bottom: 4rem;
+  background: linear-gradient(90deg, var(--quaternary-gradient));
+}
+
+.container,
+.panelContainer {
+  max-width: 900px;
+}
+
+.container {
+  @include mixins.center;
+  padding-top: 4rem;
+
+  @include mixins.tablet {
+    padding-top: 6rem;
+  }
+
+  & > p {
+    margin-top: 1rem;
+  }
+
+  & div h2 {
+    white-space: nowrap;
+  }
+}
+
+.panelContainer {
+  margin: 0 0 4rem;
+  width: 100%;
+  @include mixins.flex-column;
+  gap: 2.5rem;
+  background-color: var(--tertiary-dark);
+  border-radius: variable.$border-radius-s;
+  padding: 2rem;
+  @include mixins.tablet {
+    padding: 2rem 6rem;
+  }
+
+  @include mixins.tabletL {
+    @include mixins.flex-row;
+    padding: 1.5rem 2.5rem;
+    min-height: 292.5px;
+  }
+
+  .panelInner {
+    @include mixins.flex-column;
+    justify-content: center;
+  }
+
+  & .panelInner p {
+    color: var(--quinary);
+  }
+}

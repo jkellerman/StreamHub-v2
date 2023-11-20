@@ -1,0 +1,12 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.descriptionWrapper {
+  @include mixins.center;
+  margin-bottom: 2rem;
+  color: var(--tertiary-light);
+}
+
+.description {
+  max-width: 650px;
+}

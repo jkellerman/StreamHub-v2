@@ -1,9 +1,11 @@
 import Head from "next/head";
-import SearchBar from "@/components/atoms/SearchBar/SearchBar";
 import { useRouter } from "next/router";
-import CardList from "@/components/molecules/CardList/CardList";
+
+import CTA from "@/components/CallToActionSection/CallToActionSection";
+import CardList from "@/components/CardList/CardList";
+import styles from "@/components/CardList/CardList.module.scss";
+import Heading from "@/components/Heading/Heading";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import styles from "@/components/organisms/MediaCategoryHomePage/MediaCategoryHomePage.module.css";
 
 const Search = () => {
   const {
@@ -12,31 +14,37 @@ const Search = () => {
   const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
 
   const endpoint = `/api/search/${slugsArray.join("/")}`;
-  const { cards, isLoading, isError } = useInfiniteScroll(endpoint);
+  const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
+    useInfiniteScroll(endpoint);
   return (
     <>
       <Head>
-        <title>{`${slugsArray[1]
-          ?.toString()
-          .replace(/-/g, " ")} | StreamHub`}</title>
+        <title>{`${slugsArray[1]?.toString().replace(/-/g, " ")} | StreamHub`}</title>
         <meta name="description" content={`Where to watch ${slugsArray[1]}`} />
       </Head>
       <main>
-        <SearchBar all />
         <section>
           {!isLoading && (
-            <h1 className={styles.heading}>
-              {cards.length !== 0
-                ? `Results found for '${slugsArray[1]
-                    ?.toString()
-                    .replace(/-/g, " ")}'`
-                : `No Results found for '${slugsArray[1]
-                    ?.toString()
-                    .replace(/-/g, " ")}'`}
-            </h1>
+            <div className={styles.header}>
+              <Heading as="h1" size="xs">
+                {cards.length !== 0
+                  ? `Movies and TV series with '${slugsArray[1]?.toString().replace(/-/g, " ")}'`
+                  : `Oops...nothing found for '${slugsArray[1]
+                      ?.toString()
+                      .replace(/-/g, " ")}', try something else.`}
+              </Heading>
+            </div>
           )}
-          <CardList cards={cards} isLoading={isLoading} isError={isError} />
+          <CardList
+            cards={cards}
+            isLoading={isLoading}
+            isError={isError}
+            fetchNextPage={fetchNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+            hasNextPage={hasNextPage}
+          />
         </section>
+        <CTA />
       </main>
     </>
   );

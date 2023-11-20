@@ -1,0 +1,50 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.nav {
+  width: 90%;
+}
+
+.navList {
+  display: flex;
+  overflow-x: scroll;
+  align-items: center;
+  margin-left: -0.75rem;
+  margin-bottom: 1rem;
+
+  @include mixins.tabletL {
+    margin-left: unset;
+    justify-content: end;
+    margin-bottom: unset;
+  }
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-thumb {
+    display: none;
+  }
+}
+
+.navListItem {
+  list-style: none;
+  font-size: var(--step-0);
+  font-weight: variable.$fw-med;
+  letter-spacing: variable.$ls;
+  white-space: nowrap;
+  padding: 0.5em 0.75em;
+  border-radius: variable.$border-radius-s;
+  transition: variable.$transition;
+
+  &:last-of-type {
+    margin-left: 1rem;
+  }
+  &:active {
+    background: linear-gradient(90deg, var(--quaternary-gradient));
+  }
+}
+
+@media (hover: hover) {
+  .navListItem:hover {
+    background: linear-gradient(90deg, var(--quaternary-gradient));
+    transition: variable.$transition;
+  }
+}

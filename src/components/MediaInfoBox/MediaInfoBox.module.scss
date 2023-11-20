@@ -1,0 +1,41 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.container {
+  z-index: variable.$z-index-1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 2rem;
+  @include mixins.center;
+  max-width: 900px;
+  margin: 4rem auto;
+  @include mixins.tablet() {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  @include mixins.laptop() {
+  }
+}
+
+.mediaInfoCard {
+  @include mixins.flex-column;
+  justify-content: center;
+  align-items: center;
+}
+
+.details {
+  @include mixins.flex-column;
+  margin-top: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+@include mixins.laptop() {
+  .content {
+    max-width: 80%;
+    margin: 0;
+  }
+}
