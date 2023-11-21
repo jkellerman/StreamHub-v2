@@ -19,16 +19,16 @@ const footerData = [
     title: "Series",
     links: [
       { name: "Shows on Netflix", link: "/series/network/netflix" },
-      { name: "Shows on Disney+", link: "/series/network/disney-plus" },
-      { name: "Shows on Prime Video", link: "/series/network/amazon-prime-video" },
+      { name: "Shows on Disney+", link: "/series/network/disney+" },
+      { name: "Shows on Prime Video", link: "/series/network/prime-video" },
     ],
   },
   {
     title: "Movies",
     links: [
       { name: "Movies on Netflix", link: "/movies/network/netflix" },
-      { name: "Movies on Disney+", link: "/movies/network/disney-plus" },
-      { name: "Movies on Prime Video", link: "/movies/network/amazon-prime-video" },
+      { name: "Movies on Disney+", link: "/movies/network/disney+" },
+      { name: "Movies on Prime Video", link: "/movies/network/prime-video" },
     ],
   },
 ];
