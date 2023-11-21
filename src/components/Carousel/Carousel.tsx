@@ -7,6 +7,8 @@ import useSlider from "@/hooks/useSlider";
 import { Media } from "@/types/media";
 import { FetchCards } from "@/utils/tmdbDataHelpers";
 
+import Spinner from "../Spinner/SearchBar/Spinner";
+
 import styles from "./Carousel.module.scss";
 
 interface CarouselProps {
@@ -22,7 +24,11 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint }) => {
     return (
       <div className={styles.carouselWrapper} ref={scrollRef}>
         <div className={styles.carousel}>
-          <ul className={styles.list} ref={carouselRef}></ul>
+          <div className={styles.list}>
+            <div className={styles.spinnerContainer}>
+              <Spinner />
+            </div>
+          </div>
         </div>
       </div>
     );
