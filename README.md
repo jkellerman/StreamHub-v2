@@ -47,6 +47,7 @@ V2 includes the following updates:
 - TMDB API
 - React Query
 - Vercel
+- Framer Motion
 
 ## 💭&nbsp;My process
 

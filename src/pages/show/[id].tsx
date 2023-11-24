@@ -1,17 +1,22 @@
 import { GetServerSideProps } from "next";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import qs from "qs";
 import React from "react";
 
 import BackgroundImage from "@/components/BackgroundImage/BackgroundImage";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
+import Header from "@/components/Header/Header";
 import MediaDetails from "@/components/MediaDetails/MediaDetails";
 import MediaDetailsPanel from "@/components/MediaDetailsPanel/MediaDetailsPanel";
 import MediaInfoBox from "@/components/MediaInfoBox/MediaInfoBox";
-import Recommendations from "@/components/RecommendationsList/RecommendationsList";
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import { Media } from "@/src/types";
 import { FetchDetails } from "@/utils/tmdbDataHelpers";
+
+const Recommendations = dynamic(
+  () => import("@/components/RecommendationsList/RecommendationsList")
+);
 
 interface SeriesProps {
   series_age_rating: string;
@@ -49,7 +54,7 @@ const Series: React.FC<SeriesProps> = ({
         <title>{`Where to watch ${title} Online | StreamHub`}</title>
         <meta name="description" content={`Where to watch ${title}`} />
       </Head>
-
+      <Header animate />
       <main>
         <BackgroundImage title={title} backdrop={backdrop} />
         <MediaDetailsPanel title={title} id={id} type="tv">

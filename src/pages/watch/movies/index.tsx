@@ -10,6 +10,7 @@ import Dropdown, {
   DropdownsContainer,
   DropdownsInnerContainer,
 } from "@/components/Dropdown/Dropdown";
+import Header from "@/components/Header/Header";
 import Heading from "@/components/Heading/Heading";
 import MediaGenerator from "@/components/MediaGenerator/MediaGenerator";
 import { Panel, PanelInner } from "@/components/Panel/Panel";
@@ -50,7 +51,7 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
           content="StreamHub allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other providers in one place, whilst providing recommendations on what to watch tonight."
         />
       </Head>
-
+      <Header />
       <main className={styles.main}>
         <div className={styles.container}>
           <Heading as="h1" size="m">

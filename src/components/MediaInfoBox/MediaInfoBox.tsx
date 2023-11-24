@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import React from "react";
 
 import Cast from "@/components/Cast/Cast";
@@ -7,7 +8,8 @@ import Poster from "@/components/Poster/Poster";
 import { Media } from "@/types/media";
 
 import styles from "../MediaInfoBox/MediaInfoBox.module.scss";
-import Tabs from "../Tabs/Tabs";
+
+const Tabs = dynamic(() => import("@/components/Tabs/Tabs"));
 
 interface MediaInfoBoxProps {
   title: string;

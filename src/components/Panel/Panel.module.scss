@@ -49,6 +49,9 @@
   .panelInner {
     @include mixins.flex-column;
     justify-content: center;
+    @include mixins.tabletL {
+      max-width: 264px;
+    }
   }
 
   & .panelInner p {
