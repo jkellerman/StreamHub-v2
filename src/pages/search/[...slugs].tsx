@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import CTA from "@/components/CallToActionSection/CallToActionSection";
 import CardList from "@/components/CardList/CardList";
 import styles from "@/components/CardList/CardList.module.scss";
+import Header from "@/components/Header/Header";
 import Heading from "@/components/Heading/Heading";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 
@@ -22,6 +23,7 @@ const Search = () => {
         <title>{`${slugsArray[1]?.toString().replace(/-/g, " ")} | StreamHub`}</title>
         <meta name="description" content={`Where to watch ${slugsArray[1]}`} />
       </Head>
+      <Header />
       <main>
         <section>
           {!isLoading && (

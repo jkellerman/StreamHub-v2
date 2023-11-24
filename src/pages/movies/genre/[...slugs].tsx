@@ -10,6 +10,7 @@ import Dropdown, {
   DropdownsInnerContainer,
   DropdownsOuterContainer,
 } from "@/components/Dropdown/Dropdown";
+import Header from "@/components/Header/Header";
 import Heading from "@/components/Heading/Heading";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
@@ -56,6 +57,7 @@ const GenreMovies: React.FC<GenreMoviesProps> = ({ genreList }) => {
           content="Find out where to watch movies from Netflix, Amazon Prime, Disney+ and many more services"
         />
       </Head>
+      <Header />
       <main>
         <DropdownsOuterContainer>
           <Heading as="h1" size="s">

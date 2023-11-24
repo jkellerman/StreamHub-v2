@@ -1,8 +1,10 @@
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { useEffect, useState } from "react";
 import slugify from "slugify";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Media } from "@/types/media";
+import { scale } from "@/utils/animations";
 
 import Button from "../Buttons/Buttons";
 import Heading from "../Heading/Heading";
@@ -68,29 +70,37 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({
     return (
       <>
         <div className={styles.resultsContainer}>
-          <div className={styles.posterWrapper}>
-            <Poster poster={data.poster_path} title={type === "movie" ? data.title : data.name} />
-            <div className={styles.posterWrapperDetails}>
-              <Heading as="h3" size="s">
-                {type === "movie" ? data.title : data.name}
-              </Heading>
+          <LazyMotion features={domAnimation}>
+            <m.div
+              className={styles.posterWrapper}
+              variants={scale}
+              initial="hidden"
+              animate="visible"
+            >
+              <Poster poster={data.poster_path} title={type === "movie" ? data.title : data.name} />
+              <div className={styles.posterWrapperDetails}>
+                <Heading as="h3" size="s">
+                  {type === "movie" ? data.title : data.name}
+                </Heading>
 
-              <div className={styles.posterDetailsWrapper}>
-                <ReleaseDate release_date={data.release_date} air_date={data.first_air_date} />
-                <MediaRunTimeOrSeasons runtime={data.runtime} seasons={data?.number_of_seasons} />
-                <div className={styles.ratingContainerPost}>
-                  {isMobile && (
-                    <ProgressRating
-                      vote_average={voteAverage ? voteAverage : null}
-                      progress={progress}
-                      size={55}
-                    />
-                  )}
-                  <span className={styles.subText}>User Rating</span>
+                <div className={styles.posterDetailsWrapper}>
+                  <ReleaseDate release_date={data.release_date} air_date={data.first_air_date} />
+                  <MediaRunTimeOrSeasons runtime={data.runtime} seasons={data?.number_of_seasons} />
+                  <div className={styles.ratingContainerPost}>
+                    {isMobile && (
+                      <ProgressRating
+                        vote_average={voteAverage ? voteAverage : null}
+                        progress={progress}
+                        size={55}
+                      />
+                    )}
+                    <span className={styles.subText}>User Rating</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </m.div>
+          </LazyMotion>
+
           <div className={styles.results}>
             <div className={styles.headingWrapper}>
               <Heading as="h3" size="s">

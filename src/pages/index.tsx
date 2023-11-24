@@ -4,6 +4,7 @@ import React from "react";
 import CTA from "@/components/CallToActionSection/CallToActionSection";
 import Carousel from "@/components/Carousel/Carousel";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
+import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
 import { Media } from "@/src/types";
 
@@ -26,7 +27,7 @@ const Home: React.FC<HomeProps> = () => {
           content="StreamHub allows you to search and discover any movie or TV show across Netflix, Disney, Amazon and many other providers in one place, whilst providing recommendations on what to watch tonight."
         />
       </Head>
-
+      <Header />
       <main>
         <Hero />
         <section>

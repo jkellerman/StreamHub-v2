@@ -1,7 +1,7 @@
+import dynamic from "next/dynamic";
 import { FC, ReactNode } from "react";
 
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
+const Footer = dynamic(() => import("@/components/Footer/Footer"));
 
 interface CoreLayoutProps {
   children: ReactNode;
@@ -10,7 +10,6 @@ interface CoreLayoutProps {
 const CoreLayout: FC<CoreLayoutProps> = ({ children }) => {
   return (
     <>
-      <Header />
       {children}
       <Footer />
     </>

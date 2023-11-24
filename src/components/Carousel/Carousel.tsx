@@ -1,3 +1,4 @@
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import React from "react";
 
 import Card from "@/components/Card/Card";
@@ -5,6 +6,7 @@ import CardDetails from "@/components/CardDetails/CardDetails";
 import Icon from "@/components/Icon/Icon";
 import useSlider from "@/hooks/useSlider";
 import { Media } from "@/types/media";
+import { opacity } from "@/utils/animations";
 import { FetchCards } from "@/utils/tmdbDataHelpers";
 
 import Spinner from "../Spinner/SearchBar/Spinner";
@@ -64,32 +66,45 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint }) => {
           )}
           <div className={styles.carouselWrapper} ref={scrollRef}>
             <div className={styles.carousel}>
-              <ul className={styles.list} ref={carouselRef}>
-                {cards?.data.map(
-                  ({
-                    id,
-                    title,
-                    name,
-                    poster_path,
-                    first_air_date,
-                    release_date,
-                  }: Media.IMediaItem) => {
-                    return (
-                      <li key={id} className={styles.listItem} ref={cardRef}>
-                        <figure>
-                          <Card id={id} poster={poster_path} movieTitle={title} seriesName={name} />
-                          <CardDetails
-                            movieTitle={title}
-                            seriesName={name}
-                            movieYear={release_date}
-                            seriesYear={first_air_date}
-                          />
-                        </figure>
-                      </li>
-                    );
-                  }
-                )}
-              </ul>
+              <LazyMotion features={domAnimation}>
+                <m.ul
+                  className={styles.list}
+                  ref={carouselRef}
+                  variants={opacity}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {cards?.data.map(
+                    ({
+                      id,
+                      title,
+                      name,
+                      poster_path,
+                      first_air_date,
+                      release_date,
+                    }: Media.IMediaItem) => {
+                      return (
+                        <li key={id} className={styles.listItem} ref={cardRef}>
+                          <figure>
+                            <Card
+                              id={id}
+                              poster={poster_path}
+                              movieTitle={title}
+                              seriesName={name}
+                            />
+                            <CardDetails
+                              movieTitle={title}
+                              seriesName={name}
+                              movieYear={release_date}
+                              seriesYear={first_air_date}
+                            />
+                          </figure>
+                        </li>
+                      );
+                    }
+                  )}
+                </m.ul>
+              </LazyMotion>
             </div>
           </div>
         </div>
