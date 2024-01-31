@@ -4,9 +4,17 @@ interface MediaRatingProps {
   vote_average: number | null;
   progress: number;
   size?: number;
+  x?: string;
+  y?: string;
 }
 
-const ProgressRating: React.FC<MediaRatingProps> = ({ vote_average, progress, size = 75 }) => {
+const ProgressRating: React.FC<MediaRatingProps> = ({
+  vote_average,
+  progress,
+  size = 75,
+  x = "50%",
+  y = "45%",
+}) => {
   const gradientId = `progress-bar-gradient-${vote_average}`;
 
   const strokeWidth = 6;
@@ -55,7 +63,7 @@ const ProgressRating: React.FC<MediaRatingProps> = ({ vote_average, progress, si
         strokeLinecap="round"
         style={{ transition: "all 0.5s ease-in-out", transitionDelay: "250ms" }}
       />
-      <text x="50%" y="45%" dominantBaseline="middle" textAnchor="middle">
+      <text x={x} y={y} dominantBaseline="middle" textAnchor="middle">
         {vote_average && (
           <tspan className={styles.rating}>
             {vote_average !== 100

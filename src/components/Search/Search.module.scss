@@ -7,8 +7,7 @@
   z-index: variable.$z-index-5;
   border: 1px solid #4f5c7c;
   border-radius: 5px;
-  background-color: var(--secondary-dark);
-  // background: linear-gradient(90deg, var(--secondary-gradient));
+  background: linear-gradient(90deg, var(--secondary-gradient));
   transition: height 160ms ease 0s, box-shadow 150ms ease-in;
   align-self: baseline;
   overflow: hidden;
@@ -140,6 +139,7 @@
   outline: none;
   letter-spacing: variable.$ls-s;
   caret-color: var(--primary);
+  @include mixins.addHeadingEllipses;
   @include mixins.tablet() {
     height: unset;
   }
@@ -161,7 +161,7 @@
 .isActive,
 .allResultsLinkWrapper:hover,
 .listItemWrapper:hover {
-  background: linear-gradient(270deg, var(--secondary-gradient));
+  background-color: rgba($color: #000000, $alpha: 0.4);
   transition: variable.$transition;
 }
 
@@ -184,7 +184,7 @@
 }
 
 .tv {
-  background: linear-gradient(90deg, var(--quaternary-gradient));
+  background-color: black;
   padding: 0 0.2em;
   font-size: var(--step--2);
   font-weight: variable.$fw-med;

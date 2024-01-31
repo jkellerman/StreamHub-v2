@@ -50,6 +50,7 @@
     @include mixins.flex-column;
     justify-content: center;
     @include mixins.tabletL {
+      min-width: 264px;
       max-width: 264px;
     }
   }
