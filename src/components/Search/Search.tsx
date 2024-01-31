@@ -7,7 +7,6 @@ import Icon from "@/components/Icon/Icon";
 import Spinner from "@/components/Spinner/SearchBar/Spinner";
 import { POSTER_URL_IMAGE_XS } from "@/constants/tmdb";
 import useClickOutside from "@/hooks/useClickOutside";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { shimmer, toBase64 } from "@/utils/placeholder";
 
 import styles from "../Search/Search.module.scss";
@@ -283,15 +282,13 @@ interface SearchInputProps {
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({ searchQuery, handleInputChange }) => {
-  const isMobile = useMediaQuery(`(max-width: 504px)`);
-
   return (
     <>
       <input
         type="text"
         name="search"
         aria-label="Search"
-        placeholder={isMobile ? "Search..." : "Search for movies or tv series..."}
+        placeholder="Search for movies or tv series..."
         className={styles.input}
         value={searchQuery}
         onChange={handleInputChange}
