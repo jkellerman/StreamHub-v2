@@ -91,7 +91,9 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({
                       <ProgressRating
                         vote_average={voteAverage ? voteAverage : null}
                         progress={progress}
-                        size={55}
+                        size={60}
+                        x="51%"
+                        y="50%"
                       />
                     )}
                     <span className={styles.subText}>User Rating</span>
@@ -131,7 +133,7 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({
                 <ProgressRating
                   vote_average={voteAverage ? voteAverage : null}
                   progress={progress}
-                  size={60}
+                  size={70}
                 />
                 <span className={styles.subText}>User Rating</span>
               </div>
