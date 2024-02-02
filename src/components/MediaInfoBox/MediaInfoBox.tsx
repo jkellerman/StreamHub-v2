@@ -9,7 +9,7 @@ import { Media } from "@/types/media";
 
 import styles from "../MediaInfoBox/MediaInfoBox.module.scss";
 
-const Tabs = dynamic(() => import("@/components/Tabs/Tabs"));
+const TabList = dynamic(() => import("@/components/TabList/TabList"));
 
 interface MediaInfoBoxProps {
   title: string;
@@ -49,7 +49,7 @@ const MediaInfoBox: React.FC<MediaInfoBoxProps> = ({
 
         <div className={styles.content}>
           <MediaOverview overview={overview} />
-          <Tabs
+          <TabList
             watch_providers={watch_providers}
             title={title}
             release_date={release_date}
