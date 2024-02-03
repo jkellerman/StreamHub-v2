@@ -1,3 +1,4 @@
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -19,6 +20,7 @@ import { DEFAULT_GENRE, DEFAULT_WATCH_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS, watchSeriesNetworkList } from "@/constants/tmdb";
 import useGenerator from "@/hooks/useGenerator";
 import { Media } from "@/types/media";
+import { opacity } from "@/utils/animations";
 
 interface WatchProps {
   genreList: Media.IGenre[];
@@ -66,69 +68,71 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
       </Head>
       <Header />
       <main className={styles.main}>
-        <div className={styles.container}>
-          <Heading as="h1" size="m">
-            What to watch tonight?
-          </Heading>
-          <Content>
-            Cut through streaming indecision! Use the generator below to simplify choices, so you
-            can dive into content faster.
-          </Content>
-          <DropdownsInnerContainer>
-            <Heading as="h2" size="s">
-              Select preferences:
+        <LazyMotion features={domAnimation}>
+          <m.div className={styles.container} variants={opacity} initial="hidden" animate="visible">
+            <Heading as="h1" size="m">
+              What to watch tonight?
             </Heading>
-            <DropdownsContainer>
-              <Dropdown watch type="series" media="series" variant="media" style="secondary" />
-            </DropdownsContainer>
-
-            <DropdownsContainer>
-              <Dropdown
-                watch
-                type="series"
-                selected_genre={genre}
-                genre_list={genreList}
-                variant="genre"
-                style="secondary"
-              />
-            </DropdownsContainer>
-
-            <DropdownsContainer>
-              <Dropdown
-                watch
-                type="series"
-                selected_network={network}
-                network_list={watchSeriesNetworkList}
-                variant="service"
-                style="secondary"
-              />
-            </DropdownsContainer>
-          </DropdownsInnerContainer>
-
-          <Panel>
-            <PanelInner>
+            <Content>
+              Cut through streaming indecision! Use the generator below to simplify choices, so you
+              can dive into content faster.
+            </Content>
+            <DropdownsInnerContainer>
               <Heading as="h2" size="s">
-                Suggest a series
+                Select preferences:
               </Heading>
-              <Content>
-                Select your tv series preferences using the options above, have a spin and find the
-                perfect show to watch to tonight. Simple!
-              </Content>
+              <DropdownsContainer>
+                <Dropdown watch type="series" media="series" variant="media" style="secondary" />
+              </DropdownsContainer>
 
-              <Button variant="primary" isFull onClick={fetchRecommendation} disabled={isLoading}>
-                {data ? "SPIN AGAIN" : "SPIN"}
-              </Button>
-            </PanelInner>
+              <DropdownsContainer>
+                <Dropdown
+                  watch
+                  type="series"
+                  selected_genre={genre}
+                  genre_list={genreList}
+                  variant="genre"
+                  style="secondary"
+                />
+              </DropdownsContainer>
 
-            <MediaGenerator
-              data={storedSeriesData}
-              isLoading={isLoading}
-              isError={isError}
-              type="tv"
-              noResults={noResults}
-            />
-          </Panel>
-        </div>
+              <DropdownsContainer>
+                <Dropdown
+                  watch
+                  type="series"
+                  selected_network={network}
+                  network_list={watchSeriesNetworkList}
+                  variant="service"
+                  style="secondary"
+                />
+              </DropdownsContainer>
+            </DropdownsInnerContainer>
+
+            <Panel>
+              <PanelInner>
+                <Heading as="h2" size="s">
+                  Suggest a series
+                </Heading>
+                <Content>
+                  Select your tv series preferences using the options above, have a spin and find
+                  the perfect show to watch to tonight. Simple!
+                </Content>
+
+                <Button variant="primary" isFull onClick={fetchRecommendation} disabled={isLoading}>
+                  {data ? "SPIN AGAIN" : "SPIN"}
+                </Button>
+              </PanelInner>
+
+              <MediaGenerator
+                data={storedSeriesData}
+                isLoading={isLoading}
+                isError={isError}
+                type="tv"
+                noResults={noResults}
+              />
+            </Panel>
+          </m.div>
+        </LazyMotion>
       </main>
     </>
   );

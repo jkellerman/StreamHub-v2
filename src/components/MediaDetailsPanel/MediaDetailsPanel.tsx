@@ -1,3 +1,4 @@
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -25,21 +26,35 @@ const MediaDetailsPanel: React.FC<MediaDetailsPanel> = ({ title, children, id, t
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.btn}>
-        <Button variant="quinary" onClick={goBack}>
-          <Icon icon="arrowLeft" fill="var(--tertiary-light)" />
-          Back
-        </Button>
-      </div>
+    <>
+      <LazyMotion features={domAnimation}>
+        <m.div
+          className={styles.container}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: {
+              ease: "easeInOut",
+              duration: 0.3,
+            },
+          }}
+        >
+          <div className={styles.btn}>
+            <Button variant="quinary" onClick={goBack}>
+              <Icon icon="arrowLeft" fill="var(--tertiary-light)" />
+              Back
+            </Button>
+          </div>
 
-      <Heading as="h1" size="lg">
-        {title}
-      </Heading>
-      <>{children}</>
-      <Trailer endpoint={`/api/details/${type}/${id}`} variant="tertiary" />
-      <MediaRating id={id} type={type} />
-    </div>
+          <Heading as="h1" size="lg">
+            {title}
+          </Heading>
+          <>{children}</>
+          <Trailer endpoint={`/api/details/${type}/${id}`} variant="tertiary" />
+          <MediaRating id={id} type={type} />
+        </m.div>
+      </LazyMotion>
+    </>
   );
 };
 

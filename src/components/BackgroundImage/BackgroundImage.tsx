@@ -25,11 +25,7 @@ const BackgroundImage: React.FC<BackgroundImageProps> = ({ backdrop, title }) =>
           animate={{
             opacity: 1,
             transition: {
-              type: "spring",
-              stiffness: 160,
-              damping: 40,
-              mass: 1,
-              delay: 0.5,
+              delay: 0.7,
             },
           }}
         >
