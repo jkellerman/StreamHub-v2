@@ -17,3 +17,16 @@
     margin-bottom: 0;
   }
 }
+
+.btn {
+  margin-bottom: 0.5rem;
+  color: var(--tertiary-light);
+  position: relative;
+  top: -6.5rem;
+  @include mixins.tablet {
+    top: -4rem;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
