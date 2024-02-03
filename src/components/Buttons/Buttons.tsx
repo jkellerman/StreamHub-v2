@@ -7,7 +7,7 @@ import styles from "./Buttons.module.scss";
 
 interface ButtonPropsBase extends Types.Children {
   type?: "button" | "submit";
-  variant: "primary" | "secondary" | "tertiary" | "quaternary";
+  variant: "primary" | "secondary" | "tertiary" | "quaternary" | "quinary";
   onClick?: () => void;
   isLoading?: boolean;
   isFull?: boolean;

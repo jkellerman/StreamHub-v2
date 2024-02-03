@@ -59,6 +59,11 @@ const Dropdown: React.FC<DropdownProps> = ({
     setIsDropdownOpen(false);
   };
 
+  // Data is stored in session storage if user navigates back to watch to watch page, if selecting preferences no need to store data in session so set up function to remove data when selected preferences.
+  const clearSessionStorage = () => {
+    sessionStorage.clear();
+  };
+
   return (
     <>
       <div ref={dropdownRef}>
@@ -88,7 +93,13 @@ const Dropdown: React.FC<DropdownProps> = ({
           />
         )}
         {isDropdownOpen && variant === "media" && (
-          <DropdownMedia closeDropdown={closeDropdown} media={media} watch={watch} style={style} />
+          <DropdownMedia
+            closeDropdown={closeDropdown}
+            media={media}
+            watch={watch}
+            style={style}
+            clearSessionStorage={clearSessionStorage}
+          />
         )}
         {isDropdownOpen && variant === "service" && (
           <DropdownService
@@ -260,9 +271,16 @@ interface DropdownMediaProps {
   closeDropdown: () => void;
   watch?: boolean;
   style: "primary" | "secondary";
+  clearSessionStorage: () => void;
 }
 
-const DropdownMedia: React.FC<DropdownMediaProps> = ({ closeDropdown, watch, media, style }) => {
+const DropdownMedia: React.FC<DropdownMediaProps> = ({
+  closeDropdown,
+  watch,
+  media,
+  style,
+  clearSessionStorage,
+}) => {
   const listClasses = [
     styles.list,
     style === "primary"
@@ -278,12 +296,14 @@ const DropdownMedia: React.FC<DropdownMediaProps> = ({ closeDropdown, watch, med
         closeDropdown={closeDropdown}
         watch={watch}
         isCurrent={media === "movies"}
+        clearSessionStorage={clearSessionStorage}
       />
       <DropdownMediaListItem
         media="series"
         closeDropdown={closeDropdown}
         watch={watch}
         isCurrent={media === "series"}
+        clearSessionStorage={clearSessionStorage}
       />
     </ul>
   );
@@ -298,6 +318,7 @@ interface DropdownMediaListItemProps {
   closeDropdown: () => void;
   watch?: boolean;
   isCurrent: boolean;
+  clearSessionStorage: () => void;
 }
 
 const DropdownMediaListItem: React.FC<DropdownMediaListItemProps> = ({
@@ -305,13 +326,20 @@ const DropdownMediaListItem: React.FC<DropdownMediaListItemProps> = ({
   closeDropdown,
   watch,
   isCurrent,
+  clearSessionStorage,
 }) => {
   const listItemClassName = isCurrent ? styles.listItemCurrent : styles.listItem;
   return (
     <>
       <li className={listItemClassName}>
         <Link href={watch ? `/watch/${media}` : `/${media}`} scroll={false}>
-          <a className={styles.link} onClick={closeDropdown}>
+          <a
+            className={styles.link}
+            onClick={() => {
+              closeDropdown();
+              clearSessionStorage();
+            }}
+          >
             {media}
           </a>
         </Link>

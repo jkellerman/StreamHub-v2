@@ -87,6 +87,17 @@
   }
 }
 
+.quinary {
+  background-color: transparent;
+  border: none;
+  color: var(--tertiary-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+}
+
 .isFull {
   width: 100%;
 }

@@ -1,35 +1,30 @@
 @use "@/styles/variables" as variable;
 @use "@/styles/mixins" as mixins;
 
-.triggerContainer {
-  position: relative;
-  min-width: 55px;
-  text-align: center;
-}
-
 .trigger {
-  text-transform: capitalize;
-  font-weight: variable.$fw-med;
-  font-size: var(--step-0);
-  font-family: inherit;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: var(--quinary);
-  @include mixins.tablet() {
-    font-size: inherit;
-    padding-bottom: 0.5rem;
+  &[role="tab"] {
+    position: relative;
+    min-width: 55px;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: variable.$fw-med;
+    font-size: var(--step-0);
+    font-family: inherit;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--quinary);
+    @include mixins.tablet() {
+      font-size: inherit;
+      padding-bottom: 0.5rem;
+    }
   }
-}
-
-.trigger:hover {
-  color: var(--primary-light);
-  transition: variable.$transition;
-}
-
-.trigger.active {
-  color: var(--primary-light);
-  transition: variable.$transition;
+  &[role="tab"]:hover,
+  &[role="tab"].focus,
+  &[role="tab"][aria-selected="true"] {
+    color: var(--primary-light);
+    transition: variable.$transition;
+  }
 }
 
 .trigger::after {
@@ -57,14 +52,16 @@
 }
 
 .tabs {
-  display: flex;
-  border-bottom: 1px solid var(--tertiary-light);
-  padding-bottom: 1rem;
-  gap: 1.5rem;
-  @include mixins.tablet() {
-    .tabs {
-      gap: 2.5rem;
-      padding-bottom: 2rem;
+  &[role="tablist"] {
+    display: flex;
+    border-bottom: 1px solid var(--tertiary-light);
+    padding-bottom: 1rem;
+    gap: 1.5rem;
+    @include mixins.tablet() {
+      .tabs {
+        gap: 2.5rem;
+        padding-bottom: 2rem;
+      }
     }
   }
 }
@@ -73,23 +70,15 @@
   margin: 1rem 0 0.75rem;
 }
 
-.providerContainer {
-  @include mixins.tablet() {
-    display: flex;
-    gap: 2rem;
+.panel {
+  &[role="tabpanel"] {
+    min-width: 100%;
+    display: block;
+    animation: fade variable.$fade-animation;
   }
-}
-
-.providers {
-  min-width: 100%;
-}
-
-.providers.active {
-  animation: fade variable.$fade-animation;
-}
-
-.container.active {
-  animation: fade variable.$fade-animation;
+  &[role="tabpanel"].isHidden {
+    display: none;
+  }
 }
 
 .icons {

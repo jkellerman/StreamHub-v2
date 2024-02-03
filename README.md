@@ -12,6 +12,7 @@ This is the version 2 of this web app, if you like to see v1 click [here](https:
   - [Built with](#built-with)
 - [My process](#my-process)
   - [What I learned](#what-i-learned)
+  - [Accessibility Enhancements](#accessibility-enhancements)
 - [Continued Development](#continued-development)
 
 ## Overview
@@ -28,11 +29,12 @@ V2 includes the following updates:
 
 #### mobile preview
 
-![Mobile](/public/assets/screenshots/streamhub-mobile2.webp "Mobile Preview")
+![Mobile](/public/assets/screenshots/streamhub-mobile.webp "Mobile Preview")
 
 #### desktop preview
 
-![Desktop](/public/assets/screenshots/streamhub-desktop2.webp "Desktop Preview")
+![Desktop](/public/assets/screenshots/streamhub-list.webp "Desktop Preview")
+![Desktop](/public/assets/screenshots/streamhub-movie.webp "Desktop Preview")
 
 ### 🔗&nbsp;Links
 
@@ -62,6 +64,65 @@ In the second iteration, I concentrated on specific areas to enhance my skills. 
 Additionally, my professional experience threw me into the realm of making design decisions on the fly without a design template, so I wanted to take this opportunity to trust my skills more. I'm certainly not a designer or aiming to be but it has given me some confidence to trust my own judgement when it comes tweaking and adapting for better ui/ux.
 
 Another crucial aspect of my learning journey was delving deeper into documentation. I seized the opportunity to thoroughly explore the TMDB API documentation and discovered that the API offered features beyond my initial expectations. This deeper understanding allowed me to infuse more creativity into the application, resulting in a more customised and feature-rich experience.
+
+### Accessibility Enhancements
+
+In this latest update, I've incorporated several accessibility improvements to the tablist component, ensuring a more inclusive experience for all users. Here are the key enhancements, particularly highlighting the purpose of the ARIA attributes:
+
+#### Semantic HTML and ARIA Attributes
+
+I've revamped the markup using semantic HTML elements and introduced specific ARIA attributes to enhance the accessibility of the tablist component.
+
+##### Tablist Container
+
+```jsx
+<div className={styles.tabsContainer} ref={tab} role="tablist" aria-labelledby="tablist-1">
+  {/* ... */}
+</div>
+```
+
+- `role="tablist"`: Indicates that this container represents a tablist, providing a structural hint to assistive technologies.
+- `aria-labelledby="tablist-1"`: Associates the tablist with its corresponding heading for better context and understanding.
+
+##### Tab Trigger Button
+
+```jsx
+<button
+  className={activeTab === tab ? `${styles.trigger} ${styles.active}` : `${styles.trigger} `}
+  onClick={() => {
+    handleClick(tab);
+  }}
+  id={`tab-${(index + 1).toString()}`}
+  type="button"
+  role="tab"
+  aria-selected={activeTab === tab ? true : false}
+  aria-controls={`tabpanel-${index + 1}`}
+  tabIndex={activeTab === tab ? undefined : 0}
+>
+  <span>{tab === "flatrate" ? "stream" : tab}</span>
+</button>
+```
+
+- `role="tab"`: Specifies that this button represents a tab, aiding assistive technologies in understanding its purpose.
+- `aria-selected`: Indicates whether the tab is currently selected or not.
+- `aria-controls`: Points to the corresponding tab panel, establishing the relationship between the tab and its content.
+- `tabIndex`: Ensures that the tab is included in the keyboard navigation sequence when it's not selected.
+
+```jsx
+<div
+  id={`tabpanel-${index + 1}`}
+  role="tabpanel"
+  tabIndex={0}
+  aria-labelledby={`tab-${index + 1}`}
+  className={activeTab === option ? `${styles.panel}` : `${styles.panel} ${styles.isHidden}`}
+>
+  {/* ... */}
+</div>
+```
+
+- `role="tabpanel"`: Identifies this container as a tab panel, providing crucial information to assistive technologies.
+- `aria-labelledby`: Associates the tab panel with its corresponding tab for better context and navigation.
+- `tabIndex`: Enables keyboard focus on the tab panel, allowing users to navigate through the content.
 
 ## 👨‍💻&nbsp;Continued development
 

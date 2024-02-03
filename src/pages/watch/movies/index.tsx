@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import QueryString from "qs";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Button from "@/components/Buttons/Buttons";
 import Content from "@/components/Content/Content";
@@ -26,6 +26,7 @@ interface WatchProps {
 
 const Watch: React.FC<WatchProps> = ({ genreList }) => {
   const { query } = useRouter();
+  const [storedMovieData, setStoredMovieData] = useState<Media.IMediaItem | null>(null);
 
   const genre =
     (genreList &&
@@ -41,6 +42,20 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
     "/api/network/movie/8|337|9|531|350",
     "movie"
   );
+
+  useEffect(() => {
+    const storedData = sessionStorage.getItem("storedMovieData");
+    if (storedData) {
+      setStoredMovieData(JSON.parse(storedData));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      sessionStorage.setItem("storedMovieData", JSON.stringify(data));
+      setStoredMovieData(data);
+    }
+  }, [data]);
 
   return (
     <>
@@ -108,7 +123,7 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
             </PanelInner>
 
             <MediaGenerator
-              data={data}
+              data={storedMovieData}
               isLoading={isLoading}
               isError={isError}
               type="movie"
