@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import QueryString from "qs";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Button from "@/components/Buttons/Buttons";
 import Content from "@/components/Content/Content";
@@ -26,6 +26,7 @@ interface WatchProps {
 
 const Genre: React.FC<WatchProps> = ({ genreList }) => {
   const { query } = useRouter();
+  const [storedSeriesData, setStoredSeriesData] = useState<Media.IMediaItem | null>(null);
 
   const slug = query.slugs;
 
@@ -47,6 +48,20 @@ const Genre: React.FC<WatchProps> = ({ genreList }) => {
     `/api/network/tv/${isNetworkSelected ? network.provider_id : "8|337|9|531|350"}/${genre.id}`,
     "tv"
   );
+
+  useEffect(() => {
+    const storedData = sessionStorage.getItem("storedSeriesGenreData");
+    if (storedData) {
+      setStoredSeriesData(JSON.parse(storedData));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      sessionStorage.setItem("storedSeriesGenreData", JSON.stringify(data));
+      setStoredSeriesData(data);
+    }
+  }, [data]);
 
   return (
     <>
@@ -116,7 +131,7 @@ const Genre: React.FC<WatchProps> = ({ genreList }) => {
             </PanelInner>
 
             <MediaGenerator
-              data={data}
+              data={storedSeriesData}
               isLoading={isLoading}
               isError={isError}
               type="tv"
