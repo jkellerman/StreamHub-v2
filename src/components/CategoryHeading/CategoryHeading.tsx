@@ -1,4 +1,7 @@
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import React from "react";
+
+import { opacity } from "@/utils/animations";
 
 import styles from "../CategoryHeading/CategoryHeading.module.scss";
 
@@ -16,10 +19,17 @@ const CategoryHeading: React.FC<CategoryHeadingProps> = ({
   return (
     <>
       {!recommendations && (
-        <div className={styles.headingContainer}>
-          <h2 className={styles.heading}>{category}</h2>
-          {subheading && <div className={styles.subheading}>{subheading}</div>}
-        </div>
+        <LazyMotion features={domAnimation}>
+          <m.div
+            className={styles.headingContainer}
+            variants={opacity}
+            initial="hidden"
+            animate="visible"
+          >
+            <h2 className={styles.heading}>{category}</h2>
+            {subheading && <div className={styles.subheading}>{subheading}</div>}
+          </m.div>
+        </LazyMotion>
       )}
       {recommendations && (
         <h3 className={styles.headingContainer}>

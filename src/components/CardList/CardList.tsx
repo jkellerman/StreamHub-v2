@@ -5,7 +5,6 @@ import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import Spinner from "@/components/Spinner/Spinner";
 import { Media } from "@/types/media";
-import { opacity } from "@/utils/animations";
 
 import Button from "../Buttons/Buttons";
 import styles from "../CardList/CardList.module.scss";
@@ -49,9 +48,14 @@ const CardList: React.FC<CardListProps> = ({
                 <m.li
                   key={id}
                   className={styles.linkContainer}
-                  variants={opacity}
-                  initial="hidden"
-                  animate="visible"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: {
+                      ease: "easeInOut",
+                      duration: 0.3,
+                    },
+                  }}
                 >
                   <Card id={id} poster={poster_path} movieTitle={title} seriesName={name} />
                   <CardDetails
