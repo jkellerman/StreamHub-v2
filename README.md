@@ -53,38 +53,39 @@ V2 includes the following updates:
 
 ## 💭&nbsp;My process
 
-This app originally started as a project completed on Frontend Mentor with my own twist, as seen in the [original version](https://streamhubtvv1.vercel.app/). Subsequently, I found it intriguing to incorporate additional features for my personal use, ultimately leading to a complete revamp of the app, resulting in Version 2.
+This app originally started as a project completed on Frontend Mentor with my own twist, as seen in the [original version](https://streamhubtvv1.vercel.app/). I then wanted to add some additional features for my own personal use.
 
-V2 consolidates all movies and series from the most popular streaming platforms in the UK into a single platform, making it easier to keep up with current trends. I introduced extra features, such as randomly selecting content based on user preferences like movie or series, genre, and streaming service. The new version also incorporates trailers for an enhanced viewing experience.
+There are a lot of streaming platforms now and I thought it would be nice to create an app that makes it easier to browse all movies and series from all streaming services in one place. I also created a randomised generator that decides for you what to watch based on preferences you select.
 
-### What I learned
+### 💡What I learned
 
-In the second iteration, I concentrated on specific areas to enhance my skills. Being around more seasoned developers in a professional enviroment gave me exposure to writing cleaner react apps. I therefore placed emphasis on refactoring the components in this app to enhance manageability and maintainability.
+In version 2, I concentrated on specific areas to enhance my skills. Being around more seasoned developers in a professional enviroment gave me exposure to writing cleaner react apps. I therefore placed emphasis on refactoring the components in this app to enhance manageability and maintainability.
 
-Additionally, my professional experience threw me into the realm of making design decisions on the fly without a design template, so I wanted to take this opportunity to trust my skills more. I'm certainly not a designer or aiming to be but it has given me some confidence to trust my own judgement when it comes tweaking and adapting for better ui/ux.
+Additionally, my professional experience threw me into the realm of making design decisions on the fly without a design template, so I wanted to take this opportunity to trust my own judgement when it comes tweaking and adapting for better ui/ux.
 
-Another crucial aspect of my learning journey was delving deeper into documentation. I seized the opportunity to thoroughly explore the TMDB API documentation and discovered that the API offered features beyond my initial expectations. This deeper understanding allowed me to infuse more creativity into the application, resulting in a more customised and feature-rich experience.
+Another aspect of my learning journey was to dive deeper into documentation. I took the opportunity to thoroughly explore the TMDB API documentation and discovered that the API offered features beyond my initial expectations. This deeper understanding allowed me to get mpre creative with the api resulting in a more customised and feature-rich experience.
 
-### Accessibility Enhancements
+### 🤓Accessibility Enhancements
 
-In this latest update, I've incorporated several accessibility improvements to the tablist component, ensuring a more inclusive experience for all users. Here are the key enhancements, particularly highlighting the purpose of the ARIA attributes:
+I focused on accessibility throughout the app including incorporating several accessibility improvements to the tablist component. Here are the key enhancements, particularly highlighting the purpose of the ARIA attributes:
 
-#### Semantic HTML and ARIA Attributes
-
-I've revamped the markup using semantic HTML elements and introduced specific ARIA attributes to enhance the accessibility of the tablist component.
-
-##### Tablist Container
+#### Tablist Container
 
 ```jsx
-<div className={styles.tabsContainer} ref={tab} role="tablist" aria-labelledby="tablist-1">
-  {/* ... */}
-</div>
+<Heading as="h2" size="xs" id="tablist-1">
+        {/* ... */}
+ </Heading>
+      <div className={styles.tabsContainer} ref={tab}>
+        <div className={styles.tabs} role="tablist" aria-labelledby="tablist-1">
+       {/* ... */}
+        </div>
+      </div>
 ```
 
-- `role="tablist"`: Indicates that this container represents a tablist, providing a structural hint to assistive technologies.
+- `role="tablist"`: Indicates that this container represents a tablist, providing the structure of the tablist assistive technologies.
 - `aria-labelledby="tablist-1"`: Associates the tablist with its corresponding heading for better context and understanding.
 
-##### Tab Trigger Button
+#### Tab Trigger Button
 
 ```jsx
 <button
@@ -129,5 +130,5 @@ I've revamped the markup using semantic HTML elements and introduced specific AR
 There are some tweaks and additional features that can be added to the project, which I may get around to in future.
 
 - Add some state management for geolocation so can users can view streaming platforms based on their country.
-- Intergrate a backend so users can bookmark movies/series.
+- Integrate a backend so users can bookmark movies/series.
 - Add placeholder for background Image. The background Image for movie/series needs to be resized for different screen sizes, my implementation at the moment is using the picture & source html tags and fetching the different images sizes from tmdb. Next.js can optimise them for you but there is a limit on how many can be optimised on their free plan. As a result, I am not using NextImage component which handle placeholders for you. Will need to find a workaround for this.
