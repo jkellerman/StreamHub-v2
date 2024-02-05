@@ -37,7 +37,7 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
 
   const pageType = pathname.replace(/\//g, "");
 
-  const endpoint = `api/network/tv/8|337|9|531|350`;
+  const endpoint = `api/trending/tv/week`;
 
   const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useInfiniteScroll(endpoint);
