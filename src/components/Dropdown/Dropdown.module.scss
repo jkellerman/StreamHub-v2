@@ -74,30 +74,34 @@
 }
 
 .primary {
-  color: var(--primary-light);
-  background-color: var(--primary-dark);
-  border: 1px solid var(--primary-dark);
+  color: var(--quinary);
+  background: var(--tertiary-dark);
+  border: 1px solid var(--tertiary-dark);
   &:hover {
     background: linear-gradient(90deg, var(--quaternary-gradient));
   }
 
   &:focus {
     background: linear-gradient(90deg, var(--quaternary-gradient));
+    border: 1px solid var(--tertiary);
   }
 }
 
 .secondary {
   color: var(--quinary);
-  background-color: var(--tertiary-dark);
+  background: var(--tertiary-dark);
+
   border: 1px solid var(--tertiary-dark);
   &:hover {
-    background: var(--tertiary);
+    background: var(--tertiary-alt);
+
     border: 1px solid var(--tertiary);
   }
 
   &:focus {
-    background: var(--tertiary);
-    border: 1px solid var(--tertiary);
+    background: var(--tertiary-alt);
+
+    border: 1px solid var(--tertiary-light);
   }
 }
 
@@ -140,8 +144,63 @@
   right: 0;
   justify-content: unset;
   overflow-y: scroll;
+  overflow-x: scroll;
   scrollbar-color: transparent;
   padding: 1rem;
+
+  .listItem,
+  .listItemCurrent {
+    @include mixins.flex-center;
+    list-style: none;
+    padding: 1rem 0.5rem;
+    color: var(--quinary);
+    transition: variable.$transition;
+    border-radius: variable.$border-radius-s;
+    @include mixins.tablet() {
+      padding: 0.5rem 0;
+    }
+    .icon,
+    .placeholder {
+      border-radius: 5px;
+      margin-right: 1rem;
+    }
+
+    .placeholder {
+      width: 24px;
+      height: 20px;
+    }
+  }
+
+  .listItemCurrent {
+    position: relative;
+    background: linear-gradient(90deg, var(--secondary-gradient));
+    border-radius: variable.$border-radius-s;
+
+    &::before {
+      content: "";
+      background: var(--quinary);
+      width: 0.5px;
+      height: 10px;
+      border: 1px solid var(--quinary);
+      border-top-right-radius: variable.$border-radius-s;
+      border-bottom-right-radius: variable.$border-radius-s;
+      position: absolute;
+      display: none;
+      @include mixins.tablet() {
+        display: inline-block;
+        left: 0.75rem;
+        top: 0.75rem;
+      }
+    }
+  }
+
+  @media (hover: hover) {
+    .listItem:hover,
+    .listItemCurrent:hover {
+      transition: variable.$transition;
+      border-radius: variable.$border-radius-s;
+    }
+  }
 
   @include mixins.tablet {
     top: 2.5rem;
@@ -158,21 +217,22 @@
     max-width: unset;
     padding: 1rem;
   }
-  @include mixins.laptop {
+  @include mixins.desktop {
     min-width: 550px;
     max-width: 600px;
     flex-wrap: wrap;
     padding: 1.5rem;
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 }
 
 .list {
   @extend %list-base;
+}
+
+.mediaDropdown {
+  @include mixins.desktop {
+    min-width: 300px;
+  }
 }
 
 .list:hover > .listItemCurrent {
@@ -181,104 +241,54 @@
 }
 
 .primary-list {
-  background: var(--primary-dark);
+  background: linear-gradient(90deg, var(--quaternary-gradient));
+  border: 1px solid var(--tertiary);
+
   .listItem,
   .listItemCurrent {
-    list-style: none;
-    padding: 1rem 0.5rem;
-    color: var(--primary-light);
-    transition: variable.$transition;
-    border-radius: variable.$border-radius-s;
-
-    @include mixins.tablet() {
-      padding: 0.5rem 0;
-    }
     &:active {
       background: linear-gradient(90deg, var(--quaternary-gradient));
+    }
+    .placeholder {
+      background: linear-gradient(90deg, var(--tertiary-gradient));
     }
   }
 
   .listItemCurrent {
-    position: relative;
-    background: linear-gradient(90deg, var(--quaternary-gradient));
-    border-radius: variable.$border-radius-s;
-
-    &::before {
-      content: "";
-      background: var(--quinary);
-      width: 0.5px;
-      height: 10px;
-      border: 1px solid var(--quinary);
-      border-top-right-radius: variable.$border-radius-s;
-      border-bottom-right-radius: variable.$border-radius-s;
-      position: absolute;
-      display: none;
-      @include mixins.tablet() {
-        display: inline-block;
-        left: 0.75rem;
-        top: 0.75rem;
-      }
-    }
+    background: linear-gradient(90deg, var(--secondary-gradient));
   }
 
   @media (hover: hover) {
     .listItem:hover,
     .listItemCurrent:hover {
-      background: linear-gradient(90deg, var(--quaternary-gradient));
-      transition: variable.$transition;
-      border-radius: variable.$border-radius-s;
+      background: linear-gradient(90deg, var(--secondary-gradient));
     }
   }
 }
 
 .secondary-list {
-  background-color: var(--tertiary);
+  background: var(--tertiary-alt);
 
+  border: 1px solid var(--tertiary-light);
   .listItem,
   .listItemCurrent {
-    list-style: none;
-    padding: 1rem 0.5rem;
-    color: var(--quinary);
-    transition: variable.$transition;
-    border-radius: variable.$border-radius-s;
-
-    @include mixins.tablet() {
-      padding: 0.5rem 0;
-    }
-
     &:active {
       background: linear-gradient(90deg, var(--quaternary-gradient));
+    }
+
+    .placeholder {
+      background: linear-gradient(90deg, var(--primary-gradient));
     }
   }
 
   .listItemCurrent {
-    position: relative;
     background: linear-gradient(270deg, var(--quaternary-gradient));
-    border-radius: variable.$border-radius-s;
-    &::before {
-      content: "";
-      background: var(--quinary);
-      width: 0.5px;
-      height: 10px;
-      border: 1px solid var(--quinary);
-      border-top-right-radius: variable.$border-radius-s;
-      border-bottom-right-radius: variable.$border-radius-s;
-      position: absolute;
-      display: none;
-      @include mixins.tablet() {
-        display: inline-block;
-        left: 0.75rem;
-        top: 0.75rem;
-      }
-    }
   }
 
   @media (hover: hover) {
     .listItem:hover,
     .listItemCurrent:hover {
       background: linear-gradient(270deg, var(--quaternary-gradient));
-      transition: variable.$transition;
-      border-radius: variable.$border-radius-s;
     }
   }
 }

@@ -1,0 +1,57 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.container {
+  @include mixins.center;
+  @include mixins.flex-center;
+  @include mixins.flex-column;
+}
+
+.list {
+  @include mixins.flex-row;
+  margin-block: 1rem;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
+
+.listItem {
+  margin-right: 1rem;
+  list-style: none;
+}
+
+.text {
+  font-size: var(--step-0);
+  font-weight: variable.$fw-bold;
+  letter-spacing: variable.$ls;
+  color: var(--tertiary-light);
+  margin-bottom: 1rem;
+
+  @include mixins.tablet {
+    margin-bottom: 0;
+  }
+}
+
+.providersWrapper {
+  @include mixins.flex-row;
+  min-height: 32px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoContainer {
+  @include mixins.flex-column;
+  align-items: center;
+  gap: 0.5rem;
+  @include mixins.tablet {
+    @include mixins.flex-row;
+  }
+}
+
+.logo {
+  border-radius: 5px;
+}
+
+.fallback {
+  min-height: 34px;
+}

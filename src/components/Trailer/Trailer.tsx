@@ -28,7 +28,7 @@ const Trailer: React.FC<ButtonProps> = ({ endpoint, variant }) => {
   };
 
   useEffect(() => {
-    if (data && data.videos.results.length !== 0) {
+    if (data && data.videos && data.videos.results && data.videos.results.length !== 0) {
       const regexPattern = /trailer/i;
       data.videos.results.find((item: IVideoData) => {
         switch (item.name) {

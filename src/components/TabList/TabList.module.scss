@@ -120,7 +120,6 @@
 }
 
 .name {
-  // white-space: nowrap;
   width: 100%;
   @include mixins.addHeadingEllipses;
 }

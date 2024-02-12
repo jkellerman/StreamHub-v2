@@ -14,6 +14,8 @@
 .header {
   @include mixins.flex-column;
   @include header-styles();
+  position: relative;
+  z-index: variable.$z-index-5;
 
   @include mixins.tablet {
     top: 0px;

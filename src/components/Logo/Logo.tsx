@@ -1,5 +1,5 @@
 interface LogoProps {
-  logo: string | null;
+  logo: "justWatch" | "tmdb";
   width?: string;
   height?: string;
 }

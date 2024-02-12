@@ -1,0 +1,102 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.container {
+  @include mixins.center;
+  @include mixins.flex-center;
+  @include mixins.flex-column;
+  margin-bottom: 2rem;
+}
+
+.triggerContainer {
+  @include mixins.flex-row;
+  gap: 0.5rem;
+}
+
+.triggerSubheading,
+.trigger {
+  background-color: var(--tertiary-dark);
+  border-radius: variable.$border-radius-l;
+}
+
+.triggerSubheading {
+  padding: 0.5em 1.25em;
+  border: 1px solid var(--secondary-light);
+  text-transform: uppercase;
+  letter-spacing: variable.$ls;
+  font-size: var(--step--1);
+  color: var(--quinary);
+}
+
+.trigger {
+  padding: 0rem 1rem;
+  border: 1px solid var(--secondary-light);
+  border-radius: variable.$border-radius-l;
+  color: var(--primary-light);
+  @include mixins.flex-center;
+  gap: 0.5em;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: variable.$ls;
+  font-weight: variable.$fw-reg;
+
+  &:hover,
+  &:active {
+    background: linear-gradient(90deg, var(--quaternary-gradient));
+    border: 1px solid var(--secondary);
+    transition: variable.$transition;
+  }
+}
+
+.triggerFlag {
+  font-size: 1.5rem;
+}
+
+.dropdownMenuContent {
+  background: linear-gradient(90deg, var(--quaternary-gradient));
+  border-radius: variable.$border-radius-l;
+  z-index: variable.$z-index-5;
+  border: 1px solid var(--tertiary);
+}
+
+.dropdownMenuItem {
+  padding: 0.25em 1.75em 0.25em;
+  cursor: pointer;
+  @include mixins.flex-row;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+  font-weight: variable.$fw-light;
+  letter-spacing: variable.$ls;
+  justify-content: space-between;
+}
+
+.dropdownMenuItem.activeRegion {
+  background-color: var(--tertiary);
+  &:first-of-type {
+    border-top-left-radius: variable.$border-radius-l;
+    border-top-right-radius: variable.$border-radius-l;
+  }
+  &:last-of-type {
+    border-bottom-left-radius: variable.$border-radius-l;
+    border-bottom-right-radius: variable.$border-radius-l;
+  }
+}
+
+.dropdownMenuItem[data-highlighted] {
+  background-color: hsl(223, 39%, 66%);
+
+  &:first-of-type {
+    border-top-left-radius: variable.$border-radius-l;
+    border-top-right-radius: variable.$border-radius-l;
+  }
+  &:last-of-type {
+    border-bottom-left-radius: variable.$border-radius-l;
+    border-bottom-right-radius: variable.$border-radius-l;
+  }
+  transition: variable.$transition;
+}
+
+.menuItemFlag {
+  font-size: 1.5rem;
+}

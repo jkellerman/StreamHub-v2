@@ -15,8 +15,9 @@ import Header from "@/components/Header/Header";
 import Heading from "@/components/Heading/Heading";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
-import { movieNetworkList, BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { useRegion } from "@/src/context/regionContext";
 import { Media } from "@/types/media";
 
 interface MoviesIndexPageProps {
@@ -25,19 +26,29 @@ interface MoviesIndexPageProps {
 
 const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
   const { query, pathname } = useRouter();
-
-  const genre =
+  const { providers, region } = useRegion();
+  const selectedGenre =
     (genreList &&
       genreList.find((genreItem) => genreItem && genreItem.name.toLowerCase() === query.genre)) ??
     DEFAULT_GENRE;
 
-  const network =
-    movieNetworkList.find(({ provider_name }) => provider_name.toLowerCase() === query.genre) ||
-    DEFAULT_NETWORK;
+  const selectedNetwork =
+    providers?.find(
+      ({ provider_name }) => provider_name.replace(" Plus", "+").toLowerCase() === query.genre
+    ) ?? DEFAULT_NETWORK;
 
-  const pageType = pathname.replace(/\//g, "");
+  const networkList = providers && [DEFAULT_NETWORK, ...providers];
 
-  const endpoint = `api/network/movie/8|337|9|531|350`;
+  const pageType = pathname && pathname.replace(/\//g, "");
+
+  const providerIds =
+    providers &&
+    providers.map((item) => {
+      return item.provider_id;
+    });
+  const countryNetworkList = providerIds.toString().split(",").join("|");
+
+  const endpoint = `api/network/movie/${region}/${countryNetworkList}`;
 
   const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useInfiniteScroll(endpoint);
@@ -45,7 +56,7 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
   return (
     <>
       <Head>
-        <title>{`Watch ${genre.name} Movies Online | StreamHub`}</title>
+        <title>What to watch | StreamHub</title>
         <meta
           name="description"
           content="Find out where to watch movies from Netflix, Amazon Prime, Disney+ and many more services"
@@ -61,7 +72,7 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
             <DropdownsContainer>
               <Dropdown
                 type={pageType}
-                selected_genre={genre}
+                selected_genre={selectedGenre}
                 genre_list={genreList}
                 variant="genre"
                 style="primary"
@@ -70,8 +81,8 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
             <DropdownsContainer>
               <Dropdown
                 type={pageType}
-                selected_network={network}
-                network_list={movieNetworkList}
+                selected_network={selectedNetwork}
+                network_list={networkList as Media.IProvider[]}
                 variant="service"
                 style="primary"
               />

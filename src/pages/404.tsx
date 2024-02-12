@@ -23,7 +23,7 @@ const Custom404 = () => {
         <Heading as="h1" size="xxl">
           404
         </Heading>
-        <Content>Oops...looks like you&apos;ve taken a wrong turn.</Content>
+        <Content>Oops...looks like you&apos;ve taken a wrong turn. 😅</Content>
         <Button variant="primary" asLink link="/">
           Take me home
         </Button>

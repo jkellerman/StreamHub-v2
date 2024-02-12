@@ -54,6 +54,29 @@
   margin-bottom: 4rem;
 }
 
+.placeholderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include mixins.center;
+}
+
+.placeholder {
+  height: 100px;
+  text-align: center;
+  font-size: var(--step-2);
+  font-weight: variable.$fw-bold;
+
+  @include mixins.tabletL {
+    height: 200px;
+    max-width: 40%;
+  }
+}
+
+.query {
+  color: var(--primary-light);
+}
+
 @keyframes fade {
   from {
     opacity: 0;

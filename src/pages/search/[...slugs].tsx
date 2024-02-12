@@ -29,11 +29,8 @@ const Search = () => {
           {!isLoading && (
             <div className={styles.header}>
               <Heading as="h1" size="xs">
-                {cards.length !== 0
-                  ? `Movies and TV series with '${slugsArray[1]?.toString().replace(/-/g, " ")}'`
-                  : `Oops...nothing found for '${slugsArray[1]
-                      ?.toString()
-                      .replace(/-/g, " ")}', try something else.`}
+                {cards.length !== 0 &&
+                  `Movies and TV series with '${slugsArray[1]?.toString().replace(/-/g, " ")}'`}
               </Heading>
             </div>
           )}

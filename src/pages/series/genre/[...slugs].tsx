@@ -14,8 +14,9 @@ import Header from "@/components/Header/Header";
 import Heading from "@/components/Heading/Heading";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
-import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS, seriesNetworkList } from "@/constants/tmdb";
+import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { useRegion } from "@/src/context/regionContext";
 import { Media } from "@/types/media";
 
 interface GenreSeriesProps {
@@ -24,26 +25,36 @@ interface GenreSeriesProps {
 
 const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
   const { query } = useRouter();
-
   const slug = query.slugs;
 
-  const genre =
+  const { providers, region } = useRegion();
+
+  const selectedGenre =
     (genreList &&
-      genreList.find((genre) => slug?.includes(genre.name.toLowerCase().replaceAll(" ", "-")))) ||
+      genreList.find((genre) => slug?.includes(genre.name.toLowerCase().replaceAll(" ", "-")))) ??
     DEFAULT_GENRE;
 
-  const network =
-    seriesNetworkList.find(({ provider_name }) =>
-      slug?.includes(provider_name.toLowerCase().replaceAll(" ", "-"))
+  const selectedNetwork =
+    providers?.find(({ provider_name }) =>
+      slug?.includes(provider_name.replace(" Plus", "+").toLowerCase().replaceAll(" ", "-"))
     ) ?? DEFAULT_NETWORK;
 
   const isNetworkSelected = slug?.includes(
-    network.provider_name.toLowerCase().replaceAll(" ", "-")
+    selectedNetwork.provider_name.replace(" Plus", "+").toLowerCase().replaceAll(" ", "-")
   );
 
+  const networkList = providers && [DEFAULT_NETWORK, ...providers];
+
+  const providerIds =
+    providers &&
+    providers.map((item) => {
+      return item.provider_id;
+    });
+  const countryNetworkList = providerIds.toString().split(",").join("|");
+
   const endpoint = isNetworkSelected
-    ? `/api/network/tv/${network.provider_id}/${genre.id}`
-    : `/api/network/tv/8|337|9|531|350/${genre.id}`;
+    ? `/api/network/tv/${region}/${selectedNetwork.provider_id}/${selectedGenre.id}`
+    : `/api/network/tv/${region}/${countryNetworkList}/${selectedGenre.id}`;
 
   const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useInfiniteScroll(endpoint);
@@ -51,7 +62,7 @@ const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
   return (
     <>
       <Head>
-        <title>{`Watch ${genre?.name} Series Online | StreamHub`}</title>
+        <title>{`Watch ${selectedGenre?.name} Series | StreamHub`}</title>
         <meta
           name="description"
           content="Find out where to watch series from Netflix, Amazon Prime, Disney+ and many more services"
@@ -67,19 +78,19 @@ const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
             <DropdownsContainer>
               <Dropdown
                 type="series"
-                selected_genre={genre}
+                selected_genre={selectedGenre}
                 genre_list={genreList}
                 variant="genre"
-                selected_network={network}
+                selected_network={selectedNetwork}
                 style="primary"
               />
             </DropdownsContainer>
             <DropdownsContainer>
               <Dropdown
                 type="series"
-                selected_network={network}
-                network_list={seriesNetworkList}
-                selected_genre={genre}
+                selected_network={selectedNetwork}
+                network_list={networkList as Media.IProvider[]}
+                selected_genre={selectedGenre}
                 variant="service"
                 style="primary"
               />

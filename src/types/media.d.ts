@@ -59,10 +59,8 @@ export declare namespace Media {
     known_for_department: string;
   }
 
-  export interface IProvider {
-    provider_id: number;
+  export interface IProvider extends IServices {
     logo_path: string;
-    provider_name: string;
   }
 
   export interface IProviderList {

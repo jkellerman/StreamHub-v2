@@ -6,6 +6,7 @@ import React from "react";
 
 import "@/styles/globals.scss";
 
+import { RegionProvider } from "../context/regionContext";
 import CoreLayout from "../layouts/core";
 
 import type { AppProps } from "next/app";
@@ -21,10 +22,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <CoreLayout>
-          <Component {...pageProps} />
-        </CoreLayout>
-        <ReactQueryDevtools />
+        <RegionProvider>
+          <CoreLayout>
+            <Component {...pageProps} />
+          </CoreLayout>
+          <ReactQueryDevtools />
+        </RegionProvider>
       </QueryClientProvider>
     </>
   );

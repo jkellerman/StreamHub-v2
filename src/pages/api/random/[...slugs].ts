@@ -10,23 +10,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
 
     const queryString =
-      slugsArray.length === 4
+      slugsArray.length === 5
         ? QueryString.stringify(
             {
               ...BASE_TMDB_QUERY_PARAMS,
-              watch_region: "GB",
-              with_watch_providers: slugsArray[1],
-              with_genres: slugsArray[2],
-              page: slugsArray[3],
+              watch_region: slugsArray[1],
+              with_watch_providers: slugsArray[2],
+              with_genres: slugsArray[3],
+              page: slugsArray[4],
             },
             { addQueryPrefix: true }
           )
         : QueryString.stringify(
             {
               ...BASE_TMDB_QUERY_PARAMS,
-              watch_region: "GB",
-              with_watch_providers: slugsArray[1],
-              page: slugsArray[2],
+              watch_region: slugsArray[1],
+              with_watch_providers: slugsArray[2],
+              page: slugsArray[3],
             },
             { addQueryPrefix: true }
           );

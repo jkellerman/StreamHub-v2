@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import slugify from "slugify";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useRegion } from "@/src/context/regionContext";
 import { Media } from "@/types/media";
 import { scale } from "@/utils/animations";
 
@@ -32,6 +33,8 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({
   type,
   noResults,
 }) => {
+  const { region } = useRegion();
+
   const [progress, setProgress] = useState(0);
 
   const voteAverage = data && data.vote_average * 10;
@@ -61,7 +64,7 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({
   if (noResults) {
     return (
       <div className={styles.container}>
-        <div className={styles.noResults}>there are no results, try something else...</div>
+        <div className={styles.noResults}>there are no results 😕, try something else...</div>
       </div>
     );
   }
@@ -120,7 +123,7 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({
                   variant="secondary"
                   isFull
                   asLink
-                  link={`/${type === "movie" ? "movie" : "show"}/${data.id}?${slugify(
+                  link={`/${type === "movie" ? "movie" : "show"}/${data.id}/${region}?${slugify(
                     type === "movie" ? (data.title as string) : data.name,
                     { lower: true }
                   )}`}

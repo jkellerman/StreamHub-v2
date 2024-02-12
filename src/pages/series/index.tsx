@@ -15,8 +15,9 @@ import Header from "@/components/Header/Header";
 import Heading from "@/components/Heading/Heading";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
-import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL, seriesNetworkList } from "@/constants/tmdb";
+import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { useRegion } from "@/src/context/regionContext";
 import { Media } from "@/src/types";
 
 interface SeriesIndexPageProps {
@@ -25,15 +26,19 @@ interface SeriesIndexPageProps {
 
 const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
   const { query, pathname } = useRouter();
+  const { providers } = useRegion();
 
-  const genre =
+  const selectedGenre =
     (genreList &&
       genreList.find((item: Media.IGenre) => item.name.toLowerCase() === query.genre)) ||
     DEFAULT_GENRE;
 
-  const network =
-    seriesNetworkList.find(({ provider_name }) => provider_name.toLowerCase() === query.genre) ||
-    DEFAULT_NETWORK;
+  const selectedNetwork =
+    providers?.find(
+      ({ provider_name }) => provider_name.replace(" Plus", "+").toLowerCase() === query.genre
+    ) ?? DEFAULT_NETWORK;
+
+  const networkList = providers && [DEFAULT_NETWORK, ...providers];
 
   const pageType = pathname.replace(/\//g, "");
 
@@ -45,7 +50,7 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
   return (
     <>
       <Head>
-        <title>Watch TV series Online | StreamHub</title>
+        <title>What Series to Watch | StreamHub</title>
         <meta
           name="description"
           content="Find out where to watch TV shows from Netflix, Amazon Prime, Disney+ and many more services."
@@ -61,7 +66,7 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
             <DropdownsContainer>
               <Dropdown
                 type={pageType}
-                selected_genre={genre}
+                selected_genre={selectedGenre}
                 genre_list={genreList}
                 variant="genre"
                 style="primary"
@@ -70,8 +75,8 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
             <DropdownsContainer>
               <Dropdown
                 type={pageType}
-                selected_network={network}
-                network_list={seriesNetworkList}
+                selected_network={selectedNetwork}
+                network_list={networkList as Media.IProvider[]}
                 variant="service"
                 style="primary"
               />
