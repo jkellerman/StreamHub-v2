@@ -94,7 +94,7 @@ export default Series;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { query } = context;
-  const { id } = query;
+  const { slugs } = query;
 
   const queryString = qs.stringify(
     {
@@ -104,10 +104,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     { addQueryPrefix: true }
   );
 
-  const url = `${BASE_TMDB_URL}/tv/${id}${queryString}`;
+  const url = slugs && `${BASE_TMDB_URL}/tv/${slugs[0]}${queryString}`;
   console.info("🚀 Request URL: ", url);
 
-  const response = await fetch(url);
+  const response = await fetch(url as string);
 
   const data = await response.json();
 
@@ -123,9 +123,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } = data;
 
   const certification: Media.ICertificationSeries | null =
-    content_ratings.results.find(
-      (country: Media.ICertificationSeries) => country.iso_3166_1 === "GB"
-    ) || null;
+    (slugs &&
+      content_ratings.results.find(
+        (country: Media.ICertificationSeries) => country.iso_3166_1 === `${slugs[1]}`
+      )) ??
+    "GB";
 
   const age_rating: string = certification?.rating ?? "";
 
@@ -135,9 +137,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const cast: Media.ICast = credits.cast.slice(0, 4);
 
-  const getWatchProviders: Media.IProviderList | null = data["watch/providers"].results.GB;
-
-  const watch_providers = getWatchProviders ?? [];
+  const getWatchProviders: Media.IProviderList | null =
+    slugs && slugs[1] ? data["watch/providers"].results[slugs[1]] : null;
 
   return {
     props: {
@@ -146,12 +147,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       overview,
       cast,
       genres,
-      watch_providers,
+      watch_providers: getWatchProviders || null,
       seasons: number_of_seasons,
       network,
       title,
       data,
-      id,
+      id: slugs ? slugs[0] : null,
     },
   };
 };

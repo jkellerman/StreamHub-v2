@@ -2,11 +2,13 @@ import Image from "next/future/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEvent, useState, useEffect, useRef } from "react";
+import slugify from "slugify";
 
 import Icon from "@/components/Icon/Icon";
 import Spinner from "@/components/Spinner/SearchBar/Spinner";
 import { POSTER_URL_IMAGE_XS } from "@/constants/tmdb";
 import useClickOutside from "@/hooks/useClickOutside";
+import { useRegion } from "@/src/context/regionContext";
 import { shimmer, toBase64 } from "@/utils/placeholder";
 
 import styles from "../Search/Search.module.scss";
@@ -31,6 +33,7 @@ interface SearchQuery {
 
 const Search: React.FC = () => {
   const router = useRouter();
+  const { region } = useRegion();
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
   const [isError, setIsError] = useState(false);
@@ -89,7 +92,7 @@ const Search: React.FC = () => {
       if (result) {
         const { id, title, name } = result;
         const slug = title ?? name;
-        const route = title ? `/movie/${id}` : `/show/${id}`;
+        const route = title ? `/movie/${id}/${region}` : `/show/${id}/${region}`;
         router.push(`${route}?${slug?.replace(/ /g, "-")}`);
         setSearchQuery("");
       }
@@ -259,12 +262,12 @@ const SearchForm: React.FC<SearchFormProps> = ({
           onClick={handleSubmit}
           aria-label="search"
         >
-          <Icon icon="search" />
+          <Icon icon="search" width="24" height="24" />
         </button>
         {children}
         {searchQuery.length >= 1 && (
           <button type="button" className={styles.closeButton} onClick={() => setSearchQuery("")}>
-            <Icon icon="close" />
+            <Icon icon="close" width="17" height="17" />
           </button>
         )}
       </form>
@@ -288,7 +291,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ searchQuery, handleInputChang
         type="text"
         name="search"
         aria-label="Search"
-        placeholder="Search for movies or tv series..."
+        placeholder="Where can I watch..."
         className={styles.input}
         value={searchQuery}
         onChange={handleInputChange}
@@ -398,13 +401,17 @@ const SearchListItem: React.FC<SearchListItemProps> = ({
   poster_path,
   setSearchQuery,
 }) => {
-  const isMovie = !!title;
-  const slug = isMovie ? title?.replace(/ /g, "-") : name?.replace(/ /g, "-");
-  const itemType = isMovie ? "movie" : "show";
+  const { region } = useRegion();
 
   return (
     <li className={`${styles.listItemWrapper} ${index === activeIndex && styles.isActive}`}>
-      <Link href={`/${itemType}/${id}?${slug}`}>
+      <Link
+        href={
+          title
+            ? `/movie/${id}/${region}?${slugify(title, { lower: true })}`
+            : `/show/${id}/${region}?${slugify(name as string, { lower: true })}`
+        }
+      >
         <a className={styles.listItem} onClick={() => setSearchQuery("")}>
           <div className={styles.posterContainer}>
             {poster_path ? (

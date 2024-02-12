@@ -4,19 +4,21 @@
   // Theme
   --primary: hsl(170, 100%, 40%);
   --primary-light: hsl(170, 100%, 50%);
-  --primary-dark: hsl(203, 46%, 15%);
+  --primary-dark: hsl(203, 55%, 13%);
   --secondary: hsl(218, 58%, 16%);
   --secondary-light: hsl(206, 58%, 16%);
-  --secondary-dark: hsl(223, 30%, 9%);
+  --secondary-dark: hsl(210, 38%, 6%);
   --tertiary: hsl(223, 34%, 60%);
   --tertiary-light: hsl(213, 20%, 65%);
-  --tertiary-dark: hsl(222, 23%, 46%);
+  --tertiary-dark: hsl(222, 24%, 32%);
+  --tertiary-alt: hsl(224, 29%, 55%);
   --quaternary: hsl(258, 100%, 43%);
   --quinary: hsl(0, 0%, 100%);
   --primary-gradient: hsl(182, 98%, 35%), var(--primary-light);
   --secondary-gradient: hsl(219, 41%, 13%), hsl(212, 40%, 24%);
   --tertiary-gradient: var(--primary-light), var(--tertiary);
   --quaternary-gradient: hsl(204, 47%, 32%), hsl(253, 28%, 36%);
+  --quinary-gradient: hsl(204, 52%, 24%), hsl(252, 31%, 27%);
 
   // Typography
 
@@ -145,5 +147,16 @@ select {
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
   img[loading="lazy"] {
     clip-path: inset(0.6px);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -40%) scale(1);
+    opacity: 1;
   }
 }

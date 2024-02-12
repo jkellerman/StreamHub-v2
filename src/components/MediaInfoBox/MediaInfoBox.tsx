@@ -29,7 +29,6 @@ const MediaInfoBox: React.FC<MediaInfoBoxProps> = ({
   title,
   overview,
   poster,
-
   watch_providers,
   release_date,
   air_date,
@@ -48,7 +47,7 @@ const MediaInfoBox: React.FC<MediaInfoBoxProps> = ({
             transition: {
               ease: "easeInOut",
               duration: 0.3,
-              delay: 0.1,
+              delay: 0.2,
             },
           }}
         >

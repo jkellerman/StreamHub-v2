@@ -1,38 +1,63 @@
 import { ParsedUrlQuery } from "node:querystring";
 
+import Image from "next/future/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState, useCallback } from "react";
 import slugify from "slugify";
 
 import Icon from "@/components/Icon/Icon";
-import { DEFAULT_GENRE, DEFAULT_NETWORK, DEFAULT_WATCH_NETWORK } from "@/constants/app";
+import {
+  DEFAULT_GENRE,
+  DEFAULT_NETWORK,
+  DEFAULT_WATCH_GENRE,
+  DEFAULT_WATCH_NETWORK,
+} from "@/constants/app";
+import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import useClickOutside from "@/hooks/useClickOutside";
 import { Media } from "@/src/types";
 
 import styles from "../Dropdown/Dropdown.module.scss";
 
 interface DropdownProps {
-  // Media page type (movies or series page)
+  /**
+   * Media page type (movies or series page)
+   */
   type: string;
-  // Genre that is currently selected
-  // Used for page route and highlighting genre that has been selected
+  /**
+   * Genre that is currently selected
+   * Used for page route and highlighting genre that has been selected
+   */
   selected_genre?: Media.IGenre;
-  // List of genres for movies or series
+  /**
+   * List of genres for movies or series
+   */
   genre_list?: Media.IGenre[];
-  // For movies and series dropdown to select media type
+  /**
+   * For movies and series dropdown to select media type
+   */
   media?: string;
-  // List of networks
-  network_list?: Media.IServices[] | undefined;
-  // Network that is currently selected
-  // Used for page route and highlighting network that has been selected
+  /**
+   * List of networks
+   */
+  network_list?: Media.IProvider[] | undefined;
+  /**
+   * Network that is currently selected
+   * Used for page route and highlighting network that has been selected
+   */
   selected_network?: Media.IServices;
-  // For rendering the appropriate trigger and dropdown
+  /**
+   * For rendering the appropriate trigger and dropdown
+   */
   variant?: "genre" | "media" | "service";
-  // Specifies if the dropdown is on watch page
-  // Needed as watch page rootpath is different to movies/series pages
+  /**
+   * Specifies if the dropdown is on watch page
+   * Needed as watch page rootpath is different to movies/series pages
+   */
   watch?: boolean;
-  // Styling variations for dropdown
+  /**
+   * Styling variations for dropdown
+   */
   style: "primary" | "secondary";
 }
 
@@ -74,7 +99,7 @@ const Dropdown: React.FC<DropdownProps> = ({
               ? selected_genre?.name
               : variant === "media"
               ? media
-              : selected_network?.provider_name
+              : selected_network?.provider_name.replace(" Plus", "+")
           }
           isDropdownOpen={isDropdownOpen}
           style={style}
@@ -90,6 +115,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             closeDropdown={closeDropdown}
             rootPath={watch ? "/watch/" : "/"}
             style={style}
+            watch={watch}
           />
         )}
         {isDropdownOpen && variant === "media" && (
@@ -200,7 +226,10 @@ const DropdownGenre: React.FC<DropdownGenreProps> = ({
   closeDropdown,
   rootPath,
   style,
+  watch,
 }) => {
+  const defaultServiceOption = watch ? DEFAULT_WATCH_GENRE : DEFAULT_GENRE;
+
   const listClasses = [
     styles.list,
     style === "primary"
@@ -220,23 +249,32 @@ const DropdownGenre: React.FC<DropdownGenreProps> = ({
           >
             <Link
               href={
-                name === DEFAULT_GENRE.name &&
+                name === defaultServiceOption.name &&
                 !query.slugs?.includes(
-                  `${selected_network?.provider_name.toLowerCase().replaceAll(" ", "-")}`
+                  `${selected_network?.provider_name
+                    .replace(" Plus", "+")
+                    .toLowerCase()
+                    .replaceAll(" ", "-")}`
                 )
                   ? `${rootPath}${type}`
-                  : name === DEFAULT_GENRE.name &&
+                  : name === defaultServiceOption.name &&
                     query.slugs?.includes(
-                      `${selected_network?.provider_name.toLowerCase().replaceAll(" ", "-")}`
+                      `${selected_network?.provider_name
+                        .replace(" Plus", "+")
+                        .toLowerCase()
+                        .replaceAll(" ", "-")}`
                     )
                   ? `${rootPath}${type}/network/${slugify(
-                      selected_network?.provider_name as string,
+                      selected_network?.provider_name.replace(" Plus", "+") as string,
                       {
                         lower: true,
                       }
                     ).replace(/and/g, "&")}`
                   : !query.slugs?.includes(
-                      `${selected_network?.provider_name.toLowerCase().replaceAll(" ", "-")}`
+                      `${selected_network?.provider_name
+                        .replace(" Plus", "+")
+                        .toLowerCase()
+                        .replaceAll(" ", "-")}`
                     )
                   ? `${rootPath}${type}/genre/${slugify(name, { lower: true }).replace(
                       /and/g,
@@ -245,7 +283,7 @@ const DropdownGenre: React.FC<DropdownGenreProps> = ({
                   : `${rootPath}${type}/genre/${slugify(name, { lower: true }).replace(
                       /and/g,
                       "&"
-                    )}/${slugify(selected_network?.provider_name as string, {
+                    )}/${slugify(selected_network?.provider_name.replace(" Plus", "+") as string, {
                       lower: true,
                     }).replace(/and/g, "&")}`
               }
@@ -283,6 +321,7 @@ const DropdownMedia: React.FC<DropdownMediaProps> = ({
 }) => {
   const listClasses = [
     styles.list,
+    styles.mediaDropdown,
     style === "primary"
       ? styles["primary-list"]
       : style === "secondary"
@@ -292,17 +331,17 @@ const DropdownMedia: React.FC<DropdownMediaProps> = ({
   return (
     <ul className={`${listClasses.join(" ")}`}>
       <DropdownMediaListItem
-        media="movies"
-        closeDropdown={closeDropdown}
-        watch={watch}
-        isCurrent={media === "movies"}
-        clearSessionStorage={clearSessionStorage}
-      />
-      <DropdownMediaListItem
         media="series"
         closeDropdown={closeDropdown}
         watch={watch}
         isCurrent={media === "series"}
+        clearSessionStorage={clearSessionStorage}
+      />
+      <DropdownMediaListItem
+        media="movies"
+        closeDropdown={closeDropdown}
+        watch={watch}
+        isCurrent={media === "movies"}
         clearSessionStorage={clearSessionStorage}
       />
     </ul>
@@ -382,7 +421,7 @@ const DropdownService: React.FC<DropdownServiceProps> = ({
   ];
   return (
     <ul className={`${listClasses.join(" ")}`}>
-      {network_list?.map(({ provider_id, provider_name }) => {
+      {network_list?.map(({ provider_id, provider_name, logo_path }) => {
         return (
           <li
             key={provider_id}
@@ -409,21 +448,33 @@ const DropdownService: React.FC<DropdownServiceProps> = ({
                   : !query.slugs?.includes(
                       `${selected_genre?.name.toLowerCase().replaceAll(" ", "-")}`
                     )
-                  ? `${rootPath}${type}/network/${slugify(provider_name, {
+                  ? `${rootPath}${type}/network/${slugify(provider_name.replace(" Plus", "+"), {
                       lower: true,
                     }).replace(/and/g, "&")}`
                   : `${rootPath}${type}/genre/${slugify(selected_genre?.name as string, {
                       lower: true,
-                    }).replace(/and/g, "&")}/${slugify(provider_name, {
+                    }).replace(/and/g, "&")}/${slugify(provider_name.replace(" Plus", "+"), {
                       lower: true,
                     }).replace(/and/g, "&")}`
               }
               scroll={false}
             >
               <a className={styles.link} onClick={closeDropdown}>
-                {provider_name}
+                {provider_name.replace(" Plus", "+")}
               </a>
             </Link>
+            {logo_path ? (
+              <Image
+                src={`${LOGO_URL_IMAGE}${logo_path}`}
+                alt="network-logo"
+                unoptimized={true}
+                className={styles.icon}
+                width={20}
+                height={20}
+              />
+            ) : (
+              <div className={styles.placeholder}></div>
+            )}
           </li>
         );
       })}

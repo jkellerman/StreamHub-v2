@@ -47,3 +47,16 @@ $desktop-l: calc((1728px / $base-font-size) * 1em);
 // Animations/Transitions
 $fade-animation: 250ms ease;
 $transition: all 100ms ease;
+
+$bounce-in: bounceIn 0.1s ease-in-out;
+
+@keyframes bounceIn {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -40%) scale(1);
+    opacity: 1;
+  }
+}

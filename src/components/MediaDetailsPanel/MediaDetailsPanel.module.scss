@@ -22,6 +22,7 @@
   margin-bottom: 0.5rem;
   color: var(--tertiary-light);
   position: relative;
+  align-self: flex-start;
   top: -6.5rem;
   @include mixins.tablet {
     top: -4rem;

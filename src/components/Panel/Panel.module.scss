@@ -1,22 +1,19 @@
 @use "@/styles/variables" as variable;
 @use "@/styles/mixins" as mixins;
 
-.main {
-  padding-bottom: 4rem;
-  background: linear-gradient(90deg, var(--quaternary-gradient));
-}
-
-.container,
-.panelContainer {
-  max-width: 900px;
+.outerWrapper {
+  background: linear-gradient(90deg, var(--quinary-gradient));
+  position: relative;
 }
 
 .container {
   @include mixins.center;
-  padding-top: 4rem;
-
+  position: relative;
+  z-index: variable.$z-index-2;
+  padding-block: 4rem;
+  max-width: 900px;
   @include mixins.tablet {
-    padding-top: 6rem;
+    padding-bottom: 4rem;
   }
 
   & > p {
@@ -28,8 +25,8 @@
   }
 }
 
-.panelContainer {
-  margin: 0 0 4rem;
+.panelOuterContainer {
+  @include mixins.center;
   width: 100%;
   @include mixins.flex-column;
   gap: 2.5rem;
@@ -45,17 +42,27 @@
     padding: 1.5rem 2.5rem;
     min-height: 292.5px;
   }
+}
 
-  .panelInner {
-    @include mixins.flex-column;
-    justify-content: center;
-    @include mixins.tabletL {
-      min-width: 264px;
-      max-width: 264px;
-    }
+.panelInner {
+  @include mixins.flex-column;
+  justify-content: center;
+  @include mixins.tabletL {
+    min-width: 264px;
+    max-width: 264px;
   }
+}
 
-  & .panelInner p {
-    color: var(--quinary);
-  }
+.panelInner p {
+  color: var(--quinary);
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  z-index: variable.$z-index-1;
+  left: 0;
+  top: 0;
+  background-image: linear-gradient(rgba(23, 24, 27, 0) 0%, hsl(210, 38%, 6%) 80%);
 }

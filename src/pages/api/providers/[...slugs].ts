@@ -1,24 +1,24 @@
 import QueryString from "qs";
 
-import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import { BASE_TMDB_QUERY_DISCOVER_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { slugs, ...queryParams } = req.query;
+    const { slugs } = req.query;
     const slugsArray = Array.isArray(slugs) ? slugs : [slugs];
     const queryString = QueryString.stringify(
       {
-        ...BASE_TMDB_QUERY_PARAMS,
-        region: slugsArray[2],
-        ...queryParams, // for infinite scroll page numbers
+        ...BASE_TMDB_QUERY_DISCOVER_PARAMS,
+        watch_region: `${slugsArray[1]}`,
       },
       { addQueryPrefix: true }
     );
-    const url = `${BASE_TMDB_URL}/${slugsArray[0]}/${slugsArray[1]}${queryString}`;
 
+    const url = `${BASE_TMDB_URL}/watch/providers/${slugsArray[0]}${queryString}`;
     console.info("🚀 Request URL: ", url);
+
     const response = await fetch(url);
     const data = await response.json();
 

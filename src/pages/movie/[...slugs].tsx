@@ -52,7 +52,7 @@ const Movie: React.FC<MovieProps> = ({
   return (
     <>
       <Head>
-        <title>{`Watch ${title} Online | StreamHub`}</title>
+        <title>{`Watch ${title} | StreamHub`}</title>
         <meta name="description" content={`Where to watch ${title}`} />
       </Head>
       <Header animate />
@@ -76,17 +76,22 @@ const Movie: React.FC<MovieProps> = ({
           cast={cast}
           director={director}
         />
-
-        {data && data.recommendations.results.length > 0 && (
-          <CategoryHeading category="Suggested" recommendations />
-        )}
-        {data && data.recommendations.results.length > 0 && (
-          <Recommendations
-            recommendations={recommendations}
-            isLoading={isLoading}
-            isError={isError}
-          />
-        )}
+        {data &&
+          data.recommendations &&
+          data.recommendations.results &&
+          data.recommendations.results.length > 0 && (
+            <CategoryHeading category="Suggested" recommendations />
+          )}
+        {data &&
+          data.recommendations &&
+          data.recommendations.results &&
+          data.recommendations.results.length > 0 && (
+            <Recommendations
+              recommendations={recommendations}
+              isLoading={isLoading}
+              isError={isError}
+            />
+          )}
       </main>
     </>
   );
@@ -96,7 +101,7 @@ export default Movie;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { query } = context;
-  const { id } = query;
+  const { slugs } = query;
 
   const queryString = qs.stringify(
     {
@@ -106,33 +111,34 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     { addQueryPrefix: true }
   );
 
-  const url = `${BASE_TMDB_URL}/movie/${id}${queryString}`;
+  const url = slugs && `${BASE_TMDB_URL}/movie/${slugs[0]}${queryString}`;
   console.info("🚀 Request URL: ", url);
 
-  const response = await fetch(url);
+  const response = await fetch(url as string);
   const data = await response.json();
 
   const { release_dates, release_date, runtime, overview, credits, genres, title } = data;
 
-  const getDirector: Media.IDirector | undefined = credits.crew.find(
+  const getDirector: Media.IDirector | undefined = credits?.crew.find(
     (crew: Media.ICast) => crew.department === "Directing"
   );
 
   const director = getDirector?.name || null;
 
-  const cast = credits.cast.slice(0, 4);
+  const cast = credits?.cast.slice(0, 4);
 
-  const getWatchProviders = data["watch/providers"].results;
+  const getWatchProviders = data["watch/providers"]?.results;
 
-  const watch_providers = getWatchProviders.GB || [];
+  const watch_providers = slugs && slugs[1] ? getWatchProviders[slugs[1]] : null;
 
   const certification: Media.ICertificationMoviesCountries | null =
-    release_dates.results.find(
-      (country: Media.ICertificationMoviesCountries) => country.iso_3166_1 === "GB"
-    ) ||
+    (slugs &&
+      release_dates.results.find(
+        (country: Media.ICertificationMoviesCountries) => country.iso_3166_1 === `${slugs[1]}`
+      )) ??
     release_dates.results.find(
       (country: Media.ICertificationMoviesCountries) => country.iso_3166_1 === "US"
-    ) ||
+    ) ??
     null;
 
   const age_rating: Media.ICertificationMovie | null =
@@ -149,9 +155,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       director,
       cast,
       genres,
-      watch_providers,
+      watch_providers: watch_providers || null,
       title,
-      id,
+      id: slugs ? slugs[0] : null,
     },
   };
 };

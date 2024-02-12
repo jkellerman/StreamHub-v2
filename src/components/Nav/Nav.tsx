@@ -6,7 +6,7 @@ import styles from "../Nav/Nav.module.scss";
 const navListData = [
   { name: "Series", link: "/series" },
   { name: "Movies", link: "/movies" },
-  { name: "What to watch", link: "/watch/movies" },
+  { name: "What to watch", link: "/watch/series" },
 ];
 
 const Nav = () => {

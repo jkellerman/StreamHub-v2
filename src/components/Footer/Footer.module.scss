@@ -3,7 +3,7 @@
 
 .footer {
   position: relative;
-  border-top: 2px solid var(--secondary);
+  border-top: 0.5px solid var(--tertiary-dark);
   padding-bottom: 2rem;
   @include mixins.tablet {
     padding: 2rem 0 4rem;
@@ -13,7 +13,7 @@
 .btt {
   position: absolute;
   right: 0;
-  top: -54px;
+  top: -52.5px;
   display: flex;
   align-items: center;
   background-color: var(--primary);

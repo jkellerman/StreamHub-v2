@@ -32,7 +32,7 @@ const TabList: React.FC<TabListProps> = ({ watch_providers, title, release_date,
   return (
     <>
       <Heading as="h2" size="xs" id="tablist-1">
-        Where to watch {title} ({release_date?.slice(0, 4) ?? air_date?.slice(0, 4)}) online
+        Where to watch {title} ({release_date?.slice(0, 4) ?? air_date?.slice(0, 4)})
       </Heading>
       <div className={styles.tabsContainer} ref={tab}>
         <div className={styles.tabs} role="tablist" aria-labelledby="tablist-1">
@@ -144,7 +144,7 @@ interface ProviderProps {
 }
 
 export const Provider: React.FC<ProviderProps> = ({ watch_providers, option }) => {
-  const providerOption = watch_providers[option];
+  const providerOption = watch_providers && watch_providers[option];
 
   return (
     <>
@@ -152,7 +152,8 @@ export const Provider: React.FC<ProviderProps> = ({ watch_providers, option }) =
         {!providerOption && (
           <span className={styles.placeholder}>
             Not available to {option === "free" ? "watch for " : ""}
-            {option === "flatrate" ? "stream" : option} online
+            {option === "flatrate" ? "stream" : option}{" "}
+            {option === "free" || option === "flatrate" ? "in your region" : "online"}
           </span>
         )}
         {providerOption && (
@@ -163,7 +164,7 @@ export const Provider: React.FC<ProviderProps> = ({ watch_providers, option }) =
                   <div className={styles.iconWrapper}>
                     <Image
                       src={`${LOGO_URL_IMAGE}${provider.logo_path}`}
-                      alt={provider.provider_name}
+                      alt={provider.provider_name.replace(" Plus", "+")}
                       unoptimized={true}
                       className={styles.icon}
                       width={LOGO_SIZE}
@@ -171,7 +172,9 @@ export const Provider: React.FC<ProviderProps> = ({ watch_providers, option }) =
                     />
                   </div>
                   <div className={styles.providerDetails}>
-                    <span className={styles.name}>{provider.provider_name}</span>
+                    <span className={styles.name}>
+                      {provider.provider_name.replace(" Plus", "+")}
+                    </span>
                   </div>
                 </div>
               );

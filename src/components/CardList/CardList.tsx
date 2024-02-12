@@ -1,4 +1,5 @@
 import { LazyMotion, domAnimation, m } from "framer-motion";
+import { useRouter } from "next/router";
 import React from "react";
 
 import Card from "@/components/Card/Card";
@@ -30,6 +31,9 @@ const CardList: React.FC<CardListProps> = ({
   isFetchingNextPage,
   hasNextPage,
 }) => {
+  const { query } = useRouter();
+  const slugs = query.slugs;
+
   if (isLoading) return <Spinner forList />;
   if (isError)
     return (
@@ -39,44 +43,68 @@ const CardList: React.FC<CardListProps> = ({
     );
 
   return (
-    <div className={styles.container}>
-      <LazyMotion features={domAnimation}>
-        <ul className={styles.list}>
-          {cards.map(
-            ({ id, poster_path, title, name, release_date, first_air_date }: Media.IMediaItem) => {
-              return (
-                <m.li
-                  key={id}
-                  className={styles.linkContainer}
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    opacity: 1,
-                    transition: {
-                      ease: "easeInOut",
-                      duration: 0.3,
-                    },
-                  }}
-                >
-                  <Card id={id} poster={poster_path} movieTitle={title} seriesName={name} />
-                  <CardDetails
-                    movieYear={release_date}
-                    movieTitle={title}
-                    seriesYear={first_air_date}
-                    seriesName={name}
-                  />
-                </m.li>
-              );
-            }
-          )}
-        </ul>
-      </LazyMotion>
+    <>
+      {cards.length > 0 ? (
+        <div className={styles.container}>
+          <LazyMotion features={domAnimation}>
+            <ul className={styles.list}>
+              {cards.map(
+                ({
+                  id,
+                  poster_path,
+                  title,
+                  name,
+                  release_date,
+                  first_air_date,
+                }: Media.IMediaItem) => {
+                  return (
+                    <m.li
+                      key={id}
+                      className={styles.linkContainer}
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: 1,
+                        transition: {
+                          ease: "easeInOut",
+                          duration: 0.3,
+                        },
+                      }}
+                    >
+                      <Card id={id} poster={poster_path} movieTitle={title} seriesName={name} />
+                      <CardDetails
+                        movieYear={release_date}
+                        movieTitle={title}
+                        seriesYear={first_air_date}
+                        seriesName={name}
+                      />
+                    </m.li>
+                  );
+                }
+              )}
+            </ul>
+          </LazyMotion>
 
-      <PaginationButton
-        fetchNextPage={fetchNextPage}
-        isFetchingNextPage={isFetchingNextPage}
-        hasNextPage={hasNextPage}
-      />
-    </div>
+          <PaginationButton
+            fetchNextPage={fetchNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+            hasNextPage={hasNextPage}
+          />
+        </div>
+      ) : (
+        <div className={styles.placeholderWrapper}>
+          <div className={styles.placeholder}>
+            There are no results for&nbsp;
+            <span className={styles.query}>
+              {slugs && slugs[0] === "multi"
+                ? ` "${slugs[1]}"`
+                : slugs && slugs[slugs.length - 1].replaceAll("-", " ")}
+            </span>
+            &nbsp;😕,{" "}
+            {slugs && slugs[0] === "multi" ? "try something else." : "try another service."}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

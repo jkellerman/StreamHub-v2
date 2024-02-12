@@ -1,5 +1,14 @@
 interface IconProps {
-  icon: string | null;
+  icon:
+    | "arrowUp"
+    | "arrowLeft"
+    | "chevronDown"
+    | "chevronLeft"
+    | "chevronRight"
+    | "close"
+    | "play"
+    | "search"
+    | "user";
   width?: string;
   height?: string;
   fill?: string;
@@ -151,7 +160,7 @@ const Icon: React.FC<IconProps> = ({ icon, width, height, fill = "#FFF" }) => {
   );
 
   const close = (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="17" height="17">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={width} height={height}>
       <line x1="5" y1="19" x2="19" y2="5" stroke="#8892b0" strokeWidth="2" />
       <line x1="5" y1="5" x2="19" y2="19" stroke="#8892b0" strokeWidth="2" />
     </svg>
@@ -195,7 +204,7 @@ const Icon: React.FC<IconProps> = ({ icon, width, height, fill = "#FFF" }) => {
     </svg>
   );
   const search = (
-    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+    <svg width={width} height={height} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
       <path
         d="M27.613 25.72 23.08 21.2a10.56 10.56 0 0 0 2.253-6.533C25.333 8.776 20.558 4 14.667 4S4 8.776 4 14.667c0 5.89 4.776 10.666 10.667 10.666A10.56 10.56 0 0 0 21.2 23.08l4.52 4.533a1.333 1.333 0 0 0 1.893 0 1.333 1.333 0 0 0 0-1.893ZM6.667 14.667a8 8 0 1 1 16 0 8 8 0 0 1-16 0Z"
         fill="#FFF"

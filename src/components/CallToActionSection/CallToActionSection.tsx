@@ -8,12 +8,12 @@ const CTA: React.FC = () => {
     <section className={styles.section}>
       <div className={styles.headingWrapper}>
         <Heading as="h1" size="m">
-          Need help deciding what to watch?
+          Don&apos;t know what to watch next?
         </Heading>
       </div>
 
-      <Button variant="primary" asLink link="/watch/movies">
-        Get recommendations
+      <Button variant="primary" asLink link="/watch/series">
+        Get a random pick
       </Button>
     </section>
   );
