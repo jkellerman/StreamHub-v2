@@ -52,6 +52,9 @@
   border-radius: 5px;
 }
 
-.fallback {
+.loading,
+.error {
   min-height: 34px;
+  height: 34px;
+  visibility: hidden;
 }
