@@ -12,16 +12,17 @@ import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
 import { excludedStrings, primaryRegions } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_DISCOVER_PARAMS } from "@/constants/tmdb";
-
-import { useRegion } from "../context/regionContext";
-import { Media } from "../types";
+import { useRegion } from "@/context/regionContext";
+import { Media } from "@/types/media";
 
 interface HomeProps {
   contentProviders: Media.IProvider[];
 }
 
-const Home: React.FC<HomeProps> = ({ contentProviders }) => {
+const Home: React.FC<HomeProps> = (contentProviders) => {
   const { region, providers } = useRegion();
+
+  // console.log("contentProviders", contentProviders);
 
   const countryTopProviders = providers.length > 0 && providers.slice(0, 2);
 
@@ -45,7 +46,7 @@ const Home: React.FC<HomeProps> = ({ contentProviders }) => {
       <main>
         <Hero />
         <section>
-          <ContentProviders contentProviders={contentProviders} />
+          <ContentProviders contentProviders={contentProviders.contentProviders} />
           <Dropdown regions={primaryRegions} />
           <CategoryHeading category="trending this week" />
           <Carousel endpoint="/api/trending/all/week" />
@@ -114,7 +115,7 @@ export default Home;
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const url = `${BASE_TMDB_URL}/watch/providers/tv?${QueryString.stringify(
     BASE_TMDB_QUERY_DISCOVER_PARAMS
-  )}&watch_region=GB`;
+  )}&watch_region=US`;
 
   const response = await fetch(url);
 
@@ -129,10 +130,14 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     (provider: Media.IProvider) =>
       !excludedStrings.some((excludedStrings) => provider.provider_name.includes(excludedStrings))
   );
+  // HBO Max has moved to Max and now doesn't show any data.
+  const removeHBOMax = removeDuplicateProviders.filter(
+    (item: Media.IProvider) => item.provider_id !== 384
+  );
 
   return {
     props: {
-      contentProviders: removeDuplicateProviders,
+      contentProviders: removeHBOMax,
     },
   };
 };

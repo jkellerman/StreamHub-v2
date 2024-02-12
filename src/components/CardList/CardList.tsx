@@ -93,13 +93,7 @@ const CardList: React.FC<CardListProps> = ({
       ) : (
         <div className={styles.placeholderWrapper}>
           <div className={styles.placeholder}>
-            There are no results for&nbsp;
-            <span className={styles.query}>
-              {slugs && slugs[0] === "multi"
-                ? ` "${slugs[1]}"`
-                : slugs && slugs[slugs.length - 1].replaceAll("-", " ")}
-            </span>
-            &nbsp;😕,{" "}
+            There are no results &nbsp;😕,{" "}
             {slugs && slugs[0] === "multi" ? "try something else." : "try another service."}
           </div>
         </div>
