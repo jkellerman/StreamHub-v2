@@ -19,10 +19,12 @@ const Dropdown: React.FC<DropdownProps> = ({ regions }) => {
 
   const FlagEmoji = (countryFlags as Record<string, string>)[region as string];
 
-  const reloadPage = () => {
-    if (router) {
+  const reloadPage = (region: string) => {
+    if (region === "GB") {
+      router.push("/");
+    } else if (region === "US") {
+      router.push("/US");
     }
-    router.reload();
   };
   return (
     <LazyMotion features={domAnimation}>
@@ -53,7 +55,7 @@ const Dropdown: React.FC<DropdownProps> = ({ regions }) => {
                       key={i}
                       onClick={() => {
                         setRegion(item.iso_3166_1);
-                        item.iso_3166_1 !== region && reloadPage();
+                        item.iso_3166_1 !== region && reloadPage(item.iso_3166_1);
                       }}
                       className={
                         item.iso_3166_1 === region

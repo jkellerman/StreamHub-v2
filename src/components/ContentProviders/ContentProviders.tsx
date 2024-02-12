@@ -1,9 +1,7 @@
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import Image from "next/future/image";
-import { useEffect, useState } from "react";
 
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
-import { useRegion } from "@/src/context/regionContext";
 
 import Logo from "../Logo/Logo";
 
@@ -11,20 +9,17 @@ import styles from "./ContentProviders.module.scss";
 
 const LOGO_SIZE = 30;
 
-const ContentProviders = () => {
-  const { providers } = useRegion();
-  const [loading, setLoading] = useState(true);
+interface ContentProvider {
+  logo_path: string;
+  provider_id: number;
+  provider_name: string;
+}
 
-  useEffect(() => {
-    if (providers.length > 0) {
-      setLoading(false);
-    }
-  }, [providers]);
+interface ContentProvidersProps {
+  contentProviders: ContentProvider[];
+}
 
-  const removedDuplicateProviders = providers?.filter(
-    (item) => item.provider_id !== 2 && item.provider_id !== 387
-  );
-
+const ContentProviders: React.FC<ContentProvidersProps> = ({ contentProviders }) => {
   return (
     <LazyMotion features={domAnimation}>
       <m.div
@@ -42,27 +37,21 @@ const ContentProviders = () => {
           <Logo logo="justWatch" />
 
           <div className={styles.providersWrapper}>
-            {loading ? (
-              <div className={styles.loading}>Loading...</div>
-            ) : removedDuplicateProviders.length > 0 ? (
-              <ul className={styles.list}>
-                {removedDuplicateProviders.map((item, i) => (
-                  <li key={i} className={styles.listItem}>
-                    <Image
-                      src={`${LOGO_URL_IMAGE}${item.logo_path}`}
-                      alt={item.provider_name.replace(" Plus", "+")}
-                      unoptimized={true}
-                      priority
-                      width={LOGO_SIZE}
-                      height={LOGO_SIZE}
-                      className={styles.logo}
-                    />
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <div className={styles.error}>No providers available.</div>
-            )}
+            <ul className={styles.list}>
+              {contentProviders.map((item, i) => (
+                <li key={i} className={styles.listItem}>
+                  <Image
+                    src={`${LOGO_URL_IMAGE}${item.logo_path}`}
+                    alt={item.provider_name.replace(" Plus", "+")}
+                    unoptimized={true}
+                    priority
+                    width={LOGO_SIZE}
+                    height={LOGO_SIZE}
+                    className={styles.logo}
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </m.div>

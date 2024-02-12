@@ -4,6 +4,7 @@
     "paths": {
       "@/components/*": ["src/components/*"],
       "@/constants/*": ["src/constants/*"],
+      "@/context/*": ["src/context/*"],
       "@/hooks/*": ["src/hooks/*"],
       "@/layouts/*": ["src/layouts/*"],
       "@/pages/*": ["src/pages/*"],
