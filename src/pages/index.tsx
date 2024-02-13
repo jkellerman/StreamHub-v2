@@ -83,23 +83,27 @@ const Home: React.FC<HomeProps> = ({ contentProviders }) => {
           />
           <Carousel endpoint={`/api/trending/tv/week`} />
         </section>
-        <section>
-          <CategoryHeading
-            category="popular movies"
-            subheading="The most popular on all streaming services."
-          />
-          <Carousel endpoint={`/api/network/movie/${region}/${countryNetworkList}`} />
-        </section>
+        {region && countryNetworkList && (
+          <section>
+            <CategoryHeading
+              category="popular movies"
+              subheading="The most popular on all streaming services."
+            />
+            <Carousel endpoint={`/api/network/movie/${region}/${countryNetworkList}`} />
+          </section>
+        )}
 
         <section>
           <CategoryHeading category="top films of the past year" />
           <Carousel endpoint="/api/year/pastYear/movie/2500" />
         </section>
 
-        <section>
-          <CategoryHeading category="upcoming movies" />
-          <Carousel endpoint={`/api/media/movie/upcoming/${region}`} />
-        </section>
+        {region && countryNetworkList && (
+          <section>
+            <CategoryHeading category="upcoming movies" />
+            <Carousel endpoint={`/api/media/movie/upcoming/${region}`} />
+          </section>
+        )}
 
         <section>
           <CTA />

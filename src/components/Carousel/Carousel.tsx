@@ -18,8 +18,7 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ endpoint }) => {
-  const { cardRef, scrollRef, carouselRef, handleClickNext, handleClickPrev, isScrollAvailable } =
-    useSlider();
+  const { cardRef, scrollRef, carouselRef, handleClickNext, handleClickPrev } = useSlider();
   const { cards, isLoading, isError } = FetchCards(endpoint);
 
   if (isLoading) {
@@ -44,26 +43,25 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint }) => {
     <>
       {cards?.data?.length > 0 && (
         <div className={styles.container}>
-          {isScrollAvailable && (
-            <span className={styles.navContainer}>
-              <button
-                type="button"
-                className={styles.button}
-                onClick={handleClickPrev}
-                aria-label="previous"
-              >
-                <Icon icon="chevronLeft" />
-              </button>
-              <button
-                type="button"
-                className={styles.button}
-                onClick={handleClickNext}
-                aria-label="next"
-              >
-                <Icon icon="chevronRight" />
-              </button>
-            </span>
-          )}
+          <span className={styles.navContainer}>
+            <button
+              type="button"
+              className={styles.button}
+              onClick={handleClickPrev}
+              aria-label="previous"
+            >
+              <Icon icon="chevronLeft" />
+            </button>
+            <button
+              type="button"
+              className={styles.button}
+              onClick={handleClickNext}
+              aria-label="next"
+            >
+              <Icon icon="chevronRight" />
+            </button>
+          </span>
+
           <div className={styles.carouselWrapper} ref={scrollRef}>
             <div className={styles.carousel}>
               <LazyMotion features={domAnimation}>
