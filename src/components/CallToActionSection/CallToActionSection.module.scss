@@ -3,15 +3,93 @@
 
 .section {
   @include mixins.flex-center;
-  flex-direction: column;
-  background: linear-gradient(90deg, var(--quaternary-gradient));
+  @include mixins.flex-column;
+
+  background: linear-gradient(90deg, var(--quinary-gradient));
   min-height: 350px;
   gap: 1rem;
-  text-align: center;
+  padding: 4rem 0 7rem;
+
+  @include mixins.tablet {
+    padding: 4rem 0;
+  }
 }
 
-.headingWrapper {
-  max-width: 450px;
+.outerContainer {
+  @include mixins.flex-column;
+
+  @include mixins.tablet {
+    @include mixins.flex-row;
+    gap: 8rem;
+  }
+  @include mixins.laptop {
+    gap: 10rem;
+  }
+}
+
+.contentWrapper {
+  @include mixins.flex-column;
   @include mixins.flex-center;
-  width: 90%;
+  @include mixins.center;
+  & > a {
+    max-width: 250px;
+  }
+
+  @include mixins.tablet {
+    align-items: flex-start;
+    align-items: baseline;
+  }
+}
+
+.posterWrapper {
+  @include mixins.flex-center;
+  @include mixins.tablet {
+    align-items: baseline;
+  }
+}
+
+.illustration {
+  position: relative;
+  width: 80px;
+  height: 120px;
+  margin-bottom: 4rem;
+  transform: translateX(-10%);
+
+  @include mixins.tablet {
+    transform: translateX(0);
+  }
+}
+
+.content {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  & > h1 {
+    font-weight: variable.$fw-bold;
+  }
+  @include mixins.tablet {
+    text-align: start;
+  }
+}
+
+.card,
+.cardTwo {
+  width: 80px;
+  height: 120px;
+  box-shadow: 15px 20px 20px 0px rgba(6, 6, 6, 0.3);
+  background: linear-gradient(90deg, var(--secondary-gradient));
+  border-radius: variable.$border-radius-s;
+
+  @include mixins.tablet {
+    width: 130px;
+    height: 185px;
+  }
+}
+
+.cardTwo {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  @include mixins.laptop {
+    left: 3rem;
+  }
 }
