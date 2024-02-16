@@ -71,8 +71,8 @@ const Icon: React.FC<IconProps> = ({ icon, width, height, fill = "#FFF" }) => {
           <path
             d="M 0,0 235.584,-235.584 284.92,-186.247 98.673,0 284.92,186.246 235.584,235.583 Z"
             style={{
-              fill: "#FFFFFF",
-              stroke: "#FFFFFF",
+              fill: `${fill}`,
+              stroke: `${fill}`,
               strokeWidth: 30,
               strokeLinecap: "butt",
               strokeLinejoin: "miter",
@@ -89,8 +89,8 @@ const Icon: React.FC<IconProps> = ({ icon, width, height, fill = "#FFF" }) => {
               <path
                 d="M 0,0 235.584,-235.584 284.92,-186.247 98.673,0 284.92,186.246 235.584,235.583 Z"
                 style={{
-                  fill: "#FFFFFF",
-                  stroke: "#FFFFFF",
+                  fill: `${fill}`,
+                  stroke: `${fill}`,
                   strokeWidth: 30,
                   strokeLinecap: "butt",
                   strokeLinejoin: "miter",
@@ -127,10 +127,10 @@ const Icon: React.FC<IconProps> = ({ icon, width, height, fill = "#FFF" }) => {
           <path
             d="M 0,0 -235.584,-235.584 -284.92,-186.247 -98.673,0 -284.92,186.246 l 49.336,49.337 z"
             style={{
-              fill: "#FFFFFF",
+              fill: `${fill}`,
               fillOpacity: 1,
               fillRule: "nonzero",
-              stroke: "#FFFFFF",
+              stroke: `${fill}`,
             }}
             id="path8296"
           />
@@ -141,8 +141,8 @@ const Icon: React.FC<IconProps> = ({ icon, width, height, fill = "#FFF" }) => {
               <path
                 d="M 0,0 -235.584,-235.584 -284.92,-186.247 -98.673,0 -284.92,186.246 l 49.336,49.337 z"
                 style={{
-                  fill: "#FFFFFF",
-                  stroke: "#FFFFFF",
+                  fill: `${fill}`,
+                  stroke: `${fill}`,
                   strokeWidth: 30,
                   strokeLinecap: "butt",
                   strokeLinejoin: "miter",

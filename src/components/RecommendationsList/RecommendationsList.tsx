@@ -14,21 +14,32 @@ interface RecommendationsProps {
   isError: boolean;
 }
 
-// TODO: remove this component as it is a duplicate of the carousel component
-
 const Recommendations: React.FC<RecommendationsProps> = ({
   recommendations,
   isLoading,
   isError,
 }) => {
-  const { cardRef, scrollRef, carouselRef, handleClickNext, handleClickPrev, isScrollAvailable } =
-    useSlider();
+  const {
+    listRef,
+    scrollRef,
+    getCarouselRef,
+    getCardWidth,
+    getScrollDimensions,
+    isScrollAvailable,
+    isScrollAtStart,
+    isScrollAtEnd,
+    isCarouselAtStart,
+    isCarouselAtEnd,
+    getScrollPosition,
+    handleClickNext,
+    handleClickPrev,
+  } = useSlider();
 
   if (isLoading) {
     return (
-      <div className={styles.carouselWrapper} ref={scrollRef}>
+      <div className={styles.carouselWrapper}>
         <div className={styles.carousel}>
-          <ul className={styles.list} ref={carouselRef}></ul>
+          <div className={styles.list}></div>
         </div>
       </div>
     );
@@ -47,48 +58,60 @@ const Recommendations: React.FC<RecommendationsProps> = ({
             type="button"
             className={styles.button}
             onClick={handleClickPrev}
-            aria-label="previous"
+            aria-label="left"
           >
-            <Icon icon="chevronLeft" />
+            <Icon
+              icon="chevronLeft"
+              fill={
+                isCarouselAtStart || isScrollAtStart ? "var(--tertiary-dark)" : "var(--quinary)"
+              }
+            />
           </button>
           <button
             type="button"
             className={styles.button}
             onClick={handleClickNext}
-            aria-label="next"
+            aria-label="right"
           >
-            <Icon icon="chevronRight" />
+            <Icon
+              icon="chevronRight"
+              fill={isCarouselAtEnd || isScrollAtEnd ? "var(--tertiary-dark)" : "var(--quinary)"}
+            />
           </button>
         </span>
       )}
-      <div className={styles.carouselWrapper} ref={scrollRef}>
-        <div className={styles.carousel}>
-          <ul className={styles.list} ref={carouselRef}>
-            {recommendations.results.map(
-              ({
-                id,
-                title,
-                name,
-                poster_path,
-                first_air_date,
-                release_date,
-              }: Media.IRecommendations) => {
-                return (
-                  <li key={id} className={styles.listItem} ref={cardRef}>
-                    <figure>
-                      <Card id={id} poster={poster_path} movieTitle={title} seriesName={name} />
-                      <CardDetails
-                        movieTitle={title}
-                        seriesName={name}
-                        movieYear={release_date}
-                        seriesYear={first_air_date}
-                      />
-                    </figure>
-                  </li>
-                );
-              }
-            )}
-          </ul>
+      <div ref={getScrollDimensions}>
+        <div className={styles.carouselWrapper} ref={scrollRef} onScroll={getScrollPosition}>
+          <div className={styles.carousel}>
+            <div ref={getCarouselRef}>
+              <ul className={styles.list} ref={listRef}>
+                {recommendations.results.map(
+                  ({
+                    id,
+                    title,
+                    name,
+                    poster_path,
+                    first_air_date,
+                    release_date,
+                  }: Media.IRecommendations) => {
+                    return (
+                      <li key={id} className={styles.listItem} ref={getCardWidth}>
+                        <figure>
+                          <Card id={id} poster={poster_path} movieTitle={title} seriesName={name} />
+                          <CardDetails
+                            movieTitle={title}
+                            seriesName={name}
+                            movieYear={release_date}
+                            seriesYear={first_air_date}
+                          />
+                        </figure>
+                      </li>
+                    );
+                  }
+                )}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

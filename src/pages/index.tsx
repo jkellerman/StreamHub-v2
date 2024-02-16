@@ -21,9 +21,7 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ contentProviders }) => {
-  const { region, providers } = useRegion();
-
-  const countryTopProviders = providers.length > 0 && providers.slice(0, 2);
+  const { providers } = useRegion();
 
   const providerIds =
     providers &&
@@ -50,32 +48,17 @@ const Home: React.FC<HomeProps> = ({ contentProviders }) => {
           <CategoryHeading category="trending this week" />
           <Carousel endpoint="/api/trending/all/week" />
         </section>
-        {countryTopProviders && (
-          <section>
-            <CategoryHeading
-              category={`popular series on ${countryTopProviders[0].provider_name.replace(
-                " Plus",
-                "+"
-              )}`}
-            />
-            <Carousel
-              endpoint={`/api/network/tv/${region}/${countryTopProviders[0].provider_id}`}
-            />
-          </section>
-        )}
-        {countryTopProviders && (
-          <section>
-            <CategoryHeading
-              category={`popular films on ${countryTopProviders[1].provider_name.replace(
-                " Plus",
-                "+"
-              )}`}
-            />
-            <Carousel
-              endpoint={`/api/network/movie/${region}/${countryTopProviders[1].provider_id}`}
-            />
-          </section>
-        )}
+
+        <section>
+          <CategoryHeading category="popular series on netflix" />
+          <Carousel endpoint="/api/network/tv/GB/8" />
+        </section>
+
+        <section>
+          <CategoryHeading category="popular films on disney+" />
+          <Carousel endpoint="/api/network/movie/GB/337" />
+        </section>
+
         <section>
           <CategoryHeading
             category="popular series"
@@ -83,13 +66,13 @@ const Home: React.FC<HomeProps> = ({ contentProviders }) => {
           />
           <Carousel endpoint={`/api/trending/tv/week`} />
         </section>
-        {region && countryNetworkList && (
+        {countryNetworkList && (
           <section>
             <CategoryHeading
               category="popular movies"
               subheading="The most popular on all streaming services."
             />
-            <Carousel endpoint={`/api/network/movie/${region}/${countryNetworkList}`} />
+            <Carousel endpoint={`/api/network/movie/GB/${countryNetworkList}`} />
           </section>
         )}
 
@@ -98,12 +81,10 @@ const Home: React.FC<HomeProps> = ({ contentProviders }) => {
           <Carousel endpoint="/api/year/pastYear/movie/2500" />
         </section>
 
-        {region && countryNetworkList && (
-          <section>
-            <CategoryHeading category="upcoming movies" />
-            <Carousel endpoint={`/api/media/movie/upcoming/${region}`} />
-          </section>
-        )}
+        <section>
+          <CategoryHeading category="upcoming movies" />
+          <Carousel endpoint={`/api/media/movie/upcoming/GB`} />
+        </section>
 
         <section>
           <CTA />

@@ -97,7 +97,6 @@ export const RegionProvider: React.FC<RegionContextProps> = ({ children }) => {
     if (region) {
       localStorage.setItem("region", region);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [region]);
 
   useEffect(() => {
