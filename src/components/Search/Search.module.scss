@@ -20,6 +20,10 @@
     top: unset;
     position: relative;
   }
+
+  @include mixins.laptop {
+    max-width: 1000px;
+  }
 }
 .container:hover,
 .container:focus-within {

@@ -18,6 +18,10 @@
     margin-bottom: unset;
   }
 
+  @include mixins.desktopL {
+    justify-content: center;
+  }
+
   &::-webkit-scrollbar,
   &::-webkit-scrollbar-thumb {
     display: none;
