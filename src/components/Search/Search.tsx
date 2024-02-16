@@ -9,7 +9,6 @@ import Spinner from "@/components/Spinner/SearchBar/Spinner";
 import { POSTER_URL_IMAGE_XS } from "@/constants/tmdb";
 import useClickOutside from "@/hooks/useClickOutside";
 import { useRegion } from "@/src/context/regionContext";
-import { shimmer, toBase64 } from "@/utils/placeholder";
 
 import styles from "../Search/Search.module.scss";
 
@@ -291,7 +290,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ searchQuery, handleInputChang
         type="text"
         name="search"
         aria-label="Search"
-        placeholder="Where can I watch..."
+        placeholder="Search for movies or tv series..."
         className={styles.input}
         value={searchQuery}
         onChange={handleInputChange}
@@ -421,8 +420,6 @@ const SearchListItem: React.FC<SearchListItemProps> = ({
                 unoptimized={true}
                 width={27}
                 height={40}
-                placeholder="blur"
-                blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
               />
             ) : (
               <div className={styles.noImage}></div>

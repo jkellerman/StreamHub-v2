@@ -38,6 +38,10 @@
   cursor: pointer;
 }
 
+.disable {
+  cursor: default;
+}
+
 .carousel {
   @include mixins.center;
 }
@@ -52,7 +56,8 @@
 
 .list {
   display: flex;
-  transition: transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: transform 250ms cubic-bezier(0.52, 0.13, 0.11, 1.02);
+  position: relative;
 }
 
 .error {
