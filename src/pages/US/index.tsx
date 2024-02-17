@@ -48,19 +48,12 @@ const Home: React.FC<HomeProps> = (contentProviders) => {
           <Carousel endpoint="/api/trending/all/week" />
         </section>
         <section>
-          <CategoryHeading category="popular series on netflix" />
-          <Carousel endpoint="/api/network/tv/US/8" />
-        </section>
-        <section>
           <CategoryHeading category="popular films on prime video" />
           <Carousel endpoint="/api/network/movie/US/9" />
         </section>
         <section>
-          <CategoryHeading
-            category="popular series"
-            subheading="The most popular on all streaming services."
-          />
-          <Carousel endpoint={`/api/trending/tv/week`} />
+          <CategoryHeading category="popular series on netflix" />
+          <Carousel endpoint="/api/network/tv/US/8" />
         </section>
         <section>
           <CategoryHeading
@@ -69,9 +62,16 @@ const Home: React.FC<HomeProps> = (contentProviders) => {
           />
           <Carousel endpoint={`/api/network/movie/US/${countryNetworkList}`} />
         </section>
+        <section>
+          <CategoryHeading
+            category="popular series"
+            subheading="The most popular on all streaming services."
+          />
+          <Carousel endpoint={`/api/trending/tv/week`} />
+        </section>
 
         <section>
-          <CategoryHeading category="top films of the past year" />
+          <CategoryHeading category="best films from the past year" />
           <Carousel endpoint="/api/year/pastYear/movie/2500" />
         </section>
 

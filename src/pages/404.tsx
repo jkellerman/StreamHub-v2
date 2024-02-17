@@ -18,6 +18,7 @@ const Custom404 = () => {
           alignItems: "center",
           height: "100vh",
           background: "linear-gradient(90deg, var(--quaternary-gradient))",
+          fontWeight: "600",
         }}
       >
         <Heading as="h1" size="xxl">

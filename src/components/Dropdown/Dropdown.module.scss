@@ -41,6 +41,7 @@
   }
 
   & > h2 {
+    font-family: Outfit;
     @include mixins.tabletL {
       margin-bottom: 0;
     }

@@ -37,14 +37,25 @@ const CardList: React.FC<CardListProps> = ({
   if (isLoading) return <Spinner forList />;
   if (isError)
     return (
-      <div className={styles.error}>
-        We&apos;re having trouble loading the data at the moment. Please try again later.
+      <div className={styles.placeholderWrapper}>
+        <div className={styles.placeholder}>
+          We&apos;re having trouble loading the data at the moment 😕. Please try again.
+        </div>
       </div>
     );
 
+  if (slugs && slugs[0] === "multi" && cards.length === 0) {
+    return (
+      <div className={styles.placeholderWrapper}>
+        <div className={styles.placeholder}>
+          {`There are no results for "${slugs[1]}"😕, try something else.`}
+        </div>
+      </div>
+    );
+  }
   return (
     <>
-      {cards.length > 0 ? (
+      {cards.length > 0 && (
         <div className={styles.container}>
           <LazyMotion features={domAnimation}>
             <ul className={styles.list}>
@@ -89,13 +100,6 @@ const CardList: React.FC<CardListProps> = ({
             isFetchingNextPage={isFetchingNextPage}
             hasNextPage={hasNextPage}
           />
-        </div>
-      ) : (
-        <div className={styles.placeholderWrapper}>
-          <div className={styles.placeholder}>
-            There are no results &nbsp;😕,{" "}
-            {slugs && slugs[0] === "multi" ? "try something else." : "try another service."}
-          </div>
         </div>
       )}
     </>

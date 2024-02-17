@@ -16,6 +16,9 @@
     padding-bottom: 4rem;
   }
 
+  & > h1 {
+    font-weight: variable.$fw-bold;
+  }
   & > p {
     margin-top: 1rem;
   }
@@ -47,6 +50,9 @@
 .panelInner {
   @include mixins.flex-column;
   justify-content: center;
+  & > h2 {
+    font-family: Outfit;
+  }
   @include mixins.tabletL {
     min-width: 264px;
     max-width: 264px;

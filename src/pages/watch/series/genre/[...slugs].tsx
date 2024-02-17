@@ -104,8 +104,8 @@ const Genre: React.FC<WatchProps> = ({ genreList }) => {
                 What to watch tonight
               </Heading>
               <Content>
-                Cut through streaming indecision! Use the generator below to simplify choices, so
-                you can dive into content faster.
+                Cut through streaming indecision! Use the generator below to get a random selection
+                for tonight.
               </Content>
               <DropdownsInnerContainer>
                 <Heading as="h2" size="s">

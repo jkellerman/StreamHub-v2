@@ -42,13 +42,12 @@ const CTA: React.FC = () => {
         <div className={styles.contentWrapper}>
           <div className={styles.content}>
             <Heading as="h1" size="m">
-              Don&apos;t know what to watch next?
+              Don&apos;t know what to watch?
             </Heading>
 
             <Content>
-              Lost in the labyrinth of endless streaming choices? Fear not! Get a random
-              recommendation for a movie or series to watch tonight on your preferred streaming
-              service.
+              Stuck in the endless maze of streaming options? Get a random recommendation for a
+              movie or series to watch tonight on your preferred streaming service.
             </Content>
           </div>
           <Button variant="primary" asLink link="/watch/series">
