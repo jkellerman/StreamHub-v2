@@ -1,28 +1,43 @@
 @use "@/styles/variables" as variable;
 @use "@/styles/mixins" as mixins;
 
+.resultsContainer,
+.container {
+  padding: 2rem;
+  @include mixins.tabletL {
+    padding: 1.5rem 2rem;
+    min-width: 580px;
+    max-width: 580px;
+  }
+}
+
 .resultsContainer {
   @include mixins.flex-column;
   gap: 1rem;
   animation: fade variable.$fade-animation;
+
   @include mixins.tablet {
     @include mixins.flex-row;
   }
-}
 
-.container {
-  @include mixins.flex-center;
+  background-color: var(--tertiary-dark);
+  border-radius: 10px;
 }
 
 .container,
-.resultsContainer {
+.noResults {
+  @include mixins.flex-center;
+  background-color: var(--tertiary-dark);
+  border-radius: variable.$border-radius-s;
   width: 100%;
 }
 
-.noResults {
-  @include mixins.center;
-  text-align: center;
-  letter-spacing: variable.$ls;
+.optionsContainer {
+  @include mixins.tablet {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+  }
 }
 
 .overview {
