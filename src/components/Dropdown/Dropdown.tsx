@@ -236,7 +236,6 @@ const DropdownGenre: React.FC<DropdownGenreProps> = ({
   return (
     <ul className={`${listClasses.join(" ")}`}>
       {genre_list?.map(({ id, name }) => {
-        console.log("name", name === defaultServiceOption.name);
         return (
           <li
             key={id}

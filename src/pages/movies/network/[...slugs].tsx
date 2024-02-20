@@ -15,7 +15,7 @@ import Heading from "@/components/Heading/Heading";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS } from "@/constants/tmdb";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import usePagination from "@/hooks/usePagination";
 import { useRegion } from "@/src/context/regionContext";
 import { Media } from "@/types/media";
 
@@ -44,7 +44,7 @@ const NetworkMovies: React.FC<GenreMoviesProps> = ({ genreList }) => {
   const endpoint = `/api/network/movie/${region}/${selectedNetwork.provider_id}`;
 
   const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useInfiniteScroll(endpoint);
+    usePagination(endpoint);
 
   return (
     <>

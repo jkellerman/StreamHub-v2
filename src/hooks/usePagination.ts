@@ -5,7 +5,7 @@ interface IMovieData {
   known_for_department: string;
 }
 
-const useInfiniteScroll = (endpoint: string) => {
+const usePagination = (endpoint: string) => {
   const fetchMovies = async ({ pageParam = 1 }) => {
     const res = await fetch(`${endpoint}?page=${pageParam}`);
     if (!res.ok) {
@@ -40,4 +40,4 @@ const useInfiniteScroll = (endpoint: string) => {
   };
 };
 
-export default useInfiniteScroll;
+export default usePagination;

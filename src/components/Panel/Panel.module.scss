@@ -7,8 +7,14 @@
 }
 
 .contentWrapper {
-  display: flex;
+  @include mixins.flex-column;
+  margin-bottom: 2rem;
   justify-content: space-between;
+  @include mixins.tablet {
+    align-items: flex-start;
+    @include mixins.flex-row;
+    margin-bottom: 0;
+  }
 }
 
 .container {
