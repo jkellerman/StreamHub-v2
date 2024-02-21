@@ -58,18 +58,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
       <ul className={styles.list}>
         {filteredRegions.map((item, i) => {
           return (
-            <li
-              key={i}
-              className={
-                item.iso_3166_1 === region
-                  ? `${styles.listItem} ${styles.selected}`
-                  : styles.listItem
-              }
-              onClick={() => handleOptionClick()}
-            >
-              <span className={styles.flag}>
-                {(countryFlags as Record<string, string>)[item.iso_3166_1]}
-              </span>
+            <li key={i} onClick={() => handleOptionClick()}>
               <Link
                 href={
                   type === "movie"
@@ -78,7 +67,18 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
                 }
                 scroll={false}
               >
-                <a>{item.native_name}</a>
+                <a
+                  className={
+                    item.iso_3166_1 === region
+                      ? `${styles.listItem} ${styles.selected}`
+                      : styles.listItem
+                  }
+                >
+                  <span className={styles.flag}>
+                    {(countryFlags as Record<string, string>)[item.iso_3166_1]}
+                  </span>
+                  {item.native_name}
+                </a>
               </Link>
             </li>
           );
