@@ -11,8 +11,9 @@
   gap: 2rem;
   @include mixins.center;
   max-width: 900px;
-  margin: 4rem auto;
+  margin: 2rem auto 4rem;
   @include mixins.tablet() {
+    margin-top: 4rem;
     flex-direction: row;
     align-items: flex-start;
   }
