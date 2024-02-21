@@ -15,9 +15,9 @@ import Heading from "@/components/Heading/Heading";
 import Description from "@/components/MediaPageDescription/MediaPageDescription";
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS } from "@/constants/tmdb";
-import usePagination from "@/hooks/usePagination";
 import { useRegion } from "@/src/context/regionContext";
 import { Media } from "@/types/media";
+import { Pagination } from "@/utils/tmdbDataHelpers";
 
 interface GenreSeriesProps {
   genreList: Media.IGenre[];
@@ -57,7 +57,7 @@ const GenreSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
     : `/api/network/tv/${region}/${countryNetworkList}/${selectedGenre.id}`;
 
   const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    usePagination(endpoint);
+    Pagination(endpoint);
 
   return (
     <>
