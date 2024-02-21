@@ -16,13 +16,8 @@
   height: 2.75rem;
 
   @include mixins.tabletL {
-    max-width: 700px;
     top: unset;
     position: relative;
-  }
-
-  @include mixins.laptop {
-    max-width: 1000px;
   }
 }
 .container:hover,
