@@ -21,7 +21,7 @@
     height: 75%;
   }
   @include mixins.desktop() {
-    height: unset;
+    height: 100%;
   }
 }
 

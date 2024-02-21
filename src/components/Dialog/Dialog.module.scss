@@ -17,7 +17,7 @@
   border-radius: variable.$border-radius-s;
   border: 1px solid var(--secondary-light);
   position: absolute;
-  top: 3.25rem;
+  top: 3.75rem;
   padding: 0rem 0.5rem;
   color: var(--quinary);
   @include mixins.flex-center;
@@ -44,7 +44,7 @@
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 50%);
+  background-color: rgba(0, 0, 0, 80%);
   inset: 0;
   position: fixed;
   z-index: variable.$z-index-5;
