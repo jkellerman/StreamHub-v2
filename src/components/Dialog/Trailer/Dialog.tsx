@@ -1,13 +1,12 @@
+import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
 
 import Button from "@/components/Buttons/Buttons";
-import useClickOutside from "@/hooks/useClickOutside";
+import Icon from "@/components/Icon/Icon";
+import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
 import { FetchDetails } from "@/utils/tmdbDataHelpers";
 
-import Icon from "../Icon/Icon";
-import Overlay from "../Overlay/Overlay";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
-
+import styles from "./Dialog.module.scss";
 interface ButtonProps {
   endpoint: string;
   variant: "primary" | "secondary" | "tertiary" | "quaternary";
@@ -21,11 +20,8 @@ interface IVideoData {
 const Trailer: React.FC<ButtonProps> = ({ endpoint, variant }) => {
   const { data } = FetchDetails(endpoint);
   const [link, setLink] = useState<string | null>(null);
-  const [openPlayer, setOpenPlayer] = useState(false);
-  const videoPlayerRef = useClickOutside<HTMLDivElement>(() => setOpenPlayer(false));
-  const openVideoPlayer = () => {
-    setOpenPlayer(true);
-  };
+
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (data && data.videos && data.videos.results && data.videos.results.length !== 0) {
@@ -48,17 +44,23 @@ const Trailer: React.FC<ButtonProps> = ({ endpoint, variant }) => {
 
   return (
     <>
-      <div>
-        <Button variant={variant} onClick={openVideoPlayer} isFull>
-          {variant !== "quaternary" && <Icon icon="play" />}
-          watch trailer
-        </Button>
-      </div>
-      {openPlayer && (
-        <Overlay>
-          <VideoPlayer link={link} videoPlayerRef={videoPlayerRef} />
-        </Overlay>
-      )}
+      <Dialog.Root open={open} onOpenChange={setOpen}>
+        <Dialog.Trigger asChild>
+          <Button variant={variant} isFull>
+            {variant !== "quaternary" && <Icon icon="play" />}
+            watch trailer
+          </Button>
+        </Dialog.Trigger>
+        <Dialog.Portal>
+          <Dialog.Overlay className={styles.overlay} />
+          <Dialog.Content className={styles.content}>
+            <Dialog.Close className={styles.closeBtn}>
+              <Icon icon="close" height="17" width="17" fill="#FFF" />
+            </Dialog.Close>
+            <VideoPlayer link={link} />
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </>
   );
 };

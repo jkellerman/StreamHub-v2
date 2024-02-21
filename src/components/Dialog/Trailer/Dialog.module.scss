@@ -1,0 +1,51 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.overlay {
+  background-color: rgba(0, 0, 0, 80%);
+  inset: 0;
+  position: fixed;
+  z-index: variable.$z-index-5;
+}
+
+.content {
+  @include mixins.center;
+  padding: 2rem 2.5rem;
+
+  width: 390px;
+  height: 195px;
+  z-index: variable.$z-index-5;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  border-radius: variable.$border-radius-s;
+  animation: variable.$bounce-in;
+  @include mixins.mobileL {
+    width: 640px;
+    height: 390px;
+    padding: 0;
+  }
+}
+
+.closeBtn {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  padding: 0.5em;
+  background: transparent;
+  border: 1px solid transparent;
+  position: relative;
+  top: -8rem;
+  right: -50rem;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(0, 0, 0, 25%);
+    transition: variable.$transition;
+  }
+  &:active {
+    background-color: rgba(0, 0, 0, 25%);
+    transition: variable.$transition;
+    border-color: var(--tertiary);
+  }
+}

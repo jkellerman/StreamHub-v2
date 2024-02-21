@@ -1,0 +1,115 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.container {
+  position: relative;
+}
+
+.triggerContainer {
+  @include mixins.flex-row;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  gap: 0.5rem;
+}
+
+.trigger {
+  background-color: var(--tertiary-dark);
+  border-radius: variable.$border-radius-s;
+  border: 1px solid var(--secondary-light);
+  position: absolute;
+  top: 3.25rem;
+  padding: 0rem 0.5rem;
+  color: var(--quinary);
+  @include mixins.flex-center;
+  gap: 0.5em;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: variable.$ls;
+  font-weight: variable.$fw-reg;
+  transform: translateX(-100%);
+  white-space: nowrap;
+
+  &:hover {
+    background: linear-gradient(90deg, var(--quaternary-gradient));
+    transition: variable.$transition;
+  }
+
+  @include mixins.tablet() {
+    top: 0rem;
+  }
+}
+
+.triggerFlag {
+  font-size: 1.5rem;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 50%);
+  inset: 0;
+  position: fixed;
+  z-index: variable.$z-index-5;
+}
+
+.content {
+  @include mixins.center;
+  padding: 2rem 2.5rem;
+  max-width: 450px;
+  height: 450px;
+  background: linear-gradient(90deg, var(--quinary-gradient));
+  border: 1px solid var(--tertiary-dark);
+  overflow-y: auto;
+  z-index: variable.$z-index-5;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  border-radius: variable.$border-radius-s;
+  animation: variable.$bounce-in;
+}
+
+.contentHeader {
+  @include mixins.flex-row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  font-size: var(--step-0);
+  font-weight: variable.$fw-med;
+  letter-spacing: variable.$ls-s;
+}
+
+.title {
+  font-size: var(--step-0);
+}
+
+.closeBtn {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  padding: 0.5em;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(0, 0, 0, 25%);
+    transition: variable.$transition;
+  }
+  &:active {
+    background-color: rgba(0, 0, 0, 25%);
+    transition: variable.$transition;
+    border-color: var(--tertiary);
+  }
+}
+
+.flag {
+  margin-right: 0.5rem;
+  font-size: var(--step-1);
+}
+
+.selectedRegion {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--tertiary-light);
+  color: var(--primary-light);
+  @include mixins.flex-row;
+  align-items: center;
+}

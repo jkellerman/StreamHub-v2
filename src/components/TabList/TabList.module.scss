@@ -46,9 +46,14 @@
   opacity: 1;
 }
 
-.tabsContainer {
+.tablistOuterContainer {
+  @include mixins.flex-row;
   margin: 2rem auto 1rem;
   max-width: 900px;
+}
+
+.tabsContainer {
+  width: 100%;
 }
 
 .tabs {

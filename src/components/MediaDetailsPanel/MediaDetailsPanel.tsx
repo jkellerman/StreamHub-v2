@@ -2,8 +2,8 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 import { useRouter } from "next/router";
 import React from "react";
 
+import Trailer from "@/components/Dialog/Trailer/Dialog";
 import MediaRating from "@/components/MediaRating/MediaRating";
-import Trailer from "@/components/Trailer/Trailer";
 
 import Button from "../Buttons/Buttons";
 import Heading from "../Heading/Heading";

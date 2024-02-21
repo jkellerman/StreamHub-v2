@@ -8,13 +8,13 @@ import { Media } from "@/types/media";
 import { scale } from "@/utils/animations";
 
 import Button from "../Buttons/Buttons";
+import Trailer from "../Dialog/Trailer/Dialog";
 import Heading from "../Heading/Heading";
 import MediaRunTimeOrSeasons from "../MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
 import Poster from "../Poster/Poster";
 import ProgressRating from "../ProgressRating/ProgressRating";
 import ReleaseDate from "../ReleaseDate/ReleaseDate";
 import Spinner from "../Spinner/Spinner";
-import Trailer from "../Trailer/Trailer";
 
 import styles from "./MediaGenerator.module.scss";
 

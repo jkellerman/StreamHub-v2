@@ -1,5 +1,4 @@
 import { LazyMotion, domAnimation, m } from "framer-motion";
-import dynamic from "next/dynamic";
 import React from "react";
 
 import Cast from "@/components/Cast/Cast";
@@ -10,16 +9,11 @@ import { Media } from "@/types/media";
 
 import styles from "../MediaInfoBox/MediaInfoBox.module.scss";
 
-const TabList = dynamic(() => import("@/components/TabList/TabList"));
-
 interface MediaInfoBoxProps {
   title: string;
   overview: string;
   poster: string;
-
-  watch_providers: Media.IProviderList;
-  release_date?: string;
-  air_date?: string;
+  children: React.ReactNode;
   cast: Media.ICastMember[];
   director?: Media.IDirector;
   network?: string[];
@@ -29,12 +23,10 @@ const MediaInfoBox: React.FC<MediaInfoBoxProps> = ({
   title,
   overview,
   poster,
-  watch_providers,
-  release_date,
-  air_date,
   cast,
   director,
   network,
+  children,
 }) => {
   return (
     <>
@@ -61,12 +53,7 @@ const MediaInfoBox: React.FC<MediaInfoBoxProps> = ({
 
           <div className={styles.content}>
             <MediaOverview overview={overview} />
-            <TabList
-              watch_providers={watch_providers}
-              title={title}
-              release_date={release_date}
-              air_date={air_date}
-            />
+            {children}
           </div>
         </m.div>
       </LazyMotion>

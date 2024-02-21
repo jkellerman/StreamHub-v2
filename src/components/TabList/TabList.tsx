@@ -14,11 +14,18 @@ interface TabListProps {
   title: string;
   release_date?: string;
   air_date?: string;
+  children: React.ReactNode;
 }
 
 const tabNames: ("flatrate" | "rent" | "buy" | "free")[] = ["flatrate", "rent", "buy", "free"];
 
-const TabList: React.FC<TabListProps> = ({ watch_providers, title, release_date, air_date }) => {
+const TabList: React.FC<TabListProps> = ({
+  watch_providers,
+  title,
+  release_date,
+  air_date,
+  children,
+}) => {
   const [activeTab, setActiveTab] = useState("flatrate");
   const tab = useRef<HTMLDivElement>(null);
 
@@ -34,33 +41,36 @@ const TabList: React.FC<TabListProps> = ({ watch_providers, title, release_date,
       <Heading as="h2" size="xs" id="tablist-1">
         Where to watch {title} ({release_date?.slice(0, 4) ?? air_date?.slice(0, 4)})
       </Heading>
-      <div className={styles.tabsContainer} ref={tab}>
-        <div className={styles.tabs} role="tablist" aria-labelledby="tablist-1">
-          {tabNames.map((item, i) => (
-            <TabTrigger
-              key={i}
-              activeTab={activeTab}
-              handleClick={handleClick}
-              tab={`${item}`}
-              index={i}
-            />
-          ))}
-        </div>
-
-        <>
-          <div className={styles.logoWrapper}>
-            <Logo logo="justWatch" />
+      <div className={styles.tablistOuterContainer}>
+        <div className={styles.tabsContainer} ref={tab}>
+          <div className={styles.tabs} role="tablist" aria-labelledby="tablist-1">
+            {tabNames.map((item, i) => (
+              <TabTrigger
+                key={i}
+                activeTab={activeTab}
+                handleClick={handleClick}
+                tab={`${item}`}
+                index={i}
+              />
+            ))}
           </div>
-          {tabNames.map((item, i) => (
-            <TabPanel
-              key={i}
-              watch_providers={watch_providers}
-              activeTab={activeTab}
-              option={item}
-              index={i}
-            />
-          ))}
-        </>
+
+          <>
+            <div className={styles.logoWrapper}>
+              <Logo logo="justWatch" />
+            </div>
+            {tabNames.map((item, i) => (
+              <TabPanel
+                key={i}
+                watch_providers={watch_providers}
+                activeTab={activeTab}
+                option={item}
+                index={i}
+              />
+            ))}
+          </>
+        </div>
+        {children}
       </div>
     </>
   );
@@ -182,6 +192,7 @@ export const Provider: React.FC<ProviderProps> = ({ watch_providers, option }) =
           </div>
         )}
       </div>
+      {/* <RegionDialog regions={reg} /> */}
     </>
   );
 };

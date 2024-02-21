@@ -6,12 +6,18 @@ import React from "react";
 
 import BackgroundImage from "@/components/BackgroundImage/BackgroundImage";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
+import { RegionDialog } from "@/components/Dialog/Dialog";
 import Header from "@/components/Header/Header";
 import MediaDetails from "@/components/MediaDetails/MediaDetails";
 import MediaDetailsPanel from "@/components/MediaDetailsPanel/MediaDetailsPanel";
 import MediaInfoBox from "@/components/MediaInfoBox/MediaInfoBox";
-import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
-import { Media } from "@/src/types";
+const TabList = dynamic(() => import("@/components/TabList/TabList"));
+import {
+  BASE_TMDB_QUERY_DISCOVER_PARAMS,
+  BASE_TMDB_QUERY_SEARCH_PARAMS,
+  BASE_TMDB_URL,
+} from "@/constants/tmdb";
+import { Media, Types } from "@/src/types";
 import { FetchDetails } from "@/utils/tmdbDataHelpers";
 
 const Recommendations = dynamic(
@@ -29,6 +35,7 @@ interface MovieProps {
   director: Media.IDirector;
   title: string;
   id: number;
+  regions: Types.IRegions[];
 }
 
 const Movie: React.FC<MovieProps> = ({
@@ -42,6 +49,7 @@ const Movie: React.FC<MovieProps> = ({
   id,
   cast,
   director,
+  regions,
 }) => {
   const endpoint = `/api/details/movie/${id}`;
   const { data, isError, isLoading } = FetchDetails(endpoint);
@@ -71,11 +79,13 @@ const Movie: React.FC<MovieProps> = ({
           overview={overview}
           poster={poster}
           title={title}
-          watch_providers={watch_providers}
-          release_date={release_date}
           cast={cast}
           director={director}
-        />
+        >
+          <TabList watch_providers={watch_providers} title={title} release_date={release_date}>
+            <RegionDialog regions={regions} id={id} title={title} type="movie" />
+          </TabList>
+        </MediaInfoBox>
         {data &&
           data.recommendations &&
           data.recommendations.results &&
@@ -146,6 +156,23 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       (item: Media.ICertificationMovie) => item.certification !== ""
     ) || null;
 
+  const regionsQueryString = qs.stringify(
+    {
+      ...BASE_TMDB_QUERY_DISCOVER_PARAMS,
+    },
+    { addQueryPrefix: true }
+  );
+
+  const regionsUrl = `${BASE_TMDB_URL}/watch/providers/regions${regionsQueryString}`;
+  console.info("🚀 Request URL: ", regionsUrl);
+
+  const regionsResp = await fetch(regionsUrl);
+  const regionsData = await regionsResp.json();
+
+  const sortedRegions = regionsData.results
+    .filter((region: Types.IRegions) => region.iso_3166_1 !== "XK")
+    .sort((a: Types.IRegions, b: Types.IRegions) => a.english_name.localeCompare(b.english_name));
+
   return {
     props: {
       movie_age_rating: age_rating,
@@ -158,6 +185,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       watch_providers: watch_providers || null,
       title,
       id: slugs ? slugs[0] : null,
+      regions: sortedRegions,
     },
   };
 };

@@ -6,12 +6,18 @@ import React from "react";
 
 import BackgroundImage from "@/components/BackgroundImage/BackgroundImage";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
+import { RegionDialog } from "@/components/Dialog/Dialog";
 import Header from "@/components/Header/Header";
 import MediaDetails from "@/components/MediaDetails/MediaDetails";
 import MediaDetailsPanel from "@/components/MediaDetailsPanel/MediaDetailsPanel";
 import MediaInfoBox from "@/components/MediaInfoBox/MediaInfoBox";
-import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
-import { Media } from "@/src/types";
+const TabList = dynamic(() => import("@/components/TabList/TabList"));
+import {
+  BASE_TMDB_QUERY_DISCOVER_PARAMS,
+  BASE_TMDB_QUERY_SEARCH_PARAMS,
+  BASE_TMDB_URL,
+} from "@/constants/tmdb";
+import { Media, Types } from "@/src/types";
 import { FetchDetails } from "@/utils/tmdbDataHelpers";
 
 const Recommendations = dynamic(
@@ -29,6 +35,7 @@ interface SeriesProps {
   network: string[];
   title: string;
   id: number;
+  regions: Types.IRegions[];
 }
 
 const Series: React.FC<SeriesProps> = ({
@@ -42,12 +49,14 @@ const Series: React.FC<SeriesProps> = ({
   network,
   title,
   id,
+  regions,
 }) => {
   const endpoint = `/api/details/tv/${id}`;
   const { data, isError, isLoading } = FetchDetails(endpoint);
   const backdrop = data && data.backdrop_path;
   const recommendations = data && data.recommendations;
   const poster = data && data.poster_path;
+
   return (
     <>
       <Head>
@@ -69,11 +78,13 @@ const Series: React.FC<SeriesProps> = ({
           overview={overview}
           poster={poster}
           title={title}
-          watch_providers={watch_providers}
-          air_date={air_date}
           cast={cast}
           network={network}
-        />
+        >
+          <TabList watch_providers={watch_providers} title={title} air_date={air_date}>
+            <RegionDialog regions={regions} id={id} title={title} type="show" />
+          </TabList>
+        </MediaInfoBox>
 
         {data && data.recommendations.results.length > 0 && (
           <CategoryHeading category="Suggested" recommendations />
@@ -140,6 +151,23 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const getWatchProviders: Media.IProviderList | null =
     slugs && slugs[1] ? data["watch/providers"].results[slugs[1]] : null;
 
+  const regionsQueryString = qs.stringify(
+    {
+      ...BASE_TMDB_QUERY_DISCOVER_PARAMS,
+    },
+    { addQueryPrefix: true }
+  );
+
+  const regionsUrl = `${BASE_TMDB_URL}/watch/providers/regions${regionsQueryString}`;
+  console.info("🚀 Request URL: ", regionsUrl);
+
+  const regionsResp = await fetch(regionsUrl);
+  const regionsData = await regionsResp.json();
+
+  const sortedRegions = regionsData.results
+    .filter((region: Types.IRegions) => region.iso_3166_1 !== "XK")
+    .sort((a: Types.IRegions, b: Types.IRegions) => a.english_name.localeCompare(b.english_name));
+
   return {
     props: {
       series_age_rating: age_rating,
@@ -153,6 +181,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       title,
       data,
       id: slugs ? slugs[0] : null,
+      regions: sortedRegions,
     },
   };
 };
