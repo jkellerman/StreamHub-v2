@@ -8,13 +8,13 @@ import { Media } from "@/types/media";
 import { scale } from "@/utils/animations";
 
 import Button from "../Buttons/Buttons";
+import Trailer from "../Dialog/Trailer/Dialog";
 import Heading from "../Heading/Heading";
 import MediaRunTimeOrSeasons from "../MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
 import Poster from "../Poster/Poster";
 import ProgressRating from "../ProgressRating/ProgressRating";
 import ReleaseDate from "../ReleaseDate/ReleaseDate";
 import Spinner from "../Spinner/Spinner";
-import Trailer from "../Trailer/Trailer";
 
 import styles from "./MediaGenerator.module.scss";
 
@@ -47,27 +47,19 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({
 
   if (isLoading)
     return (
-      <div className={styles.container}>
+      <div className={styles.resultsContainer}>
         <div className={styles.noResults}>
           <Spinner />
         </div>
       </div>
     );
 
-  if (isError)
+  if (isError || noResults)
     return (
-      <div className={styles.container}>
-        <div className={styles.noResults}>try again...</div>
-      </div>
-    );
-
-  if (noResults) {
-    return (
-      <div className={styles.container}>
+      <div className={styles.resultsContainer}>
         <div className={styles.noResults}>there are no results 😕, try something else...</div>
       </div>
     );
-  }
 
   if (data) {
     return (
@@ -117,7 +109,7 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({
               <MediaRunTimeOrSeasons runtime={data.runtime} seasons={data?.number_of_seasons} />
             </div>
             <p className={styles.overview}>{data.overview}</p>
-            <div className={styles.resultsContainer}>
+            <div className={styles.optionsContainer}>
               <div className={styles.ctaWrapper}>
                 <Button
                   variant="secondary"
@@ -147,8 +139,10 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({
     );
   }
   return (
-    <div className={styles.container}>
-      <div className={styles.noResults}>Have a spin...</div>
+    <div className={styles.resultsContainer}>
+      <div className={styles.noResults}>
+        {type === "movie" ? "Your movie awaits..." : "Your series awaits..."}
+      </div>
     </div>
   );
 };

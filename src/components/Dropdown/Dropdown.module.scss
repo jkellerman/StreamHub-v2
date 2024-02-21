@@ -35,15 +35,16 @@
   position: relative;
   margin-bottom: 1rem;
   gap: 0.5rem;
-  @include mixins.tabletL {
-    @include mixins.flex-row;
-    align-items: center;
-  }
-
   & > h2 {
+    font-family: Outfit;
     @include mixins.tabletL {
       margin-bottom: 0;
     }
+  }
+  @include mixins.tabletL {
+    @include mixins.flex-row;
+    align-items: center;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -230,8 +231,9 @@
 }
 
 .mediaDropdown {
-  @include mixins.desktop {
+  @include mixins.tablet {
     min-width: 300px;
+    max-width: 300px;
   }
 }
 
@@ -273,7 +275,7 @@
   .listItem,
   .listItemCurrent {
     &:active {
-      background: linear-gradient(90deg, var(--quaternary-gradient));
+      background: linear-gradient(90deg, var(--quinary-gradient));
     }
 
     .placeholder {
@@ -282,13 +284,13 @@
   }
 
   .listItemCurrent {
-    background: linear-gradient(270deg, var(--quaternary-gradient));
+    background: linear-gradient(270deg, var(--quinary-gradient));
   }
 
   @media (hover: hover) {
     .listItem:hover,
     .listItemCurrent:hover {
-      background: linear-gradient(270deg, var(--quaternary-gradient));
+      background: linear-gradient(270deg, var(--quinary-gradient));
     }
   }
 }

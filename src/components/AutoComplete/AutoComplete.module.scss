@@ -1,0 +1,56 @@
+@use "@/styles/variables" as variable;
+@use "@/styles/mixins" as mixins;
+
+.searchWrapper {
+  @include mixins.flex-row;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  padding: 0.25em;
+  padding-left: 0.5em;
+  font-size: var(--step-0);
+  color: var(--quinary);
+  caret-color: var(--primary-light);
+  font-weight: variable.$fw-light;
+
+  &::placeholder {
+    color: var(--tertiary-light);
+    text-overflow: ellipsis;
+  }
+}
+
+.list {
+  list-style: none;
+}
+
+.listItem {
+  padding: 0.25em;
+  margin-bottom: 0.25rem;
+  border-radius: variable.$border-radius-s;
+  color: var(--primary-light);
+  @include mixins.flex-row;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background: rgba($color: #000000, $alpha: 0.4);
+  }
+}
+
+.selected {
+  background: linear-gradient(90deg, var(--quaternary-gradient));
+  &:hover,
+  &:focus,
+  &:active {
+    background: rgba($color: #000000, $alpha: 0.4);
+  }
+}
+
+.flag {
+  margin-right: 0.5rem;
+  font-size: var(--step-1);
+}

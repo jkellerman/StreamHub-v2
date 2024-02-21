@@ -6,11 +6,10 @@ import styles from "./VideoPlayer.module.scss";
 
 interface VideoPlayerProps {
   link: string | null;
-  videoPlayerRef: React.RefObject<HTMLDivElement>;
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({ link, videoPlayerRef }) => {
-  const isMobile = useMediaQuery(`(max-width: 504px)`);
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ link }) => {
+  const isMobile = useMediaQuery(`(max-width: 480px)`);
   const videoHeight = isMobile ? "195" : "390";
   const videoWidth = isMobile ? "320" : "640";
   const opts = {
@@ -18,7 +17,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ link, videoPlayerRef }) => {
     width: videoWidth,
   };
   return (
-    <div className={styles.videoPlayer} ref={videoPlayerRef}>
+    <div className={styles.videoPlayer}>
       <YouTube videoId={link as string} opts={opts} />
     </div>
   );

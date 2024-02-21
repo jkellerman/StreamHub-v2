@@ -1,6 +1,7 @@
+import * as Tabs from "@radix-ui/react-tabs";
 import Image from "next/image";
 import Router from "next/router";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import { Media } from "@/src/types";
@@ -14,13 +15,19 @@ interface TabListProps {
   title: string;
   release_date?: string;
   air_date?: string;
+  children: React.ReactNode;
 }
 
 const tabNames: ("flatrate" | "rent" | "buy" | "free")[] = ["flatrate", "rent", "buy", "free"];
 
-const TabList: React.FC<TabListProps> = ({ watch_providers, title, release_date, air_date }) => {
+const TabList: React.FC<TabListProps> = ({
+  watch_providers,
+  title,
+  release_date,
+  air_date,
+  children,
+}) => {
   const [activeTab, setActiveTab] = useState("flatrate");
-  const tab = useRef<HTMLDivElement>(null);
 
   Router.events.on("routeChangeComplete", () => setActiveTab("flatrate"));
   Router.events.on("routeChangeError", () => setActiveTab("flatrate"));
@@ -31,37 +38,37 @@ const TabList: React.FC<TabListProps> = ({ watch_providers, title, release_date,
 
   return (
     <>
-      <Heading as="h2" size="xs" id="tablist-1">
-        Where to watch {title} ({release_date?.slice(0, 4) ?? air_date?.slice(0, 4)})
-      </Heading>
-      <div className={styles.tabsContainer} ref={tab}>
-        <div className={styles.tabs} role="tablist" aria-labelledby="tablist-1">
-          {tabNames.map((item, i) => (
-            <TabTrigger
-              key={i}
-              activeTab={activeTab}
-              handleClick={handleClick}
-              tab={`${item}`}
-              index={i}
-            />
-          ))}
-        </div>
+      <Tabs.Root className={styles.tabsRoot} defaultValue="tab1">
+        <Heading as="h2" size="xs">
+          Where to watch {title} ({release_date?.slice(0, 4) ?? air_date?.slice(0, 4)})
+        </Heading>
+        <div className={styles.tabsOuterContainer}>
+          <div className={styles.tabsContainer}>
+            <Tabs.List className={styles.tabsList} aria-label={`Where to stream ${title}`}>
+              {tabNames.map((item, i) => (
+                <TabTrigger key={i} handleClick={handleClick} tab={`${item}`} index={i} />
+              ))}
+            </Tabs.List>
 
-        <>
-          <div className={styles.logoWrapper}>
-            <Logo logo="justWatch" />
+            <>
+              <div className={styles.logoWrapper}>
+                <Logo logo="justWatch" />
+              </div>
+              {tabNames.map((item, i) => (
+                <Tabs.Content key={i} value={`tab${i + 1}`}>
+                  <TabPanel
+                    watch_providers={watch_providers}
+                    activeTab={activeTab}
+                    option={item}
+                    index={i}
+                  />
+                </Tabs.Content>
+              ))}
+            </>
           </div>
-          {tabNames.map((item, i) => (
-            <TabPanel
-              key={i}
-              watch_providers={watch_providers}
-              activeTab={activeTab}
-              option={item}
-              index={i}
-            />
-          ))}
-        </>
-      </div>
+          {children}
+        </div>
+      </Tabs.Root>
     </>
   );
 };
@@ -73,32 +80,24 @@ export default TabList;
 // ==============
 
 interface TabTriggerProps {
-  activeTab: string;
   tab: string;
   handleClick: (tab: string) => void;
   index: number;
 }
 
-const TabTrigger: React.FC<TabTriggerProps> = ({ activeTab, tab, handleClick, index }) => {
+const TabTrigger: React.FC<TabTriggerProps> = ({ tab, handleClick, index }) => {
   return (
     <>
       {tab && (
-        <button
-          className={
-            activeTab === tab ? `${styles.trigger} ${styles.active}` : `${styles.trigger} `
-          }
+        <Tabs.Trigger
+          value={`tab${index + 1}`}
+          className={styles.trigger}
           onClick={() => {
             handleClick(tab);
           }}
-          id={`tab-${(index + 1).toString()}`}
-          type="button"
-          role="tab"
-          aria-selected={activeTab === tab ? true : false}
-          aria-controls={`tabpanel-${index + 1}`}
-          tabIndex={activeTab === tab ? undefined : 0}
         >
           <span>{tab === "flatrate" ? "stream" : tab}</span>
-        </button>
+        </Tabs.Trigger>
       )}
     </>
   );
@@ -117,14 +116,10 @@ interface TabPanelProps {
   index: number;
 }
 
-const TabPanel: React.FC<TabPanelProps> = ({ watch_providers, activeTab, option, index }) => {
+const TabPanel: React.FC<TabPanelProps> = ({ watch_providers, activeTab, option }) => {
   return (
     <>
       <div
-        id={`tabpanel-${index + 1}`}
-        role="tabpanel"
-        tabIndex={0}
-        aria-labelledby={`tab-${index + 1}`}
         className={activeTab === option ? `${styles.panel}` : `${styles.panel} ${styles.isHidden}`}
       >
         <Provider activeTab={activeTab} watch_providers={watch_providers} option={option} />
@@ -182,6 +177,7 @@ export const Provider: React.FC<ProviderProps> = ({ watch_providers, option }) =
           </div>
         )}
       </div>
+      {/* <RegionDialog regions={reg} /> */}
     </>
   );
 };

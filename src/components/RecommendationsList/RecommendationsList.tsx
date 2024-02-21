@@ -56,7 +56,7 @@ const Recommendations: React.FC<RecommendationsProps> = ({
         <span className={styles.navContainer}>
           <button
             type="button"
-            className={styles.button}
+            className={isCarouselAtStart ? `${styles.button} ${styles.disable}` : styles.button}
             onClick={handleClickPrev}
             aria-label="left"
           >
@@ -69,7 +69,7 @@ const Recommendations: React.FC<RecommendationsProps> = ({
           </button>
           <button
             type="button"
-            className={styles.button}
+            className={isCarouselAtEnd ? `${styles.button} ${styles.disable}` : styles.button}
             onClick={handleClickNext}
             aria-label="right"
           >

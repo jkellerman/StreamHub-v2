@@ -6,16 +6,26 @@
   position: relative;
 }
 
+.contentWrapper {
+  @include mixins.flex-column;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+  @include mixins.tablet {
+    align-items: flex-start;
+    @include mixins.flex-row;
+    margin-bottom: 0;
+  }
+}
+
 .container {
   @include mixins.center;
   position: relative;
   z-index: variable.$z-index-2;
   padding-block: 4rem;
-  max-width: 900px;
-  @include mixins.tablet {
-    padding-bottom: 4rem;
+  max-width: 550px;
+  & > h1 {
+    font-weight: variable.$fw-bold;
   }
-
   & > p {
     margin-top: 1rem;
   }
@@ -23,23 +33,27 @@
   & div h2 {
     white-space: nowrap;
   }
+
+  @include mixins.tablet {
+    padding-bottom: 4rem;
+  }
+  @include mixins.tabletL {
+    min-width: 900px;
+    max-width: 900px;
+  }
 }
 
 .panelOuterContainer {
   @include mixins.center;
   width: 100%;
   @include mixins.flex-column;
-  gap: 2.5rem;
-  background-color: var(--tertiary-dark);
+  gap: 1.5rem;
+
   border-radius: variable.$border-radius-s;
-  padding: 2rem;
-  @include mixins.tablet {
-    padding: 2rem 6rem;
-  }
 
   @include mixins.tabletL {
     @include mixins.flex-row;
-    padding: 1.5rem 2.5rem;
+
     min-height: 292.5px;
   }
 }
@@ -47,9 +61,17 @@
 .panelInner {
   @include mixins.flex-column;
   justify-content: center;
+  background-color: var(--tertiary-dark);
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+
+  & > h2 {
+    font-family: Outfit;
+  }
   @include mixins.tabletL {
-    min-width: 264px;
-    max-width: 264px;
+    min-width: 300px;
+    max-width: 300px;
+    padding: 2rem;
   }
 }
 

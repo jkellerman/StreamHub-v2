@@ -6,7 +6,7 @@ import CardList from "@/components/CardList/CardList";
 import styles from "@/components/CardList/CardList.module.scss";
 import Header from "@/components/Header/Header";
 import Heading from "@/components/Heading/Heading";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { Pagination } from "@/utils/tmdbDataHelpers";
 
 const Search = () => {
   const {
@@ -16,7 +16,7 @@ const Search = () => {
 
   const endpoint = `/api/search/${slugsArray.join("/")}`;
   const { cards, isLoading, isError, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useInfiniteScroll(endpoint);
+    Pagination(endpoint);
   return (
     <>
       <Head>

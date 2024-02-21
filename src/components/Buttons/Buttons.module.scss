@@ -9,7 +9,7 @@
   font-weight: variable.$fw-bold;
   color: var(--secondary-dark);
   letter-spacing: 1px;
-
+  text-align: center;
   cursor: pointer;
 }
 
@@ -21,6 +21,7 @@
   background: linear-gradient(90deg, var(--primary-gradient));
   border-radius: variable.$border-radius-xl;
   border-radius: 30px;
+  box-shadow: 0px 20px 20px 0px rgba(6, 6, 6, 0.3);
 }
 
 .secondary {
@@ -35,6 +36,8 @@
   align-items: center;
   gap: 0.5em;
   transition: transform 0.15s ease-in-out;
+  box-shadow: 0px 20px 20px 0px rgba(6, 6, 6, 0.3);
+
   &:hover {
     background: var(--secondary-dark);
     border: 1px solid var(--tertiary);
@@ -64,6 +67,7 @@
   transition: variable.$transition;
   font-size: var(--step-1);
   padding: 0.9em 2.25em;
+  box-shadow: 0px 20px 20px 0px rgba(6, 6, 6, 0.3);
 
   @include mixins.tablet {
     max-width: 300px;
@@ -81,6 +85,8 @@
   color: var(--secondary-dark);
   background: var(--primary);
   border-color: var(--primary);
+  box-shadow: 0px 20px 20px 0px rgba(6, 6, 6, 0.3);
+
   &:hover {
     background: var(--primary-light);
     border-color: var(--primary-light);
@@ -96,6 +102,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0;
+  box-shadow: 0px 20px 20px 0px rgba(6, 6, 6, 0.3);
 }
 
 .isFull {

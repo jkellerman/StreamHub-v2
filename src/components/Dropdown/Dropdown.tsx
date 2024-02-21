@@ -7,12 +7,7 @@ import React, { useState, useCallback } from "react";
 import slugify from "slugify";
 
 import Icon from "@/components/Icon/Icon";
-import {
-  DEFAULT_GENRE,
-  DEFAULT_NETWORK,
-  DEFAULT_WATCH_GENRE,
-  DEFAULT_WATCH_NETWORK,
-} from "@/constants/app";
+import { DEFAULT_GENRE, DEFAULT_NETWORK, DEFAULT_WATCH_NETWORK } from "@/constants/app";
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import useClickOutside from "@/hooks/useClickOutside";
 import { Media } from "@/src/types";
@@ -226,9 +221,8 @@ const DropdownGenre: React.FC<DropdownGenreProps> = ({
   closeDropdown,
   rootPath,
   style,
-  watch,
 }) => {
-  const defaultServiceOption = watch ? DEFAULT_WATCH_GENRE : DEFAULT_GENRE;
+  const defaultServiceOption = DEFAULT_GENRE;
 
   const listClasses = [
     styles.list,

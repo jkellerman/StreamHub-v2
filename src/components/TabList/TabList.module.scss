@@ -1,68 +1,79 @@
 @use "@/styles/variables" as variable;
 @use "@/styles/mixins" as mixins;
 
-.trigger {
-  &[role="tab"] {
-    position: relative;
-    min-width: 55px;
-    text-align: center;
-    text-transform: capitalize;
-    font-weight: variable.$fw-med;
-    font-size: var(--step-0);
-    font-family: inherit;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: var(--quinary);
-    @include mixins.tablet() {
-      font-size: inherit;
-      padding-bottom: 0.5rem;
-    }
-  }
-  &[role="tab"]:hover,
-  &[role="tab"].focus,
-  &[role="tab"][aria-selected="true"] {
-    color: var(--primary-light);
-    transition: variable.$transition;
-  }
-}
-
-.trigger::after {
-  content: "";
-  background: var(--primary-light);
-  opacity: 0;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  transition: opacity 200ms ease-in;
-  height: 2px;
-  bottom: -1.05rem;
-  @include mixins.tablet {
-    height: 4px;
-  }
-}
-
-.trigger.active::after {
-  opacity: 1;
-}
-
-.tabsContainer {
+.tabsRoot {
+  @include mixins.flex-column;
   margin: 2rem auto 1rem;
   max-width: 900px;
 }
 
-.tabs {
-  &[role="tablist"] {
-    display: flex;
-    border-bottom: 1px solid var(--tertiary-light);
-    padding-bottom: 1rem;
-    gap: 1.5rem;
-    @include mixins.tablet() {
-      .tabs {
-        gap: 2.5rem;
-        padding-bottom: 2rem;
-      }
+.tabsOuterContainer {
+  @include mixins.flex-row;
+  position: relative;
+}
+
+.tabsContainer {
+  width: 100%;
+}
+
+.tabsList {
+  display: flex;
+  border-bottom: 1px solid var(--tertiary-light);
+  padding-bottom: 1rem;
+  margin-top: 0.5rem;
+  gap: 1.5rem;
+  @include mixins.tablet() {
+    .tabs {
+      gap: 2.5rem;
+      padding-bottom: 2rem;
+      margin-top: 1rem;
     }
+  }
+}
+
+.trigger {
+  position: relative;
+  min-width: 55px;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: variable.$fw-med;
+  font-size: var(--step-0);
+  font-family: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--quinary);
+  @include mixins.tablet() {
+    font-size: inherit;
+    padding-bottom: 0.5rem;
+  }
+
+  &::after {
+    content: "";
+    background: var(--primary-light);
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    transition: opacity 200ms ease-in;
+    height: 2px;
+    bottom: -1.05rem;
+    @include mixins.tablet {
+      height: 4px;
+    }
+  }
+
+  &:hover {
+    color: var(--primary-light);
+    transition: variable.$transition;
+  }
+
+  &[data-state="active"] {
+    color: var(--primary-light);
+    transition: variable.$transition;
+  }
+  &[data-state="active"]::after {
+    opacity: 1;
   }
 }
 
@@ -71,14 +82,9 @@
 }
 
 .panel {
-  &[role="tabpanel"] {
-    min-width: 100%;
-    display: block;
-    animation: fade variable.$fade-animation;
-  }
-  &[role="tabpanel"].isHidden {
-    display: none;
-  }
+  min-width: 100%;
+  display: block;
+  animation: fade variable.$fade-animation;
 }
 
 .icons {
