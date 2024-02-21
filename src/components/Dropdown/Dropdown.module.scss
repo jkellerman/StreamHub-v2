@@ -275,7 +275,7 @@
   .listItem,
   .listItemCurrent {
     &:active {
-      background: linear-gradient(90deg, var(--quaternary-gradient));
+      background: linear-gradient(90deg, var(--quinary-gradient));
     }
 
     .placeholder {
@@ -284,13 +284,13 @@
   }
 
   .listItemCurrent {
-    background: linear-gradient(270deg, var(--quaternary-gradient));
+    background: linear-gradient(270deg, var(--quinary-gradient));
   }
 
   @media (hover: hover) {
     .listItem:hover,
     .listItemCurrent:hover {
-      background: linear-gradient(270deg, var(--quaternary-gradient));
+      background: linear-gradient(270deg, var(--quinary-gradient));
     }
   }
 }
