@@ -65,7 +65,6 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
                     ? `/movie/${id}/${item.iso_3166_1}?${slugify(title, { lower: true })}`
                     : `/show/${id}/${item.iso_3166_1}?${slugify(title as string, { lower: true })}`
                 }
-                scroll={false}
               >
                 <a
                   className={
