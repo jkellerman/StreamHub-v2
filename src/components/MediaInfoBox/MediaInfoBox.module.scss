@@ -17,8 +17,6 @@
     flex-direction: row;
     align-items: flex-start;
   }
-  @include mixins.laptop() {
-  }
 }
 
 .mediaInfoCard {

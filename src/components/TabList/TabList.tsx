@@ -1,10 +1,10 @@
 import * as Tabs from "@radix-ui/react-tabs";
 import Image from "next/image";
-import Router from "next/router";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React from "react";
 
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
-import { Media } from "@/src/types";
+import { Media, Types } from "@/src/types";
 
 import Heading from "../Heading/Heading";
 import Logo from "../Logo/Logo";
@@ -16,6 +16,8 @@ interface TabListProps {
   release_date?: string;
   air_date?: string;
   children: React.ReactNode;
+  regions: Types.IRegions[];
+  defaultTab?: string;
 }
 
 const tabNames: ("flatrate" | "rent" | "buy" | "free")[] = ["flatrate", "rent", "buy", "free"];
@@ -26,19 +28,12 @@ const TabList: React.FC<TabListProps> = ({
   release_date,
   air_date,
   children,
+  regions,
+  defaultTab,
 }) => {
-  const [activeTab, setActiveTab] = useState("flatrate");
-
-  Router.events.on("routeChangeComplete", () => setActiveTab("flatrate"));
-  Router.events.on("routeChangeError", () => setActiveTab("flatrate"));
-
-  const handleClick = (tab: string) => {
-    setActiveTab(tab);
-  };
-
   return (
     <>
-      <Tabs.Root className={styles.tabsRoot} defaultValue="tab1">
+      <Tabs.Root className={styles.tabsRoot} defaultValue={defaultTab}>
         <Heading as="h2" size="xs">
           Where to watch {title} ({release_date?.slice(0, 4) ?? air_date?.slice(0, 4)})
         </Heading>
@@ -46,7 +41,7 @@ const TabList: React.FC<TabListProps> = ({
           <div className={styles.tabsContainer}>
             <Tabs.List className={styles.tabsList} aria-label={`Where to stream ${title}`}>
               {tabNames.map((item, i) => (
-                <TabTrigger key={i} handleClick={handleClick} tab={`${item}`} index={i} />
+                <TabTrigger key={i} tab={`${item}`} index={i} />
               ))}
             </Tabs.List>
 
@@ -56,12 +51,9 @@ const TabList: React.FC<TabListProps> = ({
               </div>
               {tabNames.map((item, i) => (
                 <Tabs.Content key={i} value={`tab${i + 1}`}>
-                  <TabPanel
-                    watch_providers={watch_providers}
-                    activeTab={activeTab}
-                    option={item}
-                    index={i}
-                  />
+                  <TabPanel>
+                    <Provider watch_providers={watch_providers} option={item} regions={regions} />
+                  </TabPanel>
                 </Tabs.Content>
               ))}
             </>
@@ -81,21 +73,15 @@ export default TabList;
 
 interface TabTriggerProps {
   tab: string;
-  handleClick: (tab: string) => void;
+
   index: number;
 }
 
-const TabTrigger: React.FC<TabTriggerProps> = ({ tab, handleClick, index }) => {
+const TabTrigger: React.FC<TabTriggerProps> = ({ tab, index }) => {
   return (
     <>
       {tab && (
-        <Tabs.Trigger
-          value={`tab${index + 1}`}
-          className={styles.trigger}
-          onClick={() => {
-            handleClick(tab);
-          }}
-        >
+        <Tabs.Trigger value={`tab${index + 1}`} className={styles.trigger}>
           <span>{tab === "flatrate" ? "stream" : tab}</span>
         </Tabs.Trigger>
       )}
@@ -110,20 +96,13 @@ const TabTrigger: React.FC<TabTriggerProps> = ({ tab, handleClick, index }) => {
 const LOGO_SIZE = 35;
 
 interface TabPanelProps {
-  watch_providers: Media.IProviderList;
-  activeTab: string;
-  option: "flatrate" | "rent" | "buy" | "free";
-  index: number;
+  children: React.ReactNode;
 }
 
-const TabPanel: React.FC<TabPanelProps> = ({ watch_providers, activeTab, option }) => {
+const TabPanel: React.FC<TabPanelProps> = ({ children }) => {
   return (
     <>
-      <div
-        className={activeTab === option ? `${styles.panel}` : `${styles.panel} ${styles.isHidden}`}
-      >
-        <Provider activeTab={activeTab} watch_providers={watch_providers} option={option} />
-      </div>
+      <div className={styles.panel}>{children}</div>
     </>
   );
 };
@@ -134,12 +113,19 @@ const TabPanel: React.FC<TabPanelProps> = ({ watch_providers, activeTab, option 
 
 interface ProviderProps {
   watch_providers: Media.IProviderList;
-  activeTab: string;
+
   option: "flatrate" | "rent" | "buy" | "free";
+  regions: Types.IRegions[];
 }
 
-export const Provider: React.FC<ProviderProps> = ({ watch_providers, option }) => {
+export const Provider: React.FC<ProviderProps> = ({ watch_providers, option, regions }) => {
   const providerOption = watch_providers && watch_providers[option];
+  const { query } = useRouter();
+
+  const slug = query.slugs;
+  const region = slug && slug[1];
+
+  const selectedRegion = regions && regions.find((item) => item.iso_3166_1 === region);
 
   return (
     <>
@@ -148,7 +134,9 @@ export const Provider: React.FC<ProviderProps> = ({ watch_providers, option }) =
           <span className={styles.placeholder}>
             Not available to {option === "free" ? "watch for " : ""}
             {option === "flatrate" ? "stream" : option}{" "}
-            {option === "free" || option === "flatrate" ? "in your region" : "online"}
+            {option === "free" || option === "flatrate"
+              ? `in ${selectedRegion?.native_name}`
+              : `online in ${selectedRegion?.native_name}`}
           </span>
         )}
         {providerOption && (
@@ -177,7 +165,6 @@ export const Provider: React.FC<ProviderProps> = ({ watch_providers, option }) =
           </div>
         )}
       </div>
-      {/* <RegionDialog regions={reg} /> */}
     </>
   );
 };

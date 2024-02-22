@@ -43,13 +43,14 @@ export const RegionDialog: React.FC<SelectMenuProps> = ({ regions, id, title, ty
           <Dialog.Overlay className={styles.overlay} />
 
           <Dialog.Content className={styles.content}>
-            <div className={styles.contentHeader}>
+            <header className={styles.contentHeader}>
               <Dialog.Title className={styles.title}>Select Region</Dialog.Title>
 
               <Dialog.Close className={styles.closeBtn}>
                 <Icon icon="close" height="14" width="14" fill="#FFF" />
               </Dialog.Close>
-            </div>
+            </header>
+
             <Dialog.Description className={styles.selectedRegion}>
               <span className={styles.flag}>{FlagEmoji}</span>
               {selectedRegion?.native_name}
