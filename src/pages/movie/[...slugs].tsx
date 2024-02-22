@@ -36,6 +36,7 @@ interface MovieProps {
   title: string;
   id: number;
   regions: Types.IRegions[];
+  defaultTab: string;
 }
 
 const Movie: React.FC<MovieProps> = ({
@@ -50,6 +51,7 @@ const Movie: React.FC<MovieProps> = ({
   cast,
   director,
   regions,
+  defaultTab,
 }) => {
   const endpoint = `/api/details/movie/${id}`;
   const { data, isError, isLoading } = FetchDetails(endpoint);
@@ -82,7 +84,13 @@ const Movie: React.FC<MovieProps> = ({
           cast={cast}
           director={director}
         >
-          <TabList watch_providers={watch_providers} title={title} release_date={release_date}>
+          <TabList
+            watch_providers={watch_providers}
+            title={title}
+            release_date={release_date}
+            regions={regions}
+            defaultTab={defaultTab}
+          >
             <RegionDialog regions={regions} id={id} title={title} type="movie" />
           </TabList>
         </MediaInfoBox>
@@ -141,6 +149,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const watch_providers = slugs && slugs[1] ? getWatchProviders[slugs[1]] : null;
 
+  let defaultTab;
+
+  if (watch_providers && watch_providers.free) {
+    defaultTab = "tab4";
+  } else if (watch_providers && watch_providers.flatrate) {
+    defaultTab = "tab1";
+  } else if (watch_providers && watch_providers.rent) {
+    defaultTab = "tab2";
+  } else if (watch_providers && watch_providers.buy) {
+    defaultTab = "tab3";
+  } else {
+    defaultTab = "tab1";
+  }
+
   const certification: Media.ICertificationMoviesCountries | null =
     (slugs &&
       release_dates.results.find(
@@ -183,6 +205,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       cast,
       genres,
       watch_providers: watch_providers || null,
+      defaultTab,
       title,
       id: slugs ? slugs[0] : null,
       regions: sortedRegions,

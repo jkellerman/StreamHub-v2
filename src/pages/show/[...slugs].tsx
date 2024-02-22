@@ -36,6 +36,7 @@ interface SeriesProps {
   title: string;
   id: number;
   regions: Types.IRegions[];
+  defaultTab: string;
 }
 
 const Series: React.FC<SeriesProps> = ({
@@ -50,6 +51,7 @@ const Series: React.FC<SeriesProps> = ({
   title,
   id,
   regions,
+  defaultTab,
 }) => {
   const endpoint = `/api/details/tv/${id}`;
   const { data, isError, isLoading } = FetchDetails(endpoint);
@@ -81,7 +83,13 @@ const Series: React.FC<SeriesProps> = ({
           cast={cast}
           network={network}
         >
-          <TabList watch_providers={watch_providers} title={title} air_date={air_date}>
+          <TabList
+            watch_providers={watch_providers}
+            title={title}
+            air_date={air_date}
+            regions={regions}
+            defaultTab={defaultTab}
+          >
             <RegionDialog regions={regions} id={id} title={title} type="show" />
           </TabList>
         </MediaInfoBox>
@@ -151,6 +159,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const getWatchProviders: Media.IProviderList | null =
     slugs && slugs[1] ? data["watch/providers"].results[slugs[1]] : null;
 
+  let defaultTab;
+
+  if (getWatchProviders && getWatchProviders.free) {
+    defaultTab = "tab4";
+  } else if (getWatchProviders && getWatchProviders.flatrate) {
+    defaultTab = "tab1";
+  } else if (getWatchProviders && getWatchProviders.rent) {
+    defaultTab = "tab2";
+  } else if (getWatchProviders && getWatchProviders.buy) {
+    defaultTab = "tab3";
+  } else {
+    defaultTab = "tab1";
+  }
+
   const regionsQueryString = qs.stringify(
     {
       ...BASE_TMDB_QUERY_DISCOVER_PARAMS,
@@ -176,6 +198,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       cast,
       genres,
       watch_providers: getWatchProviders || null,
+      defaultTab,
       seasons: number_of_seasons,
       network,
       title,
