@@ -32,7 +32,7 @@
   padding: 0rem 1rem;
   border: 1px solid var(--secondary-light);
   border-radius: variable.$border-radius-l;
-  color: var(--primary-light);
+  color: var(--tertiary-dark);
   @include mixins.flex-center;
   gap: 0.5em;
   cursor: pointer;
@@ -49,7 +49,7 @@
 }
 
 .triggerFlag {
-  font-size: 1.5rem;
+  font-size: var(--step-0);
 }
 
 .dropdownMenuContent {
@@ -98,5 +98,5 @@
 }
 
 .menuItemFlag {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
