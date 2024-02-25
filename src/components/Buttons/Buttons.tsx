@@ -1,4 +1,3 @@
-import { LazyMotion, domAnimation, m } from "framer-motion";
 import Link from "next/link";
 
 import { Types } from "@/types/types";
@@ -46,34 +45,22 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <>
       {asLink && variant === "primary" ? (
-        <LazyMotion features={domAnimation}>
-          <Link href={link as URL}>
-            <m.a
-              className={`${buttonClasses.join(" ")} ${isFull ? styles.isFull : ""}`}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              {children}
-            </m.a>
-          </Link>
-        </LazyMotion>
+        <Link href={link as URL}>
+          <a className={`${buttonClasses.join(" ")} ${isFull ? styles.isFull : ""}`}>{children}</a>
+        </Link>
       ) : asLink ? (
         <Link href={link as URL}>
           <a className={`${buttonClasses.join(" ")} ${isFull ? styles.isFull : ""}`}>{children}</a>
         </Link>
       ) : variant === "primary" ? (
-        <LazyMotion features={domAnimation}>
-          <m.button
-            type={type}
-            className={`${buttonClasses.join(" ")} ${isFull ? styles.isFull : ""}`}
-            onClick={onClick}
-            disabled={disabled}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            {children}
-          </m.button>
-        </LazyMotion>
+        <button
+          type={type}
+          className={`${buttonClasses.join(" ")} ${isFull ? styles.isFull : ""}`}
+          onClick={onClick}
+          disabled={disabled}
+        >
+          {children}
+        </button>
       ) : (
         <button
           type={type}

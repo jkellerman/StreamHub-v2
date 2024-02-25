@@ -6,53 +6,48 @@
   background-color: var(--secondary-dark);
   z-index: variable.$z-index-5;
   border-bottom: 0px solid var(--secondary-dark);
+  position: sticky;
   @include mixins.tablet {
-    position: sticky;
   }
 }
 
 .header {
   @include mixins.flex-column;
   @include header-styles();
-  position: relative;
   z-index: variable.$z-index-5;
-
-  @include mixins.tablet {
-    top: 0px;
-    transition: border-bottom 250ms ease-in-out;
-    border-bottom: 0px solid var(--secondary-dark);
-    width: 100%;
-  }
+  top: 0px;
+  transition: border-bottom 250ms ease-in-out;
+  border-bottom: 0px solid var(--secondary-dark);
+  width: 100%;
 }
 
 .hidden {
   @include mixins.flex-column;
   @include header-styles();
 
-  @include mixins.tablet {
-    top: -146px;
-    transition: top 150ms ease-in-out 0.2s;
-    top: -194px;
-  }
+  top: -146px;
+  transition: top 150ms ease-in-out 0.2s;
 }
 
 .visible {
   @include mixins.flex-column;
   @include header-styles();
 
-  @include mixins.tablet {
-    top: 0px;
-    border-bottom: 3px solid var(--primary-dark);
-    transition: top 250ms ease-in-out, border-bottom 250ms ease-in-out;
-  }
+  top: 0px;
+  border-bottom: 3px solid var(--primary-dark);
+  transition: top 250ms ease-in-out, border-bottom 250ms ease-in-out;
 }
 
 .container {
   @include mixins.center;
   @include mixins.flex-column;
   position: relative;
-
+  max-height: 96.125px;
   margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  @include mixins.tablet() {
+    max-height: 99.563px;
+  }
   @include mixins.tabletL() {
     max-height: 44px;
     margin-bottom: 1.5rem;
@@ -62,20 +57,56 @@
   }
 }
 
-.logoContainer {
+.mobileContainer,
+.mainContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4rem;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+  height: 44px;
+  & > svg {
+    min-width: 20px;
+    min-height: 20px;
+  }
 
+  @include mixins.tabletL {
+    margin-bottom: unset;
+    max-height: 44px;
+  }
+}
+
+.mobileContainer {
   & > svg {
     @include mixins.tabletL {
       display: none;
     }
   }
+}
+
+.mobileContainer,
+.navContainer {
+  @include mixins.tabletL {
+    display: none;
+  }
+}
+
+.mainContainer {
+  width: 100%;
+  display: none;
+  @include mixins.tabletL {
+    display: flex;
+  }
+}
+
+.innerContainer {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  max-height: 44px;
 
   @include mixins.tabletL {
-    margin-bottom: unset;
+    width: 80%;
   }
 }
 
@@ -85,14 +116,4 @@
   gap: 0.5rem;
   font-weight: variable.$fw-med;
   margin-left: 1rem;
-  @include mixins.tabletL() {
-    justify-content: end;
-  }
-}
-
-.userIconWrapper {
-  display: none;
-  @include mixins.tabletL() {
-    display: inline-block;
-  }
 }
