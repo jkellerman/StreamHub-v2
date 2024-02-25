@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ animate }) => {
   const [isVisible, setIsVisible] = useState<boolean | null>(null);
 
   const [prevScrollY, setPrevScrollY] = useState(0);
-  const scrollThreshold = 50;
+  const scrollThreshold = 250;
 
   useEffect(() => {
     const handleScrollEvent = () => {
@@ -49,32 +49,44 @@ const Header: React.FC<HeaderProps> = ({ animate }) => {
       {animate ? (
         <LazyMotion features={domAnimation}>
           <m.div className={styles.container} variants={enterY} initial="hidden" animate="visible">
-            <div className={styles.logoContainer}>
+            <div className={styles.mobileContainer}>
               <MainLogo />
-              <Icon icon="user" />
+              <Search />
+              <Icon icon="user" width="20" height="20" />
             </div>
-            <Nav />
-
-            <Search />
-            <div className={styles.loginContainer}>
-              <div className={styles.userIconWrapper}>
-                <Icon icon="user" />
+            <div className={styles.navContainer}>
+              <Nav />
+            </div>
+            <div className={styles.mainContainer}>
+              <MainLogo />
+              <div className={styles.innerContainer}>
+                <Nav />
+                <Search />
+                <div className={styles.loginContainer}>
+                  <Icon icon="user" width="20" height="20" />
+                </div>
               </div>
             </div>
           </m.div>
         </LazyMotion>
       ) : (
         <div className={styles.container}>
-          <div className={styles.logoContainer}>
+          <div className={styles.mobileContainer}>
             <MainLogo />
-            <Icon icon="user" />
+            <Search />
+            <Icon icon="user" width="20" height="20" />
           </div>
-          <Nav />
-
-          <Search />
-          <div className={styles.loginContainer}>
-            <div className={styles.userIconWrapper}>
-              <Icon icon="user" />
+          <div className={styles.navContainer}>
+            <Nav />
+          </div>
+          <div className={styles.mainContainer}>
+            <MainLogo />
+            <div className={styles.innerContainer}>
+              <Nav />
+              <Search />
+              <div className={styles.loginContainer}>
+                <Icon icon="user" width="20" height="20" />
+              </div>
             </div>
           </div>
         </div>
