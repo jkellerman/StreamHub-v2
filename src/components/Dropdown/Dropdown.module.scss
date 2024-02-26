@@ -143,8 +143,13 @@
   top: 2.75rem;
   left: 0;
   right: 0;
+  overflow-y: scroll;
   justify-content: unset;
   padding: 1rem;
+
+  @include mixins.desktop {
+    overflow-y: unset;
+  }
 
   .listItem,
   .listItemCurrent {
