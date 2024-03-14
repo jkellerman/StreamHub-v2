@@ -6,7 +6,10 @@
   overflow-x: scroll;
   align-items: center;
   margin-left: -0.75rem;
-
+  scrollbar-color: none;
+  @include mixins.mobileL {
+    overflow-x: unset;
+  }
   @include mixins.tabletL {
     margin-left: unset;
     justify-content: end;

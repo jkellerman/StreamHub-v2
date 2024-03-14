@@ -141,8 +141,8 @@ const useSlider = () => {
       const numOfFullyVisibleCards = Math.round(carouselWidth / cardWidth);
       const translateSize = cardWidth * numOfFullyVisibleCards;
 
-      // There two variables helps close the empty space at the end of the carousel when navigated to the end
-      const remainingOffsetWidth = carouselWidth - translateSize;
+      // These two variables helps close the empty space at the end of the carousel when navigated to the end
+      const remainingOffsetWidth = carouselWidth - (translateSize - 50);
       const remainingCardsWidth = cardWidth * (totalNumOfCards - numOfAccumulatedCards);
 
       if (numOfAccumulatedCards >= totalNumOfCards) return;
