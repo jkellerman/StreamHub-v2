@@ -84,7 +84,6 @@
 
   &:focus {
     background: linear-gradient(90deg, var(--quaternary-gradient));
-    border: 1px solid var(--tertiary);
   }
 }
 
@@ -95,14 +94,10 @@
   border: 1px solid var(--tertiary-dark);
   &:hover {
     background: var(--tertiary-alt);
-
-    border: 1px solid var(--tertiary);
   }
 
   &:focus {
     background: var(--tertiary-alt);
-
-    border: 1px solid var(--tertiary-light);
   }
 }
 
@@ -246,7 +241,6 @@
 
 .primary-list {
   background: linear-gradient(90deg, var(--quaternary-gradient));
-  border: 1px solid var(--tertiary);
 
   .listItem,
   .listItemCurrent {
@@ -273,7 +267,6 @@
 .secondary-list {
   background: var(--tertiary-alt);
 
-  border: 1px solid var(--tertiary-light);
   .listItem,
   .listItemCurrent {
     &:active {
