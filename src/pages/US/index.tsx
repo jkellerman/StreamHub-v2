@@ -7,10 +7,9 @@ import CTA from "@/components/CallToActionSection/CallToActionSection";
 import Carousel from "@/components/Carousel/Carousel";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
 import ContentProviders from "@/components/ContentProviders/ContentProviders";
-import Dropdown from "@/components/Dropdown/Country/Dropdown";
 import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
-import { excludedStrings, primaryRegions } from "@/constants/app";
+import { excludedStrings } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_DISCOVER_PARAMS } from "@/constants/tmdb";
 import { useRegion } from "@/context/regionContext";
 import { Media } from "@/types/media";
@@ -43,7 +42,6 @@ const Home: React.FC<HomeProps> = (contentProviders) => {
         <Hero />
         <section>
           <ContentProviders contentProviders={contentProviders.contentProviders} />
-          <Dropdown regions={primaryRegions} />
           <CategoryHeading category="trending this week" />
           <Carousel endpoint="/api/trending/all/week" />
         </section>

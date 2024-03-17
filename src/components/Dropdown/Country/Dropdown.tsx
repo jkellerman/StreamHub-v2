@@ -30,7 +30,6 @@ const Dropdown: React.FC<DropdownProps> = ({ regions }) => {
     <LazyMotion features={domAnimation}>
       <DropdownMenu.Root>
         <m.div
-          className={styles.container}
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
@@ -40,7 +39,6 @@ const Dropdown: React.FC<DropdownProps> = ({ regions }) => {
           }}
         >
           <div className={styles.triggerContainer}>
-            <div className={styles.triggerSubheading}>Select country</div>
             <DropdownMenu.Trigger asChild>
               <button className={styles.trigger} aria-label="choose region">
                 <span className={styles.triggerFlag}>{FlagEmoji}</span>

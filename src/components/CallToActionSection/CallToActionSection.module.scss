@@ -63,6 +63,7 @@
 .content {
   text-align: center;
   margin-bottom: 0.5rem;
+  letter-spacing: variable.$ls-s;
   & > h1 {
     font-weight: variable.$fw-bold;
   }

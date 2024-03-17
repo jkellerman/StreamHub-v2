@@ -11,7 +11,6 @@ import Header from "@/components/Header/Header";
 import MediaDetails from "@/components/MediaDetails/MediaDetails";
 import MediaDetailsPanel from "@/components/MediaDetailsPanel/MediaDetailsPanel";
 import MediaInfoBox from "@/components/MediaInfoBox/MediaInfoBox";
-const TabList = dynamic(() => import("@/components/TabList/TabList"));
 import {
   BASE_TMDB_QUERY_DISCOVER_PARAMS,
   BASE_TMDB_QUERY_SEARCH_PARAMS,
@@ -23,6 +22,7 @@ import { FetchDetails } from "@/utils/tmdbDataHelpers";
 const Recommendations = dynamic(
   () => import("@/components/RecommendationsList/RecommendationsList")
 );
+const TabList = dynamic(() => import("@/components/TabList/TabList"));
 
 interface MovieProps {
   movie_age_rating: Media.ICertificationMovie | undefined;
