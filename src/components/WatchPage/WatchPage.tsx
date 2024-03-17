@@ -102,8 +102,9 @@ const WatchPage: React.FC<WatchPageProps> = ({
                   Suggest a {mediaType === "series" ? "series" : "movie"}
                 </Heading>
                 <Content>
-                  Select your {mediaType} preferences using the options above, have a spin and get a
-                  random {mediaType === "series" ? "show" : "movie"} to watch to tonight.
+                  Select your {mediaType === "series" ? "show" : "movie"} preferences using the
+                  options above, have a spin and get a random{" "}
+                  {mediaType === "series" ? "show" : "movie"} to watch to tonight.
                 </Content>
 
                 <Button variant="primary" isFull onClick={fetchRecommendation} disabled={isLoading}>

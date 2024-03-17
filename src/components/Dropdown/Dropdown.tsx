@@ -236,53 +236,56 @@ const DropdownGenre: React.FC<DropdownGenreProps> = ({
   return (
     <ul className={`${listClasses.join(" ")}`}>
       {genre_list?.map(({ id, name }) => {
+        let href;
+        switch (true) {
+          case name === defaultServiceOption.name &&
+            !query.slugs?.includes(
+              `${selected_network?.provider_name
+                .replace(" Plus", "+")
+                .toLowerCase()
+                .replaceAll(" ", "-")}`
+            ):
+            href = `${rootPath}${type}`;
+            break;
+          case name === defaultServiceOption.name &&
+            query.slugs?.includes(
+              `${selected_network?.provider_name
+                .replace(" Plus", "+")
+                .toLowerCase()
+                .replaceAll(" ", "-")}`
+            ):
+            href = `${rootPath}${type}/network/${slugify(
+              selected_network?.provider_name.replace(" Plus", "+") as string,
+              { lower: true }
+            ).replace(/and/g, "&")}`;
+            break;
+          case !query.slugs?.includes(
+            `${selected_network?.provider_name
+              .replace(" Plus", "+")
+              .toLowerCase()
+              .replaceAll(" ", "-")}`
+          ):
+            href = `${rootPath}${type}/genre/${slugify(name, { lower: true }).replace(
+              /and/g,
+              "&"
+            )}`;
+            break;
+          default:
+            href = `${rootPath}${type}/genre/${slugify(name, { lower: true }).replace(
+              /and/g,
+              "&"
+            )}/${slugify(selected_network?.provider_name.replace(" Plus", "+") as string, {
+              lower: true,
+            }).replace(/and/g, "&")}`;
+            break;
+        }
+
         return (
           <li
             key={id}
             className={selected_genre?.name === name ? styles.listItemCurrent : styles.listItem}
           >
-            <Link
-              href={
-                name === defaultServiceOption.name &&
-                !query.slugs?.includes(
-                  `${selected_network?.provider_name
-                    .replace(" Plus", "+")
-                    .toLowerCase()
-                    .replaceAll(" ", "-")}`
-                )
-                  ? `${rootPath}${type}`
-                  : name === defaultServiceOption.name &&
-                    query.slugs?.includes(
-                      `${selected_network?.provider_name
-                        .replace(" Plus", "+")
-                        .toLowerCase()
-                        .replaceAll(" ", "-")}`
-                    )
-                  ? `${rootPath}${type}/network/${slugify(
-                      selected_network?.provider_name.replace(" Plus", "+") as string,
-                      {
-                        lower: true,
-                      }
-                    ).replace(/and/g, "&")}`
-                  : !query.slugs?.includes(
-                      `${selected_network?.provider_name
-                        .replace(" Plus", "+")
-                        .toLowerCase()
-                        .replaceAll(" ", "-")}`
-                    )
-                  ? `${rootPath}${type}/genre/${slugify(name, { lower: true }).replace(
-                      /and/g,
-                      "&"
-                    )}`
-                  : `${rootPath}${type}/genre/${slugify(name, { lower: true }).replace(
-                      /and/g,
-                      "&"
-                    )}/${slugify(selected_network?.provider_name.replace(" Plus", "+") as string, {
-                      lower: true,
-                    }).replace(/and/g, "&")}`
-              }
-              scroll={false}
-            >
+            <Link href={href} scroll={false}>
               <a className={styles.link} onClick={closeDropdown}>
                 {name}
               </a>
@@ -416,6 +419,32 @@ const DropdownService: React.FC<DropdownServiceProps> = ({
   return (
     <ul className={`${listClasses.join(" ")}`}>
       {network_list?.map(({ provider_id, provider_name, logo_path }) => {
+        let href;
+        switch (true) {
+          case provider_name === defaultServiceOption.provider_name &&
+            !query.slugs?.includes(`${selected_genre?.name?.toLowerCase().replaceAll(" ", "-")}`):
+            href = `${rootPath}${type}`;
+            break;
+          case provider_name === defaultServiceOption.provider_name &&
+            query.slugs?.includes(`${selected_genre?.name.toLowerCase().replaceAll(" ", "-")}`):
+            href = `${rootPath}${type}/genre/${slugify(selected_genre?.name as string, {
+              lower: true,
+            }).replace(/and/g, "&")}`;
+            break;
+          case !query.slugs?.includes(`${selected_genre?.name.toLowerCase().replaceAll(" ", "-")}`):
+            href = `${rootPath}${type}/network/${slugify(provider_name.replace(" Plus", "+"), {
+              lower: true,
+            }).replace(/and/g, "&")}`;
+            break;
+          default:
+            href = `${rootPath}${type}/genre/${slugify(selected_genre?.name as string, {
+              lower: true,
+            }).replace(/and/g, "&")}/${slugify(provider_name.replace(" Plus", "+"), {
+              lower: true,
+            }).replace(/and/g, "&")}`;
+            break;
+        }
+
         return (
           <li
             key={provider_id}
@@ -425,34 +454,7 @@ const DropdownService: React.FC<DropdownServiceProps> = ({
                 : styles.listItem
             }
           >
-            <Link
-              href={
-                provider_name === defaultServiceOption.provider_name &&
-                !query.slugs?.includes(
-                  `${selected_genre?.name?.toLowerCase().replaceAll(" ", "-")}`
-                )
-                  ? `${rootPath}${type}`
-                  : provider_name === defaultServiceOption.provider_name &&
-                    query.slugs?.includes(
-                      `${selected_genre?.name.toLowerCase().replaceAll(" ", "-")}`
-                    )
-                  ? `${rootPath}${type}/genre/${slugify(selected_genre?.name as string, {
-                      lower: true,
-                    }).replace(/and/g, "&")}`
-                  : !query.slugs?.includes(
-                      `${selected_genre?.name.toLowerCase().replaceAll(" ", "-")}`
-                    )
-                  ? `${rootPath}${type}/network/${slugify(provider_name.replace(" Plus", "+"), {
-                      lower: true,
-                    }).replace(/and/g, "&")}`
-                  : `${rootPath}${type}/genre/${slugify(selected_genre?.name as string, {
-                      lower: true,
-                    }).replace(/and/g, "&")}/${slugify(provider_name.replace(" Plus", "+"), {
-                      lower: true,
-                    }).replace(/and/g, "&")}`
-              }
-              scroll={false}
-            >
+            <Link href={href} scroll={false}>
               <a className={styles.link} onClick={closeDropdown}>
                 {provider_name.replace(" Plus", "+")}
               </a>
