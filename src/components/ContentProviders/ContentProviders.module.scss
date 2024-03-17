@@ -10,9 +10,9 @@
 
 .streamingCountries {
   @include mixins.flex-center;
+  flex-wrap: wrap;
   gap: 0.5em;
   margin-bottom: 1rem;
-
   @include mixins.tablet {
     margin-bottom: 0.5rem;
   }
@@ -36,6 +36,7 @@
   font-weight: variable.$fw-bold;
   letter-spacing: variable.$ls;
   color: var(--tertiary-light);
+  text-align: center;
 }
 
 .providersWrapper {
