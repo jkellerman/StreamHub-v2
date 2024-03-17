@@ -36,6 +36,7 @@
 .subheading {
   color: var(--tertiary-light);
   font-size: var(--step--1);
+  letter-spacing: variable.$ls-s;
 
   @include mixins.tablet {
     font-size: inherit;

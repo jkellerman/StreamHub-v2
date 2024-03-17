@@ -1,12 +1,12 @@
 import { LazyMotion, domAnimation, m } from "framer-motion";
 
+import ContentProviders from "@/components/ContentProviders/WatchPage/ContentProviders";
 import styles from "@/components/Panel/Panel.module.scss";
 import { Media } from "@/types/media";
 import { opacity } from "@/utils/animations";
 
 import Button from "../Buttons/Buttons";
 import Content from "../Content/Content";
-import ContentProviders from "../ContentProviders/ContentProviders";
 import Dropdown, { DropdownsInnerContainer, DropdownsContainer } from "../Dropdown/Dropdown";
 import Heading from "../Heading/Heading";
 import MediaGenerator from "../MediaGenerator/MediaGenerator";
@@ -54,7 +54,7 @@ const WatchPage: React.FC<WatchPageProps> = ({
                 Cut through streaming indecision! Use the random generator below to get something to
                 watch tonight on your favourite streaming service.
               </Content>
-              <ContentProviders watchPage />
+              <ContentProviders />
             </div>
 
             <DropdownsInnerContainer>
@@ -102,8 +102,9 @@ const WatchPage: React.FC<WatchPageProps> = ({
                   Suggest a {mediaType === "series" ? "series" : "movie"}
                 </Heading>
                 <Content>
-                  Select your {mediaType} preferences using the options above, have a spin and get a
-                  random {mediaType === "series" ? "show" : "movie"} to watch to tonight.
+                  Select your {mediaType === "series" ? "show" : "movie"} preferences using the
+                  options above, have a spin and get a random{" "}
+                  {mediaType === "series" ? "show" : "movie"} to watch to tonight.
                 </Content>
 
                 <Button variant="primary" isFull onClick={fetchRecommendation} disabled={isLoading}>

@@ -5,6 +5,17 @@
   @include mixins.center;
   @include mixins.flex-center;
   @include mixins.flex-column;
+  margin-bottom: 2rem;
+}
+
+.streamingCountries {
+  @include mixins.flex-center;
+  gap: 0.5em;
+  margin-bottom: 1rem;
+
+  @include mixins.tablet {
+    margin-bottom: 0.5rem;
+  }
 }
 
 .list {
@@ -25,11 +36,6 @@
   font-weight: variable.$fw-bold;
   letter-spacing: variable.$ls;
   color: var(--tertiary-light);
-  margin-bottom: 1rem;
-
-  @include mixins.tablet {
-    margin-bottom: 0;
-  }
 }
 
 .providersWrapper {
@@ -47,15 +53,6 @@
     @include mixins.flex-row;
   }
 }
-
-.logosWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  font-size: var(--step--1);
-  gap: 0.5rem;
-}
-
 .logo {
   border-radius: 5px;
 }

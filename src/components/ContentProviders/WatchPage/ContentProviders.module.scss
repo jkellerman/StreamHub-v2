@@ -1,0 +1,11 @@
+.logosWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: var(--step--1);
+  gap: 0.5rem;
+}
+
+.logo {
+  border-radius: 5px;
+}

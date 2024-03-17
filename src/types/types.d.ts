@@ -8,4 +8,10 @@ export declare namespace Types {
     iso_3166_1: string;
     native_name: string;
   }
+  export interface IPrimaryRegions {
+    english_name: string;
+    iso_3166_1: string;
+    native_name: string;
+    flag: "flagUK" | "flagUS";
+  }
 }

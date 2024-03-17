@@ -44,8 +44,18 @@ export const excludedStrings = [
 ];
 
 export const primaryRegions = [
-  { english_name: "United Kingdom", iso_3166_1: "GB", native_name: "United Kingdom" },
-  { english_name: "United States of America", iso_3166_1: "US", native_name: "United States" },
+  {
+    english_name: "United Kingdom",
+    iso_3166_1: "GB",
+    native_name: "United Kingdom",
+    flag: "flagUK",
+  },
+  {
+    english_name: "United States of America",
+    iso_3166_1: "US",
+    native_name: "United States",
+    flag: "flagUS",
+  },
 ];
 
 export const countryFlags = {

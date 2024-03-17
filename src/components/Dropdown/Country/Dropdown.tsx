@@ -3,21 +3,18 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 import { useRouter } from "next/router";
 
 import Icon from "@/components/Icon/Icon";
-import { countryFlags } from "@/constants/app";
 import { useRegion } from "@/src/context/regionContext";
 import { Types } from "@/types/types";
 
 import styles from "./Dropdown.module.scss";
 
 interface DropdownProps {
-  regions: Types.IRegions[];
+  regions: Types.IPrimaryRegions[];
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ regions }) => {
   const { region, setRegion } = useRegion();
   const router = useRouter();
-
-  const FlagEmoji = (countryFlags as Record<string, string>)[region as string];
 
   const reloadPage = (region: string) => {
     if (region === "GB") {
@@ -30,7 +27,6 @@ const Dropdown: React.FC<DropdownProps> = ({ regions }) => {
     <LazyMotion features={domAnimation}>
       <DropdownMenu.Root>
         <m.div
-          className={styles.container}
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
@@ -40,10 +36,10 @@ const Dropdown: React.FC<DropdownProps> = ({ regions }) => {
           }}
         >
           <div className={styles.triggerContainer}>
-            <div className={styles.triggerSubheading}>Select country</div>
             <DropdownMenu.Trigger asChild>
               <button className={styles.trigger} aria-label="choose region">
-                <span className={styles.triggerFlag}>{FlagEmoji}</span>
+                {region === "GB" && <Icon icon="flagUK" />}
+                {region === "US" && <Icon icon="flagUS" />}
                 <Icon icon="chevronDown" width="15" height="15" />
               </button>
             </DropdownMenu.Trigger>
@@ -64,9 +60,7 @@ const Dropdown: React.FC<DropdownProps> = ({ regions }) => {
                       }
                     >
                       {item.native_name}
-                      <span className={styles.menuItemFlag}>
-                        {(countryFlags as Record<string, string>)[item.iso_3166_1]}
-                      </span>
+                      <Icon icon={item.flag} />
                     </DropdownMenu.DropdownMenuItem>
                   );
                 })}

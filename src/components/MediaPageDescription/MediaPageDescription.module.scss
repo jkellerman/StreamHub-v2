@@ -5,6 +5,7 @@
   @include mixins.center;
   margin-bottom: 2rem;
   color: var(--tertiary-light);
+  letter-spacing: variable.$ls-s;
 }
 
 .description {

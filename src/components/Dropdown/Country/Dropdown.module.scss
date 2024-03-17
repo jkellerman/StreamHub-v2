@@ -1,13 +1,6 @@
 @use "@/styles/variables" as variable;
 @use "@/styles/mixins" as mixins;
 
-.container {
-  @include mixins.center;
-  @include mixins.flex-center;
-  @include mixins.flex-column;
-  margin-bottom: 2rem;
-}
-
 .triggerContainer {
   @include mixins.flex-row;
   gap: 0.5rem;
@@ -17,6 +10,7 @@
 .trigger {
   background-color: var(--tertiary-dark);
   border-radius: variable.$border-radius-l;
+  padding: 0.5em 1.25em;
 }
 
 .triggerSubheading {
@@ -29,7 +23,7 @@
 }
 
 .trigger {
-  padding: 0rem 1rem;
+  padding: 0.25em 0.75em;
   border: 1px solid var(--secondary-light);
   border-radius: variable.$border-radius-l;
   color: var(--tertiary-dark);
@@ -39,7 +33,6 @@
   text-transform: uppercase;
   letter-spacing: variable.$ls;
   font-weight: variable.$fw-reg;
-
   &:hover,
   &:active {
     background: linear-gradient(90deg, var(--quaternary-gradient));
