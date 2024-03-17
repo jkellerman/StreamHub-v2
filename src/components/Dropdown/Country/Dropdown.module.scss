@@ -23,7 +23,7 @@
 }
 
 .trigger {
-  padding: 0.1em 0.75em;
+  padding: 0.25em 0.75em;
   border: 1px solid var(--secondary-light);
   border-radius: variable.$border-radius-l;
   color: var(--tertiary-dark);
@@ -33,9 +33,6 @@
   text-transform: uppercase;
   letter-spacing: variable.$ls;
   font-weight: variable.$fw-reg;
-  @include mixins.tablet {
-    padding: 0.25em 0.75em;
-  }
   &:hover,
   &:active {
     background: linear-gradient(90deg, var(--quaternary-gradient));

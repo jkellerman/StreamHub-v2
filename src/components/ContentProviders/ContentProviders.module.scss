@@ -53,6 +53,9 @@
     @include mixins.flex-row;
   }
 }
+.logo {
+  border-radius: 5px;
+}
 
 .loading,
 .error {
