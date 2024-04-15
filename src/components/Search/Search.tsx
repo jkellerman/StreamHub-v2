@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEvent, useState, useEffect, useRef } from "react";
 import slugify from "slugify";
+import { useDebouncedCallback } from "use-debounce";
 
 import Icon from "@/components/Icon/Icon";
 import Spinner from "@/components/Spinner/SearchBar/Spinner";
@@ -46,6 +47,7 @@ const Search: React.FC = () => {
   // Handle whether searchbar is active
   const handleIsSearchBoxActive = () => {
     setSearchQuery("");
+    setSearchResults([]);
     setSearchIsActive(false);
   };
 
@@ -123,35 +125,37 @@ const Search: React.FC = () => {
   }, [searchResultsItems, activeResultIndex, searchResults, router, searchQuery]);
 
   // Fetch search results when searchQuery changes
-  useEffect(() => {
+  const fetchSearchResultsDebounced = useDebouncedCallback(async (query: string) => {
     try {
-      if (searchQuery.length >= 2) {
-        const fetchSearchResults = async () => {
-          const endpoint = `/api/search/multi/${searchQuery}`;
-          const res = await fetch(endpoint);
-          const data = await res.json();
-          const filteredArray = data.data.results.filter(
-            (item: IMovieData) => !item.known_for_department
-          );
-          const slicedArr = filteredArray.slice(0, 5);
-          setIsLoading(true);
-          setSearchResults(slicedArr);
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 1000); // delay loading state for better user experience
-          setIsError(false);
-        };
-        fetchSearchResults();
-      } else if (searchQuery.length <= 1) {
-        setSearchResults([]);
-        setActiveResultIndex(-1);
-        setIsLoading(null); // Reset to null is in place to prevent 'no suggestions' from rendering in between when the user types into search input and when the data is being fetched
-        setIsError(false);
-      }
+      const endpoint = `/api/search/multi/${query}`;
+      const res = await fetch(endpoint);
+      const data = await res.json();
+      const filteredArray = data.data.results.filter(
+        (item: IMovieData) => !item.known_for_department
+      );
+      const slicedArr = filteredArray.slice(0, 5);
+      setSearchResults(slicedArr);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300); // delay loading state for better user experience
+      setIsError(false);
     } catch (error) {
       setIsError(true);
+      setIsLoading(false);
     }
-  }, [searchQuery]);
+  }, 500);
+
+  useEffect(() => {
+    if (searchQuery.length >= 2) {
+      setIsLoading(true);
+      fetchSearchResultsDebounced(searchQuery);
+    } else if (searchQuery.length === 0) {
+      setSearchResults([]);
+      setActiveResultIndex(-1);
+      setIsLoading(null); // Reset to null is in place to prevent 'no suggestions' from rendering in between when the user types into search input and when the data is being fetched
+      setIsError(false);
+    }
+  }, [fetchSearchResultsDebounced, searchQuery]);
 
   // Calculate container height for smooth transition
   useEffect(() => {
@@ -178,7 +182,7 @@ const Search: React.FC = () => {
       }
     };
     calculateContainerHeight();
-  }, [searchQuery.length, searchResults.length, isLoading, containerRef]);
+  }, [searchQuery, searchResults, isLoading, containerRef]);
 
   return (
     <SearchContainer
