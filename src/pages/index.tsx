@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import QueryString from "qs";
-import React from "react";
+import React, { useEffect } from "react";
 
 import CTA from "@/components/CallToActionSection/CallToActionSection";
 import Carousel from "@/components/Carousel/Carousel";
@@ -20,6 +20,11 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ contentProviders }) => {
+  useEffect(() => {
+    // warm up movie pages before visit as a workaround for cold start
+    fetch("/api/movie/movie");
+  }, []);
+
   const { providers } = useRegion();
 
   const providerIds =
