@@ -135,20 +135,6 @@ select {
   font-family: inherit;
 }
 
-#nprogress {
-  pointer-events: none;
-}
-
-#nprogress .bar {
-  background: var(--primary-light);
-  position: fixed;
-  z-index: variable.$z-index-5;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-}
-
 ::-webkit-scrollbar {
   width: 8px;
 }
