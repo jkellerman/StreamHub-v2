@@ -7,8 +7,6 @@
   z-index: variable.$z-index-5;
   border-bottom: 0px solid var(--secondary-dark);
   position: sticky;
-  @include mixins.tablet {
-  }
 }
 
 .header {
