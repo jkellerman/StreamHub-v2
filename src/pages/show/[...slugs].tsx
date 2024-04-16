@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import { getPlaiceholder } from "plaiceholder";
 import qs from "qs";
 import React from "react";
 
@@ -13,9 +14,11 @@ import MediaDetailsPanel from "@/components/MediaDetailsPanel/MediaDetailsPanel"
 import MediaInfoBox from "@/components/MediaInfoBox/MediaInfoBox";
 const TabList = dynamic(() => import("@/components/TabList/TabList"));
 import {
+  BACKGROUND_URL_IMAGE_XL,
   BASE_TMDB_QUERY_DISCOVER_PARAMS,
   BASE_TMDB_QUERY_SEARCH_PARAMS,
   BASE_TMDB_URL,
+  POSTER_URL_IMAGE,
 } from "@/constants/tmdb";
 import { Media, Types } from "@/src/types";
 import { FetchDetails } from "@/utils/tmdbDataHelpers";
@@ -37,6 +40,10 @@ interface SeriesProps {
   id: number;
   regions: Types.IRegions[];
   defaultTab: string;
+  backdrop: string;
+  backdropPlaceholder: string;
+  poster: string;
+  posterPlaceholder: string;
 }
 
 const Series: React.FC<SeriesProps> = ({
@@ -52,12 +59,14 @@ const Series: React.FC<SeriesProps> = ({
   id,
   regions,
   defaultTab,
+  backdrop,
+  backdropPlaceholder,
+  poster,
+  posterPlaceholder,
 }) => {
   const endpoint = `/api/details/tv/${id}`;
   const { data, isError, isLoading } = FetchDetails(endpoint);
-  const backdrop = data && data.backdrop_path;
   const recommendations = data && data.recommendations;
-  const poster = data && data.poster_path;
 
   return (
     <>
@@ -67,7 +76,7 @@ const Series: React.FC<SeriesProps> = ({
       </Head>
       <Header animate />
       <main>
-        <BackgroundImage title={title} backdrop={backdrop} />
+        <BackgroundImage title={title} backdrop={backdrop} placeholder={backdropPlaceholder} />
         <MediaDetailsPanel title={title} id={id} type="tv">
           <MediaDetails
             genres={genres}
@@ -79,6 +88,7 @@ const Series: React.FC<SeriesProps> = ({
         <MediaInfoBox
           overview={overview}
           poster={poster}
+          posterPlaceholder={posterPlaceholder}
           title={title}
           cast={cast}
           network={network}
@@ -139,6 +149,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     number_of_seasons,
     networks,
     name: title,
+    backdrop_path,
+    poster_path,
   } = data;
 
   const certification: Media.ICertificationSeries | null =
@@ -190,6 +202,21 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     .filter((region: Types.IRegions) => region.iso_3166_1 !== "XK")
     .sort((a: Types.IRegions, b: Types.IRegions) => a.english_name.localeCompare(b.english_name));
 
+  const backdropSrc = `${BACKGROUND_URL_IMAGE_XL}${backdrop_path}`;
+
+  const backdropBuffer = await fetch(backdropSrc).then(async (res) =>
+    Buffer.from(await res.arrayBuffer())
+  );
+
+  const { base64: backdropBase64 } = await getPlaiceholder(backdropBuffer);
+
+  const posterSrc = `${POSTER_URL_IMAGE}${poster_path}`;
+
+  const posterBuffer = await fetch(posterSrc).then(async (res) =>
+    Buffer.from(await res.arrayBuffer())
+  );
+
+  const { base64: posterBase64 } = await getPlaiceholder(posterBuffer);
   return {
     props: {
       series_age_rating: age_rating,
@@ -205,6 +232,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       data,
       id: slugs ? slugs[0] : null,
       regions: sortedRegions,
+      backdrop: backdrop_path,
+      backdropPlaceholder: backdropBase64,
+      poster: poster_path,
+      posterPlaceholder: posterBase64,
     },
   };
 };

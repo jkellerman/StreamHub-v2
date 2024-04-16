@@ -8,10 +8,10 @@ import { Media } from "@/types/media";
 import { scale } from "@/utils/animations";
 
 import Button from "../Buttons/Buttons";
+import Card from "../Card/Card";
 import Trailer from "../Dialog/Trailer/Dialog";
 import Heading from "../Heading/Heading";
 import MediaRunTimeOrSeasons from "../MediaRunTimeOrSeasons/MediaRunTimeOrSeasons";
-import Poster from "../Poster/Poster";
 import ProgressRating from "../ProgressRating/ProgressRating";
 import ReleaseDate from "../ReleaseDate/ReleaseDate";
 import Spinner from "../Spinner/Spinner";
@@ -72,7 +72,13 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({
               initial="hidden"
               animate="visible"
             >
-              <Poster poster={data.poster_path} title={type === "movie" ? data.title : data.name} />
+              {/* <Poster posterPlaceholder={} poster={data.poster_path} title={type === "movie" ? data.title : data.name} /> */}
+              <Card
+                poster={data.poster_path}
+                movieTitle={data.title}
+                seriesName={data.name}
+                generator
+              />
               <div className={styles.posterWrapperDetails}>
                 <Heading as="h3" size="s">
                   {type === "movie" ? data.title : data.name}

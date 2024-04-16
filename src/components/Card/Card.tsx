@@ -10,14 +10,34 @@ import { shimmer, toBase64 } from "@/utils/placeholder";
 import styles from "../Card/Card.module.scss";
 
 interface CardProps {
-  id: number;
+  id?: number;
   poster: string;
   seriesName?: string;
   movieTitle?: string;
+  generator?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle }) => {
+const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle, generator }) => {
   const { region } = useRegion();
+
+  if (generator) {
+    return (
+      <>
+        <div className={styles.generatorContainer}>
+          <Image
+            src={`${POSTER_URL_IMAGE}${poster}`}
+            alt={`${seriesName || movieTitle}`}
+            unoptimized={true}
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
+            width={110}
+            height={165}
+            className={styles.card}
+          />
+        </div>
+      </>
+    );
+  }
   return (
     <>
       {poster && (

@@ -33,6 +33,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/styles/fonts.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/styles/fonts.js", "next.config.mjs"],
   "exclude": ["node_modules"]
 }
