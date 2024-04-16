@@ -19,15 +19,3 @@ export const scale = {
     scale: 1,
   },
 };
-
-export const enterY = {
-  hidden: {
-    y: -150,
-  },
-  visible: {
-    y: 0,
-    transition: {
-      ease: "easeIn",
-    },
-  },
-};

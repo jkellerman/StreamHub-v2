@@ -5,10 +5,8 @@
   @include mixins.flex-column;
   background-color: var(--secondary-dark);
   z-index: variable.$z-index-5;
-  border-bottom: 0px solid var(--secondary-dark);
+  border-bottom: 3px solid var(--secondary-dark);
   position: sticky;
-  @include mixins.tablet {
-  }
 }
 
 .header {
@@ -17,7 +15,7 @@
   z-index: variable.$z-index-5;
   top: 0px;
   transition: border-bottom 250ms ease-in-out;
-  border-bottom: 0px solid var(--secondary-dark);
+  border-bottom: 3px solid var(--secondary-dark);
   width: 100%;
 }
 
@@ -55,6 +53,10 @@
     @include mixins.flex-row;
     align-items: center;
   }
+}
+
+.animate {
+  animation: enterY 250ms ease-in;
 }
 
 .mobileContainer,
@@ -116,4 +118,13 @@
   gap: 0.5rem;
   font-weight: variable.$fw-med;
   margin-left: 1rem;
+}
+
+@keyframes enterY {
+  from {
+    transform: translateY(-150px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
