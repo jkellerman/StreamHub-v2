@@ -27,7 +27,7 @@ export const enterY = {
   visible: {
     y: 0,
     transition: {
-      ease: "linear",
+      ease: "easeIn",
     },
   },
 };
