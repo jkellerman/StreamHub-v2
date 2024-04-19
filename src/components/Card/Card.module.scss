@@ -1,6 +1,7 @@
 @use "@/styles/variables" as variable;
 @use "@/styles/mixins" as mixins;
 
+.containerGenerator,
 .container,
 .noCard {
   position: relative;

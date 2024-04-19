@@ -2,7 +2,6 @@ import Image from "next/future/image";
 
 import poster1 from "@/public/assets/poster1.webp";
 import poster2 from "@/public/assets/poster2.webp";
-import { shimmer, toBase64 } from "@/utils/placeholder";
 
 import Button from "../Buttons/Buttons";
 import Content from "../Content/Content";
@@ -22,7 +21,6 @@ const CTA: React.FC = () => {
               alt="poster"
               unoptimized={true}
               placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
               width={110}
               height={165}
             />
@@ -32,7 +30,6 @@ const CTA: React.FC = () => {
               alt="poster"
               unoptimized={true}
               placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
               width={110}
               height={165}
             />

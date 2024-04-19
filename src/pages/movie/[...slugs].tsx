@@ -12,11 +12,14 @@ import MediaDetails from "@/components/MediaDetails/MediaDetails";
 import MediaDetailsPanel from "@/components/MediaDetailsPanel/MediaDetailsPanel";
 import MediaInfoBox from "@/components/MediaInfoBox/MediaInfoBox";
 import {
+  BACKGROUND_URL_IMAGE_XL,
   BASE_TMDB_QUERY_DISCOVER_PARAMS,
   BASE_TMDB_QUERY_SEARCH_PARAMS,
   BASE_TMDB_URL,
+  POSTER_URL_IMAGE,
 } from "@/constants/tmdb";
 import { Media, Types } from "@/src/types";
+import { getBlurredDataUrls } from "@/utils/getBase64";
 import { FetchDetails } from "@/utils/tmdbDataHelpers";
 
 const Recommendations = dynamic(
@@ -37,6 +40,9 @@ interface MovieProps {
   id: number;
   regions: Types.IRegions[];
   defaultTab: string;
+  backdrop: string;
+  poster: string;
+  placeholders: string[];
 }
 
 const Movie: React.FC<MovieProps> = ({
@@ -52,12 +58,13 @@ const Movie: React.FC<MovieProps> = ({
   director,
   regions,
   defaultTab,
+  backdrop,
+  poster,
+  placeholders,
 }) => {
   const endpoint = `/api/details/movie/${id}`;
   const { data, isError, isLoading } = FetchDetails(endpoint);
-  const backdrop = data && data.backdrop_path;
   const recommendations = data && data.recommendations;
-  const poster = data && data.poster_path;
 
   return (
     <>
@@ -68,7 +75,7 @@ const Movie: React.FC<MovieProps> = ({
       <Header animate />
 
       <main>
-        <BackgroundImage title={title} backdrop={backdrop} />
+        <BackgroundImage title={title} backdrop={backdrop} placeholder={placeholders[0]} />
         <MediaDetailsPanel title={title} id={id} type="movie">
           <MediaDetails
             genres={genres}
@@ -80,6 +87,7 @@ const Movie: React.FC<MovieProps> = ({
         <MediaInfoBox
           overview={overview}
           poster={poster}
+          placeholder={placeholders[1]}
           title={title}
           cast={cast}
           director={director}
@@ -135,7 +143,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const response = await fetch(url as string);
   const data = await response.json();
 
-  const { release_dates, release_date, runtime, overview, credits, genres, title } = data;
+  const {
+    release_dates,
+    release_date,
+    runtime,
+    overview,
+    credits,
+    genres,
+    title,
+    backdrop_path,
+    poster_path,
+  } = data;
 
   const getDirector: Media.IDirector | undefined = credits?.crew.find(
     (crew: Media.ICast) => crew.department === "Directing"
@@ -194,6 +212,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const sortedRegions = regionsData.results
     .filter((region: Types.IRegions) => region.iso_3166_1 !== "XK")
     .sort((a: Types.IRegions, b: Types.IRegions) => a.english_name.localeCompare(b.english_name));
+  const backdropSrc = `${BACKGROUND_URL_IMAGE_XL}${backdrop_path}`;
+  const posterSrc = `${POSTER_URL_IMAGE}${poster_path}`;
+
+  const images = [backdropSrc, posterSrc];
+
+  const placeholders = await getBlurredDataUrls(images);
 
   return {
     props: {
@@ -209,6 +233,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       title,
       id: slugs ? slugs[0] : null,
       regions: sortedRegions,
+      backdrop: backdrop_path,
+      poster: poster_path,
+      placeholders,
     },
   };
 };

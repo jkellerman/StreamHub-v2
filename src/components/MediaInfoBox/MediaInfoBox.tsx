@@ -17,12 +17,14 @@ interface MediaInfoBoxProps {
   cast: Media.ICastMember[];
   director?: Media.IDirector;
   network?: string[];
+  placeholder: string;
 }
 
 const MediaInfoBox: React.FC<MediaInfoBoxProps> = ({
   title,
   overview,
   poster,
+  placeholder,
   cast,
   director,
   network,
@@ -44,7 +46,7 @@ const MediaInfoBox: React.FC<MediaInfoBoxProps> = ({
           }}
         >
           <div className={styles.mediaInfoCard}>
-            <Poster poster={poster} title={title} />
+            <Poster poster={poster} title={title} placeholder={placeholder} />
             <dl className={styles.details}>
               <MediaDirectorOrNetwork director={director} network={network} />
               <Cast cast={cast} />

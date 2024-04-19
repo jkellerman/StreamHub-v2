@@ -2,7 +2,6 @@ import Image from "next/image";
 import React from "react";
 
 import { POSTER_URL_IMAGE } from "@/constants/tmdb";
-import { shimmer, toBase64 } from "@/utils/placeholder";
 
 import styles from "../Poster/Poster.module.scss";
 
@@ -12,22 +11,27 @@ interface PosterProps {
   movies?: boolean;
   id?: number;
   name?: string;
+  placeholder: string;
 }
 
-const Poster: React.FC<PosterProps> = ({ poster, title }) => {
+const Poster: React.FC<PosterProps> = ({ poster, title, placeholder }) => {
   return (
-    <div className={styles.posterWrapper}>
-      {poster && (
-        <Image
-          src={`${POSTER_URL_IMAGE}${poster}`}
-          alt={`${title} poster`}
-          placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
-          unoptimized={true}
-          layout="fill"
-        />
+    <>
+      {poster ? (
+        <div className={styles.posterWrapper}>
+          <Image
+            src={`${POSTER_URL_IMAGE}${poster}`}
+            alt={`${title} poster`}
+            placeholder="blur"
+            blurDataURL={placeholder}
+            unoptimized={true}
+            layout="fill"
+          />
+        </div>
+      ) : (
+        <div className={`${styles.posterWrapper} ${styles.noPoster}`}></div>
       )}
-    </div>
+    </>
   );
 };
 
