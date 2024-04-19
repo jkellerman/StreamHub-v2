@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       "https://streamhubtv.vercel.app/movie/120/GB?The-Lord-of-the-Rings:-The-Fellowship-of-the-Ring";
     await fetch(websiteUrl);
 
-    console.log("Server warmed up successfully by visiting the webpage!");
+    console.info("Server warmed up successfully by visiting the webpage!");
 
     // Send a response back to the client (optional)
     res.status(200).end();
