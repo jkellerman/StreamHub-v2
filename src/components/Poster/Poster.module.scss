@@ -1,7 +1,8 @@
 @use "@/styles/variables" as variable;
 @use "@/styles/mixins" as mixins;
 
-.posterWrapper {
+.posterWrapper,
+.noPoster {
   position: relative;
   overflow: hidden;
   object-fit: cover;
@@ -11,10 +12,23 @@
   min-height: 165px;
   box-shadow: 0px 20px 20px 0px rgba(6, 6, 6, 0.3);
 
-  background: linear-gradient(90deg, var(--secondary-gradient));
   @include mixins.tablet {
     min-width: 160px;
     min-height: 240px;
     max-height: 240px;
   }
+}
+
+.noPoster {
+  background: linear-gradient(90deg, var(--quaternary-gradient));
+}
+
+.isLoading {
+  filter: blur(0.5rem);
+  transition: all 150ms ease-in;
+}
+
+.isLoaded {
+  filter: blur(0);
+  transition: all 150ms ease-in;
 }

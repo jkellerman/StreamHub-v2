@@ -37,6 +37,8 @@ interface MovieProps {
   id: number;
   regions: Types.IRegions[];
   defaultTab: string;
+  backdrop: string;
+  poster: string;
 }
 
 const Movie: React.FC<MovieProps> = ({
@@ -52,12 +54,12 @@ const Movie: React.FC<MovieProps> = ({
   director,
   regions,
   defaultTab,
+  backdrop,
+  poster,
 }) => {
   const endpoint = `/api/details/movie/${id}`;
   const { data, isError, isLoading } = FetchDetails(endpoint);
-  const backdrop = data && data.backdrop_path;
   const recommendations = data && data.recommendations;
-  const poster = data && data.poster_path;
 
   return (
     <>
@@ -135,7 +137,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const response = await fetch(url as string);
   const data = await response.json();
 
-  const { release_dates, release_date, runtime, overview, credits, genres, title } = data;
+  const {
+    release_dates,
+    release_date,
+    runtime,
+    overview,
+    credits,
+    genres,
+    title,
+    backdrop_path,
+    poster_path,
+  } = data;
 
   const getDirector: Media.IDirector | undefined = credits?.crew.find(
     (crew: Media.ICast) => crew.department === "Directing"
@@ -209,6 +221,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       title,
       id: slugs ? slugs[0] : null,
       regions: sortedRegions,
+      backdrop: backdrop_path,
+      poster: poster_path,
     },
   };
 };
