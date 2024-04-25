@@ -37,6 +37,8 @@ interface SeriesProps {
   id: number;
   regions: Types.IRegions[];
   defaultTab: string;
+  backdrop: string;
+  poster: string;
 }
 
 const Series: React.FC<SeriesProps> = ({
@@ -52,12 +54,12 @@ const Series: React.FC<SeriesProps> = ({
   id,
   regions,
   defaultTab,
+  backdrop,
+  poster,
 }) => {
   const endpoint = `/api/details/tv/${id}`;
   const { data, isError, isLoading } = FetchDetails(endpoint);
-  const backdrop = data && data.backdrop_path;
   const recommendations = data && data.recommendations;
-  const poster = data && data.poster_path;
 
   return (
     <>
@@ -139,6 +141,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     number_of_seasons,
     networks,
     name: title,
+    backdrop_path,
+    poster_path,
   } = data;
 
   const certification: Media.ICertificationSeries | null =
@@ -205,6 +209,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       data,
       id: slugs ? slugs[0] : null,
       regions: sortedRegions,
+      backdrop: backdrop_path,
+      poster: poster_path,
     },
   };
 };

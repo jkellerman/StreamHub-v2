@@ -4,7 +4,6 @@
 .headingContainer {
   @include mixins.flex-column;
   @include mixins.center;
-  margin-bottom: 1.25rem;
   position: relative;
   gap: 0.25rem;
   z-index: variable.$z-index-3;

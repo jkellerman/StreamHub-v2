@@ -1,23 +1,46 @@
 import Image from "next/future/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import slugify from "slugify";
 
 import { POSTER_URL_IMAGE } from "@/constants/tmdb";
 import { useRegion } from "@/src/context/regionContext";
-import { shimmer, toBase64 } from "@/utils/placeholder";
 
 import styles from "../Card/Card.module.scss";
 
 interface CardProps {
-  id: number;
+  id?: number;
   poster: string;
   seriesName?: string;
   movieTitle?: string;
+  generator?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle }) => {
+const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle, generator }) => {
   const { region } = useRegion();
+  const [isLoading, setIsLoading] = useState(true);
+
+  if (generator && poster) {
+    return (
+      <div className={styles.containerGenerator}>
+        <Image
+          src={`${POSTER_URL_IMAGE}${poster}`}
+          alt={`${seriesName || movieTitle}`}
+          unoptimized={true}
+          width={110}
+          height={165}
+          className={
+            isLoading ? `${styles.card} ${styles.isLoading}` : `${styles.card} ${styles.isLoaded}`
+          }
+          onLoadingComplete={() => setIsLoading(false)}
+        />
+      </div>
+    );
+  }
+  if (generator && !poster) {
+    return <div className={styles.noCard}></div>;
+  }
+
   return (
     <>
       {poster && (
@@ -34,11 +57,14 @@ const Card: React.FC<CardProps> = ({ id, poster, seriesName, movieTitle }) => {
               src={`${POSTER_URL_IMAGE}${poster}`}
               alt={`${seriesName || movieTitle}`}
               unoptimized={true}
-              placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(240, 140))}`}
               width={110}
               height={165}
-              className={styles.card}
+              className={
+                isLoading
+                  ? `${styles.card} ${styles.isLoading}`
+                  : `${styles.card} ${styles.isLoaded}`
+              }
+              onLoadingComplete={() => setIsLoading(false)}
             />
           </a>
         </Link>

@@ -44,6 +44,7 @@
 
 .carousel {
   @include mixins.center;
+  padding-top: 1rem;
 }
 
 .list,
