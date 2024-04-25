@@ -1,4 +1,5 @@
 @use "variables" as variable;
+@use "@/styles/mixins" as mixins;
 
 :root {
   // Theme
@@ -105,6 +106,18 @@ body {
   color: var(--quinary);
   font-weight: variable.$fw-light;
   -webkit-font-smoothing: antialiased;
+}
+
+#mainHome {
+  background: radial-gradient(circle at 45% 49%, rgba(29, 68, 93, 0.5), transparent 10%),
+    radial-gradient(circle at 55% 51%, rgba(77, 66, 118, 0.5), transparent 10%);
+
+  @include mixins.tablet {
+    background: radial-gradient(circle at 45% 49%, rgba(29, 68, 93, 0.5), transparent 10%),
+      radial-gradient(circle at 55% 51%, rgba(77, 66, 118, 0.5), transparent 10%),
+      radial-gradient(circle at 15% 80%, rgba(29, 68, 93, 0.5), transparent 10%),
+      radial-gradient(circle at 25% 82%, rgba(77, 66, 118, 0.5), transparent 10%);
+  }
 }
 
 a {

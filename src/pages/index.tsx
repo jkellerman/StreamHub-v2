@@ -44,7 +44,7 @@ const Home: React.FC<HomeProps> = ({ contentProviders }) => {
         />
       </Head>
       <Header />
-      <main>
+      <main id="mainHome">
         <Hero />
         <section>
           <ContentProviders contentProviders={contentProviders} />

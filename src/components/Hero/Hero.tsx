@@ -17,7 +17,7 @@ const Hero = () => {
   };
 
   return (
-    <>
+    <div className={styles.outerContainer}>
       <LazyMotion features={domAnimation}>
         <m.div className={styles.container} variants={opacity} initial="hidden" animate="visible">
           <div className={styles.subheading}>Get recommendations for:</div>
@@ -42,7 +42,7 @@ const Hero = () => {
         </m.div>
         <hr className={styles.hr} id="hr" />
       </LazyMotion>
-    </>
+    </div>
   );
 };
 
