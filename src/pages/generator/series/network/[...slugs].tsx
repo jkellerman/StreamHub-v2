@@ -6,19 +6,19 @@ import React, { useEffect, useState } from "react";
 
 import Carousel from "@/components/Carousel/Carousel";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
+import Generator from "@/components/Generator/Generator";
 import Header from "@/components/Header/Header";
-import WatchPage from "@/components/WatchPage/WatchPage";
 import { DEFAULT_GENRE, DEFAULT_WATCH_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS } from "@/constants/tmdb";
 import useGenerator from "@/hooks/useGenerator";
 import { useRegion } from "@/src/context/regionContext";
 import { Media } from "@/types/media";
 
-interface WatchProps {
+interface GeneratorProps {
   genreList: Media.IGenre[];
 }
 
-const Network: React.FC<WatchProps> = ({ genreList }) => {
+const Network: React.FC<GeneratorProps> = ({ genreList }) => {
   const { query } = useRouter();
   const slug = query.slugs;
 
@@ -74,7 +74,7 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
       </Head>
       <Header />
       <main>
-        <WatchPage
+        <Generator
           selectedGenre={selectedGenre}
           genreList={genreList}
           selectedNetwork={selectedNetwork}

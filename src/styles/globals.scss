@@ -113,8 +113,8 @@ body {
     radial-gradient(circle at 55% 51%, rgba(77, 66, 118, 0.5), transparent 10%);
 
   @include mixins.tablet {
-    background: radial-gradient(circle at 45% 49%, rgba(29, 68, 93, 0.5), transparent 10%),
-      radial-gradient(circle at 55% 51%, rgba(77, 66, 118, 0.5), transparent 10%),
+    background: radial-gradient(circle at 49% 49%, rgba(29, 68, 93, 0.5), transparent 20%),
+      radial-gradient(circle at 51% 51%, rgba(77, 66, 118, 0.5), transparent 20%),
       radial-gradient(circle at 15% 80%, rgba(29, 68, 93, 0.5), transparent 10%),
       radial-gradient(circle at 25% 82%, rgba(77, 66, 118, 0.5), transparent 10%);
   }

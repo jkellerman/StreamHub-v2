@@ -12,7 +12,7 @@ import Heading from "../Heading/Heading";
 import MediaGenerator from "../MediaGenerator/MediaGenerator";
 import { Panel, PanelInner } from "../Panel/Panel";
 
-interface WatchPageProps {
+interface GeneratorPageProps {
   selectedGenre: Media.IGenre;
   genreList: Media.IGenre[];
   selectedNetwork: Media.IServices;
@@ -27,7 +27,7 @@ interface WatchPageProps {
   mediaType: string;
 }
 
-const WatchPage: React.FC<WatchPageProps> = ({
+const GeneratorPage: React.FC<GeneratorPageProps> = ({
   selectedGenre,
   genreList,
   selectedNetwork,
@@ -47,12 +47,12 @@ const WatchPage: React.FC<WatchPageProps> = ({
         <LazyMotion features={domAnimation}>
           <m.div className={styles.container} variants={opacity} initial="hidden" animate="visible">
             <Heading as="h1" size="m">
-              What to watch tonight
+              Get a random pick for tonight
             </Heading>
             <div className={styles.contentWrapper}>
               <Content>
-                Cut through streaming indecision! Use the random generator below to get something to
-                watch tonight on your favourite streaming service.
+                Cut through streaming indecision! Use the generator below to get something to watch
+                tonight on your favourite streaming service.
               </Content>
               <ContentProviders />
             </div>
@@ -63,7 +63,7 @@ const WatchPage: React.FC<WatchPageProps> = ({
               </Heading>
               <DropdownsContainer>
                 <Dropdown
-                  watch
+                  generator
                   type={mediaType}
                   media={mediaType}
                   variant="media"
@@ -73,7 +73,7 @@ const WatchPage: React.FC<WatchPageProps> = ({
 
               <DropdownsContainer>
                 <Dropdown
-                  watch
+                  generator
                   type={mediaType}
                   selected_genre={selectedGenre}
                   genre_list={genreList}
@@ -85,7 +85,7 @@ const WatchPage: React.FC<WatchPageProps> = ({
 
               <DropdownsContainer>
                 <Dropdown
-                  watch
+                  generator
                   type={mediaType}
                   selected_network={selectedNetwork}
                   network_list={networkList as Media.IProvider[]}
@@ -128,4 +128,4 @@ const WatchPage: React.FC<WatchPageProps> = ({
   );
 };
 
-export default WatchPage;
+export default GeneratorPage;

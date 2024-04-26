@@ -33,9 +33,8 @@
 
 .text {
   font-size: var(--step-0);
-  font-weight: variable.$fw-bold;
+  font-weight: variable.$fw-med;
   letter-spacing: variable.$ls;
-  color: var(--tertiary-light);
   text-align: center;
 }
 
@@ -48,6 +47,7 @@
 
 .logoContainer {
   @include mixins.flex-column;
+  color: var(--tertiary-light);
   align-items: center;
   gap: 0.5rem;
   @include mixins.tablet {

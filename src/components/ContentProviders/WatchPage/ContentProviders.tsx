@@ -9,58 +9,25 @@ import primevideo from "@/public/assets/primevideo.webp";
 import styles from "./ContentProviders.module.scss";
 const LOGO_SIZE = 30;
 
-interface ContentProvider {
-  logo_path: string;
-  provider_id: number;
-  provider_name: string;
-}
+const providers = [netflix, disney, primevideo, appletv];
 
-interface ContentProvidersProps {
-  contentProviders?: ContentProvider[];
-  watchPage?: boolean;
-}
-
-const ContentProviders: React.FC<ContentProvidersProps> = () => {
+const ContentProviders: React.FC = () => {
   return (
     <>
       <div className={styles.logosWrapper}>
         <Logo logo="justWatch" />
-        <Image
-          src={netflix}
-          alt="netflix logo"
-          unoptimized={true}
-          priority
-          width={LOGO_SIZE}
-          height={LOGO_SIZE}
-          className={styles.logo}
-        />
-        <Image
-          src={disney}
-          alt="disney logo"
-          unoptimized={true}
-          priority
-          width={LOGO_SIZE}
-          height={LOGO_SIZE}
-          className={styles.logo}
-        />
-        <Image
-          src={primevideo}
-          alt="amazon prime video logo"
-          unoptimized={true}
-          priority
-          width={LOGO_SIZE}
-          height={LOGO_SIZE}
-          className={styles.logo}
-        />
-        <Image
-          src={appletv}
-          alt="appletv logo"
-          unoptimized={true}
-          priority
-          width={LOGO_SIZE}
-          height={LOGO_SIZE}
-          className={styles.logo}
-        />
+        {providers.map((item, i) => (
+          <Image
+            key={i}
+            src={item}
+            alt="netflix logo"
+            unoptimized={true}
+            priority
+            width={LOGO_SIZE}
+            height={LOGO_SIZE}
+            className={styles.logo}
+          />
+        ))}
         & more
       </div>
     </>

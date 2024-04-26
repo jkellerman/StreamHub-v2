@@ -6,22 +6,23 @@ import React, { useEffect, useState } from "react";
 
 import Carousel from "@/components/Carousel/Carousel";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
+import Generator from "@/components/Generator/Generator";
 import Header from "@/components/Header/Header";
-import WatchPage from "@/components/WatchPage/WatchPage";
 import { DEFAULT_GENRE, DEFAULT_WATCH_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS } from "@/constants/tmdb";
 import useGenerator from "@/hooks/useGenerator";
 import { useRegion } from "@/src/context/regionContext";
 import { Media } from "@/types/media";
 
-interface WatchProps {
+interface GeneratorProps {
   genreList: Media.IGenre[];
 }
 
-const Network: React.FC<WatchProps> = ({ genreList }) => {
+const Genre: React.FC<GeneratorProps> = ({ genreList }) => {
   const { query } = useRouter();
   const slug = query.slugs;
-  const [storedMovieData, setStoredMovieData] = useState<Media.IMediaItem | null>(null);
+
+  const [storedSeriesData, setStoredSeriesData] = useState<Media.IMediaItem | null>(null);
 
   const { providers, region } = useRegion();
 
@@ -35,6 +36,10 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
       slug?.includes(provider_name.replace(" Plus", "+").toLowerCase().replaceAll(" ", "-"))
     ) ?? DEFAULT_WATCH_NETWORK;
 
+  const isNetworkSelected = slug?.includes(
+    selectedNetwork.provider_name.replace(" Plus", "+").toLowerCase().replaceAll(" ", "-")
+  );
+
   const networkList = providers && [DEFAULT_WATCH_NETWORK, ...providers];
 
   const providerIds =
@@ -45,22 +50,26 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
   const countryNetworkList = providerIds.toString().split(",").join("|");
 
   const { data, isLoading, isError, noResults, fetchRecommendation } = useGenerator(
-    `/api/network/movie/${region}/${selectedNetwork.provider_id}/`,
-    "movie"
+    `/api/network/tv/${region}/${
+      isNetworkSelected ? selectedNetwork.provider_id : `${countryNetworkList}`
+    }/${selectedGenre.id}`,
+    "tv"
   );
+
   useEffect(() => {
-    const storedData = sessionStorage.getItem("storedMovieGenreData");
+    const storedData = sessionStorage.getItem("storedSeriesGenreData");
     if (storedData) {
-      setStoredMovieData(JSON.parse(storedData));
+      setStoredSeriesData(JSON.parse(storedData));
     }
   }, []);
 
   useEffect(() => {
     if (data) {
-      sessionStorage.setItem("storedMovieGenreData", JSON.stringify(data));
-      setStoredMovieData(data);
+      sessionStorage.setItem("storedSeriesGenreData", JSON.stringify(data));
+      setStoredSeriesData(data);
     }
   }, [data]);
+
   return (
     <>
       <Head>
@@ -72,7 +81,7 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
       </Head>
       <Header />
       <main>
-        <WatchPage
+        <Generator
           selectedGenre={selectedGenre}
           genreList={genreList}
           selectedNetwork={selectedNetwork}
@@ -81,9 +90,9 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
           isError={isError}
           isLoading={isLoading}
           data={data}
-          storedMovieData={storedMovieData}
+          storedSeriesData={storedSeriesData}
           noResults={noResults}
-          mediaType="movies"
+          mediaType="series"
         />
         <CategoryHeading
           category="popular series"
@@ -100,11 +109,11 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
   );
 };
 
-export default Network;
+export default Genre;
 
 export async function getStaticPaths() {
   const response = await fetch(
-    `${BASE_TMDB_URL}/genre/movie/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
+    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
   );
   const genreList = await response.json();
 
@@ -119,7 +128,7 @@ export async function getStaticPaths() {
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(
-    `${BASE_TMDB_URL}/genre/movie/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
+    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
   );
   const genreList = await response.json();
 

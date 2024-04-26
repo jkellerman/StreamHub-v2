@@ -6,26 +6,25 @@ import React, { useEffect, useState } from "react";
 
 import Carousel from "@/components/Carousel/Carousel";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
+import Generator from "@/components/Generator/Generator";
 import Header from "@/components/Header/Header";
-import WatchPage from "@/components/WatchPage/WatchPage";
 import { DEFAULT_GENRE, DEFAULT_WATCH_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS } from "@/constants/tmdb";
 import useGenerator from "@/hooks/useGenerator";
 import { useRegion } from "@/src/context/regionContext";
 import { Media } from "@/types/media";
 
-interface WatchProps {
+interface GeneratorProps {
   genreList: Media.IGenre[];
 }
 
-const Watch: React.FC<WatchProps> = ({ genreList }) => {
+const GeneratorPage: React.FC<GeneratorProps> = ({ genreList }) => {
   const { query } = useRouter();
+  const [storedMovieData, setStoredMovieData] = useState<Media.IMediaItem | null>(null);
   const { providers, region } = useRegion();
-
-  const [storedSeriesData, setStoredSeriesData] = useState<Media.IMediaItem | null>(null);
-
   const selectedGenre =
-    (genreList && genreList.find(({ name }) => name.toLowerCase() === query.genre)) ??
+    (genreList &&
+      genreList.find((genreItem) => genreItem && genreItem.name.toLowerCase() === query.genre)) ??
     DEFAULT_GENRE;
 
   const selectedNetwork =
@@ -43,23 +42,24 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
   const countryNetworkList = providerIds.toString().split(",").join("|");
 
   const { data, isLoading, isError, noResults, fetchRecommendation } = useGenerator(
-    `/api/network/tv/${region}/${countryNetworkList}`,
-    "tv"
+    `/api/network/movie/${region}/${countryNetworkList}`,
+    "movie"
   );
 
   useEffect(() => {
-    const storedData = sessionStorage.getItem("storedSeriesData");
+    const storedData = sessionStorage.getItem("storedMovieData");
     if (storedData) {
-      setStoredSeriesData(JSON.parse(storedData));
+      setStoredMovieData(JSON.parse(storedData));
     }
   }, []);
 
   useEffect(() => {
     if (data) {
-      sessionStorage.setItem("storedSeriesData", JSON.stringify(data));
-      setStoredSeriesData(data);
+      sessionStorage.setItem("storedMovieData", JSON.stringify(data));
+      setStoredMovieData(data);
     }
   }, [data]);
+
   return (
     <>
       <Head>
@@ -71,7 +71,7 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
       </Head>
       <Header />
       <main>
-        <WatchPage
+        <Generator
           selectedGenre={selectedGenre}
           genreList={genreList}
           selectedNetwork={selectedNetwork}
@@ -80,10 +80,11 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
           isError={isError}
           isLoading={isLoading}
           data={data}
-          storedSeriesData={storedSeriesData}
+          storedMovieData={storedMovieData}
           noResults={noResults}
-          mediaType="series"
+          mediaType="movies"
         />
+
         <CategoryHeading
           category="popular series"
           subheading="The most popular on all streaming services."
@@ -99,11 +100,11 @@ const Watch: React.FC<WatchProps> = ({ genreList }) => {
   );
 };
 
-export default Watch;
+export default GeneratorPage;
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(
-    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
+    `${BASE_TMDB_URL}/genre/movie/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
   );
   const genreList = await response.json();
 

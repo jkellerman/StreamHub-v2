@@ -49,7 +49,7 @@ interface DropdownProps {
    * Specifies if the dropdown is on watch page
    * Needed as watch page rootpath is different to movies/series pages
    */
-  watch?: boolean;
+  generator?: boolean;
   /**
    * Styling variations for dropdown
    */
@@ -64,7 +64,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   network_list,
   selected_network,
   variant,
-  watch,
+  generator,
   style,
 }) => {
   const { query } = useRouter();
@@ -108,16 +108,16 @@ const Dropdown: React.FC<DropdownProps> = ({
             query={query}
             type={type}
             closeDropdown={closeDropdown}
-            rootPath={watch ? "/watch/" : "/"}
+            rootPath={generator ? "/generator/" : "/"}
             style={style}
-            watch={watch}
+            generator={generator}
           />
         )}
         {isDropdownOpen && variant === "media" && (
           <DropdownMedia
             closeDropdown={closeDropdown}
             media={media}
-            watch={watch}
+            generator={generator}
             style={style}
             clearSessionStorage={clearSessionStorage}
           />
@@ -130,9 +130,9 @@ const Dropdown: React.FC<DropdownProps> = ({
             query={query}
             type={type}
             closeDropdown={closeDropdown}
-            rootPath={watch ? "/watch/" : "/"}
+            rootPath={generator ? "/generator/" : "/"}
             style={style}
-            watch={watch}
+            generator={generator}
           />
         )}
       </div>
@@ -304,14 +304,14 @@ const DropdownGenre: React.FC<DropdownGenreProps> = ({
 interface DropdownMediaProps {
   media?: string;
   closeDropdown: () => void;
-  watch?: boolean;
+  generator?: boolean;
   style: "primary" | "secondary";
   clearSessionStorage: () => void;
 }
 
 const DropdownMedia: React.FC<DropdownMediaProps> = ({
   closeDropdown,
-  watch,
+  generator,
   media,
   style,
   clearSessionStorage,
@@ -330,14 +330,14 @@ const DropdownMedia: React.FC<DropdownMediaProps> = ({
       <DropdownMediaListItem
         media="series"
         closeDropdown={closeDropdown}
-        watch={watch}
+        generator={generator}
         isCurrent={media === "series"}
         clearSessionStorage={clearSessionStorage}
       />
       <DropdownMediaListItem
         media="movies"
         closeDropdown={closeDropdown}
-        watch={watch}
+        generator={generator}
         isCurrent={media === "movies"}
         clearSessionStorage={clearSessionStorage}
       />
@@ -352,7 +352,7 @@ const DropdownMedia: React.FC<DropdownMediaProps> = ({
 interface DropdownMediaListItemProps {
   media?: string;
   closeDropdown: () => void;
-  watch?: boolean;
+  generator?: boolean;
   isCurrent: boolean;
   clearSessionStorage: () => void;
 }
@@ -360,7 +360,7 @@ interface DropdownMediaListItemProps {
 const DropdownMediaListItem: React.FC<DropdownMediaListItemProps> = ({
   media,
   closeDropdown,
-  watch,
+  generator,
   isCurrent,
   clearSessionStorage,
 }) => {
@@ -368,7 +368,7 @@ const DropdownMediaListItem: React.FC<DropdownMediaListItemProps> = ({
   return (
     <>
       <li className={listItemClassName}>
-        <Link href={watch ? `/watch/${media}` : `/${media}`} scroll={false}>
+        <Link href={generator ? `/generator/${media}` : `/${media}`} scroll={false}>
           <a
             className={styles.link}
             onClick={() => {
@@ -393,7 +393,7 @@ interface DropdownServiceProps extends Omit<Omit<DropdownProps, "genre_list">, "
   closeDropdown: () => void;
   rootPath: string;
   style: "primary" | "secondary";
-  watch?: boolean;
+  generator?: boolean;
 }
 
 const DropdownService: React.FC<DropdownServiceProps> = ({
@@ -405,9 +405,9 @@ const DropdownService: React.FC<DropdownServiceProps> = ({
   closeDropdown,
   rootPath,
   style,
-  watch,
+  generator,
 }) => {
-  const defaultServiceOption = watch ? DEFAULT_WATCH_NETWORK : DEFAULT_NETWORK;
+  const defaultServiceOption = generator ? DEFAULT_WATCH_NETWORK : DEFAULT_NETWORK;
   const listClasses = [
     styles.list,
     style === "primary"
@@ -417,7 +417,7 @@ const DropdownService: React.FC<DropdownServiceProps> = ({
       : "",
   ];
   return (
-    <ul className={`${listClasses.join(" ")}`}>
+    <ul className={`${listClasses.join(" ")} ${styles.servicesList}`}>
       {network_list?.map(({ provider_id, provider_name, logo_path }) => {
         let href;
         switch (true) {

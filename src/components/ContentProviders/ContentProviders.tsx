@@ -19,7 +19,6 @@ interface ContentProvider {
 
 interface ContentProvidersProps {
   contentProviders?: ContentProvider[];
-  watchPage?: boolean;
 }
 
 const ContentProviders: React.FC<ContentProvidersProps> = ({ contentProviders }) => {
@@ -42,7 +41,6 @@ const ContentProviders: React.FC<ContentProvidersProps> = ({ contentProviders })
           </div>
           <div className={styles.logoContainer}>
             <Logo logo="justWatch" />
-
             <div className={styles.providersWrapper}>
               <ul className={styles.list}>
                 {contentProviders?.map((item, i) => (
@@ -60,6 +58,7 @@ const ContentProviders: React.FC<ContentProvidersProps> = ({ contentProviders })
                 ))}
               </ul>
             </div>
+            & more
           </div>
         </m.div>
       </LazyMotion>
