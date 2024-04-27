@@ -58,7 +58,6 @@ const ContentProviders: React.FC<ContentProvidersProps> = ({ contentProviders })
                 ))}
               </ul>
             </div>
-            & more
           </div>
         </m.div>
       </LazyMotion>
