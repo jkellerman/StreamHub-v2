@@ -6,36 +6,33 @@ import React, { useEffect, useState } from "react";
 
 import Carousel from "@/components/Carousel/Carousel";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
+import Generator from "@/components/Generator/Generator";
 import Header from "@/components/Header/Header";
-import WatchPage from "@/components/WatchPage/WatchPage";
-import { DEFAULT_GENRE, DEFAULT_WATCH_NETWORK } from "@/constants/app";
+import { DEFAULT_GENRE, DEFAULT_GENERATOR_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS } from "@/constants/tmdb";
 import useGenerator from "@/hooks/useGenerator";
 import { useRegion } from "@/src/context/regionContext";
 import { Media } from "@/types/media";
 
-interface WatchProps {
+interface GeneratorProps {
   genreList: Media.IGenre[];
 }
 
-const Network: React.FC<WatchProps> = ({ genreList }) => {
+const GeneratorPage: React.FC<GeneratorProps> = ({ genreList }) => {
   const { query } = useRouter();
-  const slug = query.slugs;
   const [storedMovieData, setStoredMovieData] = useState<Media.IMediaItem | null>(null);
-
   const { providers, region } = useRegion();
-
   const selectedGenre =
     (genreList &&
-      genreList.find((genre) => slug?.includes(genre.name.toLowerCase().replaceAll(" ", "-")))) ??
+      genreList.find((genreItem) => genreItem && genreItem.name.toLowerCase() === query.genre)) ??
     DEFAULT_GENRE;
 
   const selectedNetwork =
-    providers?.find(({ provider_name }) =>
-      slug?.includes(provider_name.replace(" Plus", "+").toLowerCase().replaceAll(" ", "-"))
-    ) ?? DEFAULT_WATCH_NETWORK;
+    providers?.find(
+      ({ provider_name }) => provider_name.replace(" Plus", "+").toLowerCase() === query.genre
+    ) ?? DEFAULT_GENERATOR_NETWORK;
 
-  const networkList = providers && [DEFAULT_WATCH_NETWORK, ...providers];
+  const networkList = providers && [DEFAULT_GENERATOR_NETWORK, ...providers];
 
   const providerIds =
     providers &&
@@ -45,11 +42,12 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
   const countryNetworkList = providerIds.toString().split(",").join("|");
 
   const { data, isLoading, isError, noResults, fetchRecommendation } = useGenerator(
-    `/api/network/movie/${region}/${selectedNetwork.provider_id}/`,
+    `/api/network/movie/${region}/${countryNetworkList}`,
     "movie"
   );
+
   useEffect(() => {
-    const storedData = sessionStorage.getItem("storedMovieGenreData");
+    const storedData = sessionStorage.getItem("storedMovieData");
     if (storedData) {
       setStoredMovieData(JSON.parse(storedData));
     }
@@ -57,10 +55,11 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
 
   useEffect(() => {
     if (data) {
-      sessionStorage.setItem("storedMovieGenreData", JSON.stringify(data));
+      sessionStorage.setItem("storedMovieData", JSON.stringify(data));
       setStoredMovieData(data);
     }
   }, [data]);
+
   return (
     <>
       <Head>
@@ -72,7 +71,7 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
       </Head>
       <Header />
       <main>
-        <WatchPage
+        <Generator
           selectedGenre={selectedGenre}
           genreList={genreList}
           selectedNetwork={selectedNetwork}
@@ -85,6 +84,7 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
           noResults={noResults}
           mediaType="movies"
         />
+
         <CategoryHeading
           category="popular series"
           subheading="The most popular on all streaming services."
@@ -100,22 +100,7 @@ const Network: React.FC<WatchProps> = ({ genreList }) => {
   );
 };
 
-export default Network;
-
-export async function getStaticPaths() {
-  const response = await fetch(
-    `${BASE_TMDB_URL}/genre/movie/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
-  );
-  const genreList = await response.json();
-
-  const paths = genreList.genres.map((slug: Media.IGenre) => ({
-    params: { slugs: [slug.name] },
-  }));
-  return {
-    paths,
-    fallback: true,
-  };
-}
+export default GeneratorPage;
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(

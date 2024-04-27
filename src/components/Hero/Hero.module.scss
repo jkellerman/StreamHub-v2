@@ -1,6 +1,19 @@
 @use "@/styles/variables" as variable;
 @use "@/styles/mixins" as mixins;
 
+.outerContainer {
+  border-bottom: 1px solid var(--tertiary-dark);
+  margin-bottom: 2rem;
+
+  background: radial-gradient(circle at 45% 49%, rgba(29, 68, 93, 0.5), transparent 50%),
+    radial-gradient(circle at 55% 51%, rgba(77, 66, 118, 0.5), transparent 50%);
+
+  @include mixins.tablet {
+    background: radial-gradient(circle at 45% 49%, rgba(29, 68, 93, 0.5), transparent 20%),
+      radial-gradient(circle at 55% 51%, rgba(77, 66, 118, 0.5), transparent 20%);
+  }
+}
+
 .container {
   @include mixins.flex-center;
   @include mixins.center;
@@ -9,9 +22,6 @@
   padding: 2rem 0;
   max-width: 515px;
   margin-bottom: 2rem;
-  @include mixins.tablet {
-    margin-top: 2rem;
-  }
   & > h1 {
     font-weight: variable.$fw-bold;
   }
@@ -19,6 +29,7 @@
 
 .subheading {
   margin-bottom: 1rem;
+  color: var(--tertiary-light);
 
   @include mixins.tablet {
     font-size: var(--step-0);
@@ -73,8 +84,8 @@
 }
 
 .hr {
-  border: 0.5px solid var(--tertiary-dark);
-  margin-bottom: 2rem;
+  visibility: hidden;
+  margin: 0;
 }
 
 .buttonWrapper {

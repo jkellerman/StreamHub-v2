@@ -17,7 +17,7 @@ const Hero = () => {
   };
 
   return (
-    <>
+    <div className={styles.outerContainer}>
       <LazyMotion features={domAnimation}>
         <m.div className={styles.container} variants={opacity} initial="hidden" animate="visible">
           <div className={styles.subheading}>Get recommendations for:</div>
@@ -29,8 +29,8 @@ const Hero = () => {
             Browse, search or let StreamHub pick the perfect movie or series to watch tonight.
           </p>
 
-          <Button variant="primary" asLink link="/watch/series">
-            What to watch tonight
+          <Button variant="primary" asLink link="/series">
+            Discover what&apos;s trending
           </Button>
 
           <div className={styles.buttonWrapper}>
@@ -42,7 +42,7 @@ const Hero = () => {
         </m.div>
         <hr className={styles.hr} id="hr" />
       </LazyMotion>
-    </>
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@ export const DEFAULT_GENRE: Media.IGenre = {
   name: defaultGenreName,
 };
 
-export const DEFAULT_WATCH_GENRE: Media.IGenre = {
+export const DEFAULT_GENERATOR_GENRE: Media.IGenre = {
   id: 1,
   name: defaultWatchGenreName,
 };
@@ -20,7 +20,7 @@ export const DEFAULT_NETWORK: Media.IServices = {
   provider_name: defaultNetworkName,
 };
 
-export const DEFAULT_WATCH_NETWORK: Media.IServices = {
+export const DEFAULT_GENERATOR_NETWORK: Media.IServices = {
   provider_id: 0,
   provider_name: defaultWatchNetworkName,
 };
@@ -36,11 +36,10 @@ export const year = "2023";
 export const excludedStrings = [
   "Amazon Channel",
   "Amazon Video",
-  "Google Play Movies",
-  "Rakuten TV",
-  "YouTube",
-  "YouTube Premium",
-  "Microsoft Store",
+
+  "Apple TV Channel",
+  "Roku Premium Channel",
+  "Amazon Prime Video with Ads",
 ];
 
 export const primaryRegions = [

@@ -63,7 +63,7 @@
   cursor: pointer;
   transition: variable.$transition;
   padding: 0.25em 1em 0.25em 0.75em;
-  white-space: nowrap;
+
   letter-spacing: 0.05rem;
   @include mixins.tablet {
     font-size: var(--step-0);
@@ -141,7 +141,22 @@
   overflow-y: scroll;
   justify-content: unset;
   padding: 1rem;
+  scrollbar-color: var(--primary) var(--tertiary);
+  scrollbar-width: thin;
 
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border: 4px solid transparent;
+    background-clip: content-box; /* THIS IS IMPORTANT */
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: var(--tertiary);
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }
   @include mixins.desktop {
     overflow-y: unset;
   }
@@ -160,7 +175,7 @@
     .icon,
     .placeholder {
       border-radius: 5px;
-      margin-right: 1rem;
+      margin-right: 1.5rem;
     }
 
     .placeholder {
@@ -171,8 +186,6 @@
 
   .listItemCurrent {
     position: relative;
-    background: linear-gradient(90deg, var(--secondary-gradient));
-    border-radius: variable.$border-radius-s;
 
     &::before {
       content: "";
@@ -189,14 +202,6 @@
         left: 0.75rem;
         top: 0.75rem;
       }
-    }
-  }
-
-  @media (hover: hover) {
-    .listItem:hover,
-    .listItemCurrent:hover {
-      transition: variable.$transition;
-      border-radius: variable.$border-radius-s;
     }
   }
 
@@ -292,6 +297,180 @@
   }
 }
 
+.servicesList {
+  @include mixins.center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: variable.$z-index-5;
+  max-height: 330px;
+  width: 100%;
+  border-radius: variable.$border-radius-s;
+  top: 2.75rem;
+  left: 0;
+  right: 0;
+  justify-content: unset;
+  overflow: hidden;
+  transition: transform 250ms cubic-bezier(0.52, 0.13, 0.11, 1.02);
+
+  ul {
+    max-height: 330px;
+    width: 100%;
+    padding: 1rem;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scrollbar-color: var(--primary) var(--tertiary);
+    scrollbar-width: thin;
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      border: 4px solid transparent;
+      background-clip: content-box; /* THIS IS IMPORTANT */
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: var(--tertiary);
+      border: 1px solid transparent;
+      border-radius: 4px;
+    }
+
+    @include mixins.tablet {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      padding: 2rem;
+      padding-bottom: 3.5rem;
+      overflow-y: unset;
+      overflow-x: scroll;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    @include mixins.tabletL {
+      display: unset;
+      flex-direction: unset;
+      flex-wrap: unset;
+      padding: 1rem;
+      overflow-y: scroll;
+      overflow-x: unset;
+      scrollbar-color: var(--primary) var(--tertiary);
+      scrollbar-width: thin;
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: transparent;
+        border: 4px solid transparent;
+        background-clip: content-box;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: var(--tertiary);
+        border: 1px solid transparent;
+        border-radius: 4px;
+      }
+    }
+    @include mixins.desktop {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      padding: 1.5rem;
+      padding-bottom: 3rem;
+      overflow-y: unset;
+      overflow-x: scroll;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .listItem,
+    .listItemCurrent {
+      @include mixins.flex-center;
+      list-style: none;
+      padding: 1rem 0.5rem;
+      color: var(--quinary);
+      transition: variable.$transition;
+      border-radius: variable.$border-radius-s;
+      @include mixins.tablet() {
+        padding: 0.5rem 0;
+      }
+      .icon,
+      .placeholder {
+        border-radius: 5px;
+        margin-right: 1.5rem;
+      }
+
+      .placeholder {
+        width: 24px;
+        height: 20px;
+      }
+    }
+
+    .listItemCurrent {
+      position: relative;
+      &::before {
+        content: "";
+        background: var(--quinary);
+        width: 0.5px;
+        height: 10px;
+        border: 1px solid var(--quinary);
+        border-top-right-radius: variable.$border-radius-s;
+        border-bottom-right-radius: variable.$border-radius-s;
+        position: absolute;
+        display: none;
+        @include mixins.tablet() {
+          display: inline-block;
+          left: 0.75rem;
+          top: 0.75rem;
+        }
+      }
+    }
+
+    &:hover > .listItemCurrent {
+      background: transparent;
+      border-radius: variable.$border-radius-s;
+    }
+  }
+
+  @include mixins.tablet {
+    top: 2.5rem;
+    right: unset;
+    min-width: 550px;
+    max-width: 600px;
+    flex-wrap: wrap;
+
+    .listItem,
+    .listItemCurrent {
+      width: 252px;
+      a {
+        @include mixins.addHeadingEllipses;
+      }
+    }
+  }
+
+  @include mixins.tabletL {
+    flex-wrap: nowrap;
+    min-width: 300px;
+    max-width: unset;
+  }
+  @include mixins.desktop {
+    min-width: 550px;
+    max-width: 600px;
+    flex-wrap: wrap;
+  }
+}
+
 .link {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -299,4 +478,29 @@
   width: 100%;
   height: 100%;
   text-transform: capitalize;
+}
+
+.navContainer {
+  display: none;
+  @include mixins.tablet {
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    bottom: 0.75rem;
+    right: 1rem;
+    z-index: variable.$z-index-5;
+  }
+
+  @include mixins.tabletL {
+    display: none;
+  }
+  @include mixins.desktop {
+    display: flex;
+  }
+}
+
+.navButton {
+  background: none;
+  border: none;
+  cursor: pointer;
 }

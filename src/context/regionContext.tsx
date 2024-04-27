@@ -25,25 +25,24 @@ export const RegionProvider: React.FC<RegionContextProps> = ({ children }) => {
 
   let mediaType = "";
   if (
+    pathname.match("/") ||
     pathname.startsWith("/series") ||
-    pathname.startsWith("/watch/series") ||
+    pathname.startsWith("/generator/series") ||
     pathname.match(/^\/series\/genre\/.*$/) ||
     pathname.match(/^\/series\/network\/.*$/) ||
-    pathname.match(/^\/watch\/series\/genre\/.*$/) ||
-    pathname.match(/^\/watch\/series\/network\/.*$/)
+    pathname.match(/^\/generator\/series\/genre\/.*$/) ||
+    pathname.match(/^\/generator\/series\/network\/.*$/)
   ) {
     mediaType = "tv";
   } else if (
     pathname.startsWith("/movies") ||
-    pathname.startsWith("/watch/movies") ||
+    pathname.startsWith("/generator/movies") ||
     pathname.match(/^\/movies\/genre\/.*$/) ||
     pathname.match(/^\/movies\/network\/.*$/) ||
-    pathname.match(/^\/watch\/movies\/genre\/.*$/) ||
-    pathname.match(/^\/watch\/movies\/network\/.*$/)
+    pathname.match(/^\/generator\/movies\/genre\/.*$/) ||
+    pathname.match(/^\/generator\/movies\/network\/.*$/)
   ) {
     mediaType = "movie";
-  } else if (pathname.match("/")) {
-    mediaType = "tv";
   }
 
   const providersEndpoint = `/api/providers/${mediaType}/${region}`;
@@ -52,7 +51,7 @@ export const RegionProvider: React.FC<RegionContextProps> = ({ children }) => {
     try {
       const res = await fetch(endpoint);
       const data = await res.json();
-      const slicedArr = data?.data.results.slice(0, 17);
+      const slicedArr = data?.data.results;
       const providers = slicedArr.map(
         ({ provider_id, provider_name, logo_path }: Media.IProvider) => {
           return { provider_id, provider_name, logo_path };

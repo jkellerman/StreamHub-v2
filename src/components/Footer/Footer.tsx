@@ -9,7 +9,7 @@ const footerData = [
   {
     title: "What to watch",
     links: [
-      { name: "What to watch tonight", link: "/watch/movies" },
+      { name: "Get a random pick", link: "/generator/series" },
       { name: "Browse Series", link: "/series" },
       { name: "Browse Movies", link: "/movies" },
     ],
@@ -104,7 +104,7 @@ const FooterBottom: React.FC = () => {
   return (
     <div className={styles.footerBottomContainer}>
       <MainLogo />
-      <span className={styles.disclaimer}>Designed & Developed by Josh Kellerman</span>
+      <span className={styles.disclaimer}>Personal Project, Developed by Josh Kellerman</span>
     </div>
   );
 };

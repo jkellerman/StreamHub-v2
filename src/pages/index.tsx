@@ -44,7 +44,7 @@ const Home: React.FC<HomeProps> = ({ contentProviders }) => {
         />
       </Head>
       <Header />
-      <main>
+      <main id="mainHome">
         <Hero />
         <section>
           <ContentProviders contentProviders={contentProviders} />
@@ -107,7 +107,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 
   const data = await response.json();
 
-  const slicedArr = data?.results.slice(0, 17);
+  const slicedArr = data?.results.slice(0, 13);
   const providers = slicedArr.map(({ provider_id, provider_name, logo_path }: Media.IProvider) => {
     return { provider_id, provider_name, logo_path };
   });

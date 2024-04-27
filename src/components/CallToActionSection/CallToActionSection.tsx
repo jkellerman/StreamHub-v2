@@ -47,7 +47,7 @@ const CTA: React.FC = () => {
               movie or series to watch tonight on your preferred streaming service.
             </Content>
           </div>
-          <Button variant="primary" asLink link="/watch/series">
+          <Button variant="primary" asLink link="/generator/series">
             Get a random pick
           </Button>
         </div>
