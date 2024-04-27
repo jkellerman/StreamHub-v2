@@ -162,15 +162,19 @@ select {
   height: 2px;
 }
 
+html {
+  scrollbar-color: var(--tertiary-dark) var(--secondary-dark);
+}
+
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: transparent;
   border: 4px solid transparent;
-  background-clip: content-box; /* THIS IS IMPORTANT */
+  background-clip: content-box;
 }
 
 /* Handle */
