@@ -3,11 +3,11 @@ import { ParsedUrlQuery } from "node:querystring";
 import Image from "next/future/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import slugify from "slugify";
 
 import Icon from "@/components/Icon/Icon";
-import { DEFAULT_GENRE, DEFAULT_NETWORK, DEFAULT_WATCH_NETWORK } from "@/constants/app";
+import { DEFAULT_GENRE, DEFAULT_NETWORK, DEFAULT_GENERATOR_NETWORK } from "@/constants/app";
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import useClickOutside from "@/hooks/useClickOutside";
 import { Media } from "@/src/types";
@@ -79,7 +79,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     setIsDropdownOpen(false);
   };
 
-  // Data is stored in session storage if user navigates back to watch to watch page, if selecting preferences no need to store data in session so set up function to remove data when selected preferences.
+  // Data is stored in session storage if user navigates back to generator page, if selecting preferences, there is no need to store data in session so set up function to remove data when selected preferences.
   const clearSessionStorage = () => {
     sessionStorage.clear();
   };
@@ -407,9 +407,62 @@ const DropdownService: React.FC<DropdownServiceProps> = ({
   style,
   generator,
 }) => {
-  const defaultServiceOption = generator ? DEFAULT_WATCH_NETWORK : DEFAULT_NETWORK;
+  const listRef = useRef<HTMLUListElement | null>(null);
+  const [listItemWidth, setListItemWidth] = useState<number | undefined>();
+  const [isListAtStart, setIsListAtStart] = useState(true);
+  const [isListAtEnd, setIsListAtEnd] = useState(false);
+  const visibleColumns = 2; // Columns visible in services dropdown
+  const gap = 2; // gap at end of scroll
+
+  const getListItemRef = useCallback((node: HTMLLIElement | null) => {
+    if (node) {
+      setListItemWidth(node.offsetWidth);
+    }
+  }, []);
+
+  const getScrollPosition = () => {
+    if (listRef.current) {
+      if (listRef.current.scrollLeft > 0) {
+        setIsListAtStart(false);
+      }
+
+      if (listRef.current.scrollLeft === 0) {
+        setIsListAtStart(true);
+      }
+
+      if (
+        listRef.current.scrollLeft + listRef.current?.offsetWidth + gap >=
+        listRef.current?.scrollWidth
+      ) {
+        setIsListAtEnd(true);
+      } else {
+        setIsListAtEnd(false);
+      }
+    }
+  };
+
+  const handleClickNext = () => {
+    if (listItemWidth && listRef.current) {
+      if (
+        listRef.current.scrollLeft + listRef.current?.offsetWidth + gap >=
+        listRef.current?.scrollWidth
+      )
+        return;
+
+      listRef.current.scrollLeft += listItemWidth * visibleColumns;
+    }
+  };
+  const handleClickPrev = () => {
+    if (listItemWidth && listRef.current) {
+      if (listRef.current.scrollLeft === 0) return;
+
+      listRef.current.scrollLeft -= listItemWidth * visibleColumns;
+    }
+  };
+
+  const defaultServiceOption = generator ? DEFAULT_GENERATOR_NETWORK : DEFAULT_NETWORK;
   const listClasses = [
-    styles.list,
+    styles.servicesList,
     style === "primary"
       ? styles["primary-list"]
       : style === "secondary"
@@ -417,63 +470,89 @@ const DropdownService: React.FC<DropdownServiceProps> = ({
       : "",
   ];
   return (
-    <ul className={`${listClasses.join(" ")} ${styles.servicesList}`}>
-      {network_list?.map(({ provider_id, provider_name, logo_path }) => {
-        let href;
-        switch (true) {
-          case provider_name === defaultServiceOption.provider_name &&
-            !query.slugs?.includes(`${selected_genre?.name?.toLowerCase().replaceAll(" ", "-")}`):
-            href = `${rootPath}${type}`;
-            break;
-          case provider_name === defaultServiceOption.provider_name &&
-            query.slugs?.includes(`${selected_genre?.name.toLowerCase().replaceAll(" ", "-")}`):
-            href = `${rootPath}${type}/genre/${slugify(selected_genre?.name as string, {
-              lower: true,
-            }).replace(/and/g, "&")}`;
-            break;
-          case !query.slugs?.includes(`${selected_genre?.name.toLowerCase().replaceAll(" ", "-")}`):
-            href = `${rootPath}${type}/network/${slugify(provider_name.replace(" Plus", "+"), {
-              lower: true,
-            }).replace(/and/g, "&")}`;
-            break;
-          default:
-            href = `${rootPath}${type}/genre/${slugify(selected_genre?.name as string, {
-              lower: true,
-            }).replace(/and/g, "&")}/${slugify(provider_name.replace(" Plus", "+"), {
-              lower: true,
-            }).replace(/and/g, "&")}`;
-            break;
-        }
+    <div className={`${listClasses.join(" ")}`}>
+      <ul ref={listRef} onScroll={getScrollPosition}>
+        {network_list?.map(({ provider_id, provider_name, logo_path }) => {
+          let href;
+          switch (true) {
+            case provider_name === defaultServiceOption.provider_name &&
+              !query.slugs?.includes(`${selected_genre?.name?.toLowerCase().replaceAll(" ", "-")}`):
+              href = `${rootPath}${type}`;
+              break;
+            case provider_name === defaultServiceOption.provider_name &&
+              query.slugs?.includes(`${selected_genre?.name.toLowerCase().replaceAll(" ", "-")}`):
+              href = `${rootPath}${type}/genre/${slugify(selected_genre?.name as string, {
+                lower: true,
+              }).replace(/and/g, "&")}`;
+              break;
+            case !query.slugs?.includes(
+              `${selected_genre?.name.toLowerCase().replaceAll(" ", "-")}`
+            ):
+              href = `${rootPath}${type}/network/${slugify(provider_name.replace(" Plus", "+"), {
+                lower: true,
+              }).replace(/and/g, "&")}`;
+              break;
+            default:
+              href = `${rootPath}${type}/genre/${slugify(selected_genre?.name as string, {
+                lower: true,
+              }).replace(/and/g, "&")}/${slugify(provider_name.replace(" Plus", "+"), {
+                lower: true,
+              }).replace(/and/g, "&")}`;
+              break;
+          }
 
-        return (
-          <li
-            key={provider_id}
-            className={
-              selected_network?.provider_name === provider_name
-                ? styles.listItemCurrent
-                : styles.listItem
-            }
-          >
-            <Link href={href} scroll={false}>
-              <a className={styles.link} onClick={closeDropdown}>
-                {provider_name.replace(" Plus", "+")}
-              </a>
-            </Link>
-            {logo_path ? (
-              <Image
-                src={`${LOGO_URL_IMAGE}${logo_path}`}
-                alt="network-logo"
-                unoptimized={true}
-                className={styles.icon}
-                width={20}
-                height={20}
-              />
-            ) : (
-              <div className={styles.placeholder}></div>
-            )}
-          </li>
-        );
-      })}
-    </ul>
+          return (
+            <li
+              key={provider_id}
+              className={
+                selected_network?.provider_name === provider_name
+                  ? styles.listItemCurrent
+                  : styles.listItem
+              }
+              ref={getListItemRef}
+            >
+              <Link href={href} scroll={false}>
+                <a className={styles.link} onClick={closeDropdown}>
+                  {provider_name.replace(" Plus", "+")}
+                </a>
+              </Link>
+              {logo_path ? (
+                <Image
+                  src={`${LOGO_URL_IMAGE}${logo_path}`}
+                  alt="network-logo"
+                  unoptimized={true}
+                  className={styles.icon}
+                  width={20}
+                  height={20}
+                />
+              ) : (
+                <div className={styles.placeholder}></div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+
+      <span className={styles.navContainer}>
+        <button
+          type="button"
+          onClick={handleClickPrev}
+          className={styles.navButton}
+          aria-label="left"
+          disabled={isListAtStart}
+        >
+          <Icon icon="chevronLeft" fill={isListAtStart ? "var(--tertiary)" : "var(--quinary)"} />
+        </button>
+        <button
+          type="button"
+          onClick={handleClickNext}
+          className={styles.navButton}
+          aria-label="right"
+          disabled={isListAtEnd}
+        >
+          <Icon icon="chevronRight" fill={isListAtEnd ? "var(--tertiary)" : "var(--quinary)"} />
+        </button>
+      </span>
+    </div>
   );
 };

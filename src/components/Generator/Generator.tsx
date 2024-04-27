@@ -1,6 +1,6 @@
 import { LazyMotion, domAnimation, m } from "framer-motion";
 
-import ContentProviders from "@/components/ContentProviders/WatchPage/ContentProviders";
+import ContentProviders from "@/components/ContentProviders/GeneratorPage/ContentProviders";
 import styles from "@/components/Panel/Panel.module.scss";
 import { Media } from "@/types/media";
 import { opacity } from "@/utils/animations";

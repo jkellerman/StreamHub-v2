@@ -8,7 +8,7 @@ import Carousel from "@/components/Carousel/Carousel";
 import CategoryHeading from "@/components/CategoryHeading/CategoryHeading";
 import Generator from "@/components/Generator/Generator";
 import Header from "@/components/Header/Header";
-import { DEFAULT_GENRE, DEFAULT_WATCH_NETWORK } from "@/constants/app";
+import { DEFAULT_GENRE, DEFAULT_GENERATOR_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS } from "@/constants/tmdb";
 import useGenerator from "@/hooks/useGenerator";
 import { useRegion } from "@/src/context/regionContext";
@@ -30,9 +30,9 @@ const GeneratorPage: React.FC<GeneratorProps> = ({ genreList }) => {
   const selectedNetwork =
     providers?.find(
       ({ provider_name }) => provider_name.replace(" Plus", "+").toLowerCase() === query.genre
-    ) ?? DEFAULT_WATCH_NETWORK;
+    ) ?? DEFAULT_GENERATOR_NETWORK;
 
-  const networkList = providers && [DEFAULT_WATCH_NETWORK, ...providers];
+  const networkList = providers && [DEFAULT_GENERATOR_NETWORK, ...providers];
 
   const providerIds =
     providers &&
