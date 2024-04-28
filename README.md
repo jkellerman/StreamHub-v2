@@ -14,7 +14,6 @@ This is the version 2 of this web app, if you like to see v1 click [here](https:
   - [Choosing Next.js](#choosing-nextjs)
   - [Data Fetching with React Query](#data-fetching-with-react-query)
   - [Carousel](#carousel)
-  - [Accessibility](#accessibility)
 - [Continued Development](#continued-development)
 
 ## Overview
@@ -54,13 +53,10 @@ Version 2 includes the following updates:
 ### 🧰&nbsp;Built with
 
 - TypeScript
-- Next.js
+- Next.js 12
 - SCSS modules
-- Radix UI
 - React Query
 - Vercel
-- Framer Motion
-- Context API for state management
 - TMDB API
 
 ## 💭&nbsp;My process
@@ -113,12 +109,6 @@ My code:
 The other issue I had was dealing with responsiveness of the carousel for all screen sizes. I had to think about how the carousel responds if the window is resized. This entailed updating state variables when the user resized the window, inadvertently causing a significant number of re-renders.
 
 To address this issue, I implemented `debouncing` using the [use-debounce library](https://www.npmjs.com/package/use-debounce). By setting a rate limit on the number of times the app renders during window resizing, it prevents overwhelming the app with excessive re-renders.
-
-### 🤓Accessibility
-
-I also dedicated some time to making the site as accessible as possible including an attempt to create an accessible tablist from scratch. Unfortunately, I couldn't get it to fully adhere to the [Tabs WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/), the main issue not being able to focus in on tab elements in the horizontal list using the left and right arrow keys. In light of this, instead of persisting with an imperfect solution, I opted for [Radix UI](https://www.radix-ui.com/primitives/docs/components/tabs) who do a good job of handling accessibility for you.
-
-In the early stages of the app development my emphasis was on building all components from scratch to improve my skills, however as the app got larger I began to see the value of using Radix UI to build out some primitives, including the dropdown menu for the country selection and dialog for autocomplete and trailers, which not only ensured accessibility but also helped speed up developoment.
 
 ## 👨‍💻&nbsp;Continued development
 
