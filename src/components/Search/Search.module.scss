@@ -5,6 +5,8 @@
   flex-grow: 1;
   position: relative;
   z-index: variable.$z-index-5;
+  font-weight: variable.$fw-med;
+
   border: 1px solid #4f5c7c;
   border-radius: 5px;
   background: linear-gradient(90deg, var(--quinary-gradient));
@@ -133,7 +135,8 @@
   font-size: inherit;
   font-family: inherit;
   color: var(--quinary);
-  font-weight: variable.$fw-light;
+  font-weight: variable.$fw-med;
+
   border: none;
   background: transparent;
   padding: 0.25em 0;
@@ -149,6 +152,7 @@
 
 .input::placeholder {
   color: var(--quinary);
+  font-weight: variable.$fw-med;
   text-overflow: ellipsis;
 }
 
