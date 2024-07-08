@@ -1,26 +1,28 @@
-import { Media } from "@/src/types";
+import { Id, Provider } from "@/types/tmdb";
 
 export const defaultGenreName = "All Genres";
 export const defaultWatchGenreName = "Any Genre";
 export const defaultNetworkName = "All Services";
 export const defaultWatchNetworkName = "Any Service";
 
-export const DEFAULT_GENRE: Media.IGenre = {
+export const DEFAULT_GENRE: Id = {
   id: 1,
   name: defaultGenreName,
 };
 
-export const DEFAULT_GENERATOR_GENRE: Media.IGenre = {
+export const DEFAULT_GENERATOR_GENRE: Id = {
   id: 1,
   name: defaultWatchGenreName,
 };
 
-export const DEFAULT_NETWORK: Media.IServices = {
+export const DEFAULT_NETWORK: Provider = {
+  logo_path: "",
   provider_id: 0,
   provider_name: defaultNetworkName,
 };
 
-export const DEFAULT_GENERATOR_NETWORK: Media.IServices = {
+export const DEFAULT_GENERATOR_NETWORK: Provider = {
+  logo_path: "",
   provider_id: 0,
   provider_name: defaultWatchNetworkName,
 };
@@ -36,7 +38,6 @@ export const year = "2023";
 export const excludedStrings = [
   "Amazon Channel",
   "Amazon Video",
-
   "Apple TV Channel",
   "Roku Premium Channel",
   "Amazon Prime Video with Ads",

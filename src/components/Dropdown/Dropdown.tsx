@@ -10,7 +10,7 @@ import Icon from "@/components/Icon/Icon";
 import { DEFAULT_GENRE, DEFAULT_NETWORK, DEFAULT_GENERATOR_NETWORK } from "@/constants/app";
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
 import useClickOutside from "@/hooks/useClickOutside";
-import { Media } from "@/src/types";
+import { Id, Provider, Service } from "@/types/tmdb";
 
 import styles from "../Dropdown/Dropdown.module.scss";
 
@@ -23,11 +23,11 @@ interface DropdownProps {
    * Genre that is currently selected
    * Used for page route and highlighting genre that has been selected
    */
-  selected_genre?: Media.IGenre;
+  selected_genre?: Id;
   /**
    * List of genres for movies or series
    */
-  genre_list?: Media.IGenre[];
+  genre_list?: Id[];
   /**
    * For movies and series dropdown to select media type
    */
@@ -35,12 +35,12 @@ interface DropdownProps {
   /**
    * List of networks
    */
-  network_list?: Media.IProvider[] | undefined;
+  network_list?: Provider[] | undefined;
   /**
    * Network that is currently selected
    * Used for page route and highlighting network that has been selected
    */
-  selected_network?: Media.IServices;
+  selected_network?: Service;
   /**
    * For rendering the appropriate trigger and dropdown
    */

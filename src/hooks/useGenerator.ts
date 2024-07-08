@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
+import { MediaList } from "@/types/tmdb";
+import { fetcher } from "@/utils/tmdbDataHelpers";
 import { randomNumber } from "@/utils/utils";
-
-import { Media } from "../types";
 
 const useGenerator = (endpoint: string, type: string) => {
   const [data, setData] = useState(null);
@@ -17,12 +17,12 @@ const useGenerator = (endpoint: string, type: string) => {
     const fetchData = async () => {
       try {
         const url = endpoint;
-        const response = await fetch(url);
-        const data = await response.json();
+        const data = await fetcher<MediaList>(url);
+
         const filteredArr =
           data &&
           data.data.results.filter(
-            (item: Media.IMovieData) => item.backdrop_path !== null && !item.known_for_department
+            (item) => item.backdrop_path !== null && !item.known_for_department
           );
 
         if (filteredArr.length !== 0) {
@@ -59,8 +59,7 @@ const useGenerator = (endpoint: string, type: string) => {
 
     try {
       const url = `${randomPageEndpoint}/${pageNum}`;
-      const response = await fetch(url);
-      const data = await response.json();
+      const data = await fetcher<MediaList>(url);
       const randomIndex = randomNumber(data.data.results.length - 1);
       const result = data.data.results[randomIndex].id;
 

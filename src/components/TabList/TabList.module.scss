@@ -100,7 +100,7 @@
   font-size: var(--step--1);
   align-items: center;
   background-color: var(--primary-dark);
-  padding: 0.5em 0.5em;
+  padding: 0.5em 0.75em;
   border-radius: variable.$border-radius-s;
   min-width: 100%;
   @include mixins.tablet {

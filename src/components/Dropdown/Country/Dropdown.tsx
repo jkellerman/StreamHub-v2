@@ -4,12 +4,12 @@ import { useRouter } from "next/router";
 
 import Icon from "@/components/Icon/Icon";
 import { useRegion } from "@/src/context/regionContext";
-import { Types } from "@/types/types";
+import { PrimaryRegions } from "@/types/types";
 
 import styles from "./Dropdown.module.scss";
 
 interface DropdownProps {
-  regions: Types.IPrimaryRegions[];
+  regions: PrimaryRegions[];
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ regions }) => {

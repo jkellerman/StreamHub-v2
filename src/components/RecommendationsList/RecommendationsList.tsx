@@ -4,12 +4,12 @@ import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import Icon from "@/components/Icon/Icon";
 import useSlider from "@/hooks/useSlider";
-import { Media } from "@/src/types";
+import { List } from "@/types/tmdb";
 
 import styles from "./RecommendationsList.module.scss";
 
 interface RecommendationsProps {
-  recommendations: Media.IRecommendationsList;
+  recommendations: List | undefined;
   isLoading: boolean;
   isError: boolean;
 }
@@ -85,30 +85,29 @@ const Recommendations: React.FC<RecommendationsProps> = ({
           <div className={styles.carousel}>
             <div ref={getCarouselRef}>
               <ul className={styles.list} ref={listRef}>
-                {recommendations.results.map(
-                  ({
-                    id,
-                    title,
-                    name,
-                    poster_path,
-                    first_air_date,
-                    release_date,
-                  }: Media.IRecommendations) => {
-                    return (
-                      <li key={id} className={styles.listItem} ref={getCardWidth}>
-                        <figure>
-                          <Card id={id} poster={poster_path} movieTitle={title} seriesName={name} />
-                          <CardDetails
-                            movieTitle={title}
-                            seriesName={name}
-                            movieYear={release_date}
-                            seriesYear={first_air_date}
-                          />
-                        </figure>
-                      </li>
-                    );
-                  }
-                )}
+                {recommendations &&
+                  recommendations.results.map(
+                    ({ id, title, name, poster_path, first_air_date, release_date }) => {
+                      return (
+                        <li key={id} className={styles.listItem} ref={getCardWidth}>
+                          <figure>
+                            <Card
+                              id={id}
+                              poster={poster_path}
+                              movieTitle={title}
+                              seriesName={name}
+                            />
+                            <CardDetails
+                              movieTitle={title}
+                              seriesName={name}
+                              movieYear={release_date}
+                              seriesYear={first_air_date}
+                            />
+                          </figure>
+                        </li>
+                      );
+                    }
+                  )}
               </ul>
             </div>
           </div>

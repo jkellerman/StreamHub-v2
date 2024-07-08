@@ -3,13 +3,13 @@ import { Dispatch, SetStateAction, useState } from "react";
 import slugify from "slugify";
 
 import { countryFlags } from "@/constants/app";
-import { Types } from "@/types/types";
+import { Region } from "@/types/tmdb";
 
 import Icon from "../Icon/Icon";
 
 import styles from "./AutoComplete.module.scss";
 interface AutoCompleteProps {
-  regions: Types.IRegions[];
+  regions: Region[];
   setOpen: Dispatch<SetStateAction<boolean>>;
   id: number;
   title: string;
@@ -26,7 +26,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
   region,
 }) => {
   const [inputValue, setInputValue] = useState<string>("");
-  const [filteredRegions, setFilteredRegions] = useState<Types.IRegions[]>(regions);
+  const [filteredRegions, setFilteredRegions] = useState<Region[]>(regions);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;

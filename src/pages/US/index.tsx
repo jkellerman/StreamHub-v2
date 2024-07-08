@@ -12,10 +12,11 @@ import Hero from "@/components/Hero/Hero";
 import { excludedStrings } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_DISCOVER_PARAMS } from "@/constants/tmdb";
 import { useRegion } from "@/context/regionContext";
-import { Media } from "@/types/media";
+import { Provider, WatchProviders } from "@/types/tmdb";
+import { fetcher } from "@/utils/tmdbDataHelpers";
 
 interface HomeProps {
-  contentProviders: Media.IProvider[];
+  contentProviders: Provider[];
 }
 
 const Home: React.FC<HomeProps> = (contentProviders) => {
@@ -89,31 +90,31 @@ const Home: React.FC<HomeProps> = (contentProviders) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const url = `${BASE_TMDB_URL}/watch/providers/tv?${QueryString.stringify(
-    BASE_TMDB_QUERY_DISCOVER_PARAMS
-  )}&watch_region=US`;
+  try {
+    const url = `${BASE_TMDB_URL}/watch/providers/tv?${QueryString.stringify(
+      BASE_TMDB_QUERY_DISCOVER_PARAMS
+    )}&watch_region=US`;
 
-  const response = await fetch(url);
+    const data = await fetcher<WatchProviders>(url);
 
-  const data = await response.json();
+    const slicedArr = data.results.slice(0, 13);
+    const providers = slicedArr.map(({ provider_id, provider_name, logo_path }) => {
+      return { provider_id, provider_name, logo_path };
+    });
 
-  const slicedArr = data?.results.slice(0, 13);
-  const providers = slicedArr.map(({ provider_id, provider_name, logo_path }: Media.IProvider) => {
-    return { provider_id, provider_name, logo_path };
-  });
+    const removeDuplicateProviders = providers?.filter(
+      (provider) =>
+        !excludedStrings.some((excludedStrings) => provider.provider_name.includes(excludedStrings))
+    );
+    // HBO Max has moved to Max and now doesn't show any data.
+    const removeHBOMax = removeDuplicateProviders.filter((item) => item.provider_id !== 384);
 
-  const removeDuplicateProviders = providers?.filter(
-    (provider: Media.IProvider) =>
-      !excludedStrings.some((excludedStrings) => provider.provider_name.includes(excludedStrings))
-  );
-  // HBO Max has moved to Max and now doesn't show any data.
-  const removeHBOMax = removeDuplicateProviders.filter(
-    (item: Media.IProvider) => item.provider_id !== 384
-  );
-
-  return {
-    props: {
-      contentProviders: removeHBOMax,
-    },
-  };
+    return {
+      props: {
+        contentProviders: removeHBOMax,
+      },
+    };
+  } catch (error) {
+    throw error;
+  }
 };

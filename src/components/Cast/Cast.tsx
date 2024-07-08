@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Media } from "@/src/types";
+import { MediaId } from "@/types/tmdb";
 
 import styles from "../Cast/Cast.module.scss";
 
 interface CastProps {
-  cast: Media.ICastMember[];
+  cast: MediaId[];
 }
 
 const Cast: React.FC<CastProps> = ({ cast }) => {

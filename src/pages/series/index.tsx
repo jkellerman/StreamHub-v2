@@ -17,11 +17,11 @@ import Description from "@/components/MediaPageDescription/MediaPageDescription"
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import { useRegion } from "@/src/context/regionContext";
-import { Media } from "@/src/types";
-import { Pagination } from "@/utils/tmdbDataHelpers";
+import { Genres, Id } from "@/types/tmdb";
+import { Pagination, fetcher } from "@/utils/tmdbDataHelpers";
 
 interface SeriesIndexPageProps {
-  genreList: Media.IGenre[];
+  genreList: Id[];
 }
 
 const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
@@ -29,8 +29,7 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
   const { providers } = useRegion();
 
   const selectedGenre =
-    (genreList &&
-      genreList.find((item: Media.IGenre) => item.name.toLowerCase() === query.genre)) ||
+    (genreList && genreList.find((item) => item.name.toLowerCase() === query.genre)) ||
     DEFAULT_GENRE;
 
   const selectedNetwork =
@@ -76,7 +75,7 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
               <Dropdown
                 type={pageType}
                 selected_network={selectedNetwork}
-                network_list={networkList as Media.IProvider[]}
+                network_list={networkList}
                 variant="service"
                 style="primary"
               />
@@ -104,14 +103,17 @@ const Series: React.FC<SeriesIndexPageProps> = ({ genreList }) => {
 export default Series;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch(
-    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
-  );
-  const genreList = await response.json();
+  try {
+    const genreList = await fetcher<Genres>(
+      `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
+    );
 
-  return {
-    props: {
-      genreList: [DEFAULT_GENRE, ...genreList.genres],
-    },
-  };
+    return {
+      props: {
+        genreList: [DEFAULT_GENRE, ...genreList.genres],
+      },
+    };
+  } catch (error) {
+    throw error;
+  }
 };

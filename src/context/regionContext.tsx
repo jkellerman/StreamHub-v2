@@ -2,8 +2,8 @@ import { useRouter } from "next/router";
 import React, { createContext, useContext, ReactNode, useState, useEffect } from "react";
 
 import { excludedStrings } from "@/constants/app";
-
-import { Media } from "../types";
+import { Provider, StreamingServices } from "@/types/tmdb";
+import { fetcher } from "@/utils/tmdbDataHelpers";
 
 interface RegionContextProps {
   children: ReactNode;
@@ -12,7 +12,7 @@ interface RegionContextProps {
 interface RegionContextValue {
   region: string | null;
   setRegion: (newRegion: string) => void;
-  providers: Media.IProvider[];
+  providers: Provider[];
 }
 
 const RegionContext = createContext<RegionContextValue | undefined>(undefined);
@@ -21,7 +21,7 @@ export const RegionProvider: React.FC<RegionContextProps> = ({ children }) => {
   const { pathname } = useRouter();
   const [region, setRegion] = useState<string | null>(null);
 
-  const [providers, setProviders] = useState<Media.IProvider[]>([]);
+  const [providers, setProviders] = useState<Provider[]>([]);
 
   let mediaType = "";
   if (
@@ -49,17 +49,14 @@ export const RegionProvider: React.FC<RegionContextProps> = ({ children }) => {
 
   const fetchProviders = async (endpoint: string) => {
     try {
-      const res = await fetch(endpoint);
-      const data = await res.json();
-      const slicedArr = data?.data.results;
-      const providers = slicedArr.map(
-        ({ provider_id, provider_name, logo_path }: Media.IProvider) => {
-          return { provider_id, provider_name, logo_path };
-        }
-      );
+      const data = await fetcher<StreamingServices>(endpoint);
+      const slicedArr = data.data.results;
+      const providers = slicedArr.map(({ provider_id, provider_name, logo_path }) => {
+        return { provider_id, provider_name, logo_path };
+      });
 
       const removeDuplicateProviders = providers?.filter(
-        (provider: Media.IProvider) =>
+        (provider) =>
           !excludedStrings.some((excludedStrings) =>
             provider.provider_name.includes(excludedStrings)
           )
@@ -67,9 +64,7 @@ export const RegionProvider: React.FC<RegionContextProps> = ({ children }) => {
 
       if (region === "US") {
         // HBO Max has moved to Max and now doesn't show any data.
-        const removeHBOMax = removeDuplicateProviders.filter(
-          (item: Media.IProvider) => item.provider_id !== 384
-        );
+        const removeHBOMax = removeDuplicateProviders.filter((item) => item.provider_id !== 384);
         setProviders(removeHBOMax);
       } else {
         setProviders(removeDuplicateProviders);

@@ -1,6 +1,8 @@
 import QueryString from "qs";
 
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import { MediaDetails } from "@/types/tmdb";
+import { fetcher } from "@/utils/tmdbDataHelpers";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -21,8 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const url = `${BASE_TMDB_URL}/${slugsArray.join("/")}${queryString}`;
     console.info("🚀 Request URL: ", url);
 
-    const response = await fetch(url);
-    const data = await response.json();
+    const data = await fetcher<MediaDetails>(url);
 
     res.status(200).json({ data });
   } catch (error) {

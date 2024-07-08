@@ -16,11 +16,11 @@ import Description from "@/components/MediaPageDescription/MediaPageDescription"
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS } from "@/constants/tmdb";
 import { useRegion } from "@/src/context/regionContext";
-import { Media } from "@/types/media";
-import { Pagination } from "@/utils/tmdbDataHelpers";
+import { Genres, Id } from "@/types/tmdb";
+import { Pagination, fetcher } from "@/utils/tmdbDataHelpers";
 
 interface GenreSeriesProps {
-  genreList: Media.IGenre[];
+  genreList: Id[];
 }
 
 const NetworkSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
@@ -76,7 +76,7 @@ const NetworkSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
               <Dropdown
                 type="series"
                 selected_network={selectedNetwork}
-                network_list={networkList as Media.IProvider[]}
+                network_list={networkList}
                 selected_genre={selectedGenre}
                 variant="service"
                 style="primary"
@@ -106,29 +106,35 @@ const NetworkSeries: React.FC<GenreSeriesProps> = ({ genreList }) => {
 export default NetworkSeries;
 
 export async function getStaticPaths() {
-  const response = await fetch(
-    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
-  );
-  const genreList = await response.json();
+  try {
+    const genreList = await fetcher<Genres>(
+      `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
+    );
 
-  const paths = genreList.genres.map((slug: Media.IGenre) => ({
-    params: { slugs: [slug.name] },
-  }));
-  return {
-    paths,
-    fallback: true,
-  };
+    const paths = genreList.genres.map((slug) => ({
+      params: { slugs: [slug.name] },
+    }));
+    return {
+      paths,
+      fallback: true,
+    };
+  } catch (error) {
+    throw error;
+  }
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch(
-    `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
-  );
-  const genreList = await response.json();
+  try {
+    const genreList = await fetcher<Genres>(
+      `${BASE_TMDB_URL}/genre/tv/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
+    );
 
-  return {
-    props: {
-      genreList: [DEFAULT_GENRE, ...genreList.genres],
-    },
-  };
+    return {
+      props: {
+        genreList: [DEFAULT_GENRE, ...genreList.genres],
+      },
+    };
+  } catch (error) {
+    throw error;
+  }
 };

@@ -17,11 +17,11 @@ import Description from "@/components/MediaPageDescription/MediaPageDescription"
 import { DEFAULT_GENRE, DEFAULT_NETWORK } from "@/constants/app";
 import { BASE_TMDB_QUERY_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
 import { useRegion } from "@/src/context/regionContext";
-import { Media } from "@/types/media";
-import { Pagination } from "@/utils/tmdbDataHelpers";
+import { Genres, Id } from "@/types/tmdb";
+import { Pagination, fetcher } from "@/utils/tmdbDataHelpers";
 
 interface MoviesIndexPageProps {
-  genreList: Media.IGenre[];
+  genreList: Id[];
 }
 
 const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
@@ -82,7 +82,7 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
               <Dropdown
                 type={pageType}
                 selected_network={selectedNetwork}
-                network_list={networkList as Media.IProvider[]}
+                network_list={networkList}
                 variant="service"
                 style="primary"
               />
@@ -110,14 +110,17 @@ const Movies: React.FC<MoviesIndexPageProps> = ({ genreList }) => {
 export default Movies;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch(
-    `${BASE_TMDB_URL}/genre/movie/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
-  );
-  const genreList = await response.json();
+  try {
+    const genreList = await fetcher<Genres>(
+      `${BASE_TMDB_URL}/genre/movie/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
+    );
 
-  return {
-    props: {
-      genreList: [DEFAULT_GENRE, ...genreList.genres],
-    },
-  };
+    return {
+      props: {
+        genreList: [DEFAULT_GENRE, ...genreList.genres],
+      },
+    };
+  } catch (error) {
+    throw error;
+  }
 };

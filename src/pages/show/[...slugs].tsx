@@ -17,8 +17,8 @@ import {
   BASE_TMDB_QUERY_SEARCH_PARAMS,
   BASE_TMDB_URL,
 } from "@/constants/tmdb";
-import { Media, Types } from "@/src/types";
-import { FetchDetails } from "@/utils/tmdbDataHelpers";
+import { MediaId, Id, CountryProviders, Details, Regions, Region } from "@/types/tmdb";
+import { FetchDetails, fetcher } from "@/utils/tmdbDataHelpers";
 
 const Recommendations = dynamic(
   () => import("@/components/RecommendationsList/RecommendationsList")
@@ -28,14 +28,14 @@ interface SeriesProps {
   series_age_rating: string;
   air_date: string;
   overview: string;
-  cast: Media.ICastMember[];
-  genres: Media.IGenre[];
-  watch_providers: Media.IProviderList;
+  cast: MediaId[];
+  genres: Id[];
+  watch_providers: CountryProviders;
   seasons: number;
   network: string[];
   title: string;
   id: number;
-  regions: Types.IRegions[];
+  regions: Region[];
   defaultTab: string;
   backdrop: string;
   poster: string;
@@ -128,9 +128,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const url = slugs && `${BASE_TMDB_URL}/tv/${slugs[0]}${queryString}`;
   console.info("🚀 Request URL: ", url);
 
-  const response = await fetch(url as string);
-
-  const data = await response.json();
+  const data = await fetcher<Details>(url as string);
 
   const {
     content_ratings,
@@ -145,23 +143,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     poster_path,
   } = data;
 
-  const certification: Media.ICertificationSeries | null =
-    (slugs &&
-      content_ratings.results.find(
-        (country: Media.ICertificationSeries) => country.iso_3166_1 === `${slugs[1]}`
-      )) ??
-    "GB";
+  const certification = slugs
+    ? content_ratings.results.find((country) => country.iso_3166_1 === `${slugs[1]}`)
+    : null;
 
-  const age_rating: string = certification?.rating ?? "";
+  const age_rating = certification ? certification.rating : null;
 
-  const network: string = networks.map((item: Media.INetwork) => {
+  const network = networks.map((item) => {
     return item.name;
   });
 
-  const cast: Media.ICast = credits.cast.slice(0, 4);
-
-  const getWatchProviders: Media.IProviderList | null =
-    slugs && slugs[1] ? data["watch/providers"].results[slugs[1]] : null;
+  const cast = credits.cast.slice(0, 4);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const getWatchProviders = slugs && slugs[1] ? data["watch/providers"].results[slugs[1]] : null;
 
   let defaultTab;
 
@@ -187,12 +182,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const regionsUrl = `${BASE_TMDB_URL}/watch/providers/regions${regionsQueryString}`;
   console.info("🚀 Request URL: ", regionsUrl);
 
-  const regionsResp = await fetch(regionsUrl);
-  const regionsData = await regionsResp.json();
+  const regionsData = await fetcher<Regions>(regionsUrl);
 
   const sortedRegions = regionsData.results
-    .filter((region: Types.IRegions) => region.iso_3166_1 !== "XK")
-    .sort((a: Types.IRegions, b: Types.IRegions) => a.english_name.localeCompare(b.english_name));
+    .filter((region) => region.iso_3166_1 !== "XK")
+    .sort((a, b) => a.english_name.localeCompare(b.english_name));
 
   return {
     props: {

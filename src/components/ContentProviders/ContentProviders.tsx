@@ -4,7 +4,7 @@ import Image from "next/future/image";
 import Logo from "@/components/Logo/Logo";
 import { primaryRegions } from "@/constants/app";
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
-import { Types } from "@/types/types";
+import { PrimaryRegions } from "@/types/types";
 
 import Dropdown from "../Dropdown/Country/Dropdown";
 
@@ -37,7 +37,7 @@ const ContentProviders: React.FC<ContentProvidersProps> = ({ contentProviders })
         >
           <div className={styles.streamingCountries}>
             <p className={styles.text}>Showing streaming services in</p>
-            <Dropdown regions={primaryRegions as Types.IPrimaryRegions[]} />
+            <Dropdown regions={primaryRegions as PrimaryRegions[]} />
           </div>
           <div className={styles.logoContainer}>
             <Logo logo="justWatch" />

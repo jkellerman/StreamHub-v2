@@ -10,12 +10,10 @@ import Spinner from "@/components/Spinner/SearchBar/Spinner";
 import { POSTER_URL_IMAGE_XS } from "@/constants/tmdb";
 import useClickOutside from "@/hooks/useClickOutside";
 import { useRegion } from "@/src/context/regionContext";
+import { MediaList } from "@/types/tmdb";
+import { fetcher } from "@/utils/tmdbDataHelpers";
 
 import styles from "../Search/Search.module.scss";
-
-interface IMovieData {
-  known_for_department: string;
-}
 
 interface SearchResults {
   id: number;
@@ -128,11 +126,9 @@ const Search: React.FC = () => {
   const fetchSearchResultsDebounced = useDebouncedCallback(async (query: string) => {
     try {
       const endpoint = `/api/search/multi/${query}`;
-      const res = await fetch(endpoint);
-      const data = await res.json();
-      const filteredArray = data.data.results.filter(
-        (item: IMovieData) => !item.known_for_department
-      );
+      const data = await fetcher<MediaList>(endpoint);
+
+      const filteredArray = data.data.results.filter((item) => !item.known_for_department);
       const slicedArr = filteredArray.slice(0, 5);
       setSearchResults(slicedArr);
       setTimeout(() => {
