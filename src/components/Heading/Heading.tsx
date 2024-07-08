@@ -1,8 +1,8 @@
-import { Types } from "@/types/types";
+import { Children } from "@/types/types";
 
 import styles from "./Heading.module.scss";
 
-interface HeadingProps extends Types.Children {
+interface HeadingProps extends Children {
   as: string;
   size: "xxs" | "xs" | "s" | "m" | "lg" | "xl" | "xxl";
   id?: string;

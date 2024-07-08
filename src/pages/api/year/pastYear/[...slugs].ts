@@ -1,6 +1,8 @@
 import QueryString from "qs";
 
 import { BASE_TMDB_QUERY_SEARCH_PARAMS, BASE_TMDB_URL } from "@/constants/tmdb";
+import { MediaList } from "@/types/tmdb";
+import { fetcher } from "@/utils/tmdbDataHelpers";
 import { formattedDate } from "@/utils/utils";
 
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -34,8 +36,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const url = `${BASE_TMDB_URL}/discover/${slugsArray[0]}${queryString}`;
     console.info("🚀 Request URL: ", url);
 
-    const response = await fetch(url);
-    const data = await response.json();
+    const data = await fetcher<MediaList>(url);
 
     res.status(200).json({ data });
   } catch (error) {

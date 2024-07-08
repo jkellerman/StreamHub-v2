@@ -4,7 +4,7 @@ import slugify from "slugify";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useRegion } from "@/src/context/regionContext";
-import { Media } from "@/types/media";
+import { Results } from "@/types/tmdb";
 import { scale } from "@/utils/animations";
 
 import Button from "../Buttons/Buttons";
@@ -19,7 +19,7 @@ import Spinner from "../Spinner/Spinner";
 import styles from "./MediaGenerator.module.scss";
 
 interface MediaGeneratorProp {
-  data: Media.IMediaItem | null;
+  data: Results | null;
   isLoading: boolean;
   isError: boolean;
   noResults: boolean;
@@ -85,7 +85,7 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({
 
                 <div className={styles.posterDetailsWrapper}>
                   <ReleaseDate release_date={data.release_date} air_date={data.first_air_date} />
-                  <MediaRunTimeOrSeasons runtime={data.runtime} seasons={data?.number_of_seasons} />
+                  <MediaRunTimeOrSeasons runtime={data.runtime} seasons={data.number_of_seasons} />
                   <div className={styles.ratingContainerPost}>
                     {isMobile && (
                       <ProgressRating
@@ -111,7 +111,7 @@ const MediaGenerator: React.FC<MediaGeneratorProp> = ({
             </div>
             <div className={styles.detailsWrapper}>
               <ReleaseDate release_date={data.release_date} air_date={data.first_air_date} />
-              <MediaRunTimeOrSeasons runtime={data.runtime} seasons={data?.number_of_seasons} />
+              <MediaRunTimeOrSeasons runtime={data.runtime} seasons={data.number_of_seasons} />
             </div>
             <p className={styles.overview}>{data.overview}</p>
             <div className={styles.optionsContainer}>

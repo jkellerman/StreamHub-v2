@@ -5,7 +5,7 @@ import Cast from "@/components/Cast/Cast";
 import MediaDirectorOrNetwork from "@/components/MediaDirectorOrNetwork/MediaDirectorOrNetwork";
 import MediaOverview from "@/components/MediaOverview/MediaOverview";
 import Poster from "@/components/Poster/Poster";
-import { Media } from "@/types/media";
+import { MediaId } from "@/types/tmdb";
 
 import styles from "../MediaInfoBox/MediaInfoBox.module.scss";
 
@@ -14,8 +14,8 @@ interface MediaInfoBoxProps {
   overview: string;
   poster: string;
   children: React.ReactNode;
-  cast: Media.ICastMember[];
-  director?: Media.IDirector;
+  cast: MediaId[];
+  director?: string;
   network?: string[];
 }
 

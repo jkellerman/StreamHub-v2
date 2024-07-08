@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import { Types } from "@/types/types";
+import { Children } from "@/types/types";
 
 import styles from "./Buttons.module.scss";
 
-interface ButtonPropsBase extends Types.Children {
+interface ButtonPropsBase extends Children {
   type?: "button" | "submit";
   variant: "primary" | "secondary" | "tertiary" | "quaternary" | "quinary";
   onClick?: () => void;

@@ -5,7 +5,6 @@ import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import Icon from "@/components/Icon/Icon";
 import useSlider from "@/hooks/useSlider";
-import { Media } from "@/types/media";
 import { opacity } from "@/utils/animations";
 import { FetchCards } from "@/utils/tmdbDataHelpers";
 
@@ -56,7 +55,7 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint }) => {
     );
   return (
     <>
-      {cards?.data?.length > 0 && (
+      {cards && cards?.data.length > 0 && (
         <div className={styles.container}>
           {isScrollAvailable && (
             <span className={styles.navContainer}>
@@ -101,14 +100,7 @@ const Carousel: React.FC<CarouselProps> = ({ endpoint }) => {
                       animate="visible"
                     >
                       {cards?.data.map(
-                        ({
-                          id,
-                          title,
-                          name,
-                          poster_path,
-                          first_air_date,
-                          release_date,
-                        }: Media.IMediaItem) => {
+                        ({ id, title, name, poster_path, first_air_date, release_date }) => {
                           return (
                             <li key={id} className={styles.listItem} ref={getCardWidth}>
                               <figure>

@@ -16,10 +16,10 @@ const MediaRating: React.FC<MediaRatingProps> = ({ id, type }) => {
   const { data } = FetchDetails(endpoint);
   const [progress, setProgress] = useState(0);
 
-  const voteAverage: number = data && data.vote_average * 10;
+  const voteAverage: number | undefined = data && data.vote_average * 10;
   const isMobile = useMediaQuery(`(max-width: 504px)`);
   useEffect(() => {
-    if (data) {
+    if (data && voteAverage) {
       setProgress(voteAverage);
     }
   }, [voteAverage, data]);

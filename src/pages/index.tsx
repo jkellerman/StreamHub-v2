@@ -11,12 +11,13 @@ import Header from "@/components/Header/Header";
 import Hero from "@/components/Hero/Hero";
 import { excludedStrings } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_DISCOVER_PARAMS } from "@/constants/tmdb";
+import { fetcher } from "@/utils/tmdbDataHelpers";
 
 import { useRegion } from "../context/regionContext";
-import { Media } from "../types";
+import { Provider, WatchProviders } from "../types/tmdb";
 
 interface HomeProps {
-  contentProviders: Media.IProvider[];
+  contentProviders: Provider[];
 }
 
 const Home: React.FC<HomeProps> = ({ contentProviders }) => {
@@ -103,17 +104,15 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     BASE_TMDB_QUERY_DISCOVER_PARAMS
   )}&watch_region=GB`;
 
-  const response = await fetch(url);
+  const data = await fetcher<WatchProviders>(url);
 
-  const data = await response.json();
-
-  const slicedArr = data?.results.slice(0, 13);
-  const providers = slicedArr.map(({ provider_id, provider_name, logo_path }: Media.IProvider) => {
+  const slicedArr = data.results.slice(0, 13);
+  const providers = slicedArr.map(({ provider_id, provider_name, logo_path }) => {
     return { provider_id, provider_name, logo_path };
   });
 
   const removeDuplicateProviders = providers?.filter(
-    (provider: Media.IProvider) =>
+    (provider) =>
       !excludedStrings.some((excludedStrings) => provider.provider_name.includes(excludedStrings))
   );
 

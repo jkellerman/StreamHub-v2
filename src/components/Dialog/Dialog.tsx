@@ -3,14 +3,14 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 import { countryFlags } from "@/constants/app";
-import { Types } from "@/types/types";
+import { Region } from "@/types/tmdb";
 
 import AutoComplete from "../AutoComplete/AutoComplete";
 import Icon from "../Icon/Icon";
 
 import styles from "./Dialog.module.scss";
 interface SelectMenuProps {
-  regions: Types.IRegions[];
+  regions: Region[];
   id: number;
   title: string;
   type: "movie" | "show";

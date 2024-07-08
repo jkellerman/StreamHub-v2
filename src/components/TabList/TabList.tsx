@@ -4,19 +4,19 @@ import { useRouter } from "next/router";
 import React from "react";
 
 import { LOGO_URL_IMAGE } from "@/constants/tmdb";
-import { Media, Types } from "@/src/types";
+import { CountryProviders, Region } from "@/types/tmdb";
 
 import Heading from "../Heading/Heading";
 import Logo from "../Logo/Logo";
 import styles from "../TabList/TabList.module.scss";
 
 interface TabListProps {
-  watch_providers: Media.IProviderList;
+  watch_providers: CountryProviders;
   title: string;
   release_date?: string;
   air_date?: string;
   children: React.ReactNode;
-  regions: Types.IRegions[];
+  regions: Region[];
   defaultTab?: string;
 }
 
@@ -112,10 +112,9 @@ const TabPanel: React.FC<TabPanelProps> = ({ children }) => {
 // ==============
 
 interface ProviderProps {
-  watch_providers: Media.IProviderList;
-
+  watch_providers: CountryProviders;
   option: "flatrate" | "rent" | "buy" | "free";
-  regions: Types.IRegions[];
+  regions: Region[];
 }
 
 export const Provider: React.FC<ProviderProps> = ({ watch_providers, option, regions }) => {

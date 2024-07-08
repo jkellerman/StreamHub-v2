@@ -12,11 +12,6 @@ interface ButtonProps {
   variant: "primary" | "secondary" | "tertiary" | "quaternary";
 }
 
-interface IVideoData {
-  name: string;
-  key: string | null;
-}
-
 const Trailer: React.FC<ButtonProps> = ({ endpoint, variant }) => {
   const { data } = FetchDetails(endpoint);
   const [link, setLink] = useState<string | null>(null);
@@ -26,7 +21,7 @@ const Trailer: React.FC<ButtonProps> = ({ endpoint, variant }) => {
   useEffect(() => {
     if (data && data.videos && data.videos.results && data.videos.results.length !== 0) {
       const regexPattern = /trailer/i;
-      data.videos.results.find((item: IVideoData) => {
+      data.videos.results.find((item) => {
         switch (item.name) {
           case "Official Trailer":
           case "Main Trailer":

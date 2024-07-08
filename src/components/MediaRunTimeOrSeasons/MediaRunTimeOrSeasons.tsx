@@ -1,12 +1,13 @@
 import React from "react";
 
-import { Media } from "@/types/media";
 import { toHoursAndMinutes } from "@/utils/utils";
 
-const MediaRunTimeOrSeasons: React.FC<Media.MediaRunTimeOrSeasonsProps> = ({
-  runtime,
-  seasons,
-}) => {
+interface MediaRunTimeOrSeasonsProps {
+  runtime?: number;
+  seasons?: number;
+}
+
+const MediaRunTimeOrSeasons: React.FC<MediaRunTimeOrSeasonsProps> = ({ runtime, seasons }) => {
   return (
     <>
       {runtime && runtime >= 0 && (

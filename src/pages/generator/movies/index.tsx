@@ -12,15 +12,16 @@ import { DEFAULT_GENRE, DEFAULT_GENERATOR_NETWORK } from "@/constants/app";
 import { BASE_TMDB_URL, BASE_TMDB_QUERY_PARAMS } from "@/constants/tmdb";
 import useGenerator from "@/hooks/useGenerator";
 import { useRegion } from "@/src/context/regionContext";
-import { Media } from "@/types/media";
+import { Genres, Id, Results } from "@/types/tmdb";
+import { fetcher } from "@/utils/tmdbDataHelpers";
 
 interface GeneratorProps {
-  genreList: Media.IGenre[];
+  genreList: Id[];
 }
 
 const GeneratorPage: React.FC<GeneratorProps> = ({ genreList }) => {
   const { query } = useRouter();
-  const [storedMovieData, setStoredMovieData] = useState<Media.IMediaItem | null>(null);
+  const [storedMovieData, setStoredMovieData] = useState<Results | null>(null);
   const { providers, region } = useRegion();
   const selectedGenre =
     (genreList &&
@@ -103,14 +104,16 @@ const GeneratorPage: React.FC<GeneratorProps> = ({ genreList }) => {
 export default GeneratorPage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch(
-    `${BASE_TMDB_URL}/genre/movie/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
-  );
-  const genreList = await response.json();
-
-  return {
-    props: {
-      genreList: [DEFAULT_GENRE, ...genreList.genres],
-    },
-  };
+  try {
+    const genreList = await fetcher<Genres>(
+      `${BASE_TMDB_URL}/genre/movie/list?${QueryString.stringify(BASE_TMDB_QUERY_PARAMS)}`
+    );
+    return {
+      props: {
+        genreList: [DEFAULT_GENRE, ...genreList.genres],
+      },
+    };
+  } catch (error) {
+    throw error;
+  }
 };

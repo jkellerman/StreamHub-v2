@@ -5,7 +5,7 @@ import React from "react";
 import Card from "@/components/Card/Card";
 import CardDetails from "@/components/CardDetails/CardDetails";
 import Spinner from "@/components/Spinner/Spinner";
-import { Media } from "@/types/media";
+import { Results } from "@/types/tmdb";
 
 import Button from "../Buttons/Buttons";
 import styles from "../CardList/CardList.module.scss";
@@ -18,7 +18,7 @@ interface InfiniteQueryProps {
 }
 
 interface CardListProps extends InfiniteQueryProps {
-  cards: Media.IMediaItem[];
+  cards: Results[];
   isLoading?: boolean;
   isError?: boolean;
 }
@@ -59,39 +59,30 @@ const CardList: React.FC<CardListProps> = ({
         <div className={styles.container}>
           <LazyMotion features={domAnimation}>
             <ul className={styles.list}>
-              {cards.map(
-                ({
-                  id,
-                  poster_path,
-                  title,
-                  name,
-                  release_date,
-                  first_air_date,
-                }: Media.IMediaItem) => {
-                  return (
-                    <m.li
-                      key={id}
-                      className={styles.linkContainer}
-                      initial={{ opacity: 0 }}
-                      animate={{
-                        opacity: 1,
-                        transition: {
-                          ease: "easeInOut",
-                          duration: 0.3,
-                        },
-                      }}
-                    >
-                      <Card id={id} poster={poster_path} movieTitle={title} seriesName={name} />
-                      <CardDetails
-                        movieYear={release_date}
-                        movieTitle={title}
-                        seriesYear={first_air_date}
-                        seriesName={name}
-                      />
-                    </m.li>
-                  );
-                }
-              )}
+              {cards.map(({ id, poster_path, title, name, release_date, first_air_date }) => {
+                return (
+                  <m.li
+                    key={id}
+                    className={styles.linkContainer}
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      transition: {
+                        ease: "easeInOut",
+                        duration: 0.3,
+                      },
+                    }}
+                  >
+                    <Card id={id} poster={poster_path} movieTitle={title} seriesName={name} />
+                    <CardDetails
+                      movieYear={release_date}
+                      movieTitle={title}
+                      seriesYear={first_air_date}
+                      seriesName={name}
+                    />
+                  </m.li>
+                );
+              })}
             </ul>
           </LazyMotion>
 

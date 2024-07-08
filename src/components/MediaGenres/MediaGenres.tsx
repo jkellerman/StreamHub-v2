@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Media } from "@/src/types";
+import { Id } from "@/types/tmdb";
 
 import styles from "../MediaGenres/MediaGenres.module.scss";
 
 interface MediaGenresProps {
-  genres: Media.IGenre[];
+  genres: Id[];
 }
 
 const MediaGenres: React.FC<MediaGenresProps> = ({ genres }) => {

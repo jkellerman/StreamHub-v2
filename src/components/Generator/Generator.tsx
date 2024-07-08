@@ -2,7 +2,7 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 
 import ContentProviders from "@/components/ContentProviders/GeneratorPage/ContentProviders";
 import styles from "@/components/Panel/Panel.module.scss";
-import { Media } from "@/types/media";
+import { Id, Provider, Results, Service } from "@/types/tmdb";
 import { opacity } from "@/utils/animations";
 
 import Button from "../Buttons/Buttons";
@@ -13,16 +13,16 @@ import MediaGenerator from "../MediaGenerator/MediaGenerator";
 import { Panel, PanelInner } from "../Panel/Panel";
 
 interface GeneratorPageProps {
-  selectedGenre: Media.IGenre;
-  genreList: Media.IGenre[];
-  selectedNetwork: Media.IServices;
-  networkList: Media.IServices[];
+  selectedGenre: Id;
+  genreList: Id[];
+  selectedNetwork: Service;
+  networkList: Provider[];
   fetchRecommendation: () => Promise<void>;
   isLoading: boolean;
   isError: boolean;
   data: null;
-  storedSeriesData?: Media.IMediaItem | null;
-  storedMovieData?: Media.IMediaItem | null;
+  storedSeriesData?: Results | null;
+  storedMovieData?: Results | null;
   noResults: boolean;
   mediaType: string;
 }
@@ -88,7 +88,7 @@ const GeneratorPage: React.FC<GeneratorPageProps> = ({
                   generator
                   type={mediaType}
                   selected_network={selectedNetwork}
-                  network_list={networkList as Media.IProvider[]}
+                  network_list={networkList}
                   variant="service"
                   style="secondary"
                   selected_genre={selectedGenre}

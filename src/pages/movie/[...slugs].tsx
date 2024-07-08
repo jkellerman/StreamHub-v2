@@ -16,8 +16,16 @@ import {
   BASE_TMDB_QUERY_SEARCH_PARAMS,
   BASE_TMDB_URL,
 } from "@/constants/tmdb";
-import { Media, Types } from "@/src/types";
-import { FetchDetails } from "@/utils/tmdbDataHelpers";
+import {
+  Certification,
+  CountryProviders,
+  Id,
+  Details,
+  MediaId,
+  Regions,
+  Region,
+} from "@/types/tmdb";
+import { FetchDetails, fetcher } from "@/utils/tmdbDataHelpers";
 
 const Recommendations = dynamic(
   () => import("@/components/RecommendationsList/RecommendationsList")
@@ -25,17 +33,17 @@ const Recommendations = dynamic(
 const TabList = dynamic(() => import("@/components/TabList/TabList"));
 
 interface MovieProps {
-  movie_age_rating: Media.ICertificationMovie | undefined;
+  movie_age_rating: Certification;
   release_date: string;
   overview: string;
-  cast: Media.ICastMember[];
-  genres: Media.IGenre[];
-  watch_providers: Media.IProviderList;
+  cast: MediaId[];
+  genres: Id[];
+  watch_providers: CountryProviders;
   runtime: number;
-  director: Media.IDirector;
+  director: string;
   title: string;
   id: number;
-  regions: Types.IRegions[];
+  regions: Region[];
   defaultTab: string;
   backdrop: string;
   poster: string;
@@ -74,7 +82,7 @@ const Movie: React.FC<MovieProps> = ({
         <MediaDetailsPanel title={title} id={id} type="movie">
           <MediaDetails
             genres={genres}
-            movie_age_rating={movie_age_rating?.certification}
+            movie_age_rating={movie_age_rating.certification}
             runtime={runtime}
             release_date={release_date}
           />
@@ -102,16 +110,13 @@ const Movie: React.FC<MovieProps> = ({
           data.recommendations.results.length > 0 && (
             <CategoryHeading category="Suggested" recommendations />
           )}
-        {data &&
-          data.recommendations &&
-          data.recommendations.results &&
-          data.recommendations.results.length > 0 && (
-            <Recommendations
-              recommendations={recommendations}
-              isLoading={isLoading}
-              isError={isError}
-            />
-          )}
+        {data && data.recommendations.results.length > 0 && (
+          <Recommendations
+            recommendations={recommendations}
+            isLoading={isLoading}
+            isError={isError}
+          />
+        )}
       </main>
     </>
   );
@@ -134,8 +139,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const url = slugs && `${BASE_TMDB_URL}/movie/${slugs[0]}${queryString}`;
   console.info("🚀 Request URL: ", url);
 
-  const response = await fetch(url as string);
-  const data = await response.json();
+  const data = await fetcher<Details>(url as string);
 
   const {
     release_dates,
@@ -149,16 +153,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     poster_path,
   } = data;
 
-  const getDirector: Media.IDirector | undefined = credits?.crew.find(
-    (crew: Media.ICast) => crew.department === "Directing"
-  );
+  const getDirector = credits?.crew.find((crew) => crew.department === "Directing");
 
   const director = getDirector?.name || null;
 
   const cast = credits?.cast.slice(0, 4);
 
   const getWatchProviders = data["watch/providers"]?.results;
-
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const watch_providers = slugs && slugs[1] ? getWatchProviders[slugs[1]] : null;
 
   let defaultTab;
@@ -175,20 +178,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     defaultTab = "tab1";
   }
 
-  const certification: Media.ICertificationMoviesCountries | null =
-    (slugs &&
-      release_dates.results.find(
-        (country: Media.ICertificationMoviesCountries) => country.iso_3166_1 === `${slugs[1]}`
-      )) ??
-    release_dates.results.find(
-      (country: Media.ICertificationMoviesCountries) => country.iso_3166_1 === "US"
-    ) ??
-    null;
+  const certification =
+    (slugs && release_dates.results.find((country) => country.iso_3166_1 === `${slugs[1]}`)) ??
+    release_dates.results.find((country) => country.iso_3166_1 === "US") ??
+    "";
 
-  const age_rating: Media.ICertificationMovie | null =
-    certification?.release_dates.find(
-      (item: Media.ICertificationMovie) => item.certification !== ""
-    ) || null;
+  const age_rating =
+    (certification && certification.release_dates.find((item) => item.certification !== "")) || "";
 
   const regionsQueryString = qs.stringify(
     {
@@ -200,12 +196,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const regionsUrl = `${BASE_TMDB_URL}/watch/providers/regions${regionsQueryString}`;
   console.info("🚀 Request URL: ", regionsUrl);
 
-  const regionsResp = await fetch(regionsUrl);
-  const regionsData = await regionsResp.json();
+  const regionsData = await fetcher<Regions>(regionsUrl);
 
   const sortedRegions = regionsData.results
-    .filter((region: Types.IRegions) => region.iso_3166_1 !== "XK")
-    .sort((a: Types.IRegions, b: Types.IRegions) => a.english_name.localeCompare(b.english_name));
+    .filter((region) => region.iso_3166_1 !== "XK")
+    .sort((a, b) => a.english_name.localeCompare(b.english_name));
 
   return {
     props: {

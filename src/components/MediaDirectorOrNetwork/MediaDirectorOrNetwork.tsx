@@ -1,11 +1,9 @@
 import React from "react";
 
-import { Media } from "@/src/types";
-
 import styles from "../MediaDirectorOrNetwork/MediaDirectorOrNetwork.module.scss";
 
 interface MediaDirectorOrNetworkProps {
-  director?: Media.IDirector;
+  director?: string;
   network?: string[];
 }
 
